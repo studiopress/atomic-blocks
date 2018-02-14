@@ -1,0 +1,113 @@
+/**
+ * Common styles
+ * Loads on front end and back end
+ */
+
+// Variables 
+//$black: #293038;
+
+/* Import the flexbox grid */
+@import "assets/grid/flexboxgrid.scss";
+
+/* Font size styles */
+@media only screen and (min-width: 600px) {
+    .font-size-14 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 14px;
+      }
+    }
+  
+    .font-size-15 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 15px;
+      }
+    }
+  
+    .font-size-16 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 16px;
+      }
+    }
+  
+    .font-size-17 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 17px;
+      }
+    }
+  
+    .font-size-18 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 18px;
+      }
+    }
+  
+    .font-size-19 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 19px;
+      }
+    }
+  
+    .font-size-20 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 20px;
+      }
+    }
+  
+    .font-size-21 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 21px;
+      }
+    }
+  
+    .font-size-22 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 22px;
+      }
+    }
+  
+    .font-size-23 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 23px;
+      }
+    }
+  
+    .font-size-24 {
+      .block-testimonial & p,
+      &.block-notice p,
+      .block-profile & p {
+        font-size: 24px;
+      }
+    }
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
