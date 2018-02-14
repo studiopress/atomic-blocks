@@ -93,31 +93,31 @@ registerBlockType( 'atomic/atomic-profile-box', {
 			default: 18
 		},
 		twitter: {
-            type: 'url',
+			type: 'url',
 		},
 		facebook: {
-            type: 'url',
+			type: 'url',
 		},
 		instagram: {
-            type: 'url',
+			type: 'url',
 		},
 		pinterest: {
-            type: 'url',
+			type: 'url',
 		},
 		google: {
-            type: 'url',
+			type: 'url',
 		},
 		youtube: {
-            type: 'url',
+			type: 'url',
 		},
 		github: {
-            type: 'url',
+			type: 'url',
 		},
 		email: {
-            type: 'url',
+			type: 'url',
 		},
 		website: {
-            type: 'url',
+			type: 'url',
 		},
 	},
 
