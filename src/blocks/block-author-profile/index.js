@@ -179,7 +179,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 			),
 			// Show the block markup in the editor
 			<ProfileBox { ...props }>
-				<div class="ab-col-xs-12 ab-col-lg-4 profile-avatar-wrap">
+				<div class="column is-one-quarter profile-avatar-wrap">
 					{ 	// Output the image or the image upload button
 						! props.attributes.imgID ? ( [
 							<MediaUploadAvatar { ...props } /> 
@@ -198,7 +198,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 				<div 
 					className={ classnames(
 						fontSizeClass,
-						'ab-col-xs profile-info'
+						'column profile-info'
 					) }
 				>
 					<RichText
@@ -244,7 +244,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 			// Save the block markup for the front end
 			<ProfileBox { ...props }>
 			  	{ props.attributes.imgURL && (
-					<div class="ab-col-xs-12 ab-col-lg-4 profile-avatar-wrap">
+					<div class="column is-one-quarter profile-avatar-wrap">
 						<div class="profile-image-wrap">
 							<img
 								class="profile-avatar"
@@ -258,7 +258,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 				<div 
 					className={ classnames(
 						fontSize.fontRatioToClass( props.attributes.fontSize ),
-						'ab-col-xs profile-info'
+						'column profile-info'
 					) }
 				>
 					{ props.attributes.profileName && (

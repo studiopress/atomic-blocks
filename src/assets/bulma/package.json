@@ -1,0 +1,116 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "bulma@0.6.1",
+        "scope": null,
+        "escapedName": "bulma",
+        "name": "bulma",
+        "rawSpec": "0.6.1",
+        "spec": "0.6.1",
+        "type": "version"
+      },
+      "/Users/jthomas/Desktop"
+    ]
+  ],
+  "_from": "bulma@0.6.1",
+  "_id": "bulma@0.6.1",
+  "_inCache": true,
+  "_location": "/bulma",
+  "_nodeVersion": "6.11.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/bulma-0.6.1.tgz_1509974843739_0.25196533603593707"
+  },
+  "_npmUser": {
+    "name": "jgthms",
+    "email": "bbxdesign@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "bulma@0.6.1",
+    "scope": null,
+    "escapedName": "bulma",
+    "name": "bulma",
+    "rawSpec": "0.6.1",
+    "spec": "0.6.1",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/bulma/-/bulma-0.6.1.tgz",
+  "_shasum": "5f21a77c0c06f7d80051c06628c23516081bd649",
+  "_shrinkwrap": null,
+  "_spec": "bulma@0.6.1",
+  "_where": "/Users/jthomas/Desktop",
+  "author": {
+    "name": "Jeremy Thomas",
+    "email": "bbxdesign@gmail.com",
+    "url": "http://jgthms.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jgthms/bulma/issues"
+  },
+  "dependencies": {},
+  "description": "Modern CSS framework based on Flexbox",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "node-sass": "^4.5.3",
+    "postcss-cli": "^4.1.0",
+    "rimraf": "^2.6.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "5f21a77c0c06f7d80051c06628c23516081bd649",
+    "tarball": "https://registry.npmjs.org/bulma/-/bulma-0.6.1.tgz"
+  },
+  "files": [
+    "css",
+    "sass",
+    "bulma.sass",
+    "LICENSE",
+    "README.md"
+  ],
+  "gitHead": "27c5e7bd57a8031bb477816535b90721f63f6c74",
+  "homepage": "https://bulma.io",
+  "keywords": [
+    "css",
+    "sass",
+    "flexbox",
+    "responsive",
+    "framework"
+  ],
+  "license": "MIT",
+  "main": "bulma.sass",
+  "maintainers": [
+    {
+      "name": "jgthms",
+      "email": "bbxdesign@gmail.com"
+    }
+  ],
+  "name": "bulma",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgthms/bulma.git"
+  },
+  "scripts": {
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
+    "build-clean": "rimraf css",
+    "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
+    "deploy": "npm run build && npm run docs",
+    "docs": "npm run docs-sass && npm run docs-autoprefix",
+    "docs-autoprefix": "postcss --use autoprefixer --map false --output docs/css/bulma-docs.css docs/css/bulma-docs.css",
+    "docs-sass": "node-sass --output-style expanded docs/bulma-docs.sass docs/css/bulma-docs.css",
+    "start": "npm run build-sass -- --watch",
+    "start-docs": "npm run docs-sass -- --watch",
+    "start-test": "npm run test-sass -- --watch",
+    "test-sass": "node-sass --output-style expanded docs/bulma-test.sass docs/css/bulma-test.css"
+  },
+  "style": "bulma/css/bulma.css",
+  "version": "0.6.1"
+}

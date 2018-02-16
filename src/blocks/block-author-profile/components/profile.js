@@ -27,7 +27,7 @@ export default class ProfileBox extends Component {
 				this.props.attributes.alignment,
 				{ 'has-avatar': this.props.attributes.imgURL },
 				'block-profile',
-				'ab-row'
+				'columns is-variable is-4'
 			) }>
 				{ this.props.children }
 			</div>

@@ -35,14 +35,6 @@ function atomic_blocks_block_assets() {
 		array( 'wp-blocks' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/fontawesome-all.css' )
 	);
-
-	// Load the dismissable notice js
-	wp_enqueue_script(
-		'atomic-blocks-dismiss-js',
-		plugins_url( '/src/blocks/block-notice/components/dismiss.js', dirname( __FILE__ ) ),
-		array( 'wp-blocks' ),
-		filemtime( plugin_dir_path( __FILE__ ) . '/blocks/block-notice/components/dismiss.js' )
-	);
 } 
 add_action( 'enqueue_block_assets', 'atomic_blocks_block_assets' );
 
@@ -82,6 +74,23 @@ function atomic_blocks_editor_assets() {
 add_action( 'enqueue_block_editor_assets', 'atomic_blocks_editor_assets' );
 
 
+/**
+ * Enqueue assets for frontend
+ *
+ * @since 1.0.0
+ */
+function atomic_blocks_frontend_assets() {
+	// Load the dismissable notice js
+	wp_enqueue_script(
+		'atomic-blocks-dismiss-js',
+		plugins_url( '/src/blocks/block-notice/components/dismiss.js', dirname( __FILE__ ) ),
+		array( 'wp-blocks' ),
+		filemtime( plugin_dir_path( __FILE__ ) . '/blocks/block-notice/components/dismiss.js' )
+	);
+}
+add_action( 'wp_enqueue_scripts', 'atomic_blocks_frontend_assets' );
+
+
 // Add template to testimonial post type
 function atomic_testimonial_templates( $args, $post_type ) {
 
@@ -93,7 +102,7 @@ function atomic_testimonial_templates( $args, $post_type ) {
 		// Setup the template
 		$args['template'] = [
 			[ 
-				'atomic/atomic-blocks-testimonial', [
+				'atomic/atomic-testimonial', [
 				]
 			]
 		];
@@ -133,7 +142,7 @@ function atomic_testimonial_list_render( $attributes ) {
 if ( function_exists( 'register_block_type' ) ) :
 	
 	// Hook a render function to the testimonial block
-	register_block_type( 'atomic/atomic-blocks-testimonial-list', array(
+	register_block_type( 'atomic/atomic-testimonial-list', array(
 		'render_callback' => 'atomic_testimonial_list_render',
 	) );
 endif;

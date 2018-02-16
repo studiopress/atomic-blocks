@@ -2,21 +2,27 @@
  * BLOCK: Atomic Blocks Testimonial List
  */
 
+ // Import block dependencies and components
 import classnames from 'classnames';
-import PostList from './post-list';
+import PostList from './components/post-list';
 
 //  Import CSS
-import './style.scss';
-import './editor.scss';
+import './styles/style.scss';
+import './styles/editor.scss';
 
+// Internationalization
 const { __ } = wp.i18n; 
+
+// Register block controls
 const { 
 	registerBlockType,
 } = wp.blocks;
+
+// Register components
 const {
-  IconButton,
-  Button,
-  Tooltip,
+	IconButton,
+	Button,
+	Tooltip,
 } = wp.components;
 
 // Register the block
@@ -33,7 +39,7 @@ registerBlockType( 'atomic/atomic-testimonial-list', {
 	edit: props => {
 		return (
 			<PostList
-			className={props.className}
+				className={props.className}
 			/>
 		);
 	},
