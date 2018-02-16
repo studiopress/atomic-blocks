@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import ProfileBox from './components/profile';
 import SocialIcons from './components/social';
+import AvatarColumn from './components/avatar';
 import icons from './components/icons';
 import * as fontSize from './../../utils/helper';
 
@@ -17,7 +18,7 @@ import './styles/editor.scss';
 // Internationalization
 const { __ } = wp.i18n; 
 
-// Import block components
+// Register components
 const { 
 	registerBlockType,
 	RichText,
@@ -25,9 +26,10 @@ const {
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
+	SelectControl,
 } = wp.blocks;
 
-// Import Inspector components
+// Register Inspector components
 const {
 	Button,
 } = wp.components;
@@ -119,6 +121,10 @@ registerBlockType( 'atomic/atomic-profile-box', {
 		website: {
 			type: 'url',
 		},
+		avatarShape: {
+            type: 'string',
+            default: 'square',
+        },
 	},
 
 	edit: function( props ) {
@@ -139,9 +145,20 @@ registerBlockType( 'atomic/atomic-profile-box', {
 			fontSize.fontRatioToClass( props.attributes.fontSize ),
 		);
 
+		// Avatar shape options
+		const avatarShapeOptions = [
+			{ value: 'square', label: __( 'Square' ) },
+			{ value: 'round', label: __( 'Round' ) },
+		];
+
+		// Change message dismiss value
+		const onChangeAvatarShape = value => {
+			props.setAttributes( { avatarShape: value } );
+		};
+
 		// Build the avatar upload button
 		const MediaUploadAvatar = ( props ) => (
-			<div class="profile-image-wrap">
+			<div class="profile-image-square">
 				<MediaUpload
 					buttonProps={ {
 						className: 'change-image'
@@ -174,26 +191,26 @@ registerBlockType( 'atomic/atomic-profile-box', {
 			// Show the block controls on focus
 			!! props.focus && (
 				<Inspector
-					{ ...{ setFontRatio, ...props} }
+					{ ...{ setFontRatio, avatarShapeOptions, onChangeAvatarShape, ...props} }
 				/>
 			),
 			// Show the block markup in the editor
 			<ProfileBox { ...props }>
-				<div class="column is-one-quarter profile-avatar-wrap">
+				<AvatarColumn { ...props }>
 					{ 	// Output the image or the image upload button
 						! props.attributes.imgID ? ( [
 							<MediaUploadAvatar { ...props } /> 
 						] ) : ( [
-							<MediaUploadAvatar { ...props } >
+							<MediaUploadAvatar { ...props }> 
 								<img
 									class="profile-avatar"
 									src={ props.attributes.imgURL }
 									alt={ props.attributes.imgAlt }
-								/> 
+								/>
 							</MediaUploadAvatar> 
 						] )
 					}
-				</div>
+				</AvatarColumn>				
 
 				<div 
 					className={ classnames(
@@ -243,16 +260,17 @@ registerBlockType( 'atomic/atomic-profile-box', {
 		return (
 			// Save the block markup for the front end
 			<ProfileBox { ...props }>
-			  	{ props.attributes.imgURL && (
-					<div class="column is-one-quarter profile-avatar-wrap">
-						<div class="profile-image-wrap">
+				  
+				{ props.attributes.imgURL && (
+					<AvatarColumn { ...props }>
+						<div class="profile-image-square">
 							<img
 								class="profile-avatar"
 								src={ props.attributes.imgURL }
 								alt={ props.attributes.imgAlt }
 							/>
 						</div>
-					</div>
+					</AvatarColumn>
 				) }
 
 				<div 

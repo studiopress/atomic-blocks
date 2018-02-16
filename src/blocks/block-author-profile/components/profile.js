@@ -25,6 +25,7 @@ export default class ProfileBox extends Component {
 			className={ classnames(
 				this.props.className,
 				this.props.attributes.alignment,
+				this.props.attributes.avatarShape,
 				{ 'has-avatar': this.props.attributes.imgURL },
 				'block-profile',
 				'columns is-variable is-4'

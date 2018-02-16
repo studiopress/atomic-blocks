@@ -25,7 +25,7 @@ const {
 const { 
 	TextControl, 
 	RangeControl, 
-	SelectControl 
+	SelectControl, 
 } = InspectorControls;
 
 // Create an Inspector Controls wrapper Component
@@ -46,6 +46,14 @@ export default class Inspector extends Component {
 				min={ 14 }
 				max={ 24 }
 				step={ 1 }
+			/>
+
+			<SelectControl
+				label={ __( 'Avatar Shape' ) }
+				description={ __( 'Choose between a round or square avatar shape.' ) }
+				options={ this.props.avatarShapeOptions }
+				value={ this.props.attributes.avatarShape }
+				onChange={ this.props.onChangeAvatarShape }
 			/>
 			
 			<PanelColor 
