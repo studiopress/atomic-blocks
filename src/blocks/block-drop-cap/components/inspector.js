@@ -26,7 +26,7 @@ const {
 // Import Inspector controls
 const { 
 	RangeControl, 
-	SelectControl,
+	SelectControl 
 } = InspectorControls;
 
 /**
@@ -46,45 +46,31 @@ export default class Inspector extends Component {
 				label={ __( 'Font Size' ) }
 				value={ this.props.attributes.fontSize }
 				onChange={ this.props.setFontRatio }
-				min={ 14 }
-				max={ 24 }
+				min={ 1 }
+				max={ 6 }
 				step={ 1 }
 			/>
 
 			<SelectControl
-				label={ __( 'Notice Display' ) }
-				description={ __( 'Do you want the message to always show or dismissable?' ) }
-				options={ this.props.noticeDismissOptions }
-				value={ this.props.attributes.noticeDismiss }
-				onChange={ this.props.onChangeNoticeDismiss }
+				label={ __( 'Cite Alignment' ) }
+				description={ __( 'Left or right align the cite name and title.' ) }
+				options={ this.props.citeAlignOptions }
+				value={ this.props.attributes.citeAlign }
+				onChange={ this.props.onChangeCiteAlign }
 			/>
 			
 			<PanelColor 
-				title={ __( 'Notice Color' ) }
+				title={ __( 'Background Color' ) }
 				colorValue={ this.props.attributes.blockBackgroundColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
-					label={ __( 'Notice Color' ) }
+					label={ __( 'Background Color' ) }
 					value={ this.props.attributes.blockBackgroundColor }
 					onChange={ this.props.onChangeBackgroundColor }
-					colors={['#00d1b2', '#3373dc', '#209cef', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#392F43']}
 				/>
 			</PanelColor>
 
-			<PanelColor 
-				title={ __( 'Title Color' ) }
-				colorValue={ this.props.attributes.blockTitleColor }
-				initialOpen={ false }
-			>
-				<ColorPalette 
-					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.blockTitleColor }
-					onChange={ this.props.onChangeTitleColor }
-					colors={['#fff', '#32373c' ]}
-				/>
-			</PanelColor>
-			
 			<PanelColor 
 				title={ __( 'Text Color' ) }
 				colorValue={ this.props.attributes.blockTextColor }
@@ -94,7 +80,6 @@ export default class Inspector extends Component {
 					label={ __( 'Background Color' ) }
 					value={ this.props.attributes.blockTextColor }
 					onChange={ this.props.onChangeTextColor }
-					colors={['#32373c', '#fff' ]}
 				/>
 			</PanelColor>
 

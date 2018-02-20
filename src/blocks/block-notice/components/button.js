@@ -1,5 +1,5 @@
 /**
- * Notice Box Wrapper
+ * Notice Box Dismiss Button
  */
 
 // Setup the block

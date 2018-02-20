@@ -2,27 +2,17 @@
 
 	$(document).ready(function() {
 
-		var notice, noticeId, storedNoticeId, dismissButton;
-		notice = document.querySelector('.block-notice');
-		
-		if (!notice) {
-			return;
-		}
-		
-		dismissButton = document.querySelector('.block-notice-dismiss');
-		noticeId = notice.getAttribute('data-id');
-		storedNoticeId = localStorage.getItem('blockNotice');
-		
-		// This means that the user hasn't already dismissed
-		// this specific notice. Let's display it.
-		if (noticeId !== storedNoticeId) {
-			notice.style.display = 'block';
-		}
-		
-		dismissButton.addEventListener('click', function () {
-			notice.style.display = 'none';
-			localStorage.setItem('blockNotice', noticeId);
-		});
+		const elems = document.querySelectorAll('.block-notice.dismissable[data-id]')
+		elems.forEach(el => {
+			const uid = el.getAttribute( 'data-id' )
+			if ( ! localStorage.getItem(`notice-${uid}`) ) {
+				el.style.display = 'block'
+			}
+			el.querySelector('.block-notice-dismiss').addEventListener('click', () => {
+				localStorage.setItem(`notice-${uid}`, 1)
+				el.style.display = ''
+			})
+		})
 
 	});
 

@@ -1,0 +1,71 @@
+/**
+ * Testimonial styles
+ * Loads on front end and back end
+ */
+
+ .block-drop-cap {
+	p:first-child:first-letter {
+		float: left;
+		font-size: 75px;
+		line-height: 60px;
+		padding-top: .2em;
+		padding-right: .2em;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	&:before, 
+	&:after {
+		content: '';
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	/* Font size styles */
+	@media only screen and (min-width: 600px) {
+		.font-size-1 {
+			p:first-child:first-letter {
+				font-size: 75px;
+				padding-top: .07em;
+			}
+		}
+
+		.font-size-2 {
+			p:first-child:first-letter {
+				font-size: 85px;
+				padding-top: .09em;
+			}
+		}
+
+		.font-size-3 {
+			p:first-child:first-letter {
+				font-size: 95px;
+				padding-top: .12em;
+			}
+		}
+
+		.font-size-4 {
+			p:first-child:first-letter {
+				font-size: 105px;
+				padding-top: .14em;
+			}
+		}
+
+		.font-size-5 {
+			p:first-child:first-letter {
+				font-size: 115px;
+				padding-top: .16em;
+			}
+		}
+
+		.font-size-6 {
+			p:first-child:first-letter {
+				font-size: 125px;
+				padding-top: .17em;
+			}
+		}
+	}
+}

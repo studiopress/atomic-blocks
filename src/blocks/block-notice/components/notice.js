@@ -8,9 +8,10 @@ const { Component } = wp.element;
 // Import block dependencies and components
 import classnames from 'classnames';
 import * as fontSize from './../../../utils/helper';
+import * as uniqueID from './../../../utils/helper';
 
 /**
- * Create a Testimonial wrapper Component
+ * Create a Notice wrapper Component
  */
 export default class NoticeBox extends Component {
 
@@ -19,7 +20,10 @@ export default class NoticeBox extends Component {
 	}
 
 	render() {
-		return (
+
+		const blockID = uniqueID.generateUniqueID( this.props.attributes.noticeDismiss + this.props.attributes.title )
+
+		return (	
 			<div 
 				style={ {
 					color: this.props.attributes.blockTextColor,
@@ -33,7 +37,7 @@ export default class NoticeBox extends Component {
 					'block-notice'
 				) 
 				}
-				data-id="someId-1234"
+				data-id={ blockID }
 			>
 				{ this.props.children }
 			</div>

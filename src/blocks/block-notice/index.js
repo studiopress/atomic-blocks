@@ -9,6 +9,8 @@ import NoticeBox from './components/notice';
 import DismissButton from './components/button';
 import icons from './components/icons';
 import * as fontSize from './../../utils/helper';
+import * as uniqueID from './../../utils/helper';
+import md5 from 'md5';
 
 // Import CSS
 import './styles/style.scss';
@@ -172,9 +174,9 @@ registerBlockType( 'atomic/atomic-notice', {
 
 	// Save the attributes and markup
 	save: function( props ) {
+
 		return (
-			// Save the block markup for the front end
-			<NoticeBox { ...props }>
+			<NoticeBox { ...props }>			
 				{	// Check if the notice is dismissable and output the button
 					props.attributes.noticeDismiss && (
 					<DismissButton { ...props }>
@@ -204,7 +206,7 @@ registerBlockType( 'atomic/atomic-notice', {
 					>
 						{ props.attributes.content }
 					</div>
-				) }
+				) }	
 			</NoticeBox>
 		);
 	},
