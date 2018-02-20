@@ -23,7 +23,7 @@ export default class AvatarColumn extends Component {
 
 	render() {
 		return (
-			<div class="column is-one-quarter profile-avatar-wrap">
+			<div class="column is-one-fifth profile-avatar-wrap">
 				<div class="profile-image-wrap">
 					{ this.props.children }
 				</div>
