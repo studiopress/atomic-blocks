@@ -67,7 +67,7 @@ function atomic_blocks_editor_assets() {
 		'atomic-blocks-block-js',
 		'atomic_globals',
 		[
-		  'rest_url' => esc_url( rest_url() )
+			'rest_url' => esc_url( rest_url() )
 		]
 	);
 }
@@ -95,7 +95,6 @@ add_action( 'wp_enqueue_scripts', 'atomic_blocks_frontend_assets' );
 function atomic_testimonial_templates( $args, $post_type ) {
 
 	if ( 'atomic-testimonial' == $post_type ) {
-	  
 		// Lock the template
 		$args['template_lock'] = true;
 		
@@ -127,11 +126,11 @@ function atomic_testimonial_list_render( $attributes ) {
     $markup = '<ul>';
     foreach( $posts as $post ) {
 
-      $markup .= sprintf(
-          '<li><a class="wp-block-my-plugin-latest-post" href="%1$s">%2$s</a></li>',
-          esc_url( get_permalink( $post['ID'] ) ),
-          esc_html( get_the_title( $post['ID'] ) )
-      );
+	$markup .= sprintf(
+		'<li><a class="wp-block-my-plugin-latest-post" href="%1$s">%2$s</a></li>',
+		esc_url( get_permalink( $post['ID'] ) ),
+		esc_html( get_the_title( $post['ID'] ) )
+	);
 
     }
 
@@ -140,7 +139,6 @@ function atomic_testimonial_list_render( $attributes ) {
 
 // Hook the post rendering to the block
 if ( function_exists( 'register_block_type' ) ) :
-	
 	// Hook a render function to the testimonial block
 	register_block_type( 'atomic/atomic-testimonial-list', array(
 		'render_callback' => 'atomic_testimonial_list_render',
