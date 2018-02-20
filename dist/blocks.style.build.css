@@ -3515,7 +3515,9 @@
     transition: .3s ease; }
     .block-notice .block-notice-dismiss:hover {
       opacity: 1;
-      cursor: pointer; }
+      cursor: pointer;
+      -webkit-box-shadow: none;
+              box-shadow: none; }
   .block-notice .notice-title {
     font-weight: bold;
     padding: .5em 1em;
