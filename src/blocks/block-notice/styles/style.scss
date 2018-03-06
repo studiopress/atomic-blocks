@@ -8,10 +8,6 @@
 	overflow: hidden;
 	position: relative;
 
-	body:not(.wp-admin) & {
-		display: none;
-	}
-
 	.block-notice-dismiss {
 		position: absolute;
 		top: 13px;
@@ -64,4 +60,8 @@
 		border-bottom-right-radius: 5px;
 		border-bottom-left-radius: 5px;
 	}
+}
+
+body:not(.wp-admin) .block-notice.dismissable {
+	display: none;
 }

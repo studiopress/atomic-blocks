@@ -5,7 +5,7 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import Inspector from './components/inspector';
-import DropCap from './components/testimonial';
+import DropCap from './components/dropcap';
 import icons from './components/icons';
 import * as fontSize from './../../utils/helper';
 
@@ -44,36 +44,13 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 		__( 'atomic' ),
 	],
 	attributes: {
-		testimonialName: {
-			type: 'string',
-			selector: '.testimonial-name',
-		},
-		testimonialTitle: {
-			type: 'string',
-			selector: '.testimonial-title',
-		},
 		content: {
 			type: 'array',
-			selector: '.testimonial-text',
+			selector: '.drop-cap-text',
 			source: 'children',
 		},
 		alignment: {
 			type: 'string',
-		},
-		imgURL: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'src',
-			selector: 'img',
-		},
-		imgID: {
-			type: 'number',
-		},
-		imgAlt: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'alt',
-			selector: 'img',
 		},
 		blockBackgroundColor: {
 			type: 'string',
@@ -87,13 +64,13 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 			type: 'number',
 			default: 3,
 		},
-		citeAlign: {
+		dropCapStyle: {
             type: 'string',
-            default: 'left-aligned',
+            default: 'drop-cap-letter',
         },
 	},
 
-	edit: function( props ) {
+	edit: function( props, isSelected ) {
 		// Change the text alignment
 		const onChangeAlignment = value =>  {
 			props.setAttributes( { alignment: value } );
@@ -109,55 +86,24 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 			props.setAttributes( { blockTextColor: value } );
 		};
 
-		// Populate the mobile image
-		const onSelectImage = img => {
-			props.setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
-				imgAlt: img.alt,
-			} );
-		};
-
 		// Change the font size
 		const setFontRatio = ( ratio ) => props.setAttributes( { fontSize: ratio } );
 
 		// Cite Alignment Options
-		const citeAlignOptions = [
-			{ value: 'style-one', label: __( 'Letter Only' ) },
-			{ value: 'style2-two', label: __( 'Square' ) },
-			{ value: 'style3-three', label: __( 'Round' ) },
+		const dropCapOptions = [
+			{ value: 'drop-cap-letter', label: __( 'Letter' ) },
+			{ value: 'drop-cap-square', label: __( 'Square' ) },
+			{ value: 'drop-cap-border', label: __( 'Border' ) },
 		];
 
 		// Change Cite Alignment
-		const onChangeCiteAlign = value => {
-			props.setAttributes( { citeAlign: value } );
+		const onChangeDropCap = value => {
+			props.setAttributes( { dropCapStyle: value } );
 		};
-
-		// Upload avatar button
-		const MediaUploadAvatar = ( props ) => (
-			<div class="testimonial-image-wrap">
-				<MediaUpload
-					buttonProps={ {
-						className: 'change-image'
-					} }
-					onSelect={ onSelectImage }
-					type="image"
-					value={ props.attributes.imgID }
-					render={ ( { open } ) => (
-						<Button onClick={ open }>
-							{ icons.upload }
-						</Button>
-					) }
-				>
-				</MediaUpload>
-				
-				{ props.children }
-			</div>
-		);
 
 		return [
 			// Show the alignment toolbar on focus
-			!! props.focus && (
+			isSelected && (
 				<BlockControls key="controls">
 					<AlignmentToolbar
 						value={ props.attributes.alignment }
@@ -166,9 +112,9 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 				</BlockControls>
 			),
 			// Show the block controls on focus
-			!! props.focus && (
+			isSelected && (
 				<Inspector
-					{ ...{ onChangeBackgroundColor, onChangeTextColor, setFontRatio, citeAlignOptions, onChangeCiteAlign, ...props} }
+					{ ...{ onChangeBackgroundColor, onChangeTextColor, setFontRatio, dropCapOptions, onChangeDropCap, ...props} }
 				/>
 			),
 			// Show the block markup in the editor
@@ -176,11 +122,11 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 				<RichText
 					tagName="div"
 					multiline="p"
-					placeholder={ __( 'Add testimonial text...' ) }
+					placeholder={ __( 'Add paragraph text...' ) }
 					value={ props.attributes.content }
 					className={ classnames(
 						fontSize.fontRatioToClass( props.attributes.fontSize ),
-						'testimonial-text'
+						'drop-cap-text',
 					) }
 					style={ {
 						textAlign: props.attributes.alignment,
@@ -198,7 +144,7 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 			<DropCap { ...props }>
 				<div
 				className={ classnames(
-					'testimonial-text',
+					'drop-cap-text',
 					fontSize.fontRatioToClass( props.attributes.fontSize ),
 				) }
 				style={ {

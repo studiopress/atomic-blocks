@@ -26,7 +26,7 @@ const {
 // Import Inspector controls
 const { 
 	RangeControl, 
-	SelectControl 
+	SelectControl,
 } = InspectorControls;
 
 /**
@@ -52,11 +52,11 @@ export default class Inspector extends Component {
 			/>
 
 			<SelectControl
-				label={ __( 'Cite Alignment' ) }
-				description={ __( 'Left or right align the cite name and title.' ) }
-				options={ this.props.citeAlignOptions }
-				value={ this.props.attributes.citeAlign }
-				onChange={ this.props.onChangeCiteAlign }
+				label={ __( 'Drop Cap Style' ) }
+				description={ __( 'Choose the style of the drop cap in your paragraph.' ) }
+				options={ this.props.dropCapOptions }
+				value={ this.props.attributes.dropCapStyle }
+				onChange={ this.props.onChangeDropCap }
 			/>
 			
 			<PanelColor 

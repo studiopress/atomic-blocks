@@ -127,7 +127,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
         },
 	},
 
-	edit: function( props ) {
+	edit: function( props, isSelected ) {
 		// Populate the image when selected
 		const onSelectImage = img => {
 			props.setAttributes( {
@@ -180,7 +180,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 
 		return [
 			// Show the block alignment controls on focus
-			!! props.focus && (
+			isSelected && (
 				<BlockControls key="controls">
 					<AlignmentToolbar
 						value={ props.attributes.alignment }
@@ -189,7 +189,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 				</BlockControls>
 			),
 			// Show the block controls on focus
-			!! props.focus && (
+			isSelected && (
 				<Inspector
 					{ ...{ setFontRatio, avatarShapeOptions, onChangeAvatarShape, ...props} }
 				/>

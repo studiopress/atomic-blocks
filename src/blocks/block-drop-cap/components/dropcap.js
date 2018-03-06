@@ -19,15 +19,14 @@ export default class DropCap extends Component {
 
 	render() {
 		return (
-			<div 
+			<div
 				style={ {
 					color: this.props.attributes.blockTextColor
 				} }
 				className={ classnames(
 					this.props.className,
-					this.props.attributes.citeAlign,
-					{ 'has-avatar': this.props.attributes.imgURL },
-					'block-drop-cap'
+					this.props.attributes.dropCapStyle,
+					'block-drop-cap',
 				) }
 			>
 				{ this.props.children }

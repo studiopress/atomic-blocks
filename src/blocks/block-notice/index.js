@@ -82,7 +82,7 @@ registerBlockType( 'atomic/atomic-notice', {
         },
 	},
 
-	edit: function( props ) {
+	edit: function( props, isSelected ) {
 		// Change the text alignment
 		const onChangeAlignment = value =>  {
 			props.setAttributes( { alignment: value } );
@@ -119,7 +119,7 @@ registerBlockType( 'atomic/atomic-notice', {
 
 		return [
 			// Show the alignment toolbar on focus
-			!! props.focus && (
+			isSelected && (
 				<BlockControls key="controls">
 					<AlignmentToolbar
 						value={ props.attributes.alignment }
@@ -128,7 +128,7 @@ registerBlockType( 'atomic/atomic-notice', {
 				</BlockControls>
 			),
 			// Show the block controls on focus
-			!! props.focus && (
+			isSelected && (
 				<Inspector
 					{ ...{ onChangeBackgroundColor, onChangeTextColor, setFontRatio, noticeDismissOptions, onChangeNoticeDismiss, onChangeTitleColor, onChangeTextColor, ...props} }
 				/>
