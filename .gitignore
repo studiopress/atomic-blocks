@@ -36,3 +36,4 @@ config.codekit
 .CVS
 .idea
 node_modules/
+Gruntfile.js
