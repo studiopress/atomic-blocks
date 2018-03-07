@@ -66,9 +66,9 @@ function atomic_blocks_editor_assets() {
     wp_localize_script(
 		'atomic-blocks-block-js',
 		'atomic_globals',
-		[
+		array( 
 			'rest_url' => esc_url( rest_url() )
-		]
+		)
 	);
 }
 add_action( 'enqueue_block_editor_assets', 'atomic_blocks_editor_assets' );
@@ -92,7 +92,7 @@ add_action( 'wp_enqueue_scripts', 'atomic_blocks_frontend_assets' );
 
 
 // Add template to testimonial post type
-function atomic_testimonial_templates( $args, $post_type ) {
+function atomic_blocks_testimonial_templates( $args, $post_type ) {
 
 	if ( 'atomic-testimonial' == $post_type ) {
 		// Lock the template
@@ -100,19 +100,18 @@ function atomic_testimonial_templates( $args, $post_type ) {
 		
 		// Setup the template
 		$args['template'] = [
-			[ 
-				'atomic/atomic-testimonial', [
-				]
-			]
+			array(
+				'atomic/atomic-testimonial'
+			)
 		];
 	}
 	return $args;
 }
-add_filter( 'register_post_type_args', 'atomic_testimonial_templates', 20, 2 );
+add_filter( 'register_post_type_args', 'atomic_blocks_testimonial_templates', 20, 2 );
 
 
 // Render the testimonial posts for the frontend
-function atomic_testimonial_list_render( $attributes ) {
+function atomic_blocks_testimonial_list_render( $attributes ) {
 
     $posts = wp_get_recent_posts( array(
         'numberposts' => 5,
@@ -141,6 +140,6 @@ function atomic_testimonial_list_render( $attributes ) {
 if ( function_exists( 'register_block_type' ) ) :
 	// Hook a render function to the testimonial block
 	register_block_type( 'atomic/atomic-testimonial-list', array(
-		'render_callback' => 'atomic_testimonial_list_render',
+		'render_callback' => 'atomic_blocks_testimonial_list_render',
 	) );
 endif;
