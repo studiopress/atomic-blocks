@@ -17,7 +17,7 @@ We've created a beautiful little WordPress theme to help you get started with th
 
 [Download the Atomic Blocks Theme &rarr;](https://atomicblocks.com)
 
-## Follow Along
+## Follow along:
 
 * [Visit the Atomic Blocks site](https://atomicblocks.com/)
 * [Subscribe to the newsletter](https://atomicblocks.com/subscribe)
