@@ -3500,7 +3500,8 @@
 .block-notice {
   border-radius: 5px;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  margin-bottom: 1.2em; }
   .block-notice .block-notice-dismiss {
     position: absolute;
     top: 13px;
