@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* Register the Team Members CPT */
-function atomic_team_register() {
+function atomic_blocks_team_register() {
 
 	register_post_type(
 		'atomic-team',
@@ -69,11 +69,11 @@ function atomic_team_register() {
 		)
 	);
 }
-add_action( 'init', 'atomic_team_register' );
+add_action( 'init', 'atomic_blocks_team_register' );
 
 
 /* Register the Team Members Category taxonomy */
-function atomic_team_register_taxonomies() {
+function atomic_blocks_team_tax() {
 	register_taxonomy(
 		'team_category',
 		array( 'team-member' ),
@@ -118,4 +118,4 @@ function atomic_team_register_taxonomies() {
 		)
 	);
 }
-add_action( 'init', 'atomic_team_register_taxonomies' );
+add_action( 'init', 'atomic_blocks_team_tax' );

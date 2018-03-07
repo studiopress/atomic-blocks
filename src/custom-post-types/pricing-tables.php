@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* Register the Pricing Tables CPT */
-function atomic_pricing_tables_register() {
+function atomic_blocks_pricing_tables_register() {
 
 	register_post_type(
 		'atomic-pricing',
@@ -69,11 +69,11 @@ function atomic_pricing_tables_register() {
 		)
 	);
 }
-add_action( 'init', 'atomic_pricing_tables_register' );
+add_action( 'init', 'atomic_blocks_pricing_tables_register' );
 
 
 /* Register the Pricing Tables Category taxonomy */
-function atomic_pricing_tables_register_taxonomies() {
+function atomic_blocks_pricing_tables_tax() {
 	register_taxonomy(
 		'pricing_table_category',
 		array( 'pricing-table' ),
@@ -118,4 +118,4 @@ function atomic_pricing_tables_register_taxonomies() {
 		)
 	);
 }
-add_action( 'init', 'atomic_pricing_tables_register_taxonomies' );
+add_action( 'init', 'atomic_blocks_pricing_tables_tax' );

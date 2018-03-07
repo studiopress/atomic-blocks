@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* Register the Testimonial CPT */
-function atomic_testimonials_register() {
+function atomic_blocks_testimonials_register() {
 
 	register_post_type(
 		'atomic-testimonial',
@@ -52,28 +52,28 @@ function atomic_testimonials_register() {
 
 			// Labels used when displaying the posts
 			'labels' => array(
-				'name' => __( 'Testimonials',                   'array-toolkit' ),
-				'singular_name' => __( 'Testimonial',                    'array-toolkit' ),
-				'menu_name' => __( 'Testimonials',                   'array-toolkit' ),
-				'name_admin_bar' => __( 'Testimonial',                    'array-toolkit' ),
-				'add_new' => __( 'Add New',                        'array-toolkit' ),
-				'add_new_item' => __( 'Add New Testimonial',            'array-toolkit' ),
-				'edit_item' => __( 'Edit Testimonial',               'array-toolkit' ),
-				'new_item' => __( 'New Testimonial',                'array-toolkit' ),
-				'view_item' => __( 'View Testimonial',               'array-toolkit' ),
-				'search_items' => __( 'Search Testimonials',            'array-toolkit' ),
-				'not_found' => __( 'No testimonials found',          'array-toolkit' ),
-				'not_found_in_trash' => __( 'No testimonials found in trash', 'array-toolkit' ),
-				'all_items' => __( 'Testimonials',                   'array-toolkit' ),
+				'name' => __( 'Testimonials', 'atomic-blocks' ),
+				'singular_name' => __( 'Testimonial', 'atomic-blocks' ),
+				'menu_name' => __( 'Testimonials', 'atomic-blocks' ),
+				'name_admin_bar' => __( 'Testimonial', 'atomic-blocks' ),
+				'add_new' => __( 'Add New', 'atomic-blocks' ),
+				'add_new_item' => __( 'Add New Testimonial', 'atomic-blocks' ),
+				'edit_item' => __( 'Edit Testimonial', 'atomic-blocks' ),
+				'new_item' => __( 'New Testimonial', 'atomic-blocks' ),
+				'view_item' => __( 'View Testimonial', 'atomic-blocks' ),
+				'search_items' => __( 'Search Testimonials', 'atomic-blocks' ),
+				'not_found' => __( 'No testimonials found', 'atomic-blocks' ),
+				'not_found_in_trash' => __( 'No testimonials found in trash', 'atomic-blocks' ),
+				'all_items' => __( 'Testimonials', 'atomic-blocks' ),
 			)
 		)
 	);
 }
-add_action( 'init', 'atomic_testimonials_register' );
+add_action( 'init', 'atomic_blocks_testimonials_register' );
 
 
 /* Register the Testimonial Category taxonomy */
-function atomic_testimonials_register_taxonomies() {
+function atomic_blocks_testimonials_tax() {
 	register_taxonomy(
 		'testimonial_category',
 		array( 'testimonial' ),
@@ -96,20 +96,20 @@ function atomic_testimonials_register_taxonomies() {
 
 			// Labels used when displaying taxonomy and terms.
 			'labels' => array(
-				'name' => __( 'Testimonial Categories', 'example-textdomain' ),
-				'singular_name' => __( 'Testimonial Category',   'example-textdomain' ),
-				'menu_name' => __( 'Categories',             'example-textdomain' ),
-				'name_admin_bar' => __( 'Category',               'example-textdomain' ),
-				'search_items' => __( 'Search Categories',      'example-textdomain' ),
-				'popular_items' => __( 'Popular Categories',     'example-textdomain' ),
-				'all_items' => __( 'All Categories',         'example-textdomain' ),
-				'edit_item' => __( 'Edit Category',          'example-textdomain' ),
-				'view_item' => __( 'View Category',          'example-textdomain' ),
-				'update_item' => __( 'Update Category',        'example-textdomain' ),
-				'add_new_item' => __( 'Add New Category',       'example-textdomain' ),
-				'new_item_name' => __( 'New Category Name',      'example-textdomain' ),
-				'parent_item' => __( 'Parent Category',        'example-textdomain' ),
-				'parent_item_colon' => __( 'Parent Category:',       'example-textdomain' ),
+				'name' => __( 'Testimonial Categories', 'atomic-blocks' ),
+				'singular_name' => __( 'Testimonial Category', 'atomic-blocks' ),
+				'menu_name' => __( 'Categories', 'atomic-blocks' ),
+				'name_admin_bar' => __( 'Category', 'atomic-blocks' ),
+				'search_items' => __( 'Search Categories', 'atomic-blocks' ),
+				'popular_items' => __( 'Popular Categories', 'atomic-blocks' ),
+				'all_items' => __( 'All Categories', 'atomic-blocks' ),
+				'edit_item' => __( 'Edit Category', 'atomic-blocks' ),
+				'view_item' => __( 'View Category', 'atomic-blocks' ),
+				'update_item' => __( 'Update Category', 'atomic-blocks' ),
+				'add_new_item' => __( 'Add New Category', 'atomic-blocks' ),
+				'new_item_name' => __( 'New Category Name', 'atomic-blocks' ),
+				'parent_item' => __( 'Parent Category', 'atomic-blocks' ),
+				'parent_item_colon' => __( 'Parent Category:', 'atomic-blocks' ),
 				'separate_items_with_commas' => null,
 				'add_or_remove_items' => null,
 				'choose_from_most_used' => null,
@@ -118,4 +118,4 @@ function atomic_testimonials_register_taxonomies() {
 		)
 	);
 }
-add_action( 'init', 'atomic_testimonials_register_taxonomies' );
+add_action( 'init', 'atomic_blocks_testimonials_tax' );
