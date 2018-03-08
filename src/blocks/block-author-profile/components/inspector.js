@@ -19,13 +19,13 @@ const {
 	PanelBody,
 	PanelRow,
 	PanelColor,
+	RangeControl, 
+	SelectControl,
 } = wp.components;
 
 // Import Inspector controls
 const { 
 	TextControl, 
-	RangeControl, 
-	SelectControl, 
 } = InspectorControls;
 
 // Create an Inspector Controls wrapper Component

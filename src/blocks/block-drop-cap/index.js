@@ -24,12 +24,12 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	MediaUpload,
-	SelectControl,
 } = wp.blocks;
 
 // Register components
 const {
 	Button,
+	SelectControl,
 } = wp.components;
 
 // Register the block

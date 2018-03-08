@@ -27,13 +27,13 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	MediaUpload,
-	SelectControl,
 } = wp.blocks;
 
 // Register components
 const {
 	Button,
-	withFallbackStyles
+	SelectControl,
+	withFallbackStyles,
 } = wp.components;
 
 // Register the block

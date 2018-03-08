@@ -26,12 +26,12 @@ const {
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
-	SelectControl,
 } = wp.blocks;
 
 // Register Inspector components
 const {
 	Button,
+	SelectControl,
 } = wp.components;
 
 // Register the block

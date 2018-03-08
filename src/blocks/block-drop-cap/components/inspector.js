@@ -8,26 +8,22 @@ const { Component } = wp.element;
 
 // Import block components
 const {
-  InspectorControls,
-  BlockDescription,
-  ColorPalette,
+	InspectorControls,
+	BlockDescription,
+	ColorPalette,
 } = wp.blocks;
 
 // Import Inspector components
 const {
-  Toolbar,
-  Button,
-  PanelBody,
-  PanelRow,
-  PanelColor,
-  FormToggle,
-} = wp.components;
-
-// Import Inspector controls
-const { 
+	Toolbar,
+	Button,
+	PanelBody,
+	PanelRow,
+	PanelColor,
+	FormToggle,
 	RangeControl, 
 	SelectControl,
-} = InspectorControls;
+} = wp.components;
 
 /**
  * Create an Inspector Controls wrapper Component
