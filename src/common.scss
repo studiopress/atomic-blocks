@@ -7,8 +7,8 @@
 //$black: #293038;
 
 /* Import the flexbox grid */
-@import "assets/bulma/sass/utilities/_all";
-@import "assets/bulma/sass/grid/columns";
+@import "../dist/assets/bulma/sass/utilities/_all";
+@import "../dist/assets/bulma/sass/grid/columns";
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {

@@ -103,7 +103,7 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 
 		return [
 			// Show the alignment toolbar on focus
-			isSelected && (
+			!! props.focus && (
 				<BlockControls key="controls">
 					<AlignmentToolbar
 						value={ props.attributes.alignment }
@@ -112,7 +112,7 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 				</BlockControls>
 			),
 			// Show the block controls on focus
-			isSelected && (
+			!! props.focus && (
 				<Inspector
 					{ ...{ onChangeBackgroundColor, onChangeTextColor, setFontRatio, dropCapOptions, onChangeDropCap, ...props} }
 				/>

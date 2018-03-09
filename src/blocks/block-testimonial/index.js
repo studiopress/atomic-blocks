@@ -132,11 +132,9 @@ registerBlockType( 'atomic/atomic-testimonial', {
 			props.setAttributes( { citeAlign: value } );
 		};
 
-		
-
 		return [
 			// Show the alignment toolbar on focus
-			isSelected && (
+			!! props.focus && (
 				<BlockControls key="controls">
 					<AlignmentToolbar
 						value={ props.attributes.alignment }
@@ -145,7 +143,7 @@ registerBlockType( 'atomic/atomic-testimonial', {
 				</BlockControls>
 			),
 			// Show the block controls on focus
-			isSelected && (
+			!! props.focus && (
 				<Inspector
 					{ ...{ onChangeBackgroundColor, onChangeTextColor, setFontRatio, citeAlignOptions, onChangeCiteAlign, ...props} }
 				/>

@@ -180,7 +180,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 
 		return [
 			// Show the block alignment controls on focus
-			isSelected && (
+			!! props.focus && (
 				<BlockControls key="controls">
 					<AlignmentToolbar
 						value={ props.attributes.alignment }
@@ -189,7 +189,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 				</BlockControls>
 			),
 			// Show the block controls on focus
-			isSelected && (
+			!! props.focus && (
 				<Inspector
 					{ ...{ setFontRatio, avatarShapeOptions, onChangeAvatarShape, ...props} }
 				/>
