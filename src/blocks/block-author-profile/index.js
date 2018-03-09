@@ -197,19 +197,26 @@ registerBlockType( 'atomic/atomic-profile-box', {
 			// Show the block markup in the editor
 			<ProfileBox { ...props }>
 				<AvatarColumn { ...props }>
-					{ 	// Output the image or the image upload button
-						! props.attributes.imgID ? ( [
-							<MediaUploadAvatar { ...props } /> 
-						] ) : ( [
-							<MediaUploadAvatar { ...props }> 
-								<img
-									class="profile-avatar"
-									src={ props.attributes.imgURL }
-									alt={ props.attributes.imgAlt }
-								/>
-							</MediaUploadAvatar> 
-						] )
-					}
+					<div class="profile-image-square">
+						<MediaUpload
+							buttonProps={ {
+								className: 'change-image'
+							} }
+							onSelect={ onSelectImage }
+							type="image"
+							value={ props.attributes.imgID }
+							render={ ( { open } ) => (
+								<Button onClick={ open }>
+									{ ! props.attributes.imgID ? icons.upload : <img
+										class="profile-avatar"
+										src={ props.attributes.imgURL }
+										alt={ props.attributes.imgAlt }
+									/>  }
+								</Button>
+							) }
+						>
+						</MediaUpload>
+					</div>
 				</AvatarColumn>				
 
 				<div 

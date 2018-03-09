@@ -132,27 +132,7 @@ registerBlockType( 'atomic/atomic-testimonial', {
 			props.setAttributes( { citeAlign: value } );
 		};
 
-		// Upload avatar button
-		const MediaUploadAvatar = ( props ) => (
-			<div class="testimonial-image-wrap">
-				<MediaUpload
-					buttonProps={ {
-						className: 'change-image'
-					} }
-					onSelect={ onSelectImage }
-					type="image"
-					value={ props.attributes.imgID }
-					render={ ( { open } ) => (
-						<Button onClick={ open }>
-							{ icons.upload }
-						</Button>
-					) }
-				>
-				</MediaUpload>
-				
-				{ props.children }
-			</div>
-		);
+		
 
 		return [
 			// Show the alignment toolbar on focus
@@ -189,21 +169,26 @@ registerBlockType( 'atomic/atomic-testimonial', {
 
 				<div class="testimonial-info">
 					<div class="testimonial-avatar-wrap">
-						{ ! props.attributes.imgID ? (
-							[
-								<MediaUploadAvatar { ...props } /> 
-							]
-						) : (
-							[
-								<MediaUploadAvatar { ...props } >
-									<img
-										class="testimonial-avatar"
-										src={ props.attributes.imgURL }
-										alt={ props.attributes.imgAlt }
-									/> 
-								</MediaUploadAvatar> 
-							]
-						)}
+						<div class="testimonial-image-wrap">
+							<MediaUpload
+								buttonProps={ {
+									className: 'change-image'
+								} }
+								onSelect={ onSelectImage }
+								type="image"
+								value={ props.attributes.imgID }
+								render={ ( { open } ) => (
+									<Button onClick={ open }>
+										{ ! props.attributes.imgID ? icons.upload : <img
+											class="testimonial-avatar"
+											src={ props.attributes.imgURL }
+											alt={ props.attributes.imgAlt }
+										/>  }
+									</Button>
+								) }
+							>
+							</MediaUpload>
+						</div>	
 					</div>
 
 					<RichText

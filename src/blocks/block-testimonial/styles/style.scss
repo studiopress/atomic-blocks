@@ -9,6 +9,7 @@
 	margin: 0 auto;
 	padding: 5%;
 	border-radius: 5px;
+	margin-bottom: 1.2em;
 
 	.testimonial-info {
 		position: relative;
@@ -93,6 +94,23 @@
 			z-index: 10;
 			border-radius: 40px;
 			z-index: 5; 
+		}
+	}
+
+	&.has-avatar {
+		.testimonial-image-wrap {
+			&:hover {
+				img {
+					opacity: .5 !important;
+				}
+			}
+
+			button {
+				top: 0;
+				left: 0;
+				opacity: 1 !important;
+				height: 100%;
+			}
 		}
 	}
 }

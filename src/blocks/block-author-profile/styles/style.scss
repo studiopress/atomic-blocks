@@ -9,6 +9,7 @@
 	margin: 0 auto;
 	padding: 3%;
 	border-radius: 5px;
+	margin-bottom: 1.2em;
 
 	.profile-avatar-wrap {
 		position: relative;
@@ -102,6 +103,23 @@
 			width: 100%;
 			position: relative;
 			z-index: 5;
+		}
+	}
+
+	&.has-avatar {
+		.profile-image-square {
+			&:hover {
+				img {
+					opacity: .5 !important;
+				}
+			}
+
+			button {
+				top: 0;
+				left: 0;
+				opacity: 1 !important;
+				height: 100%;
+			}
 		}
 	}
 
