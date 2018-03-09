@@ -28,12 +28,12 @@ function atomic_blocks_loader() {
 	/**
 	 * Load the blocks functionality
 	 */
-	require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
+	require_once plugin_dir_path( __FILE__ ) . 'dist/init.php';
 
 	/**
 	 * Load Getting Started page
 	 */
-	require_once plugin_dir_path( __FILE__ ) . 'src/getting-started/getting-started.php';
+	require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
 
 	/**
 	 * Register the custom post types. Still in early development.

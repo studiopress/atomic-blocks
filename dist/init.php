@@ -25,13 +25,13 @@ function atomic_blocks_block_assets() {
 		'atomic-blocks-style-css',
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
 		array( 'wp-blocks' ),
-		filemtime( plugin_dir_path( __FILE__ ) . '../dist/blocks.style.build.css' )
+		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.style.build.css' )
 	);
 
 	// Load the FontAwesome icon library
 	wp_enqueue_style(
 		'fontawesome',
-		plugins_url( 'src/assets/fontawesome/css/fontawesome-all.css', dirname( __FILE__ ) ),
+		plugins_url( 'dist/assets/fontawesome/css/fontawesome-all.css', dirname( __FILE__ ) ),
 		array( 'wp-blocks' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/fontawesome-all.css' )
 	);
@@ -51,7 +51,7 @@ function atomic_blocks_editor_assets() {
 		'atomic-blocks-block-js',
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ),
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
-		filemtime( plugin_dir_path( __FILE__ ) . '../dist/blocks.build.js' )
+		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.build.js' )
 	);
 
 	// Load the compiled styles into the editor
@@ -59,7 +59,7 @@ function atomic_blocks_editor_assets() {
 		'atomic-blocks-block-editor-css',
 		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), 
 		array( 'wp-edit-blocks' ),
-		filemtime( plugin_dir_path( __FILE__ ) . '../dist/blocks.editor.build.css' )
+		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.editor.build.css' )
 	);
 
 	// Pass in REST URL
@@ -83,9 +83,9 @@ function atomic_blocks_frontend_assets() {
 	// Load the dismissable notice js
 	wp_enqueue_script(
 		'atomic-blocks-dismiss-js',
-		plugins_url( '/src/blocks/block-notice/components/dismiss.js', dirname( __FILE__ ) ),
+		plugins_url( '/dist/assets/js/dismiss.js', dirname( __FILE__ ) ),
 		array( 'wp-blocks' ),
-		filemtime( plugin_dir_path( __FILE__ ) . '/blocks/block-notice/components/dismiss.js' )
+		filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/dismiss.js' )
 	);
 }
 add_action( 'wp_enqueue_scripts', 'atomic_blocks_frontend_assets' );
