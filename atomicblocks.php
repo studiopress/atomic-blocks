@@ -44,7 +44,7 @@ add_action( 'plugins_loaded', 'atomic_blocks_loader' );
 
 
 /**
- * Initialize the blocks
+ * Load the plugin textdomain
  */
 function atomic_blocks_init() {
 	load_plugin_textdomain( 'atomic-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
