@@ -124,16 +124,16 @@ function atomic_blocks_getting_started_page() {
 			<div class="intro">
 				<h3><?php printf( esc_html__( 'Getting started with', 'atomic-blocks' ) ); ?> <strong><?php printf( esc_html__( 'Atomic Blocks', 'atomic-blocks' ) ); ?></strong></h3>
 			</div>
-		</div>
 
-		<div class="panels">
 			<ul class="inline-list">
 				<li class="current"><a id="plugin-help" href="#"><i class="fa fa-plug"></i> <?php esc_html_e( 'Plugin Help File', 'atomic-blocks' ); ?></a></li>	
 				<li><a id="theme-help" href="#"><i class="fa fa-check"></i> <?php esc_html_e( 'Theme Help File', 'atomic-blocks' ); ?></a></li>
 				<li><a id="updates" href="#"><i class="fa fa-refresh"></i> <?php esc_html_e( 'Latest Updates', 'atomic-blocks' ); ?></a></li>
 				<li><a id="themes" href="#"><i class="fa fa-arrow-circle-down"></i> <?php esc_html_e( 'Get More Themes', 'atomic-blocks' ); ?></a></li>
 			</ul>
+		</div>
 
+		<div class="panels">
 			<div id="panel" class="panel">
 				<!-- Plugin help file panel -->
 				<div id="plugin-help" class="panel-left visible">
