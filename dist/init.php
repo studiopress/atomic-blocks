@@ -113,7 +113,7 @@ add_filter( 'register_post_type_args', 'atomic_blocks_testimonial_templates', 20
 // Render the testimonial posts for the frontend
 function atomic_blocks_testimonial_list_render( $attributes ) {
 
-    $posts = wp_get_recent_posts( array(
+    $posts = (array) wp_get_recent_posts( array(
         'numberposts' => 5,
         'post_status' => 'publish',
     ) );
@@ -126,7 +126,7 @@ function atomic_blocks_testimonial_list_render( $attributes ) {
     foreach( $posts as $post ) {
 
 	$markup .= sprintf(
-		'<li><a class="wp-block-my-plugin-latest-post" href="%1$s">%2$s</a></li>',
+		'<li><a class="atomic-blocks-latest-post" href="%1$s">%2$s</a></li>',
 		esc_url( get_permalink( $post['ID'] ) ),
 		esc_html( get_the_title( $post['ID'] ) )
 	);
@@ -135,6 +135,7 @@ function atomic_blocks_testimonial_list_render( $attributes ) {
 
     return $markup;
 }
+
 
 // Hook the post rendering to the block
 if ( function_exists( 'register_block_type' ) ) :
