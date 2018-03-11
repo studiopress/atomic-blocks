@@ -76,16 +76,6 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 			props.setAttributes( { alignment: value } );
 		};
 
-		// Change the background color
-		const onChangeBackgroundColor = value => {
-			props.setAttributes( { blockBackgroundColor: value } );
-		};
-
-		// Change the text color
-		const onChangeTextColor = value => {
-			props.setAttributes( { blockTextColor: value } );
-		};
-
 		// Change the font size
 		const setFontRatio = ( ratio ) => props.setAttributes( { fontSize: ratio } );
 
@@ -114,7 +104,7 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 			// Show the block controls on focus
 			!! props.focus && (
 				<Inspector
-					{ ...{ onChangeBackgroundColor, onChangeTextColor, setFontRatio, dropCapOptions, onChangeDropCap, ...props} }
+					{ ...{ setFontRatio, dropCapOptions, onChangeDropCap, ...props} }
 				/>
 			),
 			// Show the block markup in the editor

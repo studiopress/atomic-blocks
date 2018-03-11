@@ -54,30 +54,6 @@ export default class Inspector extends Component {
 				value={ this.props.attributes.dropCapStyle }
 				onChange={ this.props.onChangeDropCap }
 			/>
-			
-			<PanelColor 
-				title={ __( 'Background Color' ) }
-				colorValue={ this.props.attributes.blockBackgroundColor }
-				initialOpen={ false }
-			>
-				<ColorPalette 
-					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.blockBackgroundColor }
-					onChange={ this.props.onChangeBackgroundColor }
-				/>
-			</PanelColor>
-
-			<PanelColor 
-				title={ __( 'Text Color' ) }
-				colorValue={ this.props.attributes.blockTextColor }
-				initialOpen={ false }
-			>
-				<ColorPalette 
-					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.blockTextColor }
-					onChange={ this.props.onChangeTextColor }
-				/>
-			</PanelColor>
 
 		</InspectorControls>
 		);
