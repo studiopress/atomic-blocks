@@ -36,13 +36,6 @@ function atomic_blocks_loader() {
 	require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
 
 	/**
-	 * Register the custom post types. Still in early development.
-	 */
-	// require_once plugin_dir_path( __FILE__ ) . 'src/custom-post-types/testimonials.php';
-	// require_once plugin_dir_path( __FILE__ ) . 'src/custom-post-types/pricing-tables.php';
-	// require_once plugin_dir_path( __FILE__ ) . 'src/custom-post-types/team-members.php';
-
-	/**
 	 * Load plugin textdomain
 	 */
 	load_plugin_textdomain( 'atomic-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
@@ -51,26 +44,25 @@ add_action( 'plugins_loaded', 'atomic_blocks_loader' );
 
 
 /**
- * Redirect to Getting Started page on plugin activation
+ * Initialize the blocks
  */
-register_activation_hook( __FILE__, 'atomic_blocks_activate' );
-add_action( 'admin_init', 'atomic_blocks_redirect' );
-
-/**
- * Add a check for our plugin before redirecting
- */
-function atomic_blocks_activate() {
-    add_option( 'atomic_blocks_do_activation_redirect', true );
+function atomic_blocks_init() {
+	load_plugin_textdomain( 'atomic-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
 }
+add_action( 'init', 'atomic_blocks_init' );
+
 
 /**
  * Redirect to the Atomic Blocks Getting Started page on single plugin activation
  */
-function atomic_blocks_redirect() {
-    if ( get_option( 'atomic_blocks_do_activation_redirect', false ) ) {
+function atomic_blocks_activate() {
+	add_option( 'atomic_blocks_do_activation_redirect', true );
+	
+	if ( get_option( 'atomic_blocks_do_activation_redirect', false ) ) {
         delete_option( 'atomic_blocks_do_activation_redirect' );
         if( !isset( $_GET['activate-multi'] ) ) {
             wp_redirect( "admin.php?page=atomic-blocks" );
         }
     }
 }
+register_activation_hook( __FILE__, 'atomic_blocks_activate' );
