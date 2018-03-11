@@ -119,7 +119,7 @@ function atomic_blocks_testimonial_list_render( $attributes ) {
     ) );
 
     if ( count( $posts ) === 0 ) {
-        return 'No posts';
+        return __( 'No posts', 'atomic-blocks' );
     }
 
     $markup = '<ul>';
