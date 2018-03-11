@@ -30,7 +30,7 @@ function atomic_blocks_block_assets() {
 
 	// Load the FontAwesome icon library
 	wp_enqueue_style(
-		'fontawesome',
+		'atomic-blocks-fontawesome',
 		plugins_url( 'dist/assets/fontawesome/css/fontawesome-all.css', dirname( __FILE__ ) ),
 		array( 'wp-blocks' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/fontawesome-all.css' )
@@ -63,7 +63,7 @@ function atomic_blocks_editor_assets() {
 	);
 
 	// Pass in REST URL
-    wp_localize_script(
+	wp_localize_script(
 		'atomic-blocks-block-js',
 		'atomic_globals',
 		array( 
