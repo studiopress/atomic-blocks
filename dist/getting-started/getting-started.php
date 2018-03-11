@@ -50,19 +50,19 @@ add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
  *
  * since 1.0.0
  */
-function getting_started_menu() {
+function atomic_blocks_getting_started_menu() {
 
 	add_menu_page(
 		__( 'Atomic Blocks', 'atomic-blocks' ),
 		__( 'Atomic Blocks', 'atomic-blocks' ),
 		'manage_options',
 		'atomic-blocks',
-		'getting_started_page',
+		'atomic_blocks_getting_started_page',
 		'dashicons-admin-settings'
 	);
 
 }
-add_action( 'admin_menu', 'getting_started_menu' );
+add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
 
 
 /**
@@ -70,7 +70,7 @@ add_action( 'admin_menu', 'getting_started_menu' );
  *
  * since 1.0.0
  */
-function getting_started_page() {
+function atomic_blocks_getting_started_page() {
 
 	/**
 	 * Retrieve help file and update changelog
