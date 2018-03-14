@@ -6,21 +6,6 @@
  */
 
 /**
- * Redirect to Getting Started page on theme activation
- */
-function atomic_blocks_redirect_on_activation() {
-	global $pagenow;
-
-	if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) ) {
-
-		wp_redirect( admin_url( "admin.php?page=atomic-blocks" ) );
-
-	}
-}
-add_action( 'admin_init', 'atomic_blocks_redirect_on_activation' );
-
-
-/**
  * Load Getting Started styles in the admin
  *
  * since 1.0.0
