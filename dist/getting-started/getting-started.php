@@ -21,10 +21,10 @@ function atomic_blocks_start_load_admin_scripts() {
 	 */
 
 	// Getting Started javascript
-	wp_enqueue_script( 'atomic-blocks-getting-started', get_template_directory_uri() . '/inc/admin/getting-started/getting-started.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'atomic-blocks-getting-started', plugins_url( 'getting-started/getting-started.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0.0', true );
 
 	// Getting Started styles
-	wp_register_style( 'atomic-blocks-getting-started', get_template_directory_uri() . '/inc/admin/getting-started/getting-started.css', false, '1.0.0' );
+	wp_register_style( 'atomic-blocks-getting-started', plugins_url( 'getting-started/getting-started.css', dirname( __FILE__ ) ), false, '1.0.0' );
 	wp_enqueue_style( 'atomic-blocks-getting-started' );
 }
 add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
