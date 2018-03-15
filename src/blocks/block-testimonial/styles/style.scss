@@ -11,6 +11,10 @@
 	border-radius: 5px;
 	margin-bottom: 1.2em;
 
+	&.columns {
+		margin-bottom: 1.2em;	
+	}
+
 	.testimonial-info {
 		position: relative;
 		display: inline-block;
