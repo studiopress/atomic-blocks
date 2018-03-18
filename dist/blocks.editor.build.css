@@ -1033,49 +1033,49 @@
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  .block-testimonial .font-size-14 p,
-  .font-size-14.block-notice p,
-  .block-profile .font-size-14 p {
+  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].font-size-14.block-profile p {
     font-size: 14px; }
-  .block-testimonial .font-size-15 p,
-  .font-size-15.block-notice p,
-  .block-profile .font-size-15 p {
+  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].font-size-15.block-profile p {
     font-size: 15px; }
-  .block-testimonial .font-size-16 p,
-  .font-size-16.block-notice p,
-  .block-profile .font-size-16 p {
+  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].font-size-16.block-profile p {
     font-size: 16px; }
-  .block-testimonial .font-size-17 p,
-  .font-size-17.block-notice p,
-  .block-profile .font-size-17 p {
+  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].font-size-17.block-profile p {
     font-size: 17px; }
-  .block-testimonial .font-size-18 p,
-  .font-size-18.block-notice p,
-  .block-profile .font-size-18 p {
+  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].font-size-18.block-profile p {
     font-size: 18px; }
-  .block-testimonial .font-size-19 p,
-  .font-size-19.block-notice p,
-  .block-profile .font-size-19 p {
+  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].font-size-19.block-profile p {
     font-size: 19px; }
-  .block-testimonial .font-size-20 p,
-  .font-size-20.block-notice p,
-  .block-profile .font-size-20 p {
+  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].font-size-20.block-profile p {
     font-size: 20px; }
-  .block-testimonial .font-size-21 p,
-  .font-size-21.block-notice p,
-  .block-profile .font-size-21 p {
+  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].font-size-21.block-profile p {
     font-size: 21px; }
-  .block-testimonial .font-size-22 p,
-  .font-size-22.block-notice p,
-  .block-profile .font-size-22 p {
+  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].font-size-22.block-profile p {
     font-size: 22px; }
-  .block-testimonial .font-size-23 p,
-  .font-size-23.block-notice p,
-  .block-profile .font-size-23 p {
+  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].font-size-23.block-profile p {
     font-size: 23px; }
-  .block-testimonial .font-size-24 p,
-  .font-size-24.block-notice p,
-  .block-profile .font-size-24 p {
+  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].font-size-24.block-profile p {
     font-size: 24px; } }
 
 .center {
@@ -2128,49 +2128,49 @@
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  .block-testimonial .font-size-14 p,
-  .font-size-14.block-notice p,
-  .block-profile .font-size-14 p {
+  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].font-size-14.block-profile p {
     font-size: 14px; }
-  .block-testimonial .font-size-15 p,
-  .font-size-15.block-notice p,
-  .block-profile .font-size-15 p {
+  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].font-size-15.block-profile p {
     font-size: 15px; }
-  .block-testimonial .font-size-16 p,
-  .font-size-16.block-notice p,
-  .block-profile .font-size-16 p {
+  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].font-size-16.block-profile p {
     font-size: 16px; }
-  .block-testimonial .font-size-17 p,
-  .font-size-17.block-notice p,
-  .block-profile .font-size-17 p {
+  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].font-size-17.block-profile p {
     font-size: 17px; }
-  .block-testimonial .font-size-18 p,
-  .font-size-18.block-notice p,
-  .block-profile .font-size-18 p {
+  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].font-size-18.block-profile p {
     font-size: 18px; }
-  .block-testimonial .font-size-19 p,
-  .font-size-19.block-notice p,
-  .block-profile .font-size-19 p {
+  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].font-size-19.block-profile p {
     font-size: 19px; }
-  .block-testimonial .font-size-20 p,
-  .font-size-20.block-notice p,
-  .block-profile .font-size-20 p {
+  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].font-size-20.block-profile p {
     font-size: 20px; }
-  .block-testimonial .font-size-21 p,
-  .font-size-21.block-notice p,
-  .block-profile .font-size-21 p {
+  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].font-size-21.block-profile p {
     font-size: 21px; }
-  .block-testimonial .font-size-22 p,
-  .font-size-22.block-notice p,
-  .block-profile .font-size-22 p {
+  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].font-size-22.block-profile p {
     font-size: 22px; }
-  .block-testimonial .font-size-23 p,
-  .font-size-23.block-notice p,
-  .block-profile .font-size-23 p {
+  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].font-size-23.block-profile p {
     font-size: 23px; }
-  .block-testimonial .font-size-24 p,
-  .font-size-24.block-notice p,
-  .block-profile .font-size-24 p {
+  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].font-size-24.block-profile p {
     font-size: 24px; } }
 
 .center {
@@ -3223,49 +3223,49 @@
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  .block-testimonial .font-size-14 p,
-  .font-size-14.block-notice p,
-  .block-profile .font-size-14 p {
+  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].font-size-14.block-profile p {
     font-size: 14px; }
-  .block-testimonial .font-size-15 p,
-  .font-size-15.block-notice p,
-  .block-profile .font-size-15 p {
+  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].font-size-15.block-profile p {
     font-size: 15px; }
-  .block-testimonial .font-size-16 p,
-  .font-size-16.block-notice p,
-  .block-profile .font-size-16 p {
+  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].font-size-16.block-profile p {
     font-size: 16px; }
-  .block-testimonial .font-size-17 p,
-  .font-size-17.block-notice p,
-  .block-profile .font-size-17 p {
+  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].font-size-17.block-profile p {
     font-size: 17px; }
-  .block-testimonial .font-size-18 p,
-  .font-size-18.block-notice p,
-  .block-profile .font-size-18 p {
+  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].font-size-18.block-profile p {
     font-size: 18px; }
-  .block-testimonial .font-size-19 p,
-  .font-size-19.block-notice p,
-  .block-profile .font-size-19 p {
+  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].font-size-19.block-profile p {
     font-size: 19px; }
-  .block-testimonial .font-size-20 p,
-  .font-size-20.block-notice p,
-  .block-profile .font-size-20 p {
+  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].font-size-20.block-profile p {
     font-size: 20px; }
-  .block-testimonial .font-size-21 p,
-  .font-size-21.block-notice p,
-  .block-profile .font-size-21 p {
+  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].font-size-21.block-profile p {
     font-size: 21px; }
-  .block-testimonial .font-size-22 p,
-  .font-size-22.block-notice p,
-  .block-profile .font-size-22 p {
+  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].font-size-22.block-profile p {
     font-size: 22px; }
-  .block-testimonial .font-size-23 p,
-  .font-size-23.block-notice p,
-  .block-profile .font-size-23 p {
+  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].font-size-23.block-profile p {
     font-size: 23px; }
-  .block-testimonial .font-size-24 p,
-  .font-size-24.block-notice p,
-  .block-profile .font-size-24 p {
+  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].font-size-24.block-profile p {
     font-size: 24px; } }
 
 .center {
@@ -4318,49 +4318,49 @@
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  .block-testimonial .font-size-14 p,
-  .font-size-14.block-notice p,
-  .block-profile .font-size-14 p {
+  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].font-size-14.block-profile p {
     font-size: 14px; }
-  .block-testimonial .font-size-15 p,
-  .font-size-15.block-notice p,
-  .block-profile .font-size-15 p {
+  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].font-size-15.block-profile p {
     font-size: 15px; }
-  .block-testimonial .font-size-16 p,
-  .font-size-16.block-notice p,
-  .block-profile .font-size-16 p {
+  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].font-size-16.block-profile p {
     font-size: 16px; }
-  .block-testimonial .font-size-17 p,
-  .font-size-17.block-notice p,
-  .block-profile .font-size-17 p {
+  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].font-size-17.block-profile p {
     font-size: 17px; }
-  .block-testimonial .font-size-18 p,
-  .font-size-18.block-notice p,
-  .block-profile .font-size-18 p {
+  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].font-size-18.block-profile p {
     font-size: 18px; }
-  .block-testimonial .font-size-19 p,
-  .font-size-19.block-notice p,
-  .block-profile .font-size-19 p {
+  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].font-size-19.block-profile p {
     font-size: 19px; }
-  .block-testimonial .font-size-20 p,
-  .font-size-20.block-notice p,
-  .block-profile .font-size-20 p {
+  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].font-size-20.block-profile p {
     font-size: 20px; }
-  .block-testimonial .font-size-21 p,
-  .font-size-21.block-notice p,
-  .block-profile .font-size-21 p {
+  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].font-size-21.block-profile p {
     font-size: 21px; }
-  .block-testimonial .font-size-22 p,
-  .font-size-22.block-notice p,
-  .block-profile .font-size-22 p {
+  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].font-size-22.block-profile p {
     font-size: 22px; }
-  .block-testimonial .font-size-23 p,
-  .font-size-23.block-notice p,
-  .block-profile .font-size-23 p {
+  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].font-size-23.block-profile p {
     font-size: 23px; }
-  .block-testimonial .font-size-24 p,
-  .font-size-24.block-notice p,
-  .block-profile .font-size-24 p {
+  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].font-size-24.block-profile p {
     font-size: 24px; } }
 
 .center {

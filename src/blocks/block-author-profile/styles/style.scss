@@ -11,6 +11,10 @@
 	border-radius: 5px;
 	margin-bottom: 1.2em;
 
+	&.columns {
+		margin-bottom: 1.2em !important;	
+	}
+
 	.profile-avatar-wrap {
 		position: relative;
 	}
@@ -103,23 +107,7 @@
 			width: 100%;
 			position: relative;
 			z-index: 5;
-		}
-	}
-
-	&.has-avatar {
-		.profile-image-square {
-			&:hover {
-				img {
-					opacity: .5 !important;
-				}
-			}
-
-			button {
-				top: 0;
-				left: 0;
-				opacity: 1 !important;
-				height: 100%;
-			}
+			transition: .3s ease;
 		}
 	}
 
@@ -165,25 +153,29 @@
 		display: inline-block;
 		padding-top: 92%;
 	}
+
+	img {
+		border-radius: 500px;
+	}
 }
 
 #editor .has-avatar {
-	.profile-image-wrap {
+
+	.profile-image-square {
+		&:hover {
+			cursor: pointer;
+			
+			img {
+				opacity: .7 !important;
+			}
+		}
+
 		button {
-			opacity: 0;
-			transition: .3s ease;
-		}
-
-		img {
-			transition: .3s ease; 
-		}
-
-		&:hover img {
-			opacity: .2; 
-		}
-
-		&:hover button {
-			opacity: 1; 
+			top: 0;
+			left: 0;
+			opacity: 1 !important;
+			height: 100%;
 		}
 	}
+
 }

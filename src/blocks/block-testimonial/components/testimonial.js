@@ -7,6 +7,7 @@ const { Component } = wp.element;
 
 // Import block dependencies and components
 import classnames from 'classnames';
+import * as fontSize from './../../../utils/helper';
 
 /**
  * Create a Testimonial wrapper Component
@@ -28,6 +29,7 @@ export default class Testimonial extends Component {
 					this.props.className,
 					this.props.attributes.citeAlign,
 					{ 'has-avatar': this.props.attributes.imgURL },
+					fontSize.fontRatioToClass( this.props.attributes.fontSize ),
 					'block-testimonial'
 				) }
 			>

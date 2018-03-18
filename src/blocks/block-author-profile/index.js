@@ -221,7 +221,6 @@ registerBlockType( 'atomic/atomic-profile-box', {
 
 				<div 
 					className={ classnames(
-						fontSizeClass,
 						'column profile-info'
 					) }
 				>
@@ -282,7 +281,6 @@ registerBlockType( 'atomic/atomic-profile-box', {
 
 				<div 
 					className={ classnames(
-						fontSize.fontRatioToClass( props.attributes.fontSize ),
 						'column profile-info'
 					) }
 				>

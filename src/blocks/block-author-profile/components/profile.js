@@ -7,6 +7,7 @@ const { Component } = wp.element;
 
 // Import block dependencies and components
 import classnames from 'classnames';
+import * as fontSize from './../../../utils/helper';
 
 // Create an SocialIcons wrapper Component
 export default class ProfileBox extends Component {
@@ -27,6 +28,7 @@ export default class ProfileBox extends Component {
 				this.props.attributes.alignment,
 				this.props.attributes.avatarShape,
 				{ 'has-avatar': this.props.attributes.imgURL },
+				fontSize.fontRatioToClass( this.props.attributes.fontSize ),
 				'block-profile',
 				'columns is-variable is-4'
 			) }>

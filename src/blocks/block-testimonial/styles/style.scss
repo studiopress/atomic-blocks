@@ -11,10 +11,6 @@
 	border-radius: 5px;
 	margin-bottom: 1.2em;
 
-	&.columns {
-		margin-bottom: 1.2em;	
-	}
-
 	.testimonial-info {
 		position: relative;
 		display: inline-block;
@@ -98,23 +94,7 @@
 			z-index: 10;
 			border-radius: 40px;
 			z-index: 5; 
-		}
-	}
-
-	&.has-avatar {
-		.testimonial-image-wrap {
-			&:hover {
-				img {
-					opacity: .5 !important;
-				}
-			}
-
-			button {
-				top: 0;
-				left: 0;
-				opacity: 1 !important;
-				height: 100%;
-			}
+			transition: .3s ease;
 		}
 	}
 }
@@ -122,20 +102,23 @@
 #editor .has-avatar {
 	.testimonial-image-wrap {
 		button {
-			opacity: 0;
 			transition: .3s ease;
+			top: 0;
+			left: 0;
+			opacity: 1 !important;
+			height: 100%;
 		}
 
-		img {
-			transition: .3s ease; 
-		}
+		&:hover {
+			cursor: pointer;
 
-		&:hover img {
-			opacity: .2; 
-		}
+			img {
+				opacity: .7; 	
+			}
 
-		&:hover button {
-			opacity: 1; 
+			button {
+				opacity: 1; 
+			}
 		}
 	}
 }

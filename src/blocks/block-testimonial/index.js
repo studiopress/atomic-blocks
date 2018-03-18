@@ -156,7 +156,6 @@ registerBlockType( 'atomic/atomic-testimonial', {
 					placeholder={ __( 'Add testimonial text...' ) }
 					value={ props.attributes.content }
 					className={ classnames(
-						fontSize.fontRatioToClass( props.attributes.fontSize ),
 						'testimonial-text'
 					) }
 					style={ {
@@ -223,7 +222,6 @@ registerBlockType( 'atomic/atomic-testimonial', {
 				<div
 				className={ classnames(
 					'testimonial-text',
-					fontSize.fontRatioToClass( props.attributes.fontSize ),
 				) }
 				style={ {
 					textAlign: props.attributes.alignment,
