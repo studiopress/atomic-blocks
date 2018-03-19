@@ -171,7 +171,7 @@ function atomic_blocks_getting_started_page() {
 				<div id="themes" class="panel-left">
 					<div class="theme-intro clear">
 						<div class="theme-intro-left">
-							<p><?php _e( 'Array Themes has over 20 WordPress themes that will integrate seamlessly with the new block editor. Check them out below!', 'atomic-blocks' ); ?></p>
+							<p><?php _e( 'Array Themes has over 20 WordPress themes that will integrate seamlessly with the new block editor. <strong>Use the discount code ATOMICUSER to get 15% off anything in the store!</strong>', 'atomic-blocks' ); ?></p>
 						</div>
 						<div class="theme-intro-right">
 							<a class="button-primary club-button" href="<?php echo esc_url('https://goo.gl/YMgQBN'); ?>"><?php esc_html_e( 'Browse the theme collection', 'atomic-blocks' ); ?> &rarr;</a>
@@ -235,7 +235,25 @@ function atomic_blocks_getting_started_page() {
 						</div>
 					</div>
 					<?php } ?>
+					
+					<?php if( ! function_exists( 'atomic_blocks_setup' ) ) { ?>
+					<div class="panel-aside panel-ab-plugin panel-club">
+						<div class="panel-club-inside">
+							<div class="cell panel-title">
+								<h3><i class="fa fa-download"></i> <?php esc_html_e( 'Download the Theme', 'atomic-blocks' ); ?></h3>
+							</div>
 
+							<ul>
+								<li class="cell">
+									<p><?php esc_html_e( 'Download our free Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor.', 'atomic-blocks' ); ?></p>
+
+									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/FCT6xS' ); ?>"><?php esc_html_e( 'Download Now', 'atomic-blocks' ); ?> &rarr;</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<?php } ?>
+					
 					<div class="panel-aside panel-ab-plugin panel-club">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
@@ -246,7 +264,7 @@ function atomic_blocks_getting_started_page() {
 								<li class="cell">
 									<p><?php esc_html_e( 'The Atomic Blocks theme and plugin are both in early development. Join the newsletter and we will send you an email when we update the theme and plugin!', 'atomic-blocks' ); ?></p>
 
-									<a class="button-primary club-button" href="<?php echo esc_url( 'https://goo.gl/3pC6LE' ); ?>"><?php esc_html_e( 'Subscribe Now', 'atomic-blocks' ); ?> &rarr;</a>
+									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/3pC6LE' ); ?>"><?php esc_html_e( 'Subscribe Now', 'atomic-blocks' ); ?> &rarr;</a>
 								</li>
 							</ul>
 						</div>
@@ -261,7 +279,7 @@ function atomic_blocks_getting_started_page() {
 							<ul>
 								<li class="cell">
 									<p><?php esc_html_e( 'Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!', 'atomic-blocks' ); ?></p>
-									<a class="button-primary club-button" href="<?php echo esc_url( 'https://goo.gl/xpujKp' ); ?>"><?php esc_html_e( 'Visit AtomicBlocks.com', 'atomic-blocks' ); ?> &rarr;</a>
+									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/xpujKp' ); ?>"><?php esc_html_e( 'Visit AtomicBlocks.com', 'atomic-blocks' ); ?> &rarr;</a>
 								</li>
 							</ul>
 						</div>

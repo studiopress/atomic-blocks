@@ -402,8 +402,14 @@
 }
 
 .theme-intro-left {
-	max-width: 55%;
+	max-width: 60%;
 	display: inline-block;
+}
+
+@media only screen and (max-width:1110px) {
+	.theme-intro-left {
+		max-width: 54%;
+	}	
 }
 
 @media only screen and (max-width:800px) {
@@ -437,10 +443,10 @@
 }
 
 .theme-intro-right .button-primary {
-	line-height: 48px;
-    height: 50px;
-    font-size: 16px;
-    padding: 0 20px;
+	line-height: 56px;
+    height: auto;
+    font-size: 20px;
+    padding: 10px 20px;
 }
 
 @media only screen and (max-width:800px) {
