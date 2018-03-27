@@ -15,7 +15,38 @@ Page building blocks for the new WordPress editor.
 
 Atomic Blocks is a collection of "blocks" for the new WordPress block editor, also known as Gutenberg. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building with blocks gives you more control to quickly create and launch any kind of site you want!
 
-Atomic Blocks is in early development, but feel free to follow along and contribute to the development.
+Atomic Blocks is in early development, but feel free to follow along and [contribute](https://github.com/ArrayHQ/atomic-blocks) to the development.
+
+### Atomic Blocks currently includes: 
+
+* Testimonials
+* Inline Notice
+* Author Profile
+* Drop Cap
+
+### Atomic Blocks Help File
+
+We've created a handy help file that you can [check out here](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file). The help file covers how to setup the plugin and get started with the blocks. 
+
+The help file is also available in the plugin once activated. Click the Atomic Blocks admin menu item to visit the Getting Started page.
+
+[View the plugin help file](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file)
+
+### Atomic Blocks WordPress Theme
+
+We've created a beautiful little WordPress theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor. The theme integrates seamlessly with the blocks you'll find in the plugin!
+
+* [Atomic Blocks Theme Demo](https://preview.arraythemes.com/atomicblocks/?utm_source=WP.org%20AB%20Theme%20Demo%20Link&utm_campaign=wporg_ab_theme_demo_link)
+* [Download the Atomic Blocks Theme](https://atomicblocks.com/?utm_source=WP.org%20AB%20Page&utm_campaign=wporg_ab_page)
+* [View the theme help file](https://atomicblocks.com/theme-help-file/?utm_source=WP.org%20AB%20Theme%20Help%20File%20Link&utm_campaign=wporg_ab_theme_help_link)
+
+### Follow Along:
+
+* [Visit the Atomic Blocks site](https://atomicblocks.com/?utm_source=WP.org%20AB%20Page&utm_campaign=wporg_ab_page)
+* [Subscribe to the newsletter](https://atomicblocks.com/subscribe?utm_source=WP.org%20AB%20Subscribe&utm_campaign=wporg_ab_subscribe)
+* [Follow on Twitter](https://twitter.com/atomicblocks)
+* [Contribute on Github](https://github.com/ArrayHQ/atomic-blocks)
+* [Visit Array Themes](https://arraythemes.com/?utm_source=WP.org%20Array%20Link&utm_campaign=wporg_array_link)
 
 == Installation ==
 
@@ -41,7 +72,7 @@ It can also be installed manually.
 
 Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomic Blocks](https://atomicblocks.com) theme for the best presentation. The Atomic Blocks theme has beautiful styles built in specifically for these blocks.
 
-[Get the Atomic Blocks theme](https://atomicblocks.com)
+[Get the Atomic Blocks theme](https://atomicblocks.com/?utm_source=WP.org%20AB%20Theme%20Link&utm_campaign=wporg_ab_theme_link)
 
 = Do I need Gutenberg to use Atomic Blocks? =
 
