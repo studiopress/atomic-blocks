@@ -21,12 +21,8 @@ const {
 	PanelColor,
 	RangeControl, 
 	SelectControl,
+	TextControl,
 } = wp.components;
-
-// Import Inspector controls
-const { 
-	TextControl, 
-} = InspectorControls;
 
 // Create an Inspector Controls wrapper Component
 export default class Inspector extends Component {
@@ -41,7 +37,7 @@ export default class Inspector extends Component {
 
 			<RangeControl
 				label={ __( 'Font Size' ) }
-				value={ this.props.attributes.fontSize }
+				value={ this.props.attributes.blockFontSize }
 				onChange={ this.props.setFontRatio }
 				min={ 14 }
 				max={ 24 }
@@ -53,7 +49,7 @@ export default class Inspector extends Component {
 				description={ __( 'Choose between a round or square avatar shape.' ) }
 				options={ this.props.avatarShapeOptions }
 				value={ this.props.attributes.avatarShape }
-				onChange={ this.props.onChangeAvatarShape }
+				onChange={ ( value ) => this.props.setAttributes( { avatarShape: value } ) }
 			/>
 			
 			<PanelColor 
@@ -81,7 +77,7 @@ export default class Inspector extends Component {
 			</PanelColor>
 
 			<PanelColor 
-				title={ __( 'Link Color' ) }
+				title={ __( 'Social Link Color' ) }
 				colorValue={ this.props.attributes.blockLinkColor }
 				initialOpen={ false }
 			>
@@ -93,76 +89,71 @@ export default class Inspector extends Component {
 				/>
 			</PanelColor>
 
-			<PanelBody 
-				title={ __( 'Social Links' ) } 
-				initialOpen={ false }
-				>
-				<BlockDescription>
-					<p>{ __( 'Add links to your social media site and they will appear in the bottom of the profile box.' ) }</p>
-				</BlockDescription>
-				<TextControl
-					label={ __( 'Twitter URL' ) }
-					type="url"
-					value={ this.props.attributes.twitter }
-					onChange={ ( value ) => this.props.setAttributes( { twitter: value } ) }
-				/>
+			<p><strong>{ __( 'Social Links' ) }</strong></p>
+			<p>{ __( 'Add links to your social media site and they will appear in the bottom of the profile box.' ) }</p>
 
-				<TextControl
-					label={ __( 'Facebook URL' ) }
-					type="url"
-					value={ this.props.attributes.facebook }
-					onChange={ ( value ) => this.props.setAttributes( { facebook: value } ) }
-				/>
+			<TextControl
+				label={ __( 'Twitter URL' ) }
+				type="url"
+				value={ this.props.attributes.twitter }
+				onChange={ ( value ) => this.props.setAttributes( { twitter: value } ) }
+			/>
 
-				<TextControl
-					label={ __( 'Instagram URL' ) }
-					type="url"
-					value={ this.props.attributes.instagram }
-					onChange={ ( value ) => this.props.setAttributes( { instagram: value } ) }
-				/>
+			<TextControl
+				label={ __( 'Facebook URL' ) }
+				type="url"
+				value={ this.props.attributes.facebook }
+				onChange={ ( value ) => this.props.setAttributes( { facebook: value } ) }
+			/>
 
-				<TextControl
-					label={ __( 'Pinterest URL' ) }
-					type="url"
-					value={ this.props.attributes.pinterest }
-					onChange={ ( value ) => this.props.setAttributes( { pinterest: value } ) }
-				/>
+			<TextControl
+				label={ __( 'Instagram URL' ) }
+				type="url"
+				value={ this.props.attributes.instagram }
+				onChange={ ( value ) => this.props.setAttributes( { instagram: value } ) }
+			/>
 
-				<TextControl
-					label={ __( 'Google URL' ) }
-					type="url"
-					value={ this.props.attributes.google }
-					onChange={ ( value ) => this.props.setAttributes( { google: value } ) }
-				/>
+			<TextControl
+				label={ __( 'Pinterest URL' ) }
+				type="url"
+				value={ this.props.attributes.pinterest }
+				onChange={ ( value ) => this.props.setAttributes( { pinterest: value } ) }
+			/>
 
-				<TextControl
-					label={ __( 'YouTube URL' ) }
-					type="url"
-					value={ this.props.attributes.youtube }
-					onChange={ ( value ) => this.props.setAttributes( { youtube: value } ) }
-				/>
+			<TextControl
+				label={ __( 'Google URL' ) }
+				type="url"
+				value={ this.props.attributes.google }
+				onChange={ ( value ) => this.props.setAttributes( { google: value } ) }
+			/>
 
-				<TextControl
-					label={ __( 'Github URL' ) }
-					type="url"
-					value={ this.props.attributes.github }
-					onChange={ ( value ) => this.props.setAttributes( { github: value } ) }
-				/>
+			<TextControl
+				label={ __( 'YouTube URL' ) }
+				type="url"
+				value={ this.props.attributes.youtube }
+				onChange={ ( value ) => this.props.setAttributes( { youtube: value } ) }
+			/>
 
-				<TextControl
-					label={ __( 'Email URL' ) }
-					type="url"
-					value={ this.props.attributes.email }
-					onChange={ ( value ) => this.props.setAttributes( { email: value } ) }
-				/>
+			<TextControl
+				label={ __( 'Github URL' ) }
+				type="url"
+				value={ this.props.attributes.github }
+				onChange={ ( value ) => this.props.setAttributes( { github: value } ) }
+			/>
 
-				<TextControl
-					label={ __( 'Website URL' ) }
-					type="url"
-					value={ this.props.attributes.website }
-					onChange={ ( value ) => this.props.setAttributes( { website: value } ) }
-				/>	
-			</PanelBody>
+			<TextControl
+				label={ __( 'Email URL' ) }
+				type="url"
+				value={ this.props.attributes.email }
+				onChange={ ( value ) => this.props.setAttributes( { email: value } ) }
+			/>
+
+			<TextControl
+				label={ __( 'Website URL' ) }
+				type="url"
+				value={ this.props.attributes.website }
+				onChange={ ( value ) => this.props.setAttributes( { website: value } ) }
+			/>	
 
 		</InspectorControls>
 		);

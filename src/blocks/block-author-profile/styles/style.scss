@@ -17,6 +17,7 @@
 
 	.profile-avatar-wrap {
 		position: relative;
+		z-index: 0;
 	}
 
 	.profile-info {
@@ -38,6 +39,17 @@
 	.profile-text {
 		font-size: 18px;
 		padding-top: 1em;
+
+		a {
+			color: inherit;
+			box-shadow: 0 -1px 0 inset;
+			text-decoration: none;
+
+			&:hover {
+				color: inherit;
+				box-shadow: 0 -2px 0 inset;
+			}
+		}
 
 		p {
 			line-height: 1.6; 

@@ -18,6 +18,9 @@ import './styles/editor.scss';
 // Internationalization
 const { __ } = wp.i18n; 
 
+// Extend component
+const { Component } = wp.element;
+
 // Register components
 const { 
 	registerBlockType,
@@ -31,8 +34,141 @@ const {
 // Register Inspector components
 const {
 	Button,
-	SelectControl,
 } = wp.components;
+
+class ABProfileBlock extends Component {
+	
+	render() {
+		const { isSelected, className, setAttributes, fontSize } = this.props;
+		const { profileName, profileTitle, content, alignment, imgURL, imgID, imgAlt, blockFontSize, blockBackgroundColor, blockTextColor, blockLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, avatarShape } = this.props.attributes;
+
+		// Populate the image when selected
+		const onSelectImage = img => {
+			this.props.setAttributes( {
+				imgID: img.id,
+				imgURL: img.url,
+				imgAlt: img.alt,
+			} );
+		};
+
+		// Set the font ratio
+		const setFontRatio = ( ratio ) => this.props.setAttributes( { blockFontSize: ratio } );
+
+		// Avatar shape options
+		const avatarShapeOptions = [
+			{ value: 'square', label: __( 'Square' ) },
+			{ value: 'round', label: __( 'Round' ) },
+		];
+
+		// Build the avatar upload button
+		const MediaUploadAvatar = ( props ) => (
+			<div class="profile-image-square">
+				<MediaUpload
+					buttonProps={ {
+						className: 'change-image'
+					} }
+					onSelect={ onSelectImage }
+					type="image"
+					value={ imgID }
+					render={ ( { open } ) => (
+						<Button onClick={ open }>
+							{ icons.upload }
+						</Button>
+					) }
+				>
+				</MediaUpload>
+
+				{ this.props.children }
+			</div>
+		);
+
+		return [
+			// Show the block alignment controls on focus
+			isSelected && (
+				<BlockControls key="controls">
+					<AlignmentToolbar
+						value={ alignment }
+						onChange={ ( value ) => this.props.setAttributes( { alignment: value } ) }
+					/>
+				</BlockControls>
+			),
+			// Show the block controls on focus
+			isSelected && (
+				<Inspector
+					{ ...{ setFontRatio, avatarShapeOptions, ...this.props} }
+				/>
+			),
+			// Show the block markup in the editor
+			<ProfileBox { ...this.props }>
+				<AvatarColumn { ...this.props }>
+					<div class="profile-image-square">
+						<MediaUpload
+							buttonProps={ {
+								className: 'change-image'
+							} }
+							onSelect={ onSelectImage }
+							type="image"
+							value={ imgID }
+							render={ ( { open } ) => (
+								<Button onClick={ open }>
+									{ ! imgID ? icons.upload : <img
+										class="profile-avatar"
+										src={ imgURL }
+										alt={ imgAlt }
+									/>  }
+								</Button>
+							) }
+						>
+						</MediaUpload>
+					</div>
+				</AvatarColumn>				
+
+				<div 
+					className={ classnames(
+						'column profile-info'
+					) }
+				>
+					<RichText
+						tagName="h2"
+						placeholder={ __( 'Add name' ) }
+						value={ profileName }
+						className='profile-name'
+						style={ {
+							color: blockTextColor
+						} }
+						onChange={ ( value ) => this.props.setAttributes( { profileName: value } ) }
+					/>
+					
+					<RichText
+						tagName="p"
+						placeholder={ __( 'Add title' ) }
+						value={ profileTitle }
+						className='profile-title'
+						style={ {
+							color: blockTextColor
+						} }
+						onChange={ ( value ) => this.props.setAttributes( { profileTitle: value } ) }
+					/>
+
+					<RichText
+						tagName="div"
+						multiline="p"
+						placeholder={ __( 'Add profile text...' ) }
+						isSelected={ isSelected }
+						keepPlaceholderOnFocus
+						value={ content }
+						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
+						className='profile-text'
+						onChange={ ( value ) => this.props.setAttributes( { content: value } ) }
+					/>
+
+					<SocialIcons { ...this.props } />
+				</div>
+			</ProfileBox>
+		];
+	}
+}
+
 
 // Register the block
 registerBlockType( 'atomic/atomic-profile-box', {
@@ -59,7 +195,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 			type: 'array',
 			selector: '.profile-text',
 			source: 'children',
-		},
+		}, 
 		alignment: {
 			type: 'string',
 		},
@@ -90,7 +226,7 @@ registerBlockType( 'atomic/atomic-profile-box', {
 			type: 'string',
 			default: '#392f43'
 		},
-		fontSize: {
+		blockFontSize: {
 			type: 'number',
 			default: 18
 		},
@@ -127,139 +263,8 @@ registerBlockType( 'atomic/atomic-profile-box', {
         },
 	},
 
-	edit: function( props, isSelected ) {
-		// Populate the image when selected
-		const onSelectImage = img => {
-			props.setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
-				imgAlt: img.alt,
-			} );
-		};
-
-		// Change the background image opacity 
-		const setFontRatio = ( ratio ) => props.setAttributes( { fontSize: ratio } );
-
-		// Font size class
-		const fontSizeClass = classnames(
-			fontSize.fontRatioToClass( props.attributes.fontSize ),
-		);
-
-		// Avatar shape options
-		const avatarShapeOptions = [
-			{ value: 'square', label: __( 'Square' ) },
-			{ value: 'round', label: __( 'Round' ) },
-		];
-
-		// Change message dismiss value
-		const onChangeAvatarShape = value => {
-			props.setAttributes( { avatarShape: value } );
-		};
-
-		// Build the avatar upload button
-		const MediaUploadAvatar = ( props ) => (
-			<div class="profile-image-square">
-				<MediaUpload
-					buttonProps={ {
-						className: 'change-image'
-					} }
-					onSelect={ onSelectImage }
-					type="image"
-					value={ props.attributes.imgID }
-					render={ ( { open } ) => (
-						<Button onClick={ open }>
-							{ icons.upload }
-						</Button>
-					) }
-				>
-				</MediaUpload>
-
-				{ props.children }
-			</div>
-		);
-
-		return [
-			// Show the block alignment controls on focus
-			!! props.focus && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ props.attributes.alignment }
-						onChange={ ( value ) => props.setAttributes( { alignment: value } ) }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			!! props.focus && (
-				<Inspector
-					{ ...{ setFontRatio, avatarShapeOptions, onChangeAvatarShape, ...props} }
-				/>
-			),
-			// Show the block markup in the editor
-			<ProfileBox { ...props }>
-				<AvatarColumn { ...props }>
-					<div class="profile-image-square">
-						<MediaUpload
-							buttonProps={ {
-								className: 'change-image'
-							} }
-							onSelect={ onSelectImage }
-							type="image"
-							value={ props.attributes.imgID }
-							render={ ( { open } ) => (
-								<Button onClick={ open }>
-									{ ! props.attributes.imgID ? icons.upload : <img
-										class="profile-avatar"
-										src={ props.attributes.imgURL }
-										alt={ props.attributes.imgAlt }
-									/>  }
-								</Button>
-							) }
-						>
-						</MediaUpload>
-					</div>
-				</AvatarColumn>				
-
-				<div 
-					className={ classnames(
-						'column profile-info'
-					) }
-				>
-					<RichText
-						tagName="h2"
-						placeholder={ __( 'Add name' ) }
-						value={ props.attributes.profileName }
-						className='profile-name'
-						style={ {
-							color: props.attributes.blockTextColor
-						} }
-						onChange={ ( value ) => props.setAttributes( { profileName: value } ) }
-					/>
-					
-					<RichText
-						tagName="p"
-						placeholder={ __( 'Add title' ) }
-						value={ props.attributes.profileTitle }
-						className='profile-title'
-						style={ {
-							color: props.attributes.blockTextColor
-						} }
-						onChange={ ( value ) => props.setAttributes( { profileTitle: value } ) }
-					/>
-
-					<RichText
-						tagName="div"
-						multiline="p"
-						placeholder={ __( 'Add profile text...' ) }
-						value={ props.attributes.content }
-						className='profile-text'
-						onChange={ ( value ) => props.setAttributes( { content: value } ) }
-					/>
-
-					<SocialIcons { ...props } />
-				</div>
-			</ProfileBox>
-		];
-	},
+	// Render the block components
+	edit: ABProfileBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {

@@ -2298,7 +2298,8 @@
   .block-profile.columns {
     margin-bottom: 1.2em !important; }
   .block-profile .profile-avatar-wrap {
-    position: relative; }
+    position: relative;
+    z-index: 0; }
   .block-profile .profile-info {
     line-height: 1.4; }
   .block-profile .profile-info .blocks-editable {
@@ -2310,6 +2311,15 @@
   .block-profile .profile-text {
     font-size: 18px;
     padding-top: 1em; }
+    .block-profile .profile-text a {
+      color: inherit;
+      -webkit-box-shadow: 0 -1px 0 inset;
+              box-shadow: 0 -1px 0 inset;
+      text-decoration: none; }
+      .block-profile .profile-text a:hover {
+        color: inherit;
+        -webkit-box-shadow: 0 -2px 0 inset;
+                box-shadow: 0 -2px 0 inset; }
     .block-profile .profile-text p {
       line-height: 1.6; }
       .block-profile .profile-text p:last-child {

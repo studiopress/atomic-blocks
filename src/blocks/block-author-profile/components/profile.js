@@ -9,7 +9,7 @@ const { Component } = wp.element;
 import classnames from 'classnames';
 import * as fontSize from './../../../utils/helper';
 
-// Create an SocialIcons wrapper Component
+// Create a profile box wrapper Component
 export default class ProfileBox extends Component {
 
 	constructor( props ) {
@@ -28,7 +28,7 @@ export default class ProfileBox extends Component {
 				this.props.attributes.alignment,
 				this.props.attributes.avatarShape,
 				{ 'has-avatar': this.props.attributes.imgURL },
-				fontSize.fontRatioToClass( this.props.attributes.fontSize ),
+				fontSize.fontRatioToClass( this.props.attributes.blockFontSize ),
 				'block-profile',
 				'columns is-variable is-4'
 			) }>

@@ -14,7 +14,9 @@ import './styles/editor.scss';
 
 // Components
 const { __ } = wp.i18n; 
-const { Component } = wp.element
+
+// Extend component
+const { Component } = wp.element;
 
 // Register block controls
 const { 
@@ -23,7 +25,6 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-	MediaUpload,
 	UrlInput,
 } = wp.blocks;
 
@@ -119,7 +120,6 @@ class ABButtonBlock extends Component {
 			)
 		];
 	}
-
 }
 
 // Register the block
