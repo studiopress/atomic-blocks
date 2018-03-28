@@ -34,7 +34,7 @@ const {
 
 // Register the block
 registerBlockType( 'atomic/atomic-testimonial', {
-	title: __( 'Testimonial' ),
+	title: __( 'AB Testimonial' ),
 	description: __( 'Add a user testimonial with a name and title.' ),
 	icon: 'format-quote',
 	category: 'common',

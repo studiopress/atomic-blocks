@@ -34,7 +34,7 @@ const {
 
 // Register the block
 registerBlockType( 'atomic/atomic-drop-cap', {
-	title: __( 'Drop Cap' ),
+	title: __( 'AB Drop Cap' ),
 	description: __( 'Add a styled drop cap to the beginning of your paragraph.' ),
 	icon: 'format-quote',
 	category: 'common',

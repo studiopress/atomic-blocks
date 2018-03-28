@@ -38,7 +38,7 @@ const {
 
 // Register the block
 registerBlockType( 'atomic/atomic-notice', {
-	title: __( 'Notice' ),
+	title: __( 'AB Notice' ),
 	description: __( 'Add a stylized text notice.' ),
 	icon: 'format-aside',
 	category: 'common',

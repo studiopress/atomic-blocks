@@ -74,7 +74,7 @@ export default class Inspector extends Component {
 				initialOpen={ false }
 			>
 				<ColorPalette 
-					label={ __( 'Background Color' ) }
+					label={ __( 'Title Color' ) }
 					value={ this.props.attributes.blockTitleColor }
 					onChange={ this.props.onChangeTitleColor }
 					colors={['#fff', '#32373c' ]}

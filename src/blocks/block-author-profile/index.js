@@ -36,7 +36,7 @@ const {
 
 // Register the block
 registerBlockType( 'atomic/atomic-profile-box', {
-	title: __( 'Profile Box' ),
+	title: __( 'AB Profile Box' ),
 	description: __( 'Add a user profile box with bio text and social media links.' ),
 	icon: 'admin-users',
 	category: 'common',
