@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Author Profile
+ * BLOCK: Atomic Blocks Profile Box
  */
 
 // Import block dependencies and components
@@ -59,28 +59,6 @@ class ABProfileBlock extends Component {
 			{ value: 'square', label: __( 'Square' ) },
 			{ value: 'round', label: __( 'Round' ) },
 		];
-
-		// Build the avatar upload button
-		const MediaUploadAvatar = ( props ) => (
-			<div class="ab-profile-image-square">
-				<MediaUpload
-					buttonProps={ {
-						className: 'change-image'
-					} }
-					onSelect={ onSelectImage }
-					type="image"
-					value={ imgID }
-					render={ ( { open } ) => (
-						<Button onClick={ open }>
-							{ icons.upload }
-						</Button>
-					) }
-				>
-				</MediaUpload>
-
-				{ this.props.children }
-			</div>
-		);
 
 		return [
 			// Show the block alignment controls on focus
@@ -278,7 +256,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 					<AvatarColumn { ...props }>
 						<div class="ab-profile-image-square">
 							<img
-								class="profile-avatar"
+								class="ab-profile-avatar"
 								src={ imgURL }
 								alt={ imgAlt }
 							/>
