@@ -170,9 +170,9 @@ class ABProfileBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic/atomic-profile-box', {
+registerBlockType( 'atomic-blocks/ab-profile-box', {
 	title: __( 'AB Profile Box' ),
-	description: __( 'Add a user profile box with bio text and social media links.' ),
+	description: __( 'Add a profile box with bio info and social media links.' ),
 	icon: 'admin-users',
 	category: 'common',
 	keywords: [
