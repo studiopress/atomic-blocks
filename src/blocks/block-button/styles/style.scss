@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .block-button {
+ .ab-block-button {
 	margin: 0 0 1.2em 0;
 	position: relative;
 
@@ -11,7 +11,7 @@
 		display: inline-flex;
 	}
 
-	.atomic-button {
+	.ab-button {
 		text-align: center;
 		font-size: 18px;
 		line-height: 1;
@@ -32,32 +32,32 @@
 		}
 	}
 
-	.button-shape-square {
+	.ab-button-shape-square {
 		border-radius: 0;
 	}
 
-	.button-shape-rounded {
+	.ab-button-shape-rounded {
 		border-radius: 5px;
 	}
 
-	.button-shape-circular {
+	.ab-button-shape-circular {
 		border-radius: 100px;
 	}
 
-	.button-size-small {
+	.ab-button-size-small {
 		font-size: 14px;
 	}
 
-	.button-size-medium {
+	.ab-button-size-medium {
 		font-size: 20px;
 	}
 
-	.button-size-large {
+	.ab-button-size-large {
 		font-size: 26px;
 		padding: .8em 1.2em;
 	}
 
-	.button-size-extralarge {
+	.ab-button-size-extralarge {
 		font-size: 32px;
 		padding: .8em 1.2em;
 	}

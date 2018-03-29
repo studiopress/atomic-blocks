@@ -26,7 +26,7 @@ export default class customButton extends Component {
 				} }
 				className={ classnames(
 					this.props.className,
-					'block-button'
+					'ab-block-button'
 				) }
 			>
 				{ this.props.children }

@@ -44,17 +44,17 @@ class ABButtonBlock extends Component {
 		
 		// Button size values
 		const buttonSizeOptions = [
-			{ value: 'button-size-small', label: __( 'Small' ) },
-			{ value: 'button-size-medium', label: __( 'Medium' ) },
-			{ value: 'button-size-large', label: __( 'Large' ) },
-			{ value: 'button-size-extralarge', label: __( 'Extra Large' ) },
+			{ value: 'ab-button-size-small', label: __( 'Small' ) },
+			{ value: 'ab-button-size-medium', label: __( 'Medium' ) },
+			{ value: 'ab-button-size-large', label: __( 'Large' ) },
+			{ value: 'ab-button-size-extralarge', label: __( 'Extra Large' ) },
 		];
 
 		// Button shape
 		const buttonShapeOptions = [
-			{ value: 'button-shape-square', label: __( 'Square' ) },
-			{ value: 'button-shape-rounded', label: __( 'Rounded Square' ) },
-			{ value: 'button-shape-circular', label: __( 'Circular' ) },
+			{ value: 'ab-button-shape-square', label: __( 'Square' ) },
+			{ value: 'ab-button-shape-rounded', label: __( 'Rounded Square' ) },
+			{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
 		];
 
 		return [
@@ -85,7 +85,7 @@ class ABButtonBlock extends Component {
 					value={ buttonText }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 					className={ classnames(
-						'atomic-button',
+						'ab-button',
 						buttonShape,
 						buttonSize,
 					) }
@@ -123,7 +123,7 @@ class ABButtonBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic/atomic-button', {
+registerBlockType( 'atomic-blocks/ab-button', {
 	title: __( 'AB Button' ),
 	description: __( 'Add a customizable button.' ),
 	icon: 'admin-links',
@@ -159,11 +159,11 @@ registerBlockType( 'atomic/atomic-button', {
 		},
 		buttonSize: {
 			type: 'string',
-			default: 'button-size-medium'
+			default: 'ab-button-size-medium'
 		},
 		buttonShape: {
 			type: 'string',
-			default: 'button-shape-rounded'
+			default: 'ab-button-shape-rounded'
 		},
 		buttonTarget: {
 			type: 'boolean',
@@ -187,7 +187,7 @@ registerBlockType( 'atomic/atomic-button', {
 						href={ buttonUrl }
 						target={ buttonTarget ? '_blank' : '_self' } 
 						className={ classnames(
-							'atomic-button',
+							'ab-button',
 							buttonShape,
 							buttonSize,
 						) }
