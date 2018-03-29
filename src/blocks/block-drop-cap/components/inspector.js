@@ -17,10 +17,6 @@ const {
 const {
 	Toolbar,
 	Button,
-	PanelBody,
-	PanelRow,
-	PanelColor,
-	FormToggle,
 	RangeControl, 
 	SelectControl,
 } = wp.components;
@@ -35,12 +31,13 @@ export default class Inspector extends Component {
 	}
 
 	render() {
+
 		return (
 		<InspectorControls key="inspector">
 
 			<RangeControl
-				label={ __( 'Font Size' ) }
-				value={ this.props.attributes.fontSize }
+				label={ __( 'Drop Cap Size' ) }
+				value={ this.props.attributes.dropCapFontSize }
 				onChange={ this.props.setFontRatio }
 				min={ 1 }
 				max={ 6 }
@@ -52,7 +49,7 @@ export default class Inspector extends Component {
 				description={ __( 'Choose the style of the drop cap in your paragraph.' ) }
 				options={ this.props.dropCapOptions }
 				value={ this.props.attributes.dropCapStyle }
-				onChange={ this.props.onChangeDropCap }
+				onChange={ ( value ) => this.props.setAttributes( { dropCapStyle: value } ) }
 			/>
 
 		</InspectorControls>

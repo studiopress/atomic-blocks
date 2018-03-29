@@ -7,6 +7,7 @@ const { Component } = wp.element;
 
 // Import block dependencies and components
 import classnames from 'classnames';
+import * as fontSize from './../../../utils/helper';
 
 /**
  * Create a Testimonial wrapper Component
@@ -21,12 +22,14 @@ export default class DropCap extends Component {
 		return (
 			<div
 				style={ {
-					color: this.props.attributes.blockTextColor
+					color: this.props.attributes.dropCapTextColor,
+					textAlign: this.props.attributes.dropCapAlignment,
 				} }
 				className={ classnames(
 					this.props.className,
 					this.props.attributes.dropCapStyle,
-					'block-drop-cap',
+					fontSize.fontRatioToClass( this.props.attributes.dropCapFontSize ),
+					'ab-block-drop-cap',
 				) }
 			>
 				{ this.props.children }

@@ -7,14 +7,16 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import DropCap from './components/dropcap';
 import icons from './components/icons';
-import * as fontSize from './../../utils/helper';
 
 // Import CSS
 import './styles/style.scss';
 import './styles/editor.scss';
 
 // Internationalization
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
+
+// Extend component
+const { Component } = wp.element;
 
 // Register block controls
 const { 
@@ -32,8 +34,60 @@ const {
 	SelectControl,
 } = wp.components;
 
+class ABDropCapBlock extends Component {
+	
+	render() {
+		const { isSelected, className, setAttributes } = this.props;
+		const { dropCapContent, dropCapAlignment, dropCapBackgroundColor, dropCapTextColor, dropCapFontSize, dropCapStyle } = this.props.attributes;
+
+		// Change the font size
+		const setFontRatio = ( ratio ) => this.props.setAttributes( { dropCapFontSize: ratio } );
+
+		// Drop cap style options
+		const dropCapOptions = [
+			{ value: 'ab-drop-cap-letter', label: __( 'Letter' ) },
+			{ value: 'ab-drop-cap-square', label: __( 'Square' ) },
+			{ value: 'ab-drop-cap-border', label: __( 'Border' ) },
+		];
+
+		return [
+			// Show the alignment toolbar on focus
+			isSelected && (
+				<BlockControls key="controls">
+					<AlignmentToolbar
+						value={ dropCapAlignment }
+						onChange={ ( value ) => this.props.setAttributes( { dropCapAlignment: value } ) }
+					/>
+				</BlockControls>
+			),
+			// Show the block controls on focus
+			isSelected && (
+				<Inspector
+					{ ...{ setFontRatio, dropCapOptions, ...this.props} }
+				/>
+			),
+			// Show the block markup in the editor
+			<DropCap { ...this.props }>
+				<RichText
+					tagName="div"
+					multiline="p"
+					placeholder={ __( 'Add paragraph text...' ) }
+					value={ dropCapContent }
+					isSelected={ isSelected }
+					keepPlaceholderOnFocus
+					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
+					className={ classnames(
+						'ab-drop-cap-text',
+					) }
+					onChange={ ( value ) => this.props.setAttributes( { dropCapContent: value } ) }
+				/>
+			</DropCap>
+		];
+	}
+}
+
 // Register the block
-registerBlockType( 'atomic/atomic-drop-cap', {
+registerBlockType( 'atomic-blocks/ab-drop-cap', {
 	title: __( 'AB Drop Cap' ),
 	description: __( 'Add a styled drop cap to the beginning of your paragraph.' ),
 	icon: 'format-quote',
@@ -44,23 +98,23 @@ registerBlockType( 'atomic/atomic-drop-cap', {
 		__( 'atomic' ),
 	],
 	attributes: {
-		content: {
+		dropCapContent: {
 			type: 'array',
-			selector: '.drop-cap-text',
+			selector: '.ab-drop-cap-text',
 			source: 'children',
 		},
-		alignment: {
+		dropCapAlignment: {
 			type: 'string',
 		},
-		blockBackgroundColor: {
+		dropCapBackgroundColor: {
 			type: 'string',
 			default: '#f2f2f2'
 		},
-		blockTextColor: {
+		dropCapTextColor: {
 			type: 'string',
 			default: '#32373c'
 		},
-		fontSize: {
+		dropCapFontSize: {
 			type: 'number',
 			default: 3,
 		},
@@ -70,79 +124,27 @@ registerBlockType( 'atomic/atomic-drop-cap', {
         },
 	},
 
-	edit: function( props, isSelected ) {
-		// Change the text alignment
-		const onChangeAlignment = value =>  {
-			props.setAttributes( { alignment: value } );
-		};
-
-		// Change the font size
-		const setFontRatio = ( ratio ) => props.setAttributes( { fontSize: ratio } );
-
-		// Cite Alignment Options
-		const dropCapOptions = [
-			{ value: 'drop-cap-letter', label: __( 'Letter' ) },
-			{ value: 'drop-cap-square', label: __( 'Square' ) },
-			{ value: 'drop-cap-border', label: __( 'Border' ) },
-		];
-
-		// Change Cite Alignment
-		const onChangeDropCap = value => {
-			props.setAttributes( { dropCapStyle: value } );
-		};
-
-		return [
-			// Show the alignment toolbar on focus
-			!! props.focus && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ props.attributes.alignment }
-						onChange={ onChangeAlignment }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			!! props.focus && (
-				<Inspector
-					{ ...{ setFontRatio, dropCapOptions, onChangeDropCap, ...props} }
-				/>
-			),
-			// Show the block markup in the editor
-			<DropCap { ...props }>
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Add paragraph text...' ) }
-					value={ props.attributes.content }
-					className={ classnames(
-						fontSize.fontRatioToClass( props.attributes.fontSize ),
-						'drop-cap-text',
-					) }
-					style={ {
-						textAlign: props.attributes.alignment,
-					} }
-					onChange={ ( value ) => props.setAttributes( { content: value } ) }
-				/>
-			</DropCap>
-		];
-	},
+	// Render the block components
+	edit: ABDropCapBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
+
+		const { dropCapContent, dropCapAlignment, dropCapBackgroundColor, dropCapTextColor, dropCapFontSize, dropCapStyle } = props.attributes;
+
 		// Save the block markup for the front end
 		return (
 			<DropCap { ...props }>
-				<div
-				className={ classnames(
-					'drop-cap-text',
-					fontSize.fontRatioToClass( props.attributes.fontSize ),
-				) }
-				style={ {
-					textAlign: props.attributes.alignment,
-				} }
-				>
-					{ props.attributes.content }
-				</div>
+				{	// Check if there is text and output
+					dropCapContent && (
+					<div
+					className={ classnames(
+						'ab-drop-cap-text'
+					) }
+					>
+						{ dropCapContent }
+					</div>
+				) }	
 			</DropCap>
 		);
 	},

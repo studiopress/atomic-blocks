@@ -176,7 +176,8 @@ registerBlockType( 'atomic-blocks/ab-button', {
 
 	// Save the attributes and markup
 	save: function( props ) {
-
+		
+		// Save the block markup for the front end
 		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
 
 		return (

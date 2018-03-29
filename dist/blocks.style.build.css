@@ -4671,12 +4671,12 @@ body:not(.wp-admin) .block-notice.dismissable {
   margin: 0; }
 
 /**
- * Testimonial styles
+ * Drop cap styles
  * Loads on front end and back end
  */
-.block-drop-cap {
+.ab-block-drop-cap {
   /* Font size styles */ }
-  .block-drop-cap p:first-child:first-letter {
+  .ab-block-drop-cap p:first-child:first-letter {
     float: left;
     font-size: 75px;
     line-height: .7em;
@@ -4685,31 +4685,40 @@ body:not(.wp-admin) .block-notice.dismissable {
     margin-bottom: 25px;
     font-weight: bold;
     text-transform: uppercase; }
-  .block-drop-cap.drop-cap-square p:first-child:first-letter {
+  .ab-block-drop-cap a {
+    color: inherit;
+    -webkit-box-shadow: 0 -1px 0 inset;
+            box-shadow: 0 -1px 0 inset;
+    text-decoration: none; }
+    .ab-block-drop-cap a:hover {
+      color: inherit;
+      -webkit-box-shadow: 0 -2px 0 inset;
+              box-shadow: 0 -2px 0 inset; }
+  .ab-block-drop-cap.ab-drop-cap-square p:first-child:first-letter {
     background: #32373c;
     color: #fff;
     padding: .2em; }
-  .block-drop-cap.drop-cap-border p:first-child:first-letter {
+  .ab-block-drop-cap.ab-drop-cap-border p:first-child:first-letter {
     color: #32373c;
     padding: .2em;
     border: solid 4px; }
-  .block-drop-cap:before, .block-drop-cap:after {
+  .ab-block-drop-cap:before, .ab-block-drop-cap:after {
     content: '';
     display: table; }
-  .block-drop-cap:after {
+  .ab-block-drop-cap:after {
     clear: both; }
   @media only screen and (min-width: 600px) {
-    .block-drop-cap .font-size-1 p:first-child:first-letter {
+    .ab-block-drop-cap.font-size-1 p:first-child:first-letter {
       font-size: 75px; }
-    .block-drop-cap .font-size-2 p:first-child:first-letter {
+    .ab-block-drop-cap.font-size-2 p:first-child:first-letter {
       font-size: 85px; }
-    .block-drop-cap .font-size-3 p:first-child:first-letter {
+    .ab-block-drop-cap.font-size-3 p:first-child:first-letter {
       font-size: 95px; }
-    .block-drop-cap .font-size-4 p:first-child:first-letter {
+    .ab-block-drop-cap.font-size-4 p:first-child:first-letter {
       font-size: 105px; }
-    .block-drop-cap .font-size-5 p:first-child:first-letter {
+    .ab-block-drop-cap.font-size-5 p:first-child:first-letter {
       font-size: 115px; }
-    .block-drop-cap .font-size-6 p:first-child:first-letter {
+    .ab-block-drop-cap.font-size-6 p:first-child:first-letter {
       font-size: 125px; } }
 /**
  * Common styles

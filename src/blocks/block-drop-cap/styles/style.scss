@@ -1,9 +1,9 @@
 /**
- * Testimonial styles
+ * Drop cap styles
  * Loads on front end and back end
  */
 
- .block-drop-cap {
+ .ab-block-drop-cap {
 	p:first-child:first-letter {
 		float: left;
 		font-size: 75px;
@@ -14,14 +14,25 @@
 		font-weight: bold;
 		text-transform: uppercase;
 	}
+
+	a {
+		color: inherit;
+		box-shadow: 0 -1px 0 inset;
+		text-decoration: none;
+
+		&:hover {
+			color: inherit;
+			box-shadow: 0 -2px 0 inset;
+		}
+	}
 	
-	&.drop-cap-square p:first-child:first-letter {
+	&.ab-drop-cap-square p:first-child:first-letter {
 		background: #32373c;
 		color: #fff;
 		padding: .2em;
 	}
 
-	&.drop-cap-border p:first-child:first-letter {
+	&.ab-drop-cap-border p:first-child:first-letter {
 		color: #32373c;
 		padding: .2em;
 		border: solid 4px;
@@ -39,37 +50,37 @@
 
 	/* Font size styles */
 	@media only screen and (min-width: 600px) {
-		.font-size-1 {
+		&.font-size-1 {
 			p:first-child:first-letter {
 				font-size: 75px;
 			}
 		}
 
-		.font-size-2 {
+		&.font-size-2 {
 			p:first-child:first-letter {
 				font-size: 85px;
 			}
 		}
 
-		.font-size-3 {
+		&.font-size-3 {
 			p:first-child:first-letter {
 				font-size: 95px;
 			}
 		}
 
-		.font-size-4 {
+		&.font-size-4 {
 			p:first-child:first-letter {
 				font-size: 105px;
 			}
 		}
 
-		.font-size-5 {
+		&.font-size-5 {
 			p:first-child:first-letter {
 				font-size: 115px;
 			}
 		}
 
-		.font-size-6 {
+		&.font-size-6 {
 			p:first-child:first-letter {
 				font-size: 125px;
 			}
