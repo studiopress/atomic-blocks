@@ -3,40 +3,46 @@
  * Loads on front end and back end
  */
 
- .block-profile {
+ .ab-block-profile {
 	background: #f2f2f2;
 	color: #293038;
 	margin: 0 auto;
 	padding: 3%;
 	border-radius: 5px;
 	margin-bottom: 1.2em;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
 
-	&.columns {
-		margin-bottom: 1.2em !important;	
+	.ab-profile-column {
+		display: block;
+		padding: 15px;
+		flex: 3 0 0;
+
+		@media only screen and (max-width: 600px) {
+			flex: auto;
+		}
 	}
 
-	.profile-avatar-wrap {
+	.ab-profile-avatar-wrap {
 		position: relative;
 		z-index: 0;
-	}
+		flex: 1 0 0;
 
-	.profile-info {
-		line-height: 1.4;
-	}
-
-	.profile-info {
-		.blocks-editable {
-			padding-left: 0;
-		}
-
-		.profile-avatar-wrap {
-			position: absolute;
-			left: 0;
-			top: 0; 
+		@media only screen and (max-width: 600px) {
+			flex: auto;
+			max-width: 210px;
+			margin: 0 auto;
 		}
 	}
 
-	.profile-text {
+	.ab-profile-content-wrap {
+		@media only screen and (max-width: 600px) {
+			text-align: center;
+		}
+	}
+
+	.ab-profile-text {
 		font-size: 18px;
 		padding-top: 1em;
 
@@ -60,20 +66,20 @@
 		}
 	}
 
-	.profile-name {
+	.ab-profile-name {
 		font-size: 1.4em;
 		font-weight: bold;
 		line-height: 1.2;
 		margin: 0; 
 	}
 
-	.profile-title {
+	.ab-profile-title {
 		opacity: .8;
 		padding-top: 5px;
 		margin-bottom: 0;
 	}
 
-	.profile-image-square {
+	.ab-profile-image-square {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -82,7 +88,7 @@
 		z-index: 5;
 	}
 
-	.profile-image-wrap {
+	.ab-profile-image-wrap {
 		width: 100%;
 		background: #ddd;
 		position: relative;
@@ -123,11 +129,15 @@
 		}
 	}
 
-	.social-links {
+	.ab-social-links {
 		list-style: none;
 		margin: 0 0 0 0;
-		padding: 4% 0 0 0;
+		padding: 5% 0 0 0;
 		font-size: 0;
+
+		&:empty {
+			display: none;
+		}
 		
 		li {
 			display: inline-block;
@@ -138,7 +148,7 @@
 				border: none;
 	
 				&:hover {
-					opacity: .8;
+					opacity: .9;
 				}
 			}
 	
@@ -156,7 +166,7 @@
 	}
 }
 
-.round .profile-image-wrap {
+.round .ab-profile-image-wrap {
 	border-radius: 500px;
 	overflow: hidden;
 	
@@ -173,7 +183,7 @@
 
 #editor .has-avatar {
 
-	.profile-image-square {
+	.ab-profile-image-square {
 		&:hover {
 			cursor: pointer;
 			

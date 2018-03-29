@@ -15,7 +15,7 @@ export default class SocialIcons extends Component {
 
 	render() {
 		return (
-			<ul class="social-links">
+			<ul class="ab-social-links">
 				{ this.props.attributes.website && (
 					<li >
 						<a href={ this.props.attributes.website } target="_blank">{ __( 'Website' ) } <i style={ { backgroundColor:this.props.attributes.blockLinkColor } } class="fas fa-link"></i></a>

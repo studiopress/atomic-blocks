@@ -88,8 +88,8 @@ export default class Inspector extends Component {
 					colors={['#392F43', '#3373dc', '#2DBAA3', '#209cef', '#2BAD59', '#ff3860', '#7941b6', '#F7812B']}
 				/>
 			</PanelColor>
-
-			<p><strong>{ __( 'Social Links' ) }</strong></p>
+			
+			<h2>{ __( 'Social Links' ) }</h2>
 			<p>{ __( 'Add links to your social media site and they will appear in the bottom of the profile box.' ) }</p>
 
 			<TextControl

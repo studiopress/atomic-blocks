@@ -29,8 +29,8 @@ export default class ProfileBox extends Component {
 				this.props.attributes.avatarShape,
 				{ 'has-avatar': this.props.attributes.imgURL },
 				fontSize.fontRatioToClass( this.props.attributes.blockFontSize ),
-				'block-profile',
-				'columns is-variable is-4'
+				'ab-block-profile',
+				'ab-profile-columns'
 			) }>
 				{ this.props.children }
 			</div>

@@ -62,7 +62,7 @@ class ABProfileBlock extends Component {
 
 		// Build the avatar upload button
 		const MediaUploadAvatar = ( props ) => (
-			<div class="profile-image-square">
+			<div class="ab-profile-image-square">
 				<MediaUpload
 					buttonProps={ {
 						className: 'change-image'
@@ -101,7 +101,7 @@ class ABProfileBlock extends Component {
 			// Show the block markup in the editor
 			<ProfileBox { ...this.props }>
 				<AvatarColumn { ...this.props }>
-					<div class="profile-image-square">
+					<div class="ab-profile-image-square">
 						<MediaUpload
 							buttonProps={ {
 								className: 'change-image'
@@ -125,14 +125,14 @@ class ABProfileBlock extends Component {
 
 				<div 
 					className={ classnames(
-						'column profile-info'
+						'ab-profile-column ab-profile-content-wrap'
 					) }
 				>
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Add name' ) }
 						value={ profileName }
-						className='profile-name'
+						className='ab-profile-name'
 						style={ {
 							color: blockTextColor
 						} }
@@ -143,7 +143,7 @@ class ABProfileBlock extends Component {
 						tagName="p"
 						placeholder={ __( 'Add title' ) }
 						value={ profileTitle }
-						className='profile-title'
+						className='ab-profile-title'
 						style={ {
 							color: blockTextColor
 						} }
@@ -158,7 +158,7 @@ class ABProfileBlock extends Component {
 						keepPlaceholderOnFocus
 						value={ content }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-						className='profile-text'
+						className='ab-profile-text'
 						onChange={ ( value ) => this.props.setAttributes( { content: value } ) }
 					/>
 
@@ -168,7 +168,6 @@ class ABProfileBlock extends Component {
 		];
 	}
 }
-
 
 // Register the block
 registerBlockType( 'atomic/atomic-profile-box', {
@@ -185,15 +184,15 @@ registerBlockType( 'atomic/atomic-profile-box', {
 	attributes: {
 		profileName: {
 			type: 'string',
-			selector: '.profile-name',
+			selector: '.ab-profile-name',
 		},
 		profileTitle: {
 			type: 'string',
-			selector: '.profile-title',
+			selector: '.ab-profile-title',
 		},
 		content: {
 			type: 'array',
-			selector: '.profile-text',
+			selector: '.ab-profile-text',
 			source: 'children',
 		}, 
 		alignment: {
@@ -268,17 +267,20 @@ registerBlockType( 'atomic/atomic-profile-box', {
 
 	// Save the attributes and markup
 	save: function( props ) {
+
+		const { profileName, profileTitle, content, alignment, imgURL, imgID, imgAlt, blockFontSize, blockBackgroundColor, blockTextColor, blockLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, avatarShape } = props.attributes;
+
 		return (
 			// Save the block markup for the front end
 			<ProfileBox { ...props }>
 				  
-				{ props.attributes.imgURL && (
+				{ imgURL && (
 					<AvatarColumn { ...props }>
-						<div class="profile-image-square">
+						<div class="ab-profile-image-square">
 							<img
 								class="profile-avatar"
-								src={ props.attributes.imgURL }
-								alt={ props.attributes.imgAlt }
+								src={ imgURL }
+								alt={ imgAlt }
 							/>
 						</div>
 					</AvatarColumn>
@@ -286,30 +288,30 @@ registerBlockType( 'atomic/atomic-profile-box', {
 
 				<div 
 					className={ classnames(
-						'column profile-info'
+						'ab-profile-column ab-profile-content-wrap'
 					) }
 				>
-					{ props.attributes.profileName && (
+					{ profileName && (
 						<h2 
-							className='profile-name'
+							className='ab-profile-name'
 							style={ {
-								color: props.attributes.blockTextColor
+								color: blockTextColor
 							} }
-						>{ props.attributes.profileName }</h2>
+						>{ profileName }</h2>
 					) }
 					
-					{ props.attributes.profileTitle && (
+					{ profileTitle && (
 						<p 
-							className='profile-title'
+							className='ab-profile-title'
 							style={ {
-								color: props.attributes.blockTextColor
+								color: blockTextColor
 							} }
-						>{ props.attributes.profileTitle }</p>
+						>{ profileTitle }</p>
 					) }
 
-					{ props.attributes.content && (
-						<div className='profile-text'>
-							{ props.attributes.content }
+					{ content && (
+						<div className='ab-profile-text'>
+							{ content }
 						</div>
 					) }
 					
