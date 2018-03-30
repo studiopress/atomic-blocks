@@ -9,7 +9,6 @@ import ProfileBox from './components/profile';
 import SocialIcons from './components/social';
 import AvatarColumn from './components/avatar';
 import icons from './components/icons';
-import * as fontSize from './../../utils/helper';
 
 // Import styles
 import './styles/style.scss';
@@ -39,23 +38,13 @@ const {
 class ABProfileBlock extends Component {
 	
 	render() {
-		const { isSelected, className, setAttributes, fontSize } = this.props;
-		const { profileName, profileTitle, content, alignment, imgURL, imgID, imgAlt, blockFontSize, blockBackgroundColor, blockTextColor, blockLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, avatarShape } = this.props.attributes;
-
-		// Populate the image when selected
-		const onSelectImage = img => {
-			this.props.setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
-				imgAlt: img.alt,
-			} );
-		};
-
-		// Set the font ratio
-		const setFontRatio = ( ratio ) => this.props.setAttributes( { blockFontSize: ratio } );
+		
+		// Setup constants and attributes
+		const { isSelected, className, setAttributes } = this.props;
+		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape } = this.props.attributes;
 
 		// Avatar shape options
-		const avatarShapeOptions = [
+		const profileAvatarShapeOptions = [
 			{ value: 'square', label: __( 'Square' ) },
 			{ value: 'round', label: __( 'Round' ) },
 		];
@@ -65,15 +54,15 @@ class ABProfileBlock extends Component {
 			isSelected && (
 				<BlockControls key="controls">
 					<AlignmentToolbar
-						value={ alignment }
-						onChange={ ( value ) => this.props.setAttributes( { alignment: value } ) }
+						value={ profileAlignment }
+						onChange={ ( value ) => this.props.setAttributes( { profileAlignment: value } ) }
 					/>
 				</BlockControls>
 			),
 			// Show the block controls on focus
 			isSelected && (
 				<Inspector
-					{ ...{ setFontRatio, avatarShapeOptions, ...this.props} }
+					{ ...{ profileAvatarShapeOptions, ...this.props} }
 				/>
 			),
 			// Show the block markup in the editor
@@ -84,15 +73,19 @@ class ABProfileBlock extends Component {
 							buttonProps={ {
 								className: 'change-image'
 							} }
-							onSelect={ onSelectImage }
+							onSelect={ ( img ) => this.props.setAttributes( 
+								{
+									profileImgID: img.id,
+									profileImgURL: img.url,
+								}
+							 ) }
 							type="image"
-							value={ imgID }
+							value={ profileImgID }
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
-									{ ! imgID ? icons.upload : <img
+									{ ! profileImgID ? icons.upload : <img
 										class="profile-avatar"
-										src={ imgURL }
-										alt={ imgAlt }
+										src={ profileImgURL }
 									/>  }
 								</Button>
 							) }
@@ -112,7 +105,7 @@ class ABProfileBlock extends Component {
 						value={ profileName }
 						className='ab-profile-name'
 						style={ {
-							color: blockTextColor
+							color: profileTextColor
 						} }
 						onChange={ ( value ) => this.props.setAttributes( { profileName: value } ) }
 					/>
@@ -123,21 +116,21 @@ class ABProfileBlock extends Component {
 						value={ profileTitle }
 						className='ab-profile-title'
 						style={ {
-							color: blockTextColor
+							color: profileTextColor
 						} }
 						onChange={ ( value ) => this.props.setAttributes( { profileTitle: value } ) }
 					/>
 
 					<RichText
 						tagName="div"
+						className='ab-profile-text'
 						multiline="p"
 						placeholder={ __( 'Add profile text...' ) }
 						isSelected={ isSelected }
 						keepPlaceholderOnFocus
-						value={ content }
+						value={ profileContent }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-						className='ab-profile-text'
-						onChange={ ( value ) => this.props.setAttributes( { content: value } ) }
+						onChange={ ( value ) => this.props.setAttributes( { profileContent: value } ) }
 					/>
 
 					<SocialIcons { ...this.props } />
@@ -168,45 +161,43 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 			type: 'string',
 			selector: '.ab-profile-title',
 		},
-		content: {
+		profileContent: {
 			type: 'array',
 			selector: '.ab-profile-text',
 			source: 'children',
 		}, 
-		alignment: {
+		profileAlignment: {
 			type: 'string',
 		},
-		imgURL: {
+		profileImgURL: {
 			type: 'string',
 			source: 'attribute',
 			attribute: 'src',
 			selector: 'img',
 		},
-		imgID: {
+		profileImgID: {
 			type: 'number',
 		},
-		imgAlt: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'alt',
-			selector: 'img',
-		},
-		blockBackgroundColor: {
+		profileBackgroundColor: {
 			type: 'string',
 			default: '#f2f2f2'
 		},
-		blockTextColor: {
+		profileTextColor: {
 			type: 'string',
 			default: '#32373c'
 		},
-		blockLinkColor: {
+		profileLinkColor: {
 			type: 'string',
 			default: '#392f43'
 		},
-		blockFontSize: {
+		profileFontSize: {
 			type: 'number',
 			default: 18
 		},
+		profileAvatarShape: {
+            type: 'string',
+            default: 'square',
+        },
 		twitter: {
 			type: 'url',
 		},
@@ -234,10 +225,6 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 		website: {
 			type: 'url',
 		},
-		avatarShape: {
-            type: 'string',
-            default: 'square',
-        },
 	},
 
 	// Render the block components
@@ -246,19 +233,19 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 	// Save the attributes and markup
 	save: function( props ) {
 
-		const { profileName, profileTitle, content, alignment, imgURL, imgID, imgAlt, blockFontSize, blockBackgroundColor, blockTextColor, blockLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, avatarShape } = props.attributes;
+		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape } = props.attributes;
 
 		return (
 			// Save the block markup for the front end
 			<ProfileBox { ...props }>
 				  
-				{ imgURL && (
+				{ profileImgURL && (
 					<AvatarColumn { ...props }>
 						<div class="ab-profile-image-square">
 							<img
 								class="ab-profile-avatar"
-								src={ imgURL }
-								alt={ imgAlt }
+								src={ profileImgURL }
+								alt="avatar"
 							/>
 						</div>
 					</AvatarColumn>
@@ -273,7 +260,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						<h2 
 							className='ab-profile-name'
 							style={ {
-								color: blockTextColor
+								color: profileTextColor
 							} }
 						>{ profileName }</h2>
 					) }
@@ -282,14 +269,14 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						<p 
 							className='ab-profile-title'
 							style={ {
-								color: blockTextColor
+								color: profileTextColor
 							} }
 						>{ profileTitle }</p>
 					) }
 
-					{ content && (
+					{ profileContent && (
 						<div className='ab-profile-text'>
-							{ content }
+							{ profileContent }
 						</div>
 					) }
 					

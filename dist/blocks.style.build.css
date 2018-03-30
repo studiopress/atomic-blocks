@@ -1033,49 +1033,49 @@
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-14.block-notice p,
-  div[class*="wp-block-atomic"].font-size-14.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-profile p {
     font-size: 14px; }
-  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-15.block-notice p,
-  div[class*="wp-block-atomic"].font-size-15.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-profile p {
     font-size: 15px; }
-  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-16.block-notice p,
-  div[class*="wp-block-atomic"].font-size-16.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-profile p {
     font-size: 16px; }
-  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-17.block-notice p,
-  div[class*="wp-block-atomic"].font-size-17.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-profile p {
     font-size: 17px; }
-  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-18.block-notice p,
-  div[class*="wp-block-atomic"].font-size-18.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-profile p {
     font-size: 18px; }
-  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-19.block-notice p,
-  div[class*="wp-block-atomic"].font-size-19.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-profile p {
     font-size: 19px; }
-  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-20.block-notice p,
-  div[class*="wp-block-atomic"].font-size-20.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-profile p {
     font-size: 20px; }
-  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-21.block-notice p,
-  div[class*="wp-block-atomic"].font-size-21.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-profile p {
     font-size: 21px; }
-  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-22.block-notice p,
-  div[class*="wp-block-atomic"].font-size-22.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-profile p {
     font-size: 22px; }
-  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-23.block-notice p,
-  div[class*="wp-block-atomic"].font-size-23.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-profile p {
     font-size: 23px; }
-  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-24.block-notice p,
-  div[class*="wp-block-atomic"].font-size-24.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-profile p {
     font-size: 24px; } }
 
 .center {
@@ -1086,9 +1086,6 @@
 
 .right {
   text-align: right; }
-
-#editor .columns {
-  margin: 0; }
 
 /**
  * Testimonial styles
@@ -2227,49 +2224,49 @@
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-14.block-notice p,
-  div[class*="wp-block-atomic"].font-size-14.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-profile p {
     font-size: 14px; }
-  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-15.block-notice p,
-  div[class*="wp-block-atomic"].font-size-15.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-profile p {
     font-size: 15px; }
-  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-16.block-notice p,
-  div[class*="wp-block-atomic"].font-size-16.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-profile p {
     font-size: 16px; }
-  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-17.block-notice p,
-  div[class*="wp-block-atomic"].font-size-17.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-profile p {
     font-size: 17px; }
-  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-18.block-notice p,
-  div[class*="wp-block-atomic"].font-size-18.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-profile p {
     font-size: 18px; }
-  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-19.block-notice p,
-  div[class*="wp-block-atomic"].font-size-19.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-profile p {
     font-size: 19px; }
-  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-20.block-notice p,
-  div[class*="wp-block-atomic"].font-size-20.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-profile p {
     font-size: 20px; }
-  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-21.block-notice p,
-  div[class*="wp-block-atomic"].font-size-21.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-profile p {
     font-size: 21px; }
-  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-22.block-notice p,
-  div[class*="wp-block-atomic"].font-size-22.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-profile p {
     font-size: 22px; }
-  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-23.block-notice p,
-  div[class*="wp-block-atomic"].font-size-23.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-profile p {
     font-size: 23px; }
-  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-24.block-notice p,
-  div[class*="wp-block-atomic"].font-size-24.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-profile p {
     font-size: 24px; } }
 
 .center {
@@ -2281,11 +2278,8 @@
 .right {
   text-align: right; }
 
-#editor .columns {
-  margin: 0; }
-
 /**
- * Testimonial styles
+ * Profile styles
  * Loads on front end and back end
  */
 .ab-block-profile {
@@ -2367,6 +2361,7 @@
       padding-top: 100%; }
     .ab-block-profile .ab-profile-image-wrap button {
       position: absolute;
+      left: 0;
       z-index: 50;
       padding: 0;
       height: 100%;
@@ -2414,6 +2409,10 @@
         width: 38px;
         text-align: center; }
 
+.right .ab-profile-avatar-wrap {
+  -ms-flex-order: 2;
+      order: 2; }
+
 .round .ab-profile-image-wrap {
   border-radius: 500px;
   overflow: hidden; }
@@ -2424,12 +2423,12 @@
   .round .ab-profile-image-wrap img {
     border-radius: 500px; }
 
-#editor .has-avatar .ab-profile-image-square:hover {
+#editor .ab-has-avatar .ab-profile-image-square:hover {
   cursor: pointer; }
-  #editor .has-avatar .ab-profile-image-square:hover img {
+  #editor .ab-has-avatar .ab-profile-image-square:hover img {
     opacity: .7 !important; }
 
-#editor .has-avatar .ab-profile-image-square button {
+#editor .ab-has-avatar .ab-profile-image-square button {
   top: 0;
   left: 0;
   opacity: 1 !important;
@@ -3469,49 +3468,49 @@
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-14.block-notice p,
-  div[class*="wp-block-atomic"].font-size-14.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-profile p {
     font-size: 14px; }
-  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-15.block-notice p,
-  div[class*="wp-block-atomic"].font-size-15.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-profile p {
     font-size: 15px; }
-  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-16.block-notice p,
-  div[class*="wp-block-atomic"].font-size-16.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-profile p {
     font-size: 16px; }
-  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-17.block-notice p,
-  div[class*="wp-block-atomic"].font-size-17.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-profile p {
     font-size: 17px; }
-  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-18.block-notice p,
-  div[class*="wp-block-atomic"].font-size-18.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-profile p {
     font-size: 18px; }
-  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-19.block-notice p,
-  div[class*="wp-block-atomic"].font-size-19.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-profile p {
     font-size: 19px; }
-  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-20.block-notice p,
-  div[class*="wp-block-atomic"].font-size-20.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-profile p {
     font-size: 20px; }
-  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-21.block-notice p,
-  div[class*="wp-block-atomic"].font-size-21.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-profile p {
     font-size: 21px; }
-  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-22.block-notice p,
-  div[class*="wp-block-atomic"].font-size-22.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-profile p {
     font-size: 22px; }
-  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-23.block-notice p,
-  div[class*="wp-block-atomic"].font-size-23.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-profile p {
     font-size: 23px; }
-  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-24.block-notice p,
-  div[class*="wp-block-atomic"].font-size-24.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-profile p {
     font-size: 24px; } }
 
 .center {
@@ -3522,9 +3521,6 @@
 
 .right {
   text-align: right; }
-
-#editor .columns {
-  margin: 0; }
 
 /**
  * Notice styles
@@ -4613,49 +4609,49 @@ body:not(.wp-admin) .block-notice.dismissable {
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-14.block-notice p,
-  div[class*="wp-block-atomic"].font-size-14.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-profile p {
     font-size: 14px; }
-  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-15.block-notice p,
-  div[class*="wp-block-atomic"].font-size-15.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-profile p {
     font-size: 15px; }
-  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-16.block-notice p,
-  div[class*="wp-block-atomic"].font-size-16.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-profile p {
     font-size: 16px; }
-  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-17.block-notice p,
-  div[class*="wp-block-atomic"].font-size-17.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-profile p {
     font-size: 17px; }
-  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-18.block-notice p,
-  div[class*="wp-block-atomic"].font-size-18.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-profile p {
     font-size: 18px; }
-  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-19.block-notice p,
-  div[class*="wp-block-atomic"].font-size-19.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-profile p {
     font-size: 19px; }
-  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-20.block-notice p,
-  div[class*="wp-block-atomic"].font-size-20.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-profile p {
     font-size: 20px; }
-  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-21.block-notice p,
-  div[class*="wp-block-atomic"].font-size-21.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-profile p {
     font-size: 21px; }
-  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-22.block-notice p,
-  div[class*="wp-block-atomic"].font-size-22.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-profile p {
     font-size: 22px; }
-  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-23.block-notice p,
-  div[class*="wp-block-atomic"].font-size-23.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-profile p {
     font-size: 23px; }
-  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-24.block-notice p,
-  div[class*="wp-block-atomic"].font-size-24.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-profile p {
     font-size: 24px; } }
 
 .center {
@@ -4666,9 +4662,6 @@ body:not(.wp-admin) .block-notice.dismissable {
 
 .right {
   text-align: right; }
-
-#editor .columns {
-  margin: 0; }
 
 /**
  * Drop cap styles
@@ -5755,49 +5748,49 @@ body:not(.wp-admin) .block-notice.dismissable {
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-  div[class*="wp-block-atomic"].font-size-14.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-14.block-notice p,
-  div[class*="wp-block-atomic"].font-size-14.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-14.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-14.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-profile p {
     font-size: 14px; }
-  div[class*="wp-block-atomic"].font-size-15.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-15.block-notice p,
-  div[class*="wp-block-atomic"].font-size-15.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-15.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-15.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-profile p {
     font-size: 15px; }
-  div[class*="wp-block-atomic"].font-size-16.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-16.block-notice p,
-  div[class*="wp-block-atomic"].font-size-16.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-16.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-16.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-profile p {
     font-size: 16px; }
-  div[class*="wp-block-atomic"].font-size-17.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-17.block-notice p,
-  div[class*="wp-block-atomic"].font-size-17.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-17.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-17.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-profile p {
     font-size: 17px; }
-  div[class*="wp-block-atomic"].font-size-18.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-18.block-notice p,
-  div[class*="wp-block-atomic"].font-size-18.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-18.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-18.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-profile p {
     font-size: 18px; }
-  div[class*="wp-block-atomic"].font-size-19.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-19.block-notice p,
-  div[class*="wp-block-atomic"].font-size-19.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-19.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-19.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-profile p {
     font-size: 19px; }
-  div[class*="wp-block-atomic"].font-size-20.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-20.block-notice p,
-  div[class*="wp-block-atomic"].font-size-20.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-20.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-20.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-profile p {
     font-size: 20px; }
-  div[class*="wp-block-atomic"].font-size-21.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-21.block-notice p,
-  div[class*="wp-block-atomic"].font-size-21.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-21.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-21.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-profile p {
     font-size: 21px; }
-  div[class*="wp-block-atomic"].font-size-22.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-22.block-notice p,
-  div[class*="wp-block-atomic"].font-size-22.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-22.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-22.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-profile p {
     font-size: 22px; }
-  div[class*="wp-block-atomic"].font-size-23.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-23.block-notice p,
-  div[class*="wp-block-atomic"].font-size-23.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-23.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-23.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-profile p {
     font-size: 23px; }
-  div[class*="wp-block-atomic"].font-size-24.block-testimonial p,
-  div[class*="wp-block-atomic"].font-size-24.block-notice p,
-  div[class*="wp-block-atomic"].font-size-24.ab-block-profile p {
+  div[class*="wp-block-atomic"].ab-font-size-24.block-testimonial p,
+  div[class*="wp-block-atomic"].ab-font-size-24.block-notice p,
+  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-profile p {
     font-size: 24px; } }
 
 .center {
@@ -5808,9 +5801,6 @@ body:not(.wp-admin) .block-notice.dismissable {
 
 .right {
   text-align: right; }
-
-#editor .columns {
-  margin: 0; }
 
 /**
  * Button styles

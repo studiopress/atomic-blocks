@@ -37,8 +37,8 @@ export default class Inspector extends Component {
 
 			<RangeControl
 				label={ __( 'Font Size' ) }
-				value={ this.props.attributes.blockFontSize }
-				onChange={ this.props.setFontRatio }
+				value={ this.props.attributes.profileFontSize }
+				onChange={ ( value ) => this.props.setAttributes( { profileFontSize: value } ) }
 				min={ 14 }
 				max={ 24 }
 				step={ 1 }
@@ -47,44 +47,44 @@ export default class Inspector extends Component {
 			<SelectControl
 				label={ __( 'Avatar Shape' ) }
 				description={ __( 'Choose between a round or square avatar shape.' ) }
-				options={ this.props.avatarShapeOptions }
-				value={ this.props.attributes.avatarShape }
-				onChange={ ( value ) => this.props.setAttributes( { avatarShape: value } ) }
+				options={ this.props.profileAvatarShapeOptions }
+				value={ this.props.attributes.profileAvatarShape }
+				onChange={ ( value ) => this.props.setAttributes( { profileAvatarShape: value } ) }
 			/>
 			
 			<PanelColor 
 				title={ __( 'Background Color' ) }
-				colorValue={ this.props.attributes.blockBackgroundColor }
+				colorValue={ this.props.attributes.profileBackgroundColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.blockBackgroundColor }
-					onChange={ ( value ) => this.props.setAttributes( { blockBackgroundColor: value } ) }
+					value={ this.props.attributes.profileBackgroundColor }
+					onChange={ ( value ) => this.props.setAttributes( { profileBackgroundColor: value } ) }
 				/>
 			</PanelColor>
 
 			<PanelColor 
 				title={ __( 'Text Color' ) }
-				colorValue={ this.props.attributes.blockTextColor }
+				colorValue={ this.props.attributes.profileTextColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.blockTextColor }
-					onChange={ ( value ) => this.props.setAttributes( { blockTextColor: value } ) }
+					value={ this.props.attributes.profileTextColor }
+					onChange={ ( value ) => this.props.setAttributes( { profileTextColor: value } ) }
 				/>
 			</PanelColor>
 
 			<PanelColor 
 				title={ __( 'Social Link Color' ) }
-				colorValue={ this.props.attributes.blockLinkColor }
+				colorValue={ this.props.attributes.profileLinkColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Link Color' ) }
-					value={ this.props.attributes.blockLinkColor }
-					onChange={ ( value ) => this.props.setAttributes( { blockLinkColor: value } ) }
+					value={ this.props.attributes.profileLinkColor }
+					onChange={ ( value ) => this.props.setAttributes( { profileLinkColor: value } ) }
 					colors={['#392F43', '#3373dc', '#2DBAA3', '#209cef', '#2BAD59', '#ff3860', '#7941b6', '#F7812B']}
 				/>
 			</PanelColor>

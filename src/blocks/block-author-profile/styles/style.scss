@@ -1,5 +1,5 @@
 /**
- * Testimonial styles
+ * Profile styles
  * Loads on front end and back end
  */
 
@@ -102,6 +102,7 @@
 
 		button {
 			position: absolute;
+			left: 0;
 			z-index: 50;
 			padding: 0; 
 			height: 100%;
@@ -166,6 +167,10 @@
 	}
 }
 
+.right .ab-profile-avatar-wrap {
+	order: 2;
+}
+
 .round .ab-profile-image-wrap {
 	border-radius: 500px;
 	overflow: hidden;
@@ -181,7 +186,7 @@
 	}
 }
 
-#editor .has-avatar {
+#editor .ab-has-avatar {
 
 	.ab-profile-image-square {
 		&:hover {

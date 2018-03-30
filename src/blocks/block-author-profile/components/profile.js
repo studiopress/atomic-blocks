@@ -7,7 +7,6 @@ const { Component } = wp.element;
 
 // Import block dependencies and components
 import classnames from 'classnames';
-import * as fontSize from './../../../utils/helper';
 
 // Create a profile box wrapper Component
 export default class ProfileBox extends Component {
@@ -20,17 +19,17 @@ export default class ProfileBox extends Component {
 		return (
 			<div 
 			style={ {
-				backgroundColor: this.props.attributes.blockBackgroundColor,
-				color: this.props.attributes.blockTextColor,
+				backgroundColor: this.props.attributes.profileBackgroundColor,
+				color: this.props.attributes.profileTextColor,
 			} }
 			className={ classnames(
 				this.props.className,
-				this.props.attributes.alignment,
-				this.props.attributes.avatarShape,
-				{ 'has-avatar': this.props.attributes.imgURL },
-				fontSize.fontRatioToClass( this.props.attributes.blockFontSize ),
+				this.props.attributes.profileAlignment,
+				this.props.attributes.profileAvatarShape,
+				{ 'ab-has-avatar': this.props.attributes.profileImgURL },
+				'ab-font-size-' + this.props.attributes.profileFontSize,
 				'ab-block-profile',
-				'ab-profile-columns'
+				'ab-profile-columns',
 			) }>
 				{ this.props.children }
 			</div>

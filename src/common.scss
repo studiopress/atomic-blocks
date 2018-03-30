@@ -12,7 +12,7 @@
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
-    div[class*="wp-block-atomic"].font-size-14 {
+    div[class*="wp-block-atomic"].ab-font-size-14 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -20,7 +20,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-15 {
+    div[class*="wp-block-atomic"].ab-font-size-15 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -28,7 +28,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-16 {
+    div[class*="wp-block-atomic"].ab-font-size-16 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -36,7 +36,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-17 {
+    div[class*="wp-block-atomic"].ab-font-size-17 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -44,7 +44,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-18 {
+    div[class*="wp-block-atomic"].ab-font-size-18 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -52,7 +52,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-19 {
+    div[class*="wp-block-atomic"].ab-font-size-19 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -60,7 +60,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-20 {
+    div[class*="wp-block-atomic"].ab-font-size-20 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -68,7 +68,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-21 {
+    div[class*="wp-block-atomic"].ab-font-size-21 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -76,7 +76,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-22 {
+    div[class*="wp-block-atomic"].ab-font-size-22 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -84,7 +84,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-23 {
+    div[class*="wp-block-atomic"].ab-font-size-23 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -92,7 +92,7 @@
       }
     }
   
-    div[class*="wp-block-atomic"].font-size-24 {
+    div[class*="wp-block-atomic"].ab-font-size-24 {
       &.block-testimonial p,
       &.block-notice p,
       &.ab-block-profile p {
@@ -111,8 +111,4 @@
 
 .right {
   text-align: right;
-}
-
-#editor .columns {
-  margin: 0;
 }
