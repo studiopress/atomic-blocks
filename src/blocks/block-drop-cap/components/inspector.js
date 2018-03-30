@@ -38,7 +38,7 @@ export default class Inspector extends Component {
 			<RangeControl
 				label={ __( 'Drop Cap Size' ) }
 				value={ this.props.attributes.dropCapFontSize }
-				onChange={ this.props.setFontRatio }
+				onChange={ ( value ) => this.props.setAttributes( { dropCapFontSize: value } ) }
 				min={ 1 }
 				max={ 6 }
 				step={ 1 }

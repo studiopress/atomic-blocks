@@ -4701,17 +4701,17 @@ body:not(.wp-admin) .block-notice.dismissable {
   .ab-block-drop-cap:after {
     clear: both; }
   @media only screen and (min-width: 600px) {
-    .ab-block-drop-cap.font-size-1 p:first-child:first-letter {
+    .ab-block-drop-cap.ab-font-size-1 p:first-child:first-letter {
       font-size: 75px; }
-    .ab-block-drop-cap.font-size-2 p:first-child:first-letter {
+    .ab-block-drop-cap.ab-font-size-2 p:first-child:first-letter {
       font-size: 85px; }
-    .ab-block-drop-cap.font-size-3 p:first-child:first-letter {
+    .ab-block-drop-cap.ab-font-size-3 p:first-child:first-letter {
       font-size: 95px; }
-    .ab-block-drop-cap.font-size-4 p:first-child:first-letter {
+    .ab-block-drop-cap.ab-font-size-4 p:first-child:first-letter {
       font-size: 105px; }
-    .ab-block-drop-cap.font-size-5 p:first-child:first-letter {
+    .ab-block-drop-cap.ab-font-size-5 p:first-child:first-letter {
       font-size: 115px; }
-    .ab-block-drop-cap.font-size-6 p:first-child:first-letter {
+    .ab-block-drop-cap.ab-font-size-6 p:first-child:first-letter {
       font-size: 125px; } }
 /**
  * Common styles

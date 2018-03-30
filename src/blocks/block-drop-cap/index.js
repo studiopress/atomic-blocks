@@ -40,9 +40,6 @@ class ABDropCapBlock extends Component {
 		const { isSelected, className, setAttributes } = this.props;
 		const { dropCapContent, dropCapAlignment, dropCapBackgroundColor, dropCapTextColor, dropCapFontSize, dropCapStyle } = this.props.attributes;
 
-		// Change the font size
-		const setFontRatio = ( ratio ) => this.props.setAttributes( { dropCapFontSize: ratio } );
-
 		// Drop cap style options
 		const dropCapOptions = [
 			{ value: 'ab-drop-cap-letter', label: __( 'Letter' ) },
@@ -63,7 +60,7 @@ class ABDropCapBlock extends Component {
 			// Show the block controls on focus
 			isSelected && (
 				<Inspector
-					{ ...{ setFontRatio, dropCapOptions, ...this.props} }
+					{ ...{ dropCapOptions, ...this.props} }
 				/>
 			),
 			// Show the block markup in the editor
