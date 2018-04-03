@@ -35,13 +35,23 @@ export default class Inspector extends Component {
 	}
 
 	render() {
+
+		// Notice dismiss options
+		const noticeDismissOptions = [
+			{ value: '', label: __( 'Always Show' ) },
+			{ value: 'ab-dismissable', label: __( 'Dismissable' ) },
+		];
+
+		// Setup the attributes
+		const { attributes: { noticeTitle, noticeContent, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss } } = this.props;
+
 		return (
 		<InspectorControls key="inspector">
 
 			<RangeControl
 				label={ __( 'Font Size' ) }
-				value={ this.props.attributes.fontSize }
-				onChange={ this.props.setFontRatio }
+				value={ noticeFontSize }
+				onChange={ ( value ) => this.props.setAttributes( { noticeFontSize: value } ) }
 				min={ 14 }
 				max={ 24 }
 				step={ 1 }
@@ -50,46 +60,46 @@ export default class Inspector extends Component {
 			<SelectControl
 				label={ __( 'Notice Display' ) }
 				description={ __( 'Do you want the message to always show or dismissable?' ) }
-				options={ this.props.noticeDismissOptions }
-				value={ this.props.attributes.noticeDismiss }
-				onChange={ this.props.onChangeNoticeDismiss }
+				options={ noticeDismissOptions }
+				value={ noticeDismiss }
+				onChange={ ( value ) => this.props.setAttributes( { noticeDismiss: value } ) }
 			/>
 			
 			<PanelColor 
 				title={ __( 'Notice Color' ) }
-				colorValue={ this.props.attributes.blockBackgroundColor }
+				colorValue={ noticeBackgroundColor }
 				initialOpen={ false }
 			>
-				<ColorPalette 
+				<ColorPalette
 					label={ __( 'Notice Color' ) }
-					value={ this.props.attributes.blockBackgroundColor }
-					onChange={ this.props.onChangeBackgroundColor }
+					value={ noticeBackgroundColor }
+					onChange={ ( value ) => this.props.setAttributes( { noticeBackgroundColor: value } ) }
 					colors={['#00d1b2', '#3373dc', '#209cef', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#392F43']}
 				/>
 			</PanelColor>
 
 			<PanelColor 
 				title={ __( 'Title Color' ) }
-				colorValue={ this.props.attributes.blockTitleColor }
+				colorValue={ noticeTitleColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Title Color' ) }
-					value={ this.props.attributes.blockTitleColor }
-					onChange={ this.props.onChangeTitleColor }
+					value={ noticeTitleColor }
+					onChange={ ( value ) => this.props.setAttributes( { noticeTitleColor: value } ) }
 					colors={['#fff', '#32373c' ]}
 				/>
 			</PanelColor>
 			
 			<PanelColor 
 				title={ __( 'Text Color' ) }
-				colorValue={ this.props.attributes.blockTextColor }
+				colorValue={ noticeTextColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.blockTextColor }
-					onChange={ this.props.onChangeTextColor }
+					value={ noticeTextColor }
+					onChange={ ( value ) => this.props.setAttributes( { noticeTextColor: value } ) }
 					colors={['#32373c', '#fff' ]}
 				/>
 			</PanelColor>

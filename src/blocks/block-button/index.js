@@ -176,10 +176,10 @@ registerBlockType( 'atomic-blocks/ab-button', {
 
 	// Save the attributes and markup
 	save: function( props ) {
+			
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
 		
 		// Save the block markup for the front end
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
-
 		return (
 			<CustomButton { ...props }>			
 				{	// Check if there is button text and output

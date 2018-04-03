@@ -7,7 +7,6 @@ const { Component } = wp.element;
 
 // Import block dependencies and components
 import classnames from 'classnames';
-import * as fontSize from './../../../utils/helper';
 import * as uniqueID from './../../../utils/helper';
 
 /**
@@ -21,20 +20,24 @@ export default class NoticeBox extends Component {
 
 	render() {
 
-		const blockID = uniqueID.generateUniqueID( this.props.attributes.noticeDismiss + this.props.attributes.title )
+		// Setup the attributes
+		const { attributes: { noticeTitle, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeFontSize, noticeDismiss } } = this.props;
+
+		// Generate a unique ID for the dismissable notice
+		const blockID = uniqueID.generateUniqueID( noticeDismiss + noticeTitle )
 
 		return (	
 			<div 
 				style={ {
-					color: this.props.attributes.blockTextColor,
-					textAlign: this.props.attributes.alignment,
-					backgroundColor: this.props.attributes.blockBackgroundColor,
+					color: noticeTextColor,
+					textAlign: noticeAlignment,
+					backgroundColor: noticeBackgroundColor,
 				} }
 				className={ classnames(
 					this.props.className,
-					this.props.attributes.noticeDismiss,
-					fontSize.fontRatioToClass( this.props.attributes.fontSize ),
-					'block-notice'
+					noticeDismiss,
+					'ab-font-size-' + noticeFontSize,
+					'ab-block-notice'
 				) 
 				}
 				data-id={ blockID }

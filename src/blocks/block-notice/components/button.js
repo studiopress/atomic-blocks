@@ -14,7 +14,7 @@ const {
 import classnames from 'classnames';
 
 /**
- * Create a Testimonial wrapper Component
+ * Create a button wrapper Component
  */
 export default class DismissButton extends Component {
 
@@ -23,12 +23,16 @@ export default class DismissButton extends Component {
 	}
 
 	render() {
+		
+		// Setup the attributes
+		const { attributes: { noticeTitleColor } } = this.props;
+
 		return (
 			<Button 
-				className="block-notice-dismiss" 
+				className="ab-notice-dismiss" 
 				style={ {
-					fill: this.props.attributes.blockTitleColor,
-					color: this.props.attributes.blockTitleColor,
+					fill: noticeTitleColor,
+					color: noticeTitleColor,
 				} }>
 				{ this.props.children }
 			</Button>

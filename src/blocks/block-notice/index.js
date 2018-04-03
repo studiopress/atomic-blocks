@@ -8,7 +8,6 @@ import Inspector from './components/inspector';
 import NoticeBox from './components/notice';
 import DismissButton from './components/button';
 import icons from './components/icons';
-import * as fontSize from './../../utils/helper';
 import * as uniqueID from './../../utils/helper';
 import md5 from 'md5';
 
@@ -18,6 +17,9 @@ import './styles/editor.scss';
 
 // Internationalization
 const { __ } = wp.i18n; 
+
+// Extend component
+const { Component } = wp.element;
 
 // Register block controls
 const { 
@@ -36,8 +38,71 @@ const {
 	withFallbackStyles,
 } = wp.components;
 
+class ABNoticeBlock extends Component {
+	
+	render() {
+		
+		// Setup the attributes
+		const { attributes: { noticeTitle, noticeContent, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss }, isSelected, className, setAttributes } = this.props;
+
+		return [
+			// Show the alignment toolbar on focus
+			isSelected && (
+				<BlockControls key="controls">
+					<AlignmentToolbar
+						value={ noticeAlignment }
+						onChange={ ( value ) => this.props.setAttributes( { noticeAlignment: value } ) }
+					/>
+				</BlockControls>
+			),
+			// Show the block controls on focus
+			isSelected && (
+				<Inspector
+					{ ...this.props }
+				/>
+			),
+			// Show the block markup in the editor
+			<NoticeBox { ...this.props }>
+				{	// Check if the notice is dismissable and output the button
+					noticeDismiss && (
+					<DismissButton { ...this.props }>
+						{ icons.dismiss }
+					</DismissButton>
+				) }
+				
+				<RichText
+					tagName="p"
+					placeholder={ __( 'Notice Title' ) }
+					value={ noticeTitle }
+					className={ classnames(
+						'ab-notice-title'
+					) }
+					style={ {
+						color: noticeTitleColor,
+					} }
+					onChange={ ( value ) => this.props.setAttributes( { noticeTitle: value } ) }
+				/>
+
+				<RichText
+					tagName="div"
+					multiline="p"
+					placeholder={ __( 'Add notice text...' ) }
+					value={ noticeContent }
+					className={ classnames(
+						'ab-notice-text'
+					) }
+					style={ {
+						borderColor: noticeBackgroundColor,
+					} }
+					onChange={ ( value ) => this.props.setAttributes( { noticeContent: value } ) }
+				/>
+			</NoticeBox>
+		];
+	}
+}
+
 // Register the block
-registerBlockType( 'atomic/atomic-notice', {
+registerBlockType( 'atomic-blocks/ab-notice', {
 	title: __( 'AB Notice' ),
 	description: __( 'Add a stylized text notice.' ),
 	icon: 'format-aside',
@@ -48,31 +113,31 @@ registerBlockType( 'atomic/atomic-notice', {
 		__( 'atomic' ),
 	],
 	attributes: {
-		title: {
+		noticeTitle: {
 			type: 'string',
-			selector: '.notice-title',
+			selector: '.ab-notice-title',
 		},
-		content: {
+		noticeContent: {
 			type: 'array',
-			selector: '.notice-text',
+			selector: '.ab-notice-text',
 			source: 'children',
 		},
-		alignment: {
+		noticeAlignment: {
 			type: 'string',
 		},
-		blockBackgroundColor: {
+		noticeBackgroundColor: {
 			type: 'string',
 			default: '#00d1b2'
 		},
-		blockTextColor: {
+		noticeTextColor: {
 			type: 'string',
 			default: '#32373c'
 		},
-		blockTitleColor: {
+		noticeTitleColor: {
 			type: 'string',
 			default: '#fff'
 		},
-		fontSize: {
+		noticeFontSize: {
 			type: 'number',
 			default: 18
 		},
@@ -82,129 +147,46 @@ registerBlockType( 'atomic/atomic-notice', {
         },
 	},
 
-	edit: function( props, isSelected ) {
-		// Change the text alignment
-		const onChangeAlignment = value =>  {
-			props.setAttributes( { alignment: value } );
-		};
-
-		// Change the background color
-		const onChangeBackgroundColor = value => {
-			props.setAttributes( { blockBackgroundColor: value } );
-		};
-
-		// Change the title color
-		const onChangeTitleColor = value => {
-			props.setAttributes( { blockTitleColor: value } );
-		};
-
-		// Change the text color
-		const onChangeTextColor = value => {
-			props.setAttributes( { blockTextColor: value } );
-		};
-
-		// Calculate the font size 
-		const setFontRatio = ( ratio ) => props.setAttributes( { fontSize: ratio } );
-
-		// Message dismiss options
-		const noticeDismissOptions = [
-			{ value: '', label: __( 'Always Show' ) },
-			{ value: 'dismissable', label: __( 'Dismissable' ) },
-		];
-
-		// Change message dismiss value
-		const onChangeNoticeDismiss = value => {
-			props.setAttributes( { noticeDismiss: value } );
-		};
-
-		return [
-			// Show the alignment toolbar on focus
-			!! props.focus && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ props.attributes.alignment }
-						onChange={ onChangeAlignment }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			!! props.focus && (
-				<Inspector
-					{ ...{ onChangeBackgroundColor, onChangeTextColor, setFontRatio, noticeDismissOptions, onChangeNoticeDismiss, onChangeTitleColor, onChangeTextColor, ...props} }
-				/>
-			),
-			// Show the block markup in the editor
-			<NoticeBox { ...props }>
-				{ 	// Check if the notice is dismissable and output the button
-					props.attributes.noticeDismiss && (
-					<DismissButton { ...props }>
-						{ icons.dismiss }
-					</DismissButton>
-				) }
-				
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Notice Title' ) }
-					value={ props.attributes.title }
-					className={ classnames(
-						'notice-title'
-					) }
-					style={ {
-						color: props.attributes.blockTitleColor,
-					} }
-					onChange={ ( value ) => props.setAttributes( { title: value } ) }
-				/>
-
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Add notice text...' ) }
-					value={ props.attributes.content }
-					className={ classnames(
-						'notice-text'
-					) }
-					style={ {
-						borderColor: props.attributes.blockBackgroundColor,
-					} }
-					onChange={ ( value ) => props.setAttributes( { content: value } ) }
-				/>
-			</NoticeBox>
-		];
-	},
+	// Render the block components
+	edit: ABNoticeBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
 
+		// Setup the attributes
+		const { noticeTitle, noticeContent, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss } = props.attributes;
+		
+		// Save the block markup for the front end
 		return (
 			<NoticeBox { ...props }>			
 				{	// Check if the notice is dismissable and output the button
-					props.attributes.noticeDismiss && (
+					noticeDismiss && (
 					<DismissButton { ...props }>
 						{ icons.dismiss }
 					</DismissButton>
 				) }
 
 				{	// Check if there is a notice title
-					props.attributes.title && (
+					noticeTitle && (
 					<div
-						class="notice-title"
+						class="ab-notice-title"
 						style={ {
-							color: props.attributes.blockTitleColor,
+							color: noticeTitleColor,
 						} }
 					>
-						<p>{ props.attributes.title }</p>
+						<p>{ noticeTitle }</p>
 					</div>
 				) }
 
 				{	// Check if there is notice content and output
-					props.attributes.content && (
+					noticeContent && (
 					<div 
-						class="notice-text" 
+						class="ab-notice-text" 
 						style={ {
-							borderColor: props.attributes.blockBackgroundColor,
+							borderColor: noticeBackgroundColor,
 						} }
 					>
-						{ props.attributes.content }
+						{ noticeContent }
 					</div>
 				) }	
 			</NoticeBox>
