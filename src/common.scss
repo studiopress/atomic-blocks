@@ -6,10 +6,6 @@
 // Variables 
 //$black: #293038;
 
-/* Import the flexbox grid */
-@import "../dist/assets/bulma/sass/utilities/_all";
-@import "../dist/assets/bulma/sass/grid/columns";
-
 /* Font size styles */
 @media only screen and (min-width: 600px) {
     div[class*="wp-block-atomic"].ab-font-size-14 {
