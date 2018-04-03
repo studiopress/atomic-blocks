@@ -39,23 +39,9 @@ const {
 class ABButtonBlock extends Component {
 	
 	render() {
-		const { isSelected, className, setAttributes } = this.props;
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = this.props.attributes;
-		
-		// Button size values
-		const buttonSizeOptions = [
-			{ value: 'ab-button-size-small', label: __( 'Small' ) },
-			{ value: 'ab-button-size-medium', label: __( 'Medium' ) },
-			{ value: 'ab-button-size-large', label: __( 'Large' ) },
-			{ value: 'ab-button-size-extralarge', label: __( 'Extra Large' ) },
-		];
 
-		// Button shape
-		const buttonShapeOptions = [
-			{ value: 'ab-button-shape-square', label: __( 'Square' ) },
-			{ value: 'ab-button-shape-rounded', label: __( 'Rounded Square' ) },
-			{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
-		];
+		// Setup the attributes
+		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget }, isSelected, className, setAttributes } = this.props;
 
 		return [
 			// Show the alignment toolbar on focus
@@ -72,7 +58,7 @@ class ABButtonBlock extends Component {
 			// Show the block controls on focus
 			isSelected && (
 				<Inspector
-					{ ...{ buttonSizeOptions, buttonShapeOptions, setAttributes, ...this.props} }
+					{ ...this.props }
 				/>
 			),
 			// Show the button markup in the editor
@@ -176,7 +162,8 @@ registerBlockType( 'atomic-blocks/ab-button', {
 
 	// Save the attributes and markup
 	save: function( props ) {
-			
+		
+		// Setup the attributes
 		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
 		
 		// Save the block markup for the front end

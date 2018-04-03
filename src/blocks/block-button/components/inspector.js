@@ -36,19 +36,38 @@ export default class Inspector extends Component {
 	}
 
 	render() {
+
+		// Setup the attributes
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = this.props.attributes;
+
+		// Button size values
+		const buttonSizeOptions = [
+			{ value: 'ab-button-size-small', label: __( 'Small' ) },
+			{ value: 'ab-button-size-medium', label: __( 'Medium' ) },
+			{ value: 'ab-button-size-large', label: __( 'Large' ) },
+			{ value: 'ab-button-size-extralarge', label: __( 'Extra Large' ) },
+		];
+
+		// Button shape
+		const buttonShapeOptions = [
+			{ value: 'ab-button-shape-square', label: __( 'Square' ) },
+			{ value: 'ab-button-shape-rounded', label: __( 'Rounded Square' ) },
+			{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
+		];
+
 		return (
 		<InspectorControls key="inspector">
 
 			<ToggleControl
 				label={ __( 'Open link in new window' ) }
-				checked={ this.props.attributes.buttonTarget }
-				onChange={ () => this.props.setAttributes( { buttonTarget: ! this.props.attributes.buttonTarget } ) }
+				checked={ buttonTarget }
+				onChange={ () => this.props.setAttributes( { buttonTarget: ! buttonTarget } ) }
 			/>
 
 			<SelectControl
 				label={ __( 'Button Size' ) }
-				value={ this.props.attributes.buttonSize }
-				options={ this.props.buttonSizeOptions.map( ({ value, label }) => ( {
+				value={ buttonSize }
+				options={ buttonSizeOptions.map( ({ value, label }) => ( {
 					value: value,
 					label: label,
 				} ) ) }
@@ -57,8 +76,8 @@ export default class Inspector extends Component {
 
 			<SelectControl
 				label={ __( 'Button Shape' ) }
-				value={ this.props.attributes.buttonShape }
-				options={ this.props.buttonShapeOptions.map( ({ value, label }) => ( {
+				value={ buttonShape }
+				options={ buttonShapeOptions.map( ({ value, label }) => ( {
 					value: value,
 					label: label,
 				} ) ) }
@@ -67,12 +86,12 @@ export default class Inspector extends Component {
 			
 			<PanelColor 
 				title={ __( 'Button Color' ) }
-				colorValue={ this.props.attributes.buttonBackgroundColor }
+				colorValue={ buttonBackgroundColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Button Color' ) }
-					value={ this.props.attributes.buttonBackgroundColor }
+					value={ buttonBackgroundColor }
 					onChange={ ( value ) => { this.props.setAttributes( { buttonBackgroundColor: value } ) } }
 					colors={['#00d1b2', '#3373dc', '#209cef', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#444048']}
 				/>
@@ -80,12 +99,12 @@ export default class Inspector extends Component {
 			
 			<PanelColor 
 				title={ __( 'Button Text Color' ) }
-				colorValue={ this.props.attributes.buttonTextColor }
+				colorValue={ buttonTextColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Button Text Color' ) }
-					value={ this.props.attributes.buttonTextColor }
+					value={ buttonTextColor }
 					onChange={ ( value ) => { this.props.setAttributes( { buttonTextColor: value } ) } }
 					colors={['#32373c', '#fff' ]}
 				/>
