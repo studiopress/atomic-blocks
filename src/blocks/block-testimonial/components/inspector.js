@@ -35,13 +35,23 @@ export default class Inspector extends Component {
 	}
 
 	render() {
+
+		// Cite Alignment Options
+		const citeAlignOptions = [
+			{ value: 'left-aligned', label: __( 'Left Aligned' ) },
+			{ value: 'right-aligned', label: __( 'Right Aligned' ) },
+		];
+
+		// Setup the attributes
+		const { attributes: { testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, isSelected, className, setAttributes } = this.props;
+
 		return (
 		<InspectorControls key="inspector">
 
 			<RangeControl
 				label={ __( 'Font Size' ) }
-				value={ this.props.attributes.fontSize }
-				onChange={ this.props.setFontRatio }
+				value={ testimonialFontSize }
+				onChange={ ( value ) => this.props.setAttributes( { testimonialFontSize: value } ) }
 				min={ 14 }
 				max={ 24 }
 				step={ 1 }
@@ -50,32 +60,32 @@ export default class Inspector extends Component {
 			<SelectControl
 				label={ __( 'Cite Alignment' ) }
 				description={ __( 'Left or right align the cite name and title.' ) }
-				options={ this.props.citeAlignOptions }
-				value={ this.props.attributes.citeAlign }
-				onChange={ this.props.onChangeCiteAlign }
+				options={ citeAlignOptions }
+				value={ testimonialCiteAlign }
+				onChange={ ( value ) => this.props.setAttributes( { testimonialCiteAlign: value } ) }
 			/>
 			
 			<PanelColor 
 				title={ __( 'Background Color' ) }
-				colorValue={ this.props.attributes.blockBackgroundColor }
+				colorValue={ testimonialBackgroundColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.blockBackgroundColor }
-					onChange={ this.props.onChangeBackgroundColor }
+					value={ testimonialBackgroundColor }
+					onChange={ ( value ) => this.props.setAttributes( { testimonialBackgroundColor: value } ) }
 				/>
 			</PanelColor>
 
 			<PanelColor 
 				title={ __( 'Text Color' ) }
-				colorValue={ this.props.attributes.blockTextColor }
+				colorValue={ testimonialTextColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.blockTextColor }
-					onChange={ this.props.onChangeTextColor }
+					value={ testimonialTextColor }
+					onChange={ ( value ) => this.props.setAttributes( { testimonialTextColor: value } ) }
 				/>
 			</PanelColor>
 

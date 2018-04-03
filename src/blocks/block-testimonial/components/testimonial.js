@@ -19,18 +19,22 @@ export default class Testimonial extends Component {
 	}
 
 	render() {
+
+		// Setup the attributes
+		const { attributes: { testimonialAlignment, testimonialImgURL, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }  } = this.props;
+
 		return (
 			<div 
 				style={ {
-					backgroundColor: this.props.attributes.blockBackgroundColor,
-					color: this.props.attributes.blockTextColor
+					backgroundColor: testimonialBackgroundColor,
+					color: testimonialTextColor
 				} }
 				className={ classnames(
 					this.props.className,
-					this.props.attributes.citeAlign,
-					{ 'has-avatar': this.props.attributes.imgURL },
-					fontSize.fontRatioToClass( this.props.attributes.fontSize ),
-					'block-testimonial'
+					testimonialCiteAlign,
+					{ 'ab-has-avatar': testimonialImgURL },
+					'ab-font-size-' + testimonialFontSize,
+					'ab-block-testimonial'
 				) }
 			>
 				{ this.props.children }

@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import Testimonial from './components/testimonial';
 import icons from './components/icons';
-import * as fontSize from './../../utils/helper';
 
 // Import CSS
 import './styles/style.scss';
@@ -15,6 +14,9 @@ import './styles/editor.scss';
 
 // Internationalization
 const { __ } = wp.i18n; 
+
+// Extend component
+const { Component } = wp.element;
 
 // Register block controls
 const { 
@@ -32,154 +34,69 @@ const {
 	SelectControl,
 } = wp.components;
 
-// Register the block
-registerBlockType( 'atomic/atomic-testimonial', {
-	title: __( 'AB Testimonial' ),
-	description: __( 'Add a user testimonial with a name and title.' ),
-	icon: 'format-quote',
-	category: 'common',
-	keywords: [
-		__( 'testimonial' ),
-		__( 'quote' ),
-		__( 'atomic' ),
-	],
-	attributes: {
-		testimonialName: {
-			type: 'string',
-			selector: '.testimonial-name',
-		},
-		testimonialTitle: {
-			type: 'string',
-			selector: '.testimonial-title',
-		},
-		content: {
-			type: 'array',
-			selector: '.testimonial-text',
-			source: 'children',
-		},
-		alignment: {
-			type: 'string',
-		},
-		imgURL: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'src',
-			selector: 'img',
-		},
-		imgID: {
-			type: 'number',
-		},
-		imgAlt: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'alt',
-			selector: 'img',
-		},
-		blockBackgroundColor: {
-			type: 'string',
-			default: '#f2f2f2'
-		},
-		blockTextColor: {
-			type: 'string',
-			default: '#32373c'
-		},
-		fontSize: {
-			type: 'number',
-			default: 18,
-		},
-		citeAlign: {
-            type: 'string',
-            default: 'left-aligned',
-        },
-	},
+class ABTestimonialBlock extends Component {
+	
+	render() {
 
-	edit: function( props, isSelected ) {
-		// Change the text alignment
-		const onChangeAlignment = value =>  {
-			props.setAttributes( { alignment: value } );
-		};
-
-		// Change the background color
-		const onChangeBackgroundColor = value => {
-			props.setAttributes( { blockBackgroundColor: value } );
-		};
-
-		// Change the text color
-		const onChangeTextColor = value => {
-			props.setAttributes( { blockTextColor: value } );
-		};
-
-		// Populate the mobile image
-		const onSelectImage = img => {
-			props.setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
-				imgAlt: img.alt,
-			} );
-		};
-
-		// Change the font size
-		const setFontRatio = ( ratio ) => props.setAttributes( { fontSize: ratio } );
-
-		// Cite Alignment Options
-		const citeAlignOptions = [
-			{ value: 'left-aligned', label: __( 'Left Aligned' ) },
-			{ value: 'right-aligned', label: __( 'Right Aligned' ) },
-		];
-
-		// Change Cite Alignment
-		const onChangeCiteAlign = value => {
-			props.setAttributes( { citeAlign: value } );
-		};
+		// Setup the attributes
+		const { attributes: { testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, isSelected, className, setAttributes } = this.props;
 
 		return [
 			// Show the alignment toolbar on focus
-			!! props.focus && (
+			isSelected && (
 				<BlockControls key="controls">
 					<AlignmentToolbar
-						value={ props.attributes.alignment }
-						onChange={ onChangeAlignment }
+						value={ testimonialAlignment }
+						onChange={ ( value ) => this.props.setAttributes( { testimonialAlignment: value } ) }
 					/>
 				</BlockControls>
 			),
 			// Show the block controls on focus
-			!! props.focus && (
+			isSelected && (
 				<Inspector
-					{ ...{ onChangeBackgroundColor, onChangeTextColor, setFontRatio, citeAlignOptions, onChangeCiteAlign, ...props} }
+					{ ...this.props }
 				/>
 			),
 			// Show the block markup in the editor
-			<Testimonial { ...props }>
+			<Testimonial { ...this.props }>
 				<RichText
 					tagName="div"
 					multiline="p"
 					placeholder={ __( 'Add testimonial text...' ) }
-					value={ props.attributes.content }
+					value={ testimonialContent }
+					isSelected={ isSelected }
+					keepPlaceholderOnFocus
+					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className={ classnames(
-						'testimonial-text'
+						'ab-testimonial-text'
 					) }
 					style={ {
-						textAlign: props.attributes.alignment,
+						textAlign: testimonialAlignment,
 					} }
-					onChange={ ( value ) => props.setAttributes( { content: value } ) }
+					onChange={ ( value ) => this.props.setAttributes( { testimonialContent: value } ) }
 				/>
 
-				<div class="testimonial-info">
-					<div class="testimonial-avatar-wrap">
-						<div class="testimonial-image-wrap">
+				<div class="ab-testimonial-info">
+					<div class="ab-testimonial-avatar-wrap">
+						<div class="ab-testimonial-image-wrap">
 							<MediaUpload
 								buttonProps={ {
 									className: 'change-image'
 								} }
-								onSelect={ onSelectImage }
+								onSelect={ ( img ) => this.props.setAttributes( 
+									{
+										testimonialImgID: img.id,
+										testimonialImgURL: img.url,
+									}
+								) }
 								type="image"
-								value={ props.attributes.imgID }
+								value={ testimonialImgID }
 								render={ ( { open } ) => (
 									<Button onClick={ open }>
-										{ ! props.attributes.imgID ? icons.upload : <img
-											class="testimonial-avatar"
-											src={ props.attributes.imgURL }
-											alt={ props.attributes.imgAlt }
+										{ ! testimonialImgID ? icons.upload : <img
+											class="ab-testimonial-avatar"
+											src={ testimonialImgURL }
+											alt="avatar"
 										/>  }
 									</Button>
 								) }
@@ -191,75 +108,138 @@ registerBlockType( 'atomic/atomic-testimonial', {
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Add name' ) }
-						value={ props.attributes.testimonialName }
-						className='testimonial-name'
+						value={ testimonialName }
+						className='ab-testimonial-name'
 						style={ {
-							color: props.attributes.blockTextColor
+							color: testimonialTextColor
 						} }
-						onChange={ ( value ) => props.setAttributes( { testimonialName: value } ) }
+						onChange={ ( value ) => this.props.setAttributes( { testimonialName: value } ) }
 					/>
 					
 					<RichText
 						tagName="small"
 						placeholder={ __( 'Add title' ) }
-						value={ props.attributes.testimonialTitle }
-						className='testimonial-title'
+						value={ testimonialTitle }
+						className='ab-testimonial-title'
 						style={ {
-							color: props.attributes.blockTextColor
+							color: testimonialTextColor
 						} }
-						onChange={ ( value ) => props.setAttributes( { testimonialTitle: value } ) }
+						onChange={ ( value ) => this.props.setAttributes( { testimonialTitle: value } ) }
 					/>
 				</div>
-			</Testimonial>
+			</Testimonial>	
 		];
+	}
+}
+
+// Register the block
+registerBlockType( 'atomic-blocks/ab-testimonial', {
+	title: __( 'AB Testimonial' ),
+	description: __( 'Add a user testimonial with a name and title.' ),
+	icon: 'format-quote',
+	category: 'common',
+	keywords: [
+		__( 'testimonial' ),
+		__( 'quote' ),
+		__( 'atomic' ),
+	],
+	attributes: {
+		testimonialName: { 
+			type: 'string',
+			selector: '.ab-testimonial-name',
+		},
+		testimonialTitle: {
+			type: 'string',
+			selector: '.ab-testimonial-title',
+		},
+		testimonialContent: {
+			type: 'array',
+			selector: '.ab-testimonial-text',
+			source: 'children',
+		},
+		testimonialAlignment: {
+			type: 'string',
+		},
+		testimonialImgURL: {
+			type: 'string',
+			source: 'attribute',
+			attribute: 'src',
+			selector: 'img',
+		},
+		testimonialImgID: {
+			type: 'number',
+		},
+		testimonialBackgroundColor: {
+			type: 'string',
+			default: '#f2f2f2'
+		},
+		testimonialTextColor: {
+			type: 'string',
+			default: '#32373c'
+		},
+		testimonialFontSize: {
+			type: 'number',
+			default: 18,
+		},
+		testimonialCiteAlign: {
+            type: 'string',
+            default: 'left-aligned',
+        },
 	},
+
+	// Render the block components
+	edit: ABTestimonialBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
+
+		// Setup the attributes
+		const { testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign } = props.attributes;
+
 		// Save the block markup for the front end
 		return (
 			<Testimonial { ...props }>
 				<div
 				className={ classnames(
-					'testimonial-text',
+					'ab-testimonial-text',
 				) }
 				style={ {
-					textAlign: props.attributes.alignment,
+					textAlign: testimonialAlignment,
 				} }
 				>
-					{ props.attributes.content }
+					{ testimonialContent }
 				</div>
 				
-				<div class="testimonial-info">
+				<div class="ab-testimonial-info">
 					{ 	// Check if there is an avatar
-						props.attributes.imgURL && (
-						<div class="testimonial-avatar-wrap">
-							<div class="testimonial-image-wrap">
+						testimonialImgURL && (
+						<div class="ab-testimonial-avatar-wrap">
+							<div class="ab-testimonial-image-wrap">
 								<img
-									class="testimonial-avatar"
-									src={ props.attributes.imgURL }
-									alt={ props.attributes.imgAlt }
+									class="ab-testimonial-avatar"
+									src={ testimonialImgURL }
+									alt="avatar"
 								/>
 							</div>
 						</div>
 					) }
 
 					{	// Check if there is a testimonial name
-						props.attributes.testimonialName && (
-						<h2 class="testimonial-name"
+						testimonialName && (
+						<h2 class="ab-testimonial-name"
 							style={ {
-								color: props.attributes.blockTextColor
+								color: testimonialTextColor
 							} }
-						>{ props.attributes.testimonialName }</h2>
+						>{ testimonialName }</h2>
 					) }
 
 					{ 	// Check if there is a testimonial title
-						props.attributes.testimonialTitle && (
-						<small class="testimonial-title"
+						testimonialTitle && (
+						<small class="ab-testimonial-title"
 							style={ {
-								color: props.attributes.blockTextColor
+								color: testimonialTextColor
 							} }
-						>{ props.attributes.testimonialTitle }</small>
+						>{ testimonialTitle }</small>
 					) }
 				</div>
 			</Testimonial>

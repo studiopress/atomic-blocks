@@ -78,7 +78,7 @@ class ABProfileBlock extends Component {
 									profileImgID: img.id,
 									profileImgURL: img.url,
 								}
-							 ) }
+							) }
 							type="image"
 							value={ profileImgID }
 							render={ ( { open } ) => (
@@ -86,6 +86,7 @@ class ABProfileBlock extends Component {
 									{ ! profileImgID ? icons.upload : <img
 										class="profile-avatar"
 										src={ profileImgURL }
+										alt="avatar"
 									/>  }
 								</Button>
 							) }

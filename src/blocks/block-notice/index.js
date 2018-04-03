@@ -88,6 +88,9 @@ class ABNoticeBlock extends Component {
 					multiline="p"
 					placeholder={ __( 'Add notice text...' ) }
 					value={ noticeContent }
+					isSelected={ isSelected }
+					keepPlaceholderOnFocus
+					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className={ classnames(
 						'ab-notice-text'
 					) }
