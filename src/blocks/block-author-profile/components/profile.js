@@ -16,18 +16,22 @@ export default class ProfileBox extends Component {
 	}
 
 	render() {
+
+		// Setup the attributes
+		const { profileAlignment, profileImgURL, profileFontSize, profileBackgroundColor, profileTextColor, profileAvatarShape  } = this.props.attributes;
+
 		return (
 			<div 
 			style={ {
-				backgroundColor: this.props.attributes.profileBackgroundColor,
-				color: this.props.attributes.profileTextColor,
+				backgroundColor: profileBackgroundColor,
+				color: profileTextColor,
 			} }
 			className={ classnames(
 				this.props.className,
-				this.props.attributes.profileAlignment,
-				this.props.attributes.profileAvatarShape,
-				{ 'ab-has-avatar': this.props.attributes.profileImgURL },
-				'ab-font-size-' + this.props.attributes.profileFontSize,
+				profileAlignment,
+				profileAvatarShape,
+				{ 'ab-has-avatar': profileImgURL },
+				'ab-font-size-' + profileFontSize,
 				'ab-block-profile',
 				'ab-profile-columns',
 			) }>

@@ -32,12 +32,22 @@ export default class Inspector extends Component {
 	}
 
 	render() {
+
+		// Setup the attributes
+		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape  } = this.props.attributes;
+
+		// Avatar shape options
+		const profileAvatarShapeOptions = [
+			{ value: 'square', label: __( 'Square' ) },
+			{ value: 'round', label: __( 'Round' ) },
+		];
+
 		return (
 		<InspectorControls key="inspector">
 
 			<RangeControl
 				label={ __( 'Font Size' ) }
-				value={ this.props.attributes.profileFontSize }
+				value={ profileFontSize }
 				onChange={ ( value ) => this.props.setAttributes( { profileFontSize: value } ) }
 				min={ 14 }
 				max={ 24 }
@@ -47,43 +57,43 @@ export default class Inspector extends Component {
 			<SelectControl
 				label={ __( 'Avatar Shape' ) }
 				description={ __( 'Choose between a round or square avatar shape.' ) }
-				options={ this.props.profileAvatarShapeOptions }
-				value={ this.props.attributes.profileAvatarShape }
+				options={ profileAvatarShapeOptions }
+				value={ profileAvatarShape }
 				onChange={ ( value ) => this.props.setAttributes( { profileAvatarShape: value } ) }
 			/>
 			
 			<PanelColor 
 				title={ __( 'Background Color' ) }
-				colorValue={ this.props.attributes.profileBackgroundColor }
+				colorValue={ profileBackgroundColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.profileBackgroundColor }
+					value={ profileBackgroundColor }
 					onChange={ ( value ) => this.props.setAttributes( { profileBackgroundColor: value } ) }
 				/>
 			</PanelColor>
 
 			<PanelColor 
 				title={ __( 'Text Color' ) }
-				colorValue={ this.props.attributes.profileTextColor }
+				colorValue={ profileTextColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Background Color' ) }
-					value={ this.props.attributes.profileTextColor }
+					value={ profileTextColor }
 					onChange={ ( value ) => this.props.setAttributes( { profileTextColor: value } ) }
 				/>
 			</PanelColor>
 
 			<PanelColor 
 				title={ __( 'Social Link Color' ) }
-				colorValue={ this.props.attributes.profileLinkColor }
+				colorValue={ profileLinkColor }
 				initialOpen={ false }
 			>
 				<ColorPalette 
 					label={ __( 'Link Color' ) }
-					value={ this.props.attributes.profileLinkColor }
+					value={ profileLinkColor }
 					onChange={ ( value ) => this.props.setAttributes( { profileLinkColor: value } ) }
 					colors={['#392F43', '#3373dc', '#2DBAA3', '#209cef', '#2BAD59', '#ff3860', '#7941b6', '#F7812B']}
 				/>
@@ -95,63 +105,63 @@ export default class Inspector extends Component {
 			<TextControl
 				label={ __( 'Twitter URL' ) }
 				type="url"
-				value={ this.props.attributes.twitter }
+				value={ twitter }
 				onChange={ ( value ) => this.props.setAttributes( { twitter: value } ) }
 			/>
 
 			<TextControl
 				label={ __( 'Facebook URL' ) }
 				type="url"
-				value={ this.props.attributes.facebook }
+				value={ facebook }
 				onChange={ ( value ) => this.props.setAttributes( { facebook: value } ) }
 			/>
 
 			<TextControl
 				label={ __( 'Instagram URL' ) }
 				type="url"
-				value={ this.props.attributes.instagram }
+				value={ instagram }
 				onChange={ ( value ) => this.props.setAttributes( { instagram: value } ) }
 			/>
 
 			<TextControl
 				label={ __( 'Pinterest URL' ) }
 				type="url"
-				value={ this.props.attributes.pinterest }
+				value={ pinterest }
 				onChange={ ( value ) => this.props.setAttributes( { pinterest: value } ) }
 			/>
 
 			<TextControl
 				label={ __( 'Google URL' ) }
 				type="url"
-				value={ this.props.attributes.google }
+				value={ google }
 				onChange={ ( value ) => this.props.setAttributes( { google: value } ) }
 			/>
 
 			<TextControl
 				label={ __( 'YouTube URL' ) }
 				type="url"
-				value={ this.props.attributes.youtube }
+				value={ youtube }
 				onChange={ ( value ) => this.props.setAttributes( { youtube: value } ) }
 			/>
 
 			<TextControl
 				label={ __( 'Github URL' ) }
 				type="url"
-				value={ this.props.attributes.github }
+				value={ github }
 				onChange={ ( value ) => this.props.setAttributes( { github: value } ) }
 			/>
 
 			<TextControl
 				label={ __( 'Email URL' ) }
 				type="url"
-				value={ this.props.attributes.email }
+				value={ email }
 				onChange={ ( value ) => this.props.setAttributes( { email: value } ) }
 			/>
 
 			<TextControl
 				label={ __( 'Website URL' ) }
 				type="url"
-				value={ this.props.attributes.website }
+				value={ website }
 				onChange={ ( value ) => this.props.setAttributes( { website: value } ) }
 			/>	
 

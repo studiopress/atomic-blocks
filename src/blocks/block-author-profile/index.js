@@ -40,14 +40,7 @@ class ABProfileBlock extends Component {
 	render() {
 		
 		// Setup constants and attributes
-		const { isSelected, className, setAttributes } = this.props;
-		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape } = this.props.attributes;
-
-		// Avatar shape options
-		const profileAvatarShapeOptions = [
-			{ value: 'square', label: __( 'Square' ) },
-			{ value: 'round', label: __( 'Round' ) },
-		];
+		const { attributes: { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape }, isSelected, className, setAttributes  } = this.props;
 
 		return [
 			// Show the block alignment controls on focus
@@ -62,7 +55,7 @@ class ABProfileBlock extends Component {
 			// Show the block controls on focus
 			isSelected && (
 				<Inspector
-					{ ...{ profileAvatarShapeOptions, ...this.props} }
+					{ ...this.props }
 				/>
 			),
 			// Show the block markup in the editor
@@ -231,9 +224,10 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 	// Render the block components
 	edit: ABProfileBlock,
 
-	// Save the attributes and markup
+	// Save the block markup
 	save: function( props ) {
 
+		// Setup the attributes
 		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape } = props.attributes;
 
 		return (
