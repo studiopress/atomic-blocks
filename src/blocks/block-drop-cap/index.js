@@ -37,15 +37,9 @@ const {
 class ABDropCapBlock extends Component {
 	
 	render() {
-		const { isSelected, className, setAttributes } = this.props;
-		const { dropCapContent, dropCapAlignment, dropCapBackgroundColor, dropCapTextColor, dropCapFontSize, dropCapStyle } = this.props.attributes;
 
-		// Drop cap style options
-		const dropCapOptions = [
-			{ value: 'ab-drop-cap-letter', label: __( 'Letter' ) },
-			{ value: 'ab-drop-cap-square', label: __( 'Square' ) },
-			{ value: 'ab-drop-cap-border', label: __( 'Border' ) },
-		];
+		// Setup the attributes
+		const { attributes: { dropCapContent, dropCapAlignment, dropCapBackgroundColor, dropCapTextColor, dropCapFontSize, dropCapStyle }, isSelected, className, setAttributes } = this.props;
 
 		return [
 			// Show the alignment toolbar on focus
@@ -60,7 +54,7 @@ class ABDropCapBlock extends Component {
 			// Show the block controls on focus
 			isSelected && (
 				<Inspector
-					{ ...{ dropCapOptions, ...this.props} }
+					{ ...this.props }
 				/>
 			),
 			// Show the block markup in the editor

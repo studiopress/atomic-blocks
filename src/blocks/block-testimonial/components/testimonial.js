@@ -27,7 +27,7 @@ export default class Testimonial extends Component {
 			<div 
 				style={ {
 					backgroundColor: testimonialBackgroundColor,
-					color: testimonialTextColor
+					color: testimonialTextColor,
 				} }
 				className={ classnames(
 					this.props.className,

@@ -32,12 +32,22 @@ export default class Inspector extends Component {
 
 	render() {
 
+		// Setup the attributes
+		const { dropCapFontSize, dropCapStyle } = this.props.attributes;
+
+		// Drop cap style options
+		const dropCapOptions = [
+			{ value: 'ab-drop-cap-letter', label: __( 'Letter' ) },
+			{ value: 'ab-drop-cap-square', label: __( 'Square' ) },
+			{ value: 'ab-drop-cap-border', label: __( 'Border' ) },
+		];
+
 		return (
 		<InspectorControls key="inspector">
 
 			<RangeControl
 				label={ __( 'Drop Cap Size' ) }
-				value={ this.props.attributes.dropCapFontSize }
+				value={ dropCapFontSize }
 				onChange={ ( value ) => this.props.setAttributes( { dropCapFontSize: value } ) }
 				min={ 1 }
 				max={ 6 }
@@ -47,8 +57,8 @@ export default class Inspector extends Component {
 			<SelectControl
 				label={ __( 'Drop Cap Style' ) }
 				description={ __( 'Choose the style of the drop cap in your paragraph.' ) }
-				options={ this.props.dropCapOptions }
-				value={ this.props.attributes.dropCapStyle }
+				options={ dropCapOptions }
+				value={ dropCapStyle }
 				onChange={ ( value ) => this.props.setAttributes( { dropCapStyle: value } ) }
 			/>
 

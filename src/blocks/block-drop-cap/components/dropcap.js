@@ -18,16 +18,20 @@ export default class DropCap extends Component {
 	}
 
 	render() {
+
+		// Setup the attributes
+		const { dropCapAlignment, dropCapTextColor, dropCapFontSize, dropCapStyle } = this.props.attributes;
+
 		return (
 			<div
 				style={ {
-					color: this.props.attributes.dropCapTextColor,
-					textAlign: this.props.attributes.dropCapAlignment,
+					color: dropCapTextColor,
+					textAlign: dropCapAlignment,
 				} }
 				className={ classnames(
 					this.props.className,
-					this.props.attributes.dropCapStyle,
-					'ab-font-size-' + this.props.attributes.dropCapFontSize,
+					dropCapStyle,
+					'ab-font-size-' + dropCapFontSize,
 					'ab-block-drop-cap',
 				) }
 			>
