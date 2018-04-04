@@ -798,12 +798,29 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
 .ab-block-spacer {
   margin: 0 0 1.2em 0;
   position: relative; }
-  .ab-block-spacer:after {
+  .ab-block-spacer hr {
+    border: none;
+    margin: 0; }
+  .ab-block-spacer.ab-spacer-divider:after {
     content: " ";
     width: 100%;
     height: 1px;
-    border-top: dashed 1px #ccc;
+    border-top: solid 1px;
     position: absolute;
     top: 50%; }
-  .ab-block-spacer hr {
-    border: none; }
+  .ab-block-spacer.ab-divider-solid.ab-spacer-divider:after {
+    border-top-style: solid; }
+  .ab-block-spacer.ab-divider-dotted.ab-spacer-divider:after {
+    border-top-style: dotted; }
+  .ab-block-spacer.ab-divider-dashed.ab-spacer-divider:after {
+    border-top-style: dashed; }
+  .ab-block-spacer.ab-divider-size-1.ab-spacer-divider:after {
+    border-top-width: 1px; }
+  .ab-block-spacer.ab-divider-size-2.ab-spacer-divider:after {
+    border-top-width: 2px; }
+  .ab-block-spacer.ab-divider-size-3.ab-spacer-divider:after {
+    border-top-width: 3px; }
+  .ab-block-spacer.ab-divider-size-4.ab-spacer-divider:after {
+    border-top-width: 4px; }
+  .ab-block-spacer.ab-divider-size-5.ab-spacer-divider:after {
+    border-top-width: 5px; }

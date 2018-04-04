@@ -19,14 +19,20 @@ export default class Spacer extends Component {
 
 	render() {
 
+		// Setup the attributes
+		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = this.props.attributes;
+
 		return (	
 			<div 
 				style={ {
-					textAlign: this.props.attributes.buttonAlignment,
+					color: spacerDividerColor
 				} }
 				className={ classnames(
 					this.props.className,
-					'ab-block-spacer'
+					'ab-block-spacer',
+					spacerDividerStyle,
+					{ 'ab-spacer-divider': spacerDivider },
+					'ab-divider-size-' + spacerDividerHeight,
 				) }
 			>
 				{ this.props.children }

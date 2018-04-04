@@ -42,7 +42,7 @@ class ABSpacerBlock extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { spacerHeight }, isSelected, className, setAttributes, toggleSelection } = this.props;
+		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor }, isSelected, className, setAttributes, toggleSelection, spacerDividerHeight } = this.props;
 
 		return [
 			// Show the block controls on focus
@@ -55,6 +55,9 @@ class ABSpacerBlock extends Component {
 			<Spacer { ...this.props }>
 				<Resizable
 					className={ classnames( className, 'ab-spacer-handle' ) }
+					style={ {
+						color: spacerDividerColor
+					} }
 					size={ {
 						width: '100%',
 						height: spacerHeight,
@@ -85,7 +88,7 @@ class ABSpacerBlock extends Component {
 // Register the block
 registerBlockType( 'atomic-blocks/ab-spacer', {
 	title: __( 'AB Spacer' ),
-	description: __( 'Add a space or divider between your blocks.' ),
+	description: __( 'Add a spacer and divider between your blocks.' ),
 	icon: 'image-flip-vertical',
 	category: 'common',
 	keywords: [
@@ -98,6 +101,22 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 			type: 'number',
 			default: 30,
 		},
+		spacerDivider: {
+			type: 'boolean',
+			default: false
+		},
+		spacerDividerStyle: {
+			type: 'string',
+			default: 'ab-divider-solid'
+		},
+		spacerDividerColor: {
+			type: 'string',
+			default: '#ddd'
+		},
+		spacerDividerHeight: {
+			type: 'number',
+			default: 1,
+		},
 	},
 
 	// Render the block components
@@ -107,7 +126,7 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 	save: function( props ) {
 		
 		// Setup the attributes
-		const { spacerHeight } = props.attributes;
+		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = props.attributes;
 		
 		// Save the block markup for the front end
 		return (
