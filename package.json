@@ -12,8 +12,10 @@
     "cgb-scripts": "1.9.3",
     "classnames": "^2.2.5",
     "md5": "^2.2.1",
-    "styled-components": "^3.1.6"
-  },
+    "react": "16.2.0",
+    "re-resizable": "^4.4.8",
+    "styled-components": "^3.2.5"
+  },  
   "devDependencies": {
     "babel-preset-stage-2": "^6.24.1",
     "grunt-wp-i18n": "^1.0.2"
