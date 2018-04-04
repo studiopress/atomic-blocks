@@ -58,7 +58,7 @@ export default class Inspector extends Component {
 			/>
 
 			<ToggleControl
-				label={ __( 'Add a divider?' ) }
+				label={ __( 'Add Divider' ) }
 				checked={ spacerDivider }
 				onChange={ () => this.props.setAttributes( { spacerDivider: ! spacerDivider } ) }
 			/>
