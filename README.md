@@ -9,6 +9,7 @@ Atomic Blocks is a collection of "blocks" for the new WordPress block editor, al
 * Testimonials
 * Inline Notice
 * Customizable Button
+* Spacer & Divider
 * Author Profile
 * Drop Cap
 
