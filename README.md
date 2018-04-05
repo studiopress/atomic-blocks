@@ -1,6 +1,6 @@
 ## Page building blocks for the new WordPress editor.
 
-Atomic Blocks is a collection of "blocks" for the new WordPress block editor, also known as Gutenberg. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building with blocks gives you more control to quickly create and launch any kind of site you want!
+Atomic Blocks is a collection of "blocks" for the new WordPress block editor, also known as [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/). Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building with blocks gives you more control to quickly create and launch any kind of site you want!
 
 **Atomic Blocks is in early development and may not be suitable for production sites.** Because the new editor is still in production, breaking changes could be expected. Feel free to follow along and [contribute](https://github.com/ArrayHQ/atomic-blocks) to the development.
 
