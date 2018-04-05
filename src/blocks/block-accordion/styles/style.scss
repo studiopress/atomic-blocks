@@ -1,0 +1,36 @@
+/**
+ * Accordion styles
+ * Loads on front end and back end
+ */
+
+ .ab-block-accordion {
+	 margin-bottom: 1.2em; 
+
+	.ab-accordion-title {
+		background: #eee;
+		padding: 10px 15px;
+		
+		p {
+			display: inline;
+		}
+	}
+
+	.ab-accordion-text {
+		padding: 10px 15px;
+	}
+
+	a {
+		color: inherit;
+		box-shadow: 0 -1px 0 inset;
+		text-decoration: none;
+
+		&:hover {
+			color: inherit;
+			box-shadow: 0 -2px 0 inset;
+		}
+	}
+}
+
+.ab-block-accordion + .ab-block-accordion {
+	margin-top: -.6em;
+}
