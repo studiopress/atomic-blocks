@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, builder, editor, atomicblocks, style
 Requires at least: 4.7
 Tested up to: 4.9.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,6 +21,7 @@ Atomic Blocks is a collection of "blocks" for the new WordPress block editor, al
 
 * Testimonials
 * Inline Notice
+* Accordion
 * Customizable Button
 * Spacer & Divider
 * Author Profile
@@ -99,3 +100,6 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 = 1.0.2 =
 * Add the Spacer & Divider block.
+
+= 1.0.3 =
+* Add the Accordion block.
