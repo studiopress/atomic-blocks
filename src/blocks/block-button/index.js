@@ -133,7 +133,6 @@ registerBlockType( 'atomic-blocks/ab-button', {
 		},
 		buttonAlignment: {
 			type: 'string',
-			default: 'left',
 		},
 		buttonBackgroundColor: {
 			type: 'string',
