@@ -121,9 +121,7 @@ registerBlockType( 'atomic-blocks/ab-button', {
 	],
 	attributes: {
 		buttonText: {
-			type: 'array',
-			source: 'children',
-			selector: 'a',
+			type: 'string',
 		},
 		buttonUrl: {
 			type: 'string',
