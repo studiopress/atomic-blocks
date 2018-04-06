@@ -189,9 +189,9 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 			default: 18
 		},
 		profileAvatarShape: {
-            type: 'string',
-            default: 'square',
-        },
+			type: 'string',
+			default: 'square',
+		},
 		twitter: {
 			type: 'url',
 		},
