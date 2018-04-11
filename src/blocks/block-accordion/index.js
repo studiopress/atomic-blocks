@@ -13,13 +13,13 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
 
 // Register block controls
-const { 
+const {
 	registerBlockType,
 	RichText,
 	AlignmentToolbar,
@@ -36,7 +36,7 @@ const {
 } = wp.components;
 
 class ABAccordionBlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
@@ -67,7 +67,7 @@ class ABAccordionBlock extends Component {
 					className='ab-accordion-title'
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
 				/>
-				
+
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Accordion Text' ) }
@@ -121,23 +121,16 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 
 	// Save the attributes and markup
 	save: function( props ) {
-		
+
 		// Setup the attributes
 		const { accordionTitle, accordionText, accordionAlignment, accordionFontSize, accordionOpen } = props.attributes;
-		
+
 		// Save the block markup for the front end
 		return (
-			<Accordion { ...props }>	
+			<Accordion { ...props }>
 				<details open={accordionOpen}>
-				{ 	// Check if there is an accordion title
-					accordionTitle && (
-						<summary class="ab-accordion-title"><p>{ accordionTitle }</p></summary>
-				) }
-
-				{	// Check if there is accordion text
-					accordionText && (
+					<summary class="ab-accordion-title"><p>{ accordionTitle }</p></summary>
 					<p class="ab-accordion-text">{ accordionText }</p>
-				) }
 				</details>
 			</Accordion>
 		);
