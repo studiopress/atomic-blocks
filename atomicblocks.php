@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Atomic Blocks
+ * Plugin Name: Atomic Blocks - Gutenberg Blocks Collection
  * Plugin URI: https://atomicblocks.com
- * Description: A beautiful collection of WordPress editor blocks to help you effortlessly build the website you've always wanted.
+ * Description: A beautiful collection of handy Gutenberg blocks to help you get started with the new WordPress editor.
  * Author: atomicblocks
  * Author URI: http://arraythemes.com
  * Version: 1.0.3

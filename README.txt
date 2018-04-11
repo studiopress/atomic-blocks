@@ -1,23 +1,23 @@
-=== Atomic Blocks ===
+=== Atomic Blocks - Gutenberg Blocks Collection ===
 Contributors: atomicblocks, mindctrl, arrayhq
 Donate link: https://atomicblocks.com
-Tags: gutenberg, blocks, page builder, builder, editor, atomicblocks, style
+Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
-Tested up to: 4.9.4
+Tested up to: 4.9.5
 Stable tag: 1.0.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Page building blocks for the new WordPress editor.
+A beautiful collection of Gutenberg blocks.
 
 == Description ==
 
-Atomic Blocks is a collection of "blocks" for the new WordPress block editor, also known as [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/). Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building with blocks gives you more control to quickly create and launch any kind of site you want!
+Atomic Blocks is a collection of content blocks for the new [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link) block editor. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building blocks give you more control to quickly create and launch any kind of site you want!
 
 **Atomic Blocks is in early development and may not be suitable for production sites.** Because the new editor is still in production, breaking changes could be expected. Feel free to follow along and [contribute](https://github.com/ArrayHQ/atomic-blocks) to the development.
 
-### Atomic Blocks currently includes: 
+## Atomic Blocks currently includes the following blocks:
 
 * Testimonials
 * Inline Notice
