@@ -81,3 +81,6 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 **1.0.3**
 * Add the Accordion block.
+
+**1.0.4**
+* Fix the Accordion block bug where outputs don't match.
