@@ -69,7 +69,7 @@ class ABButtonBlock extends Component {
 					isSelected={ isSelected }
 					keepPlaceholderOnFocus
 					value={ buttonText }
-					formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+					formattingControls={ [] }
 					className={ classnames(
 						'ab-button',
 						buttonShape,

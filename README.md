@@ -70,17 +70,20 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
-**1.0**
-* Initial release.
+**1.0.5**
+* Fix the Button block to remove formatting issue.
 
-**1.0.1**
-* Add the Customizable Button block.
-
-**1.0.2**
-* Add the Spacer & Divider block.
+**1.0.4**
+* Fix the Accordion block bug where outputs don't match.
 
 **1.0.3**
 * Add the Accordion block.
 
-**1.0.4**
-* Fix the Accordion block bug where outputs don't match.
+**1.0.2**
+* Add the Spacer & Divider block.
+
+**1.0.1**
+* Add the Customizable Button block.
+
+**1.0**
+* Initial release.

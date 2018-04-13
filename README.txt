@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
 Tested up to: 4.9.5
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -92,17 +92,20 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 == Changelog ==
 
-= 1.0 =
-* Initial release.
+= 1.0.5 =
+* Fix the Button block to remove formatting issue.
 
-= 1.0.1 =
-* Add the Customizable Button block.
-
-= 1.0.2 =
-* Add the Spacer & Divider block.
+= 1.0.4 =
+* Fix the Accordion block bug where outputs don't match.
 
 = 1.0.3 =
 * Add the Accordion block.
 
-= 1.0.4 =
-* Fix the Accordion block bug where outputs don't match.
+= 1.0.2 =
+* Add the Spacer & Divider block.
+
+= 1.0.1 =
+* Add the Customizable Button block.
+
+= 1.0 =
+* Initial release.
