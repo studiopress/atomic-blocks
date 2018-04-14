@@ -70,6 +70,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.0.6**
+* Add PanelBody to inspector controls.
+* Group social links together in Profile block.
+
 **1.0.5**
 * Fix the Button block to remove formatting issue.
 
