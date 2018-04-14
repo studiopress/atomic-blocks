@@ -48,56 +48,56 @@ export default class Inspector extends Component {
 
 		return (
 		<InspectorControls key="inspector">
-
-			<RangeControl
-				label={ __( 'Spacer Height' ) }
-				value={ spacerHeight || '' }
-				onChange={ ( value ) => this.props.setAttributes( { spacerHeight: value } ) }
-				min={ 50 }
-				max={ 600 }
-			/>
-
-			<ToggleControl
-				label={ __( 'Add Divider' ) }
-				checked={ spacerDivider }
-				onChange={ () => this.props.setAttributes( { spacerDivider: ! spacerDivider } ) }
-			/>
-
-			{ spacerDivider ?
 			<PanelBody>
-				<SelectControl
-					label={ __( 'Divider Style' ) }
-					value={ spacerDividerStyle }
-					options={ spacerStyleOptions.map( ({ value, label }) => ( {
-						value: value,
-						label: label,
-					} ) ) }
-					onChange={ ( value ) => { this.props.setAttributes( { spacerDividerStyle: value } ) } }
-				/>
-
 				<RangeControl
-					label={ __( 'Divider Height' ) }
-					value={ spacerDividerHeight || '' }
-					onChange={ ( value ) => this.props.setAttributes( { spacerDividerHeight: value } ) }
-					min={ 1 }
-					max={ 5 }
+					label={ __( 'Spacer Height' ) }
+					value={ spacerHeight || '' }
+					onChange={ ( value ) => this.props.setAttributes( { spacerHeight: value } ) }
+					min={ 50 }
+					max={ 600 }
 				/>
 
-				<PanelColor 
-					title={ __( 'Divider Color' ) }
-					colorValue={ spacerDividerColor }
-					initialOpen={ false }
-				>
-					<ColorPalette 
-						label={ __( 'Divider Color' ) }
-						value={ spacerDividerColor }
-						onChange={ ( value ) => { this.props.setAttributes( { spacerDividerColor: value } ) } }
-						colors={['#dddddd', '#333333', '#3373dc', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#444048']}
-					/>
-				</PanelColor>
-			</PanelBody>
-			: null }
+				<ToggleControl
+					label={ __( 'Add Divider' ) }
+					checked={ spacerDivider }
+					onChange={ () => this.props.setAttributes( { spacerDivider: ! spacerDivider } ) }
+				/>
 
+				{ spacerDivider ?
+				<PanelBody>
+					<SelectControl
+						label={ __( 'Divider Style' ) }
+						value={ spacerDividerStyle }
+						options={ spacerStyleOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { spacerDividerStyle: value } ) } }
+					/>
+
+					<RangeControl
+						label={ __( 'Divider Height' ) }
+						value={ spacerDividerHeight || '' }
+						onChange={ ( value ) => this.props.setAttributes( { spacerDividerHeight: value } ) }
+						min={ 1 }
+						max={ 5 }
+					/>
+
+					<PanelColor 
+						title={ __( 'Divider Color' ) }
+						colorValue={ spacerDividerColor }
+						initialOpen={ false }
+					>
+						<ColorPalette 
+							label={ __( 'Divider Color' ) }
+							value={ spacerDividerColor }
+							onChange={ ( value ) => { this.props.setAttributes( { spacerDividerColor: value } ) } }
+							colors={['#dddddd', '#333333', '#3373dc', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#444048']}
+						/>
+					</PanelColor>
+				</PanelBody>
+				: null }
+			</PanelBody>
 		</InspectorControls>
 		);
 	}

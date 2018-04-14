@@ -40,22 +40,22 @@ export default class Inspector extends Component {
 
 		return (
 		<InspectorControls key="inspector">
+			<PanelBody>
+				<RangeControl
+					label={ __( 'Font Size' ) }
+					value={ accordionFontSize }
+					onChange={ ( value ) => this.props.setAttributes( { accordionFontSize: value } ) }
+					min={ 14 }
+					max={ 24 }
+					step={ 1 }
+				/>
 
-			<RangeControl
-				label={ __( 'Font Size' ) }
-				value={ accordionFontSize }
-				onChange={ ( value ) => this.props.setAttributes( { accordionFontSize: value } ) }
-				min={ 14 }
-				max={ 24 }
-				step={ 1 }
-			/>
-
-			<ToggleControl
-				label={ __( 'Open by default' ) }
-				checked={ accordionOpen }
-				onChange={ () => this.props.setAttributes( { accordionOpen: ! accordionOpen } ) }
-			/>
-
+				<ToggleControl
+					label={ __( 'Open by default' ) }
+					checked={ accordionOpen }
+					onChange={ () => this.props.setAttributes( { accordionOpen: ! accordionOpen } ) }
+				/>
+			</PanelBody>
 		</InspectorControls>
 		);
 	}
