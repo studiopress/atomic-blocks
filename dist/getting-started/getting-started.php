@@ -26,6 +26,10 @@ function atomic_blocks_start_load_admin_scripts() {
 	// Getting Started styles
 	wp_register_style( 'atomic-blocks-getting-started', plugins_url( 'getting-started/getting-started.css', dirname( __FILE__ ) ), false, '1.0.0' );
 	wp_enqueue_style( 'atomic-blocks-getting-started' );
+
+	// FontAwesome
+	wp_register_style( 'atomic-blocks-fontawesome', plugins_url( '/inc/fontawesome/css/fontawesome-all.css', dirname( __FILE__ ) ), false, '1.0.0' );
+	wp_enqueue_style( 'atomic-blocks-fontawesome' );
 }
 add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
 
@@ -90,7 +94,7 @@ function atomic_blocks_getting_started_page() {
 			),
 			admin_url( 'update.php' )
 		),
-		'install-plugin-gutenberg'
+		'install-plugin_gutenberg'
 	);
 
 	$ab_install_url = wp_nonce_url(
@@ -101,19 +105,20 @@ function atomic_blocks_getting_started_page() {
 			),
 			admin_url( 'update.php' )
 		),
-		'install-plugin-atomic-blocks'
+		'install-plugin_atomic-blocks'
 	);
 ?>
-	<div class="wrap getting-started">
+	<div class="wrap ab-getting-started">
 		<div class="intro-wrap">
 			<div class="intro">
+				<a href="<?php echo esc_url('https://goo.gl/NfXcof'); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( 'logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>	
 				<h3><?php printf( esc_html__( 'Getting started with', 'atomic-blocks' ) ); ?> <strong><?php printf( esc_html__( 'Atomic Blocks', 'atomic-blocks' ) ); ?></strong></h3>
 			</div>
 
 			<ul class="inline-list">
 				<li class="current"><a id="plugin-help" href="#"><i class="fa fa-plug"></i> <?php esc_html_e( 'Plugin Help File', 'atomic-blocks' ); ?></a></li>	
 				<li><a id="theme-help" href="#"><i class="fa fa-check"></i> <?php esc_html_e( 'Theme Help File', 'atomic-blocks' ); ?></a></li>
-				<li><a id="updates" href="#"><i class="fa fa-refresh"></i> <?php esc_html_e( 'Latest Updates', 'atomic-blocks' ); ?></a></li>
+				<li><a id="updates" href="#"><i class="fa fa-sync-alt"></i> <?php esc_html_e( 'Latest Updates', 'atomic-blocks' ); ?></a></li>
 				<li><a id="themes" href="#"><i class="fa fa-arrow-circle-down"></i> <?php esc_html_e( 'Get More Themes', 'atomic-blocks' ); ?></a></li>
 			</ul>
 		</div>
@@ -203,32 +208,38 @@ function atomic_blocks_getting_started_page() {
 				<div class="panel-right">
 
 					<?php if( ! function_exists( 'gutenberg_init' ) || ! function_exists( 'atomic_blocks_loader' ) ) { ?>
-					<div class="panel-aside panel-ab-plugin panel-club">
+					<div class="panel-aside panel-ab-plugin panel-club ab-quick-start">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
 								<h3><i class="fa fa-check"></i> <?php esc_html_e( 'Quick Start Checklist', 'atomic-blocks' ); ?></h3>
 							</div>
 
 							<ul>
-								<li class="cell <?php if( function_exists( 'gutenberg_init' ) ) { echo 'step-complete'; } ?>">
+							<li class="cell <?php if( function_exists( 'gutenberg_init' ) ) { echo 'step-complete'; } ?>">
 									<strong><?php esc_html_e( '1. Install the Gutenberg plugin.', 'atomic-blocks' ); ?></strong>
-									<p><?php esc_html_e( 'Gutenberg adds the new block-based editor to WordPress.', 'atomic-blocks' ); ?></p>
+									<p><?php esc_html_e( 'Gutenberg adds the new block-based editor to WordPress. You will need this to work with the Atomic Blocks plugin.', 'atomic-blocks' ); ?></p>
 
-									<?php if( ! function_exists( 'gutenberg_init' ) ) { ?>
+									<?php if( ! array_key_exists( 'gutenberg/gutenberg.php', get_plugins() ) ) { ?>
 										<a class="button-primary club-button" href="<?php echo esc_url( $gberg_install_url ); ?>"><?php esc_html_e( 'Install Gutenberg now', 'atomic-blocks' ); ?> &rarr;</a>
+									<?php } else if ( array_key_exists( 'gutenberg/gutenberg.php', get_plugins() ) && ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) { ?>
+										<?php activate_plugin( 'gutenberg/gutenberg.php' ); ?>
+										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
 									<?php } else { ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin already installed!', 'atomic-blocks' ); ?></strong>
+										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
 									<?php } ?>
 								</li>
 
 								<li class="cell <?php if( function_exists( 'atomic_blocks_loader' ) ) { echo 'step-complete'; } ?>">
 									<strong><?php esc_html_e( '2. Install the Atomic Blocks plugin.', 'atomic-blocks' ); ?></strong>
-									<p><?php esc_html_e( 'Atomic Blocks adds several handy blocks to the block editor.', 'atomic-blocks' ); ?></p>
+									<p><?php esc_html_e( 'Atomic Blocks adds several handy content blocks to the Gutenberg block editor.', 'atomic-blocks' ); ?></p>
 
-									<?php if( ! function_exists( 'atomic_blocks_loader' ) ) { ?>
+									<?php if( ! array_key_exists( 'atomic-blocks/atomicblocks.php', get_plugins() ) ) { ?>
 										<a class="button-primary club-button" href="<?php echo esc_url( $ab_install_url ); ?>"><?php esc_html_e( 'Install Atomic Blocks now', 'atomic-blocks' ); ?> &rarr;</a>
+									<?php } else if ( array_key_exists( 'atomic-blocks/atomicblocks.php', get_plugins() ) && ! is_plugin_active( 'atomic-blocks/atomicblocks.php' ) ) { ?>
+										<?php activate_plugin( 'atomic-blocks/atomicblocks.php' ); ?>
+										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
 									<?php } else { ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin already installed!', 'atomic-blocks' ); ?></strong>
+										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
 									<?php } ?>
 								</li>
 							</ul>
@@ -240,12 +251,14 @@ function atomic_blocks_getting_started_page() {
 					<div class="panel-aside panel-ab-plugin panel-club">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
-								<h3><i class="fa fa-download"></i> <?php esc_html_e( 'Download the Theme', 'atomic-blocks' ); ?></h3>
+								<h3><i class="fa fa-download"></i> <?php esc_html_e( 'Free Theme Download', 'atomic-blocks' ); ?></h3>
 							</div>
 
 							<ul>
 								<li class="cell">
-									<p><?php esc_html_e( 'Download our free Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor.', 'atomic-blocks' ); ?></p>
+									<p><a class="ab-theme-image" href="<?php echo esc_url('https://goo.gl/FCT6xS'); ?>"><img src="<?php echo esc_url( plugins_url( 'theme.jpg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a></p>
+									
+									<p><?php esc_html_e( 'Download our FREE Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor.', 'atomic-blocks' ); ?></p>
 
 									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/FCT6xS' ); ?>"><?php esc_html_e( 'Download Now', 'atomic-blocks' ); ?> &rarr;</a>
 								</li>
@@ -262,7 +275,7 @@ function atomic_blocks_getting_started_page() {
 
 							<ul>
 								<li class="cell">
-									<p><?php esc_html_e( 'The Atomic Blocks theme and plugin are both in early development. Join the newsletter and we will send you an email when we update the theme and plugin!', 'atomic-blocks' ); ?></p>
+								<p><?php esc_html_e( 'Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!', 'atomic-blocks' ); ?></p>
 
 									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/3pC6LE' ); ?>"><?php esc_html_e( 'Subscribe Now', 'atomic-blocks' ); ?> &rarr;</a>
 								</li>

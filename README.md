@@ -70,6 +70,14 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.0.8**
+* Add FontAwesome font library back to Getting Started page.
+* Add prefixes to Getting Started page styles to prevent conflicts.
+
+**1.0.7**
+* Improve Quick Start box on the Getting Started page.
+* Fix issue with FontAwesome not loading on Getting Started page.
+
 **1.0.6**
 * Add PanelBody to inspector controls.
 * Group social links together in Profile block.

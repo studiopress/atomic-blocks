@@ -4,12 +4,12 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
 Tested up to: 4.9.5
-Stable tag: 1.0.6
+Stable tag: 1.0.8
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A beautiful collection of Gutenberg blocks.
+A collection of beautiful, customizable Gutenberg blocks for the new block editor.
 
 == Description ==
 
@@ -91,6 +91,14 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 6. The Drop Cap block with settings.
 
 == Changelog ==
+
+= 1.0.8 =
+* Add FontAwesome font library back to Getting Started page.
+* Add prefixes to Getting Started page styles to prevent conflicts.
+
+= 1.0.7 =
+* Improve Quick Start box on the Getting Started page.
+* Fix issue with FontAwesome not loading on Getting Started page.
 
 = 1.0.6 =
 * Add PanelBody to inspector controls.
