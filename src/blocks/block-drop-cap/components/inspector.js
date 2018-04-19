@@ -19,6 +19,7 @@ const {
 	Button,
 	RangeControl, 
 	SelectControl,
+	PanelBody,
 } = wp.components;
 
 /**

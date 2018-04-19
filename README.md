@@ -70,6 +70,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.0.9**
+* Define PanelBody to fix Drop Cap block error.
+
 **1.0.8**
 * Add FontAwesome font library back to Getting Started page.
 * Add prefixes to Getting Started page styles to prevent conflicts.
