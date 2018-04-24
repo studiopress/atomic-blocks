@@ -83,7 +83,7 @@ export default class Inspector extends Component {
 					initialOpen={ false }
 				>
 					<ColorPalette 
-						label={ __( 'Background Color' ) }
+						label={ __( 'Text Color' ) }
 						value={ testimonialTextColor }
 						onChange={ ( value ) => this.props.setAttributes( { testimonialTextColor: value } ) }
 					/>

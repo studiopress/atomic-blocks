@@ -9,3 +9,4 @@ import './blocks/block-drop-cap/index.js';
 import './blocks/block-button/index.js';
 import './blocks/block-spacer/index.js';
 import './blocks/block-accordion/index.js';
+import './blocks/block-cta/index.js';

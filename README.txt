@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
 Tested up to: 4.9.5
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -19,13 +19,14 @@ Atomic Blocks is a collection of content blocks for the new [Gutenberg](https://
 
 ## Atomic Blocks currently includes the following blocks:
 
-* Testimonials
-* Inline Notice
-* Accordion
-* Customizable Button
-* Spacer & Divider
-* Author Profile
-* Drop Cap
+* Testimonial Block
+* Inline Notice Block
+* Accordion Block
+* Call-To-Action Block
+* Customizable Button Block
+* Spacer & Divider Block
+* Author Profile Block
+* Drop Cap Block
 
 ### Atomic Blocks Help File
 
@@ -91,6 +92,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 6. The Drop Cap block with settings.
 
 == Changelog ==
+
+= 1.1.0 =
+* Add Call-To-Action Block
+* Improve wide and full-width styles
 
 = 1.0.9 =
 * Define PanelBody to fix Drop Cap block error.

@@ -6,13 +6,14 @@ Atomic Blocks is a collection of content blocks for the new [Gutenberg block edi
 
 ## Atomic Blocks currently includes the following blocks:
 
-* Testimonials
-* Inline Notice
-* Accordion
-* Customizable Button
-* Spacer & Divider
-* Author Profile
-* Drop Cap
+* Testimonial Block
+* Inline Notice Block
+* Accordion Block
+* Call-To-Action Block
+* Customizable Button Block
+* Spacer & Divider Block
+* Author Profile Block
+* Drop Cap Block
 
 ## Atomic Blocks Help File
 
@@ -69,6 +70,10 @@ Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomi
 Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) to use Atomic Blocks. Eventually, Gutenberg (the block editor) will be merged into WordPress and you won't need the plugin.
 
 ## Changelog
+
+**1.1.0**
+* Add Call-To-Action Block
+* Improve wide and full-width styles
 
 **1.0.9**
 * Define PanelBody to fix Drop Cap block error.
