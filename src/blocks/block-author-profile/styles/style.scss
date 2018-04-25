@@ -88,6 +88,12 @@
 		z-index: 5;
 	}
 
+	.ab-profile-text:empty,
+	.ab-profile-title:empty,
+	.ab-profile-name:empty {
+		display: none;
+	}
+
 	.ab-profile-image-wrap {
 		width: 100%;
 		background: #ddd;

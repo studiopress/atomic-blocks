@@ -97,6 +97,8 @@ class ABProfileBlock extends Component {
 						tagName="h2"
 						placeholder={ __( 'Add name' ) }
 						value={ profileName }
+						keepPlaceholderOnFocus
+						formattingControls={ [] }
 						className='ab-profile-name'
 						style={ {
 							color: profileTextColor
@@ -108,6 +110,8 @@ class ABProfileBlock extends Component {
 						tagName="p"
 						placeholder={ __( 'Add title' ) }
 						value={ profileTitle }
+						keepPlaceholderOnFocus
+						formattingControls={ [] }
 						className='ab-profile-title'
 						style={ {
 							color: profileTextColor
@@ -251,29 +255,23 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						'ab-profile-column ab-profile-content-wrap'
 					) }
 				>
-					{ profileName && (
-						<h2 
-							className='ab-profile-name'
-							style={ {
-								color: profileTextColor
-							} }
-						>{ profileName }</h2>
-					) }
+					<h2 
+						className='ab-profile-name'
+						style={ {
+							color: profileTextColor
+						} }
+					>{ profileName }</h2>
 					
-					{ profileTitle && (
-						<p 
-							className='ab-profile-title'
-							style={ {
-								color: profileTextColor
-							} }
-						>{ profileTitle }</p>
-					) }
+					<p 
+						className='ab-profile-title'
+						style={ {
+							color: profileTextColor
+						} }
+					>{ profileTitle }</p>
 
-					{ profileContent && (
-						<div className='ab-profile-text'>
-							{ profileContent }
-						</div>
-					) }
+					<div className='ab-profile-text'>
+						{ profileContent }
+					</div>
 					
 					<SocialIcons { ...props } />
 				</div>

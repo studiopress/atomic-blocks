@@ -71,6 +71,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.1.1**
+* Improve Author Profile block to fix text focus and spacing.
+
 **1.1.0**
 * Add Call-To-Action Block
 * Improve wide and full-width styles
