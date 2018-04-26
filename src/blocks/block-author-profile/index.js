@@ -33,14 +33,137 @@ const {
 // Register Inspector components
 const {
 	Button,
+	withState,
 } = wp.components;
 
-class ABProfileBlock extends Component {
-	
-	render() {
+const blockAttributes = {
+	profileName: {
+		type: 'string',
+		selector: '.ab-profile-name',
+	},
+	profileTitle: {
+		type: 'string',
+		selector: '.ab-profile-title',
+	},
+	profileContent: {
+		type: 'array',
+		selector: '.ab-profile-text',
+		source: 'children',
+	}, 
+	profileAlignment: {
+		type: 'string',
+	},
+	profileImgURL: {
+		type: 'string',
+		source: 'attribute',
+		attribute: 'src',
+		selector: 'img',
+	},
+	profileImgID: {
+		type: 'number',
+	},
+	profileBackgroundColor: {
+		type: 'string',
+		default: '#f2f2f2'
+	},
+	profileTextColor: {
+		type: 'string',
+		default: '#32373c'
+	},
+	profileLinkColor: {
+		type: 'string',
+		default: '#392f43'
+	},
+	profileFontSize: {
+		type: 'number',
+		default: 18
+	},
+	profileAvatarShape: {
+		type: 'string',
+		default: 'square',
+	},
+	twitter: {
+		type: 'url',
+	},
+	facebook: {
+		type: 'url',
+	},
+	instagram: {
+		type: 'url',
+	},
+	pinterest: {
+		type: 'url',
+	},
+	google: {
+		type: 'url',
+	},
+	youtube: {
+		type: 'url',
+	},
+	github: {
+		type: 'url',
+	},
+	email: {
+		type: 'url',
+	},
+	website: {
+		type: 'url',
+	},
+};
+
+// Register the block
+registerBlockType( 'atomic-blocks/ab-profile-box', {
+	title: __( 'AB Profile Box' ),
+	description: __( 'Add a profile box with bio info and social media links.' ),
+	icon: 'admin-users',
+	category: 'common',
+	keywords: [
+		__( 'author' ),
+		__( 'profile' ),
+		__( 'atomic' ),
+	],
+	// Setup the block attributes
+	attributes: blockAttributes,
+
+	// Render the block components
+	edit: withState( { editable: 'content', } )( ( props ) => {
+		// Setup the attributes
+		const { 
+			profileName, 
+			profileTitle, 
+			profileContent, 
+			profileAlignment, 
+			profileImgURL, 
+			profileImgID, 
+			profileFontSize, 
+			profileBackgroundColor, 
+			profileTextColor, 
+			profileLinkColor, 
+			twitter, 
+			facebook, 
+			instagram, 
+			pinterest, 
+			google, 
+			youtube, 
+			github, 
+			email, 
+			website, 
+			profileAvatarShape
+		} = props.attributes;
 		
-		// Setup constants and attributes
-		const { attributes: { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape }, isSelected, className, setAttributes  } = this.props;
+		// Setup the props
+		const {
+			attributes,
+			isSelected,
+			editable,
+			setState,
+			className,
+			setAttributes
+		} = props;
+
+		const onSetActiveEditable = ( newEditable ) => () => {
+			setState( { editable: newEditable } );
+		};
 
 		return [
 			// Show the block alignment controls on focus
@@ -48,25 +171,25 @@ class ABProfileBlock extends Component {
 				<BlockControls key="controls">
 					<AlignmentToolbar
 						value={ profileAlignment }
-						onChange={ ( value ) => this.props.setAttributes( { profileAlignment: value } ) }
+						onChange={ ( value ) => setAttributes( { profileAlignment: value } ) }
 					/>
 				</BlockControls>
 			),
 			// Show the block controls on focus
 			isSelected && (
 				<Inspector
-					{ ...this.props }
+					{ ...{ setAttributes, ...props } }
 				/>
 			),
 			// Show the block markup in the editor
-			<ProfileBox { ...this.props }>
-				<AvatarColumn { ...this.props }>
+			<ProfileBox { ...props }>
+				<AvatarColumn { ...props }>
 					<div class="ab-profile-image-square">
 						<MediaUpload
 							buttonProps={ {
 								className: 'change-image'
 							} }
-							onSelect={ ( img ) => this.props.setAttributes( 
+							onSelect={ ( img ) => setAttributes( 
 								{
 									profileImgID: img.id,
 									profileImgURL: img.url,
@@ -98,12 +221,13 @@ class ABProfileBlock extends Component {
 						placeholder={ __( 'Add name' ) }
 						value={ profileName }
 						keepPlaceholderOnFocus
-						formattingControls={ [] }
+						isSelected={ isSelected && editable === 'profileName' }
 						className='ab-profile-name'
 						style={ {
 							color: profileTextColor
 						} }
-						onChange={ ( value ) => this.props.setAttributes( { profileName: value } ) }
+						onChange={ ( value ) => setAttributes( { profileName: value } ) }
+						onFocus={ onSetActiveEditable( 'profileName' ) }
 					/>
 					
 					<RichText
@@ -111,12 +235,13 @@ class ABProfileBlock extends Component {
 						placeholder={ __( 'Add title' ) }
 						value={ profileTitle }
 						keepPlaceholderOnFocus
-						formattingControls={ [] }
+						isSelected={ isSelected && editable === 'profileTitle' }
 						className='ab-profile-title'
 						style={ {
 							color: profileTextColor
 						} }
-						onChange={ ( value ) => this.props.setAttributes( { profileTitle: value } ) }
+						onChange={ ( value ) => setAttributes( { profileTitle: value } ) }
+						onFocus={ onSetActiveEditable( 'profileTitle' ) }
 					/>
 
 					<RichText
@@ -124,109 +249,19 @@ class ABProfileBlock extends Component {
 						className='ab-profile-text'
 						multiline="p"
 						placeholder={ __( 'Add profile text...' ) }
-						isSelected={ isSelected }
+						isSelected={ isSelected && editable === 'profileContent' }
 						keepPlaceholderOnFocus
 						value={ profileContent }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-						onChange={ ( value ) => this.props.setAttributes( { profileContent: value } ) }
+						onChange={ ( value ) => setAttributes( { profileContent: value } ) }
+						onFocus={ onSetActiveEditable( 'profileContent' ) }
 					/>
 
-					<SocialIcons { ...this.props } />
+					<SocialIcons { ...props } />
 				</div>
 			</ProfileBox>
 		];
-	}
-}
-
-// Register the block
-registerBlockType( 'atomic-blocks/ab-profile-box', {
-	title: __( 'AB Profile Box' ),
-	description: __( 'Add a profile box with bio info and social media links.' ),
-	icon: 'admin-users',
-	category: 'common',
-	keywords: [
-		__( 'author' ),
-		__( 'profile' ),
-		__( 'atomic' ),
-	],
-	// Setup the block attributes
-	attributes: {
-		profileName: {
-			type: 'string',
-			selector: '.ab-profile-name',
-		},
-		profileTitle: {
-			type: 'string',
-			selector: '.ab-profile-title',
-		},
-		profileContent: {
-			type: 'array',
-			selector: '.ab-profile-text',
-			source: 'children',
-		}, 
-		profileAlignment: {
-			type: 'string',
-		},
-		profileImgURL: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'src',
-			selector: 'img',
-		},
-		profileImgID: {
-			type: 'number',
-		},
-		profileBackgroundColor: {
-			type: 'string',
-			default: '#f2f2f2'
-		},
-		profileTextColor: {
-			type: 'string',
-			default: '#32373c'
-		},
-		profileLinkColor: {
-			type: 'string',
-			default: '#392f43'
-		},
-		profileFontSize: {
-			type: 'number',
-			default: 18
-		},
-		profileAvatarShape: {
-			type: 'string',
-			default: 'square',
-		},
-		twitter: {
-			type: 'url',
-		},
-		facebook: {
-			type: 'url',
-		},
-		instagram: {
-			type: 'url',
-		},
-		pinterest: {
-			type: 'url',
-		},
-		google: {
-			type: 'url',
-		},
-		youtube: {
-			type: 'url',
-		},
-		github: {
-			type: 'url',
-		},
-		email: {
-			type: 'url',
-		},
-		website: {
-			type: 'url',
-		},
-	},
-
-	// Render the block components
-	edit: ABProfileBlock,
+	} ),
 
 	// Save the block markup
 	save: function( props ) {
@@ -237,8 +272,8 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 		return (
 			// Save the block markup for the front end
 			<ProfileBox { ...props }>
-				  
-				{ profileImgURL && (
+				
+				{ profileImgURL && !! profileImgURL.length && (
 					<AvatarColumn { ...props }>
 						<div class="ab-profile-image-square">
 							<img
@@ -255,24 +290,27 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						'ab-profile-column ab-profile-content-wrap'
 					) }
 				>
-					<h2 
-						className='ab-profile-name'
-						style={ {
-							color: profileTextColor
-						} }
-					>{ profileName }</h2>
-					
-					<p 
-						className='ab-profile-title'
-						style={ {
-							color: profileTextColor
-						} }
-					>{ profileTitle }</p>
-
-					<div className='ab-profile-text'>
-						{ profileContent }
-					</div>
-					
+					{ profileName && !! profileName.length && (
+						<h2 
+							className='ab-profile-name'
+							style={ {
+								color: profileTextColor
+							} }
+						>{ profileName }</h2>
+					) }
+					{ profileTitle && !! profileTitle.length && (
+						<p 
+							className='ab-profile-title'
+							style={ {
+								color: profileTextColor
+							} }
+						>{ profileTitle }</p>
+					) }
+					{ profileContent && !! profileContent.length && (
+						<div className='ab-profile-text'>
+							{ profileContent }
+						</div>
+					) }
 					<SocialIcons { ...props } />
 				</div>
 			</ProfileBox>
