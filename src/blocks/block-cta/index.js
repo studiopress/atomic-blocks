@@ -33,14 +33,128 @@ const {
 	withFallbackStyles,
 	IconButton,
 	Dashicon,
+	withState,
 } = wp.components;
 
-class ABctaBlock extends Component {
-	
-	render() {
+const blockAttributes = {
+	buttonText: {
+		type: 'string',
+	},
+	buttonUrl: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'a',
+		attribute: 'href',
+	},
+	buttonAlignment: {
+		type: 'string',
+		default: 'center'
+	},
+	buttonBackgroundColor: {
+		type: 'string',
+		default: '#3373dc'
+	},
+	buttonTextColor: {
+		type: 'string',
+		default: '#ffffff'
+	},
+	buttonSize: {
+		type: 'string',
+		default: 'ab-button-size-medium'
+	},
+	buttonShape: {
+		type: 'string',
+		default: 'ab-button-shape-rounded'
+	},
+	buttonTarget: {
+		type: 'boolean',
+		default: false
+	},
+	ctaTitle: {
+		type: 'string',
+	},
+	ctaTitleFontSize: {
+		type: 'string',
+		default: '32'
+	},
+	ctaTextFontSize: {
+		type: 'string',
+		default: '20'
+	},
+	ctaText: {
+		type: 'array',
+		selector: '.ab-cta-text',
+		source: 'children',
+	},
+	ctaWidth: {
+		type: 'string',
+		default: 'center',
+	},
+	ctaBackgroundColor: {
+		type: 'string',
+		default: '#f2f2f2'
+	},
+	ctaTextColor: {
+		type: 'string',
+		default: '#32373c'
+	},
+};
 
+// Register the block
+registerBlockType( 'atomic-blocks/ab-cta', {
+	title: __( 'AB Call To Action' ),
+	description: __( 'Add a call to action section with a title, text, and a button.' ),
+	icon: 'megaphone',
+	category: 'common',
+	keywords: [
+		__( 'call to action' ),
+		__( 'cta' ),
+		__( 'atomic' ),
+	],
+
+	attributes: blockAttributes,
+
+	getEditWrapperProps( { ctaWidth } ) {
+		if ( 'left' === ctaWidth || 'right' === ctaWidth || 'full' === ctaWidth ) {
+			return { 'data-align': ctaWidth };
+		}
+	},
+
+	// Render the block components
+	edit: withState( { editable: 'content', } )( ( props ) => { 
+		
 		// Setup the attributes
-		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaWidth, ctaBackgroundColor, ctaTextColor }, isSelected, className, setAttributes } = this.props;
+		const { 
+			buttonText, 
+			buttonUrl, 
+			buttonAlignment, 
+			buttonBackgroundColor, 
+			buttonTextColor, 
+			buttonSize, 
+			buttonShape, 
+			buttonTarget, 
+			ctaTitle, 
+			ctaText, 
+			ctaTitleFontSize, 
+			ctaTextFontSize, 
+			ctaWidth, 
+			ctaBackgroundColor, 
+			ctaTextColor 
+		} = props.attributes;
+		
+		// Setup the props
+		const {
+			attributes,
+			isSelected,
+			editable,
+			setState,
+			className,
+			setAttributes
+		} = props;
+
+		const onSetActiveEditable = ( newEditable ) => () => {
+			setState( { editable: newEditable } );
+		};
 
 		return [
 			// Show the alignment toolbar on focus
@@ -62,19 +176,18 @@ class ABctaBlock extends Component {
 			// Show the block controls on focus
 			isSelected && (
 				<Inspector
-					{ ...this.props }
+					{ ...{ setAttributes, ...props } }
 				/>
 			),
 			// Show the button markup in the editor
-			<CallToAction { ...this.props }>
+			<CallToAction { ...props }>
 				<div class="ab-cta-content">
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Call-To-Action Title' ) }
-						isSelected={ isSelected }
+						isSelected={ isSelected && editable === 'ctaTitle' }
 						keepPlaceholderOnFocus
 						value={ ctaTitle }
-						formattingControls={ [] }
 						className={ classnames(
 							'ab-cta-title',
 							'ab-font-size-' + ctaTitleFontSize,
@@ -83,16 +196,15 @@ class ABctaBlock extends Component {
 							color: ctaTextColor,
 						} }
 						onChange={ (value) => setAttributes( { ctaTitle: value } ) }
+						onFocus={ onSetActiveEditable( 'ctaTitle' ) }
 					/>
-
 					<RichText
 						tagName="div"
 						multiline="p"
 						placeholder={ __( 'Call To Action Text' ) }
 						value={ ctaText }
-						isSelected={ isSelected }
+						isSelected={ isSelected && editable === 'ctaText' }
 						keepPlaceholderOnFocus
-						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 						className={ classnames(
 							'ab-cta-text',
 							'ab-font-size-' + ctaTextFontSize,
@@ -100,15 +212,15 @@ class ABctaBlock extends Component {
 						style={ {
 							color: ctaTextColor,
 						} }
-						onChange={ ( value ) => this.props.setAttributes( { ctaText: value } ) }
+						onChange={ ( value ) => props.setAttributes( { ctaText: value } ) }
+						onFocus={ onSetActiveEditable( 'ctaText' ) }
 					/>
 				</div>
-				
 				<div class="ab-cta-button">
 					<RichText
 						tagName="span"
 						placeholder={ __( 'Button text...' ) }
-						isSelected={ isSelected }
+						isSelected={ isSelected && editable === 'buttonText' }
 						keepPlaceholderOnFocus
 						value={ buttonText }
 						formattingControls={ [] }
@@ -122,9 +234,9 @@ class ABctaBlock extends Component {
 							backgroundColor: buttonBackgroundColor,
 						} }
 						onChange={ (value) => setAttributes( { buttonText: value } ) }
+						onFocus={ onSetActiveEditable( 'buttonText' ) }
 					/>
-
-					{ !! this.props.focus && (
+					{ !! props.focus && (
 						<form
 							key="form-link"
 							className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
@@ -149,140 +261,74 @@ class ABctaBlock extends Component {
 				</div>
 			</CallToAction>
 		];
-	}
-}
-
-// Register the block
-registerBlockType( 'atomic-blocks/ab-cta', {
-	title: __( 'AB Call To Action' ),
-	description: __( 'Add a call to action section with a title, text, and a button.' ),
-	icon: 'megaphone',
-	category: 'common',
-	keywords: [
-		__( 'call to action' ),
-		__( 'cta' ),
-		__( 'atomic' ),
-	],
-	attributes: {
-		buttonText: {
-			type: 'string',
-		},
-		buttonUrl: {
-			type: 'string',
-            source: 'attribute',
-            selector: 'a',
-            attribute: 'href',
-		},
-		buttonAlignment: {
-			type: 'string',
-			default: 'center'
-		},
-		buttonBackgroundColor: {
-			type: 'string',
-			default: '#3373dc'
-		},
-		buttonTextColor: {
-			type: 'string',
-			default: '#ffffff'
-		},
-		buttonSize: {
-			type: 'string',
-			default: 'ab-button-size-medium'
-		},
-		buttonShape: {
-			type: 'string',
-			default: 'ab-button-shape-rounded'
-		},
-		buttonTarget: {
-			type: 'boolean',
-			default: false
-		},
-		ctaTitle: {
-			type: 'string',
-		},
-		ctaTitleFontSize: {
-			type: 'string',
-			default: '32'
-		},
-		ctaTextFontSize: {
-			type: 'string',
-			default: '20'
-		},
-		ctaText: {
-			type: 'array',
-			selector: '.ab-cta-text',
-			source: 'children',
-		},
-		ctaWidth: {
-			type: 'string',
-			default: 'center',
-		},
-		ctaBackgroundColor: {
-			type: 'string',
-			default: '#f2f2f2'
-		},
-		ctaTextColor: {
-			type: 'string',
-			default: '#32373c'
-		},
-	},
-
-	getEditWrapperProps( { ctaWidth } ) {
-		if ( 'left' === ctaWidth || 'right' === ctaWidth || 'full' === ctaWidth ) {
-			return { 'data-align': ctaWidth };
-		}
-	},
-
-	// Render the block components
-	edit: ABctaBlock,
+	} ),
 
 	// Save the attributes and markup
 	save: function( props ) {
 		
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaWidth, ctaBackgroundColor, ctaTextColor } = props.attributes;
+		const { 
+			buttonText, 
+			buttonUrl, 
+			buttonAlignment, 
+			buttonBackgroundColor, 
+			buttonTextColor, 
+			buttonSize, 
+			buttonShape, 
+			buttonTarget, 
+			ctaTitle, 
+			ctaText, 
+			ctaTitleFontSize, 
+			ctaTextFontSize, 
+			ctaWidth, 
+			ctaBackgroundColor, 
+			ctaTextColor 
+		} = props.attributes;
 		
 		// Save the block markup for the front end
 		return (
 			<CallToAction { ...props }>
 				<div class="ab-cta-content">
-					<h2 
-						className={ classnames(
-							'ab-cta-title',
-							'ab-font-size-' + ctaTitleFontSize,
-						) }
-						style={ {
-							color: ctaTextColor,
-						} }
-					>{ ctaTitle }</h2>
-					
-					<div 
-						className={ classnames(
-							'ab-cta-text',
-						) }
-						style={ {
-							color: ctaTextColor,
-						} }
-					>{ ctaText }</div>
+					{ ctaTitle && !! ctaTitle.length && (
+						<h2 
+							className={ classnames(
+								'ab-cta-title',
+								'ab-font-size-' + ctaTitleFontSize,
+							) }
+							style={ {
+								color: ctaTextColor,
+							} }
+						>{ ctaTitle }</h2>
+					) }
+					{ ctaText && !! ctaText.length && (
+						<div 
+							className={ classnames(
+								'ab-cta-text',
+								'ab-font-size-' + ctaTextFontSize,
+							) }
+							style={ {
+								color: ctaTextColor,
+							} }
+						>{ ctaText }</div>
+					) }
 				</div>
-				
-				<div class="ab-cta-button">
-					<a
-						href={ buttonUrl }
-						target={ buttonTarget ? '_blank' : '_self' } 
-						className={ classnames(
-							'ab-button',
-							buttonShape,
-							buttonSize,
-						) }
-						style={ {
-							color: buttonTextColor,
-							backgroundColor: buttonBackgroundColor,
-						} }
-					>
-						{ buttonText }
-					</a>
-				</div>
+				{ buttonText && !! buttonText.length && (
+					<div class="ab-cta-button">
+						<a
+							href={ buttonUrl }
+							target={ buttonTarget ? '_blank' : '_self' } 
+							className={ classnames(
+								'ab-button',
+								buttonShape,
+								buttonSize,
+							) }
+							style={ {
+								color: buttonTextColor,
+								backgroundColor: buttonBackgroundColor,
+							} }
+						>{ buttonText }</a>
+					</div>
+				) }
 			</CallToAction>
 		);
 	},

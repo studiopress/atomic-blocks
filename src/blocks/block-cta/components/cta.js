@@ -18,7 +18,6 @@ export default class CallToAction extends Component {
 	}
 
 	render() {
-
 		// Setup the attributes
 		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaWidth, ctaBackgroundColor, ctaTextColor }  } = this.props;
 
@@ -34,9 +33,7 @@ export default class CallToAction extends Component {
 					'ab-block-cta',
 					'ab-font-size-' + ctaTextFontSize,
 				) }
-			>
-				{ this.props.children }
-			</div>
+			>{ this.props.children }</div>
 		);
 	}
 }

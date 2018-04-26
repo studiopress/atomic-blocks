@@ -40,6 +40,17 @@
 
 	.ab-cta-text {
 		line-height: 1.4;
+
+		a {
+			color: inherit;
+			box-shadow: 0 -1px 0 inset;
+			text-decoration: none;
+
+			&:hover {
+				color: inherit;
+				box-shadow: 0 -2px 0 inset;
+			}
+		}
 	}
 
 	.ab-cta-button .blocks-rich-text {
