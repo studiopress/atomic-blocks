@@ -36,73 +36,8 @@ const {
 	Button,
 	SelectControl,
 	withFallbackStyles,
+	withState,
 } = wp.components;
-
-class ABNoticeBlock extends Component {
-	
-	render() {
-		
-		// Setup the attributes
-		const { attributes: { noticeTitle, noticeContent, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss }, isSelected, className, setAttributes } = this.props;
-
-		return [
-			// Show the alignment toolbar on focus
-			isSelected && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ noticeAlignment }
-						onChange={ ( value ) => this.props.setAttributes( { noticeAlignment: value } ) }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			isSelected && (
-				<Inspector
-					{ ...this.props }
-				/>
-			),
-			// Show the block markup in the editor
-			<NoticeBox { ...this.props }>
-				{	// Check if the notice is dismissable and output the button
-					noticeDismiss && (
-					<DismissButton { ...this.props }>
-						{ icons.dismiss }
-					</DismissButton>
-				) }
-				
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Notice Title' ) }
-					value={ noticeTitle }
-					className={ classnames(
-						'ab-notice-title'
-					) }
-					style={ {
-						color: noticeTitleColor,
-					} }
-					onChange={ ( value ) => this.props.setAttributes( { noticeTitle: value } ) }
-				/>
-
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Add notice text...' ) }
-					value={ noticeContent }
-					isSelected={ isSelected }
-					keepPlaceholderOnFocus
-					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-					className={ classnames(
-						'ab-notice-text'
-					) }
-					style={ {
-						borderColor: noticeBackgroundColor,
-					} }
-					onChange={ ( value ) => this.props.setAttributes( { noticeContent: value } ) }
-				/>
-			</NoticeBox>
-		];
-	}
-}
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-notice', {
@@ -151,47 +86,140 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 	},
 
 	// Render the block components
-	edit: ABNoticeBlock,
-
-	// Save the attributes and markup
-	save: function( props ) {
-
+	edit: withState( { editable: 'content', } )( ( props ) => {
 		// Setup the attributes
-		const { noticeTitle, noticeContent, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss } = props.attributes;
+		const { 
+			noticeTitle, 
+			noticeContent, 
+			noticeAlignment, 
+			noticeBackgroundColor, 
+			noticeTextColor, 
+			noticeTitleColor, 
+			noticeFontSize, 
+			noticeDismiss
+		} = props.attributes;
 		
-		// Save the block markup for the front end
-		return (
-			<NoticeBox { ...props }>			
+		// Setup the props
+		const {
+			attributes,
+			isSelected,
+			editable,
+			setState,
+			className,
+			setAttributes
+		} = props;
+
+		const onSetActiveEditable = ( newEditable ) => () => {
+			setState( { editable: newEditable } );
+		};
+
+		return [
+			// Show the alignment toolbar on focus
+			isSelected && (
+				<BlockControls key="controls">
+					<AlignmentToolbar
+						value={ noticeAlignment }
+						onChange={ ( value ) => setAttributes( { noticeAlignment: value } ) }
+					/>
+				</BlockControls>
+			),
+			// Show the block controls on focus
+			isSelected && (
+				<Inspector
+				{ ...{ setAttributes, ...props } }
+				/>
+			),
+			// Show the block markup in the editor
+			<NoticeBox { ...props }>
 				{	// Check if the notice is dismissable and output the button
 					noticeDismiss && (
 					<DismissButton { ...props }>
 						{ icons.dismiss }
 					</DismissButton>
 				) }
+				
+				<RichText
+					tagName="p"
+					placeholder={ __( 'Notice Title' ) }
+					value={ noticeTitle }
+					isSelected={ isSelected && editable === 'noticeTitle' }
+					keepPlaceholderOnFocus
+					className={ classnames(
+						'ab-notice-title'
+					) }
+					style={ {
+						color: noticeTitleColor,
+					} }
+					onChange={ ( value ) => setAttributes( { noticeTitle: value } ) }
+					onFocus={ onSetActiveEditable( 'noticeTitle' ) }
+				/>
 
-				{	// Check if there is a notice title
-					noticeTitle && (
+				<RichText
+					tagName="div"
+					multiline="p"
+					placeholder={ __( 'Add notice text...' ) }
+					value={ noticeContent }
+					isSelected={ isSelected && editable === 'noticeContent' }
+					keepPlaceholderOnFocus
+					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
+					className={ classnames(
+						'ab-notice-text'
+					) }
+					style={ {
+						borderColor: noticeBackgroundColor,
+					} }
+					onChange={ ( value ) => setAttributes( { noticeContent: value } ) }
+					onFocus={ onSetActiveEditable( 'noticeContent' ) }
+				/>
+			</NoticeBox>
+		];
+	} ),
+
+	// Save the attributes and markup
+	save: function( props ) {
+
+		// Setup the attributes
+		const { 
+			noticeTitle, 
+			noticeContent, 
+			noticeAlignment, 
+			noticeBackgroundColor, 
+			noticeTextColor, 
+			noticeTitleColor, 
+			noticeFontSize, 
+			noticeDismiss
+		} = props.attributes;
+		
+		// Save the block markup for the front end
+		return (
+			<NoticeBox { ...props }>			
+				{ noticeDismiss && !! noticeDismiss.length && (
+					<DismissButton { ...props }>
+						{ icons.dismiss }
+					</DismissButton>
+				) }
+
+				{ noticeTitle && !! noticeTitle.length && (
 					<div
 						class="ab-notice-title"
 						style={ {
-							color: noticeTitleColor,
+							color: noticeTitleColor
 						} }
 					>
 						<p>{ noticeTitle }</p>
 					</div>
 				) }
 
-				{	// Check if there is notice content and output
-					noticeContent && (
+				{ noticeContent && !! noticeContent.length && (
 					<div 
 						class="ab-notice-text" 
 						style={ {
-							borderColor: noticeBackgroundColor,
+							borderColor: noticeBackgroundColor
 						} }
 					>
 						{ noticeContent }
 					</div>
-				) }	
+				) }
 			</NoticeBox>
 		);
 	},
