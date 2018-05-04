@@ -34,6 +34,11 @@ function atomic_blocks_loader() {
 	 * Load Getting Started page
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
+
+	/**
+	 * Load Social Block PHP
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-sharing/index.php';
 }
 add_action( 'plugins_loaded', 'atomic_blocks_loader' );
 
