@@ -236,7 +236,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 						onChange={ (value) => setAttributes( { buttonText: value } ) }
 						onFocus={ onSetActiveEditable( 'buttonText' ) }
 					/>
-					{ !! props.focus && (
+					{ isSelected && (
 						<form
 							key="form-link"
 							className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}

@@ -82,7 +82,7 @@ class ABButtonBlock extends Component {
 					onChange={ (value) => setAttributes( { buttonText: value } ) }
 				/>
 			</CustomButton>,
-			!! this.props.focus && (
+			isSelected && (
 				<form
 					key="form-link"
 					className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
