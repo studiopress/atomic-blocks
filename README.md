@@ -71,6 +71,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.1.3**
+* Replace props.focus with isSelected for Gutenberg 2.8.0.
+
 **1.1.2**
 * Refactor the CTA block.
 * Refactor the Author Profile block.
