@@ -74,7 +74,16 @@ export default class Inspector extends Component {
 						label={ __( 'Notice Color' ) }
 						value={ noticeBackgroundColor }
 						onChange={ ( value ) => this.props.setAttributes( { noticeBackgroundColor: value } ) }
-						colors={['#00d1b2', '#3373dc', '#209cef', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#392F43']}
+						colors={[
+							{ color: '#00d1b2', name: 'teal' },
+							{ color: '#3373dc', name: 'royal blue' },
+							{ color: '#209cef', name: 'sky blue' },
+							{ color: '#22d25f', name: 'green' },
+							{ color: '#ffdd57', name: 'yellow' },
+							{ color: '#ff3860', name: 'pink' },
+							{ color: '#7941b6', name: 'purple' },
+							{ color: '#392F43', name: 'black' },
+						]}
 					/>
 				</PanelColor>
 
@@ -87,7 +96,10 @@ export default class Inspector extends Component {
 						label={ __( 'Title Color' ) }
 						value={ noticeTitleColor }
 						onChange={ ( value ) => this.props.setAttributes( { noticeTitleColor: value } ) }
-						colors={['#fff', '#32373c' ]}
+						colors={[
+							{ color: '#fff', name: 'white' },
+							{ color: '#32373c', name: 'black' },
+						]}
 					/>
 				</PanelColor>
 				
@@ -100,7 +112,10 @@ export default class Inspector extends Component {
 						label={ __( 'Background Color' ) }
 						value={ noticeTextColor }
 						onChange={ ( value ) => this.props.setAttributes( { noticeTextColor: value } ) }
-						colors={['#32373c', '#fff' ]}
+						colors={[
+							{ color: '#fff', name: 'white' },
+							{ color: '#32373c', name: 'black' },
+						]}
 					/>
 				</PanelColor>
 			</PanelBody>
