@@ -1,5 +1,5 @@
 /**
- * Button Wrapper
+ * Sharing Wrapper
  */
 
 // Setup the block
@@ -9,7 +9,7 @@ const { Component } = wp.element;
 import classnames from 'classnames';
 
 /**
- * Create a Button wrapper Component
+ * Create a ShareLinks wrapper Component
  */
 export default class ShareLinks extends Component {
 
@@ -20,12 +20,14 @@ export default class ShareLinks extends Component {
 	render() {
 
 		return (	
-			<div 
-				style={ {
-					//textAlign: this.props.attributes.buttonAlignment,
-				} }
+			<div
 				className={ classnames(
 					this.props.className,
+					this.props.attributes.shareButtonStyle,
+					this.props.attributes.shareButtonShape,
+					this.props.attributes.shareButtonSize,
+					this.props.attributes.shareButtonColor,
+					this.props.attributes.shareAlignment,
 					'ab-block-sharing'
 				) }
 			>

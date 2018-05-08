@@ -1,10 +1,80 @@
 <?php
 /**
- * Server-side rendering for the social block
+ * Server-side rendering for the sharing block
  *
  * @since 	1.1.2
  * @package Atomic Blocks
  */
+
+/**
+* Register the block on the server
+*/
+function atomic_blocks_register_sharing() {
+
+	// Check if the register function exists
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
+	}
+
+	// Register the sharing block
+	register_block_type(
+		'atomic-blocks/ab-sharing', array(
+			'style' => 'atomic-blocks-style-css',
+			'attributes' => array(
+                'facebook' => array(
+					'type'    => 'boolean',
+					'default' => true,
+                ),
+                'twitter' => array(
+					'type'    => 'boolean',
+					'default' => true,
+                ),
+                'google' => array(
+					'type'    => 'boolean',
+					'default' => true,
+                ),
+                'linkedin' => array(
+					'type'    => 'boolean',
+					'default' => false,
+                ),
+                'pinterest' => array(
+					'type'    => 'boolean',
+					'default' => false,
+                ),
+                'email' => array(
+					'type'    => 'boolean',
+					'default' => false,
+                ),
+                'reddit' => array(
+					'type'    => 'boolean',
+					'default' => false,
+                ),
+                'shareAlignment' => array(
+					'type' => 'string',
+				),
+				'shareButtonStyle' => array(
+					'type' => 'string',
+					'default' => 'ab-share-icon-text',
+				),
+				'shareButtonShape' => array(
+					'type' => 'string',
+					'default' => 'ab-share-shape-circular',
+				),
+				'shareButtonSize' => array(
+					'type' => 'string',
+					'default' => 'ab-share-size-medium',
+				),
+				'shareButtonColor' => array(
+					'type' => 'string',
+					'default' => 'ab-share-color-standard',
+				),
+			),
+			'render_callback' => 'atomic_blocks_render_sharing',
+		)
+	);
+}
+add_action( 'init', 'atomic_blocks_register_sharing' );
+
 
 /**
  * Add the pop-up share window to the footer
@@ -129,7 +199,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
 					class="ab-share-linkedin" 
 					title="%2$s">
-					<i class="fab fa-linkedin"></i> <span class="ab-social-text">%2$s</span>
+					<i class="fab fa-linkedin-in"></i> <span class="ab-social-text">%2$s</span>
 				</a>
 			</li>',
 			esc_url( $linkedin_url ),
@@ -170,63 +240,16 @@ function atomic_blocks_render_sharing( $attributes ) {
 
 	// Render the list of share links
 	$block_content = sprintf(
-		'<div class="wp-block-atomic-blocks-ab-social ab-block-social">
+		'<div class="wp-block-atomic-blocks-ab-sharing ab-block-sharing %2$s %3$s %4$s %5$s %6$s">
 			<ul class="ab-share-list">%1$s</ul>
 		</div>',
-		$share_url
+		$share_url,
+		$attributes['shareButtonStyle'],
+		$attributes['shareButtonShape'],
+		$attributes['shareButtonSize'],
+		$attributes['shareButtonColor'],
+		$attributes['shareAlignment']
 	);
 
 	return $block_content;
 }
-
-/**
- * Register the block on the server
- */
-function atomic_blocks_register_sharing() {
-
-	// Check if function exists
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	// Register the sharing block
-	register_block_type(
-		'atomic-blocks/ab-sharing', array(
-			'attributes' => array(
-                'facebook' => array(
-					'type'    => 'boolean',
-					'default' => true,
-                ),
-                'twitter' => array(
-					'type'    => 'boolean',
-					'default' => true,
-                ),
-                'google' => array(
-					'type'    => 'boolean',
-					'default' => true,
-                ),
-                'linkedin' => array(
-					'type'    => 'boolean',
-					'default' => false,
-                ),
-                'pinterest' => array(
-					'type'    => 'boolean',
-					'default' => false,
-                ),
-                'email' => array(
-					'type'    => 'boolean',
-					'default' => false,
-                ),
-                'reddit' => array(
-					'type'    => 'boolean',
-					'default' => false,
-                ),
-                'shareAlignment' => array(
-					'type' => 'string',
-                ),
-			),
-			'render_callback' => 'atomic_blocks_render_sharing',
-		)
-	);
-}
-add_action( 'init', 'atomic_blocks_register_sharing' );

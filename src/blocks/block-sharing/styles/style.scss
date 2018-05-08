@@ -1,9 +1,9 @@
 /**
- * Button styles
+ * Sharing styles
  * Loads on front end and back end
  */
 
- .ab-block-button {
+ .ab-block-sharing {
 	margin: 0 0 1.2em 0;
 	position: relative;
 
@@ -11,55 +11,148 @@
 		display: inline-flex;
 	}
 
-	.ab-button {
-		text-align: center;
-		font-size: 18px;
-		line-height: 1;
-		background-color: #32373c;
-		border: none;
-		border-radius: 50px;
-		box-shadow: none;
-		color: #fff;
-		cursor: pointer;
-		padding: .6em 1em;
-		text-decoration: none;
-		word-break: break-word;
-		transition: .3s ease;
-		display: inline-block;
+	.ab-share-list {
+		margin: 0;
+		padding: 0;
 
-		&:hover {
-			box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
+		li {
+			list-style: none;
+			display: inline-block;
+			margin: 0 5px 5px 0;
+		}
+
+		a {
+			background: #272c30;
+			color: #fff;
+			padding: 10px 15px;
+			text-align: center;
+			display: block;
+			line-height: 1;
+			font-size: 16px;
+			transition: .3s ease;
+
+			&:hover {
+				box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
+			}
 		}
 	}
 
-	.ab-button-shape-square {
-		border-radius: 0;
+	&.ab-share-icon-text {
+		i {
+			margin-right: 5px;
+		}
 	}
 
-	.ab-button-shape-rounded {
-		border-radius: 5px;
+	&.ab-share-icon-only {
+		a {
+			padding: 10px 11px;
+			min-width: 37px;
+		}
+
+		.ab-social-text {
+			border: 0;
+			clip: rect(1px, 1px, 1px, 1px);
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
 	}
 
-	.ab-button-shape-circular {
-		border-radius: 100px;
+	&.ab-share-text-only {
+		i {
+			display: none;
+		}
 	}
 
-	.ab-button-size-small {
-		font-size: 14px;
+	&.ab-share-shape-square {
+		a {
+			border-radius: 0;
+		}
 	}
 
-	.ab-button-size-medium {
-		font-size: 20px;
+	&.ab-share-shape-rounded {
+		a {
+			border-radius: 5px;
+		}
 	}
 
-	.ab-button-size-large {
-		font-size: 26px;
-		padding: .8em 1.2em;
+	&.ab-share-shape-circular {
+		a {
+			border-radius: 100px;
+		}
 	}
 
-	.ab-button-size-extralarge {
-		font-size: 32px;
-		padding: .8em 1.2em;
+	&.ab-share-size-small {
+		a {
+			font-size: 13px;
+		}
+	}
+
+	&.ab-share-size-small.ab-share-icon-only {
+		a {
+			padding: 7px 6px;
+    		min-width: 28px;
+		}
+	}
+
+	&.ab-share-size-medium {
+		a {
+			font-size: 16px;
+		}
+	}
+
+	&.ab-share-size-large {
+		a {
+			font-size: 20px;
+		}
+	}
+
+	&.ab-share-size-large.ab-share-icon-only {
+		a {
+			font-size: 26px;
+			min-width: 48px;
+		}
+	}
+
+	&.ab-share-size-large.ab-share-icon-text {
+		i {
+			margin-right: 10px;
+		}
+	}
+
+	&.ab-share-color-social {
+		a {
+			color: #fff;
+		}
+
+		.ab-share-twitter {
+			background: #1ca1f3;	
+		}
+
+		.ab-share-facebook {
+			background: #3b5999;	
+		}
+
+		.ab-share-google {
+			background: #dc4b45;	
+		}
+
+		.ab-share-pinterest {
+			background: #bd091c;	
+		}
+
+		.ab-share-linkedin {
+			background: #0077b5;	
+		}
+
+		.ab-share-reddit {
+			background: #ff4500;	
+		}
 	}
 }
 

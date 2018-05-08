@@ -47,22 +47,38 @@ export default class Inspector extends Component {
 			email,
 			reddit,
 			shareAlignment,
+			shareButtonStyle,
+			shareButtonShape,
+			shareButtonSize,
+			shareButtonColor,
 		} = this.props.attributes;
 
-		// // Button size values
-		// const buttonSizeOptions = [
-		// 	{ value: 'ab-button-size-small', label: __( 'Small' ) },
-		// 	{ value: 'ab-button-size-medium', label: __( 'Medium' ) },
-		// 	{ value: 'ab-button-size-large', label: __( 'Large' ) },
-		// 	{ value: 'ab-button-size-extralarge', label: __( 'Extra Large' ) },
-		// ];
+		// Button style values
+		const buttonStyleOptions = [
+			{ value: 'ab-share-icon-text', label: __( 'Icon and Text' ) },
+			{ value: 'ab-share-icon-only', label: __( 'Icon Only' ) },
+			{ value: 'ab-share-text-only', label: __( 'Text Only' ) },
+		];
 
-		// // Button shape
-		// const buttonShapeOptions = [
-		// 	{ value: 'ab-button-shape-square', label: __( 'Square' ) },
-		// 	{ value: 'ab-button-shape-rounded', label: __( 'Rounded Square' ) },
-		// 	{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
-		// ];
+		// Button shape values
+		const buttonShapeOptions = [
+			{ value: 'ab-share-shape-square', label: __( 'Square' ) },
+			{ value: 'ab-share-shape-rounded', label: __( 'Rounded Square' ) },
+			{ value: 'ab-share-shape-circular', label: __( 'Circular' ) },
+		];
+
+		// Button size values
+		const shareButtonSizeOptions = [
+			{ value: 'ab-share-size-small', label: __( 'Small' ) },
+			{ value: 'ab-share-size-medium', label: __( 'Medium' ) },
+			{ value: 'ab-share-size-large', label: __( 'Large' ) },
+		];
+
+		// Button color values
+		const shareButtonColorOptions = [
+			{ value: 'ab-share-color-standard', label: __( 'Standard' ) },
+			{ value: 'ab-share-color-social', label: __( 'Social Colors' ) },
+		];
 
 		return (
 			<InspectorControls key="inspector">
@@ -103,6 +119,48 @@ export default class Inspector extends Component {
 						label={ __( 'Email' ) }
 						checked={ !! email }
 						onChange={ () => this.props.setAttributes( { email: ! email } ) }
+					/>
+				</PanelBody>
+
+				<PanelBody title={ __( 'Sharing Button Options' ) } initialOpen={ false }>
+					<SelectControl
+						label={ __( 'Button Style' ) }
+						value={ shareButtonStyle }
+						options={ buttonStyleOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { shareButtonStyle: value } ) } }
+					/>
+
+					<SelectControl
+						label={ __( 'Button Shape' ) }
+						value={ shareButtonShape }
+						options={ buttonShapeOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { shareButtonShape: value } ) } }
+					/>
+
+					<SelectControl
+						label={ __( 'Button Size' ) }
+						value={ shareButtonSize }
+						options={ shareButtonSizeOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { shareButtonSize: value } ) } }
+					/>
+
+					<SelectControl
+						label={ __( 'Button Color' ) }
+						value={ shareButtonColor }
+						options={ shareButtonColorOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { shareButtonColor: value } ) } }
 					/>
 				</PanelBody>
 			</InspectorControls>

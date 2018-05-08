@@ -68,6 +68,9 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 			email,
 			reddit,
 			shareAlignment,
+			shareButtonStyle,
+			shareButtonShape,
+			shareButtonColor,
 		} = props.attributes;
 
 		return [
@@ -88,68 +91,84 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 			),
 			// Show the button markup in the editor
 			<ShareLinks { ...props }>
+				<ul class="ab-share-list">
 				{ twitter &&
-					<a className='ab-share-twitter'>
-						<i class="fab fa-twitter"></i>
-						<span className={ 'ab-social-text' }>
-							{ __( 'Share on Twitter' ) }
-						</span>
-					</a>
+					<li>
+						<a className='ab-share-twitter'>
+							<i class="fab fa-twitter"></i>
+							<span className={ 'ab-social-text' }>
+								{ __( 'Share on Twitter' ) }
+							</span>
+						</a>
+					</li>
 				}
 
 				{ facebook &&
-					<a className='ab-share-facebook'>
-						<i class="fab fa-facebook-f"></i>
-						<span className={ 'ab-social-text' }>
-							{ __( 'Share on Facebook' ) }
-						</span>
-					</a>
+					<li>
+						<a className='ab-share-facebook'>
+							<i class="fab fa-facebook-f"></i>
+							<span className={ 'ab-social-text' }>
+								{ __( 'Share on Facebook' ) }
+							</span>
+						</a>
+					</li>
 				}
 
 				{ google &&
-					<a className='ab-share-google'>
-						<i class="fab fa-google"></i>
-						<span className={ 'ab-social-text' }>
-							{ __( 'Share on Google' ) }
-						</span>
-					</a>
+					<li>
+						<a className='ab-share-google'>
+							<i class="fab fa-google"></i>
+							<span className={ 'ab-social-text' }>
+								{ __( 'Share on Google' ) }
+							</span>
+						</a>
+					</li>
 				}
 
 				{ pinterest &&
-					<a className='ab-share-pinterest'>
-						<i class="fab fa-pinterest-p"></i>
-						<span className={ 'ab-social-text' }>
-							{ __( 'Share on Pinterest' ) }
-						</span>
-					</a>
+					<li>
+						<a className='ab-share-pinterest'>
+							<i class="fab fa-pinterest-p"></i>
+							<span className={ 'ab-social-text' }>
+								{ __( 'Share on Pinterest' ) }
+							</span>
+						</a>
+					</li>
 				}
 
 				{ linkedin &&
-					<a className='ab-share-linkedin'>
-						<i class="fab fa-linkedin"></i>
-						<span className={ 'ab-social-text' }>
-							{ __( 'Share on LinkedIn' ) }
-						</span>
-					</a>
+					<li>
+						<a className='ab-share-linkedin'>
+							<i class="fab fa-linkedin"></i>
+							<span className={ 'ab-social-text' }>
+								{ __( 'Share on LinkedIn' ) }
+							</span>
+						</a>
+					</li>
 				}
 
 				{ reddit &&
-					<a className='ab-share-reddit'>
-						<i class="fab fa-reddit-alien"></i>
-						<span className={ 'ab-social-text' }>
-							{ __( 'Share on reddit' ) }
-						</span>
-					</a>
+					<li>
+						<a className='ab-share-reddit'>
+							<i class="fab fa-reddit-alien"></i>
+							<span className={ 'ab-social-text' }>
+								{ __( 'Share on reddit' ) }
+							</span>
+						</a>
+					</li>
 				}
 
 				{ email &&
-					<a className='ab-share-email'>
-						<i class="fas fa-envelope"></i>
-						<span className={ 'ab-social-text' }>
-							{ __( 'Share via Email' ) }
-						</span>
-					</a>
+					<li>
+						<a className='ab-share-email'>
+							<i class="fas fa-envelope"></i>
+							<span className={ 'ab-social-text' }>
+								{ __( 'Share via Email' ) }
+							</span>
+						</a>
+					</li>
 				}
+				</ul>
 			</ShareLinks>
 		];
 	},
