@@ -93,7 +93,16 @@ export default class Inspector extends Component {
 						label={ __( 'Button Color' ) }
 						value={ buttonBackgroundColor }
 						onChange={ ( value ) => { this.props.setAttributes( { buttonBackgroundColor: value } ) } }
-						colors={['#00d1b2', '#3373dc', '#209cef', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#444048']}
+						colors={[
+							{ color: '#00d1b2', name: 'teal' },
+							{ color: '#3373dc', name: 'royal blue' },
+							{ color: '#209cef', name: 'sky blue' },
+							{ color: '#22d25f', name: 'green' },
+							{ color: '#ffdd57', name: 'yellow' },
+							{ color: '#ff3860', name: 'pink' },
+							{ color: '#7941b6', name: 'purple' },
+							{ color: '#392F43', name: 'black' },
+						]}
 					/>
 				</PanelColor>
 				
@@ -106,7 +115,10 @@ export default class Inspector extends Component {
 						label={ __( 'Button Text Color' ) }
 						value={ buttonTextColor }
 						onChange={ ( value ) => { this.props.setAttributes( { buttonTextColor: value } ) } }
-						colors={['#32373c', '#fff' ]}
+						colors={[
+							{ color: '#fff', name: 'white' },
+							{ color: '#32373c', name: 'black' },
+						]}
 					/>
 				</PanelColor>
 			</PanelBody>
