@@ -95,7 +95,17 @@ export default class Inspector extends Component {
 						label={ __( 'Link Color' ) }
 						value={ profileLinkColor }
 						onChange={ ( value ) => this.props.setAttributes( { profileLinkColor: value } ) }
-						colors={['#392F43', '#3373dc', '#2DBAA3', '#209cef', '#2BAD59', '#ff3860', '#7941b6', '#F7812B']}
+						
+						colors={[
+							{ color: '#392F43', name: 'black' },
+							{ color: '#3373dc', name: 'royal blue' },
+							{ color: '#2DBAA3', name: 'teal' },
+							{ color: '#209cef', name: 'sky blue' },
+							{ color: '#2BAD59', name: 'green' },
+							{ color: '#ff3860', name: 'pink' },
+							{ color: '#7941b6', name: 'purple' },
+							{ color: '#F7812B', name: 'orange' },
+						]}
 					/>
 				</PanelColor>
 			</PanelBody>
