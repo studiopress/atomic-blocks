@@ -92,7 +92,15 @@ export default class Inspector extends Component {
 							label={ __( 'Divider Color' ) }
 							value={ spacerDividerColor }
 							onChange={ ( value ) => { this.props.setAttributes( { spacerDividerColor: value } ) } }
-							colors={['#dddddd', '#333333', '#3373dc', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#444048']}
+							colors={[
+								{ color: '#ddd', name: 'white' },
+								{ color: '#333', name: 'black' },
+								{ color: '#3373dc', name: 'royal blue' },
+								{ color: '#22d25f', name: 'green' },
+								{ color: '#ffdd57', name: 'yellow' },
+								{ color: '#ff3860', name: 'pink' },
+								{ color: '#7941b6', name: 'purple' },
+							]}
 						/>
 					</PanelColor>
 				</PanelBody>
