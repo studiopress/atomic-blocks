@@ -9,6 +9,7 @@ Atomic Blocks is a collection of content blocks for the new [Gutenberg block edi
 * Testimonial Block
 * Inline Notice Block
 * Accordion Block
+* Share Icons Block
 * Call-To-Action Block
 * Customizable Button Block
 * Spacer & Divider Block
@@ -70,6 +71,9 @@ Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomi
 Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) to use Atomic Blocks. Eventually, Gutenberg (the block editor) will be merged into WordPress and you won't need the plugin.
 
 ## Changelog
+
+**1.1.4**
+* Add the sharing icons block.
 
 **1.1.3**
 * Replace props.focus with isSelected for Gutenberg 2.8.0.
