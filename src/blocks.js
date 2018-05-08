@@ -10,3 +10,4 @@ import './blocks/block-button/index.js';
 import './blocks/block-spacer/index.js';
 import './blocks/block-accordion/index.js';
 import './blocks/block-cta/index.js';
+import './blocks/block-sharing/index.js';
