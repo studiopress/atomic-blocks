@@ -74,6 +74,16 @@ export default class Inspector extends Component {
 						label={ __( 'Background Color' ) }
 						value={ testimonialBackgroundColor }
 						onChange={ ( value ) => this.props.setAttributes( { testimonialBackgroundColor: value } ) }
+						colors={[
+							{ color: '#00d1b2', name: 'teal' },
+							{ color: '#3373dc', name: 'royal blue' },
+							{ color: '#209cef', name: 'sky blue' },
+							{ color: '#22d25f', name: 'green' },
+							{ color: '#ffdd57', name: 'yellow' },
+							{ color: '#ff3860', name: 'pink' },
+							{ color: '#7941b6', name: 'purple' },
+							{ color: '#392F43', name: 'black' },
+						]}
 					/>
 				</PanelColor>
 
@@ -86,6 +96,10 @@ export default class Inspector extends Component {
 						label={ __( 'Text Color' ) }
 						value={ testimonialTextColor }
 						onChange={ ( value ) => this.props.setAttributes( { testimonialTextColor: value } ) }
+						colors={[
+							{ color: '#fff', name: 'white' },
+							{ color: '#32373c', name: 'black' },
+						]}
 					/>
 				</PanelColor>
 			</PanelBody>
