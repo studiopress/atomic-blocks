@@ -22,6 +22,7 @@ Atomic Blocks is a collection of content blocks for the new [Gutenberg](https://
 * Testimonial Block
 * Inline Notice Block
 * Accordion Block
+* Share Icons Block
 * Call-To-Action Block
 * Customizable Button Block
 * Spacer & Divider Block
