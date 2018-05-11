@@ -72,6 +72,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.1.6**
+* Rename array_social_icon_footer_script() to atomic_blocks_social_icon_footer_script().
+
 **1.1.5**
 * Improved the color palettes for changes that happened in Gutenberg 2.8.
 
