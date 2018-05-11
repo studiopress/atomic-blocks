@@ -79,7 +79,7 @@ add_action( 'init', 'atomic_blocks_register_sharing' );
 /**
  * Add the pop-up share window to the footer
  */
-function array_social_icon_footer_script() { ?>
+function atomic_blocks_social_icon_footer_script() { ?>
     <script type="text/javascript">
         function atomicBlocksShare( url, title, w, h ){
             var left = ( window.innerWidth / 2 )-( w / 2 );
@@ -88,7 +88,7 @@ function array_social_icon_footer_script() { ?>
         }
     </script>
 <?php }
-add_action( 'wp_footer', 'array_social_icon_footer_script' );
+add_action( 'wp_footer', 'atomic_blocks_social_icon_footer_script' );
 
 /**
  * Render the sharing links
@@ -117,7 +117,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 
 	// Pinterest share URL
     $pinterest_url = 'https://pinterest.com/pin/create/button/?&url=' . get_the_permalink() . '&description=' . get_the_title() . '&media=' . esc_url( $thumbnail ) . '';
-    
+
     // Email URL
     $email_url = 'mailto:?subject=' . get_the_title() . '&body=' . get_the_title() . '&mdash;' . get_the_permalink() . '';
 
@@ -130,10 +130,10 @@ function atomic_blocks_render_sharing( $attributes ) {
 	if ( isset( $attributes['twitter'] ) && $attributes['twitter'] ) {
 		$share_url .= sprintf(
 			'<li>
-				<a 
+				<a
 					href="javascript:void(0)"
 					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-twitter" 
+					class="ab-share-twitter"
 					title="%2$s">
 					<i class="fab fa-twitter"></i> <span class="ab-social-text">%2$s</span>
 				</a>
@@ -146,10 +146,10 @@ function atomic_blocks_render_sharing( $attributes ) {
 	if ( isset( $attributes['facebook'] ) && $attributes['facebook'] ) {
 		$share_url .= sprintf(
 			'<li>
-				<a 
+				<a
 					href="javascript:void(0)"
 					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-facebook" 
+					class="ab-share-facebook"
 					title="%2$s">
 					<i class="fab fa-facebook-f"></i> <span class="ab-social-text">%2$s</span>
 				</a>
@@ -162,10 +162,10 @@ function atomic_blocks_render_sharing( $attributes ) {
 	if ( isset( $attributes['google'] ) && $attributes['google'] ) {
 		$share_url .= sprintf(
 			'<li>
-				<a 
+				<a
 					href="javascript:void(0)"
 					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-google" 
+					class="ab-share-google"
 					title="%2$s">
 					<i class="fab fa-google"></i> <span class="ab-social-text">%2$s</span>
 				</a>
@@ -178,10 +178,10 @@ function atomic_blocks_render_sharing( $attributes ) {
 	if ( isset( $attributes['pinterest'] ) && $attributes['pinterest'] ) {
 		$share_url .= sprintf(
 			'<li>
-				<a 
+				<a
 					href="javascript:void(0)"
 					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-pinterest" 
+					class="ab-share-pinterest"
 					title="%2$s">
 					<i class="fab fa-pinterest-p"></i> <span class="ab-social-text">%2$s</span>
 				</a>
@@ -194,10 +194,10 @@ function atomic_blocks_render_sharing( $attributes ) {
 	if ( isset( $attributes['linkedin'] ) && $attributes['linkedin'] ) {
 		$share_url .= sprintf(
 			'<li>
-				<a 
+				<a
 					href="javascript:void(0)"
 					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-linkedin" 
+					class="ab-share-linkedin"
 					title="%2$s">
 					<i class="fab fa-linkedin-in"></i> <span class="ab-social-text">%2$s</span>
 				</a>
@@ -213,7 +213,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 				<a
 					href="javascript:void(0)"
 					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-reddit" 
+					class="ab-share-reddit"
 					title="%2$s">
 					<i class="fab fa-reddit-alien"></i> <span class="ab-social-text">%2$s</span>
 				</a>
@@ -228,7 +228,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 			'<li>
 				<a
 					href="%1$s"
-					class="ab-share-email" 
+					class="ab-share-email"
 					title="%2$s">
 					<i class="fas fa-envelope"></i> <span class="ab-social-text">%2$s</span>
 				</a>
