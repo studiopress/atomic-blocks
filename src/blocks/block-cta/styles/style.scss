@@ -11,8 +11,14 @@
 	padding: 5% 3%;
 	border-radius: 5px;
 
+	* {
+		z-index: 10;
+		position: relative;
+	}
+
 	&.alignfull {
 		border-radius: 0;
+		padding: 8% 3%;
 	}
 
 	@media only screen and (max-width: 768px) {
@@ -33,6 +39,22 @@
 			max-width: 80%;
 			margin: 0 auto;
 		}
+	}
+
+	.ab-cta-image-wrap {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		height: 100%;
+		z-index: 1;
+	}
+
+	.ab-cta-image {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+		transition: .3s ease;
 	}
 
 	.ab-cta-title {
@@ -199,6 +221,54 @@
 		margin-top: 15px;
 		border: solid 1px #ddd;
 	}
+
+	.ab-cta-image:not(.has-background-dim) {
+		opacity: 0;
+	}
+
+	.has-background-dim {
+		opacity: .5;
+	}
+
+	.has-background-dim-10 {
+		opacity: .1;
+	}
+
+	.has-background-dim-20 {
+		opacity: .2;
+	}
+
+	.has-background-dim-30 {
+		opacity: .3;
+	}
+	
+	.has-background-dim-40 {
+		opacity: .4;
+	}
+
+	.has-background-dim-50 {
+		opacity: .5;
+	}
+
+	.has-background-dim-60 {
+		opacity: .6;
+	}
+
+	.has-background-dim-70 {
+		opacity: .7;
+	}
+
+	.has-background-dim-80 {
+		opacity: .8;
+	}
+
+	.has-background-dim-90 {
+		opacity: .9;
+	}
+
+	.has-background-dim-100 {
+		opacity: 1;
+	}
 }
 
 .ab-button-right {
@@ -209,4 +279,26 @@
 
 .ab-button-center {
 	margin: 0 auto;
+}
+
+.ab-cta-inspector-media.components-button {
+	vertical-align: top;
+	border: 1px solid #e2e4e7;
+	background-color: #fff;
+	display: inline-flex;
+	border-radius: 3px;
+	margin-bottom: 15px;
+
+	&:hover {
+		box-shadow: none !important;
+		border: solid 1px #555d66;
+	}
+
+	&:first-child {
+		margin-right: 8px;
+	}
+
+	svg {
+		margin-right: 5px;
+	}
 }

@@ -25,6 +25,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	UrlInput,
+	MediaUpload,
 } = wp.blocks;
 
 // Register components
@@ -34,6 +35,7 @@ const {
 	IconButton,
 	Dashicon,
 	withState,
+	Toolbar,
 } = wp.components;
 
 const blockAttributes = {
@@ -98,6 +100,25 @@ const blockAttributes = {
 		type: 'string',
 		default: '#32373c'
 	},
+	imgURL: {
+		type: 'string',
+		source: 'attribute',
+		attribute: 'src',
+		selector: 'img',
+	},
+	imgID: {
+		type: 'number',
+	},
+	imgAlt: {
+		type: 'string',
+		source: 'attribute',
+		attribute: 'alt',
+		selector: 'img',
+	},
+	dimRatio: {
+		type: 'number',
+		default: 50,
+	},
 };
 
 // Register the block
@@ -139,7 +160,11 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			ctaTextFontSize, 
 			ctaWidth, 
 			ctaBackgroundColor, 
-			ctaTextColor 
+			ctaTextColor,
+			imgURL,
+			imgID,
+			imgAlt,
+			dimRatio,
 		} = props.attributes;
 		
 		// Setup the props
@@ -151,6 +176,14 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			className,
 			setAttributes
 		} = props;
+
+		const onSelectImage = img => {
+			setAttributes( {
+				imgID: img.id,
+				imgURL: img.url,
+				imgAlt: img.alt,
+			} );
+		};
 
 		const onSetActiveEditable = ( newEditable ) => () => {
 			setState( { editable: newEditable } );
@@ -181,6 +214,22 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			),
 			// Show the button markup in the editor
 			<CallToAction { ...props }>
+				{ imgURL && !! imgURL.length && (
+					<div class="ab-cta-image-wrap">
+						<img 
+							className={ classnames(
+								'ab-cta-image',
+								dimRatioToClass( dimRatio ),
+								{
+									'has-background-dim': dimRatio !== 0,
+								}
+							) }
+							src={ imgURL }
+							alt={ imgAlt }
+						/>
+					</div>
+				) }
+
 				<div class="ab-cta-content">
 					<RichText
 						tagName="h2"
@@ -282,12 +331,32 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			ctaTextFontSize, 
 			ctaWidth, 
 			ctaBackgroundColor, 
-			ctaTextColor 
+			ctaTextColor,
+			imgURL,
+			imgID,
+			imgAlt,
+			dimRatio,
 		} = props.attributes;
 		
 		// Save the block markup for the front end
 		return (
 			<CallToAction { ...props }>
+				{ imgURL && !! imgURL.length && (
+					<div class="ab-cta-image-wrap">
+						<img 
+							className={ classnames(
+								'ab-cta-image',
+								dimRatioToClass( dimRatio ),
+								{
+									'has-background-dim': dimRatio !== 0,
+								}
+							) }
+							src={ imgURL }
+							alt={ imgAlt }
+						/>
+					</div>
+				) }
+
 				<div class="ab-cta-content">
 					{ ctaTitle && !! ctaTitle.length && (
 						<h2 
@@ -333,3 +402,15 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 		);
 	},
 } );
+
+function dimRatioToClass( ratio ) {
+	return ( ratio === 0 || ratio === 50 ) ?
+		null :
+		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
+}
+
+function backgroundImageStyles( url ) {
+	return url ?
+		{ backgroundImage: `url(${ url })` } :
+		undefined;
+}

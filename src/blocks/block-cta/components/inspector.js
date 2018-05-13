@@ -11,6 +11,7 @@ const {
   InspectorControls,
   BlockDescription,
   ColorPalette,
+  MediaUpload,
 } = wp.blocks;
 
 // Import Inspector components
@@ -24,6 +25,7 @@ const {
 	RangeControl, 
 	SelectControl,
 	ToggleControl,
+	IconButton,
 } = wp.components;
 
 /**
@@ -38,7 +40,8 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaBackgroundColor, ctaTextColor } = this.props.attributes;
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaBackgroundColor, ctaTextColor, dimRatio, imgURL, imgID, imgAlt } = this.props.attributes;
+		const { setAttributes } = this.props;
 
 		// Button size values
 		const buttonSizeOptions = [
@@ -55,9 +58,25 @@ export default class Inspector extends Component {
 			{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
 		];
 
+		const onSelectImage = img => {
+			setAttributes( {
+				imgID: img.id,
+				imgURL: img.url,
+				imgAlt: img.alt,
+			} );
+		};
+
+		const onRemoveImage = () => {
+			setAttributes({
+				imgID: null,
+				imgURL: null,
+				imgAlt: null,
+			});
+		}
+
 		return (
 		<InspectorControls key="inspector">
-			<PanelBody>
+			<PanelBody title={ __( 'Text Options' ) } initialOpen={ true }>
 				<RangeControl
 					label={ __( 'Title Font Size' ) }
 					value={ ctaTitleFontSize }
@@ -77,18 +96,6 @@ export default class Inspector extends Component {
 				/>
 
 				<PanelColor 
-					title={ __( 'Background Color' ) }
-					colorValue={ ctaBackgroundColor }
-					initialOpen={ false }
-				>
-					<ColorPalette 
-						label={ __( 'Background Color' ) }
-						value={ ctaBackgroundColor }
-						onChange={ ( value ) => this.props.setAttributes( { ctaBackgroundColor: value } ) }
-					/>
-				</PanelColor>
-
-				<PanelColor 
 					title={ __( 'Text Color' ) }
 					colorValue={ ctaTextColor }
 					initialOpen={ false }
@@ -97,6 +104,62 @@ export default class Inspector extends Component {
 						label={ __( 'Text Color' ) }
 						value={ ctaTextColor }
 						onChange={ ( value ) => this.props.setAttributes( { ctaTextColor: value } ) }
+					/>
+				</PanelColor>
+			</PanelBody>
+
+			<PanelBody title={ __( 'Background Options' ) } initialOpen={ false }>
+				<p>{ __( 'Select a background image:' ) }</p>
+				<MediaUpload
+					onSelect={ onSelectImage }
+					type="image"
+					value={ imgID }
+					render={ ( { open } ) => (
+						<div>
+							<IconButton
+								className="ab-cta-inspector-media"
+								label={ __( 'Edit image' ) }
+								icon="format-image"
+								onClick={ open }
+							>
+								{ __( 'Select Image' ) }
+							</IconButton>
+							
+							{ imgURL && !! imgURL.length && (
+								<IconButton
+									className="ab-cta-inspector-media"
+									label={ __( 'Remove Image' ) }
+									icon="dismiss"
+									onClick={ onRemoveImage }
+								>
+									{ __( 'Remove' ) }
+								</IconButton>
+							) }
+						</div>
+					) }
+				>
+				</MediaUpload>
+				
+				{ imgURL && !! imgURL.length && (
+					<RangeControl
+						label={ __( 'Image Opacity' ) }
+						value={ dimRatio }
+						onChange={ ( value ) => this.props.setAttributes( { dimRatio: value } ) }
+						min={ 0 }
+						max={ 100 }
+						step={ 10 }
+					/>
+				) }
+
+				<PanelColor 
+					title={ __( 'Background Color' ) }
+					colorValue={ ctaBackgroundColor }
+					initialOpen={ false }
+				>
+					<ColorPalette 
+						label={ __( 'Background Color' ) }
+						value={ ctaBackgroundColor }
+						onChange={ ( value ) => this.props.setAttributes( { ctaBackgroundColor: value } ) }
 					/>
 				</PanelColor>
 			</PanelBody>
@@ -137,7 +200,16 @@ export default class Inspector extends Component {
 						label={ __( 'Button Color' ) }
 						value={ buttonBackgroundColor }
 						onChange={ ( value ) => { this.props.setAttributes( { buttonBackgroundColor: value } ) } }
-						colors={['#00d1b2', '#3373dc', '#209cef', '#22d25f', '#ffdd57', '#ff3860', '#7941b6', '#444048']}
+						colors={[
+							{ color: '#392F43', name: 'black' },
+							{ color: '#3373dc', name: 'royal blue' },
+							{ color: '#2DBAA3', name: 'teal' },
+							{ color: '#209cef', name: 'sky blue' },
+							{ color: '#2BAD59', name: 'green' },
+							{ color: '#ff3860', name: 'pink' },
+							{ color: '#7941b6', name: 'purple' },
+							{ color: '#F7812B', name: 'orange' },
+						]}
 					/>
 				</PanelColor>
 				
@@ -150,7 +222,10 @@ export default class Inspector extends Component {
 						label={ __( 'Button Text Color' ) }
 						value={ buttonTextColor }
 						onChange={ ( value ) => { this.props.setAttributes( { buttonTextColor: value } ) } }
-						colors={['#32373c', '#fff' ]}
+						colors={[
+							{ color: '#32373c', name: 'black' },
+							{ color: '#fff', name: 'white' },
+						]}
 					/>
 				</PanelColor>
 			</PanelBody>

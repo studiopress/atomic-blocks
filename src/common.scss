@@ -130,3 +130,14 @@
 .right {
   text-align: right;
 }
+
+@media only screen and (min-width: 600px) {
+  .wp-block-columns .layout-column-1,
+  .wp-block-columns .layout-column-2 {
+    margin-right: 5%;
+  }
+}
+
+.wp-block-image {
+  margin-bottom: 1.2em;
+}
