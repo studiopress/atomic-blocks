@@ -1,6 +1,6 @@
 {
   "name": "multi-block-cgb-guten-block",
-  "version": "1.0.0",
+  "version": "1.9.6",
   "private": true,
   "scripts": {
     "start": "cgb-scripts start",
@@ -12,12 +12,18 @@
     "cgb-scripts": "1.9.3",
     "classnames": "^2.2.5",
     "hoek": "^5.0.3",
+    "lodash": "^4.17.10",
     "md5": "^2.2.1",
+    "moment": "^2.22.1",
+    "querystringify": "^2.0.0",
     "re-resizable": "^4.4.8",
     "react": "16.2.0",
     "styled-components": "^3.2.5"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "grunt-wp-i18n": "^1.0.2"
   }

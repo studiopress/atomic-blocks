@@ -94,11 +94,14 @@ add_action( 'wp_footer', 'atomic_blocks_social_icon_footer_script' );
  * Render the sharing links
  */
 function atomic_blocks_render_sharing( $attributes ) {
+	global $post;
 
 	// Setup the featured image
 	if ( has_post_thumbnail() ) {
 		$thumbnail_id = get_post_thumbnail_id( $post->ID );
-		$thumbnail = $thumbnail_id ? current( wp_get_attachment_image_src( $thumbnail_id, 'large', true ) ) : '';
+		if ( $thumbnail_id[0] ) {
+			$thumbnail = $thumbnail_id ? current( wp_get_attachment_image_src( $thumbnail_id, 'large', true ) ) : '';
+		}
 	} else {
 		$thumbnail = null;
 	}
