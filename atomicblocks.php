@@ -38,12 +38,12 @@ function atomic_blocks_loader() {
 	/**
 	 * Load Social Block PHP
 	 */
-	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-sharing/index.php';
+	require_once plugin_dir_path( __FILE__ ) . 'dist/blocks/block-sharing/index.php';
 
 	/**
 	 * Load Page Grid PHP
 	 */
-	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-page-grid/index.php';
+	require_once plugin_dir_path( __FILE__ ) . 'dist/blocks/block-page-grid/index.php';
 }
 add_action( 'plugins_loaded', 'atomic_blocks_loader' );
 

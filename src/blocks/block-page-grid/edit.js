@@ -151,7 +151,7 @@ class LatestPostsEdit extends Component {
 				<div
 					className={ classnames(
 						this.props.className,
-						this.props.attributes.align,
+						//this.props.attributes.align,
 						'ab-block-post-grid',
 					) }
 				>

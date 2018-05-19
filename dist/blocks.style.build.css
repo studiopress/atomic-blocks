@@ -116,8 +116,8 @@
   .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-name,
   .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-name + .ab-testimonial-title,
   .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-title,
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .blocks-rich-text,
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .blocks-rich-text + .blocks-rich-text {
+  .ab-block-testimonial .ab-testimonial-avatar-wrap + .editor-rich-text,
+  .ab-block-testimonial .ab-testimonial-avatar-wrap + .editor-rich-text + .editor-rich-text {
     margin-left: 70px;
     padding-left: 0; }
   .ab-block-testimonial .ab-testimonial-text p {

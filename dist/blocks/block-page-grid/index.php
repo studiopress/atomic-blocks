@@ -1,24 +1,21 @@
 <?php
 /**
- * Server-side rendering of the `core/latest-posts` block.
+ * Server-side rendering for the post grid block
  *
- * @package gutenberg
+ * @since 	1.1.7
+ * @package Atomic Blocks
  */
 
 /**
- * Renders the `core/latest-posts` block on server.
- *
- * @param array $attributes The block attributes.
- *
- * @return string Returns the post content with latest posts added.
+ * Renders the post grid block on server.
  */
 function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	$recent_posts = wp_get_recent_posts( array(
 		'numberposts' => $attributes['postsToShow'],
 		'post_status' => 'publish',
-		'order'       => $attributes['order'],
-		'orderby'     => $attributes['orderBy'],
-		'category'    => $attributes['categories'],
+		'order' => $attributes['order'],
+		'orderby' => $attributes['orderBy'],
+		'category' => $attributes['categories'],
 	) );
 
 	$list_items_markup = '';
@@ -29,7 +26,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 		$title = get_the_title( $post_id );
 		if ( ! $title ) {
-			$title = __( '(Untitled)', 'gutenberg' );
+			$title = __( '(Untitled)', 'atomic-blocks' );
 		}
 
 		$list_items_markup .= sprintf(
@@ -84,43 +81,43 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
  */
 function atomic_blocks_register_block_core_latest_posts() {
 	register_block_type( 'atomic-blocks/ab-post-grid', array(
-		'attributes'      => array(
+		'attributes' => array(
 			'categories'      => array(
 				'type' => 'string',
 			),
-			'className'       => array(
+			'className' => array(
 				'type' => 'string',
 			),
-			'postsToShow'     => array(
-				'type'    => 'number',
+			'postsToShow' => array(
+				'type' => 'number',
 				'default' => 5,
 			),
 			'displayPostDate' => array(
-				'type'    => 'boolean',
+				'type' => 'boolean',
 				'default' => false,
 			),
 			'displayPostExcerpt' => array(
-				'type'    => 'boolean',
+				'type' => 'boolean',
 				'default' => false,
 			),
-			'postLayout'      => array(
-				'type'    => 'string',
+			'postLayout' => array(
+				'type' => 'string',
 				'default' => 'list',
 			),
-			'columns'         => array(
-				'type'    => 'number',
+			'columns' => array(
+				'type' => 'number',
 				'default' => 3,
 			),
-			'align'           => array(
-				'type'    => 'string',
-				'default' => 'center',
+			'align' => array(
+				'type' => 'string',
+				'default' => 'left',
 			),
-			'order'           => array(
-				'type'    => 'string',
+			'order' => array(
+				'type' => 'string',
 				'default' => 'desc',
 			),
-			'orderBy'         => array(
-				'type'    => 'string',
+			'orderBy'  => array(
+				'type' => 'string',
 				'default' => 'date',
 			),
 		),
@@ -132,7 +129,7 @@ add_action( 'init', 'atomic_blocks_register_block_core_latest_posts' );
 
 
 /**
- * Create a field for the featured image
+ * Create an API field for the featured image
  */
 function atomic_blocks_add_thumbnail_to_JSON() {
 	register_rest_field( 
@@ -147,6 +144,9 @@ function atomic_blocks_add_thumbnail_to_JSON() {
 	}
 add_action( 'rest_api_init', 'atomic_blocks_add_thumbnail_to_JSON' );
 
+/**
+ * Build the featured image
+ */
 function atomic_blocks_get_image_src( $object, $field_name, $request ) {
 	$feat_img_array = wp_get_attachment_image_src(
 	$object['featured_media'],

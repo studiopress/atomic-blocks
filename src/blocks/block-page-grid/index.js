@@ -4,8 +4,6 @@
 
 // Import block dependencies and components
 import classnames from 'classnames';
-// import Inspector from './components/inspector';
-// import ShareLinks from './components/sharing';
 import edit from './edit';
 
 // Import CSS
