@@ -1369,8 +1369,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-block-cta .ab-font-size-60.ab-cta-title {
     font-size: 60px; }
   .ab-block-cta .blocks-button__inline-link {
-    margin-top: 15px;
-    border: solid 1px #ddd; }
+    margin-top: 15px; }
   .ab-block-cta .ab-cta-image:not(.has-background-dim) {
     opacity: 0; }
   .ab-block-cta .has-background-dim {

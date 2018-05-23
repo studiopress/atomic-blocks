@@ -463,6 +463,15 @@
 /**
  * Editor styles for the admin
  */
+.ab-block-button + .blocks-button__inline-link .editor-url-input {
+  display: inline-block; }
+
+.ab-block-button + .blocks-button__inline-link .components-button {
+  display: inline-block; }
+
+.ab-block-button + .blocks-button__inline-link svg {
+  vertical-align: middle;
+  margin-right: 8px; }
 /**
  * Common styles
  * Loads on front end and back end
@@ -783,6 +792,15 @@
 /**
  * Editor styles for the admin
  */
+.ab-cta-button .blocks-button__inline-link .editor-url-input {
+  display: inline-block; }
+
+.ab-cta-button .blocks-button__inline-link .components-button {
+  display: inline-block; }
+
+.ab-cta-button .blocks-button__inline-link svg {
+  vertical-align: middle;
+  margin-right: 8px; }
 /**
  * Common styles
  * Loads on front end and back end

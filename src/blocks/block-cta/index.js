@@ -20,16 +20,6 @@ const { Component } = wp.element;
 // Register block 
 const { registerBlockType } = wp.blocks;
 
-// Register components
-const {
-	Button,
-	withFallbackStyles,
-	IconButton,
-	Dashicon,
-	withState,
-	Toolbar,
-} = wp.components;
-
 // Register editor components
 const {
 	AlignmentToolbar,
@@ -39,6 +29,16 @@ const {
 	MediaUpload,
 	RichText,
 } = wp.editor;
+
+// Register components
+const {
+	Button,
+	withFallbackStyles,
+	IconButton,
+	Dashicon,
+	withState,
+	Toolbar,
+} = wp.components;
 
 const blockAttributes = {
 	buttonText: {
