@@ -94,7 +94,8 @@ add_action( 'wp_footer', 'atomic_blocks_social_icon_footer_script' );
  * Render the sharing links
  */
 function atomic_blocks_render_sharing( $attributes ) {
-
+	global $post;
+	
 	// Setup the featured image
 	if ( has_post_thumbnail() ) {
 		$thumbnail_id = get_post_thumbnail_id( $post->ID );
