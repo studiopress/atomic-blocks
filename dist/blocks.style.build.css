@@ -116,8 +116,8 @@
   .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-name,
   .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-name + .ab-testimonial-title,
   .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-title,
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .blocks-rich-text,
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .blocks-rich-text + .blocks-rich-text {
+  .ab-block-testimonial .ab-testimonial-avatar-wrap + .editor-rich-text,
+  .ab-block-testimonial .ab-testimonial-avatar-wrap + .editor-rich-text + .editor-rich-text {
     margin-left: 70px;
     padding-left: 0; }
   .ab-block-testimonial .ab-testimonial-text p {
@@ -839,10 +839,15 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-block-button .blocks-rich-text {
     display: -ms-inline-flexbox;
     display: inline-flex; }
+  .ab-block-button .components-autocomplete {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+    position: relative; }
   .ab-block-button .ab-button {
     text-align: center;
     font-size: 18px;
-    line-height: 1;
+    line-height: 1 !important;
     background-color: #32373c;
     border: none;
     border-radius: 50px;
@@ -1225,6 +1230,11 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   color: #293038;
   padding: 5% 3%;
   border-radius: 5px; }
+  .ab-block-cta .components-autocomplete {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+    position: relative; }
   .ab-block-cta * {
     z-index: 10;
     position: relative; }
@@ -1281,7 +1291,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-block-cta .ab-button {
     text-align: center;
     font-size: 18px;
-    line-height: 1;
+    line-height: 1 !important;
     background-color: #32373c;
     border: none;
     border-radius: 50px;

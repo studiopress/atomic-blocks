@@ -18,14 +18,16 @@ const { __ } = wp.i18n;
 // Extend component
 const { Component } = wp.element;
 
-// Register block controls
+// Register block
+const { registerBlockType } = wp.blocks;
+
+// Register editor components
 const {
-	registerBlockType,
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-} = wp.blocks;
+} = wp.editor;
 
 // Register components
 const {
