@@ -77,20 +77,18 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 
 		return [
 			// Show the alignment toolbar on focus
-			isSelected && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ shareAlignment }
-						onChange={ ( value ) => {
-							setAttributes( { shareAlignment: value } );
-						} }
-					/>
-				</BlockControls>
-			),
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ shareAlignment }
+					onChange={ ( value ) => {
+						setAttributes( { shareAlignment: value } );
+					} }
+				/>
+			</BlockControls>,
 			// Show the block controls on focus
-			isSelected && (
-				<Inspector { ...props } />
-			),
+			<Inspector 
+				{ ...props }
+			/>,
 			// Show the button markup in the editor
 			<ShareLinks { ...props }>
 				<ul class="ab-share-list">

@@ -45,22 +45,18 @@ class ABButtonBlock extends Component {
 
 		return [
 			// Show the alignment toolbar on focus
-			isSelected && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ buttonAlignment }
-						onChange={ ( value ) => {
-							setAttributes( { buttonAlignment: value } );
-						} }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			isSelected && (
-				<Inspector
-					{ ...this.props }
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ buttonAlignment }
+					onChange={ ( value ) => {
+						setAttributes( { buttonAlignment: value } );
+					} }
 				/>
-			),
+			</BlockControls>,
+			// Show the block controls on focus
+			<Inspector
+				{ ...this.props }
+			/>,
 			// Show the button markup in the editor
 			<CustomButton { ...this.props }>
 				<RichText

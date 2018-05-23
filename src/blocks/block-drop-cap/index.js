@@ -45,20 +45,16 @@ class ABDropCapBlock extends Component {
 
 		return [
 			// Show the alignment toolbar on focus
-			isSelected && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ dropCapAlignment }
-						onChange={ ( value ) => this.props.setAttributes( { dropCapAlignment: value } ) }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			isSelected && (
-				<Inspector
-					{ ...this.props }
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ dropCapAlignment }
+					onChange={ ( value ) => this.props.setAttributes( { dropCapAlignment: value } ) }
 				/>
-			),
+			</BlockControls>,
+			// Show the block controls on focus
+			<Inspector
+				{ ...this.props }
+			/>,
 			// Show the block markup in the editor
 			<DropCap { ...this.props }>
 				<RichText

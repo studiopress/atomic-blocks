@@ -117,20 +117,16 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 
 		return [
 			// Show the alignment toolbar on focus
-			isSelected && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ noticeAlignment }
-						onChange={ ( value ) => setAttributes( { noticeAlignment: value } ) }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			isSelected && (
-				<Inspector
-				{ ...{ setAttributes, ...props } }
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ noticeAlignment }
+					onChange={ ( value ) => setAttributes( { noticeAlignment: value } ) }
 				/>
-			),
+			</BlockControls>,
+			// Show the block controls on focus
+			<Inspector
+				{ ...{ setAttributes, ...props } }
+			/>,
 			// Show the block markup in the editor
 			<NoticeBox { ...props }>
 				{	// Check if the notice is dismissable and output the button

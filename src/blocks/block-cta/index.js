@@ -193,27 +193,23 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 
 		return [
 			// Show the alignment toolbar on focus
-			isSelected && (
-				<BlockControls>
-					<BlockAlignmentToolbar
-						value={ ctaWidth }
-						onChange={ ctaWidth => setAttributes( { ctaWidth } ) }
-						controls={ [ 'center', 'wide', 'full' ] }
-					/>
-					<AlignmentToolbar
-						value={ buttonAlignment }
-						onChange={ ( value ) => {
-							setAttributes( { buttonAlignment: value } );
-						} }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			isSelected && (
-				<Inspector
-					{ ...{ setAttributes, ...props } }
+			<BlockControls>
+				<BlockAlignmentToolbar
+					value={ ctaWidth }
+					onChange={ ctaWidth => setAttributes( { ctaWidth } ) }
+					controls={ [ 'center', 'wide', 'full' ] }
 				/>
-			),
+				<AlignmentToolbar
+					value={ buttonAlignment }
+					onChange={ ( value ) => {
+						setAttributes( { buttonAlignment: value } );
+					} }
+				/>
+			</BlockControls>,
+			// Show the block controls on focus
+			<Inspector
+				{ ...{ setAttributes, ...props } }
+			/>,
 			// Show the button markup in the editor
 			<CallToAction { ...props }>
 				{ imgURL && !! imgURL.length && (

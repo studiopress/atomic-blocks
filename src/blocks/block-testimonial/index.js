@@ -124,20 +124,16 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 
 		return [
 			// Show the alignment toolbar on focus
-			isSelected && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ testimonialAlignment }
-						onChange={ ( value ) => setAttributes( { testimonialAlignment: value } ) }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			isSelected && (
-				<Inspector
-					{ ...{ setAttributes, ...props } }
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ testimonialAlignment }
+					onChange={ ( value ) => setAttributes( { testimonialAlignment: value } ) }
 				/>
-			),
+			</BlockControls>,
+			// Show the block controls on focus
+			<Inspector
+				{ ...{ setAttributes, ...props } }
+			/>,
 			// Show the block markup in the editor
 			<Testimonial { ...props }>
 				<RichText

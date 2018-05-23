@@ -46,20 +46,16 @@ class ABAccordionBlock extends Component {
 
 		return [
 			// Show the block alignment controls on focus
-			isSelected && (
-				<BlockControls key="controls">
-					<AlignmentToolbar
-						value={ accordionAlignment }
-						onChange={ ( value ) => this.props.setAttributes( { accordionAlignment: value } ) }
-					/>
-				</BlockControls>
-			),
-			// Show the block controls on focus
-			isSelected && (
-				<Inspector
-					{ ...this.props }
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ accordionAlignment }
+					onChange={ ( value ) => this.props.setAttributes( { accordionAlignment: value } ) }
 				/>
-			),
+			</BlockControls>,
+			// Show the block controls on focus
+			<Inspector
+				{ ...this.props }
+			/>,
 			// Show the button markup in the editor
 			<Accordion { ...this.props }>
 				<RichText

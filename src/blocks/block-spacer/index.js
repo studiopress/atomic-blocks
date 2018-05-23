@@ -48,11 +48,9 @@ class ABSpacerBlock extends Component {
 
 		return [
 			// Show the block controls on focus
-			isSelected && (
-				<Inspector
-					{ ...this.props }
-				/>
-			),
+			<Inspector
+				{ ...this.props }
+			/>,
 			// Show the button markup in the editor
 			<Spacer { ...this.props }>
 				<Resizable
