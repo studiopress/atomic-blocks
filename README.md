@@ -72,6 +72,12 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.1.7**
+* Remove unnecessary isSelected from controls. 
+* Fix undefined post bug.
+* Move components to wp.editor.
+* Improve styles for URL input on button block.
+
 **1.1.6**
 * Rename array_social_icon_footer_script() to atomic_blocks_social_icon_footer_script().
 
