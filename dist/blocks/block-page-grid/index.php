@@ -29,6 +29,11 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			$title = __( '(Untitled)', 'atomic-blocks' );
 		}
 
+		// $excerpt = get_the_excerpt( $post_id );
+		// if ( ! $excerpt ) {
+		// 	$excerpt = null;
+		// }
+
 		$list_items_markup .= sprintf(
 			'<li>'
 		);
@@ -43,6 +48,13 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			esc_html( $title )
 		);
 
+		// if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
+		// 	$list_items_markup .= sprintf(
+		// 		'<p>%1$s</p>',
+		// 		esc_html( $excerpt )
+		// 	);
+		// }
+
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 			$list_items_markup .= sprintf(
 				'<time datetime="%1$s" class="wp-block-latest-posts__post-date">%2$s</time>',
@@ -54,7 +66,8 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		$list_items_markup .= "</li>\n";
 	}
 
-	$class = "wp-block-latest-posts align{$attributes['align']}";
+	$class = "ab-block-post-grid align{$attributes['width']}";
+
 	if ( isset( $attributes['postLayout'] ) && 'grid' === $attributes['postLayout'] ) {
 		$class .= ' is-grid';
 	}
@@ -68,7 +81,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	}
 
 	$block_content = sprintf(
-		'<ul class="%1$s">%2$s</ul>',
+		'<div class="%1$s"><ul class="ab-post-grid-items">%2$s</ul></div>',
 		esc_attr( $class ),
 		$list_items_markup
 	);
@@ -111,6 +124,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 			'align' => array(
 				'type' => 'string',
 				'default' => 'left',
+			),
+			'width' => array(
+				'type' => 'string',
+				'default' => 'wide',
 			),
 			'order' => array(
 				'type' => 'string',

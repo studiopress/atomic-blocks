@@ -306,7 +306,8 @@
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
   -ms-flex-pack: distribute;
-      justify-content: space-around; }
+      justify-content: space-around;
+  width: 100%; }
   .ab-block-profile .ab-profile-column {
     display: block;
     padding: 15px;
@@ -1687,96 +1688,23 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   margin-bottom: 1.2em; }
 
 /**
- * Sharing styles
+ * Post grid styles
  * Loads on front end and back end
  */
-.ab-block-sharing {
+.ab-block-post-grid {
   margin: 0 0 1.2em 0;
   position: relative; }
-  .ab-block-sharing .blocks-rich-text {
-    display: -ms-inline-flexbox;
-    display: inline-flex; }
-  .ab-block-sharing .ab-share-list {
+  .ab-block-post-grid .ab-post-grid-items {
+    list-style: none;
     margin: 0;
-    padding: 0; }
-    .ab-block-sharing .ab-share-list li {
-      list-style: none;
-      display: inline-block;
-      margin: 0 5px 5px 0; }
-    .ab-block-sharing .ab-share-list a {
-      background: #272c30;
-      color: #fff;
-      padding: 10px 15px;
-      text-align: center;
-      display: block;
-      line-height: 1;
-      font-size: 16px;
-      -webkit-transition: .3s ease;
-      -o-transition: .3s ease;
-      transition: .3s ease; }
-      .ab-block-sharing .ab-share-list a:hover {
-        -webkit-box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
-                box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15); }
-  .ab-block-sharing.ab-share-icon-text i {
-    margin-right: 5px; }
-  .ab-block-sharing.ab-share-icon-only a {
-    padding: 10px 11px;
-    min-width: 37px; }
-  .ab-block-sharing.ab-share-icon-only .ab-social-text {
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
     padding: 0;
-    position: absolute !important;
-    width: 1px;
-    word-wrap: normal !important; }
-  .ab-block-sharing.ab-share-text-only i {
-    display: none; }
-  .ab-block-sharing.ab-share-shape-square a {
-    border-radius: 0; }
-  .ab-block-sharing.ab-share-shape-rounded a {
-    border-radius: 5px; }
-  .ab-block-sharing.ab-share-shape-circular a {
-    border-radius: 100px; }
-  .ab-block-sharing.ab-share-size-small a {
-    font-size: 13px; }
-  .ab-block-sharing.ab-share-size-small.ab-share-icon-only a {
-    padding: 7px 6px;
-    min-width: 28px; }
-  .ab-block-sharing.ab-share-size-medium a {
-    font-size: 16px; }
-  .ab-block-sharing.ab-share-size-large a {
-    font-size: 20px; }
-  .ab-block-sharing.ab-share-size-large.ab-share-icon-only a {
-    font-size: 26px;
-    min-width: 48px; }
-  .ab-block-sharing.ab-share-size-large.ab-share-icon-text i {
-    margin-right: 10px; }
-  .ab-block-sharing.ab-share-color-social a {
-    color: #fff; }
-  .ab-block-sharing.ab-share-color-social .ab-share-twitter {
-    background: #1ca1f3; }
-  .ab-block-sharing.ab-share-color-social .ab-share-facebook {
-    background: #3b5999; }
-  .ab-block-sharing.ab-share-color-social .ab-share-google {
-    background: #dc4b45; }
-  .ab-block-sharing.ab-share-color-social .ab-share-pinterest {
-    background: #bd091c; }
-  .ab-block-sharing.ab-share-color-social .ab-share-linkedin {
-    background: #0077b5; }
-  .ab-block-sharing.ab-share-color-social .ab-share-reddit {
-    background: #ff4500; }
-
-.ab-button-right {
-  -webkit-transform: translateX(-100%);
-      -ms-transform: translateX(-100%);
-          transform: translateX(-100%);
-  left: 100%;
-  position: relative; }
-
-.ab-button-center {
-  margin: 0 auto; }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 2em; }
+    @media only screen and (max-width: 600px) {
+      .ab-block-post-grid .ab-post-grid-items {
+        grid-template-columns: 1fr; } }
+  .ab-block-post-grid .ab-post-grid-items li {
+    list-style: none;
+    margin: 0; }

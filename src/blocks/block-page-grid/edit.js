@@ -35,7 +35,7 @@ const {
 
 const MAX_POSTS_COLUMNS = 6;
 
-class LatestPostsEdit extends Component {
+class LatestPostsBlock extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -60,7 +60,7 @@ class LatestPostsEdit extends Component {
 	render() {
 		const latestPosts = this.props.latestPosts.data;
 		const { attributes, categoriesList, setAttributes } = this.props;
-		const { displayPostDate, displayPostExcerpt, align, postLayout, columns, order, orderBy, categories, postsToShow } = attributes;
+		const { displayPostDate, displayPostExcerpt, align, postLayout, columns, order, orderBy, categories, postsToShow, width } = attributes;
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( 'Latest Posts Settings' ) }>
@@ -140,9 +140,9 @@ class LatestPostsEdit extends Component {
 				{ inspectorControls }
 				<BlockControls>
 					<BlockAlignmentToolbar
-						value={ align }
-						onChange={ ( nextAlign ) => {
-							setAttributes( { align: nextAlign } );
+						value={ width }
+						onChange={ ( value ) => {
+							setAttributes( { width: value } );
 						} }
 						controls={ [ 'center', 'wide', 'full' ] }
 					/>
@@ -151,15 +151,16 @@ class LatestPostsEdit extends Component {
 				<div
 					className={ classnames(
 						this.props.className,
-						//this.props.attributes.align,
+						`align${width}`,
 						'ab-block-post-grid',
 					) }
 				>
 					<ul
-						className={ classnames( {
-							'is-grid': postLayout === 'grid',
-							[ `columns-${ columns }` ]: postLayout === 'grid',
-						} ) }
+						className={ classnames(
+							// 'is-grid': postLayout === 'grid',
+							// [ `columns-${ columns }` ]: postLayout === 'grid',
+							'ab-post-grid-items'
+						) }
 					>
 						{ displayPosts.map( ( post, i ) =>
 							<li key={ i }>
@@ -214,4 +215,4 @@ export default withAPIData( ( props ) => {
 		latestPosts: `/wp/v2/posts?${ latestPostsQuery }`,
 		categoriesList: `/wp/v2/categories?${ categoriesListQuery }`,
 	};
-} )( LatestPostsEdit );
+} )( LatestPostsBlock );
