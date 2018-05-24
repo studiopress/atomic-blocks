@@ -2,8 +2,13 @@
  * Editor styles for the admin
  */
 
- .ab-block-spacer {
+.editor-block-list__layout [data-type="atomic-blocks/ab-spacer"] {
+    margin-bottom: 1.2em;
+}
+
+.ab-block-spacer {
 	border: dashed 1px #ddd;
+	margin-bottom: 0;
 
 	.ab-spacer-handle {
 		margin-bottom: 0;

@@ -2,6 +2,14 @@
  * Editor styles for the admin
  */
 
+.ab-block-cta {
+    margin-bottom: 0;
+}
+
+.editor-block-list__layout [data-type="atomic-blocks/ab-cta"] {
+    margin-bottom: 1.2em;
+}
+
  .ab-cta-button {
     .blocks-button__inline-link .editor-url-input {
         display: inline-block;

@@ -1,3 +1,11 @@
 /**
  * Editor styles for the admin
  */
+
+.ab-block-testimonial {
+    margin-bottom: 0;
+}
+
+.editor-block-list__layout [data-type="atomic-blocks/ab-testimonial"] {
+    margin-bottom: 1.2em;
+}
