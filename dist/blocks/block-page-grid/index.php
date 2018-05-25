@@ -167,7 +167,7 @@ add_action( 'rest_api_init', 'atomic_blocks_add_thumbnail_to_JSON' );
 function atomic_blocks_get_image_src( $object, $field_name, $request ) {
 	$feat_img_array = wp_get_attachment_image_src(
 	$object['featured_media'],
-		'thumbnail',
+		'medium_large',
 		false
 	);
 	return $feat_img_array[0];
