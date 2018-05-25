@@ -67,6 +67,7 @@ class ABDropCapBlock extends Component {
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className={ classnames(
 						'ab-drop-cap-text',
+						'ab-font-size-' + dropCapFontSize,
 					) }
 					onChange={ ( value ) => this.props.setAttributes( { dropCapContent: value } ) }
 				/>
