@@ -72,6 +72,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.1.8**
+* Improve margins for blocks in editor.
+* Fix quirks in the drop cap block.
+
 **1.1.7**
 * Remove unnecessary isSelected from controls. 
 * Fix undefined post bug.

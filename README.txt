@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
 Tested up to: 4.9.5
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -93,6 +93,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 6. The Drop Cap block with settings.
 
 == Changelog ==
+
+= 1.1.8 =
+* Improve margins for blocks in editor.
+* Fix quirks in the drop cap block.
 
 = 1.1.7 =
 * Remove unnecessary isSelected from controls. 
