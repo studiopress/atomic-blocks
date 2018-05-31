@@ -29,11 +29,6 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			$title = __( '(Untitled)', 'atomic-blocks' );
 		}
 
-		// $excerpt = get_the_excerpt( $post_id );
-		// if ( ! $excerpt ) {
-		// 	$excerpt = null;
-		// }
-
 		$list_items_markup .= sprintf(
 			'<li>'
 		);
@@ -47,13 +42,18 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			esc_url( get_permalink( $post_id ) ),
 			esc_html( $title )
 		);
+		
+		$excerpt = get_post_field( 'excerpt', $post_id, 'raw' );
+		if ( ! $excerpt ) {
+			$excerpt = null;
+		}
 
-		// if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-		// 	$list_items_markup .= sprintf(
-		// 		'<p>%1$s</p>',
-		// 		esc_html( $excerpt )
-		// 	);
-		// }
+		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
+			$list_items_markup .= sprintf(
+				'<p>%1$s</p>',
+				esc_html( $excerpt )
+			);
+		}
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 			$list_items_markup .= sprintf(
