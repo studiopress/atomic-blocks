@@ -16,12 +16,12 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		'order' => $attributes['order'],
 		'orderby' => $attributes['orderBy'],
 		'category' => $attributes['categories'],
-	) );
+	), 'OBJECT' );
 
 	$list_items_markup = '';
 
 	foreach ( $recent_posts as $post ) {
-		$post_id = $post['ID'];
+		$post_id = $post->ID;
 		$post_thumb_id = get_post_thumbnail_id( $post_id );
 
 		$title = get_the_title( $post_id );
@@ -42,8 +42,13 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			esc_url( get_permalink( $post_id ) ),
 			esc_html( $title )
 		);
-		
-		$excerpt = get_post_field( 'excerpt', $post_id, 'raw' );
+
+		$excerpt = get_post_field( 'post_excerpt', $post_id, 'display' );
+
+		if( empty( $excerpt ) ) {
+			$excerpt = apply_filters( 'the_excerpt', wp_trim_excerpt( get_post_field( 'post_content', $post_id, 'display' ) ) );
+		}
+
 		if ( ! $excerpt ) {
 			$excerpt = null;
 		}
@@ -51,7 +56,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
 			$list_items_markup .= sprintf(
 				'<p>%1$s</p>',
-				esc_html( $excerpt )
+				wp_kses_post( $excerpt )
 			);
 		}
 
@@ -149,7 +154,7 @@ add_action( 'init', 'atomic_blocks_register_block_core_latest_posts' );
  * Create an API field for the featured image
  */
 function atomic_blocks_add_thumbnail_to_JSON() {
-	register_rest_field( 
+	register_rest_field(
 		'post',
 		'featured_image_src',
 		array(
