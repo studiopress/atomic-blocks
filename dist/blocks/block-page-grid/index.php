@@ -43,10 +43,10 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			esc_html( $title )
 		);
 
-		$excerpt = get_post_field( 'post_excerpt', $post_id, 'display' );
+		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
 
 		if( empty( $excerpt ) ) {
-			$excerpt = apply_filters( 'the_excerpt', wp_trim_excerpt( get_post_field( 'post_content', $post_id, 'display' ) ) );
+			$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
 		}
 
 		if ( ! $excerpt ) {
@@ -54,10 +54,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		}
 
 		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-			$list_items_markup .= sprintf(
-				'<p>%1$s</p>',
-				wp_kses_post( $excerpt )
-			);
+			$list_items_markup .= wp_kses_post( $excerpt );
 		}
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
