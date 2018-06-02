@@ -33,7 +33,7 @@ const {
 } = wp.blocks;
 
 
-const MAX_POSTS_COLUMNS = 6;
+const MAX_POSTS_COLUMNS = 4;
 
 class LatestPostsBlock extends Component {
 	constructor() {
@@ -74,11 +74,6 @@ class LatestPostsBlock extends Component {
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
-					<ToggleControl
-						label={ __( 'Display post date' ) }
-						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
-					/>
 					{ postLayout === 'grid' &&
 						<RangeControl
 							label={ __( 'Columns' ) }
@@ -88,6 +83,11 @@ class LatestPostsBlock extends Component {
 							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 						/>
 					}
+					<ToggleControl
+						label={ __( 'Display post date' ) }
+						checked={ displayPostDate }
+						onChange={ this.toggleDisplayPostDate }
+					/>
 					<ToggleControl
 						label={ __( 'Display post excerpt' ) }
 						checked={ displayPostExcerpt }
@@ -122,16 +122,16 @@ class LatestPostsBlock extends Component {
 
 		const layoutControls = [
 			{
-				icon: 'list-view',
-				title: __( 'List View' ),
-				onClick: () => setAttributes( { postLayout: 'list' } ),
-				isActive: postLayout === 'list',
-			},
-			{
 				icon: 'grid-view',
 				title: __( 'Grid View' ),
 				onClick: () => setAttributes( { postLayout: 'grid' } ),
 				isActive: postLayout === 'grid',
+			},
+			{
+				icon: 'list-view',
+				title: __( 'List View' ),
+				onClick: () => setAttributes( { postLayout: 'list' } ),
+				isActive: postLayout === 'list',
 			},
 		];
 
@@ -140,44 +140,47 @@ class LatestPostsBlock extends Component {
 				{ inspectorControls }
 				<BlockControls>
 					<BlockAlignmentToolbar
-						value={ width }
+						value={ align }
 						onChange={ ( value ) => {
-							setAttributes( { width: value } );
+							setAttributes( { align: value } );
 						} }
-						controls={ [ 'center', 'wide', 'full' ] }
+						controls={ [ 'center', 'wide' ] }
 					/>
 					<Toolbar controls={ layoutControls } />
 				</BlockControls>
 				<div
 					className={ classnames(
 						this.props.className,
-						`align${width}`,
+						//`align${width}`,
 						'ab-block-post-grid',
 					) }
 				>
-					<ul
-						className={ classnames(
-							// 'is-grid': postLayout === 'grid',
-							// [ `columns-${ columns }` ]: postLayout === 'grid',
-							'ab-post-grid-items'
-						) }
+					<div
+						className={ classnames( {
+							'is-grid': postLayout === 'grid',
+							[ `columns-${ columns }` ]: postLayout === 'grid',
+							'ab-post-grid-items' : 'ab-post-grid-items'
+						} ) }
+						
 					>
 						{ displayPosts.map( ( post, i ) =>
-							<li key={ i }>
+							<article key={ i }>
 								{
 									post.featured_image_src !== undefined && post.featured_image_src ? (
-										<a href={ post.link } target="_blank">
-											<img
-												src={ post.featured_image_src }
-												alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-											/>
-										</a>
+										<div class="ab-block-post-grid-image">
+											<a href={ post.link } target="_blank" rel="bookmark">
+												<img
+													src={ post.featured_image_src }
+													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+												/>
+											</a>
+										</div>
 									) : (
 										null
 									)
 								}
 
-								<h2><a href={ post.link } target="_blank">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+								<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 								
 								{ displayPostExcerpt && post.excerpt &&
 									<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
@@ -188,9 +191,9 @@ class LatestPostsBlock extends Component {
 										{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
 									</time>
 								}
-							</li>
+							</article>
 						) }
-					</ul>
+					</div>
 				</div>
 			</Fragment>
 		);

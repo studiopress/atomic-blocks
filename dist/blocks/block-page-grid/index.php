@@ -21,28 +21,38 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	$list_items_markup = '';
 
 	foreach ( $recent_posts as $post ) {
+		// Get the post ID
 		$post_id = $post->ID;
-		$post_thumb_id = get_post_thumbnail_id( $post_id );
 
-		$title = get_the_title( $post_id );
-		if ( ! $title ) {
-			$title = __( '(Untitled)', 'atomic-blocks' );
-		}
-
+		// Start the markup for the post
 		$list_items_markup .= sprintf(
-			'<li>'
+			'<article>'
 		);
 
+		// Get the post thumbnail 
+		$post_thumb_id = get_post_thumbnail_id( $post_id );
 		if ( $post_thumb_id ) {
-			$list_items_markup .= sprintf( wp_get_attachment_image( $post_thumb_id, 'medium_large' ) );
+			$list_items_markup .= sprintf( 
+				'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+				esc_url( get_permalink( $post_id ) ),
+				wp_get_attachment_image( $post_thumb_id, 'medium_large' ) 
+			);
+		}
+
+		// Get the post title 
+		$title = get_the_title( $post_id );
+
+		if ( ! $title ) {
+			$title = __( 'Untitled', 'atomic-blocks' );
 		}
 
 		$list_items_markup .= sprintf(
-			'<a href="%1$s">%2$s</a>',
+			'<h2 class="entry-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
 			esc_url( get_permalink( $post_id ) ),
 			esc_html( $title )
 		);
 
+		// Get the excerpt
 		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
 
 		if( empty( $excerpt ) ) {
@@ -57,6 +67,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			$list_items_markup .= wp_kses_post( $excerpt );
 		}
 
+		// Get the post date
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 			$list_items_markup .= sprintf(
 				'<time datetime="%1$s" class="wp-block-latest-posts__post-date">%2$s</time>',
@@ -65,26 +76,34 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			);
 		}
 
-		$list_items_markup .= "</li>\n";
+		// Close the markup for the post
+		$list_items_markup .= "</article>\n";
 	}
 
-	$class = "ab-block-post-grid align{$attributes['width']}";
-
-	if ( isset( $attributes['postLayout'] ) && 'grid' === $attributes['postLayout'] ) {
-		$class .= ' is-grid';
-	}
-
-	if ( isset( $attributes['columns'] ) && 'grid' === $attributes['postLayout'] ) {
-		$class .= ' columns-' . $attributes['columns'];
-	}
+	// Build the classes
+	$class = "ab-block-post-grid align{$attributes['align']}";
 
 	if ( isset( $attributes['className'] ) ) {
 		$class .= ' ' . $attributes['className'];
 	}
+	
+	$grid_class = 'ab-post-grid-items';
 
+	if ( isset( $attributes['postLayout'] ) && 'list' === $attributes['postLayout'] ) {
+		$grid_class .= ' is-list';
+	} else {
+		$grid_class .= ' is-grid';
+	}
+
+	if ( isset( $attributes['columns'] ) && 'grid' === $attributes['postLayout'] ) {
+		$grid_class .= ' columns-' . $attributes['columns'];
+	}
+
+	// Output the post markup
 	$block_content = sprintf(
-		'<div class="%1$s"><ul class="ab-post-grid-items">%2$s</ul></div>',
+		'<div class="%1$s"><div class="%2$s">%3$s</div></div>',
 		esc_attr( $class ),
+		esc_attr( $grid_class ),
 		$list_items_markup
 	);
 
@@ -95,6 +114,12 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
  * Registers the `core/latest-posts` block on server.
  */
 function atomic_blocks_register_block_core_latest_posts() {
+	
+	// Check if the register function exists
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
+	}
+
 	register_block_type( 'atomic-blocks/ab-post-grid', array(
 		'attributes' => array(
 			'categories'      => array(
@@ -117,7 +142,7 @@ function atomic_blocks_register_block_core_latest_posts() {
 			),
 			'postLayout' => array(
 				'type' => 'string',
-				'default' => 'list',
+				'default' => 'grid',
 			),
 			'columns' => array(
 				'type' => 'number',
@@ -125,7 +150,7 @@ function atomic_blocks_register_block_core_latest_posts() {
 			),
 			'align' => array(
 				'type' => 'string',
-				'default' => 'left',
+				'default' => 'center',
 			),
 			'width' => array(
 				'type' => 'string',

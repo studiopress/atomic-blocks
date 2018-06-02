@@ -21,6 +21,9 @@ const {
 	registerBlockType,
 } = wp.blocks;
 
+// Register alignments
+const validAlignments = [ 'center', 'wide' ];
+
 export const name = 'core/latest-posts';
 
 // Register the block
@@ -34,6 +37,13 @@ registerBlockType( 'atomic-blocks/ab-post-grid', {
 		__( 'grid' ),
 		__( 'atomic' ),
 	],
+
+	getEditWrapperProps( attributes ) {
+		const { align } = attributes;
+		if ( -1 !== validAlignments.indexOf( align ) ) {
+			return { 'data-align': align };
+		}
+	},
 
 	edit,
 
