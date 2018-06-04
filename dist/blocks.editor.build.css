@@ -971,5 +971,5 @@
 /**
  * Editor styles for the admin
  */
-.ab-block-sharing {
-  margin-bottom: 0; }
+.ab-block-post-grid h2 a {
+  text-decoration: none; }

@@ -41,6 +41,7 @@ class LatestPostsBlock extends Component {
 
 		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
 		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
+		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 	}
 
 	toggleDisplayPostDate() {
@@ -57,13 +58,20 @@ class LatestPostsBlock extends Component {
 		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
 	}
 
+	toggleDisplayPostAuthor() {
+		const { displayPostAuthor } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostAuthor: ! displayPostAuthor } );
+	}
+
 	render() {
 		const latestPosts = this.props.latestPosts.data;
 		const { attributes, categoriesList, setAttributes } = this.props;
-		const { displayPostDate, displayPostExcerpt, align, postLayout, columns, order, orderBy, categories, postsToShow, width } = attributes;
+		const { displayPostDate, displayPostExcerpt, displayPostAuthor, align, postLayout, columns, order, orderBy, categories, postsToShow, width } = attributes;
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Latest Posts Settings' ) }>
+				<PanelBody title={ __( 'Post Grid Settings' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -93,6 +101,11 @@ class LatestPostsBlock extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
+					<ToggleControl
+						label={ __( 'Display post author' ) }
+						checked={ displayPostAuthor }
+						onChange={ this.toggleDisplayPostAuthor }
+					/>
 				</PanelBody>
 			</InspectorControls>
 		);
@@ -104,7 +117,7 @@ class LatestPostsBlock extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ __( 'Latest Posts' ) }
+						label={ __( 'Atomic Blocks Post Grid' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
@@ -151,20 +164,24 @@ class LatestPostsBlock extends Component {
 				<div
 					className={ classnames(
 						this.props.className,
-						//`align${width}`,
 						'ab-block-post-grid',
 					) }
 				>
 					<div
 						className={ classnames( {
 							'is-grid': postLayout === 'grid',
+							'is-list': postLayout === 'list',
 							[ `columns-${ columns }` ]: postLayout === 'grid',
 							'ab-post-grid-items' : 'ab-post-grid-items'
 						} ) }
-						
 					>
 						{ displayPosts.map( ( post, i ) =>
-							<article key={ i }>
+							<article 
+								key={ i }
+								className={ classnames( 
+									post.featured_image_src ? 'has-thumb' : 'no-thumb'	
+								) }
+							>
 								{
 									post.featured_image_src !== undefined && post.featured_image_src ? (
 										<div class="ab-block-post-grid-image">
@@ -180,17 +197,25 @@ class LatestPostsBlock extends Component {
 									)
 								}
 
-								<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
-								
-								{ displayPostExcerpt && post.excerpt &&
-									<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-								}
+								{ console.log(post) }
 
-								{ displayPostDate && post.date_gmt &&
-									<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
-										{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-									</time>
-								}
+								<div class="ab-block-post-grid-text">
+									<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+									
+									{ displayPostDate && post.date_gmt &&
+										<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
+											{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+										</time>
+									}
+
+									{ displayPostAuthor && post.author &&
+										<div> {  } </div>
+									}
+									
+									{ displayPostExcerpt && post.excerpt &&
+										<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+									}
+								</div>
 							</article>
 						) }
 					</div>
@@ -207,8 +232,8 @@ export default withAPIData( ( props ) => {
 		order,
 		orderby: orderBy,
 		per_page: postsToShow,
-		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'featured_image_src', 'excerpt' ],
-		_embed: 'embed',
+		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'featured_image_src', 'excerpt', 'author' ],
+		_embed: 1,
 	}, ( value ) => ! isUndefined( value ) ) );
 	const categoriesListQuery = stringify( {
 		per_page: 100,
