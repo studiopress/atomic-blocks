@@ -6,6 +6,7 @@
 // Variables 
 $black: #293038;
 $accent: #5a3fd6;
+$lightgray: #626e81;
 
 /* Font size styles */
 @media only screen and (min-width: 600px) {
@@ -141,4 +142,17 @@ $accent: #5a3fd6;
 
 .wp-block-image {
   margin-bottom: 1.2em;
+}
+
+.ab-text-link {
+  color: inherit;
+  box-shadow: 0 -1px 0 inset;
+  text-decoration: none;
+  transition: .3s ease;
+
+  &:hover {
+    color: inherit;
+    box-shadow: 0 -2px 0 inset;
+    color: $accent;
+  }
 }

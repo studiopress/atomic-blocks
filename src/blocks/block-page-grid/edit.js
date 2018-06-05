@@ -20,6 +20,7 @@ const {
 	Placeholder,
 	QueryControls,
 	RangeControl,
+	SelectControl,
 	Spinner,
 	ToggleControl,
 	Toolbar,
@@ -42,6 +43,7 @@ class LatestPostsBlock extends Component {
 		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
 		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
+		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 	}
 
 	toggleDisplayPostDate() {
@@ -65,10 +67,26 @@ class LatestPostsBlock extends Component {
 		setAttributes( { displayPostAuthor: ! displayPostAuthor } );
 	}
 
+	toggleDisplayPostImage() {
+		const { displayPostImage } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostImage: ! displayPostImage } );
+	}
+
 	render() {
 		const latestPosts = this.props.latestPosts.data;
 		const { attributes, categoriesList, setAttributes } = this.props;
-		const { displayPostDate, displayPostExcerpt, displayPostAuthor, align, postLayout, columns, order, orderBy, categories, postsToShow, width } = attributes;
+		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
+		
+		// Thumbnail options
+		const imageCropOptions = [
+			{ value: 'landscape', label: __( 'Landscape' ) },
+			{ value: 'square', label: __( 'Square' ) },
+		];
+
+		const isLandscape = imageCrop === 'landscape';
+
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( 'Post Grid Settings' ) }>
@@ -92,6 +110,16 @@ class LatestPostsBlock extends Component {
 						/>
 					}
 					<ToggleControl
+						label={ __( 'Display post image' ) }
+						checked={ displayPostImage }
+						onChange={ this.toggleDisplayPostImage }
+					/>
+					<ToggleControl
+						label={ __( 'Display post author' ) }
+						checked={ displayPostAuthor }
+						onChange={ this.toggleDisplayPostAuthor }
+					/>
+					<ToggleControl
 						label={ __( 'Display post date' ) }
 						checked={ displayPostDate }
 						onChange={ this.toggleDisplayPostDate }
@@ -101,10 +129,11 @@ class LatestPostsBlock extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
-					<ToggleControl
-						label={ __( 'Display post author' ) }
-						checked={ displayPostAuthor }
-						onChange={ this.toggleDisplayPostAuthor }
+					<SelectControl
+						label={ __( 'Image Crop' ) }
+						options={ imageCropOptions }
+						value={ imageCrop }
+						onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -179,15 +208,15 @@ class LatestPostsBlock extends Component {
 							<article 
 								key={ i }
 								className={ classnames( 
-									post.featured_image_src ? 'has-thumb' : 'no-thumb'	
+									post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'	
 								) }
 							>
 								{
-									post.featured_image_src !== undefined && post.featured_image_src ? (
+									displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
 										<div class="ab-block-post-grid-image">
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<img
-													src={ post.featured_image_src }
+													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
 													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
 												/>
 											</a>
@@ -202,21 +231,23 @@ class LatestPostsBlock extends Component {
 								<div class="ab-block-post-grid-text">
 									<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 									
-									{ displayPostDate && post.date_gmt &&
-										<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
-											{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-										</time>
-									}
+									<div class="ab-block-post-grid-byline">
+										{ displayPostAuthor && post.author_info.display_name &&
+											<div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+										}
 
-									{ displayPostAuthor && post.author &&
-										<div> {  } </div>
-									}
+										{ displayPostDate && post.date_gmt &&
+											<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+												{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+											</time>
+										}
+									</div>
 									
 									{ displayPostExcerpt && post.excerpt &&
-										<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+										<div class="ab-block-post-grid-excerpt" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 									}
 								</div>
-							</article>
+							</article> 
 						) }
 					</div>
 				</div>
@@ -232,8 +263,8 @@ export default withAPIData( ( props ) => {
 		order,
 		orderby: orderBy,
 		per_page: postsToShow,
-		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'featured_image_src', 'excerpt', 'author' ],
-		_embed: 1,
+		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'featured_image_src', 'featured_image_src_square', 'excerpt', 'author_info' ],
+		_embed: 'embed',
 	}, ( value ) => ! isUndefined( value ) ) );
 	const categoriesListQuery = stringify( {
 		per_page: 100,

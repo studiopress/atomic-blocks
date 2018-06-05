@@ -27,7 +27,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		// Get the post thumbnail 
 		$post_thumb_id = get_post_thumbnail_id( $post_id );
 
-		if ( $post_thumb_id ) {
+		if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
 			$post_thumb_class = 'has-thumb';
 		} else {
 			$post_thumb_class = 'no-thumb';
@@ -39,11 +39,11 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			esc_attr( $post_thumb_class )
 		);
 		
-		if ( $post_thumb_id ) {
+		if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
 			$list_items_markup .= sprintf( 
 				'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
 				esc_url( get_permalink( $post_id ) ),
-				wp_get_attachment_image( $post_thumb_id, 'medium_large' ) 
+				wp_get_attachment_image( $post_thumb_id, 'ab-block-post-grid-square' ) 
 			);
 		}
 
@@ -65,6 +65,20 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			esc_html( $title )
 		);
 
+		// Wrap the byline content
+		$list_items_markup .= sprintf(
+			'<div class="ab-block-post-grid-byline">'
+		);
+
+		// Get the post author
+		if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
+			$list_items_markup .= sprintf(
+				'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
+				esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
+				esc_html( get_author_posts_url( $post->post_author ) )
+			);
+		}
+		
 		// Get the post date
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 			$list_items_markup .= sprintf(
@@ -74,15 +88,10 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			);
 		}
 
-		// Get the post author
-		$author_id = $post->post_author;
-		if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
-			$list_items_markup .= sprintf(
-				'<a class="entry-byline-author" href="%2$s">%1$s</a>',
-				esc_html( get_the_author_meta( 'display_name', $author_id ) ),
-				esc_url( get_author_posts_url( $author_id ) )
-			);
-		}
+		// Close the byline content
+		$list_items_markup .= sprintf(
+			'</div>'
+		);
 
 		// Get the excerpt
 		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
@@ -170,7 +179,11 @@ function atomic_blocks_register_block_core_latest_posts() {
 			),
 			'displayPostAuthor' => array(
 				'type' => 'boolean',
-				'default' => false,
+				'default' => true,
+			),
+			'displayPostImage' => array(
+				'type' => 'boolean',
+				'default' => true,
 			),
 			'postLayout' => array(
 				'type' => 'string',
@@ -196,6 +209,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => 'date',
 			),
+			'imageCrop'  => array(
+				'type' => 'string',
+				'default' => 'landscape',
+			),
 		),
 		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',
 	) );
@@ -207,27 +224,84 @@ add_action( 'init', 'atomic_blocks_register_block_core_latest_posts' );
 /**
  * Create an API field for the featured image
  */
-function atomic_blocks_add_thumbnail_to_JSON() {
+function atomic_blocks_register_rest_fields() {
+	// Add featured image source
 	register_rest_field(
 		'post',
 		'featured_image_src',
 		array(
-			'get_callback'    => 'atomic_blocks_get_image_src',
+			'get_callback'    => 'atomic_blocks_get_image_src_landscape',
 			'update_callback' => null,
 			'schema'          => null,
-			)
-		);
+		)
+	);
+
+	// Add featured image source
+	register_rest_field(
+		'post',
+		'featured_image_src_square',
+		array(
+			'get_callback'    => 'atomic_blocks_get_image_src_square',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+	
+	// Add author info
+	register_rest_field(
+		'post',
+		'author_info',
+		array(
+			'get_callback'    => 'atomic_blocks_get_author_info',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+}
+add_action( 'rest_api_init', 'atomic_blocks_register_rest_fields' );
+
+function atomic_blocks_get_image_test( $attributes ) {
+	if ( 'ab-block-post-grid-square' === $attributes['imageCrop'] ) {
+		return 'ab-block-post-grid-square';
+	} else {
+		return 'ab-block-post-grid-landscape';
 	}
-add_action( 'rest_api_init', 'atomic_blocks_add_thumbnail_to_JSON' );
+}
 
 /**
- * Build the featured image
+ * Get featured image source for the rest field
  */
-function atomic_blocks_get_image_src( $object, $field_name, $request ) {
+function atomic_blocks_get_image_src_landscape( $object, $field_name, $request ) {
 	$feat_img_array = wp_get_attachment_image_src(
-	$object['featured_media'],
-		'medium_large',
+		$object['featured_media'],
+		'ab-block-post-grid-landscape',
 		false
 	);
 	return $feat_img_array[0];
+}
+
+/**
+ * Get featured image source for the rest field
+ */
+function atomic_blocks_get_image_src_square( $object, $field_name, $request ) {
+	$feat_img_array = wp_get_attachment_image_src(
+		$object['featured_media'],
+		'ab-block-post-grid-square',
+		false
+	);
+	return $feat_img_array[0];
+}
+
+/**
+ * Get author info for the rest field
+ */
+function atomic_blocks_get_author_info( $object, $field_name, $request ) {
+	// Get the author name
+	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
+	
+	// Get the author link
+	$author_data['author_link'] = get_author_posts_url( $object['author'] );
+	
+	// Return the author data
+	return $author_data;
 }

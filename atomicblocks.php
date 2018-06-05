@@ -78,3 +78,13 @@ function atomic_blocks_redirect() {
     }
 }
 add_action( 'admin_init', 'atomic_blocks_redirect' );
+
+
+/**
+ * Add image crops
+ */
+function atomic_blocks_image_sizes() {
+	add_image_size( 'ab-block-post-grid-landscape', 600 );
+	add_image_size( 'ab-block-post-grid-square', 600, 600, true );
+}
+add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
