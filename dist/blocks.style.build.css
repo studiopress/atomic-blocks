@@ -1840,7 +1840,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     grid-template-rows: 1fr;
     grid-gap: 0 2em; }
     .ab-block-post-grid .is-grid article {
-      margin-bottom: 2em; }
+      margin-bottom: 2.5em; }
   .ab-block-post-grid .is-grid.columns-2 {
     grid-template-columns: 1fr 1fr; }
   .ab-block-post-grid .is-grid.columns-3 {
@@ -1864,6 +1864,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     line-height: 1.2; }
     .ab-block-post-grid h2 a {
       color: #293038;
+      -webkit-box-shadow: none;
+              box-shadow: none;
       -webkit-transition: .3s ease;
       -o-transition: .3s ease;
       transition: .3s ease; }
@@ -1895,20 +1897,33 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
               box-shadow: 0 -1px 0 inset;
       color: #5a3fd6; }
   .ab-block-post-grid .ab-block-post-grid-text p {
-    margin-top: 0; }
-    .ab-block-post-grid .ab-block-post-grid-text p:last-child {
-      margin-bottom: 0; }
-  .ab-block-post-grid .is-grid .ab-block-post-grid-text p {
-    font-size: 18px;
+    margin-top: 0;
     line-height: 1.5; }
+    .ab-block-post-grid .ab-block-post-grid-text p:last-of-type {
+      margin-bottom: 0; }
+  .ab-block-post-grid .ab-block-post-grid-link {
+    margin-top: 15px;
+    display: inline-block;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transition: .3s ease;
+    -o-transition: .3s ease;
+    transition: .3s ease;
+    font-weight: bold; }
+    .ab-block-post-grid .ab-block-post-grid-link:hover {
+      -webkit-box-shadow: 0 -2px 0 inset;
+              box-shadow: 0 -2px 0 inset; }
   .ab-block-post-grid .is-list article {
     display: grid;
     grid-template-columns: 30% 1fr;
     grid-template-rows: 1fr;
-    grid-gap: 0 2em;
-    border-bottom: solid 1px #eee;
-    margin-bottom: 5%;
-    padding-bottom: 5%; }
+    grid-gap: 0 2em; }
+    .ab-block-post-grid .is-list article:not(:last-child) {
+      margin-bottom: 5%;
+      padding-bottom: 5%; }
+    @media only screen and (min-width: 600px) {
+      .ab-block-post-grid .is-list article:not(:last-child) {
+        border-bottom: solid 1px #eee; } }
     @media only screen and (max-width: 600px) {
       .ab-block-post-grid .is-list article {
         grid-template-columns: 1fr; } }
@@ -1917,5 +1932,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     @media only screen and (max-width: 600px) {
       .ab-block-post-grid .is-list .ab-block-post-grid-image {
         margin-bottom: 5%; } }
+  @media only screen and (min-width: 600px) {
+    .ab-block-post-grid .is-list .ab-block-post-grid-title {
+      font-size: 34px; } }
   .ab-block-post-grid .is-list .no-thumb .ab-block-post-grid-text {
     grid-column: span 2; }

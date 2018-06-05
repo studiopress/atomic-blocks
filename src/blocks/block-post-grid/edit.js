@@ -33,7 +33,6 @@ const {
 	BlockControls,
 } = wp.blocks;
 
-
 const MAX_POSTS_COLUMNS = 4;
 
 class LatestPostsBlock extends Component {
@@ -44,6 +43,7 @@ class LatestPostsBlock extends Component {
 		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
+		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
 	}
 
 	toggleDisplayPostDate() {
@@ -74,10 +74,17 @@ class LatestPostsBlock extends Component {
 		setAttributes( { displayPostImage: ! displayPostImage } );
 	}
 
+	toggleDisplayPostLink() {
+		const { displayPostLink } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostLink: ! displayPostLink } );
+	}
+
 	render() {
 		const latestPosts = this.props.latestPosts.data;
 		const { attributes, categoriesList, setAttributes } = this.props;
-		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
+		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
 		
 		// Thumbnail options
 		const imageCropOptions = [
@@ -110,31 +117,39 @@ class LatestPostsBlock extends Component {
 						/>
 					}
 					<ToggleControl
-						label={ __( 'Display post image' ) }
+						label={ __( 'Display Featured Image' ) }
 						checked={ displayPostImage }
 						onChange={ this.toggleDisplayPostImage }
 					/>
+					{ displayPostImage &&
+						<SelectControl
+							label={ __( 'Featured Image Style' ) }
+							options={ imageCropOptions }
+							value={ imageCrop }
+							onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
+						/>
+					}
 					<ToggleControl
-						label={ __( 'Display post author' ) }
+						label={ __( 'Display Post Author' ) }
 						checked={ displayPostAuthor }
 						onChange={ this.toggleDisplayPostAuthor }
 					/>
 					<ToggleControl
-						label={ __( 'Display post date' ) }
+						label={ __( 'Display Post Date' ) }
 						checked={ displayPostDate }
 						onChange={ this.toggleDisplayPostDate }
 					/>
 					<ToggleControl
-						label={ __( 'Display post excerpt' ) }
+						label={ __( 'Display Post Excerpt' ) }
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
-					<SelectControl
-						label={ __( 'Image Crop' ) }
-						options={ imageCropOptions }
-						value={ imageCrop }
-						onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
+					<ToggleControl
+						label={ __( 'Display Continue Reading Link' ) }
+						checked={ displayPostLink }
+						onChange={ this.toggleDisplayPostLink }
 					/>
+					
 				</PanelBody>
 			</InspectorControls>
 		);
@@ -245,6 +260,10 @@ class LatestPostsBlock extends Component {
 									
 									{ displayPostExcerpt && post.excerpt &&
 										<div class="ab-block-post-grid-excerpt" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+									}
+
+									{ displayPostLink && 
+										<a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a>
 									}
 								</div>
 							</article> 

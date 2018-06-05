@@ -7,10 +7,6 @@
 	margin: 0 0 1.2em 0;
 	position: relative;
 
-	.ab-post-grid-items {
-		
-	}
-
 	.is-grid {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -18,7 +14,7 @@
 		grid-gap: 0 2em;
 
 		article {
-			margin-bottom: 2em;
+			margin-bottom: 2.5em;
 		}
 	}
 
@@ -61,6 +57,7 @@
 
 		a {
 			color: $black;
+			box-shadow: none;
 			transition: .3s ease;
 
 			&:hover {
@@ -102,19 +99,23 @@
 
 	.ab-block-post-grid-text p {
 		margin-top: 0; 
+		line-height: 1.5;
 
-		&:last-child {
+		&:last-of-type {
 			margin-bottom: 0;
 		}
 	}
 
-	.is-grid .ab-block-post-grid-text p {
-		font-size: 18px;
-		line-height: 1.5;
-	}
+	.ab-block-post-grid-link {
+		margin-top: 15px;
+		display: inline-block;
+		box-shadow: none;
+		transition: .3s ease;
+		font-weight: bold;
 
-	.ab-block-post-grid-excerpt {
-
+		&:hover {
+			box-shadow: 0 -2px 0 inset;
+		}
 	}
 
 	.is-list {
@@ -123,9 +124,17 @@
 			grid-template-columns: 30% 1fr;
 			grid-template-rows: 1fr;
 			grid-gap: 0 2em;
-			border-bottom: solid 1px #eee;
-			margin-bottom: 5%;
-			padding-bottom: 5%;
+
+			&:not(:last-child) {
+				margin-bottom: 5%;
+				padding-bottom: 5%;
+			}
+
+			@media only screen and (min-width: 600px) {
+				&:not(:last-child) {
+					border-bottom: solid 1px #eee;
+				}
+			}
 
 			@media only screen and (max-width: 600px) {
 				grid-template-columns: 1fr;
@@ -137,6 +146,12 @@
 
 			@media only screen and (max-width: 600px) {
 				margin-bottom: 5%;
+			}
+		}
+
+		.ab-block-post-grid-title {
+			@media only screen and (min-width: 600px) {
+				font-size: 34px;
 			}
 		}
 

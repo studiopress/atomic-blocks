@@ -29,8 +29,8 @@ export const name = 'core/latest-posts';
 // Register the block
 registerBlockType( 'atomic-blocks/ab-post-grid', {
 	title: __( 'AB Post Grid' ),
-	description: __( 'Add sharing buttons to your posts and pages.' ),
-	icon: 'list-view',
+	description: __( 'Add a grid or list of customizable posts to your page.' ),
+	icon: 'grid-view',
 	category: 'common',
 	keywords: [
 		__( 'post' ),

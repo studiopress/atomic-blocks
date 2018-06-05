@@ -41,9 +41,9 @@ function atomic_blocks_loader() {
 	require_once plugin_dir_path( __FILE__ ) . 'dist/blocks/block-sharing/index.php';
 
 	/**
-	 * Load Page Grid PHP
+	 * Load Post Grid PHP
 	 */
-	require_once plugin_dir_path( __FILE__ ) . 'dist/blocks/block-page-grid/index.php';
+	require_once plugin_dir_path( __FILE__ ) . 'dist/blocks/block-post-grid/index.php';
 }
 add_action( 'plugins_loaded', 'atomic_blocks_loader' );
 
@@ -81,10 +81,11 @@ add_action( 'admin_init', 'atomic_blocks_redirect' );
 
 
 /**
- * Add image crops
+ * Add image sizes
  */
 function atomic_blocks_image_sizes() {
-	add_image_size( 'ab-block-post-grid-landscape', 600 );
+	// Post Grid Block
+	add_image_size( 'ab-block-post-grid-landscape', 600, 400, true );
 	add_image_size( 'ab-block-post-grid-square', 600, 600, true );
 }
 add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
