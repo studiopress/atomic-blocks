@@ -38,3 +38,4 @@ config.codekit
 node_modules/
 Gruntfile.js
 package-lock.json
+src/
