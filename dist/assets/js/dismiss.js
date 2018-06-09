@@ -8,10 +8,13 @@
 			if ( ! localStorage.getItem(`notice-${uid}`) ) {
 				el.style.display = 'block';
 			}
-			el.querySelector('.ab-notice-dismiss').addEventListener('click', () => {
-				localStorage.setItem(`notice-${uid}`, 1);
-				el.style.display = '';
-			})
+
+			if ( $( '.ab-notice-dismiss' ).length ) {
+				el.querySelector('.ab-notice-dismiss').addEventListener('click', () => {
+					localStorage.setItem(`notice-${uid}`, 1);
+					el.style.display = '';
+				})
+			}
 		})
 
 	});

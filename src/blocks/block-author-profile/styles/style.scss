@@ -123,17 +123,12 @@
 			box-shadow: none; 
 		}
 
-		svg {
-			pointer-events: none;
-		}
-
 		img {
 			object-fit: cover;
 			height: 100%;
 			width: 100%;
 			position: relative;
 			z-index: 5;
-			transition: .3s ease;
 		}
 	}
 

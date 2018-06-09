@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
 Tested up to: 4.9.5
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,10 +15,11 @@ A collection of beautiful, customizable Gutenberg blocks for the new block edito
 
 Atomic Blocks is a collection of content blocks for the new [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link) block editor. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building blocks give you more control to quickly create and launch any kind of site you want!
 
-**Atomic Blocks is in early development and may not be suitable for production sites.** Because the new editor is still in production, breaking changes could be expected. Feel free to follow along and [contribute](https://github.com/ArrayHQ/atomic-blocks) to the development.
+Atomic Blocks is in active development and may not be suitable for some production sites. Because the new editor is still in production, breaking changes could be expected. Feel free to follow along and [contribute](https://github.com/ArrayHQ/atomic-blocks) to the development.
 
 ## Atomic Blocks currently includes the following blocks:
 
+* Post Grid Block
 * Testimonial Block
 * Inline Notice Block
 * Accordion Block
@@ -52,6 +53,7 @@ We've created a beautiful little WordPress theme to help you get started with th
 * [Follow on Twitter](https://twitter.com/atomicblocks)
 * [Contribute on Github](https://github.com/ArrayHQ/atomic-blocks)
 * [Visit Array Themes](https://arraythemes.com/?utm_source=WP.org%20Array%20Link&utm_campaign=wporg_array_link)
+* [Create-Guten-Block](https://github.com/ahmadawais/create-guten-block)
 
 == Installation ==
 
@@ -93,6 +95,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 6. The Drop Cap block with settings.
 
 == Changelog ==
+
+= 1.1.9 =
+* Add Post Grid Block.
+* Add improvements for Gutenberg 3.0.
+* Clean up existing blocks.
 
 = 1.1.8 =
 * Improve margins for blocks in editor.

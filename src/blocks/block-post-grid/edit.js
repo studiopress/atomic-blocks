@@ -257,14 +257,16 @@ class LatestPostsBlock extends Component {
 											</time>
 										}
 									</div>
-									
-									{ displayPostExcerpt && post.excerpt &&
-										<div class="ab-block-post-grid-excerpt" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-									}
 
-									{ displayPostLink && 
-										<a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a>
-									}
+									<div class="ab-block-post-grid-excerpt">
+										{ displayPostExcerpt && post.excerpt &&
+											<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+										}
+
+										{ displayPostLink && 
+											<p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></p>
+										}
+									</div>
 								</div>
 							</article> 
 						) }

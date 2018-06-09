@@ -59,69 +59,79 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			'<div class="ab-block-post-grid-text">'
 		);
 
-		// Get the post title 
-		$title = get_the_title( $post_id );
+			// Get the post title 
+			$title = get_the_title( $post_id );
 
-		if ( ! $title ) {
-			$title = __( 'Untitled', 'atomic-blocks' );
-		}
+			if ( ! $title ) {
+				$title = __( 'Untitled', 'atomic-blocks' );
+			}
 
-		$list_items_markup .= sprintf(
-			'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
-			esc_url( get_permalink( $post_id ) ),
-			esc_html( $title )
-		);
-
-		// Wrap the byline content
-		$list_items_markup .= sprintf(
-			'<div class="ab-block-post-grid-byline">'
-		);
-
-		// Get the post author
-		if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 			$list_items_markup .= sprintf(
-				'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
-				esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
-				esc_html( get_author_posts_url( $post->post_author ) )
-			);
-		}
-		
-		// Get the post date
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
-				esc_attr( get_the_date( 'c', $post_id ) ),
-				esc_html( get_the_date( '', $post_id ) )
-			);
-		}
-
-		// Close the byline content
-		$list_items_markup .= sprintf(
-			'</div>'
-		);
-
-		// Get the excerpt
-		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
-
-		if( empty( $excerpt ) ) {
-			$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
-		}
-
-		if ( ! $excerpt ) {
-			$excerpt = null;
-		}
-
-		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-			$list_items_markup .= wp_kses_post( $excerpt );
-		}
-
-		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
-			$list_items_markup .= sprintf(
-				'<a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s</a>',
+				'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
 				esc_url( get_permalink( $post_id ) ),
-				esc_html__( 'Continue Reading', 'atomic-blocks' )
+				esc_html( $title )
 			);
-		}
+
+			// Wrap the byline content
+			$list_items_markup .= sprintf(
+				'<div class="ab-block-post-grid-byline">'
+			);
+
+				// Get the post author
+				if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
+					$list_items_markup .= sprintf(
+						'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
+						esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
+						esc_html( get_author_posts_url( $post->post_author ) )
+					);
+				}
+				
+				// Get the post date
+				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+					$list_items_markup .= sprintf(
+						'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
+						esc_attr( get_the_date( 'c', $post_id ) ),
+						esc_html( get_the_date( '', $post_id ) )
+					);
+				}
+
+			// Close the byline content
+			$list_items_markup .= sprintf(
+				'</div>'
+			);
+
+			// Wrap the excerpt content
+			$list_items_markup .= sprintf(
+				'<div class="ab-block-post-grid-excerpt">'
+			);
+
+				// Get the excerpt
+				$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
+
+				if( empty( $excerpt ) ) {
+					$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+				}
+
+				if ( ! $excerpt ) {
+					$excerpt = null;
+				}
+
+				if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
+					$list_items_markup .=  wp_kses_post( $excerpt );
+				}
+
+				if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
+					$list_items_markup .= sprintf(
+						'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
+						esc_url( get_permalink( $post_id ) ),
+						esc_html__( 'Continue Reading', 'atomic-blocks' )
+					);
+				}
+
+			// Close the excerpt content
+			$list_items_markup .= sprintf(
+				'</div>'
+			);
 
 		// Wrap the text content
 		$list_items_markup .= sprintf(
@@ -182,7 +192,7 @@ function atomic_blocks_register_block_core_latest_posts() {
 			),
 			'postsToShow' => array(
 				'type' => 'number',
-				'default' => 5,
+				'default' => 6,
 			),
 			'displayPostDate' => array(
 				'type' => 'boolean',

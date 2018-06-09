@@ -98,8 +98,13 @@
 	}
 
 	.ab-block-post-grid-text p {
-		margin-top: 0; 
+		margin: 0 0 15px 0;
 		line-height: 1.5;
+		font-size: 18px;
+
+		@media only screen and (max-width: 600px) {
+			font-size: 16px;
+		}
 
 		&:last-of-type {
 			margin-bottom: 0;
@@ -107,15 +112,19 @@
 	}
 
 	.ab-block-post-grid-link {
-		margin-top: 15px;
 		display: inline-block;
 		box-shadow: none;
 		transition: .3s ease;
 		font-weight: bold;
+		color: $black;
 
 		&:hover {
 			box-shadow: 0 -2px 0 inset;
 		}
+	}
+
+	.ab-block-post-grid-excerpt div + p {
+		margin-top: 15px;
 	}
 
 	.is-list {

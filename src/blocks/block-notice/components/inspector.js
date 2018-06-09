@@ -8,10 +8,13 @@ const { Component } = wp.element;
 
 // Import block components
 const {
-  InspectorControls,
   BlockDescription,
   ColorPalette,
 } = wp.blocks;
+
+const {
+	InspectorControls,
+} = wp.editor;
 
 // Import Inspector components
 const {
