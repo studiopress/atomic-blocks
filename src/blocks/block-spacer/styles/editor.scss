@@ -1,0 +1,66 @@
+/**
+ * Editor styles for the admin
+ */
+
+.editor-block-list__layout [data-type="atomic-blocks/ab-spacer"] {
+    margin-bottom: 1.2em;
+}
+
+.ab-block-spacer {
+	border: dashed 1px #ddd;
+	margin-bottom: 0;
+
+	.ab-spacer-handle {
+		margin-bottom: 0;
+	}
+
+	&.is-selected::before {
+		outline: none;
+	}
+
+	.editor-block-list__block-edit {
+		outline: 1px dashed #ddd;
+	}
+
+	&.is-selected .editor-block-list__block-edit,
+	&.is-hovered .editor-block-list__block-edit {
+		outline: 1px dotted #ddd;
+	}
+
+	&.is-selected .editor-block-list__block-edit {
+		outline: 1px solid #ddd;
+	}
+}
+
+.ab-spacer-control__resize-handle {
+	background: none;
+	background: none;
+	border-radius: 0;
+	bottom: -15px !important;
+	cursor: row-resize !important;
+	display: none;
+	height: 32px !important;
+	left: 0 !important;
+	width: 100% !important;
+	z-index: 999;
+
+	.editor-block-list__block[data-type="atomic-blocks/ab-spacer"].is-selected &,
+	.editor-block-list__block[data-type="atomic-blocks/ab-spacer"].is-hovered & {
+		display: block;
+	}
+
+	&:after {
+		background-color: #32373c;
+		border-radius: 50px;
+		border: 2px solid #fff;
+		content: '';
+		display: block;
+		height: 12px;
+		left: 50%;
+		margin-left: -8px;
+		margin-top: -6px;
+		position: absolute;
+		top: 50%;
+		width: 12px;
+	}
+}

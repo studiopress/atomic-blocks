@@ -74,6 +74,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.2.0**
+* Fix fatal error in last update. 
+
 **1.1.9**
 * Add Post Grid Block.
 * Add improvements for Gutenberg 3.0.

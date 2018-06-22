@@ -1,0 +1,81 @@
+/**
+ * Button styles
+ * Loads on front end and back end
+ */
+
+ .ab-block-button {
+	margin: 0 0 1.2em 0;
+	position: relative;
+
+	.blocks-rich-text {
+		display: inline-flex;
+	}
+
+	.components-autocomplete {
+		display: inline-block;
+		width: auto;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.ab-button {
+		text-align: center;
+		font-size: 18px;
+		line-height: 1 !important;
+		background-color: #32373c;
+		border: none;
+		border-radius: 50px;
+		box-shadow: none;
+		color: #fff;
+		cursor: pointer;
+		padding: .6em 1em;
+		text-decoration: none;
+		word-break: break-word;
+		transition: .3s ease;
+		display: inline-block;
+
+		&:hover {
+			box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
+		}
+	}
+
+	.ab-button-shape-square {
+		border-radius: 0;
+	}
+
+	.ab-button-shape-rounded {
+		border-radius: 5px;
+	}
+
+	.ab-button-shape-circular {
+		border-radius: 100px;
+	}
+
+	.ab-button-size-small {
+		font-size: 14px;
+	}
+
+	.ab-button-size-medium {
+		font-size: 20px;
+	}
+
+	.ab-button-size-large {
+		font-size: 26px;
+		padding: .8em 1.2em;
+	}
+
+	.ab-button-size-extralarge {
+		font-size: 34px;
+		padding: .8em 1.2em;
+	}
+}
+
+.ab-button-right {
+	transform: translateX(-100%);
+	left: 100%;
+	position: relative;
+}
+
+.ab-button-center {
+	margin: 0 auto;
+}

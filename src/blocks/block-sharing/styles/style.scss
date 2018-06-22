@@ -1,0 +1,167 @@
+/**
+ * Sharing styles
+ * Loads on front end and back end
+ */
+
+ .ab-block-sharing {
+	margin: 0 0 1.2em 0;
+	position: relative;
+
+	.blocks-rich-text {
+		display: inline-flex;
+	}
+
+	.ab-share-list {
+		margin: 0;
+		padding: 0;
+
+		li {
+			list-style: none;
+			display: inline-block;
+			margin: 0 5px 5px 0;
+		}
+
+		a {
+			background: #272c30;
+			color: #fff;
+			padding: 10px 15px;
+			text-align: center;
+			display: block;
+			line-height: 1;
+			font-size: 16px;
+			transition: .3s ease;
+
+			&:hover {
+				box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
+			}
+		}
+	}
+
+	&.ab-share-icon-text {
+		i {
+			margin-right: 5px;
+		}
+	}
+
+	&.ab-share-icon-only {
+		a {
+			padding: 10px 11px;
+			min-width: 37px;
+		}
+
+		.ab-social-text {
+			border: 0;
+			clip: rect(1px, 1px, 1px, 1px);
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
+	}
+
+	&.ab-share-text-only {
+		i {
+			display: none;
+		}
+	}
+
+	&.ab-share-shape-square {
+		a {
+			border-radius: 0;
+		}
+	}
+
+	&.ab-share-shape-rounded {
+		a {
+			border-radius: 5px;
+		}
+	}
+
+	&.ab-share-shape-circular {
+		a {
+			border-radius: 100px;
+		}
+	}
+
+	&.ab-share-size-small {
+		a {
+			font-size: 13px;
+		}
+	}
+
+	&.ab-share-size-small.ab-share-icon-only {
+		a {
+			padding: 7px 6px;
+    		min-width: 28px;
+		}
+	}
+
+	&.ab-share-size-medium {
+		a {
+			font-size: 16px;
+		}
+	}
+
+	&.ab-share-size-large {
+		a {
+			font-size: 20px;
+		}
+	}
+
+	&.ab-share-size-large.ab-share-icon-only {
+		a {
+			font-size: 26px;
+			min-width: 48px;
+		}
+	}
+
+	&.ab-share-size-large.ab-share-icon-text {
+		i {
+			margin-right: 10px;
+		}
+	}
+
+	&.ab-share-color-social {
+		a {
+			color: #fff;
+		}
+
+		.ab-share-twitter {
+			background: #1ca1f3;	
+		}
+
+		.ab-share-facebook {
+			background: #3b5999;	
+		}
+
+		.ab-share-google {
+			background: #dc4b45;	
+		}
+
+		.ab-share-pinterest {
+			background: #bd091c;	
+		}
+
+		.ab-share-linkedin {
+			background: #0077b5;	
+		}
+
+		.ab-share-reddit {
+			background: #ff4500;	
+		}
+	}
+}
+
+.ab-button-right {
+	transform: translateX(-100%);
+	left: 100%;
+	position: relative;
+}
+
+.ab-button-center {
+	margin: 0 auto;
+}

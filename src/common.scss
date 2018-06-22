@@ -1,0 +1,158 @@
+/**
+ * Common styles
+ * Loads on front end and back end
+ */
+
+// Variables 
+$black: #293038;
+$accent: #5a3fd6;
+$lightgray: #626e81;
+
+/* Font size styles */
+@media only screen and (min-width: 600px) {
+    div[class*="wp-block-atomic"].ab-font-size-14 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 14px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-15 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 15px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-16 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 16px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-17 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 17px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-18 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 18px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-19 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 19px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-20 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 20px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-21 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 21px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-22 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 22px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-23 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 23px;
+      }
+    }
+  
+    div[class*="wp-block-atomic"].ab-font-size-24 {
+      &.ab-block-testimonial p,
+      &.ab-block-notice p,
+      &.ab-block-profile p,
+      &.ab-block-accordion p,
+      &.ab-block-cta p {
+        font-size: 24px;
+      }
+    }
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+@media only screen and (min-width: 600px) {
+  .wp-block-columns .layout-column-1,
+  .wp-block-columns .layout-column-2 {
+    margin-right: 5%;
+  }
+}
+
+.wp-block-image {
+  margin-bottom: 1.2em;
+}
+
+.ab-text-link {
+  color: inherit;
+  box-shadow: 0 -1px 0 inset;
+  text-decoration: none;
+  transition: .3s ease;
+
+  &:hover {
+    color: inherit;
+    box-shadow: 0 -2px 0 inset;
+    color: $accent;
+  }
+}
