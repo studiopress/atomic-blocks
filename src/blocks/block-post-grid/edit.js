@@ -11,7 +11,7 @@ import { stringify } from 'querystringify';
 
 const { Component, Fragment } = wp.element;
 
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 const { decodeEntities } = wp.utils;
 
@@ -31,7 +31,7 @@ const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
-} = wp.blocks;
+} = wp.editor;
 
 const MAX_POSTS_COLUMNS = 4;
 
@@ -85,7 +85,7 @@ class LatestPostsBlock extends Component {
 		const latestPosts = this.props.latestPosts.data;
 		const { attributes, categoriesList, setAttributes } = this.props;
 		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
-		
+
 		// Thumbnail options
 		const imageCropOptions = [
 			{ value: 'landscape', label: __( 'Landscape' ) },
@@ -149,7 +149,7 @@ class LatestPostsBlock extends Component {
 						checked={ displayPostLink }
 						onChange={ this.toggleDisplayPostLink }
 					/>
-					
+
 				</PanelBody>
 			</InspectorControls>
 		);
@@ -220,10 +220,10 @@ class LatestPostsBlock extends Component {
 						} ) }
 					>
 						{ displayPosts.map( ( post, i ) =>
-							<article 
+							<article
 								key={ i }
-								className={ classnames( 
-									post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'	
+								className={ classnames(
+									post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
 								) }
 							>
 								{
@@ -245,7 +245,7 @@ class LatestPostsBlock extends Component {
 
 								<div class="ab-block-post-grid-text">
 									<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
-									
+
 									<div class="ab-block-post-grid-byline">
 										{ displayPostAuthor && post.author_info.display_name &&
 											<div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
@@ -263,12 +263,12 @@ class LatestPostsBlock extends Component {
 											<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 										}
 
-										{ displayPostLink && 
+										{ displayPostLink &&
 											<p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></p>
 										}
 									</div>
 								</div>
-							</article> 
+							</article>
 						) }
 					</div>
 				</div>

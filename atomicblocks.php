@@ -5,7 +5,7 @@
  * Description: A beautiful collection of handy Gutenberg blocks to help you get started with the new WordPress editor.
  * Author: atomicblocks
  * Author URI: http://arraythemes.com
- * Version: 1.2.0
+ * Version: 1.2.1
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
@@ -52,7 +52,7 @@ add_action( 'plugins_loaded', 'atomic_blocks_loader' );
  * Load the plugin textdomain
  */
 function atomic_blocks_init() {
-	load_plugin_textdomain( 'atomic-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+	load_plugin_textdomain( 'atomic-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 add_action( 'init', 'atomic_blocks_init' );
 

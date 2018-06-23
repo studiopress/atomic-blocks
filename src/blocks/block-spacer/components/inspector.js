@@ -11,7 +11,7 @@ const {
   InspectorControls,
   BlockDescription,
   ColorPalette,
-} = wp.blocks;
+} = wp.editor;
 
 // Import Inspector components
 const {
@@ -83,12 +83,12 @@ export default class Inspector extends Component {
 						max={ 5 }
 					/>
 
-					<PanelColor 
+					<PanelColor
 						title={ __( 'Divider Color' ) }
 						colorValue={ spacerDividerColor }
 						initialOpen={ false }
 					>
-						<ColorPalette 
+						<ColorPalette
 							label={ __( 'Divider Color' ) }
 							value={ spacerDividerColor }
 							onChange={ ( value ) => { this.props.setAttributes( { spacerDividerColor: value } ) } }

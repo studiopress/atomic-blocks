@@ -10,10 +10,7 @@ const { Component } = wp.element;
 const {
   BlockDescription,
   ColorPalette,
-} = wp.blocks;
-
-const {
-	InspectorControls,
+  InspectorControls,
 } = wp.editor;
 
 // Import Inspector components
@@ -24,7 +21,7 @@ const {
 	PanelRow,
 	PanelColor,
 	FormToggle,
-	RangeControl, 
+	RangeControl,
 	SelectControl,
 } = wp.components;
 
@@ -67,8 +64,8 @@ export default class Inspector extends Component {
 					value={ noticeDismiss }
 					onChange={ ( value ) => this.props.setAttributes( { noticeDismiss: value } ) }
 				/>
-				
-				<PanelColor 
+
+				<PanelColor
 					title={ __( 'Notice Color' ) }
 					colorValue={ noticeBackgroundColor }
 					initialOpen={ false }
@@ -90,12 +87,12 @@ export default class Inspector extends Component {
 					/>
 				</PanelColor>
 
-				<PanelColor 
+				<PanelColor
 					title={ __( 'Title Color' ) }
 					colorValue={ noticeTitleColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Title Color' ) }
 						value={ noticeTitleColor }
 						onChange={ ( value ) => this.props.setAttributes( { noticeTitleColor: value } ) }
@@ -105,13 +102,13 @@ export default class Inspector extends Component {
 						]}
 					/>
 				</PanelColor>
-				
-				<PanelColor 
+
+				<PanelColor
 					title={ __( 'Text Color' ) }
 					colorValue={ noticeTextColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Background Color' ) }
 						value={ noticeTextColor }
 						onChange={ ( value ) => this.props.setAttributes( { noticeTextColor: value } ) }

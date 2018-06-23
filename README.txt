@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
 Tested up to: 4.9.5
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -32,7 +32,7 @@ Atomic Blocks is in active development and may not be suitable for some producti
 
 ### Atomic Blocks Help File
 
-We've created a handy help file that you can [check out here](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file). The help file covers how to setup the plugin and get started with the blocks. 
+We've created a handy help file that you can [check out here](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file). The help file covers how to setup the plugin and get started with the blocks.
 
 The help file is also available in the plugin once activated. Click the Atomic Blocks admin menu item to visit the Getting Started page.
 
@@ -71,7 +71,7 @@ It can also be installed manually.
 2. Unzip the package and move to your plugins directory.
 3. Log into WordPress and navigate to the Plugins screen.
 4. Locate Atomic Blocks in the list and click the *Activate* link.
-5. You will be redirected to the Atomic Blocks Getting Started page.    
+5. You will be redirected to the Atomic Blocks Getting Started page.
 
 == Frequently Asked Questions ==
 
@@ -96,8 +96,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 == Changelog ==
 
+= 1.2.1 =
+* Update blocks to work with Gutenberg 3.1.0.
+
 = 1.2.0 =
-* Fix fatal error in last update. 
+* Fix fatal error in last update.
 
 = 1.1.9 =
 * Add Post Grid Block.
@@ -109,7 +112,7 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 * Fix quirks in the drop cap block.
 
 = 1.1.7 =
-* Remove unnecessary isSelected from controls. 
+* Remove unnecessary isSelected from controls.
 * Fix undefined post bug.
 * Move components to wp.editor.
 * Improve styles for URL input on button block.

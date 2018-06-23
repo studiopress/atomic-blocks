@@ -15,7 +15,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Internationalization
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -24,7 +24,7 @@ const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
 
 // Register components
-const { 
+const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
@@ -51,7 +51,7 @@ const blockAttributes = {
 		type: 'array',
 		selector: '.ab-profile-text',
 		source: 'children',
-	}, 
+	},
 	profileAlignment: {
 		type: 'string',
 	},
@@ -130,29 +130,29 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 	// Render the block components
 	edit: withState( { editable: 'content', } )( ( props ) => {
 		// Setup the attributes
-		const { 
-			profileName, 
-			profileTitle, 
-			profileContent, 
-			profileAlignment, 
-			profileImgURL, 
-			profileImgID, 
-			profileFontSize, 
-			profileBackgroundColor, 
-			profileTextColor, 
-			profileLinkColor, 
-			twitter, 
-			facebook, 
-			instagram, 
-			pinterest, 
-			google, 
-			youtube, 
-			github, 
-			email, 
-			website, 
+		const {
+			profileName,
+			profileTitle,
+			profileContent,
+			profileAlignment,
+			profileImgURL,
+			profileImgID,
+			profileFontSize,
+			profileBackgroundColor,
+			profileTextColor,
+			profileLinkColor,
+			twitter,
+			facebook,
+			instagram,
+			pinterest,
+			google,
+			youtube,
+			github,
+			email,
+			website,
 			profileAvatarShape
 		} = props.attributes;
-		
+
 		// Setup the props
 		const {
 			attributes,
@@ -187,7 +187,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 							buttonProps={ {
 								className: 'change-image'
 							} }
-							onSelect={ ( img ) => setAttributes( 
+							onSelect={ ( img ) => setAttributes(
 								{
 									profileImgID: img.id,
 									profileImgURL: img.url,
@@ -207,9 +207,9 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						>
 						</MediaUpload>
 					</div>
-				</AvatarColumn>				
+				</AvatarColumn>
 
-				<div 
+				<div
 					className={ classnames(
 						'ab-profile-column ab-profile-content-wrap'
 					) }
@@ -227,7 +227,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						onChange={ ( value ) => setAttributes( { profileName: value } ) }
 						onFocus={ onSetActiveEditable( 'profileName' ) }
 					/>
-					
+
 					<RichText
 						tagName="p"
 						placeholder={ __( 'Add title' ) }
@@ -270,7 +270,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 		return (
 			// Save the block markup for the front end
 			<ProfileBox { ...props }>
-				
+
 				{ profileImgURL && !! profileImgURL.length && (
 					<AvatarColumn { ...props }>
 						<div class="ab-profile-image-square">
@@ -283,13 +283,13 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 					</AvatarColumn>
 				) }
 
-				<div 
+				<div
 					className={ classnames(
 						'ab-profile-column ab-profile-content-wrap'
 					) }
 				>
 					{ profileName && !! profileName.length && (
-						<h2 
+						<h2
 							className='ab-profile-name'
 							style={ {
 								color: profileTextColor
@@ -297,7 +297,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						>{ profileName }</h2>
 					) }
 					{ profileTitle && !! profileTitle.length && (
-						<p 
+						<p
 							className='ab-profile-title'
 							style={ {
 								color: profileTextColor

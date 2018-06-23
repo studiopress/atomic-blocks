@@ -12,7 +12,7 @@ const {
   BlockDescription,
   ColorPalette,
   MediaUpload,
-} = wp.blocks;
+} = wp.editor;
 
 // Import Inspector components
 const {
@@ -22,7 +22,7 @@ const {
 	PanelRow,
 	PanelColor,
 	FormToggle,
-	RangeControl, 
+	RangeControl,
 	SelectControl,
 	ToggleControl,
 	IconButton,
@@ -95,12 +95,12 @@ export default class Inspector extends Component {
 					step={ 2 }
 				/>
 
-				<PanelColor 
+				<PanelColor
 					title={ __( 'Text Color' ) }
 					colorValue={ ctaTextColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Text Color' ) }
 						value={ ctaTextColor }
 						onChange={ ( value ) => this.props.setAttributes( { ctaTextColor: value } ) }
@@ -124,7 +124,7 @@ export default class Inspector extends Component {
 							>
 								{ __( 'Select Image' ) }
 							</IconButton>
-							
+
 							{ imgURL && !! imgURL.length && (
 								<IconButton
 									className="ab-cta-inspector-media"
@@ -139,7 +139,7 @@ export default class Inspector extends Component {
 					) }
 				>
 				</MediaUpload>
-				
+
 				{ imgURL && !! imgURL.length && (
 					<RangeControl
 						label={ __( 'Image Opacity' ) }
@@ -151,12 +151,12 @@ export default class Inspector extends Component {
 					/>
 				) }
 
-				<PanelColor 
+				<PanelColor
 					title={ __( 'Background Color' ) }
 					colorValue={ ctaBackgroundColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Background Color' ) }
 						value={ ctaBackgroundColor }
 						onChange={ ( value ) => this.props.setAttributes( { ctaBackgroundColor: value } ) }
@@ -170,7 +170,7 @@ export default class Inspector extends Component {
 					checked={ buttonTarget }
 					onChange={ () => this.props.setAttributes( { buttonTarget: ! buttonTarget } ) }
 				/>
-			
+
 				<SelectControl
 					label={ __( 'Button Size' ) }
 					value={ buttonSize }
@@ -190,13 +190,13 @@ export default class Inspector extends Component {
 					} ) ) }
 					onChange={ ( value ) => { this.props.setAttributes( { buttonShape: value } ) } }
 				/>
-				
-				<PanelColor 
+
+				<PanelColor
 					title={ __( 'Button Color' ) }
 					colorValue={ buttonBackgroundColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Button Color' ) }
 						value={ buttonBackgroundColor }
 						onChange={ ( value ) => { this.props.setAttributes( { buttonBackgroundColor: value } ) } }
@@ -212,13 +212,13 @@ export default class Inspector extends Component {
 						]}
 					/>
 				</PanelColor>
-				
-				<PanelColor 
+
+				<PanelColor
 					title={ __( 'Button Text Color' ) }
 					colorValue={ buttonTextColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Button Text Color' ) }
 						value={ buttonTextColor }
 						onChange={ ( value ) => { this.props.setAttributes( { buttonTextColor: value } ) } }

@@ -19,7 +19,7 @@ Atomic Blocks is in active development and may not be suitable for some producti
 
 ## Atomic Blocks Help File
 
-We've created a handy help file that you can [check out here](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file). The help file covers how to setup the plugin and get started with the blocks. 
+We've created a handy help file that you can [check out here](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file). The help file covers how to setup the plugin and get started with the blocks.
 
 The help file is also available in the plugin once activated. Click the Atomic Blocks admin menu item to visit the Getting Started page.
 
@@ -74,8 +74,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.2.1**
+* Update blocks to work with Gutenberg 3.1.0.
+
 **1.2.0**
-* Fix fatal error in last update. 
+* Fix fatal error in last update.
 
 **1.1.9**
 * Add Post Grid Block.
@@ -87,7 +90,7 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 * Fix quirks in the drop cap block.
 
 **1.1.7**
-* Remove unnecessary isSelected from controls. 
+* Remove unnecessary isSelected from controls.
 * Fix undefined post bug.
 * Move components to wp.editor.
 * Improve styles for URL input on button block.

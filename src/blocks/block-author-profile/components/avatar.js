@@ -10,9 +10,9 @@ import classnames from 'classnames';
 import icons from './icons';
 
 // Import block components
-const { 
+const {
 	MediaUpload,
-} = wp.blocks;
+} = wp.editor;
 
 // Create an SocialIcons wrapper Component
 export default class AvatarColumn extends Component {

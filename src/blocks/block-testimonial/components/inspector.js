@@ -11,7 +11,7 @@ const {
 	InspectorControls,
 	BlockDescription,
 	ColorPalette,
-} = wp.blocks;
+} = wp.editor;
 
 // Import Inspector components
 const {
@@ -21,7 +21,7 @@ const {
 	PanelRow,
 	PanelColor,
 	FormToggle,
-	RangeControl, 
+	RangeControl,
 	SelectControl,
 } = wp.components;
 
@@ -64,13 +64,13 @@ export default class Inspector extends Component {
 					value={ testimonialCiteAlign }
 					onChange={ ( value ) => this.props.setAttributes( { testimonialCiteAlign: value } ) }
 				/>
-				
-				<PanelColor 
+
+				<PanelColor
 					title={ __( 'Background Color' ) }
 					colorValue={ testimonialBackgroundColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Background Color' ) }
 						value={ testimonialBackgroundColor }
 						onChange={ ( value ) => this.props.setAttributes( { testimonialBackgroundColor: value } ) }
@@ -87,12 +87,12 @@ export default class Inspector extends Component {
 					/>
 				</PanelColor>
 
-				<PanelColor 
+				<PanelColor
 					title={ __( 'Text Color' ) }
 					colorValue={ testimonialTextColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Text Color' ) }
 						value={ testimonialTextColor }
 						onChange={ ( value ) => this.props.setAttributes( { testimonialTextColor: value } ) }

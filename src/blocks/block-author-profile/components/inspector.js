@@ -11,7 +11,7 @@ const {
 	InspectorControls,
 	BlockDescription,
 	ColorPalette,
-} = wp.blocks;
+} = wp.editor;
 
 // Import Inspector components
 const {
@@ -19,7 +19,7 @@ const {
 	PanelBody,
 	PanelRow,
 	PanelColor,
-	RangeControl, 
+	RangeControl,
 	SelectControl,
 	TextControl,
 } = wp.components;
@@ -61,37 +61,37 @@ export default class Inspector extends Component {
 					value={ profileAvatarShape }
 					onChange={ ( value ) => this.props.setAttributes( { profileAvatarShape: value } ) }
 				/>
-				
-				<PanelColor 
+
+				<PanelColor
 					title={ __( 'Background Color' ) }
 					colorValue={ profileBackgroundColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Background Color' ) }
 						value={ profileBackgroundColor }
 						onChange={ ( value ) => this.props.setAttributes( { profileBackgroundColor: value } ) }
 					/>
 				</PanelColor>
 
-				<PanelColor 
+				<PanelColor
 					title={ __( 'Text Color' ) }
 					colorValue={ profileTextColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Background Color' ) }
 						value={ profileTextColor }
 						onChange={ ( value ) => this.props.setAttributes( { profileTextColor: value } ) }
 					/>
 				</PanelColor>
 
-				<PanelColor 
+				<PanelColor
 					title={ __( 'Social Link Color' ) }
 					colorValue={ profileLinkColor }
 					initialOpen={ false }
 				>
-					<ColorPalette 
+					<ColorPalette
 						label={ __( 'Link Color' ) }
 						value={ profileLinkColor }
 						onChange={ ( value ) => this.props.setAttributes( { profileLinkColor: value } ) }
@@ -117,7 +117,7 @@ export default class Inspector extends Component {
 					type="url"
 					value={ twitter }
 					onChange={ ( value ) => this.props.setAttributes( { twitter: value } ) }
-				/>				
+				/>
 
 				<TextControl
 					label={ __( 'Facebook URL' ) }
@@ -153,7 +153,7 @@ export default class Inspector extends Component {
 					value={ youtube }
 					onChange={ ( value ) => this.props.setAttributes( { youtube: value } ) }
 				/>
-				
+
 				<TextControl
 					label={ __( 'Github URL' ) }
 					type="url"

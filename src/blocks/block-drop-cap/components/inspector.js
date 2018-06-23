@@ -11,13 +11,13 @@ const {
 	InspectorControls,
 	BlockDescription,
 	ColorPalette,
-} = wp.blocks;
+} = wp.editor;
 
 // Import Inspector components
 const {
 	Toolbar,
 	Button,
-	RangeControl, 
+	RangeControl,
 	SelectControl,
 	PanelBody,
 } = wp.components;
