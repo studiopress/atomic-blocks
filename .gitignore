@@ -37,4 +37,8 @@ config.codekit
 .idea
 node_modules/
 Gruntfile.js
+<<<<<<< HEAD
 package-lock.json
+=======
+package-lock.json
+>>>>>>> 4adcc92d34bf069aac2b091b9878ec1d4b63592f
