@@ -46,7 +46,7 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 	title: __( 'AB Notice' ),
 	description: __( 'Add a stylized text notice.' ),
 	icon: 'format-aside',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'notice' ),
 		__( 'message' ),
@@ -139,9 +139,8 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Notice Title' ) }
-					value={ noticeTitle }
-					isSelected={ isSelected && editable === 'noticeTitle' }
 					keepPlaceholderOnFocus
+					value={ noticeTitle }
 					className={ classnames(
 						'ab-notice-title'
 					) }
@@ -149,16 +148,14 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 						color: noticeTitleColor,
 					} }
 					onChange={ ( value ) => setAttributes( { noticeTitle: value } ) }
-					onFocus={ onSetActiveEditable( 'noticeTitle' ) }
 				/>
 
 				<RichText
 					tagName="div"
 					multiline="p"
 					placeholder={ __( 'Add notice text...' ) }
-					value={ noticeContent }
-					isSelected={ isSelected && editable === 'noticeContent' }
 					keepPlaceholderOnFocus
+					value={ noticeContent }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className={ classnames(
 						'ab-notice-text'
@@ -167,7 +164,7 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 						borderColor: noticeBackgroundColor,
 					} }
 					onChange={ ( value ) => setAttributes( { noticeContent: value } ) }
-					onFocus={ onSetActiveEditable( 'noticeContent' ) }
+					inlineToolbar
 				/>
 			</NoticeBox>
 		];

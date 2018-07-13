@@ -128,7 +128,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 	title: __( 'AB Call To Action' ),
 	description: __( 'Add a call to action section with a title, text, and a button.' ),
 	icon: 'megaphone',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'call to action' ),
 		__( 'cta' ),
@@ -232,7 +232,6 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Call-To-Action Title' ) }
-						isSelected={ isSelected && editable === 'ctaTitle' }
 						keepPlaceholderOnFocus
 						value={ ctaTitle }
 						className={ classnames(
@@ -243,15 +242,13 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							color: ctaTextColor,
 						} }
 						onChange={ (value) => setAttributes( { ctaTitle: value } ) }
-						onFocus={ onSetActiveEditable( 'ctaTitle' ) }
 					/>
 					<RichText
 						tagName="div"
 						multiline="p"
 						placeholder={ __( 'Call To Action Text' ) }
-						value={ ctaText }
-						isSelected={ isSelected && editable === 'ctaText' }
 						keepPlaceholderOnFocus
+						value={ ctaText }
 						className={ classnames(
 							'ab-cta-text',
 							'ab-font-size-' + ctaTextFontSize,
@@ -260,14 +257,13 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							color: ctaTextColor,
 						} }
 						onChange={ ( value ) => props.setAttributes( { ctaText: value } ) }
-						onFocus={ onSetActiveEditable( 'ctaText' ) }
+						inlineToolbar
 					/>
 				</div>
 				<div class="ab-cta-button">
 					<RichText
 						tagName="span"
 						placeholder={ __( 'Button text...' ) }
-						isSelected={ isSelected && editable === 'buttonText' }
 						keepPlaceholderOnFocus
 						value={ buttonText }
 						formattingControls={ [] }
@@ -281,7 +277,6 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							backgroundColor: buttonBackgroundColor,
 						} }
 						onChange={ (value) => setAttributes( { buttonText: value } ) }
-						onFocus={ onSetActiveEditable( 'buttonText' ) }
 					/>
 					{ isSelected && (
 						<form

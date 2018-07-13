@@ -61,6 +61,7 @@ class ABAccordionBlock extends Component {
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Accordion Title' ) }
+					keepPlaceholderOnFocus
 					value={ accordionTitle }
 					className='ab-accordion-title'
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
@@ -69,12 +70,13 @@ class ABAccordionBlock extends Component {
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Accordion Text' ) }
+					keepPlaceholderOnFocus
 					value={ accordionText }
 					isSelected={ isSelected }
-					keepPlaceholderOnFocus
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className='ab-accordion-text'
 					onChange={ ( value ) => this.props.setAttributes( { accordionText: value } ) }
+					inlineToolbar
 				/>
 			</Accordion>
 		];
@@ -86,7 +88,7 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 	title: __( 'AB Accordion' ),
 	description: __( 'Add accordion block with a title and text.' ),
 	icon: 'editor-ul',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'accordion' ),
 		__( 'list' ),

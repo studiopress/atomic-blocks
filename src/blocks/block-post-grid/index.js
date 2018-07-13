@@ -31,7 +31,7 @@ registerBlockType( 'atomic-blocks/ab-post-grid', {
 	title: __( 'AB Post Grid' ),
 	description: __( 'Add a grid or list of customizable posts to your page.' ),
 	icon: 'grid-view',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'post' ),
 		__( 'grid' ),

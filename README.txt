@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
 Tested up to: 4.9.5
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -95,6 +95,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 6. The Drop Cap block with settings.
 
 == Changelog ==
+
+= 1.2.2 =
+* Add blocks to a custom Atomic Blocks category in the block inserter.
+* Clean up markup and remove unnecessary code.
+* Add inline toolbar to text area on relevant blocks.
 
 = 1.2.1 =
 * Update blocks to work with Gutenberg 3.1.0.

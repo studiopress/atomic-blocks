@@ -90,7 +90,7 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 	title: __( 'AB Spacer' ),
 	description: __( 'Add a spacer and divider between your blocks.' ),
 	icon: 'image-flip-vertical',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'spacer' ),
 		__( 'divider' ),

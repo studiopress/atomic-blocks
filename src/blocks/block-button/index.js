@@ -64,7 +64,6 @@ class ABButtonBlock extends Component {
 				<RichText
 					tagName="span"
 					placeholder={ __( 'Button text...' ) }
-					isSelected={ isSelected }
 					keepPlaceholderOnFocus
 					value={ buttonText }
 					formattingControls={ [] }
@@ -111,7 +110,7 @@ registerBlockType( 'atomic-blocks/ab-button', {
 	title: __( 'AB Button' ),
 	description: __( 'Add a customizable button.' ),
 	icon: 'admin-links',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'button' ),
 		__( 'link' ),

@@ -42,7 +42,7 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 	title: __( 'AB Testimonial' ),
 	description: __( 'Add a user testimonial with a name and title.' ),
 	icon: 'format-quote',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'testimonial' ),
 		__( 'quote' ),
@@ -140,9 +140,8 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 					tagName="div"
 					multiline="p"
 					placeholder={ __( 'Add testimonial text...' ) }
-					value={ testimonialContent }
-					isSelected={ isSelected && editable === 'testimonialContent' }
 					keepPlaceholderOnFocus
+					value={ testimonialContent }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className={ classnames(
 						'ab-testimonial-text'
@@ -151,7 +150,7 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 						textAlign: testimonialAlignment,
 					} }
 					onChange={ ( value ) => setAttributes( { testimonialContent: value } ) }
-					onFocus={ onSetActiveEditable( 'testimonialContent' ) }
+					inlineToolbar
 				/>
 
 				<div class="ab-testimonial-info">
@@ -186,23 +185,20 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Add name' ) }
-						value={ testimonialName }
-						isSelected={ isSelected && editable === 'testimonialName' }
 						keepPlaceholderOnFocus
+						value={ testimonialName }
 						className='ab-testimonial-name'
 						style={ {
 							color: testimonialTextColor
 						} }
 						onChange={ ( value ) => props.setAttributes( { testimonialName: value } ) }
-						onFocus={ onSetActiveEditable( 'testimonialName' ) }
 					/>
 					
 					<RichText
 						tagName="small"
 						placeholder={ __( 'Add title' ) }
-						value={ testimonialTitle }
-						isSelected={ isSelected && editable === 'testimonialTitle' }
 						keepPlaceholderOnFocus
+						value={ testimonialTitle }
 						className='ab-testimonial-title'
 						style={ {
 							color: testimonialTextColor

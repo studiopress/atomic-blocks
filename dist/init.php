@@ -91,6 +91,20 @@ function atomic_blocks_frontend_assets() {
 add_action( 'wp_enqueue_scripts', 'atomic_blocks_frontend_assets' );
 
 
+// Add custom block category
+add_filter( 'block_categories', function( $categories, $post ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' => 'atomic-blocks',
+				'title' => __( 'Atomic Blocks', 'atomic-blocks' ),
+			),
+		)
+	);
+}, 10, 2 );
+
+
 // Add template to testimonial post type
 function atomic_blocks_testimonial_templates( $args, $post_type ) {
 
@@ -99,15 +113,15 @@ function atomic_blocks_testimonial_templates( $args, $post_type ) {
 		$args['template_lock'] = true;
 		
 		// Setup the template
-		$args['template'] = [
-			array(
-				'atomic/atomic-testimonial'
-			)
-		];
+		$args['template'] = array(
+            array(
+                'atomic/atomic-testimonial'
+            )
+        );
 	}
 	return $args;
 }
-add_filter( 'register_post_type_args', 'atomic_blocks_testimonial_templates', 20, 2 );
+//add_filter( 'register_post_type_args', 'atomic_blocks_testimonial_templates', 20, 2 );
 
 
 // Render the testimonial posts for the frontend

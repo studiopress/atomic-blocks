@@ -118,7 +118,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 	title: __( 'AB Profile Box' ),
 	description: __( 'Add a profile box with bio info and social media links.' ),
 	icon: 'admin-users',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'author' ),
 		__( 'profile' ),
@@ -217,29 +217,25 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Add name' ) }
-						value={ profileName }
 						keepPlaceholderOnFocus
-						isSelected={ isSelected && editable === 'profileName' }
+						value={ profileName }
 						className='ab-profile-name'
 						style={ {
 							color: profileTextColor
 						} }
 						onChange={ ( value ) => setAttributes( { profileName: value } ) }
-						onFocus={ onSetActiveEditable( 'profileName' ) }
 					/>
 
 					<RichText
 						tagName="p"
 						placeholder={ __( 'Add title' ) }
-						value={ profileTitle }
 						keepPlaceholderOnFocus
-						isSelected={ isSelected && editable === 'profileTitle' }
+						value={ profileTitle }
 						className='ab-profile-title'
 						style={ {
 							color: profileTextColor
 						} }
 						onChange={ ( value ) => setAttributes( { profileTitle: value } ) }
-						onFocus={ onSetActiveEditable( 'profileTitle' ) }
 					/>
 
 					<RichText
@@ -247,12 +243,11 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						className='ab-profile-text'
 						multiline="p"
 						placeholder={ __( 'Add profile text...' ) }
-						isSelected={ isSelected && editable === 'profileContent' }
 						keepPlaceholderOnFocus
 						value={ profileContent }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 						onChange={ ( value ) => setAttributes( { profileContent: value } ) }
-						onFocus={ onSetActiveEditable( 'profileContent' ) }
+						inlineToolbar
 					/>
 
 					<SocialIcons { ...props } />

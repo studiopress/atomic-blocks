@@ -74,6 +74,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.2.2**
+* Add blocks to a custom Atomic Blocks category in the block inserter.
+* Clean up markup and remove unnecessary code.
+* Add inline toolbar to text area on relevant blocks.
+
 **1.2.1**
 * Update blocks to work with Gutenberg 3.1.0.
 

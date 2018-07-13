@@ -61,9 +61,8 @@ class ABDropCapBlock extends Component {
 					tagName="div"
 					multiline="p"
 					placeholder={ __( 'Add paragraph text...' ) }
-					value={ dropCapContent }
-					isSelected={ isSelected }
 					keepPlaceholderOnFocus
+					value={ dropCapContent }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className={ classnames(
 						'ab-drop-cap-text',
@@ -81,7 +80,7 @@ registerBlockType( 'atomic-blocks/ab-drop-cap', {
 	title: __( 'AB Drop Cap' ),
 	description: __( 'Add a styled drop cap to the beginning of your paragraph.' ),
 	icon: 'format-quote',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'drop cap' ),
 		__( 'quote' ),

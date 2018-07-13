@@ -41,7 +41,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 	title: __( 'AB Sharing' ),
 	description: __( 'Add sharing buttons to your posts and pages.' ),
 	icon: 'admin-links',
-	category: 'common',
+	category: 'atomic-blocks',
 	keywords: [
 		__( 'sharing' ),
 		__( 'social' ),
