@@ -1,5 +1,5 @@
 /**
- * Button Wrapper
+ * CTA Wrapper
  */
 
 // Setup the block
@@ -9,7 +9,7 @@ const { Component } = wp.element;
 import classnames from 'classnames';
 
 /**
- * Create a Button wrapper Component
+ * Create a CallToAction wrapper Component
  */
 export default class CallToAction extends Component {
 

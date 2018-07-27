@@ -40,6 +40,11 @@
 			box-shadow: 0 -2px 0 inset;
 		}
 	}
+
+	.editor-rich-text .editor-rich-text__inline-toolbar {
+		display: block;
+		left: 40%;
+	}
 }
 
 .ab-block-accordion + .ab-block-accordion {

@@ -1,0 +1,31 @@
+/**
+ * Editor styles for the admin
+ */
+
+.ab-block-cta {
+    margin-bottom: 0;
+}
+
+.editor-block-list__layout [data-type="atomic-blocks/ab-cta"] {
+    margin-bottom: 1.2em;
+}
+
+ .ab-cta-button {
+    .blocks-button__inline-link .editor-url-input {
+        display: inline-block;
+        width: auto;
+    }
+
+    .blocks-button__inline-link .components-button {
+        display: inline-block;
+    }
+
+    .blocks-button__inline-link svg {
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+}
+
+.ab-block-cta h2.editor-rich-text__tinymce.mce-content-body {
+    line-height: 1.2;
+}

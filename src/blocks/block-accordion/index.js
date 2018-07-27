@@ -73,7 +73,6 @@ class ABAccordionBlock extends Component {
 					keepPlaceholderOnFocus
 					value={ accordionText }
 					isSelected={ isSelected }
-					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className='ab-accordion-text'
 					onChange={ ( value ) => this.props.setAttributes( { accordionText: value } ) }
 					inlineToolbar

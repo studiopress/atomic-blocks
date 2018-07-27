@@ -244,11 +244,6 @@
 	margin-left: 18px;
 }
 
-.notice-warning {
-	margin: 0;
-	display: none !important;
-}
-
 #wpbody-content .ab-getting-started .updated,
 #wpbody-content .ab-getting-started .error {
 	margin-top: 2%;

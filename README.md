@@ -2,11 +2,12 @@
 
 Atomic Blocks is a collection of content blocks for the new [Gutenberg block editor](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link). Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building blocks give you more control to quickly create and launch any kind of site you want!
 
-Atomic Blocks is in active development and may not be suitable for some production sites. Because the new editor is still in production, breaking changes could be expected. Feel free to follow along and [contribute](https://github.com/ArrayHQ/atomic-blocks) to the development.
+Along with the content blocks you'll find in Atomic Blocks, we're also publishing helpful articles and tutorials to help you get started with Gutenberg. Visit the [Atomic Blocks blog](https://atomicblocks.com/blog/) to learn more today!
 
 ## Atomic Blocks currently includes the following blocks:
 
 * Post Grid Block - [Block Demo](https://atomicblocks.com/blocks/post-grid-block/)
+* Container Block - [Block Demo](https://atomicblocks.com/blocks/container-block/)
 * Testimonial Block - [Block Demo](https://atomicblocks.com/blocks/testimonial-block/)
 * Inline Notice Block - [Block Demo](https://atomicblocks.com/blocks/inline-notice-block/)
 * Accordion Block - [Block Demo](https://atomicblocks.com/blocks/accordion-block/)
@@ -38,7 +39,6 @@ We've created a beautiful little WordPress theme to help you get started with th
 * [Visit the Atomic Blocks site](https://atomicblocks.com/?utm_source=WP.org%20AB%20Page&utm_campaign=wporg_ab_page)
 * [Subscribe to the newsletter](https://atomicblocks.com/subscribe?utm_source=WP.org%20AB%20Subscribe&utm_campaign=wporg_ab_subscribe)
 * [Follow on Twitter](https://twitter.com/atomicblocks)
-* [Contribute on Github](https://github.com/ArrayHQ/atomic-blocks)
 * [Visit Array Themes](https://arraythemes.com/?utm_source=WP.org%20Array%20Link&utm_campaign=wporg_array_link)
 * [Create-Guten-Block](https://github.com/ahmadawais/create-guten-block)
 
@@ -73,6 +73,17 @@ Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomi
 Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) to use Atomic Blocks. Eventually, Gutenberg (the block editor) will be merged into WordPress and you won't need the plugin.
 
 ## Changelog
+
+**1.2.5**
+* Fix links in readme.txt.
+* Fix update notice CSS bug.
+
+**1.2.4**
+* Add max width setting to Container block.
+
+**1.2.3**
+* Add Container Block.
+* Fix toolbar focus bug on Accordion Block.
 
 **1.2.2**
 * Add blocks to a custom Atomic Blocks category in the block inserter.
