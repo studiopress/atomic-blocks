@@ -27,7 +27,7 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-	UrlInput,
+	URLInput,
 } = wp.editor;
 
 // Register components
