@@ -74,6 +74,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.2.6**
+* Remove unnecessary state from blocks.
+* Improve call to decodeEntities.
+* Update URLInput.
+
 **1.2.5**
 * Fix links in readme.txt.
 * Fix update notice CSS bug.

@@ -35,7 +35,6 @@ const {
 // Register Inspector components
 const {
 	Button,
-	withState,
 } = wp.components;
 
 const blockAttributes = {
@@ -113,58 +112,46 @@ const blockAttributes = {
 	},
 };
 
-// Register the block
-registerBlockType( 'atomic-blocks/ab-profile-box', {
-	title: __( 'AB Profile Box' ),
-	description: __( 'Add a profile box with bio info and social media links.' ),
-	icon: 'admin-users',
-	category: 'atomic-blocks',
-	keywords: [
-		__( 'author' ),
-		__( 'profile' ),
-		__( 'atomic' ),
-	],
-	// Setup the block attributes
-	attributes: blockAttributes,
+class ABAuthorProfileBlock extends Component {
+	
+	render() {
 
-	// Render the block components
-	edit: withState( { editable: 'content', } )( ( props ) => {
 		// Setup the attributes
-		const {
-			profileName,
-			profileTitle,
-			profileContent,
-			profileAlignment,
-			profileImgURL,
-			profileImgID,
-			profileFontSize,
-			profileBackgroundColor,
-			profileTextColor,
-			profileLinkColor,
-			twitter,
-			facebook,
-			instagram,
-			pinterest,
-			google,
-			youtube,
-			github,
-			email,
-			website,
-			profileAvatarShape
-		} = props.attributes;
-
-		// Setup the props
-		const {
+		const { 
+			attributes: { 
+				profileName,
+				profileTitle,
+				profileContent,
+				profileAlignment,
+				profileImgURL,
+				profileImgID,
+				profileFontSize,
+				profileBackgroundColor,
+				profileTextColor,
+				profileLinkColor,
+				twitter,
+				facebook,
+				instagram,
+				pinterest,
+				google,
+				youtube,
+				github,
+				email,
+				website,
+				profileAvatarShape
+			}, 
 			attributes,
 			isSelected,
 			editable,
-			setState,
 			className,
 			setAttributes
-		} = props;
+		} = this.props;
 
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
+		const onSelectImage = img => {
+			setAttributes( {
+				profileImgID: img.id,
+				profileImgURL: img.url,
+			} );
 		};
 
 		return [
@@ -177,11 +164,11 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 			</BlockControls>,
 			// Show the block controls on focus
 			<Inspector
-				{ ...{ setAttributes, ...props } }
+				{ ...{ setAttributes, ...this.props } }
 			/>,
 			// Show the block markup in the editor
-			<ProfileBox { ...props }>
-				<AvatarColumn { ...props }>
+			<ProfileBox { ...this.props }>
+				<AvatarColumn { ...this.props }>
 					<div class="ab-profile-image-square">
 						<MediaUpload
 							buttonProps={ {
@@ -250,11 +237,29 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						inlineToolbar
 					/>
 
-					<SocialIcons { ...props } />
+					<SocialIcons { ...this.props } />
 				</div>
 			</ProfileBox>
 		];
-	} ),
+	}
+}
+
+// Register the block
+registerBlockType( 'atomic-blocks/ab-profile-box', {
+	title: __( 'AB Profile Box' ),
+	description: __( 'Add a profile box with bio info and social media links.' ),
+	icon: 'admin-users',
+	category: 'atomic-blocks',
+	keywords: [
+		__( 'author' ),
+		__( 'profile' ),
+		__( 'atomic' ),
+	],
+	// Setup the block attributes
+	attributes: blockAttributes,
+
+	// Render the block components
+	edit: ABAuthorProfileBlock,
 
 	// Save the block markup
 	save: function( props ) {

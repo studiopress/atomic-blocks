@@ -38,7 +38,7 @@ export default class Inspector extends Component {
 
 		// Notice dismiss options
 		const noticeDismissOptions = [
-			{ value: '', label: __( 'Always Show' ) },
+			{ value: null, label: __( 'Always Show' ) },
 			{ value: 'ab-dismissable', label: __( 'Dismissable' ) },
 		];
 

@@ -34,8 +34,128 @@ const {
 const {
 	Button,
 	SelectControl,
-	withState,
 } = wp.components;
+
+class ABTestimonialBlock extends Component {
+	
+	render() {
+
+		// Setup the attributes
+		const { 
+			attributes: { 
+				testimonialName, 
+				testimonialTitle, 
+				testimonialContent, 
+				testimonialAlignment, 
+				testimonialImgURL, 
+				testimonialImgID, 
+				testimonialBackgroundColor, 
+				testimonialTextColor, 
+				testimonialFontSize, 
+				testimonialCiteAlign
+			}, 
+			attributes,
+			isSelected,
+			editable,
+			className,
+			setAttributes
+		} = this.props;
+
+		const onSelectImage = img => {
+			setAttributes( {
+				testimonialImgID: img.id,
+				testimonialImgURL: img.url,
+			} );
+		};
+
+		return [
+			// Show the alignment toolbar on focus
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ testimonialAlignment }
+					onChange={ ( value ) => setAttributes( { testimonialAlignment: value } ) }
+				/>
+			</BlockControls>,
+			// Show the block controls on focus
+			<Inspector
+				{ ...{ setAttributes, ...this.props } }
+			/>,
+			// Show the block markup in the editor
+			<Testimonial { ...this.props }>
+				<RichText
+					tagName="div"
+					multiline="p"
+					placeholder={ __( 'Add testimonial text...' ) }
+					keepPlaceholderOnFocus
+					value={ testimonialContent }
+					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
+					className={ classnames(
+						'ab-testimonial-text'
+					) }
+					style={ {
+						textAlign: testimonialAlignment,
+					} }
+					onChange={ ( value ) => setAttributes( { testimonialContent: value } ) }
+					inlineToolbar
+				/>
+
+				<div class="ab-testimonial-info">
+					<div class="ab-testimonial-avatar-wrap">
+						<div class="ab-testimonial-image-wrap">
+							<MediaUpload
+								buttonProps={ {
+									className: 'change-image'
+								} }
+								onSelect={ ( img ) => setAttributes( 
+									{
+										testimonialImgID: img.id,
+										testimonialImgURL: img.url,
+									}
+								) }
+								type="image"
+								value={ testimonialImgID }
+								render={ ( { open } ) => (
+									<Button onClick={ open }>
+										{ ! testimonialImgID ? icons.upload : <img
+											class="ab-testimonial-avatar"
+											src={ testimonialImgURL }
+											alt="avatar"
+										/>  }
+									</Button>
+								) }
+							>
+							</MediaUpload>
+						</div>	
+					</div>
+
+					<RichText
+						tagName="h2"
+						placeholder={ __( 'Add name' ) }
+						keepPlaceholderOnFocus
+						value={ testimonialName }
+						className='ab-testimonial-name'
+						style={ {
+							color: testimonialTextColor
+						} }
+						onChange={ ( value ) => this.props.setAttributes( { testimonialName: value } ) }
+					/>
+					
+					<RichText
+						tagName="small"
+						placeholder={ __( 'Add title' ) }
+						keepPlaceholderOnFocus
+						value={ testimonialTitle }
+						className='ab-testimonial-title'
+						style={ {
+							color: testimonialTextColor
+						} }
+						onChange={ ( value ) => this.props.setAttributes( { testimonialTitle: value } ) }
+					/>
+				</div>
+			</Testimonial>	
+		];
+	}
+}
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-testimonial', {
@@ -93,122 +213,7 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 	},
 
 	// Render the block components
-	edit: withState( { editable: 'content', } )( ( props ) => {
-		// Setup the attributes
-		const { 
-			testimonialName, 
-			testimonialTitle, 
-			testimonialContent, 
-			testimonialAlignment, 
-			testimonialImgURL, 
-			testimonialImgID, 
-			testimonialBackgroundColor, 
-			testimonialTextColor, 
-			testimonialFontSize, 
-			testimonialCiteAlign
-		} = props.attributes;
-		
-		// Setup the props
-		const {
-			attributes,
-			isSelected,
-			editable,
-			setState,
-			className,
-			setAttributes
-		} = props;
-
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
-		};
-
-		return [
-			// Show the alignment toolbar on focus
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ testimonialAlignment }
-					onChange={ ( value ) => setAttributes( { testimonialAlignment: value } ) }
-				/>
-			</BlockControls>,
-			// Show the block controls on focus
-			<Inspector
-				{ ...{ setAttributes, ...props } }
-			/>,
-			// Show the block markup in the editor
-			<Testimonial { ...props }>
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Add testimonial text...' ) }
-					keepPlaceholderOnFocus
-					value={ testimonialContent }
-					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-					className={ classnames(
-						'ab-testimonial-text'
-					) }
-					style={ {
-						textAlign: testimonialAlignment,
-					} }
-					onChange={ ( value ) => setAttributes( { testimonialContent: value } ) }
-					inlineToolbar
-				/>
-
-				<div class="ab-testimonial-info">
-					<div class="ab-testimonial-avatar-wrap">
-						<div class="ab-testimonial-image-wrap">
-							<MediaUpload
-								buttonProps={ {
-									className: 'change-image'
-								} }
-								onSelect={ ( img ) => setAttributes( 
-									{
-										testimonialImgID: img.id,
-										testimonialImgURL: img.url,
-									}
-								) }
-								type="image"
-								value={ testimonialImgID }
-								render={ ( { open } ) => (
-									<Button onClick={ open }>
-										{ ! testimonialImgID ? icons.upload : <img
-											class="ab-testimonial-avatar"
-											src={ testimonialImgURL }
-											alt="avatar"
-										/>  }
-									</Button>
-								) }
-							>
-							</MediaUpload>
-						</div>	
-					</div>
-
-					<RichText
-						tagName="h2"
-						placeholder={ __( 'Add name' ) }
-						keepPlaceholderOnFocus
-						value={ testimonialName }
-						className='ab-testimonial-name'
-						style={ {
-							color: testimonialTextColor
-						} }
-						onChange={ ( value ) => props.setAttributes( { testimonialName: value } ) }
-					/>
-					
-					<RichText
-						tagName="small"
-						placeholder={ __( 'Add title' ) }
-						keepPlaceholderOnFocus
-						value={ testimonialTitle }
-						className='ab-testimonial-title'
-						style={ {
-							color: testimonialTextColor
-						} }
-						onChange={ ( value ) => props.setAttributes( { testimonialTitle: value } ) }
-					/>
-				</div>
-			</Testimonial>	
-		];
-	} ),
+	edit: ABTestimonialBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {

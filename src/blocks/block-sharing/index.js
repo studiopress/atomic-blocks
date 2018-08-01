@@ -56,7 +56,6 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 			attributes,
 			isSelected,
 			editable,
-			setState,
 			className,
 			setAttributes
 		} = props;

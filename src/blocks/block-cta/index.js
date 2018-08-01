@@ -23,7 +23,7 @@ const { registerBlockType } = wp.blocks;
 // Register editor components
 const {
 	AlignmentToolbar,
-	UrlInput,
+	URLInput,
 	BlockControls,
 	BlockAlignmentToolbar,
 	MediaUpload,
@@ -36,7 +36,6 @@ const {
 	withFallbackStyles,
 	IconButton,
 	Dashicon,
-	withState,
 	Toolbar,
 } = wp.components;
 
@@ -123,31 +122,13 @@ const blockAttributes = {
 	},
 };
 
-// Register the block
-registerBlockType( 'atomic-blocks/ab-cta', {
-	title: __( 'AB Call To Action' ),
-	description: __( 'Add a call to action section with a title, text, and a button.' ),
-	icon: 'megaphone',
-	category: 'atomic-blocks',
-	keywords: [
-		__( 'call to action' ),
-		__( 'cta' ),
-		__( 'atomic' ),
-	],
+class ABCTABlock extends Component {
+	
+	render() {
 
-	attributes: blockAttributes,
-
-	getEditWrapperProps( { ctaWidth } ) {
-		if ( 'left' === ctaWidth || 'right' === ctaWidth || 'full' === ctaWidth ) {
-			return { 'data-align': ctaWidth };
-		}
-	},
-
-	// Render the block components
-	edit: withState( { editable: 'content', } )( ( props ) => { 
-		
 		// Setup the attributes
 		const { 
+			attributes: { 
 			buttonText, 
 			buttonUrl, 
 			buttonAlignment, 
@@ -167,17 +148,13 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			imgID,
 			imgAlt,
 			dimRatio,
-		} = props.attributes;
-		
-		// Setup the props
-		const {
+			}, 
 			attributes,
 			isSelected,
 			editable,
-			setState,
 			className,
 			setAttributes
-		} = props;
+		} = this.props;
 
 		const onSelectImage = img => {
 			setAttributes( {
@@ -185,10 +162,6 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 				imgURL: img.url,
 				imgAlt: img.alt,
 			} );
-		};
-
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
 		};
 
 		return [
@@ -208,10 +181,10 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			</BlockControls>,
 			// Show the block controls on focus
 			<Inspector
-				{ ...{ setAttributes, ...props } }
+				{ ...{ setAttributes, ...this.props } }
 			/>,
 			// Show the button markup in the editor
-			<CallToAction { ...props }>
+			<CallToAction { ...this.props }>
 				{ imgURL && !! imgURL.length && (
 					<div class="ab-cta-image-wrap">
 						<img 
@@ -256,7 +229,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 						style={ {
 							color: ctaTextColor,
 						} }
-						onChange={ ( value ) => props.setAttributes( { ctaText: value } ) }
+						onChange={ ( value ) => setAttributes( { ctaText: value } ) }
 						inlineToolbar
 					/>
 				</div>
@@ -288,7 +261,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							} }
 						>
 							<Dashicon icon={ 'admin-links' } />
-							<UrlInput
+							<URLInput
 								className="button-url"
 								value={ buttonUrl }
 								onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
@@ -303,7 +276,31 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 				</div>
 			</CallToAction>
 		];
-	} ),
+	}
+}
+
+// Register the block
+registerBlockType( 'atomic-blocks/ab-cta', {
+	title: __( 'AB Call To Action' ),
+	description: __( 'Add a call to action section with a title, text, and a button.' ),
+	icon: 'megaphone',
+	category: 'atomic-blocks',
+	keywords: [
+		__( 'call to action' ),
+		__( 'cta' ),
+		__( 'atomic' ),
+	],
+
+	attributes: blockAttributes,
+
+	getEditWrapperProps( { ctaWidth } ) {
+		if ( 'left' === ctaWidth || 'right' === ctaWidth || 'full' === ctaWidth ) {
+			return { 'data-align': ctaWidth };
+		}
+	},
+
+	// Render the block components
+	edit: ABCTABlock,
 
 	// Save the attributes and markup
 	save: function( props ) {

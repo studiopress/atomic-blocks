@@ -98,55 +98,33 @@ const blockAttributes = {
 	},
 };
 
-// Register the block
-registerBlockType( 'atomic-blocks/ab-container', {
-	title: __( 'AB Container' ),
-	description: __( 'Add a container block to wrap several blocks in a parent container.' ),
-	icon: 'editor-table',
-	category: 'atomic-blocks',
-	keywords: [
-		__( 'container' ),
-		__( 'section' ),
-		__( 'atomic' ),
-	],
+class ABContainerBlock extends Component {
+	
+	render() {
 
-	attributes: blockAttributes,
-
-	getEditWrapperProps( { containerWidth } ) {
-		if ( 'left' === containerWidth || 'right' === containerWidth || 'full' === containerWidth ) {
-			return { 'data-align': containerWidth };
-		}
-	},
-
-	// Render the block components
-	edit: withState( { editable: 'content', } )( ( props ) => { 
-		
 		// Setup the attributes
 		const { 
-			containerPaddingTop,
-			containerPaddingRight,
-			containerPaddingBottom,
-			containerPaddingLeft,
-			containerMarginTop,
-			containerMarginBottom,
-			containerWidth, 
-			containerMaxWidth,
-			containerBackgroundColor, 
-			containerImgURL,
-			containerImgID,
-			containerImgAlt,
-			containerDimRatio,
-		} = props.attributes;
-		
-		// Setup the props
-		const {
+			attributes: { 
+				containerPaddingTop,
+				containerPaddingRight,
+				containerPaddingBottom,
+				containerPaddingLeft,
+				containerMarginTop,
+				containerMarginBottom,
+				containerWidth, 
+				containerMaxWidth,
+				containerBackgroundColor, 
+				containerImgURL,
+				containerImgID,
+				containerImgAlt,
+				containerDimRatio,
+			}, 
 			attributes,
 			isSelected,
 			editable,
-			setState,
 			className,
 			setAttributes
-		} = props;
+		} = this.props;
 
 		const onSelectImage = img => {
 			setAttributes( {
@@ -154,10 +132,6 @@ registerBlockType( 'atomic-blocks/ab-container', {
 				containerImgURL: img.url,
 				containerImgAlt: img.alt,
 			} );
-		};
-
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
 		};
 
 		return [
@@ -171,10 +145,10 @@ registerBlockType( 'atomic-blocks/ab-container', {
 			</BlockControls>,
 			// Show the block controls on focus
 			<Inspector
-				{ ...{ setAttributes, ...props } }
+				{ ...{ setAttributes, ...this.props } }
 			/>,
 			// Show the container markup in the editor
-			<Container { ...props }>
+			<Container { ...this.props }>
 				<div class="ab-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
 						<div class="ab-container-image-wrap">
@@ -201,9 +175,33 @@ registerBlockType( 'atomic-blocks/ab-container', {
 						<InnerBlocks />
 					</div>
 				</div>
-			</Container>
+			</Container>	
 		];
-	} ),
+	}
+}
+
+// Register the block
+registerBlockType( 'atomic-blocks/ab-container', {
+	title: __( 'AB Container' ),
+	description: __( 'Add a container block to wrap several blocks in a parent container.' ),
+	icon: 'editor-table',
+	category: 'atomic-blocks',
+	keywords: [
+		__( 'container' ),
+		__( 'section' ),
+		__( 'atomic' ),
+	],
+
+	attributes: blockAttributes,
+
+	getEditWrapperProps( { containerWidth } ) {
+		if ( 'left' === containerWidth || 'right' === containerWidth || 'full' === containerWidth ) {
+			return { 'data-align': containerWidth };
+		}
+	},
+
+	// Render the block components
+	edit: ABContainerBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
