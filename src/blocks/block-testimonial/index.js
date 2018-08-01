@@ -141,7 +141,7 @@ class ABTestimonialBlock extends Component {
 					/>
 					
 					<RichText
-						tagName="small"
+						tagName="h5"
 						placeholder={ __( 'Add title' ) }
 						keepPlaceholderOnFocus
 						value={ testimonialTitle }
