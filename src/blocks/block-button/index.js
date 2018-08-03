@@ -89,7 +89,7 @@ class ABButtonBlock extends Component {
 					} }
 				>
 					<Dashicon icon={ 'admin-links' } />
-					<UrlInput
+					<URLInput
 						className="button-url"
 						value={ buttonUrl }
 						onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
