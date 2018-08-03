@@ -74,6 +74,12 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.2.8**
+* Fix focus bug on Testimonial block title.
+
+**1.2.7**
+* Fix the URLInput on the Button block. 
+
 **1.2.6**
 * Remove unnecessary state from blocks.
 * Improve call to decodeEntities.

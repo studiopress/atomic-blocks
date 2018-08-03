@@ -141,7 +141,7 @@ class ABTestimonialBlock extends Component {
 					/>
 					
 					<RichText
-						tagName="h5"
+						tagName="small"
 						placeholder={ __( 'Add title' ) }
 						keepPlaceholderOnFocus
 						value={ testimonialTitle }
@@ -174,8 +174,9 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 			selector: '.ab-testimonial-name',
 		},
 		testimonialTitle: {
-			type: 'string',
+			type: 'array',
 			selector: '.ab-testimonial-title',
+			source: 'children',
 		},
 		testimonialContent: {
 			type: 'array',
