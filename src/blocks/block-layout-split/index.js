@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import ProfileBox from './components/profile';
 import SocialIcons from './components/social';
-import AvatarColumn from './components/avatar';
 import icons from './components/icons';
 
 // Import styles
@@ -30,11 +29,15 @@ const {
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
+	MediaPlaceholder,
+	InnerBlocks,
 } = wp.editor;
 
 // Register Inspector components
 const {
 	Button,
+	Toolbar,
+	IconButton,
 } = wp.components;
 
 const blockAttributes = {
@@ -81,10 +84,11 @@ const blockAttributes = {
 	},
 	profileAvatarShape: {
 		type: 'string',
-		default: 'square',
+		default: 'top',
 	},
-	twitter: {
-		type: 'url',
+	layoutToggle: {
+		type: 'boolean',
+		defaut: true,
 	},
 	facebook: {
 		type: 'url',
@@ -112,7 +116,7 @@ const blockAttributes = {
 	},
 };
 
-class ABAuthorProfileBlock extends Component {
+class ABLayoutSplit extends Component {
 	
 	render() {
 
@@ -138,7 +142,8 @@ class ABAuthorProfileBlock extends Component {
 				github,
 				email,
 				website,
-				profileAvatarShape
+				profileAvatarShape,
+				layoutToggle
 			}, 
 			attributes,
 			isSelected,
@@ -154,13 +159,42 @@ class ABAuthorProfileBlock extends Component {
 			} );
 		};
 
+		const onRemoveImage = () => {
+			setAttributes({
+				profileImgID: null,
+				profileImgURL: null,
+			});
+		}
+
 		return [
 			// Show the block alignment controls on focus
 			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ profileAlignment }
-					onChange={ ( value ) => setAttributes( { profileAlignment: value } ) }
-				/>
+				<Toolbar>
+					<MediaUpload
+						onSelect={ onSelectImage }
+						type="image"
+						value={ profileImgID }
+						render={ ( { open } ) => (
+							<IconButton
+								className="components-toolbar__control"
+								label={ __( 'Edit image' ) }
+								icon="format-image"
+								onClick={ open }
+							/>
+						) }
+					/>
+				</Toolbar>
+
+				{ profileImgURL && (
+				<Toolbar>
+					<IconButton
+						className="components-toolbar__control"
+						label={ __( 'Remove image' ) }
+						icon="no"
+						onClick={ onRemoveImage }
+					/>
+				</Toolbar>
+				) }
 			</BlockControls>,
 			// Show the block controls on focus
 			<Inspector
@@ -168,76 +202,34 @@ class ABAuthorProfileBlock extends Component {
 			/>,
 			// Show the block markup in the editor
 			<ProfileBox { ...this.props }>
-				<AvatarColumn { ...this.props }>
-					<div class="ab-profile-image-square">
-						<MediaUpload
-							buttonProps={ {
-								className: 'change-image'
+				<div class="ab-layout-split-column ab-layout-split-image">
+					{ profileImgID && <img
+						class="profile-avatar"
+						src={ profileImgURL }
+						alt="avatar"
+					/>  }
+					{ ! profileImgURL && (
+						<MediaPlaceholder
+							className={ classnames(
+								'ab-layout-split-media'
+							) }
+							labels={ {
+								title: __( 'test' ),
+								name: __( 'an image' ),
 							} }
-							onSelect={ ( img ) => setAttributes(
-								{
-									profileImgID: img.id,
-									profileImgURL: img.url,
-								}
-							) }
+							onSelect={ onSelectImage }
+							accept="image/*"
 							type="image"
-							value={ profileImgID }
-							render={ ( { open } ) => (
-								<Button onClick={ open }>
-									{ ! profileImgID ? icons.upload : <img
-										class="profile-avatar"
-										src={ profileImgURL }
-										alt="avatar"
-									/>  }
-								</Button>
-							) }
-						>
-						</MediaUpload>
-					</div>
-				</AvatarColumn>
+						/>
+					) }
+				</div>
 
 				<div
 					className={ classnames(
-						'ab-profile-column ab-profile-content-wrap'
+						'ab-layout-split-column ab-layout-split-content'
 					) }
 				>
-					<RichText
-						tagName="h2"
-						placeholder={ __( 'Add name' ) }
-						keepPlaceholderOnFocus
-						value={ profileName }
-						className='ab-profile-name'
-						style={ {
-							color: profileTextColor
-						} }
-						onChange={ ( value ) => setAttributes( { profileName: value } ) }
-					/>
-
-					<RichText
-						tagName="p"
-						placeholder={ __( 'Add title' ) }
-						keepPlaceholderOnFocus
-						value={ profileTitle }
-						className='ab-profile-title'
-						style={ {
-							color: profileTextColor
-						} }
-						onChange={ ( value ) => setAttributes( { profileTitle: value } ) }
-					/>
-
-					<RichText
-						tagName="div"
-						className='ab-profile-text'
-						multiline="p"
-						placeholder={ __( 'Add profile text...' ) }
-						keepPlaceholderOnFocus
-						value={ profileContent }
-						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-						onChange={ ( value ) => setAttributes( { profileContent: value } ) }
-						inlineToolbar
-					/>
-
-					<SocialIcons { ...this.props } />
+					<InnerBlocks />
 				</div>
 			</ProfileBox>
 		];
@@ -245,8 +237,8 @@ class ABAuthorProfileBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-profile-box', {
-	title: __( 'AB Profile Box' ),
+registerBlockType( 'atomic-blocks/ab-layout-split', {
+	title: __( 'AB Layout - Split' ),
 	description: __( 'Add a profile box with bio info and social media links.' ),
 	icon: 'admin-users',
 	category: 'atomic-blocks',
@@ -259,63 +251,34 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 	attributes: blockAttributes,
 
 	// Render the block components
-	edit: ABAuthorProfileBlock,
+	edit: ABLayoutSplit,
 
 	// Save the block markup
 	save: function( props ) {
 
 		// Setup the attributes
-		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape } = props.attributes;
+		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape, layoutToggle } = props.attributes;
 
 		return (
 			// Save the block markup for the front end
 			<ProfileBox { ...props }>
 
 				{ profileImgURL && !! profileImgURL.length && (
-					<AvatarColumn { ...props }>
-						<div class="ab-profile-image-square">
-							<img
-								class="ab-profile-avatar"
-								src={ profileImgURL }
-								alt="avatar"
-							/>
-						</div>
-					</AvatarColumn>
+					<div class="ab-layout-split-column ab-layout-split-image">
+						<img
+							class="ab-profile-avatar"
+							src={ profileImgURL }
+							alt="avatar"
+						/>
+					</div>
 				) }
 
 				<div
 					className={ classnames(
-						'ab-profile-column ab-profile-content-wrap'
+						'ab-layout-split-column ab-layout-split-content'
 					) }
 				>
-					{ profileName && !! profileName.length && (
-						<RichText.Content 
-							tagName="h2"
-							className="ab-profile-name"
-							style={ {
-								color: profileTextColor
-							} }
-							value={ profileName } 
-						/>
-					) }
-					{ profileTitle && !! profileTitle.length && (
-						<RichText.Content 
-							tagName="p"
-							className="ab-profile-title"
-							style={ {
-								color: profileTextColor
-							} }
-							value={ profileTitle } 
-						/>
-					) }
-					{ profileContent && !! profileContent.length && (
-						<RichText.Content 
-							tagName="div" 
-							className="ab-profile-text"
-							value={ profileContent } 
-						/>
-					) }
-					<SocialIcons { ...props } />
+					<InnerBlocks.Content />
 				</div>
 			</ProfileBox>
 		);

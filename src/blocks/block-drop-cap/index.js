@@ -126,13 +126,11 @@ registerBlockType( 'atomic-blocks/ab-drop-cap', {
 			<DropCap { ...props }>
 				{	// Check if there is text and output
 					dropCapContent && (
-					<div
-					className={ classnames(
-						'ab-drop-cap-text'
-					) }
-					>
-						{ dropCapContent }
-					</div>
+					<RichText.Content 
+						tagName="div" 
+						className="ab-drop-cap-text"
+						value={ dropCapContent } 
+					/>
 				) }	
 			</DropCap>
 		);

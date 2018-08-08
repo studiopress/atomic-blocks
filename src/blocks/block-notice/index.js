@@ -208,19 +208,22 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 							color: noticeTitleColor
 						} }
 					>
-						<p>{ noticeTitle }</p>
+						<RichText.Content 
+							tagName="p" 
+							value={ noticeTitle } 
+						/>
 					</div>
 				) }
 
 				{ noticeContent && !! noticeContent.length && (
-					<div 
+					<RichText.Content 
+						tagName="div" 
 						class="ab-notice-text" 
 						style={ {
 							borderColor: noticeBackgroundColor
 						} }
-					>
-						{ noticeContent }
-					</div>
+						value={ noticeContent } 
+					/>
 				) }
 			</NoticeBox>
 		);

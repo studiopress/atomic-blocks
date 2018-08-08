@@ -349,7 +349,8 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 
 				<div class="ab-cta-content">
 					{ ctaTitle && !! ctaTitle.length && (
-						<h2 
+						<RichText.Content 
+							tagName="h2" 
 							className={ classnames(
 								'ab-cta-title',
 								'ab-font-size-' + ctaTitleFontSize,
@@ -357,10 +358,12 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							style={ {
 								color: ctaTextColor,
 							} }
-						>{ ctaTitle }</h2>
+							value={ ctaTitle } 
+						/>
 					) }
 					{ ctaText && !! ctaText.length && (
-						<div 
+						<RichText.Content 
+							tagName="div" 
 							className={ classnames(
 								'ab-cta-text',
 								'ab-font-size-' + ctaTextFontSize,
@@ -368,7 +371,8 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							style={ {
 								color: ctaTextColor,
 							} }
-						>{ ctaText }</div>
+							value={ ctaText } 
+						/>
 					) }
 				</div>
 				{ buttonText && !! buttonText.length && (
@@ -385,7 +389,11 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 								color: buttonTextColor,
 								backgroundColor: buttonBackgroundColor,
 							} }
-						>{ buttonText }</a>
+						>
+							<RichText.Content 
+								value={ buttonText } 
+							/>
+						</a>
 					</div>
 				) }
 			</CallToAction>

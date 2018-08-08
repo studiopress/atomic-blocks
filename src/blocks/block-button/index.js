@@ -178,7 +178,9 @@ registerBlockType( 'atomic-blocks/ab-button', {
 							backgroundColor: buttonBackgroundColor,
 						} }
 					>
-						{ buttonText }
+						<RichText.Content 
+							value={ buttonText } 
+						/>
 					</a>
 				) }	
 			</CustomButton>

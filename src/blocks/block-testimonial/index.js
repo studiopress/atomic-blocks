@@ -236,16 +236,14 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 		// Save the block markup for the front end
 		return (
 			<Testimonial { ...props }>
-				<div
-				className={ classnames(
-					'ab-testimonial-text',
-				) }
-				style={ {
-					textAlign: testimonialAlignment,
-				} }
-				>
-					{ testimonialContent }
-				</div>
+				<RichText.Content 
+					tagName="div" 
+					className="ab-testimonial-text"
+					style={ {
+						textAlign: testimonialAlignment,
+					} }
+					value={ testimonialContent } 
+				/>
 				
 				<div class="ab-testimonial-info">
 					{ testimonialImgURL && !! testimonialImgURL.length && (
@@ -261,19 +259,25 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 					) }
 
 					{ testimonialName && !! testimonialName.length && (
-						<h2 class="ab-testimonial-name"
+						<RichText.Content 
+							tagName="h2" 
+							className="ab-testimonial-name"
 							style={ {
 								color: testimonialTextColor
 							} }
-						>{ testimonialName }</h2>
+							value={ testimonialName } 
+						/>
 					) }
 
 					{ testimonialTitle && !! testimonialTitle.length && (
-						<small class="ab-testimonial-title"
+						<RichText.Content 
+							tagName="small" 
+							className="ab-testimonial-title"
 							style={ {
 								color: testimonialTextColor
 							} }
-						>{ testimonialTitle }</small>
+							value={ testimonialTitle } 
+						/>
 					) }
 				</div>
 			</Testimonial>
