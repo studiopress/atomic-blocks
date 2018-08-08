@@ -74,6 +74,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.2.9**
+* Convert saved RichText to RichText.Content.
+* Prepare blocks for toolbar formatting.
+
 **1.2.8**
 * Fix focus bug on Testimonial block title.
 
