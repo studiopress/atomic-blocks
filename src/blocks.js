@@ -13,4 +13,3 @@ import './blocks/block-cta/index.js';
 import './blocks/block-sharing/index.js';
 import './blocks/block-post-grid/index.js';
 import './blocks/block-container/index.js';
-import './blocks/block-layout-split/index.js';
