@@ -121,7 +121,6 @@ class ABNoticeBlock extends Component {
 						borderColor: noticeBackgroundColor,
 					} }
 					onChange={ ( value ) => setAttributes( { noticeContent: value } ) }
-					inlineToolbar
 				/>
 			</NoticeBox>
 		];

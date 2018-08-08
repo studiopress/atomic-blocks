@@ -39,11 +39,13 @@ const {
 
 const blockAttributes = {
 	profileName: {
-		type: 'string',
+		type: 'array',
+		source: 'children',
 		selector: '.ab-profile-name',
 	},
 	profileTitle: {
-		type: 'string',
+		type: 'array',
+		source: 'children',
 		selector: '.ab-profile-title',
 	},
 	profileContent: {
@@ -290,31 +292,34 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 				>
 					{ profileName && !! profileName.length && (
 						<RichText.Content 
-							tagName="h2"
+							tagName="h2" 
 							className="ab-profile-name"
 							style={ {
 								color: profileTextColor
 							} }
-							value={ profileName } 
+							value={ profileName }
 						/>
 					) }
+					
 					{ profileTitle && !! profileTitle.length && (
 						<RichText.Content 
-							tagName="p"
+							tagName="p" 
 							className="ab-profile-title"
 							style={ {
 								color: profileTextColor
 							} }
-							value={ profileTitle } 
+							value={ profileTitle }
 						/>
 					) }
+
 					{ profileContent && !! profileContent.length && (
 						<RichText.Content 
 							tagName="div" 
 							className="ab-profile-text"
-							value={ profileContent } 
+							value={ profileContent }
 						/>
 					) }
+
 					<SocialIcons { ...props } />
 				</div>
 			</ProfileBox>

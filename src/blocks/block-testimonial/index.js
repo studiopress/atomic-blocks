@@ -96,7 +96,6 @@ class ABTestimonialBlock extends Component {
 						textAlign: testimonialAlignment,
 					} }
 					onChange={ ( value ) => setAttributes( { testimonialContent: value } ) }
-					inlineToolbar
 				/>
 
 				<div class="ab-testimonial-info">
@@ -170,8 +169,9 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 	],
 	attributes: {
 		testimonialName: { 
-			type: 'string',
+			type: 'array',
 			selector: '.ab-testimonial-name',
+			source: 'children',
 		},
 		testimonialTitle: {
 			type: 'array',

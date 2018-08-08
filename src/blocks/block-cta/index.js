@@ -74,7 +74,9 @@ const blockAttributes = {
 		default: false
 	},
 	ctaTitle: {
-		type: 'string',
+		type: 'array',
+		selector: '.ab-cta-title',
+		source: 'children',
 	},
 	ctaTitleFontSize: {
 		type: 'string',
@@ -230,7 +232,6 @@ class ABCTABlock extends Component {
 							color: ctaTextColor,
 						} }
 						onChange={ ( value ) => setAttributes( { ctaText: value } ) }
-						inlineToolbar
 					/>
 				</div>
 				<div class="ab-cta-button">

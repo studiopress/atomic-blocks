@@ -63,7 +63,7 @@ class ABAccordionBlock extends Component {
 					placeholder={ __( 'Accordion Title' ) }
 					keepPlaceholderOnFocus
 					value={ accordionTitle }
-					className='ab-accordion-title'
+					className="ab-accordion-title"
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
 				/>
 
@@ -73,7 +73,7 @@ class ABAccordionBlock extends Component {
 					keepPlaceholderOnFocus
 					value={ accordionText }
 					isSelected={ isSelected }
-					className='ab-accordion-text'
+					className="ab-accordion-text"
 					onChange={ ( value ) => this.props.setAttributes( { accordionText: value } ) }
 					inlineToolbar
 				/>
@@ -95,7 +95,9 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 	],
 	attributes: {
 		accordionTitle: {
-			type: 'string',
+			type: 'array',
+			selector: '.ab-accordion-title',
+			source: 'children',
 		},
 		accordionText: {
 			type: 'array',
@@ -128,8 +130,16 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 		return (
 			<Accordion { ...props }>
 				<details open={accordionOpen}>
-					<summary class="ab-accordion-title"><p>{ accordionTitle }</p></summary>
-					<p class="ab-accordion-text">{ accordionText }</p>
+					<summary class="ab-accordion-title">
+						<RichText.Content 
+							value={ accordionTitle }
+						/>
+					</summary>
+					<RichText.Content 
+						class="ab-accordion-text"
+						tagName="p" 
+						value={ accordionText }
+					/>
 				</details>
 			</Accordion>
 		);
