@@ -74,6 +74,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.3.0**
+* Fix padding increments on Container block.
+* Improve color display on Call To Action block text.
+
 **1.2.9**
 * Convert saved RichText to RichText.Content.
 * Prepare blocks for toolbar formatting.
