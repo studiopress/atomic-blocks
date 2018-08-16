@@ -68,7 +68,7 @@ export default class Inspector extends Component {
 					onChange={ ( value ) => this.props.setAttributes( { containerPaddingTop: value } ) }
 					min={ 0 }
 					max={ 20 }
-					step={ 1 }
+					step={ .5 }
 				/>
 
 				<RangeControl
@@ -86,7 +86,7 @@ export default class Inspector extends Component {
 					onChange={ ( value ) => this.props.setAttributes( { containerPaddingLeft: value } ) }
 					min={ 0 }
 					max={ 20 }
-					step={ 1 }
+					step={ .5 }
 				/>
 
 				<RangeControl
