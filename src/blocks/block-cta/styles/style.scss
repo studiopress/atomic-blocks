@@ -74,6 +74,10 @@
 	.ab-cta-text {
 		line-height: 1.4;
 
+		p {
+			color: inherit;
+		}
+
 		a {
 			color: inherit;
 			box-shadow: 0 -1px 0 inset;
