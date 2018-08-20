@@ -8,6 +8,7 @@
     "eject": "cgb-scripts eject"
   },
   "dependencies": {
+    "@wordpress/data": "^1.2.1",
     "@wordpress/html-entities": "^1.0.1",
     "@wordpress/i18n": "^1.2.1",
     "babel-preset-es2015": "^6.24.1",

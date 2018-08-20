@@ -74,6 +74,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.3.1**
+* Fix bug in Post Grid block that prevented it from displaying in the editor.
+* Fix window.userSettings is undefined error.
+* Fix bug in dismissable notice.
+
 **1.3.0**
 * Fix padding increments on Container block.
 * Improve color display on Call To Action block text.
