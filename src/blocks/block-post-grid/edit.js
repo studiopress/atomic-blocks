@@ -15,6 +15,13 @@ const { __ } = wp.i18n;
 
 const { decodeEntities } = wp.htmlEntities;
 
+const { apiFetch } = wp;
+
+const {
+	registerStore,
+	withSelect,
+} = wp.data;
+
 const {
 	PanelBody,
 	Placeholder,
@@ -82,8 +89,7 @@ class LatestPostsBlock extends Component {
 	}
 
 	render() {
-		const latestPosts = this.props.latestPosts.data;
-		const { attributes, categoriesList, setAttributes } = this.props;
+		const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
 		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
 
 		// Thumbnail options
@@ -277,22 +283,20 @@ class LatestPostsBlock extends Component {
 	}
 }
 
-export default withAPIData( ( props ) => {
+export default withSelect( ( select, props ) => {
 	const { postsToShow, order, orderBy, categories } = props.attributes;
-	const latestPostsQuery = stringify( pickBy( {
+	const { getEntityRecords } = select( 'core' );
+	const latestPostsQuery = pickBy( {
 		categories,
 		order,
 		orderby: orderBy,
 		per_page: postsToShow,
-		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'featured_image_src', 'featured_image_src_square', 'excerpt', 'author_info' ],
-		_embed: 'embed',
-	}, ( value ) => ! isUndefined( value ) ) );
-	const categoriesListQuery = stringify( {
+	}, ( value ) => ! isUndefined( value ) );
+	const categoriesListQuery = {
 		per_page: 100,
-		_fields: [ 'id', 'name', 'parent' ],
-	} );
+	};
 	return {
-		latestPosts: `/wp/v2/posts?${ latestPostsQuery }`,
-		categoriesList: `/wp/v2/categories?${ categoriesListQuery }`,
+		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
+		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
 } )( LatestPostsBlock );
