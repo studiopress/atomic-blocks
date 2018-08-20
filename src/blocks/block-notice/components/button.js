@@ -28,14 +28,14 @@ export default class DismissButton extends Component {
 		const { attributes: { noticeTitleColor } } = this.props;
 
 		return (
-			<Button 
+			<div 
 				className="ab-notice-dismiss" 
 				style={ {
 					fill: noticeTitleColor,
 					color: noticeTitleColor,
 				} }>
 				{ this.props.children }
-			</Button>
+			</div>
 		);
 	}
 }
