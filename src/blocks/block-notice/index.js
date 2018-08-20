@@ -194,13 +194,13 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 		// Save the block markup for the front end
 		return (
 			<NoticeBox { ...props }>			
-				{ noticeDismiss && !! noticeDismiss.length && (
+				{ noticeDismiss && (
 					<DismissButton { ...props }>
 						{ icons.dismiss }
 					</DismissButton>
 				) }
 
-				{ noticeTitle && !! noticeTitle.length && (
+				{ noticeTitle && (
 					<div
 						class="ab-notice-title"
 						style={ {
@@ -214,7 +214,7 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 					</div>
 				) }
 
-				{ noticeContent && !! noticeContent.length && (
+				{ noticeContent && (
 					<RichText.Content 
 						tagName="div" 
 						class="ab-notice-text" 
