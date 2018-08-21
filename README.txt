@@ -98,6 +98,7 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 = 1.3.2 =
 * Fix category drop down on Post Grid block.
+* Fix path to fontawesome on Getting Started page.
 
 = 1.3.1 =
 * Fix bug in Post Grid block that prevented it from displaying in the editor.
