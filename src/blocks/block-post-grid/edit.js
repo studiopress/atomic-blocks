@@ -106,7 +106,7 @@ class LatestPostsBlock extends Component {
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
-						categoriesList={ get( categoriesList, [ 'data' ], {} ) }
+						categoriesList={ categoriesList }
 						selectedCategoryId={ categories }
 						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
@@ -246,8 +246,6 @@ class LatestPostsBlock extends Component {
 										null
 									)
 								}
-
-								{ console.log(post) }
 
 								<div class="ab-block-post-grid-text">
 									<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
