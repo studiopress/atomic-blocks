@@ -74,6 +74,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.3.2**
+* Fix category drop down on Post Grid block.
+
 **1.3.1**
 * Fix bug in Post Grid block that prevented it from displaying in the editor.
 * Fix window.userSettings is undefined error.
