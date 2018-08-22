@@ -10,9 +10,11 @@
  *
  * since 1.0.0
  */
-function atomic_blocks_start_load_admin_scripts() {
+function atomic_blocks_start_load_admin_scripts( $hook ) {
 
-	global $pagenow;
+	if ( ! ( $hook == 'toplevel_page_atomic-blocks' ) ) {
+		return;
+	}
 
 	/**
 	 * Load scripts and styles
