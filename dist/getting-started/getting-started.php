@@ -12,6 +12,8 @@
  */
 function atomic_blocks_start_load_admin_scripts( $hook ) {
 
+    $postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
+
 	if ( ! ( $hook == 'toplevel_page_atomic-blocks' ) ) {
 		return;
 	}
@@ -30,7 +32,7 @@ function atomic_blocks_start_load_admin_scripts( $hook ) {
 	wp_enqueue_style( 'atomic-blocks-getting-started' );
 
 	// FontAwesome
-	wp_register_style( 'atomic-blocks-fontawesome', plugins_url( '/assets/fontawesome/css/fontawesome-all.css', dirname( __FILE__ ) ), false, '1.0.0' );
+	wp_register_style( 'atomic-blocks-fontawesome', plugins_url( "/assets/fontawesome/css/fontawesome-all$postfix.css", dirname( __FILE__ ) ), false, '5.0.6' );
 	wp_enqueue_style( 'atomic-blocks-fontawesome' );
 }
 add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
