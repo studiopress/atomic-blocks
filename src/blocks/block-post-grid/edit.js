@@ -29,6 +29,7 @@ const {
 	RangeControl,
 	SelectControl,
 	Spinner,
+	TextControl,
 	ToggleControl,
 	Toolbar,
 	withAPIData,
@@ -88,9 +89,16 @@ class LatestPostsBlock extends Component {
 		setAttributes( { displayPostLink: ! displayPostLink } );
 	}
 
+	customizeReadMoreText() {
+		const { readMoreText } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { readMoreText: ! readMoreText } );
+	}
+
 	render() {
 		const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
-		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
+		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop, readMoreText } = attributes;
 
 		// Thumbnail options
 		const imageCropOptions = [
@@ -155,6 +163,14 @@ class LatestPostsBlock extends Component {
 						checked={ displayPostLink }
 						onChange={ this.toggleDisplayPostLink }
 					/>
+					{ displayPostLink &&
+					<TextControl
+						label={ __( 'Customize Read More Link' ) }
+						type="text"
+						value={ readMoreText }
+						onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
+					/>
+					}
 
 				</PanelBody>
 			</InspectorControls>
@@ -268,7 +284,7 @@ class LatestPostsBlock extends Component {
 										}
 
 										{ displayPostLink &&
-											<p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></p>
+											<p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
 										}
 									</div>
 								</div>
