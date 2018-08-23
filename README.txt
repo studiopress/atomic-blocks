@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
 Tested up to: 4.9.5
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -95,6 +95,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 6. The Drop Cap block with settings.
 
 == Changelog ==
+
+= 1.3.3 =
+* Update FontAwesome to 5.2.0.
+* Move dynamic block PHP to src folder.
+* Add option to customize Read More link text in Post Grid block.
 
 = 1.3.2 =
 * Fix category drop down on Post Grid block.
