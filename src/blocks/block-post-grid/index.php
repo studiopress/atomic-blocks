@@ -63,7 +63,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			$title = get_the_title( $post_id );
 
 			if ( ! $title ) {
-				$title = __( 'Untitled', 'atomic-blocks' );
+				$title = __( 'Untitled' );
 			}
 
 			$list_items_markup .= sprintf(
@@ -124,7 +124,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					$list_items_markup .= sprintf(
 						'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
 						esc_url( get_permalink( $post_id ) ),
-						esc_html__( 'Continue Reading', 'atomic-blocks' )
+						esc_html( $attributes['readMoreText'] )
 					);
 				}
 
@@ -241,6 +241,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 			'imageCrop'  => array(
 				'type' => 'string',
 				'default' => 'landscape',
+			),
+			'readMoreText'  => array(
+				'type' => 'string',
+				'default' => 'Continue Reading',
 			),
 		),
 		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',
