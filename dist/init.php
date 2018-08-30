@@ -22,7 +22,7 @@ function atomic_blocks_block_assets() {
 	
 	// Load the compiled styles
 	wp_enqueue_style(
-		'atomic-blocks-style-css',
+		'atomic-blocks-style',
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
 		array( 'wp-blocks' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.style.build.css' )
@@ -56,7 +56,7 @@ function atomic_blocks_editor_assets() {
 
 	// Load the compiled styles into the editor
 	wp_enqueue_style(
-		'atomic-blocks-block-editor-css',
+		'atomic-blocks-block-editor',
 		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), 
 		array( 'wp-edit-blocks' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.editor.build.css' )
