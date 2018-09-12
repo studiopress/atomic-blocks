@@ -74,6 +74,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.3.4**
+* Convert Accordion Block text area to InnerBlocks to allow for adding any block.
+
 **1.3.3**
 * Update FontAwesome to 5.2.0.
 * Move dynamic block PHP to src folder.
