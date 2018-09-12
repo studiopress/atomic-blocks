@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import Accordion from './components/accordion';
 import icons from './components/icons';
+import omit from 'lodash/omit';
 
 // Import CSS
 import './styles/style.scss';
@@ -19,7 +20,10 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 
 // Register block
-const { registerBlockType } = wp.blocks;
+const { 
+	registerBlockType,
+	createBlock,
+} = wp.blocks;
 
 // Register editor components
 const {
@@ -27,6 +31,7 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
+	InnerBlocks,
 } = wp.editor;
 
 // Register components
@@ -36,6 +41,30 @@ const {
 	IconButton,
 	Dashicon,
 } = wp.components;
+
+const blockAttributes = {
+	accordionTitle: {
+		type: 'array',
+		selector: '.ab-accordion-title',
+		source: 'children',
+	},
+	accordionText: {
+		type: 'array',
+		selector: '.ab-accordion-text',
+		source: 'children',
+	},
+	accordionAlignment: {
+		type: 'string',
+	},
+	accordionFontSize: {
+		type: 'number',
+		default: 18
+	},
+	accordionOpen: {
+		type: 'boolean',
+		default: false
+	},
+};
 
 class ABAccordionBlock extends Component {
 
@@ -67,16 +96,9 @@ class ABAccordionBlock extends Component {
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
 				/>
 
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Accordion Text' ) }
-					keepPlaceholderOnFocus
-					value={ accordionText }
-					isSelected={ isSelected }
-					className="ab-accordion-text"
-					onChange={ ( value ) => this.props.setAttributes( { accordionText: value } ) }
-					inlineToolbar
-				/>
+				<div class="ab-accordion-text">
+					<InnerBlocks />
+				</div>
 			</Accordion>
 		];
 	}
@@ -93,29 +115,7 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 		__( 'list' ),
 		__( 'atomic' ),
 	],
-	attributes: {
-		accordionTitle: {
-			type: 'array',
-			selector: '.ab-accordion-title',
-			source: 'children',
-		},
-		accordionText: {
-			type: 'array',
-			selector: '.ab-accordion-text',
-			source: 'children',
-		},
-		accordionAlignment: {
-			type: 'string',
-		},
-		accordionFontSize: {
-			type: 'number',
-			default: 18
-		},
-		accordionOpen: {
-			type: 'boolean',
-			default: false
-		},
-	},
+	attributes: blockAttributes,
 
 	// Render the block components
 	edit: ABAccordionBlock,
@@ -135,13 +135,53 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 							value={ accordionTitle }
 						/>
 					</summary>
-					<RichText.Content 
-						class="ab-accordion-text"
-						tagName="p" 
-						value={ accordionText }
-					/>
+					<div class="ab-accordion-text">
+						<InnerBlocks.Content />
+					</div>
 				</details>
 			</Accordion>
 		);
 	},
+
+	deprecated: [ {
+		attributes: {
+			accordionText: {
+				type: 'array',
+				selector: '.ab-accordion-text',
+				source: 'children',
+			},
+			...blockAttributes
+		},
+
+		migrate( attributes, innerBlocks  ) {
+			return [
+				omit( attributes, 'accordionText' ),
+				[
+					createBlock( 'core/paragraph', {
+						content: attributes.accordionText,
+					} ),
+					...innerBlocks,
+				],
+			];
+		},
+
+		save( props ) {
+			return (
+				<Accordion { ...props }>
+					<details open={ props.attributes.accordionOpen }>
+						<summary class="ab-accordion-title">
+							<RichText.Content 
+								value={ props.attributes.accordionTitle }
+							/>
+						</summary>
+						<RichText.Content 
+							class="ab-accordion-text"
+							tagName="p" 
+							value={ props.attributes.accordionText }
+						/>
+					</details>
+				</Accordion>
+			);
+		},
+	} ],
 } );
