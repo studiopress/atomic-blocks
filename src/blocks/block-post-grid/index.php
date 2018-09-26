@@ -28,15 +28,15 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		$post_thumb_id = get_post_thumbnail_id( $post_id );
 
 		if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
-			$post_thumb_class = 'has-thumb';
+			$post_classes = get_post_class( 'has-thumb', $post_id );
 		} else {
-			$post_thumb_class = 'no-thumb';
+			$post_classes = get_post_class( 'no-thumb', $post_id );
 		}
 
 		// Start the markup for the post
 		$list_items_markup .= sprintf(
-			'<article class="%1$s">',
-			esc_attr( $post_thumb_class )
+			'<article id="post-'.$post_id.'" class="%1$s">',
+			esc_attr( join(' ', $post_classes) )
 		);
 		
 		// Get the featured image
