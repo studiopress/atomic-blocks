@@ -28,9 +28,9 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		$post_thumb_id = get_post_thumbnail_id( $post_id );
 
 		if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
-			$post_classes = get_post_class( 'has-thumb', $post_id );
+			$post_classes = get_post_class( 'has-thumb', $post->ID );
 		} else {
-			$post_classes = get_post_class( 'no-thumb', $post_id );
+			$post_classes = get_post_class( 'no-thumb', $post->ID );
 		}
 
 		// Start the markup for the post
@@ -106,10 +106,10 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			);
 
 				// Get the excerpt
-				$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
+				$excerpt = apply_filters( 'the_excerpt', wp_kses_post( get_post_field( 'post_excerpt', $post_id, 'display' ) ) );
 
 				if( empty( $excerpt ) ) {
-					$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+					$excerpt = apply_filters( 'the_excerpt', wp_kses_post( wp_trim_words( $post->post_content, 55 ) ) );
 				}
 
 				if ( ! $excerpt ) {
@@ -117,7 +117,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				}
 
 				if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-					$list_items_markup .=  wp_kses_post( $excerpt );
+					$list_items_markup .=  $excerpt;
 				}
 
 				if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
