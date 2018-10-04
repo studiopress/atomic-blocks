@@ -238,7 +238,6 @@ class ABCTABlock extends Component {
 					<RichText
 						tagName="span"
 						placeholder={ __( 'Button text...' ) }
-						keepPlaceholderOnFocus
 						value={ buttonText }
 						formattingControls={ [] }
 						className={ classnames(

@@ -236,7 +236,6 @@ class ABAuthorProfileBlock extends Component {
 						value={ profileContent }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 						onChange={ ( value ) => setAttributes( { profileContent: value } ) }
-						inlineToolbar
 					/>
 
 					<SocialIcons { ...this.props } />

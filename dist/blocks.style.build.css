@@ -2063,13 +2063,12 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     color: #5a3fd6; }
 
 /**
- * CTA styles
+ * Container styles
  * Loads on front end and back end
  */
 .ab-block-container {
   margin: 0 0 1.2em 0;
   position: relative;
-  background: #fff;
   padding: 0; }
   .ab-block-container.alignfull .editor-block-list__block {
     max-width: 100%; }

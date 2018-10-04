@@ -90,7 +90,6 @@ class ABAccordionBlock extends Component {
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Accordion Title' ) }
-					keepPlaceholderOnFocus
 					value={ accordionTitle }
 					className="ab-accordion-title"
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
