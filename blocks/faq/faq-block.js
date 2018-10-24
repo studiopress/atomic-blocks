@@ -35,21 +35,6 @@
 			},
 		},
 
-		save: function( props ) {
-			const question = props.attributes.question;
-			const answer = props.attributes.answer;
-			const container = createElement(
-				'div', { className: 'faq-block' }, 
-				React.createElement('div', { className: 'tab-question' },
-					createElement( RichText.Content, { tagName: 'h3', className: 'faq-question', value: question })
-				),
-				React.createElement('div', { className: 'tab-answer' },
-					createElement( RichText.Content, { tagName: 'p', className: 'tab-content', value: answer })
-				)
-			);
-			return container;
-		},
-
 		edit: function( props ) {
 			const question = props.attributes.question;
 			const answer = props.attributes.answer;
@@ -89,6 +74,33 @@
 				editAnswer
 			);
 		},
+
+		save: function( props ) {
+			const question = props.attributes.question;
+			const answer = props.attributes.answer;
+			//var attr = 'aria-controls="collapse01"';
+			//const button = '<button aria-controls="collapse01>' + answer + '</button>';
+
+			const container = createElement(
+				'div', { className: 'faq-block' }, 
+				createElement( 'div', { id: 'accordion' },
+					createElement( 'div', { className: 'card' },
+						createElement( 'div', { id: 'heading01', className: 'card-header' },
+							React.createElement('h2', { className: 'tab-question' },
+								createElement( RichText.Content, { tagName: 'button', className: 'btn-link', value: question })
+							),
+						),
+						createElement( 'div', { id: 'collapse01', className: 'collapse' },
+							React.createElement('div', { className: 'tab-answer card-body' },
+								createElement( RichText.Content, { tagName: 'p', className: 'tab-content', value: answer })
+							)
+						),
+					),
+				),
+			);
+			return container;
+		},
+		
 	} );
 })(
 	window.wp.blocks, 

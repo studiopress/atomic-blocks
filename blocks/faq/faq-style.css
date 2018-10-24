@@ -6,9 +6,17 @@
  * ----------------------------------------------------------------------------
  */
 
- .wp-block-lsx-blocks-faq-block {
-	color: #000000;
-	background: gold;
-	border: 0.2rem solid goldenrod;
-	padding: 2rem;
+ .wp-block-lsx-blocks-faq-block #accordion .card .btn-link {
+	text-transform: uppercase;
+}
+.wp-block-lsx-blocks-faq-block #accordion .card button.btn-link:before {
+    content: 'Q:';
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+.wp-block-lsx-blocks-faq-block #accordion .card .collapse .tab-content:before {
+	content: 'A:';
+    margin-right: 1em;
+    font-weight: bold;
 }
