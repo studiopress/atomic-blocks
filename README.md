@@ -1,2 +1,2 @@
-# lsx-blocks
-LSX Gutenberg Blocks plugin
+# LSX Blocks Plugin
+LSX Blocks Plugin for building LSX Gutenberg blocks extensions.

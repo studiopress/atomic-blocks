@@ -1,0 +1,14 @@
+/**
+ * ----------------------------------------------------------------------------
+ * #.# Editor CSS
+ *
+ * BLOCK: FAQ's Block CSS for the editor.
+ * ----------------------------------------------------------------------------
+ */
+
+ .wp-block-lsx-blocks-faq-block {
+	color: #000000;
+	background: mistyrose;
+	border: 0.2rem solid red;
+	padding: 2rem;
+}
