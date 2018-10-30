@@ -11,6 +11,7 @@ const {
   InspectorControls,
   BlockDescription,
   ColorPalette,
+  PanelColorSettings,
   MediaUpload,
 } = wp.editor;
 
@@ -20,7 +21,6 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	PanelColor,
 	FormToggle,
 	RangeControl,
 	SelectControl,
@@ -58,6 +58,19 @@ export default class Inspector extends Component {
 			{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
 		];
 
+		// Button colors
+		const buttonColors = [
+			{ color: '#392F43', name: 'black' },
+			{ color: '#3373dc', name: 'royal blue' },
+			{ color: '#2DBAA3', name: 'teal' },
+			{ color: '#209cef', name: 'sky blue' },
+			{ color: '#2BAD59', name: 'green' },
+			{ color: '#ff3860', name: 'pink' },
+			{ color: '#7941b6', name: 'purple' },
+			{ color: '#F7812B', name: 'orange' },
+		];
+		
+		// Change the image
 		const onSelectImage = img => {
 			setAttributes( {
 				imgID: img.id,
@@ -66,6 +79,7 @@ export default class Inspector extends Component {
 			} );
 		};
 
+		// Clear the image
 		const onRemoveImage = () => {
 			setAttributes({
 				imgID: null,
@@ -73,6 +87,12 @@ export default class Inspector extends Component {
 				imgAlt: null,
 			});
 		}
+
+		// Update color values
+		const onChangeBackgroundColor = value => setAttributes( { ctaBackgroundColor: value } );
+		const onChangeTextColor = value => setAttributes( { ctaTextColor: value } );
+		const onChangeButtonColor = value => setAttributes( { buttonBackgroundColor: value } );
+		const onChangeButtonTextColor = value => setAttributes( { buttonTextColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
@@ -95,17 +115,17 @@ export default class Inspector extends Component {
 					step={ 2 }
 				/>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Text Color' ) }
 					colorValue={ ctaTextColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: ctaTextColor,
+						onChange: onChangeTextColor,
+						label: __( 'Text Color' ),
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Text Color' ) }
-						value={ ctaTextColor }
-						onChange={ ( value ) => this.props.setAttributes( { ctaTextColor: value } ) }
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 			</PanelBody>
 
 			<PanelBody title={ __( 'Background Options' ) } initialOpen={ false }>
@@ -151,17 +171,17 @@ export default class Inspector extends Component {
 					/>
 				) }
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Background Color' ) }
-					colorValue={ ctaBackgroundColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: ctaBackgroundColor,
+						onChange: onChangeBackgroundColor,
+						label: __( 'Overlay Color' ),
+						colors: buttonColors,
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Background Color' ) }
-						value={ ctaBackgroundColor }
-						onChange={ ( value ) => this.props.setAttributes( { ctaBackgroundColor: value } ) }
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 			</PanelBody>
 
 			<PanelBody title={ __( 'Button Options' ) } initialOpen={ false }>
@@ -191,43 +211,30 @@ export default class Inspector extends Component {
 					onChange={ ( value ) => { this.props.setAttributes( { buttonShape: value } ) } }
 				/>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Button Color' ) }
 					colorValue={ buttonBackgroundColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: buttonBackgroundColor,
+						onChange: onChangeButtonColor,
+						label: __( 'Button Color' ),
+						colors: buttonColors,
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Button Color' ) }
-						value={ buttonBackgroundColor }
-						onChange={ ( value ) => { this.props.setAttributes( { buttonBackgroundColor: value } ) } }
-						colors={[
-							{ color: '#392F43', name: 'black' },
-							{ color: '#3373dc', name: 'royal blue' },
-							{ color: '#2DBAA3', name: 'teal' },
-							{ color: '#209cef', name: 'sky blue' },
-							{ color: '#2BAD59', name: 'green' },
-							{ color: '#ff3860', name: 'pink' },
-							{ color: '#7941b6', name: 'purple' },
-							{ color: '#F7812B', name: 'orange' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Button Text Color' ) }
 					colorValue={ buttonTextColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: buttonTextColor,
+						onChange: onChangeButtonTextColor,
+						label: __( 'Button Text Color' ),
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Button Text Color' ) }
-						value={ buttonTextColor }
-						onChange={ ( value ) => { this.props.setAttributes( { buttonTextColor: value } ) } }
-						colors={[
-							{ color: '#32373c', name: 'black' },
-							{ color: '#fff', name: 'white' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 			</PanelBody>
 		</InspectorControls>
 		);
