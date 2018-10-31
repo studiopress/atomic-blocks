@@ -11,6 +11,7 @@ const {
   InspectorControls,
   BlockDescription,
   ColorPalette,
+  PanelColorSettings,
 } = wp.editor;
 
 // Import Inspector components
@@ -19,7 +20,6 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	PanelColor,
 	FormToggle,
 	RangeControl,
 	SelectControl,
@@ -39,6 +39,7 @@ export default class Inspector extends Component {
 
 		// Setup the attributes
 		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = this.props.attributes;
+		const { setAttributes } = this.props;
 
 		// Button size values
 		const buttonSizeOptions = [
@@ -54,6 +55,22 @@ export default class Inspector extends Component {
 			{ value: 'ab-button-shape-rounded', label: __( 'Rounded Square' ) },
 			{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
 		];
+
+		// Button colors
+		const buttonColors = [
+			{ color: '#00d1b2', name: 'teal' },
+			{ color: '#3373dc', name: 'royal blue' },
+			{ color: '#209cef', name: 'sky blue' },
+			{ color: '#22d25f', name: 'green' },
+			{ color: '#ffdd57', name: 'yellow' },
+			{ color: '#ff3860', name: 'pink' },
+			{ color: '#7941b6', name: 'purple' },
+			{ color: '#392F43', name: 'black' },
+		];
+
+		// Update color values
+		const onChangeButtonColor = value => setAttributes( { buttonBackgroundColor: value } );
+		const onChangeButtonTextColor = value => setAttributes( { buttonTextColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
@@ -84,43 +101,28 @@ export default class Inspector extends Component {
 					onChange={ ( value ) => { this.props.setAttributes( { buttonShape: value } ) } }
 				/>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Button Color' ) }
-					colorValue={ buttonBackgroundColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: buttonBackgroundColor,
+						onChange: onChangeButtonColor,
+						label: __( 'Button Color' ),
+						colors: buttonColors,
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Button Color' ) }
-						value={ buttonBackgroundColor }
-						onChange={ ( value ) => { this.props.setAttributes( { buttonBackgroundColor: value } ) } }
-						colors={[
-							{ color: '#00d1b2', name: 'teal' },
-							{ color: '#3373dc', name: 'royal blue' },
-							{ color: '#209cef', name: 'sky blue' },
-							{ color: '#22d25f', name: 'green' },
-							{ color: '#ffdd57', name: 'yellow' },
-							{ color: '#ff3860', name: 'pink' },
-							{ color: '#7941b6', name: 'purple' },
-							{ color: '#392F43', name: 'black' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Button Text Color' ) }
-					colorValue={ buttonTextColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: buttonTextColor,
+						onChange: onChangeButtonTextColor,
+						label: __( 'Button Text Color' ),
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Button Text Color' ) }
-						value={ buttonTextColor }
-						onChange={ ( value ) => { this.props.setAttributes( { buttonTextColor: value } ) } }
-						colors={[
-							{ color: '#fff', name: 'white' },
-							{ color: '#32373c', name: 'black' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 			</PanelBody>
 		</InspectorControls>
 		);
