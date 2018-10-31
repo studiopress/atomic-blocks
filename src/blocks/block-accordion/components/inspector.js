@@ -10,7 +10,6 @@ const { Component } = wp.element;
 const {
   InspectorControls,
   BlockDescription,
-  ColorPalette,
 } = wp.editor;
 
 // Import Inspector components
@@ -19,7 +18,6 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	PanelColor,
 	RangeControl,
 	ToggleControl,
 } = wp.components;
