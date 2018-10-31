@@ -117,7 +117,6 @@ export default class Inspector extends Component {
 
 				<PanelColorSettings
 					title={ __( 'Text Color' ) }
-					colorValue={ ctaTextColor }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: ctaTextColor,
@@ -213,7 +212,6 @@ export default class Inspector extends Component {
 
 				<PanelColorSettings
 					title={ __( 'Button Color' ) }
-					colorValue={ buttonBackgroundColor }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: buttonBackgroundColor,
@@ -226,7 +224,6 @@ export default class Inspector extends Component {
 
 				<PanelColorSettings
 					title={ __( 'Button Text Color' ) }
-					colorValue={ buttonTextColor }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: buttonTextColor,
