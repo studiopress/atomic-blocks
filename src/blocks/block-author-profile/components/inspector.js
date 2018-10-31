@@ -11,6 +11,7 @@ const {
 	InspectorControls,
 	BlockDescription,
 	ColorPalette,
+  	PanelColorSettings,
 } = wp.editor;
 
 // Import Inspector components
@@ -18,7 +19,6 @@ const {
 	Panel,
 	PanelBody,
 	PanelRow,
-	PanelColor,
 	RangeControl,
 	SelectControl,
 	TextControl,
@@ -35,11 +35,29 @@ export default class Inspector extends Component {
 
 		// Setup the attributes
 		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape  } = this.props.attributes;
+		const { setAttributes } = this.props;
 
 		// Avatar shape options
 		const profileAvatarShapeOptions = [
 			{ value: 'square', label: __( 'Square' ) },
 			{ value: 'round', label: __( 'Round' ) },
+		];
+
+		// Update color values
+		const onChangeBackgroundColor = value => setAttributes( { profileBackgroundColor: value } );
+		const onChangeProfileTextColor = value => setAttributes( { profileTextColor: value } );
+		const onChangeSocialLinkColor = value => setAttributes( { profileLinkColor: value } );
+
+		// Social button colors
+		const socialColors = [
+			{ color: '#392F43', name: 'black' },
+			{ color: '#3373dc', name: 'royal blue' },
+			{ color: '#2DBAA3', name: 'teal' },
+			{ color: '#209cef', name: 'sky blue' },
+			{ color: '#2BAD59', name: 'green' },
+			{ color: '#ff3860', name: 'pink' },
+			{ color: '#7941b6', name: 'purple' },
+			{ color: '#F7812B', name: 'orange' },
 		];
 
 		return (
@@ -62,51 +80,39 @@ export default class Inspector extends Component {
 					onChange={ ( value ) => this.props.setAttributes( { profileAvatarShape: value } ) }
 				/>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Background Color' ) }
-					colorValue={ profileBackgroundColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: profileBackgroundColor,
+						onChange: onChangeBackgroundColor,
+						label: __( 'Background Color' ),
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Background Color' ) }
-						value={ profileBackgroundColor }
-						onChange={ ( value ) => this.props.setAttributes( { profileBackgroundColor: value } ) }
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Text Color' ) }
-					colorValue={ profileTextColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: profileTextColor,
+						onChange: onChangeProfileTextColor,
+						label: __( 'Text Color' ),
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Background Color' ) }
-						value={ profileTextColor }
-						onChange={ ( value ) => this.props.setAttributes( { profileTextColor: value } ) }
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Social Link Color' ) }
-					colorValue={ profileLinkColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: profileLinkColor,
+						onChange: onChangeSocialLinkColor,
+						label: __( 'Social Link Color' ),
+						colors: socialColors,
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Link Color' ) }
-						value={ profileLinkColor }
-						onChange={ ( value ) => this.props.setAttributes( { profileLinkColor: value } ) }
-						colors={[
-							{ color: '#392F43', name: 'black' },
-							{ color: '#3373dc', name: 'royal blue' },
-							{ color: '#2DBAA3', name: 'teal' },
-							{ color: '#209cef', name: 'sky blue' },
-							{ color: '#2BAD59', name: 'green' },
-							{ color: '#ff3860', name: 'pink' },
-							{ color: '#7941b6', name: 'purple' },
-							{ color: '#F7812B', name: 'orange' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 			</PanelBody>
 
 			<PanelBody title={ __( 'Social Links' ) } initialOpen={ false }>
