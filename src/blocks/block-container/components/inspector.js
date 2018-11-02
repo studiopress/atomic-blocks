@@ -11,6 +11,7 @@ const {
   InspectorControls,
   BlockDescription,
   ColorPalette,
+  PanelColorSettings,
   MediaUpload,
 } = wp.editor;
 
@@ -20,7 +21,6 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	PanelColor,
 	FormToggle,
 	RangeControl,
 	SelectControl,
@@ -58,6 +58,9 @@ export default class Inspector extends Component {
 				containerImgAlt: null,
 			});
 		}
+
+		// Update color values
+		const onChangeBackgroundColor = value => setAttributes( { containerBackgroundColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
@@ -169,17 +172,16 @@ export default class Inspector extends Component {
 					/>
 				) }
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Background Color' ) }
-					colorValue={ containerBackgroundColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: containerBackgroundColor,
+						label: __( 'Background Color' ),
+						onChange: onChangeBackgroundColor,
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Background Color' ) }
-						value={ containerBackgroundColor }
-						onChange={ ( value ) => this.props.setAttributes( { containerBackgroundColor: value } ) }
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 			</PanelBody>
 		</InspectorControls>
 		);
