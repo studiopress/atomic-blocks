@@ -52,7 +52,7 @@ export default class Inspector extends Component {
 			{ color: '#ff3860', name: 'pink' },
 			{ color: '#7941b6', name: 'purple' },
 			{ color: '#392F43', name: 'black' },
-		]
+		];
 
 		// Setup the attributes
 		const { attributes: { noticeTitle, noticeContent, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss } } = this.props;

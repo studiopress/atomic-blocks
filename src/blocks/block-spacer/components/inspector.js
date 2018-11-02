@@ -11,6 +11,7 @@ const {
   InspectorControls,
   BlockDescription,
   ColorPalette,
+  PanelColorSettings,
 } = wp.editor;
 
 // Import Inspector components
@@ -19,7 +20,6 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	PanelColor,
 	RangeControl,
 	ToggleControl,
 	SelectControl,
@@ -45,6 +45,20 @@ export default class Inspector extends Component {
 			{ value: 'ab-divider-dashed', label: __( 'Dashed' ) },
 			{ value: 'ab-divider-dotted', label: __( 'Dotted' ) },
 		];
+
+		// Divider color
+		const dividerColor = [
+			{ color: '#ddd', name: 'white' },
+			{ color: '#333', name: 'black' },
+			{ color: '#3373dc', name: 'royal blue' },
+			{ color: '#22d25f', name: 'green' },
+			{ color: '#ffdd57', name: 'yellow' },
+			{ color: '#ff3860', name: 'pink' },
+			{ color: '#7941b6', name: 'purple' },
+		];
+
+		// Update color values
+		const onChangeDividerColor = value => setAttributes( { spacerDividerColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
@@ -83,26 +97,18 @@ export default class Inspector extends Component {
 						max={ 5 }
 					/>
 
-					<PanelColor
+					<PanelColorSettings
 						title={ __( 'Divider Color' ) }
 						colorValue={ spacerDividerColor }
 						initialOpen={ false }
+						colorSettings={ [ {
+							colors: dividerColor,
+							value: spacerDividerColor,
+							onChange: onChangeDividerColor,
+							label: __( 'Divider Color' )
+						} ] }
 					>
-						<ColorPalette
-							label={ __( 'Divider Color' ) }
-							value={ spacerDividerColor }
-							onChange={ ( value ) => { this.props.setAttributes( { spacerDividerColor: value } ) } }
-							colors={[
-								{ color: '#ddd', name: 'white' },
-								{ color: '#333', name: 'black' },
-								{ color: '#3373dc', name: 'royal blue' },
-								{ color: '#22d25f', name: 'green' },
-								{ color: '#ffdd57', name: 'yellow' },
-								{ color: '#ff3860', name: 'pink' },
-								{ color: '#7941b6', name: 'purple' },
-							]}
-						/>
-					</PanelColor>
+					</PanelColorSettings>
 				</PanelBody>
 				: null }
 			</PanelBody>
