@@ -10,6 +10,7 @@ const { Component } = wp.element;
 const {
   BlockDescription,
   ColorPalette,
+  PanelColorSettings,
   InspectorControls,
 } = wp.editor;
 
@@ -19,7 +20,6 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	PanelColor,
 	FormToggle,
 	RangeControl,
 	SelectControl,
@@ -42,8 +42,26 @@ export default class Inspector extends Component {
 			{ value: 'ab-dismissable', label: __( 'Dismissable' ) },
 		];
 
+		// Notice colors
+		const noticeColors = [
+			{ color: '#00d1b2', name: 'teal' },
+			{ color: '#3373dc', name: 'royal blue' },
+			{ color: '#209cef', name: 'sky blue' },
+			{ color: '#22d25f', name: 'green' },
+			{ color: '#ffdd57', name: 'yellow' },
+			{ color: '#ff3860', name: 'pink' },
+			{ color: '#7941b6', name: 'purple' },
+			{ color: '#392F43', name: 'black' },
+		]
+
 		// Setup the attributes
 		const { attributes: { noticeTitle, noticeContent, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss } } = this.props;
+		const { setAttributes } = this.props;
+
+		// Update color values
+		const onChangeBackgroundColor = value => setAttributes( { noticeBackgroundColor: value } );
+		const onChangeTextColor = value => setAttributes( { noticeTextColor: value } );
+		const onChangeTitleColor = value => setAttributes( { noticeTitleColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
@@ -65,59 +83,41 @@ export default class Inspector extends Component {
 					onChange={ ( value ) => this.props.setAttributes( { noticeDismiss: value } ) }
 				/>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Notice Color' ) }
 					colorValue={ noticeBackgroundColor }
 					initialOpen={ false }
+					colorSettings={ [ {
+						value: noticeBackgroundColor,
+						onChange: onChangeBackgroundColor,
+						colors: noticeColors,
+						label: __( 'Notice Color' ),
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Notice Color' ) }
-						value={ noticeBackgroundColor }
-						onChange={ ( value ) => this.props.setAttributes( { noticeBackgroundColor: value } ) }
-						colors={[
-							{ color: '#00d1b2', name: 'teal' },
-							{ color: '#3373dc', name: 'royal blue' },
-							{ color: '#209cef', name: 'sky blue' },
-							{ color: '#22d25f', name: 'green' },
-							{ color: '#ffdd57', name: 'yellow' },
-							{ color: '#ff3860', name: 'pink' },
-							{ color: '#7941b6', name: 'purple' },
-							{ color: '#392F43', name: 'black' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Title Color' ) }
-					colorValue={ noticeTitleColor }
 					initialOpen={ false }
+					colorSettings = { [ {
+						value: noticeTitleColor,
+						onChange: onChangeTitleColor,
+						label: __( 'Title Color' ),
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Title Color' ) }
-						value={ noticeTitleColor }
-						onChange={ ( value ) => this.props.setAttributes( { noticeTitleColor: value } ) }
-						colors={[
-							{ color: '#fff', name: 'white' },
-							{ color: '#32373c', name: 'black' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Text Color' ) }
 					colorValue={ noticeTextColor }
 					initialOpen={ false }
+					colorSettings = { [ {
+						value: noticeTextColor,
+						onChange: onChangeTextColor,
+						label: __( 'Text Color' ),
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Background Color' ) }
-						value={ noticeTextColor }
-						onChange={ ( value ) => this.props.setAttributes( { noticeTextColor: value } ) }
-						colors={[
-							{ color: '#fff', name: 'white' },
-							{ color: '#32373c', name: 'black' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
 			</PanelBody>
 		</InspectorControls>
 		);
