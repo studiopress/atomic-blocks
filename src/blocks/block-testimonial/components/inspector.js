@@ -11,6 +11,7 @@ const {
 	InspectorControls,
 	BlockDescription,
 	ColorPalette,
+	PanelColorSettings,
 } = wp.editor;
 
 // Import Inspector components
@@ -19,7 +20,6 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	PanelColor,
 	FormToggle,
 	RangeControl,
 	SelectControl,
@@ -42,8 +42,23 @@ export default class Inspector extends Component {
 			{ value: 'right-aligned', label: __( 'Right Aligned' ) },
 		];
 
+		const backgroundColors = [
+			{ color: '#00d1b2', name: 'teal' },
+			{ color: '#3373dc', name: 'royal blue' },
+			{ color: '#209cef', name: 'sky blue' },
+			{ color: '#22d25f', name: 'green' },
+			{ color: '#ffdd57', name: 'yellow' },
+			{ color: '#ff3860', name: 'pink' },
+			{ color: '#7941b6', name: 'purple' },
+			{ color: '#392F43', name: 'black' },
+		];
+
 		// Setup the attributes
 		const { attributes: { testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, isSelected, className, setAttributes } = this.props;
+
+		// Update color values
+		const onChangeBackgroundColor = value => setAttributes( { testimonialBackgroundColor: value } );
+		const onChangeTextColor = value => setAttributes( { testimonialTextColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
@@ -65,43 +80,29 @@ export default class Inspector extends Component {
 					onChange={ ( value ) => this.props.setAttributes( { testimonialCiteAlign: value } ) }
 				/>
 
-				<PanelColor
+				<PanelColorSettings
 					title={ __( 'Background Color' ) }
-					colorValue={ testimonialBackgroundColor }
 					initialOpen={ false }
-				>
-					<ColorPalette
-						label={ __( 'Background Color' ) }
-						value={ testimonialBackgroundColor }
-						onChange={ ( value ) => this.props.setAttributes( { testimonialBackgroundColor: value } ) }
-						colors={[
-							{ color: '#00d1b2', name: 'teal' },
-							{ color: '#3373dc', name: 'royal blue' },
-							{ color: '#209cef', name: 'sky blue' },
-							{ color: '#22d25f', name: 'green' },
-							{ color: '#ffdd57', name: 'yellow' },
-							{ color: '#ff3860', name: 'pink' },
-							{ color: '#7941b6', name: 'purple' },
-							{ color: '#392F43', name: 'black' },
-						]}
-					/>
-				</PanelColor>
+					colorSettings={ [ {
+						value: testimonialBackgroundColor,
+						colors: backgroundColors,
+						onChange: onChangeBackgroundColor,
+						label: __( 'Background Color' ),
 
-				<PanelColor
-					title={ __( 'Text Color' ) }
-					colorValue={ testimonialTextColor }
-					initialOpen={ false }
+					} ] }
 				>
-					<ColorPalette
-						label={ __( 'Text Color' ) }
-						value={ testimonialTextColor }
-						onChange={ ( value ) => this.props.setAttributes( { testimonialTextColor: value } ) }
-						colors={[
-							{ color: '#fff', name: 'white' },
-							{ color: '#32373c', name: 'black' },
-						]}
-					/>
-				</PanelColor>
+				</PanelColorSettings>
+
+				<PanelColorSettings
+					title={ __( 'Text Color' ) }
+					initialOpen={ false }
+					colorSettings={ [ {
+						value: testimonialTextColor,
+						onChange: onChangeTextColor,
+						label: __( 'Text Color' ),
+					} ] }
+				>
+				</PanelColorSettings>
 			</PanelBody>
 		</InspectorControls>
 		);

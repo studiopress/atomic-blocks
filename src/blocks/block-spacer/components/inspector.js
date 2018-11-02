@@ -99,7 +99,6 @@ export default class Inspector extends Component {
 
 					<PanelColorSettings
 						title={ __( 'Divider Color' ) }
-						colorValue={ spacerDividerColor }
 						initialOpen={ false }
 						colorSettings={ [ {
 							colors: dividerColor,
