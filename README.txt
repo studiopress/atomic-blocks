@@ -52,7 +52,6 @@ We've created a beautiful little WordPress theme to help you get started with th
 * [Visit the Atomic Blocks site](https://atomicblocks.com/?utm_source=WP.org%20AB%20Page&utm_campaign=wporg_ab_page)
 * [Subscribe to the newsletter](https://atomicblocks.com/subscribe?utm_source=WP.org%20AB%20Subscribe&utm_campaign=wporg_ab_subscribe)
 * [Follow on Twitter](https://twitter.com/atomicblocks)
-* [Visit Array Themes](https://arraythemes.com/?utm_source=WP.org%20Array%20Link&utm_campaign=wporg_array_link)
 * [Create-Guten-Block](https://github.com/ahmadawais/create-guten-block)
 
 == Installation ==
