@@ -74,6 +74,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.3.6**
+* Update PanelColor component to PanelColorSettings.
+
 **1.3.5**
 * Fix button focus bug in Call To Action block.
 * Fix button focus bug in Button block.
