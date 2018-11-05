@@ -22,7 +22,7 @@ function atomic_blocks_block_assets() {
 	
 	// Load the compiled styles
 	wp_enqueue_style(
-		'atomic-blocks-style',
+		'atomic-blocks-plugin-style',
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
 		array( 'wp-blocks' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.style.build.css' )
