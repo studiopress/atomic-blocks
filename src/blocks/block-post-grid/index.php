@@ -24,7 +24,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		// Get the post ID
 		$post_id = $post->ID;
 
-		// Get the post thumbnail 
+		// Get the post thumbnail
 		$post_thumb_id = get_post_thumbnail_id( $post_id );
 
 		if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
@@ -38,7 +38,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			'<article class="%1$s">',
 			esc_attr( $post_thumb_class )
 		);
-		
+
 		// Get the featured image
 		if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
 			if( $attributes['imageCrop'] === 'landscape' ) {
@@ -46,11 +46,11 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			} else {
 				$post_thumb_size = 'ab-block-post-grid-square';
 			}
-			
-			$list_items_markup .= sprintf( 
+
+			$list_items_markup .= sprintf(
 				'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
 				esc_url( get_permalink( $post_id ) ),
-				wp_get_attachment_image( $post_thumb_id, $post_thumb_size ) 
+				wp_get_attachment_image( $post_thumb_id, $post_thumb_size )
 			);
 		}
 
@@ -59,11 +59,11 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			'<div class="ab-block-post-grid-text">'
 		);
 
-			// Get the post title 
+			// Get the post title
 			$title = get_the_title( $post_id );
 
 			if ( ! $title ) {
-				$title = __( 'Untitled' );
+				$title = __( 'Untitled', 'atomic-blocks' );
 			}
 
 			$list_items_markup .= sprintf(
@@ -85,7 +85,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 						esc_html( get_author_posts_url( $post->post_author ) )
 					);
 				}
-				
+
 				// Get the post date
 				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 					$list_items_markup .= sprintf(
@@ -148,7 +148,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	if ( isset( $attributes['className'] ) ) {
 		$class .= ' ' . $attributes['className'];
 	}
-	
+
 	$grid_class = 'ab-post-grid-items';
 
 	if ( isset( $attributes['postLayout'] ) && 'list' === $attributes['postLayout'] ) {
@@ -176,7 +176,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
  * Registers the `core/latest-posts` block on server.
  */
 function atomic_blocks_register_block_core_latest_posts() {
-	
+
 	// Check if the register function exists
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -279,7 +279,7 @@ function atomic_blocks_register_rest_fields() {
 			'schema' => null,
 		)
 	);
-	
+
 	// Add author info
 	register_rest_field(
 		'post',
@@ -324,10 +324,10 @@ function atomic_blocks_get_image_src_square( $object, $field_name, $request ) {
 function atomic_blocks_get_author_info( $object, $field_name, $request ) {
 	// Get the author name
 	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
-	
+
 	// Get the author link
 	$author_data['author_link'] = get_author_posts_url( $object['author'] );
-	
+
 	// Return the author data
 	return $author_data;
 }

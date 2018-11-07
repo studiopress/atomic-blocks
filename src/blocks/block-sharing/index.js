@@ -38,19 +38,19 @@ const {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-sharing', {
-	title: __( 'AB Sharing' ),
-	description: __( 'Add sharing buttons to your posts and pages.' ),
+	title: __( 'AB Sharing', 'atomic-blocks' ),
+	description: __( 'Add sharing buttons to your posts and pages.', 'atomic-blocks' ),
 	icon: 'admin-links',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'sharing' ),
-		__( 'social' ),
-		__( 'atomic' ),
+		__( 'sharing', 'atomic-blocks' ),
+		__( 'social', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	// Render the block components
 	edit: props => {
-		
+
 		// Setup the props
 		const {
 			attributes,
@@ -85,7 +85,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 				/>
 			</BlockControls>,
 			// Show the block controls on focus
-			<Inspector 
+			<Inspector
 				{ ...props }
 			/>,
 			// Show the button markup in the editor
@@ -96,7 +96,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 						<a className='ab-share-twitter'>
 							<i class="fab fa-twitter"></i>
 							<span className={ 'ab-social-text' }>
-								{ __( 'Share on Twitter' ) }
+								{ __( 'Share on Twitter', 'atomic-blocks' ) }
 							</span>
 						</a>
 					</li>
@@ -107,7 +107,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 						<a className='ab-share-facebook'>
 							<i class="fab fa-facebook-f"></i>
 							<span className={ 'ab-social-text' }>
-								{ __( 'Share on Facebook' ) }
+								{ __( 'Share on Facebook', 'atomic-blocks' ) }
 							</span>
 						</a>
 					</li>
@@ -118,7 +118,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 						<a className='ab-share-google'>
 							<i class="fab fa-google"></i>
 							<span className={ 'ab-social-text' }>
-								{ __( 'Share on Google' ) }
+								{ __( 'Share on Google', 'atomic-blocks' ) }
 							</span>
 						</a>
 					</li>
@@ -129,7 +129,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 						<a className='ab-share-pinterest'>
 							<i class="fab fa-pinterest-p"></i>
 							<span className={ 'ab-social-text' }>
-								{ __( 'Share on Pinterest' ) }
+								{ __( 'Share on Pinterest', 'atomic-blocks' ) }
 							</span>
 						</a>
 					</li>
@@ -140,7 +140,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 						<a className='ab-share-linkedin'>
 							<i class="fab fa-linkedin"></i>
 							<span className={ 'ab-social-text' }>
-								{ __( 'Share on LinkedIn' ) }
+								{ __( 'Share on LinkedIn', 'atomic-blocks' ) }
 							</span>
 						</a>
 					</li>
@@ -151,7 +151,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 						<a className='ab-share-reddit'>
 							<i class="fab fa-reddit-alien"></i>
 							<span className={ 'ab-social-text' }>
-								{ __( 'Share on reddit' ) }
+								{ __( 'Share on reddit', 'atomic-blocks' ) }
 							</span>
 						</a>
 					</li>
@@ -162,7 +162,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 						<a className='ab-share-email'>
 							<i class="fas fa-envelope"></i>
 							<span className={ 'ab-social-text' }>
-								{ __( 'Share via Email' ) }
+								{ __( 'Share via Email', 'atomic-blocks' ) }
 							</span>
 						</a>
 					</li>

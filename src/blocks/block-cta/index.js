@@ -17,7 +17,7 @@ const { __ } = wp.i18n;
 // Extend component
 const { Component } = wp.element;
 
-// Register block 
+// Register block
 const { registerBlockType } = wp.blocks;
 
 // Register editor components
@@ -125,32 +125,32 @@ const blockAttributes = {
 };
 
 class ABCTABlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
-		const { 
-			attributes: { 
-			buttonText, 
-			buttonUrl, 
-			buttonAlignment, 
-			buttonBackgroundColor, 
-			buttonTextColor, 
-			buttonSize, 
-			buttonShape, 
-			buttonTarget, 
-			ctaTitle, 
-			ctaText, 
-			ctaTitleFontSize, 
-			ctaTextFontSize, 
-			ctaWidth, 
-			ctaBackgroundColor, 
+		const {
+			attributes: {
+			buttonText,
+			buttonUrl,
+			buttonAlignment,
+			buttonBackgroundColor,
+			buttonTextColor,
+			buttonSize,
+			buttonShape,
+			buttonTarget,
+			ctaTitle,
+			ctaText,
+			ctaTitleFontSize,
+			ctaTextFontSize,
+			ctaWidth,
+			ctaBackgroundColor,
 			ctaTextColor,
 			imgURL,
 			imgID,
 			imgAlt,
 			dimRatio,
-			}, 
+			},
 			attributes,
 			isSelected,
 			editable,
@@ -189,7 +189,7 @@ class ABCTABlock extends Component {
 			<CallToAction { ...this.props }>
 				{ imgURL && !! imgURL.length && (
 					<div class="ab-cta-image-wrap">
-						<img 
+						<img
 							className={ classnames(
 								'ab-cta-image',
 								dimRatioToClass( dimRatio ),
@@ -206,7 +206,7 @@ class ABCTABlock extends Component {
 				<div class="ab-cta-content">
 					<RichText
 						tagName="h2"
-						placeholder={ __( 'Call-To-Action Title' ) }
+						placeholder={ __( 'Call-To-Action Title', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ ctaTitle }
 						className={ classnames(
@@ -221,7 +221,7 @@ class ABCTABlock extends Component {
 					<RichText
 						tagName="div"
 						multiline="p"
-						placeholder={ __( 'Call To Action Text' ) }
+						placeholder={ __( 'Call To Action Text', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ ctaText }
 						className={ classnames(
@@ -237,7 +237,7 @@ class ABCTABlock extends Component {
 				<div class="ab-cta-button">
 					<RichText
 						tagName="span"
-						placeholder={ __( 'Button text...' ) }
+						placeholder={ __( 'Button text...', 'atomic-blocks' ) }
 						value={ buttonText }
 						formattingControls={ [] }
 						className={ classnames(
@@ -268,7 +268,7 @@ class ABCTABlock extends Component {
 							/>
 							<IconButton
 								icon="editor-break"
-								label={ __( 'Apply' ) }
+								label={ __( 'Apply', 'atomic-blocks' ) }
 								type="submit"
 							/>
 						</form>
@@ -281,14 +281,14 @@ class ABCTABlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-cta', {
-	title: __( 'AB Call To Action' ),
-	description: __( 'Add a call to action section with a title, text, and a button.' ),
+	title: __( 'AB Call To Action', 'atomic-blocks' ),
+	description: __( 'Add a call to action section with a title, text, and a button.', 'atomic-blocks' ),
 	icon: 'megaphone',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'call to action' ),
-		__( 'cta' ),
-		__( 'atomic' ),
+		__( 'call to action', 'atomic-blocks' ),
+		__( 'cta', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	attributes: blockAttributes,
@@ -304,36 +304,36 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 
 	// Save the attributes and markup
 	save: function( props ) {
-		
+
 		// Setup the attributes
-		const { 
-			buttonText, 
-			buttonUrl, 
-			buttonAlignment, 
-			buttonBackgroundColor, 
-			buttonTextColor, 
-			buttonSize, 
-			buttonShape, 
-			buttonTarget, 
-			ctaTitle, 
-			ctaText, 
-			ctaTitleFontSize, 
-			ctaTextFontSize, 
-			ctaWidth, 
-			ctaBackgroundColor, 
+		const {
+			buttonText,
+			buttonUrl,
+			buttonAlignment,
+			buttonBackgroundColor,
+			buttonTextColor,
+			buttonSize,
+			buttonShape,
+			buttonTarget,
+			ctaTitle,
+			ctaText,
+			ctaTitleFontSize,
+			ctaTextFontSize,
+			ctaWidth,
+			ctaBackgroundColor,
 			ctaTextColor,
 			imgURL,
 			imgID,
 			imgAlt,
 			dimRatio,
 		} = props.attributes;
-		
+
 		// Save the block markup for the front end
 		return (
 			<CallToAction { ...props }>
 				{ imgURL && !! imgURL.length && (
 					<div class="ab-cta-image-wrap">
-						<img 
+						<img
 							className={ classnames(
 								'ab-cta-image',
 								dimRatioToClass( dimRatio ),
@@ -349,8 +349,8 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 
 				<div class="ab-cta-content">
 					{ ctaTitle && !! ctaTitle.length && (
-						<RichText.Content 
-							tagName="h2" 
+						<RichText.Content
+							tagName="h2"
 							className={ classnames(
 								'ab-cta-title',
 								'ab-font-size-' + ctaTitleFontSize,
@@ -358,12 +358,12 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							style={ {
 								color: ctaTextColor,
 							} }
-							value={ ctaTitle } 
+							value={ ctaTitle }
 						/>
 					) }
 					{ ctaText && !! ctaText.length && (
-						<RichText.Content 
-							tagName="div" 
+						<RichText.Content
+							tagName="div"
 							className={ classnames(
 								'ab-cta-text',
 								'ab-font-size-' + ctaTextFontSize,
@@ -371,7 +371,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							style={ {
 								color: ctaTextColor,
 							} }
-							value={ ctaText } 
+							value={ ctaText }
 						/>
 					) }
 				</div>
@@ -379,7 +379,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 					<div class="ab-cta-button">
 						<a
 							href={ buttonUrl }
-							target={ buttonTarget ? '_blank' : '_self' } 
+							target={ buttonTarget ? '_blank' : '_self' }
 							className={ classnames(
 								'ab-button',
 								buttonShape,
@@ -390,8 +390,8 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 								backgroundColor: buttonBackgroundColor,
 							} }
 						>
-							<RichText.Content 
-								value={ buttonText } 
+							<RichText.Content
+								value={ buttonText }
 							/>
 						</a>
 					</div>

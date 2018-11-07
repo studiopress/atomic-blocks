@@ -18,7 +18,7 @@ const { __ } = wp.i18n;
 // Extend component
 const { Component } = wp.element;
 
-// Register block 
+// Register block
 const { registerBlockType } = wp.blocks;
 
 // Register editor components
@@ -39,7 +39,7 @@ const {
 } = wp.components;
 
 class ABButtonBlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
@@ -63,7 +63,7 @@ class ABButtonBlock extends Component {
 			<CustomButton { ...this.props }>
 				<RichText
 					tagName="span"
-					placeholder={ __( 'Button text...' ) }
+					placeholder={ __( 'Button text...', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ buttonText }
 					formattingControls={ [] }
@@ -96,7 +96,7 @@ class ABButtonBlock extends Component {
 					/>
 					<IconButton
 						icon="editor-break"
-						label={ __( 'Apply' ) }
+						label={ __( 'Apply', 'atomic-blocks' ) }
 						type="submit"
 					/>
 				</form>
@@ -107,14 +107,14 @@ class ABButtonBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-button', {
-	title: __( 'AB Button' ),
-	description: __( 'Add a customizable button.' ),
+	title: __( 'AB Button', 'atomic-blocks' ),
+	description: __( 'Add a customizable button.', 'atomic-blocks' ),
 	icon: 'admin-links',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'button' ),
-		__( 'link' ),
-		__( 'atomic' ),
+		__( 'button', 'atomic-blocks' ),
+		__( 'link', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	attributes: {
 		buttonText: {
@@ -156,18 +156,18 @@ registerBlockType( 'atomic-blocks/ab-button', {
 
 	// Save the attributes and markup
 	save: function( props ) {
-		
+
 		// Setup the attributes
 		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
-		
+
 		// Save the block markup for the front end
 		return (
-			<CustomButton { ...props }>			
+			<CustomButton { ...props }>
 				{	// Check if there is button text and output
 					buttonText && (
 					<a
 						href={ buttonUrl }
-						target={ buttonTarget ? '_blank' : '_self' } 
+						target={ buttonTarget ? '_blank' : '_self' }
 						className={ classnames(
 							'ab-button',
 							buttonShape,
@@ -178,11 +178,11 @@ registerBlockType( 'atomic-blocks/ab-button', {
 							backgroundColor: buttonBackgroundColor,
 						} }
 					>
-						<RichText.Content 
-							value={ buttonText } 
+						<RichText.Content
+							value={ buttonText }
 						/>
 					</a>
-				) }	
+				) }
 			</CustomButton>
 		);
 	},
