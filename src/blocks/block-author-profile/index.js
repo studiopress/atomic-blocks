@@ -115,12 +115,12 @@ const blockAttributes = {
 };
 
 class ABAuthorProfileBlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
-		const { 
-			attributes: { 
+		const {
+			attributes: {
 				profileName,
 				profileTitle,
 				profileContent,
@@ -141,7 +141,7 @@ class ABAuthorProfileBlock extends Component {
 				email,
 				website,
 				profileAvatarShape
-			}, 
+			},
 			attributes,
 			isSelected,
 			editable,
@@ -205,7 +205,7 @@ class ABAuthorProfileBlock extends Component {
 				>
 					<RichText
 						tagName="h2"
-						placeholder={ __( 'Add name' ) }
+						placeholder={ __( 'Add name', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileName }
 						className='ab-profile-name'
@@ -217,7 +217,7 @@ class ABAuthorProfileBlock extends Component {
 
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Add title' ) }
+						placeholder={ __( 'Add title', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileTitle }
 						className='ab-profile-title'
@@ -231,7 +231,7 @@ class ABAuthorProfileBlock extends Component {
 						tagName="div"
 						className='ab-profile-text'
 						multiline="p"
-						placeholder={ __( 'Add profile text...' ) }
+						placeholder={ __( 'Add profile text...', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileContent }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
@@ -247,14 +247,14 @@ class ABAuthorProfileBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-profile-box', {
-	title: __( 'AB Profile Box' ),
-	description: __( 'Add a profile box with bio info and social media links.' ),
+	title: __( 'AB Profile Box', 'atomic-blocks' ),
+	description: __( 'Add a profile box with bio info and social media links.', 'atomic-blocks' ),
 	icon: 'admin-users',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'author' ),
-		__( 'profile' ),
-		__( 'atomic' ),
+		__( 'author', 'atomic-blocks' ),
+		__( 'profile', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	// Setup the block attributes
 	attributes: blockAttributes,
@@ -290,8 +290,8 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 					) }
 				>
 					{ profileName && !! profileName.length && (
-						<RichText.Content 
-							tagName="h2" 
+						<RichText.Content
+							tagName="h2"
 							className="ab-profile-name"
 							style={ {
 								color: profileTextColor
@@ -299,10 +299,10 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 							value={ profileName }
 						/>
 					) }
-					
+
 					{ profileTitle && !! profileTitle.length && (
-						<RichText.Content 
-							tagName="p" 
+						<RichText.Content
+							tagName="p"
 							className="ab-profile-title"
 							style={ {
 								color: profileTextColor
@@ -312,8 +312,8 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 					) }
 
 					{ profileContent && !! profileContent.length && (
-						<RichText.Content 
-							tagName="div" 
+						<RichText.Content
+							tagName="div"
 							className="ab-profile-text"
 							value={ profileContent }
 						/>
