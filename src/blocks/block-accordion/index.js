@@ -20,7 +20,7 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 
 // Register block
-const { 
+const {
 	registerBlockType,
 	createBlock,
 } = wp.blocks;
@@ -89,7 +89,7 @@ class ABAccordionBlock extends Component {
 			<Accordion { ...this.props }>
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Accordion Title' ) }
+					placeholder={ __( 'Accordion Title', 'atomic-blocks' ) }
 					value={ accordionTitle }
 					className="ab-accordion-title"
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
@@ -105,14 +105,14 @@ class ABAccordionBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-accordion', {
-	title: __( 'AB Accordion' ),
-	description: __( 'Add accordion block with a title and text.' ),
+	title: __( 'AB Accordion', 'atomic-blocks' ),
+	description: __( 'Add accordion block with a title and text.', 'atomic-blocks' ),
 	icon: 'editor-ul',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'accordion' ),
-		__( 'list' ),
-		__( 'atomic' ),
+		__( 'accordion', 'atomic-blocks' ),
+		__( 'list', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	attributes: blockAttributes,
 
@@ -130,7 +130,7 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 			<Accordion { ...props }>
 				<details open={accordionOpen}>
 					<summary class="ab-accordion-title">
-						<RichText.Content 
+						<RichText.Content
 							value={ accordionTitle }
 						/>
 					</summary>
@@ -169,13 +169,13 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 				<Accordion { ...props }>
 					<details open={ props.attributes.accordionOpen }>
 						<summary class="ab-accordion-title">
-							<RichText.Content 
+							<RichText.Content
 								value={ props.attributes.accordionTitle }
 							/>
 						</summary>
-						<RichText.Content 
+						<RichText.Content
 							class="ab-accordion-text"
-							tagName="p" 
+							tagName="p"
 							value={ props.attributes.accordionText }
 						/>
 					</details>

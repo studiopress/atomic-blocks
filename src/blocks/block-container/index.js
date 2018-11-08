@@ -17,7 +17,7 @@ const { __ } = wp.i18n;
 // Extend component
 const { Component } = wp.element;
 
-// Register block 
+// Register block
 const { registerBlockType } = wp.blocks;
 
 // Register editor components
@@ -99,26 +99,26 @@ const blockAttributes = {
 };
 
 class ABContainerBlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
-		const { 
-			attributes: { 
+		const {
+			attributes: {
 				containerPaddingTop,
 				containerPaddingRight,
 				containerPaddingBottom,
 				containerPaddingLeft,
 				containerMarginTop,
 				containerMarginBottom,
-				containerWidth, 
+				containerWidth,
 				containerMaxWidth,
-				containerBackgroundColor, 
+				containerBackgroundColor,
 				containerImgURL,
 				containerImgID,
 				containerImgAlt,
 				containerDimRatio,
-			}, 
+			},
 			attributes,
 			isSelected,
 			editable,
@@ -152,7 +152,7 @@ class ABContainerBlock extends Component {
 				<div class="ab-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
 						<div class="ab-container-image-wrap">
-							<img 
+							<img
 								className={ classnames(
 									'ab-container-image',
 									dimRatioToClass( containerDimRatio ),
@@ -165,8 +165,8 @@ class ABContainerBlock extends Component {
 							/>
 						</div>
 					) }
-				
-					<div 
+
+					<div
 						class="ab-container-content"
 						style={ {
 							maxWidth: `${containerMaxWidth}px`,
@@ -175,21 +175,21 @@ class ABContainerBlock extends Component {
 						<InnerBlocks />
 					</div>
 				</div>
-			</Container>	
+			</Container>
 		];
 	}
 }
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-container', {
-	title: __( 'AB Container' ),
-	description: __( 'Add a container block to wrap several blocks in a parent container.' ),
+	title: __( 'AB Container', 'atomic-blocks' ),
+	description: __( 'Add a container block to wrap several blocks in a parent container.', 'atomic-blocks' ),
 	icon: 'editor-table',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'container' ),
-		__( 'section' ),
-		__( 'atomic' ),
+		__( 'container', 'atomic-blocks' ),
+		__( 'section', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	attributes: blockAttributes,
@@ -205,31 +205,31 @@ registerBlockType( 'atomic-blocks/ab-container', {
 
 	// Save the attributes and markup
 	save: function( props ) {
-		
+
 		// Setup the attributes
-		const { 
+		const {
 			containerPaddingTop,
 			containerPaddingRight,
 			containerPaddingBottom,
 			containerPaddingLeft,
 			containerMarginTop,
 			containerMarginBottom,
-			containerWidth, 
+			containerWidth,
 			containerMaxWidth,
-			containerBackgroundColor, 
+			containerBackgroundColor,
 			containerImgURL,
 			containerImgID,
 			containerImgAlt,
 			containerDimRatio,
 		} = props.attributes;
-		
+
 		// Save the block markup for the front end
 		return (
 			<Container { ...props }>
 				<div class="ab-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
 						<div class="ab-container-image-wrap">
-							<img 
+							<img
 								className={ classnames(
 									'ab-container-image',
 									dimRatioToClass( containerDimRatio ),
@@ -243,7 +243,7 @@ registerBlockType( 'atomic-blocks/ab-container', {
 						</div>
 					) }
 
-					<div 
+					<div
 						class="ab-container-content"
 						style={ {
 							maxWidth: `${containerMaxWidth}px`,

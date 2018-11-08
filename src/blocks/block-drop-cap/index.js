@@ -37,7 +37,7 @@ const {
 } = wp.components;
 
 class ABDropCapBlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
@@ -60,7 +60,7 @@ class ABDropCapBlock extends Component {
 				<RichText
 					tagName="div"
 					multiline="p"
-					placeholder={ __( 'Add paragraph text...' ) }
+					placeholder={ __( 'Add paragraph text...', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ dropCapContent }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
@@ -77,14 +77,14 @@ class ABDropCapBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-drop-cap', {
-	title: __( 'AB Drop Cap' ),
-	description: __( 'Add a styled drop cap to the beginning of your paragraph.' ),
+	title: __( 'AB Drop Cap', 'atomic-blocks' ),
+	description: __( 'Add a styled drop cap to the beginning of your paragraph.', 'atomic-blocks' ),
 	icon: 'format-quote',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'drop cap' ),
-		__( 'quote' ),
-		__( 'atomic' ),
+		__( 'drop cap', 'atomic-blocks' ),
+		__( 'quote', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	attributes: {
 		dropCapContent: {
@@ -126,12 +126,12 @@ registerBlockType( 'atomic-blocks/ab-drop-cap', {
 			<DropCap { ...props }>
 				{	// Check if there is text and output
 					dropCapContent && (
-					<RichText.Content 
-						tagName="div" 
+					<RichText.Content
+						tagName="div"
 						className="ab-drop-cap-text"
-						value={ dropCapContent } 
+						value={ dropCapContent }
 					/>
-				) }	
+				) }
 			</DropCap>
 		);
 	},

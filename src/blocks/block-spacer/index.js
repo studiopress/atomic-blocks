@@ -40,7 +40,7 @@ const {
 } = wp.components;
 
 class ABSpacerBlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
@@ -87,14 +87,14 @@ class ABSpacerBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-spacer', {
-	title: __( 'AB Spacer' ),
-	description: __( 'Add a spacer and divider between your blocks.' ),
+	title: __( 'AB Spacer', 'atomic-blocks' ),
+	description: __( 'Add a spacer and divider between your blocks.', 'atomic-blocks' ),
 	icon: 'image-flip-vertical',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'spacer' ),
-		__( 'divider' ),
-		__( 'atomic' ),
+		__( 'spacer', 'atomic-blocks' ),
+		__( 'divider', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	attributes: {
 		spacerHeight: {
@@ -124,13 +124,13 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 
 	// Save the attributes and markup
 	save: function( props ) {
-		
+
 		// Setup the attributes
 		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = props.attributes;
-		
+
 		// Save the block markup for the front end
 		return (
-			<Spacer { ...props }>			
+			<Spacer { ...props }>
 				<hr style={ { height: spacerHeight ? spacerHeight + 'px' : undefined } }></hr>
 			</Spacer>
 		);

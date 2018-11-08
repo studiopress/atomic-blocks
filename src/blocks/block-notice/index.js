@@ -42,21 +42,21 @@ const {
 } = wp.components;
 
 class ABNoticeBlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
-		const { 
-			attributes: { 
-				noticeTitle, 
-				noticeContent, 
-				noticeAlignment, 
-				noticeBackgroundColor, 
-				noticeTextColor, 
-				noticeTitleColor, 
-				noticeFontSize, 
+		const {
+			attributes: {
+				noticeTitle,
+				noticeContent,
+				noticeAlignment,
+				noticeBackgroundColor,
+				noticeTextColor,
+				noticeTitleColor,
+				noticeFontSize,
 				noticeDismiss
-			}, 
+			},
 			attributes,
 			isSelected,
 			editable,
@@ -92,10 +92,10 @@ class ABNoticeBlock extends Component {
 						{ icons.dismiss }
 					</DismissButton>
 				) }
-				
+
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Notice Title' ) }
+					placeholder={ __( 'Notice Title', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ noticeTitle }
 					className={ classnames(
@@ -110,7 +110,7 @@ class ABNoticeBlock extends Component {
 				<RichText
 					tagName="div"
 					multiline="p"
-					placeholder={ __( 'Add notice text...' ) }
+					placeholder={ __( 'Add notice text...', 'atomic-blocks' ) }
 					value={ noticeContent }
 					className={ classnames(
 						'ab-notice-text'
@@ -127,14 +127,14 @@ class ABNoticeBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-notice', {
-	title: __( 'AB Notice' ),
-	description: __( 'Add a stylized text notice.' ),
+	title: __( 'AB Notice', 'atomic-blocks' ),
+	description: __( 'Add a stylized text notice.', 'atomic-blocks' ),
 	icon: 'format-aside',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'notice' ),
-		__( 'message' ),
-		__( 'atomic' ),
+		__( 'notice', 'atomic-blocks' ),
+		__( 'message', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	attributes: {
 		noticeTitle: {
@@ -178,20 +178,20 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { 
-			noticeTitle, 
-			noticeContent, 
-			noticeAlignment, 
-			noticeBackgroundColor, 
-			noticeTextColor, 
-			noticeTitleColor, 
-			noticeFontSize, 
+		const {
+			noticeTitle,
+			noticeContent,
+			noticeAlignment,
+			noticeBackgroundColor,
+			noticeTextColor,
+			noticeTitleColor,
+			noticeFontSize,
 			noticeDismiss
 		} = props.attributes;
-		
+
 		// Save the block markup for the front end
 		return (
-			<NoticeBox { ...props }>			
+			<NoticeBox { ...props }>
 				{ noticeDismiss && (
 					<DismissButton { ...props }>
 						{ icons.dismiss }
@@ -205,21 +205,21 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 							color: noticeTitleColor
 						} }
 					>
-						<RichText.Content 
-							tagName="p" 
-							value={ noticeTitle } 
+						<RichText.Content
+							tagName="p"
+							value={ noticeTitle }
 						/>
 					</div>
 				) }
 
 				{ noticeContent && (
-					<RichText.Content 
-						tagName="div" 
-						class="ab-notice-text" 
+					<RichText.Content
+						tagName="div"
+						class="ab-notice-text"
 						style={ {
 							borderColor: noticeBackgroundColor
 						} }
-						value={ noticeContent } 
+						value={ noticeContent }
 					/>
 				) }
 			</NoticeBox>

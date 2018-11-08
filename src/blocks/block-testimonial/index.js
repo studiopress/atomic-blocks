@@ -13,7 +13,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Internationalization
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -37,23 +37,23 @@ const {
 } = wp.components;
 
 class ABTestimonialBlock extends Component {
-	
+
 	render() {
 
 		// Setup the attributes
-		const { 
-			attributes: { 
-				testimonialName, 
-				testimonialTitle, 
-				testimonialContent, 
-				testimonialAlignment, 
-				testimonialImgURL, 
-				testimonialImgID, 
-				testimonialBackgroundColor, 
-				testimonialTextColor, 
-				testimonialFontSize, 
+		const {
+			attributes: {
+				testimonialName,
+				testimonialTitle,
+				testimonialContent,
+				testimonialAlignment,
+				testimonialImgURL,
+				testimonialImgID,
+				testimonialBackgroundColor,
+				testimonialTextColor,
+				testimonialFontSize,
 				testimonialCiteAlign
-			}, 
+			},
 			attributes,
 			isSelected,
 			editable,
@@ -85,7 +85,7 @@ class ABTestimonialBlock extends Component {
 				<RichText
 					tagName="div"
 					multiline="p"
-					placeholder={ __( 'Add testimonial text...' ) }
+					placeholder={ __( 'Add testimonial text...', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ testimonialContent }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
@@ -105,7 +105,7 @@ class ABTestimonialBlock extends Component {
 								buttonProps={ {
 									className: 'change-image'
 								} }
-								onSelect={ ( img ) => setAttributes( 
+								onSelect={ ( img ) => setAttributes(
 									{
 										testimonialImgID: img.id,
 										testimonialImgURL: img.url,
@@ -124,12 +124,12 @@ class ABTestimonialBlock extends Component {
 								) }
 							>
 							</MediaUpload>
-						</div>	
+						</div>
 					</div>
 
 					<RichText
 						tagName="h2"
-						placeholder={ __( 'Add name' ) }
+						placeholder={ __( 'Add name', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ testimonialName }
 						className='ab-testimonial-name'
@@ -138,10 +138,10 @@ class ABTestimonialBlock extends Component {
 						} }
 						onChange={ ( value ) => this.props.setAttributes( { testimonialName: value } ) }
 					/>
-					
+
 					<RichText
 						tagName="small"
-						placeholder={ __( 'Add title' ) }
+						placeholder={ __( 'Add title', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ testimonialTitle }
 						className='ab-testimonial-title'
@@ -151,24 +151,24 @@ class ABTestimonialBlock extends Component {
 						onChange={ ( value ) => this.props.setAttributes( { testimonialTitle: value } ) }
 					/>
 				</div>
-			</Testimonial>	
+			</Testimonial>
 		];
 	}
 }
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-testimonial', {
-	title: __( 'AB Testimonial' ),
-	description: __( 'Add a user testimonial with a name and title.' ),
+	title: __( 'AB Testimonial', 'atomic-blocks' ),
+	description: __( 'Add a user testimonial with a name and title.', 'atomic-blocks' ),
 	icon: 'format-quote',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'testimonial' ),
-		__( 'quote' ),
-		__( 'atomic' ),
+		__( 'testimonial', 'atomic-blocks' ),
+		__( 'quote', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	attributes: {
-		testimonialName: { 
+		testimonialName: {
 			type: 'array',
 			selector: '.ab-testimonial-name',
 			source: 'children',
@@ -220,31 +220,31 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { 
-			testimonialName, 
-			testimonialTitle, 
-			testimonialContent, 
-			testimonialAlignment, 
-			testimonialImgURL, 
-			testimonialImgID, 
-			testimonialBackgroundColor, 
-			testimonialTextColor, 
-			testimonialFontSize, 
+		const {
+			testimonialName,
+			testimonialTitle,
+			testimonialContent,
+			testimonialAlignment,
+			testimonialImgURL,
+			testimonialImgID,
+			testimonialBackgroundColor,
+			testimonialTextColor,
+			testimonialFontSize,
 			testimonialCiteAlign
 		} = props.attributes;
 
 		// Save the block markup for the front end
 		return (
 			<Testimonial { ...props }>
-				<RichText.Content 
-					tagName="div" 
+				<RichText.Content
+					tagName="div"
 					className="ab-testimonial-text"
 					style={ {
 						textAlign: testimonialAlignment,
 					} }
-					value={ testimonialContent } 
+					value={ testimonialContent }
 				/>
-				
+
 				<div class="ab-testimonial-info">
 					{ testimonialImgURL && !! testimonialImgURL.length && (
 						<div class="ab-testimonial-avatar-wrap">
@@ -259,24 +259,24 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 					) }
 
 					{ testimonialName && !! testimonialName.length && (
-						<RichText.Content 
-							tagName="h2" 
+						<RichText.Content
+							tagName="h2"
 							className="ab-testimonial-name"
 							style={ {
 								color: testimonialTextColor
 							} }
-							value={ testimonialName } 
+							value={ testimonialName }
 						/>
 					) }
 
 					{ testimonialTitle && !! testimonialTitle.length && (
-						<RichText.Content 
-							tagName="small" 
+						<RichText.Content
+							tagName="small"
 							className="ab-testimonial-title"
 							style={ {
 								color: testimonialTextColor
 							} }
-							value={ testimonialTitle } 
+							value={ testimonialTitle }
 						/>
 					) }
 				</div>

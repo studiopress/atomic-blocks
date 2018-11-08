@@ -11,13 +11,13 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
 
 // Register block controls
-const { 
+const {
 	registerBlockType,
 } = wp.blocks;
 
@@ -28,14 +28,14 @@ export const name = 'core/latest-posts';
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-post-grid', {
-	title: __( 'AB Post Grid' ),
-	description: __( 'Add a grid or list of customizable posts to your page.' ),
+	title: __( 'AB Post Grid', 'atomic-blocks' ),
+	description: __( 'Add a grid or list of customizable posts to your page.', 'atomic-blocks' ),
 	icon: 'grid-view',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'post' ),
-		__( 'grid' ),
-		__( 'atomic' ),
+		__( 'post', 'atomic-blocks' ),
+		__( 'grid', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	getEditWrapperProps( attributes ) {
