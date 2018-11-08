@@ -5,7 +5,8 @@
   "scripts": {
     "start": "cgb-scripts start",
     "build": "cgb-scripts build",
-    "eject": "cgb-scripts eject"
+    "eject": "cgb-scripts eject",
+    "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --include=src"
   },
   "dependencies": {
     "@wordpress/data": "^1.2.1",
@@ -29,6 +30,8 @@
     "styled-components": "^3.4.10"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@wordpress/babel-plugin-makepot": "^2.1.2",
     "babel-cli": "^6.26.0",
     "babel-plugin-lodash": "^3.3.4",
     "babel-preset-env": "^1.7.0",
