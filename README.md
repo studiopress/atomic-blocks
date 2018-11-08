@@ -57,7 +57,7 @@ It can also be installed manually.
 2. Unzip the package and move to your plugins directory.
 3. Log into WordPress and navigate to the Plugins screen.
 4. Locate Atomic Blocks in the list and click the *Activate* link.
-5. You will be redirected to the Atomic Blocks Getting Started page.    
+5. You will be redirected to the Atomic Blocks Getting Started page.
 
 ## Frequently Asked Questions
 
@@ -72,6 +72,12 @@ Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomi
 Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) to use Atomic Blocks. Eventually, Gutenberg (the block editor) will be merged into WordPress and you won't need the plugin.
 
 ## Changelog
+
+**1.3.7**
+* Update translation strings.
+* Limit asset loading to GS page.
+* Add conditional check to post grid.
+* Add french translations.
 
 **1.3.6**
 * Update PanelColor component to PanelColorSettings.
@@ -110,7 +116,7 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 * Fix focus bug on Testimonial block title.
 
 **1.2.7**
-* Fix the URLInput on the Button block. 
+* Fix the URLInput on the Button block.
 
 **1.2.6**
 * Remove unnecessary state from blocks.
