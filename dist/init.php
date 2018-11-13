@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function atomic_blocks_block_assets() {
 
 	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
-	
+
 	// Load the compiled styles
 	wp_enqueue_style(
 		'atomic-blocks-style-css',
@@ -37,7 +37,7 @@ function atomic_blocks_block_assets() {
 	// 	array( 'wp-blocks' ),
 	// 	filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	// );
-} 
+}
 add_action( 'enqueue_block_assets', 'atomic_blocks_block_assets' );
 
 
@@ -59,7 +59,7 @@ function atomic_blocks_editor_assets() {
 	// Load the compiled styles into the editor
 	wp_enqueue_style(
 		'atomic-blocks-block-editor-css',
-		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), 
+		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ),
 		array( 'wp-edit-blocks' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.editor.build.css' )
 	);
@@ -68,7 +68,7 @@ function atomic_blocks_editor_assets() {
 	wp_localize_script(
 		'atomic-blocks-block-js',
 		'atomic_globals',
-		array( 
+		array(
 			'rest_url' => esc_url( rest_url() )
 		)
 	);
@@ -113,7 +113,7 @@ function atomic_blocks_testimonial_templates( $args, $post_type ) {
 	if ( 'atomic-testimonial' == $post_type ) {
 		// Lock the template
 		$args['template_lock'] = true;
-		
+
 		// Setup the template
 		$args['template'] = array(
             array(
