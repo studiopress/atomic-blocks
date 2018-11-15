@@ -246,7 +246,7 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 				/>
 
 				<div class="ab-testimonial-info">
-					{ testimonialImgURL && !! testimonialImgURL.length && (
+					{ testimonialImgURL && (
 						<div class="ab-testimonial-avatar-wrap">
 							<div class="ab-testimonial-image-wrap">
 								<img
@@ -258,7 +258,7 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 						</div>
 					) }
 
-					{ testimonialName && !! testimonialName.length && (
+					{ testimonialName && (
 						<RichText.Content
 							tagName="h2"
 							className="ab-testimonial-name"
@@ -269,7 +269,7 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 						/>
 					) }
 
-					{ testimonialTitle && !! testimonialTitle.length && (
+					{ testimonialTitle && (
 						<RichText.Content
 							tagName="small"
 							className="ab-testimonial-title"
