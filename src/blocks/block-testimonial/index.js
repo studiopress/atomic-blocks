@@ -36,6 +36,8 @@ const {
 	SelectControl,
 } = wp.components;
 
+const ALLOWED_MEDIA_TYPES = [ 'image' ];
+
 class ABTestimonialBlock extends Component {
 
 	render() {
@@ -111,6 +113,7 @@ class ABTestimonialBlock extends Component {
 										testimonialImgURL: img.url,
 									}
 								) }
+								allowed={ ALLOWED_MEDIA_TYPES }
 								type="image"
 								value={ testimonialImgID }
 								render={ ( { open } ) => (

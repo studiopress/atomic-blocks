@@ -114,6 +114,8 @@ const blockAttributes = {
 	},
 };
 
+const ALLOWED_MEDIA_TYPES = [ 'image' ];
+
 class ABAuthorProfileBlock extends Component {
 
 	render() {
@@ -182,6 +184,7 @@ class ABAuthorProfileBlock extends Component {
 									profileImgURL: img.url,
 								}
 							) }
+							allowed={ ALLOWED_MEDIA_TYPES }
 							type="image"
 							value={ profileImgID }
 							render={ ( { open } ) => (
