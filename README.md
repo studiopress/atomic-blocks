@@ -73,6 +73,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.3.9**
+* Fix behavior of attribute output
+* Restrict media upload to images
+* Update French translation strings
+
 **1.3.8**
 * Improved Getting Started page.
 * Update translation strings.
