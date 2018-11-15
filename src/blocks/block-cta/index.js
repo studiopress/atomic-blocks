@@ -12,7 +12,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -331,7 +331,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 		// Save the block markup for the front end
 		return (
 			<CallToAction { ...props }>
-				{ imgURL && !! imgURL.length && (
+				{ imgURL && (
 					<div class="ab-cta-image-wrap">
 						<img
 							className={ classnames(
@@ -348,7 +348,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 				) }
 
 				<div class="ab-cta-content">
-					{ ctaTitle && !! ctaTitle.length && (
+					{ ctaTitle && (
 						<RichText.Content
 							tagName="h2"
 							className={ classnames(
@@ -361,7 +361,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							value={ ctaTitle }
 						/>
 					) }
-					{ ctaText && !! ctaText.length && (
+					{ ctaText && (
 						<RichText.Content
 							tagName="div"
 							className={ classnames(
@@ -375,7 +375,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 						/>
 					) }
 				</div>
-				{ buttonText && !! buttonText.length && (
+				{ buttonText && (
 					<div class="ab-cta-button">
 						<a
 							href={ buttonUrl }

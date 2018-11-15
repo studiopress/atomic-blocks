@@ -272,7 +272,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 			// Save the block markup for the front end
 			<ProfileBox { ...props }>
 
-				{ profileImgURL && !! profileImgURL.length && (
+				{ profileImgURL && (
 					<AvatarColumn { ...props }>
 						<div class="ab-profile-image-square">
 							<img
@@ -289,7 +289,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						'ab-profile-column ab-profile-content-wrap'
 					) }
 				>
-					{ profileName && !! profileName.length && (
+					{ profileName && (
 						<RichText.Content
 							tagName="h2"
 							className="ab-profile-name"
@@ -300,7 +300,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						/>
 					) }
 
-					{ profileTitle && !! profileTitle.length && (
+					{ profileTitle && (
 						<RichText.Content
 							tagName="p"
 							className="ab-profile-title"
@@ -311,7 +311,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 						/>
 					) }
 
-					{ profileContent && !! profileContent.length && (
+					{ profileContent && (
 						<RichText.Content
 							tagName="div"
 							className="ab-profile-text"
