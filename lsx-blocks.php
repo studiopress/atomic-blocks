@@ -30,3 +30,6 @@ require_once( LSX_BLOCKS_PATH . '/includes/functions.php' );
  */
 // FAQ Block
 require_once( LSX_BLOCKS_PATH . '/blocks/faq/faq-block.php' );
+
+// CTA Block
+require_once( LSX_BLOCKS_PATH . '/blocks/cta/cta-block.php' );
