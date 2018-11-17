@@ -1,40 +1,13 @@
 {
   "name": "lsx-blocks",
-  "version": "1.1.0",
-  "description": "LSX Blocks Plugin for building LSX Gutenberg blocks extensions.",
-  "main": "gulpfile.js",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cgb-scripts start",
+    "build": "cgb-scripts build",
+    "eject": "cgb-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lightspeeddevelopment/lsx-blocks"
-  },
-  "keywords": [
-    "lsx"
-  ],
-  "author": "LightSpeed",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lightspeeddevelopment/lsx-blocks/issues"
-  },
-  "homepage": "https://github.com/lightspeeddevelopment/lsx-blocks#readme",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-rtlcss": "^1.0.0",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-gettext": "^0.3.0",
-    "gulp-jshint": "^2.0.4",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sort": "^2.0.0",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.8",
-    "gulp-wp-pot": "^2.0.4",
-    "jshint": "^2.9.4"
+  "dependencies": {
+    "cgb-scripts": "1.11.0"
   }
 }
