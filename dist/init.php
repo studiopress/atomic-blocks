@@ -52,7 +52,7 @@ function atomic_blocks_editor_assets() {
 	wp_enqueue_script(
 		'atomic-blocks-block-js',
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ),
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
+		array( 'wp-blocks', 'wp-i18n', 'wp-element' , 'wp-components' , 'wp-editor' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.build.js' )
 	);
 
