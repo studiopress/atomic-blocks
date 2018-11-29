@@ -31,12 +31,12 @@ function atomic_blocks_block_assets() {
 	);
 
 	// Load the FontAwesome icon library
-	// wp_enqueue_style(
-	// 	'atomic-blocks-fontawesome',
-	// 	plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
-	// 	array( 'wp-blocks' ),
-	// 	filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
-	// );
+	wp_enqueue_style(
+		'atomic-blocks-fontawesome',
+		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
+		array( 'wp-blocks' ),
+		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
+	);
 }
 add_action( 'enqueue_block_assets', 'atomic_blocks_block_assets' );
 

@@ -73,6 +73,9 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.4.1**
+* Fix FontAwesome loading issue.
+
 **1.4.0**
 * Add block dependencies to wp_enqueue_script
 
