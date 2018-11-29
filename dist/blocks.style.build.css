@@ -42,3 +42,16 @@
  */
 .wp-block-lsx-blocks-cta-block {
   background: blue; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.wp-block-lsx-blocks-team-block {
+  border: 1px solid green; }
