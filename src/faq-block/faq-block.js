@@ -10,11 +10,7 @@ import './style.scss';
 import './editor.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
-const {
-	registerBlockType,
-	createBlock,
-} = wp.blocks; // Import registerBlockType() from wp.blocks
-
+const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const {
 	RichText,
 	AlignmentToolbar,
@@ -38,22 +34,19 @@ const {
  */
 
 const blockAttributes = {
-	accordionTitle: {
-		type: 'array',
-		selector: '.ab-accordion-title',
-		source: 'children',
-	},
-	accordionText: {
-		type: 'array',
-		selector: '.ab-accordion-text',
-		source: 'children',
-	},
-	accordionAlignment: {
+	heading: {
 		type: 'string',
+		source: 'html',
+		selector: 'h2',
 	},
-	accordionFontSize: {
-		type: 'number',
-		default: 18,
+	content: {
+		type: 'string',
+		source: 'html',
+		selector: 'p',
+	},
+	alignment: {
+		type: 'string',
+		default: 'center',
 	},
 	accordionOpen: {
 		type: 'boolean',
@@ -66,10 +59,9 @@ const blockAttributes = {
  */
 class AccordionBlock extends Component {
 	render() {
-		//const { attributes: { width } } = this.props;
 		return (
 			<div
-				className="wp-block-lsx-blocks-fqa-block "
+				className="lsx-faq-block"
 			>{ this.props.children }</div>
 		);
 	}
@@ -86,12 +78,16 @@ registerBlockType( 'lsx-blocks/faq-block', {
 	],
 	attributes: blockAttributes,
 
-	edit( { attributes, setAttributes, accordionTitle, accordionText } ) {
-		const { alignment } = attributes;
+	edit( { attributes, className, setAttributes } ) {
+		const { heading, content, alignment } = attributes;
 
-		// function onChangeContent( newContent ) {
-		// 	setAttributes( { content: newContent } );
-		// }
+		function onChangeHeading( newHeading ) {
+			setAttributes( { heading: newHeading } );
+		}
+
+		function onChangeContent( newContent ) {
+			setAttributes( { content: newContent } );
+		}
 
 		function onChangeAlignment( newAlignment ) {
 			setAttributes( { alignment: newAlignment } );
@@ -105,42 +101,56 @@ registerBlockType( 'lsx-blocks/faq-block', {
 						onChange={ onChangeAlignment }
 					/>
 				</BlockControls>
-				<RichText
-					tagName="h2"
-					placeholder={ __( 'Accordion Title' ) }
-					value={ accordionTitle }
-					className="ab-accordion-title"
-					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
-				/>
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Accordion Text' ) }
-					value={ accordionText }
-					className="ab-accordion-title"
-					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
-				/>
+				<div className={ className } >
+					<RichText
+						tagName="h2"
+						placeholder={ __( 'FAQ Question', 'lsx-blocks' ) }
+						style={ {
+							textAlign: alignment,
+						} }
+						className="faq-accordion-title"
+						onChange={ onChangeHeading }
+						value={ heading }
+					/>
+					<RichText
+						tagName="p"
+						placeholder={ __( 'FAQ Answer', 'lsx-blocks' ) }
+						style={ {
+							textAlign: alignment,
+						} }
+						className="faq-accordion-text"
+						onChange={ onChangeContent }
+						value={ content }
+					/>
+				</div>
 			</Fragment>
 		);
 	},
 
 	save( { attributes } ) {
-		const { accordionText, alignment, accordionTitle } = attributes;
+		const { heading, content, alignment } = attributes;
 
 		return (
 			<AccordionBlock>
-				<div className="lsx-cta-container">
-					<RichText.Content
-						style={ { textAlign: alignment } }
-						tagName="h2"
-						value={ accordionTitle }
-					/>
-				</div>
-				<div className="lsx-cta-container">
-					<RichText.Content
-						style={ { textAlign: alignment } }
-						tagName="p"
-						value={ accordionText }
-					/>
+				<div className="wp-block-lsx-blocks-faq-block">
+					<details>
+						<summary className="lsx-faq-question">
+							<RichText.Content
+								style={ { textAlign: alignment } }
+								tagName="h2"
+								className="faq-accordion-title"
+								value={ heading }
+							/>
+						</summary>
+						<div className="lsx-faq-answer">
+							<RichText.Content
+								style={ { textAlign: alignment } }
+								className="faq-accordion-text"
+								tagName="p"
+								value={ content }
+							/>
+						</div>
+					</details>
 				</div>
 			</AccordionBlock>
 		);

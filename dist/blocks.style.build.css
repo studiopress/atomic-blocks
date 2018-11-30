@@ -45,8 +45,28 @@
  *
  * CSS for both Frontend+Backend.
  */
-.wp-block-lsx-blocks-faq-block {
-  background: blue; }
+.wp-block-lsx-blocks-faq-block details {
+  background: #fff;
+  border: 1px solid #DDDDDD;
+  padding: 20px 30px;
+  margin-bottom: 15px; }
+  .wp-block-lsx-blocks-faq-block details summary::-webkit-details-marker {
+    float: right;
+    color: #418ad0;
+    padding-top: 5px; }
+  .wp-block-lsx-blocks-faq-block details summary h2.faq-accordion-title {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px; }
+    .wp-block-lsx-blocks-faq-block details summary h2.faq-accordion-title:before {
+      content: 'Q: ';
+      font-weight: bold; }
+  .wp-block-lsx-blocks-faq-block details .faq-accordion-text {
+    margin-top: 30px; }
+    .wp-block-lsx-blocks-faq-block details .faq-accordion-text:before {
+      content: 'A: ';
+      font-weight: bold;
+      color: #418ad0; }
 /**
  * #.# Common SCSS
  *

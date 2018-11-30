@@ -67,7 +67,20 @@
  * which makes it higher in priority.
  */
 .wp-block-lsx-blocks-faq-block {
-  background: red; }
+  background: #fff;
+  border: 1px solid #DDDDDD;
+  padding: 20px 30px; }
+  .wp-block-lsx-blocks-faq-block h2.faq-accordion-title {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px; }
+    .wp-block-lsx-blocks-faq-block h2.faq-accordion-title:before {
+      content: 'Q: '; }
+  .wp-block-lsx-blocks-faq-block .faq-accordion-text {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px; }
+    .wp-block-lsx-blocks-faq-block .faq-accordion-text:before {
+      content: 'A: '; }
 /**
  * #.# Common SCSS
  *

@@ -186,7 +186,7 @@ registerBlockType( 'lsx-blocks/cta-block', {
 				<div className={ className } >
 					<RichText
 						tagName="h2"
-						placeholder={ __( 'CTA Heading', 'lsx-blocks'  ) }
+						placeholder={ __( 'CTA Heading', 'lsx-blocks' ) }
 						style={ {
 							fontSize: headingSize + 'px',
 							textAlign: alignment,
