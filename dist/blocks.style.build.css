@@ -28,6 +28,24 @@
  * CSS for both Frontend+Backend.
  */
 .wp-block-lsx-blocks-cta-block {
+  color: #fff;
+  background: #418AD0;
+  padding: 2em; }
+  .wp-block-lsx-blocks-cta-block h2.lsx-cta-title {
+    color: #fff;
+    font-weight: 700; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.wp-block-lsx-blocks-faq-block {
   background: blue; }
 /**
  * #.# Common SCSS
@@ -40,18 +58,3 @@
  *
  * CSS for both Frontend+Backend.
  */
-.wp-block-lsx-blocks-cta-block {
-  background: blue; }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-/**
- * #.# Styles
- *
- * CSS for both Frontend+Backend.
- */
-.wp-block-lsx-blocks-team-block {
-  border: 1px solid green; }

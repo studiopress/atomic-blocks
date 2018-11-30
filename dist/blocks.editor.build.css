@@ -30,7 +30,30 @@
  * which makes it higher in priority.
  */
 .wp-block-lsx-blocks-cta-block {
-  background: red; }
+  color: #fff;
+  background: #418AD0;
+  padding: 2em; }
+  .wp-block-lsx-blocks-cta-block h2.lsx-title {
+    color: #fff; }
+  .wp-block-lsx-blocks-cta-block p {
+    font-family: 'Noto Sans', sans-serif; }
+  .wp-block-lsx-blocks-cta-block .btn {
+    display: block;
+    background-color: #F7941D;
+    -webkit-box-shadow: 2px 2px 0 0 #AB7800;
+            box-shadow: 2px 2px 0 0 #AB7800;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 700;
+    height: 48px;
+    letter-spacing: 0.6px;
+    line-height: 1.25;
+    padding: 15px 40px;
+    font-family: 'Noto Sans', sans-serif;
+    text-transform: uppercase;
+    max-width: 70%;
+    margin: 0 auto; }
 /**
  * #.# Common SCSS
  *
@@ -43,7 +66,7 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-.wp-block-lsx-blocks-cta-block {
+.wp-block-lsx-blocks-faq-block {
   background: red; }
 /**
  * #.# Common SCSS

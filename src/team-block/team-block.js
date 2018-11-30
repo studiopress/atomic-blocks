@@ -12,21 +12,14 @@ import './editor.scss';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const {
-	RichText,
 	InspectorControls,
-	BlockControls,
 	AlignmentToolbar,
 } = wp.editor;
 const {
 	PanelBody,
 	RangeControl,
 	TextControl,
-	Dashicon,
-	Toolbar,
-	Button,
-	Tooltip,
 } = wp.components;
-
 
 /**
  * Register: a Gutenberg Block.
@@ -38,11 +31,6 @@ const {
  */
 
 const blockAttributes = {
-	content: {
-		type: 'string',
-		source: 'html',
-		selector: 'p',
-	},
 	alignment: {
 		type: 'string',
 		default: 'center',
@@ -50,6 +38,10 @@ const blockAttributes = {
 	columns: {
 		type: 'number',
 		default: 3,
+	},
+	shortcodetitle: {
+		type: 'string',
+		default: 'Our Team',
 	},
 };
 
@@ -66,7 +58,11 @@ registerBlockType( 'lsx-blocks/team-block', {
 	attributes: blockAttributes,
 
 	edit( { attributes, className, setAttributes } ) {
-		const { alignment, columns } = attributes;
+		const { alignment, columns, shortcodetitle } = attributes;
+
+		function onChangeTitle( updatedTitle ) {
+			setAttributes( { shortcodetitle: updatedTitle } );
+		}
 
 		function onChangeAlignment( updatedAlignment ) {
 			setAttributes( { alignment: updatedAlignment } );
@@ -81,6 +77,12 @@ registerBlockType( 'lsx-blocks/team-block', {
 				{
 					<InspectorControls key="inspector">
 						<PanelBody title={ __( 'Shortcode Settings' ) } >
+							<TextControl
+								label={ __( 'Title' ) }
+								type="text"
+								value={ shortcodetitle }
+								onChange={ onChangeTitle }
+							/>
 							<AlignmentToolbar
 								value={ alignment }
 								onChange={ onChangeAlignment }
@@ -96,7 +98,7 @@ registerBlockType( 'lsx-blocks/team-block', {
 					</InspectorControls>
 				}
 				<div className={ className }>
-					<p style={ { textAlign: alignment } }>Toolbar control block example built with JSX.</p>
+					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
 				</div>
 				<div style={ { textAlign: alignment } }>
 					[lsx_team back columns=&quot;{ columns }&quot; ]
@@ -106,11 +108,11 @@ registerBlockType( 'lsx-blocks/team-block', {
 	},
 
 	save( { attributes, className } ) {
-		const { alignment, columns } = attributes;
+		const { alignment, columns, shortcodetitle } = attributes;
 		return (
 			<div className={ className }>
 				<div>
-					<p style={ { textAlign: alignment } }>Toolbar control block example built with JSX.</p>
+					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
 				</div>
 				<div style={ { textAlign: alignment } }>
 					[lsx_team back columns=&quot;{ columns }&quot; ]

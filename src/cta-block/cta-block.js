@@ -13,10 +13,18 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const {
 	RichText,
+	InspectorControls,
 	BlockControls,
 	AlignmentToolbar,
 	BlockAlignmentToolbar,
 } = wp.editor;
+
+const {
+	PanelBody,
+	RangeControl,
+	TextControl,
+} = wp.components;
+
 const {
 	Fragment,
 	Component,
@@ -32,14 +40,35 @@ const {
  */
 
 const blockAttributes = {
+	heading: {
+		type: 'string',
+		source: 'html',
+		selector: 'h2',
+	},
 	content: {
 		type: 'string',
 		source: 'html',
 		selector: 'p',
 	},
+	buttonText: {
+		type: 'string',
+		source: 'html',
+		selector: 'a',
+	},
+	buttonUrl: {
+		type: 'url',
+	},
 	alignment: {
 		type: 'string',
 		default: 'center',
+	},
+	headingSize: {
+		type: 'number',
+		default: 26,
+	},
+	fontSize: {
+		type: 'number',
+		default: 16,
 	},
 	width: {
 		type: 'string',
@@ -63,7 +92,7 @@ class CallToAction extends Component {
 		//const { attributes: { width } } = this.props;
 		return (
 			<div
-				className="wp-block-lsx-blocks-cta-block "
+				className="lsx-cta-block"
 			>{ this.props.children }</div>
 		);
 	}
@@ -81,10 +110,22 @@ registerBlockType( 'lsx-blocks/cta-block', {
 	attributes: blockAttributes,
 
 	edit( { attributes, className, setAttributes } ) {
-		const { content, alignment, width } = attributes;
+		const { heading, content, alignment, width, headingSize, fontSize, buttonText, buttonUrl } = attributes;
+
+		function onChangeHeading( newHeading ) {
+			setAttributes( { heading: newHeading } );
+		}
 
 		function onChangeContent( newContent ) {
 			setAttributes( { content: newContent } );
+		}
+
+		function onChangeButton( newButton ) {
+			setAttributes( { buttonText: newButton } );
+		}
+
+		function onChangeButtonUrl( updatedUrl ) {
+			setAttributes( { buttonUrl: updatedUrl } );
 		}
 
 		function onChangeAlignment( newAlignment ) {
@@ -95,8 +136,42 @@ registerBlockType( 'lsx-blocks/cta-block', {
 			setAttributes( { width: newWidth } );
 		}
 
+		function onChangeFontHeading( updatedHeadingFont ) {
+			setAttributes( { headingSize: updatedHeadingFont } );
+		}
+
+		function onChangeFont( updatedFont ) {
+			setAttributes( { fontSize: updatedFont } );
+		}
+
 		return (
 			<Fragment>
+				{
+					<InspectorControls key="inspector">
+						<PanelBody title={ __( 'CTA Settings', 'lsx-blocks' ) } >
+							<RangeControl
+								label={ __( 'Heading Font Size', 'lsx-blocks' ) }
+								value={ headingSize }
+								onChange={ onChangeFontHeading }
+								min={ 16 }
+								max={ 60 }
+							/>
+							<RangeControl
+								label={ __( 'Content Font Size', 'lsx-blocks' ) }
+								value={ fontSize }
+								onChange={ onChangeFont }
+								min={ 14 }
+								max={ 40 }
+							/>
+							<TextControl
+								label={ __( 'Button URL', 'lsx-blocks' ) }
+								type="url"
+								value={ buttonUrl }
+								onChange={ onChangeButtonUrl }
+							/>
+						</PanelBody>
+					</InspectorControls>
+				}
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ width }
@@ -108,29 +183,75 @@ registerBlockType( 'lsx-blocks/cta-block', {
 						onChange={ onChangeAlignment }
 					/>
 				</BlockControls>
-				<RichText
-					tagName="p"
-					className={ className }
-					onChange={ onChangeContent }
-					value={ content }
-				/>
+				<div className={ className } >
+					<RichText
+						tagName="h2"
+						placeholder={ __( 'CTA Heading', 'lsx-blocks'  ) }
+						style={ {
+							fontSize: headingSize + 'px',
+							textAlign: alignment,
+						} }
+						className="lsx-cta-title"
+						onChange={ onChangeHeading }
+						value={ heading }
+					/>
+					<RichText
+						tagName="p"
+						placeholder={ __( 'CTA Content', 'lsx-blocks' ) }
+						style={ {
+							fontSize: fontSize + 'px',
+							textAlign: alignment,
+						} }
+						onChange={ onChangeContent }
+						value={ content }
+					/>
+					<RichText
+						tagName="a"
+						placeholder={ __( 'Button text', 'lsx-blocks' ) }
+						value={ buttonText }
+						className="btn"
+						style={ {
+							textAlign: alignment,
+							// color: buttonTextColor,
+							// backgroundColor: buttonBackgroundColor,
+						} }
+						onChange={ onChangeButton }
+					/>
+				</div>
 			</Fragment>
 		);
 	},
 
 	save( { attributes } ) {
-		const { content, alignment } = attributes;
+		const { heading, content, alignment, headingSize, fontSize, width, buttonText, buttonUrl } = attributes;
 
 		return (
-			<CallToAction>
-				<div className="lsx-cta-container">
-					<RichText.Content
-						style={ { textAlign: alignment } }
-						tagName="p"
-						value={ content }
-					/>
-				</div>
-			</CallToAction>
+			<div className={ 'align' + width }>
+				<CallToAction>
+					<div className="lsx-cta-container" style={ { fontSize: fontSize + 'px' } }>
+						<RichText.Content
+							className="lsx-cta-title"
+							tagName="h2"
+							style={ {
+								fontSize: headingSize + 'px',
+								textAlign: alignment,
+							} }
+							value={ heading }
+						/>
+						<RichText.Content
+							style={ {
+								fontSize: fontSize + 'px',
+								textAlign: alignment,
+							} }
+							tagName="p"
+							value={ content }
+						/>
+						<div className="button-container" style={ { textAlign: alignment } }>
+							<a href={ buttonUrl } className="btn cta-btn" target="_blank" rel="noopener noreferrer">{ buttonText }</a>
+						</div>
+					</div>
+				</CallToAction>
+			</div>
 		);
 	},
 } );
