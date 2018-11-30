@@ -7,12 +7,14 @@
 //  Import CSS.
 import './style.scss';
 import './editor.scss';
+//import Inspector from './inspector.js';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const {
 	RichText,
 	InspectorControls,
+	BlockControls,
 	AlignmentToolbar,
 } = wp.editor;
 const {
@@ -45,17 +47,9 @@ const blockAttributes = {
 		type: 'string',
 		default: 'center',
 	},
-	width: {
-		type: 'string',
-		default: 'center',
-	},
-	ctaBackgroundColor: {
-		type: 'string',
-		default: '#f2f2f2',
-	},
-	buttonAlignment: {
-		type: 'string',
-		default: 'center',
+	columns: {
+		type: 'number',
+		default: 3,
 	},
 };
 
@@ -71,68 +65,56 @@ registerBlockType( 'lsx-blocks/team-block', {
 	],
 	attributes: blockAttributes,
 
-	edit: props => {
-		const {
-			attributes: {
-				title,
-				alignment,
-				columns = 4,
-			},
-		} = props;
+	edit( { attributes, className, setAttributes } ) {
+		const { alignment, columns } = attributes;
 
-		const onChangeAlignment = newAlignment => {
-			props.setAttributes( { alignment: newAlignment } );
-		};
+		function onChangeAlignment( updatedAlignment ) {
+			setAttributes( { alignment: updatedAlignment } );
+		}
 
-		const onChangeTitle = newTitle => {
-			props.setAttributes( { title: newTitle } );
-		};
-
-		const onChangeColumns = newColumn => {
-			props.setAttributes( { columns: newColumn } );
-		};
+		function onChangeColumns( updatedColumns ) {
+			setAttributes( { columns: updatedColumns } );
+		}
 
 		return (
 			<div>
-				<InspectorControls>
-					<PanelBody title={ __( 'Shortcode Settings' ) } >
-						<AlignmentToolbar
-							value={ alignment }
-							onChange={ onChangeAlignment }
-						/>
-						<TextControl
-							label={ __( 'Title' ) }
-							placeholder={ 'Enter Title' }
-							onChange={ onChangeTitle }
-						/>
-						<RangeControl
-							label={ __( 'Columns' ) }
-							initialPosition={ 3 }
-							value={ columns }
-							onChange={ onChangeColumns }
-							min={ 1 }
-							max={ 6 }
-						/>
-					</PanelBody>
-				</InspectorControls>
+				{
+					<InspectorControls key="inspector">
+						<PanelBody title={ __( 'Shortcode Settings' ) } >
+							<AlignmentToolbar
+								value={ alignment }
+								onChange={ onChangeAlignment }
+							/>
+							<RangeControl
+								label={ __( 'Columns' ) }
+								value={ columns }
+								onChange={ onChangeColumns }
+								min={ 1 }
+								max={ 6 }
+							/>
+						</PanelBody>
+					</InspectorControls>
+				}
+				<div className={ className }>
+					<p style={ { textAlign: alignment } }>Toolbar control block example built with JSX.</p>
+				</div>
 				<div style={ { textAlign: alignment } }>
-					[lsx_team title=&quot;{ title }&quot; columns=&quot;{ columns }&quot; ]
+					[lsx_team back columns=&quot;{ columns }&quot; ]
 				</div>
 			</div>
 		);
 	},
 
-	save: props => {
-		const {
-			attributes: {
-				title,
-				columns,
-			},
-		} = props;
-
+	save( { attributes, className } ) {
+		const { alignment, columns } = attributes;
 		return (
-			<div className="lsx-team-container">
-				[lsx_team title=&quot;{ title }&quot; columns=&quot;{ columns }&quot; ]
+			<div className={ className }>
+				<div>
+					<p style={ { textAlign: alignment } }>Toolbar control block example built with JSX.</p>
+				</div>
+				<div style={ { textAlign: alignment } }>
+					[lsx_team back columns=&quot;{ columns }&quot; ]
+				</div>
 			</div>
 		);
 	},
