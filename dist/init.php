@@ -23,10 +23,10 @@ function atomic_blocks_block_assets() {
 	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
 
 	// Load the compiled styles
-	wp_enqueue_style(
+	wp_register_style(
 		'atomic-blocks-style-css',
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
-		array( 'wp-blocks' ),
+		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.style.build.css' )
 	);
 
@@ -34,11 +34,11 @@ function atomic_blocks_block_assets() {
 	wp_enqueue_style(
 		'atomic-blocks-fontawesome',
 		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
-		array( 'wp-blocks' ),
+		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
 }
-add_action( 'enqueue_block_assets', 'atomic_blocks_block_assets' );
+add_action( 'init', 'atomic_blocks_block_assets' );
 
 
 /**
@@ -105,58 +105,3 @@ add_filter( 'block_categories', function( $categories, $post ) {
 		)
 	);
 }, 10, 2 );
-
-
-// Add template to testimonial post type
-function atomic_blocks_testimonial_templates( $args, $post_type ) {
-
-	if ( 'atomic-testimonial' == $post_type ) {
-		// Lock the template
-		$args['template_lock'] = true;
-
-		// Setup the template
-		$args['template'] = array(
-            array(
-                'atomic/atomic-testimonial'
-            )
-        );
-	}
-	return $args;
-}
-//add_filter( 'register_post_type_args', 'atomic_blocks_testimonial_templates', 20, 2 );
-
-
-// Render the testimonial posts for the frontend
-function atomic_blocks_testimonial_list_render( $attributes ) {
-
-    $posts = (array) wp_get_recent_posts( array(
-        'numberposts' => 5,
-        'post_status' => 'publish',
-    ) );
-
-    if ( count( $posts ) === 0 ) {
-        return __( 'No posts', 'atomic-blocks' );
-    }
-
-    $markup = '<ul>';
-    foreach( $posts as $post ) {
-
-	$markup .= sprintf(
-		'<li><a class="atomic-blocks-latest-post" href="%1$s">%2$s</a></li>',
-		esc_url( get_permalink( $post['ID'] ) ),
-		esc_html( get_the_title( $post['ID'] ) )
-	);
-
-    }
-
-    return $markup;
-}
-
-
-// Hook the post rendering to the block
-if ( function_exists( 'register_block_type' ) ) :
-	// Hook a render function to the testimonial block
-	register_block_type( 'atomic/atomic-testimonial-list', array(
-		'render_callback' => 'atomic_blocks_testimonial_list_render',
-	) );
-endif;

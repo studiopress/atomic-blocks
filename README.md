@@ -73,6 +73,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.4.2**
+* Fix category error in Post Grid block.
+* Change asset loading for WordPress 5.0.
+
 **1.4.1**
 * Fix FontAwesome loading issue.
 
