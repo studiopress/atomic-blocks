@@ -7,6 +7,8 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import PricingTable from './components/pricing';
 import icons from './components/icons';
+import memoize from 'memize';
+import { times } from 'lodash';
 
 // Import CSS
 import './styles/style.scss';
@@ -28,6 +30,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	MediaUpload,
+	InnerBlocks,
 } = wp.editor;
 
 // Register components
@@ -35,6 +38,16 @@ const {
 	Button,
 	SelectControl,
 } = wp.components;
+
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'atomic-blocks/ab-button' ];
+
+const getColumnsTemplate = memoize( ( columns ) => {
+	return times( columns, () => [
+		'core/heading', {
+			content: 'Default Heading Text',
+		},
+	] );
+} );
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
@@ -45,6 +58,7 @@ class ABPricingBlock extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
+				columns,
 				testimonialName,
 				testimonialTitle,
 				testimonialContent,
@@ -84,76 +98,11 @@ class ABPricingBlock extends Component {
 			/>,
 			// Show the block markup in the editor
 			<PricingTable { ...this.props }>
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Add testimonial text...', 'atomic-blocks' ) }
-					keepPlaceholderOnFocus
-					value={ testimonialContent }
-					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-					className={ classnames(
-						'ab-testimonial-text'
-					) }
-					style={ {
-						textAlign: testimonialAlignment,
-					} }
-					onChange={ ( value ) => setAttributes( { testimonialContent: value } ) }
+				<InnerBlocks
+					template={ getColumnsTemplate( columns ) }
+					templateLock="all"
+					allowedBlocks={ ALLOWED_BLOCKS }
 				/>
-
-				<div class="ab-testimonial-info">
-					<div class="ab-testimonial-avatar-wrap">
-						<div class="ab-testimonial-image-wrap">
-							<MediaUpload
-								buttonProps={ {
-									className: 'change-image'
-								} }
-								onSelect={ ( img ) => setAttributes(
-									{
-										testimonialImgID: img.id,
-										testimonialImgURL: img.url,
-									}
-								) }
-								allowed={ ALLOWED_MEDIA_TYPES }
-								type="image"
-								value={ testimonialImgID }
-								render={ ( { open } ) => (
-									<Button onClick={ open }>
-										{ ! testimonialImgID ? icons.upload : <img
-											class="ab-testimonial-avatar"
-											src={ testimonialImgURL }
-											alt="avatar"
-										/>  }
-									</Button>
-								) }
-							>
-							</MediaUpload>
-						</div>
-					</div>
-
-					<RichText
-						tagName="h2"
-						placeholder={ __( 'Add name', 'atomic-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ testimonialName }
-						className='ab-testimonial-name'
-						style={ {
-							color: testimonialTextColor
-						} }
-						onChange={ ( value ) => this.props.setAttributes( { testimonialName: value } ) }
-					/>
-
-					<RichText
-						tagName="small"
-						placeholder={ __( 'Add title', 'atomic-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ testimonialTitle }
-						className='ab-testimonial-title'
-						style={ {
-							color: testimonialTextColor
-						} }
-						onChange={ ( value ) => this.props.setAttributes( { testimonialTitle: value } ) }
-					/>
-				</div>
 			</PricingTable>
 		];
 	}
@@ -171,6 +120,11 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		__( 'purchase', 'atomic-blocks' ),
 	],
 	attributes: {
+		columns: {
+			type: 'number',
+			default: 3,
+		},
+
 		testimonialName: {
 			type: 'array',
 			selector: '.ab-testimonial-name',
@@ -224,6 +178,7 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 
 		// Setup the attributes
 		const {
+			columns,
 			testimonialName,
 			testimonialTitle,
 			testimonialContent,
@@ -239,50 +194,7 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		// Save the block markup for the front end
 		return (
 			<PricingTable { ...props }>
-				<RichText.Content
-					tagName="div"
-					className="ab-testimonial-text"
-					style={ {
-						textAlign: testimonialAlignment,
-					} }
-					value={ testimonialContent }
-				/>
-
-				<div class="ab-testimonial-info">
-					{ testimonialImgURL && (
-						<div class="ab-testimonial-avatar-wrap">
-							<div class="ab-testimonial-image-wrap">
-								<img
-									class="ab-testimonial-avatar"
-									src={ testimonialImgURL }
-									alt="avatar"
-								/>
-							</div>
-						</div>
-					) }
-
-					{ testimonialName && (
-						<RichText.Content
-							tagName="h2"
-							className="ab-testimonial-name"
-							style={ {
-								color: testimonialTextColor
-							} }
-							value={ testimonialName }
-						/>
-					) }
-
-					{ testimonialTitle && (
-						<RichText.Content
-							tagName="small"
-							className="ab-testimonial-title"
-							style={ {
-								color: testimonialTextColor
-							} }
-							value={ testimonialTitle }
-						/>
-					) }
-				</div>
+				<InnerBlocks.Content />
 			</PricingTable>
 		);
 	},

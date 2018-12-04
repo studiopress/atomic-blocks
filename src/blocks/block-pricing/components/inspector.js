@@ -54,7 +54,7 @@ export default class Inspector extends Component {
 		];
 
 		// Setup the attributes
-		const { attributes: { testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { columns, testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, isSelected, className, setAttributes } = this.props;
 
 		// Update color values
 		const onChangeBackgroundColor = value => setAttributes( { testimonialBackgroundColor: value } );
@@ -63,6 +63,19 @@ export default class Inspector extends Component {
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
+				<RangeControl
+					label={ __( 'Columns' ) }
+					value={ columns }
+					onChange={ ( nextColumns ) => {
+						setAttributes( {
+							columns: nextColumns,
+						} );
+					} }
+					//onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
+					min={ 1 }
+					max={ 4 }
+				/>
+
 				<RangeControl
 					label={ __( 'Font Size' ) }
 					value={ testimonialFontSize }
