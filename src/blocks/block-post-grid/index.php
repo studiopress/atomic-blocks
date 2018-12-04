@@ -10,12 +10,15 @@
  * Renders the post grid block on server.
  */
 function atomic_blocks_render_block_core_latest_posts( $attributes ) {
+
+	$categories = isset( $attributes['categories'] ) ? $attributes['categories'] : '';
+
 	$recent_posts = wp_get_recent_posts( array(
 		'numberposts' => $attributes['postsToShow'],
 		'post_status' => 'publish',
 		'order' => $attributes['order'],
 		'orderby' => $attributes['orderBy'],
-		'category' => $attributes['categories'],
+		'category' => $categories,
 	), 'OBJECT' );
 
 	$list_items_markup = '';
