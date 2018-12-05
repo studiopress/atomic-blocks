@@ -5,7 +5,7 @@
  * Description: LSX Blocks is a Gutenberg plugin created via create-guten-block.
  * Author: lightspeed
  * Author URI: https://AhmadAwais.com/
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *
