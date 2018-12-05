@@ -39,14 +39,27 @@ const {
 	SelectControl,
 } = wp.components;
 
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'atomic-blocks/ab-button' ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'atomic-blocks/ab-button', 'core/list' ];
 
 const getColumnsTemplate = memoize( ( columns ) => {
-	return times( columns, () => [
-		'core/heading', {
-			content: 'Default Heading Text',
-		},
-	] );
+	// return times( columns, () => [
+	// 	// 'atomic-blocks/ab-button', {
+	// 	// 	buttonText: 'Find Out More',
+	// 	// 	buttonAlignment: 'left',
+	// 	// },
+	// 	['core/heading', {
+	// 		content: 'We Build Blocks',
+	// 		level: '3',
+	// 	}],
+
+	// 	['core/list', {
+	// 		values: '<li>test this</li><li>test this two</li><li>test this three</li>',
+	// 		multilineTag: 'li',
+	// 		ordered: true,
+	// 	}],
+	// ] );
+
+	return times( columns, n => [ 'atomic-blocks/ab-pricing-table' ] );
 } );
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];

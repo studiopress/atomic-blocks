@@ -1,0 +1,155 @@
+/**
+ * Testimonial styles
+ * Loads on front end and back end
+ */
+
+ .ab-block-testimonial {
+	background: #f2f2f2;
+	color: #293038;
+	margin: 0 auto;
+	padding: 5%;
+	border-radius: 5px;
+	margin-bottom: 1.2em;
+
+	.ab-testimonial-info {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		margin-top: 15px;
+		min-height: 55px;
+		padding-top: 5px;
+		line-height: 1.4;
+	}
+
+	.ab-testimonial-info {
+		.blocks-editable {
+			padding-left: 0;
+		}
+
+		.ab-testimonial-avatar-wrap {
+			position: absolute;
+			left: 0;
+			top: 0; 
+		}
+	}
+
+	.ab-testimonial-avatar-wrap + .ab-testimonial-name,
+	.ab-testimonial-avatar-wrap + .ab-testimonial-name + .ab-testimonial-title,
+	.ab-testimonial-avatar-wrap + .ab-testimonial-title,
+	.ab-testimonial-avatar-wrap + .editor-rich-text, 
+	.ab-testimonial-avatar-wrap + .editor-rich-text + .editor-rich-text {
+		margin-left: 70px;
+		padding-left: 0;
+	}
+
+	.ab-testimonial-text {
+		p {
+			line-height: 1.6; 
+		}
+
+		a {
+			color: inherit;
+			box-shadow: 0 -1px 0 inset;
+			text-decoration: none;
+
+			&:hover {
+				color: inherit;
+				box-shadow: 0 -2px 0 inset;
+			}
+		}
+	}
+
+	.ab-testimonial-name {
+		font-size: 1em;
+		font-weight: bold;
+		line-height: 1.2;
+		margin: 0; 
+		padding: 0;
+	}
+
+	.ab-testimonial-title {
+		opacity: .8;
+	}
+
+	.ab-testimonial-avatar {
+		border-radius: 200px;
+		max-width: 100px;
+	}
+
+	.ab-testimonial-image-wrap {
+		height: 55px;
+		width: 55px;
+		background: #ddd;
+		border-radius: 200px; 
+		position: relative;
+
+		button {
+			position: absolute;
+			left: 19px;
+			top: 16px;
+			z-index: 50;
+			padding: 0; 
+		}
+
+		button:focus {
+			background: none;
+			border: none;
+			outline: none;
+			box-shadow: none; 
+		}
+
+		img {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+			position: relative;
+			z-index: 10;
+			border-radius: 40px;
+			z-index: 5; 
+		}
+	}
+}
+
+#editor .ab-has-avatar {
+	.ab-testimonial-image-wrap {
+		button {
+			top: 0;
+			left: 0;
+			opacity: 1 !important;
+			height: 100%;
+		}
+
+		&:hover {
+			cursor: pointer;
+
+			img {
+				opacity: .7; 	
+			}
+
+			button {
+				opacity: 1; 
+			}
+		}
+	}
+}
+
+.right-aligned {
+	.ab-testimonial-info {
+		text-align: right; 
+
+		h2 {
+			left: 0; 
+		}
+
+		.ab-testimonial-name,
+		.ab-testimonial-title {
+			margin-right: 70px;
+			margin-left: 0; 
+		}
+
+		.ab-testimonial-avatar-wrap {
+			left: auto;
+			right: 0; 
+		}
+	}
+}
