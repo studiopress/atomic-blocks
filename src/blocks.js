@@ -14,3 +14,4 @@ import './cta-block/cta-block.js';
 import './faq-block/faq-block.js';
 import './team-block/team-block.js';
 import './testimonials-block/testimonials-block.js';
+import './post-block/post-block.js';

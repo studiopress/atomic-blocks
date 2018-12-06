@@ -89,3 +89,19 @@
  *
  * CSS for both Frontend+Backend.
  */
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.wp-block-lsx-blocks-post-block .meta-off .lsx-blog-customizer-posts-wrapper .post-slot .post-info, .wp-block-lsx-blocks-post-block .meta-off .lsx-blog-customizer-posts-wrapper .post-slot .post-meta {
+  display: none; }
+
+.wp-block-lsx-blocks-post-block .meta-off .lsx-blog-customizer-posts-wrapper .post-slot .post-title {
+  padding-top: 1em; }
