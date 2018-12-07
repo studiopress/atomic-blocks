@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Atomic Blocks - Gutenberg Blocks Collection
+ * Plugin Name: LSX Blocks
  * Plugin URI: https://atomicblocks.com
  * Description: A beautiful collection of handy Gutenberg blocks to help you get started with the new WordPress editor.
  * Author: atomicblocks

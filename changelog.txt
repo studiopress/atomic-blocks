@@ -1,0 +1,7 @@
+## Change log
+
+### 1.0.1
+* Adding travis and preparing for for submission to wordpress.org
+
+### 1.0.0
+* First Version
