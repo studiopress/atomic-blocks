@@ -39,30 +39,13 @@ const {
 	SelectControl,
 } = wp.components;
 
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'atomic-blocks/ab-button', 'core/list' ];
+// Set allowed blocks and media
+const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];
 
-const getColumnsTemplate = memoize( ( columns ) => {
-	// return times( columns, () => [
-	// 	// 'atomic-blocks/ab-button', {
-	// 	// 	buttonText: 'Find Out More',
-	// 	// 	buttonAlignment: 'left',
-	// 	// },
-	// 	['core/heading', {
-	// 		content: 'We Build Blocks',
-	// 		level: '3',
-	// 	}],
-
-	// 	['core/list', {
-	// 		values: '<li>test this</li><li>test this two</li><li>test this three</li>',
-	// 		multilineTag: 'li',
-	// 		ordered: true,
-	// 	}],
-	// ] );
-
+// Get the pricing template
+const getPricingTemplate = memoize( ( columns ) => {
 	return times( columns, n => [ 'atomic-blocks/ab-pricing-table' ] );
 } );
-
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
 class ABPricingBlock extends Component {
 
@@ -72,16 +55,7 @@ class ABPricingBlock extends Component {
 		const {
 			attributes: {
 				columns,
-				testimonialName,
-				testimonialTitle,
-				testimonialContent,
 				testimonialAlignment,
-				testimonialImgURL,
-				testimonialImgID,
-				testimonialBackgroundColor,
-				testimonialTextColor,
-				testimonialFontSize,
-				testimonialCiteAlign
 			},
 			attributes,
 			isSelected,
@@ -89,13 +63,6 @@ class ABPricingBlock extends Component {
 			className,
 			setAttributes
 		} = this.props;
-
-		const onSelectImage = img => {
-			setAttributes( {
-				testimonialImgID: img.id,
-				testimonialImgURL: img.url,
-			} );
-		};
 
 		return [
 			// Show the alignment toolbar on focus
@@ -112,7 +79,7 @@ class ABPricingBlock extends Component {
 			// Show the block markup in the editor
 			<PricingTable { ...this.props }>
 				<InnerBlocks
-					template={ getColumnsTemplate( columns ) }
+					template={ getPricingTemplate( columns ) }
 					templateLock="all"
 					allowedBlocks={ ALLOWED_BLOCKS }
 				/>
@@ -135,52 +102,11 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 	attributes: {
 		columns: {
 			type: 'number',
-			default: 3,
-		},
-
-		testimonialName: {
-			type: 'array',
-			selector: '.ab-testimonial-name',
-			source: 'children',
-		},
-		testimonialTitle: {
-			type: 'array',
-			selector: '.ab-testimonial-title',
-			source: 'children',
-		},
-		testimonialContent: {
-			type: 'array',
-			selector: '.ab-testimonial-text',
-			source: 'children',
+			default: 2,
 		},
 		testimonialAlignment: {
 			type: 'string',
 		},
-		testimonialImgURL: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'src',
-			selector: 'img',
-		},
-		testimonialImgID: {
-			type: 'number',
-		},
-		testimonialBackgroundColor: {
-			type: 'string',
-			default: '#f2f2f2'
-		},
-		testimonialTextColor: {
-			type: 'string',
-			default: '#32373c'
-		},
-		testimonialFontSize: {
-			type: 'number',
-			default: 18,
-		},
-		testimonialCiteAlign: {
-            type: 'string',
-            default: 'left-aligned',
-        },
 	},
 
 	// Render the block components
@@ -192,16 +118,7 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		// Setup the attributes
 		const {
 			columns,
-			testimonialName,
-			testimonialTitle,
-			testimonialContent,
 			testimonialAlignment,
-			testimonialImgURL,
-			testimonialImgID,
-			testimonialBackgroundColor,
-			testimonialTextColor,
-			testimonialFontSize,
-			testimonialCiteAlign
 		} = props.attributes;
 
 		// Save the block markup for the front end
