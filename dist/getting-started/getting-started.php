@@ -121,14 +121,6 @@ function atomic_blocks_getting_started_page() {
 
 		<div class="panels">
 			<div id="panel" class="panel">
-				<!-- Atomic Blocks panel -->
-				<?php if( ! function_exists( 'gutenberg_init' ) ) { ?>
-					<div class="ab-gutenberg-notice">
-						<p><?php esc_html_e( 'You need to install the Gutenberg editor before using Atomic Blocks!', 'atomic-blocks' ); ?></p>
-						<a class="button-primary" href="<?php echo esc_url( $gberg_install_url ); ?>"><?php esc_html_e( 'Install Gutenberg now', 'atomic-blocks' ); ?> &rarr;</a>
-					</div>
-				<?php } ?>
-
 				<div id="atomic-blocks-panel" class="panel-left visible">
 					<div class="ab-block-split clearfix">
 						<div class="ab-block-split-left">
