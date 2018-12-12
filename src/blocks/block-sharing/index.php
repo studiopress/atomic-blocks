@@ -3,13 +3,13 @@
  * Server-side rendering for the sharing block
  *
  * @since 	1.1.2
- * @package Atomic Blocks
+ * @package LSX BLOCKS
  */
 
 /**
 * Register the block on the server
 */
-function atomic_blocks_register_sharing() {
+function lsx_blocks_register_sharing() {
 
 	// Check if the register function exists
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -19,7 +19,7 @@ function atomic_blocks_register_sharing() {
 	// Register the sharing block
 	register_block_type(
 		'atomic-blocks/ab-sharing', array(
-			'style' => 'atomic-blocks-style-css',
+			'style' => 'lsx-blocks-style-css',
 			'attributes' => array(
                 'facebook' => array(
 					'type'    => 'boolean',
@@ -69,17 +69,17 @@ function atomic_blocks_register_sharing() {
 					'default' => 'ab-share-color-standard',
 				),
 			),
-			'render_callback' => 'atomic_blocks_render_sharing',
+			'render_callback' => 'lsx_blocks_render_sharing',
 		)
 	);
 }
-add_action( 'init', 'atomic_blocks_register_sharing' );
+add_action( 'init', 'lsx_blocks_register_sharing' );
 
 
 /**
  * Add the pop-up share window to the footer
  */
-function atomic_blocks_social_icon_footer_script() { ?>
+function lsx_blocks_social_icon_footer_script() { ?>
     <script type="text/javascript">
         function atomicBlocksShare( url, title, w, h ){
             var left = ( window.innerWidth / 2 )-( w / 2 );
@@ -88,14 +88,14 @@ function atomic_blocks_social_icon_footer_script() { ?>
         }
     </script>
 <?php }
-add_action( 'wp_footer', 'atomic_blocks_social_icon_footer_script' );
+add_action( 'wp_footer', 'lsx_blocks_social_icon_footer_script' );
 
 /**
  * Render the sharing links
  */
-function atomic_blocks_render_sharing( $attributes ) {
+function lsx_blocks_render_sharing( $attributes ) {
 	global $post;
-	
+
 	// Setup the featured image
 	if ( has_post_thumbnail() ) {
 		$thumbnail_id = get_post_thumbnail_id( $post->ID );
@@ -140,7 +140,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 				</a>
 			</li>',
 			esc_url( $twitter_url ),
-			esc_html__( 'Share on Twitter', 'atomic-blocks' )
+			esc_html__( 'Share on Twitter', 'lsx-blocks' )
 		);
 	}
 
@@ -156,7 +156,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 				</a>
 			</li>',
 			esc_url( $facebook_url ),
-			esc_html__( 'Share on Facebook', 'atomic-blocks' )
+			esc_html__( 'Share on Facebook', 'lsx-blocks' )
 		);
 	}
 
@@ -172,7 +172,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 				</a>
 			</li>',
 			esc_url( $google_url ),
-			esc_html__( 'Share on Google', 'atomic-blocks' )
+			esc_html__( 'Share on Google', 'lsx-blocks' )
 		);
 	}
 
@@ -188,7 +188,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 				</a>
 			</li>',
 			esc_url( $pinterest_url ),
-			esc_html__( 'Share on Pinterest', 'atomic-blocks' )
+			esc_html__( 'Share on Pinterest', 'lsx-blocks' )
 		);
 	}
 
@@ -204,7 +204,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 				</a>
 			</li>',
 			esc_url( $linkedin_url ),
-			esc_html__( 'Share on LinkedIn', 'atomic-blocks' )
+			esc_html__( 'Share on LinkedIn', 'lsx-blocks' )
 		);
 	}
 
@@ -220,7 +220,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 				</a>
 			</li>',
 			esc_url( $reddit_url ),
-			esc_html__( 'Share on Reddit', 'atomic-blocks' )
+			esc_html__( 'Share on Reddit', 'lsx-blocks' )
 		);
 	}
 
@@ -235,7 +235,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 				</a>
 			</li>',
 			esc_url( $email_url ),
-			esc_html__( 'Share via Email', 'atomic-blocks' )
+			esc_html__( 'Share via Email', 'lsx-blocks' )
 		);
 	}
 

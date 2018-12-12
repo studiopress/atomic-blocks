@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Container
+ * BLOCK: LSX Blocks Container
  */
 
 // Import block dependencies and components
@@ -12,7 +12,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -181,15 +181,15 @@ class ABContainerBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-container', {
-	title: __( 'AB Container', 'atomic-blocks' ),
-	description: __( 'Add a container block to wrap several blocks in a parent container.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/ab-container', {
+	title: __( 'AB Container', 'lsx-blocks' ),
+	description: __( 'Add a container block to wrap several blocks in a parent container.', 'lsx-blocks' ),
 	icon: 'editor-table',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'container', 'atomic-blocks' ),
-		__( 'section', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'container', 'lsx-blocks' ),
+		__( 'section', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 
 	attributes: blockAttributes,

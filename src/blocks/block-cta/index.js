@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Call-To-Action
+ * BLOCK: LSX Blocks Call-To-Action
  */
 
 // Import block dependencies and components
@@ -280,15 +280,15 @@ class ABCTABlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-cta', {
+registerBlockType( 'lsx-blocks/ab-cta', {
 	title: __( 'AB Call To Action', 'atomic-blocks' ),
 	description: __( 'Add a call to action section with a title, text, and a button.', 'atomic-blocks' ),
 	icon: 'megaphone',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
 		__( 'call to action', 'atomic-blocks' ),
 		__( 'cta', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'lsx', 'atomic-blocks' ),
 	],
 
 	attributes: blockAttributes,

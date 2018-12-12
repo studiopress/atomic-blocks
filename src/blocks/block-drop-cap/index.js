@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Drop Cap
+ * BLOCK: LSX Blocks Drop Cap
  */
 
 // Import block dependencies and components
@@ -60,7 +60,7 @@ class ABDropCapBlock extends Component {
 				<RichText
 					tagName="div"
 					multiline="p"
-					placeholder={ __( 'Add paragraph text...', 'atomic-blocks' ) }
+					placeholder={ __( 'Add paragraph text...', 'lsx-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ dropCapContent }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
@@ -76,15 +76,15 @@ class ABDropCapBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-drop-cap', {
-	title: __( 'AB Drop Cap', 'atomic-blocks' ),
-	description: __( 'Add a styled drop cap to the beginning of your paragraph.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/ab-drop-cap', {
+	title: __( 'AB Drop Cap', 'lsx-blocks' ),
+	description: __( 'Add a styled drop cap to the beginning of your paragraph.', 'lsx-blocks' ),
 	icon: 'format-quote',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'drop cap', 'atomic-blocks' ),
-		__( 'quote', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'drop cap', 'lsx-blocks' ),
+		__( 'quote', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 	attributes: {
 		dropCapContent: {

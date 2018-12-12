@@ -1,15 +1,15 @@
 <?php
 /**
  * Plugin Name: LSX Blocks
- * Plugin URI: https://atomicblocks.com
- * Description: A beautiful collection of handy Gutenberg blocks to help you get started with the new WordPress editor.
- * Author: atomicblocks
- * Author URI: http://arraythemes.com
- * Version: 1.4.2
+ * Plugin URI: https://www.lsdev.biz/
+ * Description: !!!  A beautiful collection of handy Gutenberg blocks to help you get started with the new WordPress editor.
+ * Author: lightspeed
+ * Author URI: https://www.lsdev.biz/
+ * Version: 1.0.1
  * License: GPL2+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *
- * @package ATOMIC BLOCKS
+ * @package LSX BLOCKS
  */
 
 
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Initialize the blocks
  */
-function atomic_blocks_loader() {
+function lsx_blocks_loader() {
 	/**
 	 * Load the blocks functionality
 	 */
@@ -45,47 +45,47 @@ function atomic_blocks_loader() {
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-post-grid/index.php';
 }
-add_action( 'plugins_loaded', 'atomic_blocks_loader' );
+add_action( 'plugins_loaded', 'lsx_blocks_loader' );
 
 
 /**
  * Load the plugin textdomain
  */
-function atomic_blocks_init() {
-	load_plugin_textdomain( 'atomic-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
+function lsx_blocks_init() {
+	load_plugin_textdomain( 'lsx-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
-add_action( 'init', 'atomic_blocks_init' );
+add_action( 'init', 'lsx_blocks_init' );
 
 
 /**
  * Add a check for our plugin before redirecting
  */
-function atomic_blocks_activate() {
-    add_option( 'atomic_blocks_do_activation_redirect', true );
+function lsx_blocks_activate() {
+	add_option( 'lsx_blocks_do_activation_redirect', true );
 }
-register_activation_hook( __FILE__, 'atomic_blocks_activate' );
+register_activation_hook( __FILE__, 'lsx_blocks_activate' );
 
 
 /**
- * Redirect to the Atomic Blocks Getting Started page on single plugin activation
+ * Redirect to the LSX Blocks Getting Started page on single plugin activation
  */
-function atomic_blocks_redirect() {
-    if ( get_option( 'atomic_blocks_do_activation_redirect', false ) ) {
-        delete_option( 'atomic_blocks_do_activation_redirect' );
+function lsx_blocks_redirect() {
+    if ( get_option( 'lsx_blocks_do_activation_redirect', false ) ) {
+        delete_option( 'lsx_blocks_do_activation_redirect' );
         if( !isset( $_GET['activate-multi'] ) ) {
             wp_redirect( "admin.php?page=atomic-blocks" );
         }
     }
 }
-add_action( 'admin_init', 'atomic_blocks_redirect' );
+add_action( 'admin_init', 'lsx_blocks_redirect' );
 
 
 /**
  * Add image sizes
  */
-function atomic_blocks_image_sizes() {
+function lsx_blocks_image_sizes() {
 	// Post Grid Block
-	add_image_size( 'ab-block-post-grid-landscape', 600, 400, true );
-	add_image_size( 'ab-block-post-grid-square', 600, 600, true );
+	add_image_size( 'lsx-block-post-grid-landscape', 600, 400, true );
+	add_image_size( 'lsx-block-post-grid-square', 600, 600, true );
 }
-add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
+add_action( 'after_setup_theme', 'lsx_blocks_image_sizes' );

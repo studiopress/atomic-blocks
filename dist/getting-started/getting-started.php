@@ -2,7 +2,7 @@
 /**
  * Getting Started page
  *
- * @package Atomic Blocks
+ * @package LSX BLOCKS
  */
 
 /**
@@ -10,7 +10,7 @@
  *
  * since 1.0.0
  */
-function atomic_blocks_start_load_admin_scripts( $hook ) {
+function lsx_blocks_start_load_admin_scripts( $hook ) {
 
 	if ( ! ( $hook == 'toplevel_page_atomic-blocks' ) ) {
 		return;
@@ -32,10 +32,10 @@ function atomic_blocks_start_load_admin_scripts( $hook ) {
 	wp_enqueue_style( 'atomic-blocks-getting-started' );
 
 	// FontAwesome
-	wp_register_style( 'atomic-blocks-fontawesome', plugins_url( '/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ), false, '1.0.0' );
-	wp_enqueue_style( 'atomic-blocks-fontawesome' );
+	wp_register_style( 'lsx-blocks-fontawesome', plugins_url( '/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ), false, '1.0.0' );
+	wp_enqueue_style( 'lsx-blocks-fontawesome' );
 }
-add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
+add_action( 'admin_enqueue_scripts', 'lsx_blocks_start_load_admin_scripts' );
 
 
 /**
@@ -43,19 +43,19 @@ add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
  *
  * since 1.0.0
  */
-function atomic_blocks_getting_started_menu() {
+function lsx_blocks_getting_started_menu() {
 
 	add_menu_page(
 		__( 'Atomic Blocks', 'atomic-blocks' ),
 		__( 'Atomic Blocks', 'atomic-blocks' ),
 		'manage_options',
 		'atomic-blocks',
-		'atomic_blocks_getting_started_page',
+		'lsx_blocks_getting_started_page',
 		'dashicons-screenoptions'
 	);
 
 }
-add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
+add_action( 'admin_menu', 'lsx_blocks_getting_started_menu' );
 
 
 /**
@@ -63,7 +63,7 @@ add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
  *
  * since 1.0.0
  */
-function atomic_blocks_getting_started_page() {
+function lsx_blocks_getting_started_page() {
 
 	/**
 	 * Create recommended plugin install URLs
@@ -289,7 +289,7 @@ function atomic_blocks_getting_started_page() {
 
 				<div class="panel-right">
 
-					<?php if( ! function_exists( 'gutenberg_init' ) || ! function_exists( 'atomic_blocks_loader' ) ) { ?>
+					<?php if( ! function_exists( 'gutenberg_init' ) || ! function_exists( 'lsx_blocks_loader' ) ) { ?>
 					<div class="panel-aside panel-ab-plugin panel-club ab-quick-start">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
@@ -311,7 +311,7 @@ function atomic_blocks_getting_started_page() {
 									<?php } ?>
 								</li>
 
-								<li class="cell <?php if( function_exists( 'atomic_blocks_loader' ) ) { echo 'step-complete'; } ?>">
+								<li class="cell <?php if( function_exists( 'lsx_blocks_loader' ) ) { echo 'step-complete'; } ?>">
 									<strong><?php esc_html_e( '2. Install the Atomic Blocks plugin.', 'atomic-blocks' ); ?></strong>
 									<p><?php esc_html_e( 'Atomic Blocks adds several handy content blocks to the Gutenberg block editor.', 'atomic-blocks' ); ?></p>
 

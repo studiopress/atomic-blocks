@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Notice
+ * BLOCK: LSX Blocks Notice
  */
 
 // Import block dependencies and components
@@ -16,7 +16,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Internationalization
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -95,7 +95,7 @@ class ABNoticeBlock extends Component {
 
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Notice Title', 'atomic-blocks' ) }
+					placeholder={ __( 'Notice Title', 'lsx-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ noticeTitle }
 					className={ classnames(
@@ -110,7 +110,7 @@ class ABNoticeBlock extends Component {
 				<RichText
 					tagName="div"
 					multiline="p"
-					placeholder={ __( 'Add notice text...', 'atomic-blocks' ) }
+					placeholder={ __( 'Add notice text...', 'lsx-blocks' ) }
 					value={ noticeContent }
 					className={ classnames(
 						'ab-notice-text'
@@ -126,15 +126,15 @@ class ABNoticeBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-notice', {
-	title: __( 'AB Notice', 'atomic-blocks' ),
-	description: __( 'Add a stylized text notice.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/ab-notice', {
+	title: __( 'AB Notice', 'lsx-blocks' ),
+	description: __( 'Add a stylized text notice.', 'lsx-blocks' ),
 	icon: 'format-aside',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'notice', 'atomic-blocks' ),
-		__( 'message', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'notice', 'lsx-blocks' ),
+		__( 'message', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 	attributes: {
 		noticeTitle: {

@@ -22,16 +22,16 @@ export default class Accordion extends Component {
 		// Setup the attributes
 		const { accordionTitle, accordionText, accordionAlignment, accordionFontSize } = this.props.attributes;
 
-		return (	
+		return (
 			<div
 				style={ {
-					
+
 				} }
 				className={ classnames(
 					this.props.className,
 					accordionAlignment,
-					'ab-block-accordion',
-					'ab-font-size-' + accordionFontSize,
+					'lsx-block-accordion',
+					'lsx-font-size-' + accordionFontSize,
 				) }
 			>
 				{ this.props.children }

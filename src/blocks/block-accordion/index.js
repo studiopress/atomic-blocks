@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Accordion Block
+ * BLOCK: LSX Blocks Accordion Block
  */
 
 // Import block dependencies and components
@@ -45,12 +45,12 @@ const {
 const blockAttributes = {
 	accordionTitle: {
 		type: 'array',
-		selector: '.ab-accordion-title',
+		selector: '.lsx-accordion-title',
 		source: 'children',
 	},
 	accordionText: {
 		type: 'array',
-		selector: '.ab-accordion-text',
+		selector: '.lsx-accordion-text',
 		source: 'children',
 	},
 	accordionAlignment: {
@@ -66,7 +66,7 @@ const blockAttributes = {
 	},
 };
 
-class ABAccordionBlock extends Component {
+class LSXAccordionBlock extends Component {
 
 	render() {
 
@@ -89,13 +89,13 @@ class ABAccordionBlock extends Component {
 			<Accordion { ...this.props }>
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Accordion Title', 'atomic-blocks' ) }
+					placeholder={ __( 'Accordion Title', 'lsx-blocks' ) }
 					value={ accordionTitle }
-					className="ab-accordion-title"
+					className="lsx-accordion-title"
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
 				/>
 
-				<div class="ab-accordion-text">
+				<div class="lsx-accordion-text">
 					<InnerBlocks />
 				</div>
 			</Accordion>
@@ -104,20 +104,20 @@ class ABAccordionBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-accordion', {
-	title: __( 'AB Accordion', 'atomic-blocks' ),
-	description: __( 'Add accordion block with a title and text.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-accordion', {
+	title: __( 'LSX Accordion', 'lsx-blocks' ),
+	description: __( 'Add accordion block with a title and text.', 'lsx-blocks' ),
 	icon: 'editor-ul',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'accordion', 'atomic-blocks' ),
-		__( 'list', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'accordion', 'lsx-blocks' ),
+		__( 'list', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 	attributes: blockAttributes,
 
 	// Render the block components
-	edit: ABAccordionBlock,
+	edit: LSXAccordionBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
@@ -129,12 +129,12 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 		return (
 			<Accordion { ...props }>
 				<details open={accordionOpen}>
-					<summary class="ab-accordion-title">
+					<summary class="lsx-accordion-title">
 						<RichText.Content
 							value={ accordionTitle }
 						/>
 					</summary>
-					<div class="ab-accordion-text">
+					<div class="lsx-accordion-text">
 						<InnerBlocks.Content />
 					</div>
 				</details>
@@ -146,7 +146,7 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 		attributes: {
 			accordionText: {
 				type: 'array',
-				selector: '.ab-accordion-text',
+				selector: '.lsx-accordion-text',
 				source: 'children',
 			},
 			...blockAttributes
@@ -168,13 +168,13 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 			return (
 				<Accordion { ...props }>
 					<details open={ props.attributes.accordionOpen }>
-						<summary class="ab-accordion-title">
+						<summary class="lsx-accordion-title">
 							<RichText.Content
 								value={ props.attributes.accordionTitle }
 							/>
 						</summary>
 						<RichText.Content
-							class="ab-accordion-text"
+							class="lsx-accordion-text"
 							tagName="p"
 							value={ props.attributes.accordionText }
 						/>

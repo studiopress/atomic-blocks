@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Page Grid
+ * BLOCK: LSX Blocks Page Grid
  */
 
 // Import block dependencies and components
@@ -27,15 +27,15 @@ const validAlignments = [ 'center', 'wide' ];
 export const name = 'core/latest-posts';
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-post-grid', {
-	title: __( 'AB Post Grid', 'atomic-blocks' ),
-	description: __( 'Add a grid or list of customizable posts to your page.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/ab-post-grid', {
+	title: __( 'AB Post Grid', 'lsx-blocks' ),
+	description: __( 'Add a grid or list of customizable posts to your page.', 'lsx-blocks' ),
 	icon: 'grid-view',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'post', 'atomic-blocks' ),
-		__( 'grid', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'post', 'lsx-blocks' ),
+		__( 'grid', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 
 	getEditWrapperProps( attributes ) {

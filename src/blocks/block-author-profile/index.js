@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Profile Box
+ * BLOCK: LSX Blocks Profile Box
  */
 
 // Import block dependencies and components
@@ -208,7 +208,7 @@ class ABAuthorProfileBlock extends Component {
 				>
 					<RichText
 						tagName="h2"
-						placeholder={ __( 'Add name', 'atomic-blocks' ) }
+						placeholder={ __( 'Add name', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileName }
 						className='ab-profile-name'
@@ -220,7 +220,7 @@ class ABAuthorProfileBlock extends Component {
 
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Add title', 'atomic-blocks' ) }
+						placeholder={ __( 'Add title', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileTitle }
 						className='ab-profile-title'
@@ -234,7 +234,7 @@ class ABAuthorProfileBlock extends Component {
 						tagName="div"
 						className='ab-profile-text'
 						multiline="p"
-						placeholder={ __( 'Add profile text...', 'atomic-blocks' ) }
+						placeholder={ __( 'Add profile text...', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileContent }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
@@ -249,15 +249,15 @@ class ABAuthorProfileBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-profile-box', {
-	title: __( 'AB Profile Box', 'atomic-blocks' ),
-	description: __( 'Add a profile box with bio info and social media links.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/ab-profile-box', {
+	title: __( 'AB Profile Box', 'lsx-blocks' ),
+	description: __( 'Add a profile box with bio info and social media links.', 'lsx-blocks' ),
 	icon: 'admin-users',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'author', 'atomic-blocks' ),
-		__( 'profile', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'author', 'lsx-blocks' ),
+		__( 'profile', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 	// Setup the block attributes
 	attributes: blockAttributes,

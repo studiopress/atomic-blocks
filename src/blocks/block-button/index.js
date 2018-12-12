@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Button
+ * BLOCK: LSX Blocks Button
  */
 
 // Import block dependencies and components
@@ -13,7 +13,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -63,7 +63,7 @@ class ABButtonBlock extends Component {
 			<CustomButton { ...this.props }>
 				<RichText
 					tagName="span"
-					placeholder={ __( 'Button text...', 'atomic-blocks' ) }
+					placeholder={ __( 'Button text...', 'lsx-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ buttonText }
 					formattingControls={ [] }
@@ -96,7 +96,7 @@ class ABButtonBlock extends Component {
 					/>
 					<IconButton
 						icon="editor-break"
-						label={ __( 'Apply', 'atomic-blocks' ) }
+						label={ __( 'Apply', 'lsx-blocks' ) }
 						type="submit"
 					/>
 				</form>
@@ -106,15 +106,15 @@ class ABButtonBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-button', {
-	title: __( 'AB Button', 'atomic-blocks' ),
-	description: __( 'Add a customizable button.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/ab-button', {
+	title: __( 'AB Button', 'lsx-blocks' ),
+	description: __( 'Add a customizable button.', 'lsx-blocks' ),
 	icon: 'admin-links',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'button', 'atomic-blocks' ),
-		__( 'link', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'button', 'lsx-blocks' ),
+		__( 'link', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 	attributes: {
 		buttonText: {

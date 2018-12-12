@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Button
+ * BLOCK: LSX Blocks Button
  */
 
 // Import block dependencies and components
@@ -14,7 +14,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -86,15 +86,15 @@ class ABSpacerBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-spacer', {
-	title: __( 'AB Spacer', 'atomic-blocks' ),
-	description: __( 'Add a spacer and divider between your blocks.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/ab-spacer', {
+	title: __( 'AB Spacer', 'lsx-blocks' ),
+	description: __( 'Add a spacer and divider between your blocks.', 'lsx-blocks' ),
 	icon: 'image-flip-vertical',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'spacer', 'atomic-blocks' ),
-		__( 'divider', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'spacer', 'lsx-blocks' ),
+		__( 'divider', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 	attributes: {
 		spacerHeight: {

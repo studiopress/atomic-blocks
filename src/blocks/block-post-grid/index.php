@@ -3,13 +3,13 @@
  * Server-side rendering for the post grid block
  *
  * @since 	1.1.7
- * @package Atomic Blocks
+ * @package LSX BLOCKS
  */
 
 /**
  * Renders the post grid block on server.
  */
-function atomic_blocks_render_block_core_latest_posts( $attributes ) {
+function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 
 	$categories = isset( $attributes['categories'] ) ? $attributes['categories'] : '';
 
@@ -46,9 +46,9 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			// Get the featured image
 			if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
 				if( $attributes['imageCrop'] === 'landscape' ) {
-					$post_thumb_size = 'ab-block-post-grid-landscape';
+					$post_thumb_size = 'lsx-block-post-grid-landscape';
 				} else {
-					$post_thumb_size = 'ab-block-post-grid-square';
+					$post_thumb_size = 'lsx-block-post-grid-square';
 				}
 
 				$list_items_markup .= sprintf(
@@ -67,7 +67,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				$title = get_the_title( $post_id );
 
 				if ( ! $title ) {
-					$title = __( 'Untitled', 'atomic-blocks' );
+					$title = __( 'Untitled', 'lsx-blocks' );
 				}
 
 				$list_items_markup .= sprintf(
@@ -180,14 +180,14 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function atomic_blocks_register_block_core_latest_posts() {
+function lsx_blocks_register_block_core_latest_posts() {
 
 	// Check if the register function exists
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
-	register_block_type( 'atomic-blocks/ab-post-grid', array(
+	register_block_type( 'lsx-blocks/ab-post-grid', array(
 		'attributes' => array(
 			'categories' => array(
 				'type' => 'string',
@@ -252,23 +252,23 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'default' => 'Continue Reading',
 			),
 		),
-		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',
+		'render_callback' => 'lsx_blocks_render_block_core_latest_posts',
 	) );
 }
 
-add_action( 'init', 'atomic_blocks_register_block_core_latest_posts' );
+add_action( 'init', 'lsx_blocks_register_block_core_latest_posts' );
 
 
 /**
  * Create API fields for additional info
  */
-function atomic_blocks_register_rest_fields() {
+function lsx_blocks_register_rest_fields() {
 	// Add landscape featured image source
 	register_rest_field(
 		'post',
 		'featured_image_src',
 		array(
-			'get_callback' => 'atomic_blocks_get_image_src_landscape',
+			'get_callback' => 'lsx_blocks_get_image_src_landscape',
 			'update_callback' => null,
 			'schema' => null,
 		)
@@ -279,7 +279,7 @@ function atomic_blocks_register_rest_fields() {
 		'post',
 		'featured_image_src_square',
 		array(
-			'get_callback' => 'atomic_blocks_get_image_src_square',
+			'get_callback' => 'lsx_blocks_get_image_src_square',
 			'update_callback' => null,
 			'schema' => null,
 		)
@@ -290,22 +290,22 @@ function atomic_blocks_register_rest_fields() {
 		'post',
 		'author_info',
 		array(
-			'get_callback' => 'atomic_blocks_get_author_info',
+			'get_callback' => 'lsx_blocks_get_author_info',
 			'update_callback' => null,
 			'schema' => null,
 		)
 	);
 }
-add_action( 'rest_api_init', 'atomic_blocks_register_rest_fields' );
+add_action( 'rest_api_init', 'lsx_blocks_register_rest_fields' );
 
 
 /**
  * Get landscape featured image source for the rest field
  */
-function atomic_blocks_get_image_src_landscape( $object, $field_name, $request ) {
+function lsx_blocks_get_image_src_landscape( $object, $field_name, $request ) {
 	$feat_img_array = wp_get_attachment_image_src(
 		$object['featured_media'],
-		'ab-block-post-grid-landscape',
+		'lsx-block-post-grid-landscape',
 		false
 	);
 	return $feat_img_array[0];
@@ -314,10 +314,10 @@ function atomic_blocks_get_image_src_landscape( $object, $field_name, $request )
 /**
  * Get square featured image source for the rest field
  */
-function atomic_blocks_get_image_src_square( $object, $field_name, $request ) {
+function lsx_blocks_get_image_src_square( $object, $field_name, $request ) {
 	$feat_img_array = wp_get_attachment_image_src(
 		$object['featured_media'],
-		'ab-block-post-grid-square',
+		'lsx-block-post-grid-square',
 		false
 	);
 	return $feat_img_array[0];
@@ -326,7 +326,7 @@ function atomic_blocks_get_image_src_square( $object, $field_name, $request ) {
 /**
  * Get author info for the rest field
  */
-function atomic_blocks_get_author_info( $object, $field_name, $request ) {
+function lsx_blocks_get_author_info( $object, $field_name, $request ) {
 	// Get the author name
 	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
 

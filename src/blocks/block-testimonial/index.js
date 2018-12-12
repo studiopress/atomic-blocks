@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Testimonial
+ * BLOCK: LSX Blocks Testimonial
  */
 
 // Import block dependencies and components
@@ -87,7 +87,7 @@ class ABTestimonialBlock extends Component {
 				<RichText
 					tagName="div"
 					multiline="p"
-					placeholder={ __( 'Add testimonial text...', 'atomic-blocks' ) }
+					placeholder={ __( 'Add testimonial text...', 'lsx-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ testimonialContent }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
@@ -132,7 +132,7 @@ class ABTestimonialBlock extends Component {
 
 					<RichText
 						tagName="h2"
-						placeholder={ __( 'Add name', 'atomic-blocks' ) }
+						placeholder={ __( 'Add name', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ testimonialName }
 						className='ab-testimonial-name'
@@ -144,7 +144,7 @@ class ABTestimonialBlock extends Component {
 
 					<RichText
 						tagName="small"
-						placeholder={ __( 'Add title', 'atomic-blocks' ) }
+						placeholder={ __( 'Add title', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ testimonialTitle }
 						className='ab-testimonial-title'
@@ -160,15 +160,15 @@ class ABTestimonialBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-testimonial', {
-	title: __( 'AB Testimonial', 'atomic-blocks' ),
-	description: __( 'Add a user testimonial with a name and title.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/ab-testimonial', {
+	title: __( 'AB Testimonial', 'lsx-blocks' ),
+	description: __( 'Add a user testimonial with a name and title.', 'lsx-blocks' ),
 	icon: 'format-quote',
-	category: 'atomic-blocks',
+	category: 'lsx-blocks',
 	keywords: [
-		__( 'testimonial', 'atomic-blocks' ),
-		__( 'quote', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'testimonial', 'lsx-blocks' ),
+		__( 'quote', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 	attributes: {
 		testimonialName: {
