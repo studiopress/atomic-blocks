@@ -25,16 +25,9 @@ export default class Pricing extends Component {
 
 		return (
 			<div
-				style={ {
-					backgroundColor: testimonialBackgroundColor,
-					color: testimonialTextColor,
-				} }
 				className={ classnames(
 					this.props.className,
-					testimonialCiteAlign,
-					{ 'ab-has-avatar': testimonialImgURL },
-					'ab-font-size-' + testimonialFontSize,
-					'ab-block-testimonial'
+					'ab-block-pricing-tables'
 				) }
 			>
 				{ this.props.children }

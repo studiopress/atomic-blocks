@@ -43,7 +43,7 @@ export default class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Columns' ) }
+					label={ __( 'Pricing Columns' ) }
 					value={ columns }
 					onChange={ ( nextColumns ) => {
 						setAttributes( {

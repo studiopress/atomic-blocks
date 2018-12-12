@@ -7,6 +7,10 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import icons from './components/icons';
 
+// Import CSS
+import './styles/style.scss';
+import './styles/editor.scss';
+
 // Internationalization
 const { __ } = wp.i18n;
 
@@ -48,10 +52,13 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 	edit: props => {
 		return (
 			<Fragment>
-				<div>
+				<div class="ab-block-pricing-table">
 					<InnerBlocks
 						template={[
 							// Add placeholder blocks
+							['core/paragraph', {
+								content: '<strong>Professional</strong>'
+							}],
 							['core/heading', {
 								content: '$49',
 								attributes: {
@@ -61,7 +68,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 							['core/list', {
 								values: '<li>test this</li><li>test this two</li><li>test this three</li>',
 								multilineTag: 'li',
-								ordered: true,
+								ordered: false,
 							}],
 							['core/paragraph', {
 								content: 'Lorem ipsum dolor sit amet elit do, consectetur adipiscing, sed eiusmod tempor incididunt ut labore et.'
