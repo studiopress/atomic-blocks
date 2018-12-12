@@ -27,7 +27,6 @@ export default class Pricing extends Component {
 			<div
 				className={ classnames(
 					this.props.className,
-					'ab-block-pricing-tables'
 				) }
 			>
 				{ this.props.children }

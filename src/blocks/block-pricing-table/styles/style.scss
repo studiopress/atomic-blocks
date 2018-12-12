@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .ab-block-pricing-table {
+ .wp-block-atomic-blocks-ab-pricing-table {
 	 vertical-align: top;
 
 	 .block-library-list & ul {
@@ -22,3 +22,15 @@
 		 }
 	 }
  }
+
+.ab-block-pricing-table-center {
+	text-align: center;
+}
+
+.ab-block-pricing-table-left {
+	text-align: left;
+}
+
+.ab-block-pricing-table-right {
+	text-align: right;
+}

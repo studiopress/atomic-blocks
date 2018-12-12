@@ -23,41 +23,44 @@ const { registerBlockType } = wp.blocks;
 // Register editor components
 const {
 	InnerBlocks,
+	AlignmentToolbar,
+	BlockControls,
+	BlockAlignmentToolbar,
 } = wp.editor;
 
 const {
 	Fragment,
 } = wp.element;
 
-// Register the block
-registerBlockType( 'atomic-blocks/ab-pricing-table', {
-	title: __( 'AB Pricing Table', 'atomic-blocks' ),
-	description: __( 'Add a pricing table.', 'atomic-blocks' ),
-	icon: 'cart',
-	category: 'atomic-blocks',
-	parent: [ 'atomic-blocks/ab-pricing' ],
-	keywords: [
-		__( 'pricing table', 'atomic-blocks' ),
-		__( 'shop', 'atomic-blocks' ),
-		__( 'purchase', 'atomic-blocks' ),
-	],
-	attributes: {
-		columns: {
-			type: 'number',
-			default: 3,
-		},
-	},
+class ABPricingTableBlock extends Component {
 
-	// Render the block components
-	edit: props => {
-		return (
+	render() {
+
+		// Setup the attributes
+		const { attributes: { columns, tableAlignment }, isSelected, className, setAttributes } = this.props;
+
+		return [
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ tableAlignment }
+					onChange={ ( value ) => {
+						setAttributes( { tableAlignment: value } );
+					} }
+				/>
+			</BlockControls>,
 			<Fragment>
-				<div class="ab-block-pricing-table">
+				<div className={ classnames(
+					tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+					'ab-block-pricing-table',
+				) }>
 					<InnerBlocks
 						template={[
 							// Add placeholder blocks
-							['core/paragraph', {
-								content: '<strong>Professional</strong>'
+							['core/heading', {
+								content: 'Price Title',
+								attributes: {
+									level: '6',
+								},
 							}],
 							['core/heading', {
 								content: '$49',
@@ -82,8 +85,34 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 					/>
 				</div>
 			</Fragment>
-		);
+		];
+	}
+}
+
+// Register the block
+registerBlockType( 'atomic-blocks/ab-pricing-table', {
+	title: __( 'AB Pricing Table', 'atomic-blocks' ),
+	description: __( 'Add a pricing table.', 'atomic-blocks' ),
+	icon: 'cart',
+	category: 'atomic-blocks',
+	parent: [ 'atomic-blocks/ab-pricing' ],
+	keywords: [
+		__( 'pricing table', 'atomic-blocks' ),
+		__( 'shop', 'atomic-blocks' ),
+		__( 'purchase', 'atomic-blocks' ),
+	],
+	attributes: {
+		columns: {
+			type: 'number',
+			default: 3,
+		},
+		tableAlignment: {
+			type: 'string',
+		},
 	},
+
+	// Render the block components
+	edit: ABPricingTableBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
@@ -91,11 +120,14 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		// Setup the attributes
 		const {
 			columns,
+			tableAlignment,
 		} = props.attributes;
 
 		// Save the block markup for the front end
 		return (
-			<div>
+			<div className={ classnames(
+				tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+			) }>
 				<InnerBlocks.Content />
 			</div>
 		);

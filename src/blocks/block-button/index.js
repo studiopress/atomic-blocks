@@ -167,7 +167,8 @@ registerBlockType( 'atomic-blocks/ab-button', {
 					buttonText && (
 					<a
 						href={ buttonUrl }
-						target={ buttonTarget ? '_blank' : '_self' }
+						target={ buttonTarget ? '_blank' : null }
+						rel={ buttonTarget ? 'noopener noreferrer' : null }
 						className={ classnames(
 							'ab-button',
 							buttonShape,
