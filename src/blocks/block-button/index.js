@@ -13,7 +13,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -167,7 +167,8 @@ registerBlockType( 'atomic-blocks/ab-button', {
 					buttonText && (
 					<a
 						href={ buttonUrl }
-						target={ buttonTarget ? '_blank' : '_self' }
+						target={ buttonTarget ? '_blank' : null }
+						rel={ buttonTarget ? 'noopener noreferrer' : null }
 						className={ classnames(
 							'ab-button',
 							buttonShape,
