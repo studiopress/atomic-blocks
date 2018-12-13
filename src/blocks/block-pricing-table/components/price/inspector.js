@@ -18,6 +18,7 @@ const {
 
 const {
 	withFallbackStyles,
+	PanelBody,
 } = wp.components;
 
 // Compose
@@ -48,23 +49,24 @@ class Inspector extends Component {
 		const {
 			attributes: {
 				price,
-				fontSize,
-				customFontSize
 			},
+			attributes,
+			fallbackFontSize,
+			fontSize,
+			isSelected,
 			setAttributes,
 			setFontSize,
-			className,
-			fallbackFontSize
 		} = this.props;
 
 		return (
 		<InspectorControls key="inspector">
-			<FontSizePicker
-				fallbackFontSize={ fallbackFontSize }
-				value={ fontSize }
-				onChange={ setFontSize }
-				withSlider={ true }
-			/>
+			<PanelBody title={ __( 'Text Settings', 'atomic-blocks' ) }>
+				<FontSizePicker
+					fallbackFontSize={ fallbackFontSize }
+					value={ fontSize.size }
+					onChange={ setFontSize }
+				/>
+			</PanelBody>
 		</InspectorControls>
 		);
 	}

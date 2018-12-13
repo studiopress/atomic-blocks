@@ -32,14 +32,14 @@ class Edit extends Component {
 		const {
 			attributes: {
 				price,
-				fontSize,
-				customFontSize
 			},
 			isSelected,
 			className,
 			setAttributes,
 			setFontSize,
-			fallbackFontSize
+			fallbackFontSize,
+			fontSize,
+			customFontSize
 		} = this.props;
 
 		return [
