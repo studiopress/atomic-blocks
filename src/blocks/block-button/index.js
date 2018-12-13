@@ -38,7 +38,7 @@ const {
 	Dashicon,
 } = wp.components;
 
-class ABButtonBlock extends Component {
+class LSXButtonBlock extends Component {
 
 	render() {
 
@@ -68,7 +68,7 @@ class ABButtonBlock extends Component {
 					value={ buttonText }
 					formattingControls={ [] }
 					className={ classnames(
-						'ab-button',
+						'lsx-button',
 						buttonShape,
 						buttonSize,
 					) }
@@ -82,7 +82,7 @@ class ABButtonBlock extends Component {
 			isSelected && (
 				<form
 					key="form-link"
-					className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
+					className={ `blocks-button__inline-link lsx-button-${buttonAlignment}`}
 					onSubmit={ event => event.preventDefault() }
 					style={ {
 						textAlign: buttonAlignment,
@@ -106,8 +106,8 @@ class ABButtonBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-button', {
-	title: __( 'AB Button', 'lsx-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-button', {
+	title: __( 'LSX Button', 'lsx-blocks' ),
 	description: __( 'Add a customizable button.', 'lsx-blocks' ),
 	icon: 'admin-links',
 	category: 'lsx-blocks',
@@ -139,11 +139,11 @@ registerBlockType( 'lsx-blocks/ab-button', {
 		},
 		buttonSize: {
 			type: 'string',
-			default: 'ab-button-size-medium'
+			default: 'lsx-button-size-medium'
 		},
 		buttonShape: {
 			type: 'string',
-			default: 'ab-button-shape-rounded'
+			default: 'lsx-button-shape-rounded'
 		},
 		buttonTarget: {
 			type: 'boolean',
@@ -152,7 +152,7 @@ registerBlockType( 'lsx-blocks/ab-button', {
 	},
 
 	// Render the block components
-	edit: ABButtonBlock,
+	edit: LSXButtonBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
@@ -169,7 +169,7 @@ registerBlockType( 'lsx-blocks/ab-button', {
 						href={ buttonUrl }
 						target={ buttonTarget ? '_blank' : '_self' }
 						className={ classnames(
-							'ab-button',
+							'lsx-button',
 							buttonShape,
 							buttonSize,
 						) }

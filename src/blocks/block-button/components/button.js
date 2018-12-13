@@ -19,14 +19,14 @@ export default class customButton extends Component {
 
 	render() {
 
-		return (	
-			<div 
+		return (
+			<div
 				style={ {
 					textAlign: this.props.attributes.buttonAlignment,
 				} }
 				className={ classnames(
 					this.props.className,
-					'ab-block-button'
+					'lsx-block-button'
 				) }
 			>
 				{ this.props.children }

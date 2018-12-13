@@ -43,29 +43,29 @@ export default class Inspector extends Component {
 
 		// Button size values
 		const buttonSizeOptions = [
-			{ value: 'ab-button-size-small', label: __( 'Small' ) },
-			{ value: 'ab-button-size-medium', label: __( 'Medium' ) },
-			{ value: 'ab-button-size-large', label: __( 'Large' ) },
-			{ value: 'ab-button-size-extralarge', label: __( 'Extra Large' ) },
+			{ value: 'lsx-button-size-small', label: __( 'Small' ) },
+			{ value: 'lsx-button-size-medium', label: __( 'Medium' ) },
+			{ value: 'lsx-button-size-large', label: __( 'Large' ) },
+			{ value: 'lsx-button-size-extralarge', label: __( 'Extra Large' ) },
 		];
 
 		// Button shape
 		const buttonShapeOptions = [
-			{ value: 'ab-button-shape-square', label: __( 'Square' ) },
-			{ value: 'ab-button-shape-rounded', label: __( 'Rounded Square' ) },
-			{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
+			{ value: 'lsx-button-shape-square', label: __( 'Square' ) },
+			{ value: 'lsx-button-shape-rounded', label: __( 'Rounded Square' ) },
+			{ value: 'lsx-button-shape-circular', label: __( 'Circular' ) },
 		];
 
 		// Button colors
 		const buttonColors = [
-			{ color: '#00d1b2', name: 'teal' },
-			{ color: '#3373dc', name: 'royal blue' },
-			{ color: '#209cef', name: 'sky blue' },
-			{ color: '#22d25f', name: 'green' },
-			{ color: '#ffdd57', name: 'yellow' },
-			{ color: '#ff3860', name: 'pink' },
-			{ color: '#7941b6', name: 'purple' },
-			{ color: '#392F43', name: 'black' },
+			{ color: '#F7941D', name: 'yellow' },
+			{ color: '#C4771B', name: 'dark yellow' },
+			{ color: '#418AD0', name: 'blue' },
+			{ color: '#27639D', name: 'dark blue' },
+			{ color: '#6BA913', name: 'green' },
+			{ color: '#3f640b', name: 'dark green' },
+			{ color: '#000000', name: 'black' },
+			{ color: '#ffffff', name: 'white' },
 		];
 
 		// Update color values

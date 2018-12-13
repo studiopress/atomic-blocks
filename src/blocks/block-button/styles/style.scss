@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .ab-block-button {
+ .lsx-block-button {
 	margin: 0 0 1.2em 0;
 	position: relative;
 
@@ -18,64 +18,71 @@
 		position: relative;
 	}
 
-	.ab-button {
+	.lsx-button {
 		text-align: center;
-		font-size: 18px;
-		line-height: 1 !important;
 		background-color: #32373c;
-		border: none;
 		border-radius: 50px;
 		box-shadow: none;
 		color: #fff;
 		cursor: pointer;
-		padding: .6em 1em;
 		text-decoration: none;
 		word-break: break-word;
-		transition: .3s ease;
+		border: 0 none;
+		border-radius: 3px;
 		display: inline-block;
-
+		font-size: 14px;
+		font-weight: 700;
+		height: 48px;
+		left: 0;
+		letter-spacing: 0.6px;
+		line-height: 1.25;
+		padding: 15px 40px;
+		position: relative;
+		top: 0;
+		transition: all 100ms ease;
+		box-shadow: 2px 2px 0 0 #27639e;
 		&:hover {
-			box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
+			background-color: #27639e;
 		}
 	}
 
-	.ab-button-shape-square {
+	.lsx-button-shape-square {
 		border-radius: 0;
 	}
 
-	.ab-button-shape-rounded {
-		border-radius: 5px;
+	.lsx-button-shape-rounded {
+		border-radius: 3px;
 	}
 
-	.ab-button-shape-circular {
+	.lsx-button-shape-circular {
 		border-radius: 100px;
 	}
 
-	.ab-button-size-small {
+	.lsx-button-size-small {
 		font-size: 14px;
 	}
 
-	.ab-button-size-medium {
+	.lsx-button-size-medium {
 		font-size: 20px;
 	}
 
-	.ab-button-size-large {
+	.lsx-button-size-large {
 		font-size: 26px;
 		padding: .8em 1.2em;
 	}
 
-	.ab-button-size-extralarge {
+	.lsx-button-size-extralarge {
 		font-size: 34px;
 		padding: .8em 1.2em;
 	}
 }
 
-.ab-button-right {
+.lsx-button-right {
 	transform: translateX(-100%);
 	left: 100%;
 	position: relative;
 }
 
-.ab-button-center {
+.lsx-button-center {
 	margin: 0 auto;
 }

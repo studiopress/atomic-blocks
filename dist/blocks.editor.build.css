@@ -608,14 +608,14 @@
 /**
  * Editor styles for the admin
  */
-.ab-block-button + .blocks-button__inline-link .editor-url-input {
+.lsx-block-button + .blocks-button__inline-link .editor-url-input {
   display: inline-block;
   width: auto; }
 
-.ab-block-button + .blocks-button__inline-link .components-button {
+.lsx-block-button + .blocks-button__inline-link .components-button {
   display: inline-block; }
 
-.ab-block-button + .blocks-button__inline-link svg {
+.lsx-block-button + .blocks-button__inline-link svg {
   vertical-align: middle;
   margin-right: 8px; }
 /**
