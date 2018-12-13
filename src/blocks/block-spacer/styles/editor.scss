@@ -2,15 +2,15 @@
  * Editor styles for the admin
  */
 
-.editor-block-list__layout [data-type="atomic-blocks/ab-spacer"] {
+.editor-block-list__layout [data-type="lsx-blocks/lsx-spacer"] {
     margin-bottom: 1.2em;
 }
 
-.ab-block-spacer {
+.lsx-block-spacer {
 	border: dashed 1px #ddd;
 	margin-bottom: 0;
 
-	.ab-spacer-handle {
+	.lsx-spacer-handle {
 		margin-bottom: 0;
 	}
 
@@ -32,7 +32,7 @@
 	}
 }
 
-.ab-spacer-control__resize-handle {
+.lsx-spacer-control__resize-handle {
 	background: none;
 	background: none;
 	border-radius: 0;
@@ -44,8 +44,8 @@
 	width: 100% !important;
 	z-index: 999;
 
-	.editor-block-list__block[data-type="atomic-blocks/ab-spacer"].is-selected &,
-	.editor-block-list__block[data-type="atomic-blocks/ab-spacer"].is-hovered & {
+	.editor-block-list__block[data-type="lsx-blocks/lsx-spacer"].is-selected &,
+	.editor-block-list__block[data-type="lsx-blocks/lsx-spacer"].is-hovered & {
 		display: block;
 	}
 

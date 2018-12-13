@@ -39,7 +39,7 @@ const {
 	Dashicon,
 } = wp.components;
 
-class ABSpacerBlock extends Component {
+class LSXSpacerBlock extends Component {
 
 	render() {
 
@@ -54,7 +54,7 @@ class ABSpacerBlock extends Component {
 			// Show the button markup in the editor
 			<Spacer { ...this.props }>
 				<Resizable
-					className={ classnames( className, 'ab-spacer-handle' ) }
+					className={ classnames( className, 'lsx-spacer-handle' ) }
 					style={ {
 						color: spacerDividerColor
 					} }
@@ -66,7 +66,7 @@ class ABSpacerBlock extends Component {
 					maxWidth= { '100%' }
 					minHeight= { '100%' }
 					handleClasses={ {
-						bottomLeft: 'ab-spacer-control__resize-handle',
+						bottomLeft: 'lsx-spacer-control__resize-handle',
 					} }
 					enable={ { top: false, right: false, bottom: true, left: false, topRight: false, bottomRight: false, bottomLeft: true, topLeft: false } }
 					onResizeStart={ () => {
@@ -86,8 +86,8 @@ class ABSpacerBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-spacer', {
-	title: __( 'AB Spacer', 'lsx-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-spacer', {
+	title: __( 'LSX Divider', 'lsx-blocks' ),
 	description: __( 'Add a spacer and divider between your blocks.', 'lsx-blocks' ),
 	icon: 'image-flip-vertical',
 	category: 'lsx-blocks',
@@ -107,7 +107,7 @@ registerBlockType( 'lsx-blocks/ab-spacer', {
 		},
 		spacerDividerStyle: {
 			type: 'string',
-			default: 'ab-divider-solid'
+			default: 'lsx-divider-solid'
 		},
 		spacerDividerColor: {
 			type: 'string',
@@ -120,7 +120,7 @@ registerBlockType( 'lsx-blocks/ab-spacer', {
 	},
 
 	// Render the block components
-	edit: ABSpacerBlock,
+	edit: LSXSpacerBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {

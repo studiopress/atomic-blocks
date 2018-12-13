@@ -37,24 +37,27 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = this.props.attributes;
+		//const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = this.props.attributes;
+
+		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight }, isSelected, className, setAttributes } = this.props;
 
 		// Button size values
 		const spacerStyleOptions = [
-			{ value: 'ab-divider-solid', label: __( 'Solid' ) },
-			{ value: 'ab-divider-dashed', label: __( 'Dashed' ) },
-			{ value: 'ab-divider-dotted', label: __( 'Dotted' ) },
+			{ value: 'lsx-divider-solid', label: __( 'Solid' ) },
+			{ value: 'lsx-divider-dashed', label: __( 'Dashed' ) },
+			{ value: 'lsx-divider-dotted', label: __( 'Dotted' ) },
 		];
 
 		// Divider color
 		const dividerColor = [
-			{ color: '#ddd', name: 'white' },
-			{ color: '#333', name: 'black' },
-			{ color: '#3373dc', name: 'royal blue' },
-			{ color: '#22d25f', name: 'green' },
-			{ color: '#ffdd57', name: 'yellow' },
-			{ color: '#ff3860', name: 'pink' },
-			{ color: '#7941b6', name: 'purple' },
+			{ color: '#F7941D', name: 'yellow' },
+			{ color: '#C4771B', name: 'dark yellow' },
+			{ color: '#418AD0', name: 'blue' },
+			{ color: '#27639D', name: 'dark blue' },
+			{ color: '#6BA913', name: 'green' },
+			{ color: '#3f640b', name: 'dark green' },
+			{ color: '#000000', name: 'black' },
+			{ color: '#ffffff', name: 'white' },
 		];
 
 		// Update color values
