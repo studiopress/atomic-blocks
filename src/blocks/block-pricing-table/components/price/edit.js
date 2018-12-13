@@ -2,23 +2,15 @@
 import classnames from 'classnames';
 import Inspector from './inspector';
 
-// Internationalization
 const { __ } = wp.i18n;
-
-// Extend component
+const { registerBlockType } = wp.blocks;
+const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 
-// Register block
-const { registerBlockType } = wp.blocks;
-
-// Register editor components
 const {
 	RichText,
   	withFontSizes,
 } = wp.editor;
-
-// Compose
-const { compose } = wp.compose;
 
 class Edit extends Component {
 
@@ -36,10 +28,8 @@ class Edit extends Component {
 			isSelected,
 			className,
 			setAttributes,
-			setFontSize,
 			fallbackFontSize,
 			fontSize,
-			customFontSize
 		} = this.props;
 
 		return [

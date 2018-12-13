@@ -7,27 +7,18 @@ import classnames from 'classnames';
 import Inspector from './inspector';
 import Edit from './edit';
 import icons from '../icons';
-import get from 'lodash/get';
 
-// Internationalization
 const { __ } = wp.i18n;
-
-// Extend component
+const { registerBlockType } = wp.blocks;
+const { compose } = wp.compose;
 const { Component } = wp.element;
 
-// Register block
-const { registerBlockType } = wp.blocks;
-
-// Register editor components
 const {
 	RichText,
 	getFontSizeClass,
 	FontSizePicker,
   	withFontSizes,
 } = wp.editor;
-
-// Compose
-const { compose } = wp.compose;
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
@@ -67,8 +58,10 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			customFontSize,
 		} = props.attributes;
 
+		// Retreive the fontSizeClass
 		const fontSizeClass = getFontSizeClass( fontSize );
 
+		// If there is no fontSizeClass, use customFontSize
 		const styles = {
 			fontSize: fontSizeClass ? undefined : customFontSize,
 		};
@@ -88,9 +81,3 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 		);
 	},
 } );
-
-export default compose( [
-	// applyWithColors,
-	// applyFallbackStyles,
-	withFontSizes( 'fontSize' ),
-] )( Inspector );
