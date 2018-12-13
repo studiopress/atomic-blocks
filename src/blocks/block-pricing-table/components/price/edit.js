@@ -68,7 +68,5 @@ class Edit extends Component {
 }
 
 export default compose( [
-	// applyWithColors,
-	// applyFallbackStyles,
 	withFontSizes( 'fontSize' ),
-] )( Inspector );
+] )( Edit );
