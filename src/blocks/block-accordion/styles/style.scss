@@ -4,12 +4,11 @@
  */
 
  .lsx-block-accordion {
-	 margin-bottom: 1.2em;
-
+	margin-bottom: 1.2em;
+	background: #F5F5F5;
+	border: 1px solid #E0E0E0;
 	.lsx-accordion-title {
-		background: #f2f2f2;
 		padding: 10px 15px;
-
 		p {
 			display: inline;
 		}

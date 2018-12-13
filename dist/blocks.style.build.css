@@ -1200,9 +1200,10 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
  * Loads on front end and back end
  */
 .lsx-block-accordion {
-  margin-bottom: 1.2em; }
+  margin-bottom: 1.2em;
+  background: #F5F5F5;
+  border: 1px solid #E0E0E0; }
   .lsx-block-accordion .lsx-accordion-title {
-    background: #f2f2f2;
     padding: 10px 15px; }
     .lsx-block-accordion .lsx-accordion-title p {
       display: inline; }

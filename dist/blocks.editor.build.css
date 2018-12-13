@@ -878,7 +878,9 @@
  * Editor styles for the admin
  */
 .lsx-block-accordion {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  background: #F5F5F5;
+  border: 1px solid #E0E0E0; }
 
 .editor-block-list__layout [data-type="lsx-blocks/lsx-accordion"] {
   margin-bottom: 1.2em; }
