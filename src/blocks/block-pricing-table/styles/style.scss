@@ -25,6 +25,15 @@
 
 .ab-block-pricing-table-center {
 	text-align: center;
+
+	.ab-block-button {
+		text-align: center !important;
+	}
+
+	.blocks-button__inline-link {
+		margin: 0 auto;
+		text-align: center;
+	}
 }
 
 .ab-block-pricing-table-left {

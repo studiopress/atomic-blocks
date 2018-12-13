@@ -15,3 +15,6 @@ import './blocks/block-post-grid/index.js';
 import './blocks/block-container/index.js';
 import './blocks/block-pricing/index.js';
 import './blocks/block-pricing-table/index.js';
+import './blocks/block-pricing-table/components/price/price.js';
+import './blocks/block-pricing-table/components/description/description.js';
+import './blocks/block-pricing-table/components/title/title.js';

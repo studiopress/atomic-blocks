@@ -49,27 +49,25 @@ class ABPricingTableBlock extends Component {
 				/>
 			</BlockControls>,
 			<Fragment>
-				<div className={ classnames(
-					tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
-					'ab-block-pricing-table',
-				) }>
+				<div
+					className={ classnames(
+						tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+						'ab-block-pricing-table',
+					) }
+					itemscope
+					itemtype="http://schema.org/Product"
+				>
 					<InnerBlocks
 						template={[
 							// Add placeholder blocks
-							['core/heading', {
-								content: 'Price Title',
-								attributes: {
-									level: '6',
-								},
+							['atomic-blocks/ab-pricing-table-title', {
+								title: 'Price Title',
 							}],
-							['core/heading', {
-								content: '$49',
-								attributes: {
-									level: '4',
-								},
+							['atomic-blocks/ab-pricing-table-price', {
+								price: '$49',
 							}],
-							['core/list', {
-								values: '<li>test this</li><li>test this two</li><li>test this three</li>',
+							['atomic-blocks/ab-pricing-table-description', {
+								description: '<li>test this</li><li>test this two</li><li>test this three</li>',
 								multilineTag: 'li',
 								ordered: false,
 							}],
@@ -125,9 +123,13 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 
 		// Save the block markup for the front end
 		return (
-			<div className={ classnames(
-				tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
-			) }>
+			<div
+				className={ classnames(
+					tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+				) }
+				itemscope
+				itemtype="http://schema.org/Product"
+			>
 				<InnerBlocks.Content />
 			</div>
 		);
