@@ -2075,30 +2075,30 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
  * Container styles
  * Loads on front end and back end
  */
-.ab-block-container {
+.lsx-block-container {
   margin: 0 0 1.2em 0;
   position: relative;
   padding: 0; }
-  .ab-block-container.alignfull .editor-block-list__block {
+  .lsx-block-container.alignfull .editor-block-list__block {
     max-width: 100%; }
   @media only screen and (min-width: 768px) {
-    .ab-block-container.alignfull .ab-container-inside,
-    .ab-block-container.alignfull .ab-container-inside {
+    .lsx-block-container.alignfull .lsx-container-inside,
+    .lsx-block-container.alignfull .lsx-container-inside {
       max-width: 100%;
       margin: 0 auto; } }
   @media only screen and (min-width: 768px) {
-    .ab-block-container.alignwide .ab-container-inside,
-    .ab-block-container.alignwide .ab-container-inside {
+    .lsx-block-container.alignwide .lsx-container-inside,
+    .lsx-block-container.alignwide .lsx-container-inside {
       max-width: 80%;
       margin: 0 auto; } }
-  .ab-block-container .ab-container-image-wrap {
+  .lsx-block-container .lsx-container-image-wrap {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     height: 100%;
     z-index: 0; }
-  .ab-block-container .ab-container-image {
+  .lsx-block-container .lsx-container-image {
     -o-object-fit: cover;
        object-fit: cover;
     height: 100%;
@@ -2106,30 +2106,30 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-transition: .3s ease;
     -o-transition: .3s ease;
     transition: .3s ease; }
-  .ab-block-container .ab-container-content {
+  .lsx-block-container .lsx-container-content {
     margin: 0 auto;
     position: relative; }
-  .ab-block-container .ab-container-image:not(.has-background-dim) {
+  .lsx-block-container .lsx-container-image:not(.has-background-dim) {
     opacity: 0; }
-  .ab-block-container .has-background-dim {
+  .lsx-block-container .has-background-dim {
     opacity: .5; }
-  .ab-block-container .has-background-dim-10 {
+  .lsx-block-container .has-background-dim-10 {
     opacity: .1; }
-  .ab-block-container .has-background-dim-20 {
+  .lsx-block-container .has-background-dim-20 {
     opacity: .2; }
-  .ab-block-container .has-background-dim-30 {
+  .lsx-block-container .has-background-dim-30 {
     opacity: .3; }
-  .ab-block-container .has-background-dim-40 {
+  .lsx-block-container .has-background-dim-40 {
     opacity: .4; }
-  .ab-block-container .has-background-dim-50 {
+  .lsx-block-container .has-background-dim-50 {
     opacity: .5; }
-  .ab-block-container .has-background-dim-60 {
+  .lsx-block-container .has-background-dim-60 {
     opacity: .6; }
-  .ab-block-container .has-background-dim-70 {
+  .lsx-block-container .has-background-dim-70 {
     opacity: .7; }
-  .ab-block-container .has-background-dim-80 {
+  .lsx-block-container .has-background-dim-80 {
     opacity: .8; }
-  .ab-block-container .has-background-dim-90 {
+  .lsx-block-container .has-background-dim-90 {
     opacity: .9; }
-  .ab-block-container .has-background-dim-100 {
+  .lsx-block-container .has-background-dim-100 {
     opacity: 1; }

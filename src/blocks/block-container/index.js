@@ -98,7 +98,7 @@ const blockAttributes = {
 	},
 };
 
-class ABContainerBlock extends Component {
+class LSXContainerBlock extends Component {
 
 	render() {
 
@@ -149,12 +149,12 @@ class ABContainerBlock extends Component {
 			/>,
 			// Show the container markup in the editor
 			<Container { ...this.props }>
-				<div class="ab-container-inside">
+				<div class="lsx-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
-						<div class="ab-container-image-wrap">
+						<div class="lsx-container-image-wrap">
 							<img
 								className={ classnames(
-									'ab-container-image',
+									'lsx-container-image',
 									dimRatioToClass( containerDimRatio ),
 									{
 										'has-background-dim': containerDimRatio !== 0,
@@ -167,7 +167,7 @@ class ABContainerBlock extends Component {
 					) }
 
 					<div
-						class="ab-container-content"
+						class="lsx-container-content"
 						style={ {
 							maxWidth: `${containerMaxWidth}px`,
 						} }
@@ -181,8 +181,8 @@ class ABContainerBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-container', {
-	title: __( 'AB Container', 'lsx-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-container', {
+	title: __( 'LSX Container', 'lsx-blocks' ),
 	description: __( 'Add a container block to wrap several blocks in a parent container.', 'lsx-blocks' ),
 	icon: 'editor-table',
 	category: 'lsx-blocks',
@@ -201,7 +201,7 @@ registerBlockType( 'lsx-blocks/ab-container', {
 	},
 
 	// Render the block components
-	edit: ABContainerBlock,
+	edit: LSXContainerBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
@@ -226,12 +226,12 @@ registerBlockType( 'lsx-blocks/ab-container', {
 		// Save the block markup for the front end
 		return (
 			<Container { ...props }>
-				<div class="ab-container-inside">
+				<div class="lsx-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
-						<div class="ab-container-image-wrap">
+						<div class="lsx-container-image-wrap">
 							<img
 								className={ classnames(
-									'ab-container-image',
+									'lsx-container-image',
 									dimRatioToClass( containerDimRatio ),
 									{
 										'has-background-dim': containerDimRatio !== 0,
@@ -244,7 +244,7 @@ registerBlockType( 'lsx-blocks/ab-container', {
 					) }
 
 					<div
-						class="ab-container-content"
+						class="lsx-container-content"
 						style={ {
 							maxWidth: `${containerMaxWidth}px`,
 						} }

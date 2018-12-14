@@ -21,7 +21,7 @@ export default class Container extends Component {
 		// Setup the attributes
 		const { attributes: { containerBackgroundColor, containerAlignment, containerPaddingTop, containerPaddingRight, containerPaddingBottom, containerPaddingLeft, containerMarginTop, containerMarginBottom, containerWidth, containerMaxWidth }  } = this.props;
 
-		return (	
+		return (
 			<div
 				style={ {
 					backgroundColor: containerBackgroundColor,
@@ -36,7 +36,7 @@ export default class Container extends Component {
 				className={ classnames(
 					this.props.className,
 					`align${containerWidth}`,
-					'ab-block-container',
+					'lsx-block-container',
 				) }
 			>{ this.props.children }</div>
 		);
