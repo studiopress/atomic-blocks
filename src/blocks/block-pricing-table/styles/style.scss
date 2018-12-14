@@ -6,22 +6,23 @@
  .wp-block-atomic-blocks-ab-pricing-table {
 	 vertical-align: top;
 
-	 .block-library-list & ul {
+	.ab-pricing-table-description,
+	.block-library-list & ul {
 		margin: 0;
 		padding: 0;
-	 }
-
-	 li {
-		 list-style: none;
-		 border-bottom: solid 1px #eee;
-		 margin: 0;
-		 padding: 10px 0;
-
-		 &:last-child {
-			 border-bottom: none;
-		 }
-	 }
+	}
  }
+
+ul.ab-pricing-table-description li {
+	list-style: none;
+	border-bottom: solid 1px #eee;
+	margin: 0;
+	padding: 10px 0;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
 
 .ab-block-pricing-table-center {
 	text-align: center;
@@ -42,4 +43,8 @@
 
 .ab-block-pricing-table-right {
 	text-align: right;
+}
+
+.ab-pricing-table-price.has-background {
+	padding: 10px 15px;
 }

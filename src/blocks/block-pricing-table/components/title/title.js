@@ -4,44 +4,20 @@
 
 // Import block dependencies and components
 import classnames from 'classnames';
+import Edit from './edit';
 import icons from '../icons';
 
-// Internationalization
 const { __ } = wp.i18n;
-
-// Extend component
+const { registerBlockType } = wp.blocks;
+const { compose } = wp.compose;
 const { Component } = wp.element;
 
-// Register block
-const { registerBlockType } = wp.blocks;
-
-// Register editor components
 const {
 	RichText,
+	getFontSizeClass,
+	FontSizePicker,
+  	withFontSizes,
 } = wp.editor;
-
-class ABPricingTableTitle extends Component {
-
-	render() {
-
-		// Setup the attributes
-		const { attributes: { title }, isSelected, className, setAttributes } = this.props;
-
-		return [
-			<RichText
-				tagName="div"
-				itemprop="name"
-				placeholder={ __( 'Price Title', 'atomic-blocks' ) }
-				keepPlaceholderOnFocus
-				value={ title }
-				onChange={ ( value ) => setAttributes( { title: value } ) }
-				className={ classnames(
-					'ab-pricing-table-title'
-				) }
-			/>
-		];
-	}
-}
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
@@ -60,18 +36,34 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 		title: {
 			type: 'string',
 		},
+		fontSize: {
+			type: 'string',
+		},
+		customFontSize: {
+			type: 'number',
+		},
 	},
 
 	// Render the block components
-	edit: ABPricingTableTitle,
+	edit: Edit,
 
 	// Save the attributes and markup
 	save: function( props ) {
 
 		// Setup the attributes
 		const {
-			title
+			title,
+			fontSize,
+			customFontSize,
 		} = props.attributes;
+
+		// Retreive the fontSizeClass
+		const fontSizeClass = getFontSizeClass( fontSize );
+
+		// If there is no fontSizeClass, use customFontSize
+		const styles = {
+			fontSize: fontSizeClass ? undefined : customFontSize,
+		};
 
 		// Save the block markup for the front end
 		return (
@@ -79,8 +71,10 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 				tagName="div"
 				itemprop="name"
 				value={ title }
+				style={ styles }
 				className={ classnames(
-					'ab-pricing-table-title'
+					'ab-pricing-table-title',
+					fontSizeClass
 				) }
 			/>
 		);

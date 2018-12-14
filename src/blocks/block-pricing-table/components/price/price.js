@@ -4,7 +4,6 @@
 
 // Import block dependencies and components
 import classnames from 'classnames';
-import Inspector from './inspector';
 import Edit from './edit';
 import icons from '../icons';
 
@@ -17,7 +16,8 @@ const {
 	RichText,
 	getFontSizeClass,
 	FontSizePicker,
-  	withFontSizes,
+	withFontSizes,
+	getColorClassName,
 } = wp.editor;
 
 // Register the block
@@ -43,6 +43,18 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 		customFontSize: {
 			type: 'number',
 		},
+		textColor: {
+			type: 'string',
+		},
+		customTextColor: {
+			type: 'string',
+		},
+		backgroundColor: {
+			type: 'string',
+		},
+		customBackgroundColor: {
+			type: 'string',
+		},
 	},
 
 	// Render the block components
@@ -56,15 +68,33 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			price,
 			fontSize,
 			customFontSize,
+			backgroundColor,
+			textColor,
+			customBackgroundColor,
+			customTextColor,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
 		const fontSizeClass = getFontSizeClass( fontSize );
 
+		// Retreive the getColorClassName
+		const textClass = getColorClassName( 'color', textColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
 		// If there is no fontSizeClass, use customFontSize
 		const styles = {
 			fontSize: fontSizeClass ? undefined : customFontSize,
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			color: textClass ? undefined : customTextColor,
 		};
+
+		const className = classnames( {
+			'has-background': backgroundColor || customBackgroundColor,
+			'ab-pricing-table-price': true,
+			[ fontSizeClass ]: fontSizeClass,
+			[ textClass ]: textClass,
+			[ backgroundClass ]: backgroundClass,
+		} );
 
 		// Save the block markup for the front end
 		return (
@@ -73,10 +103,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 				itemprop="price"
 				value={ price }
 				style={ styles }
-				className={ classnames(
-					'ab-pricing-table-price',
-					fontSizeClass
-				) }
+				className={ className ? className : undefined }
 			/>
 		);
 	},

@@ -2347,16 +2347,18 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
  */
 .wp-block-atomic-blocks-ab-pricing-table {
   vertical-align: top; }
+  .wp-block-atomic-blocks-ab-pricing-table .ab-pricing-table-description,
   .block-library-list .wp-block-atomic-blocks-ab-pricing-table ul {
     margin: 0;
     padding: 0; }
-  .wp-block-atomic-blocks-ab-pricing-table li {
-    list-style: none;
-    border-bottom: solid 1px #eee;
-    margin: 0;
-    padding: 10px 0; }
-    .wp-block-atomic-blocks-ab-pricing-table li:last-child {
-      border-bottom: none; }
+
+ul.ab-pricing-table-description li {
+  list-style: none;
+  border-bottom: solid 1px #eee;
+  margin: 0;
+  padding: 10px 0; }
+  ul.ab-pricing-table-description li:last-child {
+    border-bottom: none; }
 
 .ab-block-pricing-table-center {
   text-align: center; }
@@ -2371,3 +2373,6 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
 
 .ab-block-pricing-table-right {
   text-align: right; }
+
+.ab-pricing-table-price.has-background {
+  padding: 10px 15px; }

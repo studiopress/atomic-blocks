@@ -43,8 +43,8 @@ class ABPricingTableBlock extends Component {
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ tableAlignment }
-					onChange={ ( value ) => {
-						setAttributes( { tableAlignment: value } );
+					onChange={ ( nextAlign ) => {
+						setAttributes( { tableAlignment: nextAlign } );
 					} }
 				/>
 			</BlockControls>,
@@ -62,21 +62,24 @@ class ABPricingTableBlock extends Component {
 							// Add placeholder blocks
 							['atomic-blocks/ab-pricing-table-title', {
 								title: 'Price Title',
+								fontSize: 'medium',
+							}],
+							['atomic-blocks/ab-pricing-table-subtitle', {
+								subtitle: 'Price Subtitle Description',
+								fontSize: 'normal',
 							}],
 							['atomic-blocks/ab-pricing-table-price', {
 								price: '$49',
+								fontSize: 'huge',
 							}],
 							['atomic-blocks/ab-pricing-table-description', {
-								description: '<li>test this</li><li>test this two</li><li>test this three</li>',
+								description: '<li>Product Feature One</li><li>Product Feature Two</li><li>Product Feature Three</li><li>Product Feature Four</li>',
 								multilineTag: 'li',
 								ordered: false,
-							}],
-							['core/paragraph', {
-								content: 'Lorem ipsum dolor sit amet elit do, consectetur adipiscing, sed eiusmod tempor incididunt ut labore et.'
+								fontSize: 'normal',
 							}],
 							['atomic-blocks/ab-button', {
-								buttonText: 'Find Out More',
-								buttonAlignment: 'left',
+								buttonText: 'Buy Now',
 							}],
 						]}
 						templateLock={ false }
@@ -106,6 +109,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		},
 		tableAlignment: {
 			type: 'string',
+			default: 'center',
 		},
 	},
 
@@ -124,9 +128,9 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		// Save the block markup for the front end
 		return (
 			<div
-				className={ classnames(
-					tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
-				) }
+				className={ classnames( {
+					[ `has-${ tableAlignment }-content` ]: tableAlignment !== 'center',
+				} ) }
 				itemscope
 				itemtype="http://schema.org/Product"
 			>

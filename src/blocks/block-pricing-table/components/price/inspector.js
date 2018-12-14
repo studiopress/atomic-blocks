@@ -9,11 +9,11 @@ const { compose } = wp.compose;
 
 const {
 	InspectorControls,
-	BlockDescription,
-	ColorPalette,
-	PanelColorSettings,
 	FontSizePicker,
 	withFontSizes,
+	withColors,
+	ContrastChecker,
+	PanelColorSettings,
 } = wp.editor;
 
 const {
@@ -23,10 +23,12 @@ const {
 
 // Apply fallback styles
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { fontSize, customFontSize } = ownProps.attributes;
+	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
 	};
 } );
@@ -52,6 +54,12 @@ class Inspector extends Component {
 			fallbackFontSize,
 			fontSize,
 			setFontSize,
+			backgroundColor,
+			textColor,
+			setBackgroundColor,
+			setTextColor,
+			fallbackBackgroundColor,
+			fallbackTextColor,
 		} = this.props;
 
 		return (
@@ -63,6 +71,32 @@ class Inspector extends Component {
 					onChange={ setFontSize }
 				/>
 			</PanelBody>
+			<PanelColorSettings
+				title={ __( 'Color Settings' ) }
+				initialOpen={ false }
+				colorSettings={ [
+					{
+						value: backgroundColor.color,
+						onChange: setBackgroundColor,
+						label: __( 'Background Color' ),
+					},
+					{
+						value: textColor.color,
+						onChange: setTextColor,
+						label: __( 'Text Color' ),
+					},
+				] }
+			>
+				<ContrastChecker
+					{ ...{
+						textColor: textColor.color,
+						backgroundColor: backgroundColor.color,
+						fallbackTextColor,
+						fallbackBackgroundColor,
+					} }
+					fontSize={ fontSize.size }
+				/>
+			</PanelColorSettings>
 		</InspectorControls>
 		);
 	}
@@ -71,4 +105,5 @@ class Inspector extends Component {
 export default compose( [
 	applyFallbackStyles,
 	withFontSizes( 'fontSize' ),
+	withColors( 'backgroundColor', { textColor: 'color' } ),
 ] )( Inspector );

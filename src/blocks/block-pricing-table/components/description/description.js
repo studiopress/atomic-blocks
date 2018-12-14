@@ -4,45 +4,20 @@
 
 // Import block dependencies and components
 import classnames from 'classnames';
+import Edit from './edit';
 import icons from '../icons';
 
-// Internationalization
 const { __ } = wp.i18n;
-
-// Extend component
+const { registerBlockType } = wp.blocks;
+const { compose } = wp.compose;
 const { Component } = wp.element;
 
-// Register block
-const { registerBlockType } = wp.blocks;
-
-// Register editor components
 const {
 	RichText,
+	getFontSizeClass,
+	FontSizePicker,
+  	withFontSizes,
 } = wp.editor;
-
-class ABPricingTableDescription extends Component {
-
-	render() {
-
-		// Setup the attributes
-		const { attributes: { description }, isSelected, className, setAttributes } = this.props;
-
-		return [
-			<RichText
-				tagName="ul"
-				multiline="li"
-				itemprop="description"
-				placeholder={ __( 'Add a product description', 'atomic-blocks' ) }
-				keepPlaceholderOnFocus
-				value={ description }
-				onChange={ ( value ) => setAttributes( { description: value } ) }
-				className={ classnames(
-					'ab-pricing-table-description'
-				) }
-			/>
-		];
-	}
-}
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
@@ -64,18 +39,34 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 			selector: 'ol,ul',
 			multiline: 'li',
 		},
+		fontSize: {
+			type: 'string',
+		},
+		customFontSize: {
+			type: 'number',
+		},
 	},
 
 	// Render the block components
-	edit: ABPricingTableDescription,
+	edit: Edit,
 
 	// Save the attributes and markup
 	save: function( props ) {
 
 		// Setup the attributes
 		const {
-			description
+			description,
+			fontSize,
+			customFontSize,
 		} = props.attributes;
+
+		// Retreive the fontSizeClass
+		const fontSizeClass = getFontSizeClass( fontSize );
+
+		// If there is no fontSizeClass, use customFontSize
+		const styles = {
+			fontSize: fontSizeClass ? undefined : customFontSize,
+		};
 
 		// Save the block markup for the front end
 		return (
@@ -83,8 +74,10 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 				tagName="ul"
 				itemprop="description"
 				value={ description }
+				style={ styles }
 				className={ classnames(
-					'ab-pricing-table-description'
+					'ab-pricing-table-description',
+					fontSizeClass
 				) }
 			/>
 		);
