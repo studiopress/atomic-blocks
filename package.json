@@ -6,7 +6,7 @@
     "start": "cgb-scripts start",
     "build": "cgb-scripts build",
     "eject": "cgb-scripts eject",
-    "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --include=src,dist/getting-started"
+    "makepot": "wp i18n make-pot . languages/lsx-blocks.pot --include=src,dist/getting-started"
   },
   "dependencies": {
     "@wordpress/data": "^1.2.1",

@@ -12,7 +12,7 @@
  */
 function lsx_blocks_start_load_admin_scripts( $hook ) {
 
-	if ( ! ( $hook == 'toplevel_page_atomic-blocks' ) ) {
+	if ( ! ( $hook == 'toplevel_page_lsx-blocks' ) ) {
 		return;
 	}
 
@@ -25,11 +25,11 @@ function lsx_blocks_start_load_admin_scripts( $hook ) {
 	 */
 
 	// Getting Started javascript
-	wp_enqueue_script( 'atomic-blocks-getting-started', plugins_url( 'getting-started/getting-started.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'lsx-blocks-getting-started', plugins_url( 'getting-started/getting-started.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0.0', true );
 
 	// Getting Started styles
-	wp_register_style( 'atomic-blocks-getting-started', plugins_url( 'getting-started/getting-started.css', dirname( __FILE__ ) ), false, '1.0.0' );
-	wp_enqueue_style( 'atomic-blocks-getting-started' );
+	wp_register_style( 'lsx-blocks-getting-started', plugins_url( 'getting-started/getting-started.css', dirname( __FILE__ ) ), false, '1.0.0' );
+	wp_enqueue_style( 'lsx-blocks-getting-started' );
 
 	// FontAwesome
 	wp_register_style( 'lsx-blocks-fontawesome', plugins_url( '/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ), false, '1.0.0' );
@@ -46,10 +46,10 @@ add_action( 'admin_enqueue_scripts', 'lsx_blocks_start_load_admin_scripts' );
 function lsx_blocks_getting_started_menu() {
 
 	add_menu_page(
-		__( 'Atomic Blocks', 'atomic-blocks' ),
-		__( 'Atomic Blocks', 'atomic-blocks' ),
+		__( 'lsx Blocks', 'lsx-blocks' ),
+		__( 'lsx Blocks', 'lsx-blocks' ),
 		'manage_options',
-		'atomic-blocks',
+		'lsx-blocks',
 		'lsx_blocks_getting_started_page',
 		'dashicons-screenoptions'
 	);
@@ -85,156 +85,156 @@ function lsx_blocks_getting_started_page() {
 		add_query_arg(
 			array(
 				'action' => 'install-plugin',
-				'plugin' => 'atomic-blocks'
+				'plugin' => 'lsx-blocks'
 			),
 			admin_url( 'update.php' )
 		),
-		'install-plugin_atomic-blocks'
+		'install-plugin_lsx-blocks'
 	);
 
 	$ab_theme_install_url = wp_nonce_url(
 		add_query_arg(
 			array(
 				'action' => 'install-theme',
-				'theme' => 'atomic-blocks'
+				'theme' => 'lsx-blocks'
 			),
 			admin_url( 'update.php' )
 		),
-		'install-theme_atomic-blocks'
+		'install-theme_lsx-blocks'
 	);
 ?>
 	<div class="wrap ab-getting-started">
 		<div class="intro-wrap">
 			<div class="intro">
-				<a href="<?php echo esc_url('https://goo.gl/NfXcof'); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( 'logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
-				<h3><?php printf( esc_html__( 'Getting started with', 'atomic-blocks' ) ); ?> <strong><?php printf( esc_html__( 'Atomic Blocks', 'atomic-blocks' ) ); ?></strong></h3>
+				<a href="<?php echo esc_url('https://goo.gl/NfXcof'); ?>"><img class="lsx-logo" src="<?php echo esc_url( plugins_url( 'logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit lsx Blocks', 'lsx-blocks' ); ?>" /></a>
+				<h3><?php printf( esc_html__( 'Getting started with', 'lsx-blocks' ) ); ?> <strong><?php printf( esc_html__( 'lsx Blocks', 'lsx-blocks' ) ); ?></strong></h3>
 			</div>
 
 			<ul class="inline-list">
-				<li class="current"><a id="atomic-blocks-panel" href="#"><i class="fa fa-check"></i> <?php esc_html_e( 'Getting Started', 'atomic-blocks' ); ?></a></li>
-				<li><a id="plugin-help" href="#"><i class="fa fa-plug"></i> <?php esc_html_e( 'Plugin Help File', 'atomic-blocks' ); ?></a></li>
-				<?php if( function_exists( 'atomic_blocks_setup' ) ) { ?>
-					<li><a id="theme-help" href="#"><i class="fa fa-desktop"></i> <?php esc_html_e( 'Theme Help File', 'atomic-blocks' ); ?></a></li>
+				<li class="current"><a id="lsx-blocks-panel" href="#"><i class="fa fa-check"></i> <?php esc_html_e( 'Getting Started', 'lsx-blocks' ); ?></a></li>
+				<li><a id="plugin-help" href="#"><i class="fa fa-plug"></i> <?php esc_html_e( 'Plugin Help File', 'lsx-blocks' ); ?></a></li>
+				<?php if( function_exists( 'lsx_blocks_setup' ) ) { ?>
+					<li><a id="theme-help" href="#"><i class="fa fa-desktop"></i> <?php esc_html_e( 'Theme Help File', 'lsx-blocks' ); ?></a></li>
 				<?php } ?>
 			</ul>
 		</div>
 
 		<div class="panels">
 			<div id="panel" class="panel">
-				<!-- Atomic Blocks panel -->
+				<!-- lsx Blocks panel -->
 				<?php if( ! function_exists( 'gutenberg_init' ) ) { ?>
 					<div class="ab-gutenberg-notice">
-						<p><?php esc_html_e( 'You need to install the Gutenberg editor before using Atomic Blocks!', 'atomic-blocks' ); ?></p>
-						<a class="button-primary" href="<?php echo esc_url( $gberg_install_url ); ?>"><?php esc_html_e( 'Install Gutenberg now', 'atomic-blocks' ); ?> &rarr;</a>
+						<p><?php esc_html_e( 'You need to install the Gutenberg editor before using lsx Blocks!', 'lsx-blocks' ); ?></p>
+						<a class="button-primary" href="<?php echo esc_url( $gberg_install_url ); ?>"><?php esc_html_e( 'Install Gutenberg now', 'lsx-blocks' ); ?> &rarr;</a>
 					</div>
 				<?php } ?>
 
-				<div id="atomic-blocks-panel" class="panel-left visible">
+				<div id="lsx-blocks-panel" class="panel-left visible">
 					<div class="ab-block-split clearfix">
 						<div class="ab-block-split-left">
 							<div class="ab-titles">
-								<h2><?php esc_html_e( 'Welcome to the future of site building with Gutenberg and Atomic Blocks!', 'atomic-blocks' ); ?></h2>
-								<p><?php esc_html_e( 'The Atomic Blocks collection is now ready to use in your posts and pages. Simply search for "atomic" or "ab" in the block inserter to display the Atomic Blocks collection. Check out the help file link above for detailed instructions!', 'atomic-blocks' ); ?></p>
+								<h2><?php esc_html_e( 'Welcome to the future of site building with Gutenberg and lsx Blocks!', 'lsx-blocks' ); ?></h2>
+								<p><?php esc_html_e( 'The lsx Blocks collection is now ready to use in your posts and pages. Simply search for "lsx" or "ab" in the block inserter to display the lsx Blocks collection. Check out the help file link above for detailed instructions!', 'lsx-blocks' ); ?></p>
 							</div>
 						</div>
 						<div class="ab-block-split-right">
 							<div class="ab-block-theme">
-								<img src="<?php echo esc_url( plugins_url( 'images/build-content.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Atomic Blocks Theme', 'atomic-blocks' ); ?>" />
+								<img src="<?php echo esc_url( plugins_url( 'images/build-content.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'lsx Blocks Theme', 'lsx-blocks' ); ?>" />
 							</div>
 						</div>
 					</div>
 
 					<div class="ab-block-feature-wrap clear">
 						<i class="fas fa-cube"></i>
-						<h2><?php esc_html_e( 'Available Atomic Blocks', 'atomic-blocks' ); ?></h2>
-						<p><?php esc_html_e( 'The following blocks are available in Atomic Blocks. More blocks are on the way so stay tuned!', 'atomic-blocks' ); ?></p>
+						<h2><?php esc_html_e( 'Available lsx Blocks', 'lsx-blocks' ); ?></h2>
+						<p><?php esc_html_e( 'The following blocks are available in lsx Blocks. More blocks are on the way so stay tuned!', 'lsx-blocks' ); ?></p>
 
 						<div class="ab-block-features">
 							<div class="ab-block-feature">
 								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc26.svg', __FILE__ ) ) ?>" alt="Post Grid Block" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Post Grid Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Post Grid Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
 								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc430.svg', __FILE__ ) ) ?>" alt="Container Block" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Container Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Wrap several blocks into a section and add padding, margins, background colors and images.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Container Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Wrap several blocks into a section and add padding, margins, background colors and images.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc41.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Call To Action Block', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc41.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Call To Action Block', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Call-To-Action Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Call-To-Action Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc4.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Testimonials Block', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc4.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Testimonials Block', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Testimonial Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a customer or client testimonial to your site with an avatar, text, citation and more.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Testimonial Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add a customer or client testimonial to your site with an avatar, text, citation and more.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc184.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Inline Notices Block', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc184.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Inline Notices Block', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Inline Notice Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a colorful notice or message to your site with text, a title and a dismiss icon.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Inline Notice Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add a colorful notice or message to your site with text, a title and a dismiss icon.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc50.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Sharing Icons Block', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc50.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Sharing Icons Block', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Sharing Icons Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add social sharing icons to your page with size, shape, color and style options.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Sharing Icons Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add social sharing icons to your page with size, shape, color and style options.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc94-f.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Author Profile Block', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc94-f.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Author Profile Block', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Author Profile Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a user profile box to your site with a title, bio info, an avatar and social media links.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Author Profile Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add a user profile box to your site with a title, bio info, an avatar and social media links.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc115.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Accordion Toggle', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc115.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Accordion Toggle', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Accordion Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add an accordion text toggle with a title and descriptive text. Includes font size and toggle options.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Accordion Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add an accordion text toggle with a title and descriptive text. Includes font size and toggle options.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc45.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Customizable Button Block', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc45.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Customizable Button Block', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Customizable Button', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a fancy stylized button to your post or page with size, shape, target, and color options.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Customizable Button', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add a fancy stylized button to your post or page with size, shape, target, and color options.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc38.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Drop Cap Block', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc38.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Drop Cap Block', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Drop Cap Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a stylized drop cap to the beginning of your paragraph. Choose from three different styles.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Drop Cap Block', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add a stylized drop cap to the beginning of your paragraph. Choose from three different styles.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 
 							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc402.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Spacer and Divider Block', 'atomic-blocks' ); ?>" /></div>
+								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc402.svg', __FILE__ ) ) ?>" alt="<?php esc_html_e( 'Spacer and Divider Block', 'lsx-blocks' ); ?>" /></div>
 								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Spacer & Divider', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add an adjustable spacer between your blocks with an optional divider with styling options.', 'atomic-blocks' ); ?></p>
+									<h3><?php esc_html_e( 'Spacer & Divider', 'lsx-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Add an adjustable spacer between your blocks with an optional divider with styling options.', 'lsx-blocks' ); ?></p>
 								</div>
 							</div>
 						</div><!-- .ab-block-features -->
@@ -245,17 +245,17 @@ function lsx_blocks_getting_started_page() {
 				<div id="plugin-help" class="panel-left">
 					<!-- Grab feed of help file -->
 					<?php
-						$plugin_help = get_transient( 'atomic-blocks-plugin-help-feed' );
+						$plugin_help = get_transient( 'lsx-blocks-plugin-help-feed' );
 
 						if( false === $plugin_help ) {
-							$plugin_feed = wp_remote_get( 'https://atomicblocks.com/plugin-help-file//?atomicblocks_api=post_content' );
+							$plugin_feed = wp_remote_get( 'https://lsxblocks.com/plugin-help-file//?lsxblocks_api=post_content' );
 
 							if( ! is_wp_error( $plugin_feed ) && 200 === wp_remote_retrieve_response_code( $plugin_feed ) ) {
 								$plugin_help = json_decode( wp_remote_retrieve_body( $plugin_feed ) );
-								set_transient( 'atomic-blocks-plugin-help-feed', $plugin_help, DAY_IN_SECONDS );
+								set_transient( 'lsx-blocks-plugin-help-feed', $plugin_help, DAY_IN_SECONDS );
 							} else {
-								$plugin_help = __( 'This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime.', 'atomic-blocks' );
-								set_transient( 'atomic-blocks-plugin-help-feed', $plugin_help, MINUTE_IN_SECONDS * 5 );
+								$plugin_help = __( 'This help file feed seems to be temporarily down. You can always view the help file on the lsx Blocks site in the meantime.', 'lsx-blocks' );
+								set_transient( 'lsx-blocks-plugin-help-feed', $plugin_help, MINUTE_IN_SECONDS * 5 );
 							}
 						}
 
@@ -264,21 +264,21 @@ function lsx_blocks_getting_started_page() {
 				</div>
 
 				<!-- Theme help file panel -->
-				<?php if( function_exists( 'atomic_blocks_setup' ) ) { ?>
+				<?php if( function_exists( 'lsx_blocks_setup' ) ) { ?>
 					<div id="theme-help" class="panel-left">
 						<!-- Grab feed of help file -->
 						<?php
-							$theme_help = get_transient( 'atomic-blocks-theme-help-feed' );
+							$theme_help = get_transient( 'lsx-blocks-theme-help-feed' );
 
 							if( false === $theme_help ) {
-								$theme_feed = wp_remote_get( 'https://atomicblocks.com/theme-help-file//?atomicblocks_api=post_content' );
+								$theme_feed = wp_remote_get( 'https://lsxblocks.com/theme-help-file//?lsxblocks_api=post_content' );
 
 								if( ! is_wp_error( $theme_feed ) && 200 === wp_remote_retrieve_response_code( $theme_feed ) ) {
 									$theme_help = json_decode( wp_remote_retrieve_body( $theme_feed ) );
-									set_transient( 'atomic-blocks-theme-help-feed', $theme_help, DAY_IN_SECONDS );
+									set_transient( 'lsx-blocks-theme-help-feed', $theme_help, DAY_IN_SECONDS );
 								} else {
-									$theme_help = __( 'This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime.', 'atomic-blocks' );
-									set_transient( 'atomic-blocks-theme-help-feed', $theme_help, MINUTE_IN_SECONDS * 5 );
+									$theme_help = __( 'This help file feed seems to be temporarily down. You can always view the help file on the lsx Blocks site in the meantime.', 'lsx-blocks' );
+									set_transient( 'lsx-blocks-theme-help-feed', $theme_help, MINUTE_IN_SECONDS * 5 );
 								}
 							}
 
@@ -293,35 +293,35 @@ function lsx_blocks_getting_started_page() {
 					<div class="panel-aside panel-ab-plugin panel-club ab-quick-start">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
-								<h3><i class="fa fa-check"></i> <?php esc_html_e( 'Quick Start Checklist', 'atomic-blocks' ); ?></h3>
+								<h3><i class="fa fa-check"></i> <?php esc_html_e( 'Quick Start Checklist', 'lsx-blocks' ); ?></h3>
 							</div>
 
 							<ul>
 							<li class="cell <?php if( function_exists( 'gutenberg_init' ) ) { echo 'step-complete'; } ?>">
-									<strong><?php esc_html_e( '1. Install the Gutenberg plugin.', 'atomic-blocks' ); ?></strong>
-									<p><?php esc_html_e( 'Gutenberg adds the new block-based editor to WordPress. You will need this to work with the Atomic Blocks plugin.', 'atomic-blocks' ); ?></p>
+									<strong><?php esc_html_e( '1. Install the Gutenberg plugin.', 'lsx-blocks' ); ?></strong>
+									<p><?php esc_html_e( 'Gutenberg adds the new block-based editor to WordPress. You will need this to work with the lsx Blocks plugin.', 'lsx-blocks' ); ?></p>
 
 									<?php if( ! array_key_exists( 'gutenberg/gutenberg.php', get_plugins() ) ) { ?>
-										<a class="button-primary club-button" href="<?php echo esc_url( $gberg_install_url ); ?>"><?php esc_html_e( 'Install Gutenberg now', 'atomic-blocks' ); ?> &rarr;</a>
+										<a class="button-primary club-button" href="<?php echo esc_url( $gberg_install_url ); ?>"><?php esc_html_e( 'Install Gutenberg now', 'lsx-blocks' ); ?> &rarr;</a>
 									<?php } else if ( array_key_exists( 'gutenberg/gutenberg.php', get_plugins() ) && ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) { ?>
 										<?php activate_plugin( 'gutenberg/gutenberg.php' ); ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
+										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'lsx-blocks' ); ?></strong>
 									<?php } else { ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
+										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'lsx-blocks' ); ?></strong>
 									<?php } ?>
 								</li>
 
 								<li class="cell <?php if( function_exists( 'lsx_blocks_loader' ) ) { echo 'step-complete'; } ?>">
-									<strong><?php esc_html_e( '2. Install the Atomic Blocks plugin.', 'atomic-blocks' ); ?></strong>
-									<p><?php esc_html_e( 'Atomic Blocks adds several handy content blocks to the Gutenberg block editor.', 'atomic-blocks' ); ?></p>
+									<strong><?php esc_html_e( '2. Install the lsx Blocks plugin.', 'lsx-blocks' ); ?></strong>
+									<p><?php esc_html_e( 'lsx Blocks adds several handy content blocks to the Gutenberg block editor.', 'lsx-blocks' ); ?></p>
 
-									<?php if( ! array_key_exists( 'atomic-blocks/atomicblocks.php', get_plugins() ) ) { ?>
-										<a class="button-primary club-button" href="<?php echo esc_url( $ab_install_url ); ?>"><?php esc_html_e( 'Install Atomic Blocks now', 'atomic-blocks' ); ?> &rarr;</a>
-									<?php } else if ( array_key_exists( 'atomic-blocks/atomicblocks.php', get_plugins() ) && ! is_plugin_active( 'atomic-blocks/atomicblocks.php' ) ) { ?>
-										<?php activate_plugin( 'atomic-blocks/atomicblocks.php' ); ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
+									<?php if( ! array_key_exists( 'lsx-blocks/lsxblocks.php', get_plugins() ) ) { ?>
+										<a class="button-primary club-button" href="<?php echo esc_url( $ab_install_url ); ?>"><?php esc_html_e( 'Install lsx Blocks now', 'lsx-blocks' ); ?> &rarr;</a>
+									<?php } else if ( array_key_exists( 'lsx-blocks/lsxblocks.php', get_plugins() ) && ! is_plugin_active( 'lsx-blocks/lsxblocks.php' ) ) { ?>
+										<?php activate_plugin( 'lsx-blocks/lsxblocks.php' ); ?>
+										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'lsx-blocks' ); ?></strong>
 									<?php } else { ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
+										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'lsx-blocks' ); ?></strong>
 									<?php } ?>
 								</li>
 							</ul>
@@ -329,20 +329,20 @@ function lsx_blocks_getting_started_page() {
 					</div>
 					<?php } ?>
 
-					<?php if( ! function_exists( 'atomic_blocks_setup' ) ) { ?>
+					<?php if( ! function_exists( 'lsx_blocks_setup' ) ) { ?>
 					<div class="panel-aside panel-ab-plugin panel-club">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
-								<h3><i class="fa fa-download"></i> <?php esc_html_e( 'Free Theme Download', 'atomic-blocks' ); ?></h3>
+								<h3><i class="fa fa-download"></i> <?php esc_html_e( 'Free Theme Download', 'lsx-blocks' ); ?></h3>
 							</div>
 
 							<ul>
 								<li class="cell">
-									<p><a class="ab-theme-image" href="<?php echo esc_url('https://goo.gl/FCT6xS'); ?>"><img src="<?php echo esc_url( plugins_url( 'theme.jpg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a></p>
+									<p><a class="ab-theme-image" href="<?php echo esc_url('https://goo.gl/FCT6xS'); ?>"><img src="<?php echo esc_url( plugins_url( 'theme.jpg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit lsx Blocks', 'lsx-blocks' ); ?>" /></a></p>
 
-									<p><?php esc_html_e( 'Download our FREE Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor.', 'atomic-blocks' ); ?></p>
+									<p><?php esc_html_e( 'Download our FREE lsx Blocks theme to help you get started with the lsx Blocks plugin and the new WordPress block editor.', 'lsx-blocks' ); ?></p>
 
-									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( $ab_theme_install_url ); ?>"><?php esc_html_e( 'Install Now', 'atomic-blocks' ); ?> &rarr;</a>
+									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( $ab_theme_install_url ); ?>"><?php esc_html_e( 'Install Now', 'lsx-blocks' ); ?> &rarr;</a>
 								</li>
 							</ul>
 						</div>
@@ -352,14 +352,14 @@ function lsx_blocks_getting_started_page() {
 					<div class="panel-aside panel-ab-plugin panel-club">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
-								<h3><i class="fa fa-envelope"></i> <?php esc_html_e( 'Stay Updated', 'atomic-blocks' ); ?></h3>
+								<h3><i class="fa fa-envelope"></i> <?php esc_html_e( 'Stay Updated', 'lsx-blocks' ); ?></h3>
 							</div>
 
 							<ul>
 								<li class="cell">
-								<p><?php esc_html_e( 'Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!', 'atomic-blocks' ); ?></p>
+								<p><?php esc_html_e( 'Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!', 'lsx-blocks' ); ?></p>
 
-									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/3pC6LE' ); ?>"><?php esc_html_e( 'Subscribe Now', 'atomic-blocks' ); ?> &rarr;</a>
+									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/3pC6LE' ); ?>"><?php esc_html_e( 'Subscribe Now', 'lsx-blocks' ); ?> &rarr;</a>
 								</li>
 							</ul>
 						</div>
@@ -368,13 +368,13 @@ function lsx_blocks_getting_started_page() {
 					<div class="panel-aside panel-ab-plugin panel-club">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
-								<h3><i class="fa fa-arrow-circle-down"></i> <?php esc_html_e( 'Free Blocks & Tutorials', 'atomic-blocks' ); ?></h3>
+								<h3><i class="fa fa-arrow-circle-down"></i> <?php esc_html_e( 'Free Blocks & Tutorials', 'lsx-blocks' ); ?></h3>
 							</div>
 
 							<ul>
 								<li class="cell">
-									<p><?php esc_html_e( 'Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!', 'atomic-blocks' ); ?></p>
-									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/xpujKp' ); ?>"><?php esc_html_e( 'Visit AtomicBlocks.com', 'atomic-blocks' ); ?> &rarr;</a>
+									<p><?php esc_html_e( 'Check out the lsx Blocks site to find block editor tutorials, free blocks and updates about the lsx Blocks plugin and theme!', 'lsx-blocks' ); ?></p>
+									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/xpujKp' ); ?>"><?php esc_html_e( 'Visit lsxBlocks.com', 'lsx-blocks' ); ?> &rarr;</a>
 								</li>
 							</ul>
 						</div>
@@ -382,38 +382,38 @@ function lsx_blocks_getting_started_page() {
 				</div><!-- .panel-right -->
 
 				<div class="footer-wrap">
-					<h2 class="visit-title"><?php esc_html_e( 'Free Blocks and Resources', 'atomic-blocks' ); ?></h2>
+					<h2 class="visit-title"><?php esc_html_e( 'Free Blocks and Resources', 'lsx-blocks' ); ?></h2>
 
 					<div class="ab-block-footer">
 						<div class="ab-block-footer-column">
 							<i class="far fa-envelope"></i>
-							<h3><?php esc_html_e( 'Blocks In Your Inbox', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="https://atomicblocks.com/subscribe?utm_source=AB%20Theme%20GS%20Page%20Footer%20Subscribe"><?php esc_html_e( 'Subscribe Today', 'atomic-blocks' ); ?></a>
+							<h3><?php esc_html_e( 'Blocks In Your Inbox', 'lsx-blocks' ); ?></h3>
+							<p><?php esc_html_e( 'Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!', 'lsx-blocks' ); ?></p>
+							<a class="button-primary" href="https://lsxblocks.com/subscribe?utm_source=AB%20Theme%20GS%20Page%20Footer%20Subscribe"><?php esc_html_e( 'Subscribe Today', 'lsx-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
 							<i class="far fa-edit"></i>
-							<h3><?php esc_html_e( 'Articles & Tutorials', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="https://atomicblocks.com/blog?utm_source=AB%20Theme%20GS%20Page%20Footer%20Blog"><?php esc_html_e( 'Visit the Blog', 'atomic-blocks' ); ?></a>
+							<h3><?php esc_html_e( 'Articles & Tutorials', 'lsx-blocks' ); ?></h3>
+							<p><?php esc_html_e( 'Check out the lsx Blocks site to find block editor tutorials, free blocks and updates about the lsx Blocks plugin and theme!', 'lsx-blocks' ); ?></p>
+							<a class="button-primary" href="https://lsxblocks.com/blog?utm_source=AB%20Theme%20GS%20Page%20Footer%20Blog"><?php esc_html_e( 'Visit the Blog', 'lsx-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
 							<i class="far fa-newspaper"></i>
-							<h3><?php esc_html_e( 'Gutenberg News', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'Stay up to date with the new WordPress editor. Gutenberg News curates Gutenberg articles, tutorials, videos and more free resources.', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="http://gutenberg.news/?utm_source=AB%20Theme%20GS%20Page%20Footer%20Gnews"><?php esc_html_e( 'Visit Gutenberg News', 'atomic-blocks' ); ?></a>
+							<h3><?php esc_html_e( 'Gutenberg News', 'lsx-blocks' ); ?></h3>
+							<p><?php esc_html_e( 'Stay up to date with the new WordPress editor. Gutenberg News curates Gutenberg articles, tutorials, videos and more free resources.', 'lsx-blocks' ); ?></p>
+							<a class="button-primary" href="http://gutenberg.news/?utm_source=AB%20Theme%20GS%20Page%20Footer%20Gnews"><?php esc_html_e( 'Visit Gutenberg News', 'lsx-blocks' ); ?></a>
 						</div>
 					</div>
 
 					<div class="ab-footer">
-						<p><?php echo sprintf( esc_html__( 'Made by the fine folks at %1$s and %2$s.', 'atomic-blocks' ), '<a href=" ' . esc_url( 'https://studiopress.com/' ) . ' ">StudioPress</a>', '<a href=" ' . esc_url( 'https://wpengine.com/' ) . ' ">WP Engine</a>' ); ?></p>
+						<p><?php echo sprintf( esc_html__( 'Made by the fine folks at %1$s and %2$s.', 'lsx-blocks' ), '<a href=" ' . esc_url( 'https://studiopress.com/' ) . ' ">StudioPress</a>', '<a href=" ' . esc_url( 'https://wpengine.com/' ) . ' ">WP Engine</a>' ); ?></p>
 						<div class="ab-footer-links">
-							<a href="https:/atomicblocks.com/"><?php esc_html_e( 'AtomicBlocks.com', 'atomic-blocks' ); ?></a>
-							<a href="https://atomicblocks.com/blog/"><?php esc_html_e( 'Blog', 'atomic-blocks' ); ?></a>
-							<a href="https://atomicblocks.com/atomic-blocks-docs/"><?php esc_html_e( 'Docs', 'atomic-blocks' ); ?></a>
-							<a href="https:/twitter.com/atomicblocks"><?php esc_html_e( 'Twitter', 'atomic-blocks' ); ?></a>
+							<a href="https:/lsxblocks.com/"><?php esc_html_e( 'lsxBlocks.com', 'lsx-blocks' ); ?></a>
+							<a href="https://lsxblocks.com/blog/"><?php esc_html_e( 'Blog', 'lsx-blocks' ); ?></a>
+							<a href="https://lsxblocks.com/lsx-blocks-docs/"><?php esc_html_e( 'Docs', 'lsx-blocks' ); ?></a>
+							<a href="https:/twitter.com/lsxblocks"><?php esc_html_e( 'Twitter', 'lsx-blocks' ); ?></a>
 						</div>
 					</div>
 				</div><!-- .footer-wrap -->

@@ -1,9 +1,9 @@
-# Copyright (C) 2018 atomicblocks
-# This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
+# Copyright (C) 2018 lsxblocks
+# This file is distributed under the same license as the lsx Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.3.7\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
+"Project-Id-Version: lsx Blocks - Gutenberg Blocks Collection 1.3.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lsx-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,14 +12,14 @@ msgstr ""
 "POT-Creation-Date: 2018-11-13T00:24:26+00:00\n"
 "PO-Revision-Date: 2018-11-13T00:24:26+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
-"X-Domain: atomic-blocks\n"
+"X-Domain: lsx-blocks\n"
 
 #. Plugin Name of the plugin
-msgid "Atomic Blocks - Gutenberg Blocks Collection"
+msgid "lsx Blocks - Gutenberg Blocks Collection"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://atomicblocks.com"
+msgid "https://lsxblocks.com"
 msgstr ""
 
 #. Description of the plugin
@@ -27,7 +27,7 @@ msgid "A beautiful collection of handy Gutenberg blocks to help you get started 
 msgstr ""
 
 #. Author of the plugin
-msgid "atomicblocks"
+msgid "lsxblocks"
 msgstr ""
 
 #. Author URI of the plugin
@@ -37,12 +37,12 @@ msgstr ""
 #: dist/getting-started/getting-started.php:49
 #: dist/getting-started/getting-started.php:50
 #: dist/getting-started/getting-started.php:110
-msgid "Atomic Blocks"
+msgid "lsx Blocks"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:109
 #: dist/getting-started/getting-started.php:341
-msgid "Visit Atomic Blocks"
+msgid "Visit lsx Blocks"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:110
@@ -62,7 +62,7 @@ msgid "Theme Help File"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:127
-msgid "You need to install the Gutenberg editor before using Atomic Blocks!"
+msgid "You need to install the Gutenberg editor before using lsx Blocks!"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:128
@@ -71,23 +71,23 @@ msgid "Install Gutenberg now"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:136
-msgid "Welcome to the future of site building with Gutenberg and Atomic Blocks!"
+msgid "Welcome to the future of site building with Gutenberg and lsx Blocks!"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:137
-msgid "The Atomic Blocks collection is now ready to use in your posts and pages. Simply search for \"atomic\" or \"ab\" in the block inserter to display the Atomic Blocks collection. Check out the help file link above for detailed instructions!"
+msgid "The lsx Blocks collection is now ready to use in your posts and pages. Simply search for \"lsx\" or \"ab\" in the block inserter to display the lsx Blocks collection. Check out the help file link above for detailed instructions!"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:142
-msgid "Atomic Blocks Theme"
+msgid "lsx Blocks Theme"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:149
-msgid "Available Atomic Blocks"
+msgid "Available lsx Blocks"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:150
-msgid "The following blocks are available in Atomic Blocks. More blocks are on the way so stay tuned!"
+msgid "The following blocks are available in lsx Blocks. More blocks are on the way so stay tuned!"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:156
@@ -204,7 +204,7 @@ msgstr ""
 
 #: dist/getting-started/getting-started.php:257
 #: dist/getting-started/getting-started.php:280
-msgid "This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime."
+msgid "This help file feed seems to be temporarily down. You can always view the help file on the lsx Blocks site in the meantime."
 msgstr ""
 
 #: dist/getting-started/getting-started.php:296
@@ -216,7 +216,7 @@ msgid "1. Install the Gutenberg plugin."
 msgstr ""
 
 #: dist/getting-started/getting-started.php:302
-msgid "Gutenberg adds the new block-based editor to WordPress. You will need this to work with the Atomic Blocks plugin."
+msgid "Gutenberg adds the new block-based editor to WordPress. You will need this to work with the lsx Blocks plugin."
 msgstr ""
 
 #: dist/getting-started/getting-started.php:308
@@ -227,15 +227,15 @@ msgid "Plugin activated!"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:315
-msgid "2. Install the Atomic Blocks plugin."
+msgid "2. Install the lsx Blocks plugin."
 msgstr ""
 
 #: dist/getting-started/getting-started.php:316
-msgid "Atomic Blocks adds several handy content blocks to the Gutenberg block editor."
+msgid "lsx Blocks adds several handy content blocks to the Gutenberg block editor."
 msgstr ""
 
 #: dist/getting-started/getting-started.php:319
-msgid "Install Atomic Blocks now"
+msgid "Install lsx Blocks now"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:336
@@ -243,7 +243,7 @@ msgid "Free Theme Download"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:343
-msgid "Download our FREE Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor."
+msgid "Download our FREE lsx Blocks theme to help you get started with the lsx Blocks plugin and the new WordPress block editor."
 msgstr ""
 
 #: dist/getting-started/getting-started.php:345
@@ -269,11 +269,11 @@ msgstr ""
 
 #: dist/getting-started/getting-started.php:376
 #: dist/getting-started/getting-started.php:398
-msgid "Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!"
+msgid "Check out the lsx Blocks site to find block editor tutorials, free blocks and updates about the lsx Blocks plugin and theme!"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:377
-msgid "Visit AtomicBlocks.com"
+msgid "Visit lsxBlocks.com"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:385
@@ -313,7 +313,7 @@ msgid "Made by the fine folks at %1$s and %2$s."
 msgstr ""
 
 #: dist/getting-started/getting-started.php:413
-msgid "AtomicBlocks.com"
+msgid "lsxBlocks.com"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:414
@@ -367,7 +367,7 @@ msgid "Untitled"
 msgstr ""
 
 #: src/blocks/block-spacer/index.js:90
-msgid "AB Spacer"
+msgid "LSX Spacer"
 msgstr ""
 
 #: src/blocks/block-spacer/index.js:91
@@ -393,7 +393,7 @@ msgstr ""
 #: src/blocks/block-button/index.js:117
 #: src/blocks/block-testimonial/index.js:168
 #: src/blocks/block-drop-cap/index.js:87
-msgid "atomic"
+msgid "lsx"
 msgstr ""
 
 #: src/blocks/block-accordion/index.js:92
@@ -401,7 +401,7 @@ msgid "Accordion Title"
 msgstr ""
 
 #: src/blocks/block-accordion/index.js:108
-msgid "AB Accordion"
+msgid "LSX Accordion"
 msgstr ""
 
 #: src/blocks/block-accordion/index.js:109
@@ -435,7 +435,7 @@ msgid "Apply"
 msgstr ""
 
 #: src/blocks/block-cta/index.js:284
-msgid "AB Call To Action"
+msgid "LSX Call To Action"
 msgstr ""
 
 #: src/blocks/block-cta/index.js:285
@@ -451,7 +451,7 @@ msgid "cta"
 msgstr ""
 
 #: src/blocks/block-sharing/index.js:41
-msgid "AB Sharing"
+msgid "LSX Sharing"
 msgstr ""
 
 #: src/blocks/block-sharing/index.js:42
@@ -485,7 +485,7 @@ msgid "Add profile text..."
 msgstr ""
 
 #: src/blocks/block-author-profile/index.js:250
-msgid "AB Profile Box"
+msgid "LSX Profile Box"
 msgstr ""
 
 #: src/blocks/block-author-profile/index.js:251
@@ -501,7 +501,7 @@ msgid "profile"
 msgstr ""
 
 #: src/blocks/block-container/index.js:185
-msgid "AB Container"
+msgid "LSX Container"
 msgstr ""
 
 #: src/blocks/block-container/index.js:186
@@ -517,7 +517,7 @@ msgid "section"
 msgstr ""
 
 #: src/blocks/block-post-grid/index.js:31
-msgid "AB Post Grid"
+msgid "LSX Post Grid"
 msgstr ""
 
 #: src/blocks/block-post-grid/index.js:32
@@ -541,7 +541,7 @@ msgid "Add notice text..."
 msgstr ""
 
 #: src/blocks/block-notice/index.js:130
-msgid "AB Notice"
+msgid "LSX Notice"
 msgstr ""
 
 #: src/blocks/block-notice/index.js:131
@@ -557,7 +557,7 @@ msgid "message"
 msgstr ""
 
 #: src/blocks/block-button/index.js:110
-msgid "AB Button"
+msgid "LSX Button"
 msgstr ""
 
 #: src/blocks/block-button/index.js:111
@@ -577,7 +577,7 @@ msgid "Add testimonial text..."
 msgstr ""
 
 #: src/blocks/block-testimonial/index.js:161
-msgid "AB Testimonial"
+msgid "LSX Testimonial"
 msgstr ""
 
 #: src/blocks/block-testimonial/index.js:162
@@ -598,7 +598,7 @@ msgid "Add paragraph text..."
 msgstr ""
 
 #: src/blocks/block-drop-cap/index.js:80
-msgid "AB Drop Cap"
+msgid "LSX Drop Cap"
 msgstr ""
 
 #: src/blocks/block-drop-cap/index.js:81
