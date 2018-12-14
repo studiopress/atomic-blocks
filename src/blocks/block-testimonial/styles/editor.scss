@@ -2,7 +2,7 @@
  * Editor styles for the admin
  */
 
-.ab-block-testimonial {
+.lsx-block-testimonial {
     margin-bottom: 0;
 
     .components-button:not(:disabled):not([aria-disabled=true]):focus {
@@ -11,11 +11,11 @@
     }
 }
 
-.editor-block-list__layout [data-type="atomic-blocks/ab-testimonial"] {
+.editor-block-list__layout [data-type="lsx-blocks/lsx-testimonial"] {
     margin-bottom: 1.2em;
 }
 
-.ab-testimonial-info {
+.lsx-testimonial-info {
     h2.editor-rich-text__tinymce {
         line-height: 1.2;
     }
@@ -24,7 +24,7 @@
         line-height: 1.6;
     }
 
-    .ab-testimonial-title + .ab-testimonial-title {
+    .lsx-testimonial-title + .lsx-testimonial-title {
         line-height: 1.8;
     }
 }

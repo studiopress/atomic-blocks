@@ -1,289 +1,122 @@
 /**
- * BLOCK: LSX Blocks Testimonial
+ * BLOCK: Testimonials Shortcode Block
+ *
+ * Registering a testimonials shortcode block with Gutenberg.
  */
 
-// Import block dependencies and components
-import classnames from 'classnames';
-import Inspector from './components/inspector';
-import Testimonial from './components/testimonial';
-import icons from './components/icons';
-
-// Import CSS
+// Import styles
 import './styles/style.scss';
 import './styles/editor.scss';
+//import Inspector from './inspector.js';
 
-// Internationalization
-const { __ } = wp.i18n;
-
-// Extend component
-const { Component } = wp.element;
-
-// Register block
-const { registerBlockType } = wp.blocks;
-
-// Register editor components
+const { __ } = wp.i18n; // Import __() from wp.i18n
+const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const {
-	RichText,
+	InspectorControls,
 	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	MediaUpload,
 } = wp.editor;
-
-// Register components
 const {
-	Button,
-	SelectControl,
+	PanelBody,
+	RangeControl,
+	TextControl,
 } = wp.components;
 
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
+/**
+ * Register: a Gutenberg Block.
+ * @link https://wordpress.org/gutenberg/handbook/block-api/
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully
+ *                             registered; otherwise `undefined`.
+ */
 
-class ABTestimonialBlock extends Component {
+const blockAttributes = {
+	alignment: {
+		type: 'string',
+		default: 'center',
+	},
+	columns: {
+		type: 'number',
+		default: 3,
+	},
+	shortcodetitle: {
+		type: 'string',
+		default: 'Testimonials',
+	},
+};
 
-	render() {
-
-		// Setup the attributes
-		const {
-			attributes: {
-				testimonialName,
-				testimonialTitle,
-				testimonialContent,
-				testimonialAlignment,
-				testimonialImgURL,
-				testimonialImgID,
-				testimonialBackgroundColor,
-				testimonialTextColor,
-				testimonialFontSize,
-				testimonialCiteAlign
-			},
-			attributes,
-			isSelected,
-			editable,
-			className,
-			setAttributes
-		} = this.props;
-
-		const onSelectImage = img => {
-			setAttributes( {
-				testimonialImgID: img.id,
-				testimonialImgURL: img.url,
-			} );
-		};
-
-		return [
-			// Show the alignment toolbar on focus
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ testimonialAlignment }
-					onChange={ ( value ) => setAttributes( { testimonialAlignment: value } ) }
-				/>
-			</BlockControls>,
-			// Show the block controls on focus
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
-			// Show the block markup in the editor
-			<Testimonial { ...this.props }>
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Add testimonial text...', 'lsx-blocks' ) }
-					keepPlaceholderOnFocus
-					value={ testimonialContent }
-					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-					className={ classnames(
-						'ab-testimonial-text'
-					) }
-					style={ {
-						textAlign: testimonialAlignment,
-					} }
-					onChange={ ( value ) => setAttributes( { testimonialContent: value } ) }
-				/>
-
-				<div class="ab-testimonial-info">
-					<div class="ab-testimonial-avatar-wrap">
-						<div class="ab-testimonial-image-wrap">
-							<MediaUpload
-								buttonProps={ {
-									className: 'change-image'
-								} }
-								onSelect={ ( img ) => setAttributes(
-									{
-										testimonialImgID: img.id,
-										testimonialImgURL: img.url,
-									}
-								) }
-								allowed={ ALLOWED_MEDIA_TYPES }
-								type="image"
-								value={ testimonialImgID }
-								render={ ( { open } ) => (
-									<Button onClick={ open }>
-										{ ! testimonialImgID ? icons.upload : <img
-											class="ab-testimonial-avatar"
-											src={ testimonialImgURL }
-											alt="avatar"
-										/>  }
-									</Button>
-								) }
-							>
-							</MediaUpload>
-						</div>
-					</div>
-
-					<RichText
-						tagName="h2"
-						placeholder={ __( 'Add name', 'lsx-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ testimonialName }
-						className='ab-testimonial-name'
-						style={ {
-							color: testimonialTextColor
-						} }
-						onChange={ ( value ) => this.props.setAttributes( { testimonialName: value } ) }
-					/>
-
-					<RichText
-						tagName="small"
-						placeholder={ __( 'Add title', 'lsx-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ testimonialTitle }
-						className='ab-testimonial-title'
-						style={ {
-							color: testimonialTextColor
-						} }
-						onChange={ ( value ) => this.props.setAttributes( { testimonialTitle: value } ) }
-					/>
-				</div>
-			</Testimonial>
-		];
-	}
-}
-
-// Register the block
-registerBlockType( 'lsx-blocks/ab-testimonial', {
-	title: __( 'AB Testimonial', 'lsx-blocks' ),
-	description: __( 'Add a user testimonial with a name and title.', 'lsx-blocks' ),
-	icon: 'format-quote',
-	category: 'lsx-blocks',
+registerBlockType( 'lsx-blocks/block-testimonials', {
+	title: __( 'LSX Testimonials Shortcode' ), // Block title.
+	icon: 'format-quote', // Block icon
+	category: 'lsx-blocks', // Block category
 	keywords: [
-		__( 'testimonial', 'lsx-blocks' ),
-		__( 'quote', 'lsx-blocks' ),
-		__( 'lsx', 'lsx-blocks' ),
+		__( 'LSX' ),
+		__( 'TESTIMONIALS' ),
+		__( 'Shortcode' ),
 	],
-	attributes: {
-		testimonialName: {
-			type: 'array',
-			selector: '.ab-testimonial-name',
-			source: 'children',
-		},
-		testimonialTitle: {
-			type: 'array',
-			selector: '.ab-testimonial-title',
-			source: 'children',
-		},
-		testimonialContent: {
-			type: 'array',
-			selector: '.ab-testimonial-text',
-			source: 'children',
-		},
-		testimonialAlignment: {
-			type: 'string',
-		},
-		testimonialImgURL: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'src',
-			selector: 'img',
-		},
-		testimonialImgID: {
-			type: 'number',
-		},
-		testimonialBackgroundColor: {
-			type: 'string',
-			default: '#f2f2f2'
-		},
-		testimonialTextColor: {
-			type: 'string',
-			default: '#32373c'
-		},
-		testimonialFontSize: {
-			type: 'number',
-			default: 18,
-		},
-		testimonialCiteAlign: {
-            type: 'string',
-            default: 'left-aligned',
-        },
+	attributes: blockAttributes,
+
+	edit( { attributes, className, setAttributes } ) {
+		const { alignment, columns, shortcodetitle } = attributes;
+
+		function onChangeTitle( updatedTitle ) {
+			setAttributes( { shortcodetitle: updatedTitle } );
+		}
+
+		function onChangeAlignment( updatedAlignment ) {
+			setAttributes( { alignment: updatedAlignment } );
+		}
+
+		function onChangeColumns( updatedColumns ) {
+			setAttributes( { columns: updatedColumns } );
+		}
+
+		return (
+			<div>
+				{
+					<InspectorControls key="inspector">
+						<PanelBody title={ __( 'Shortcode Settings' ) } >
+							<TextControl
+								label={ __( 'Title' ) }
+								type="text"
+								value={ shortcodetitle }
+								onChange={ onChangeTitle }
+							/>
+							<AlignmentToolbar
+								value={ alignment }
+								onChange={ onChangeAlignment }
+							/>
+							<RangeControl
+								label={ __( 'Columns' ) }
+								value={ columns }
+								onChange={ onChangeColumns }
+								min={ 1 }
+								max={ 6 }
+							/>
+						</PanelBody>
+					</InspectorControls>
+				}
+				<div className={ className }>
+					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
+				</div>
+				<div style={ { textAlign: alignment } }>
+					[lsx_testimonials back columns=&quot;{ columns }&quot; ]
+				</div>
+			</div>
+		);
 	},
 
-	// Render the block components
-	edit: ABTestimonialBlock,
-
-	// Save the attributes and markup
-	save: function( props ) {
-
-		// Setup the attributes
-		const {
-			testimonialName,
-			testimonialTitle,
-			testimonialContent,
-			testimonialAlignment,
-			testimonialImgURL,
-			testimonialImgID,
-			testimonialBackgroundColor,
-			testimonialTextColor,
-			testimonialFontSize,
-			testimonialCiteAlign
-		} = props.attributes;
-
-		// Save the block markup for the front end
+	save( { attributes, className } ) {
+		const { alignment, columns, shortcodetitle } = attributes;
 		return (
-			<Testimonial { ...props }>
-				<RichText.Content
-					tagName="div"
-					className="ab-testimonial-text"
-					style={ {
-						textAlign: testimonialAlignment,
-					} }
-					value={ testimonialContent }
-				/>
-
-				<div class="ab-testimonial-info">
-					{ testimonialImgURL && (
-						<div class="ab-testimonial-avatar-wrap">
-							<div class="ab-testimonial-image-wrap">
-								<img
-									class="ab-testimonial-avatar"
-									src={ testimonialImgURL }
-									alt="avatar"
-								/>
-							</div>
-						</div>
-					) }
-
-					{ testimonialName && (
-						<RichText.Content
-							tagName="h2"
-							className="ab-testimonial-name"
-							style={ {
-								color: testimonialTextColor
-							} }
-							value={ testimonialName }
-						/>
-					) }
-
-					{ testimonialTitle && (
-						<RichText.Content
-							tagName="small"
-							className="ab-testimonial-title"
-							style={ {
-								color: testimonialTextColor
-							} }
-							value={ testimonialTitle }
-						/>
-					) }
+			<div className={ className }>
+				<div>
+					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
 				</div>
-			</Testimonial>
+				<div style={ { textAlign: alignment } }>
+					[lsx_testimonials back columns=&quot;{ columns }&quot; ]
+				</div>
+			</div>
 		);
 	},
 } );

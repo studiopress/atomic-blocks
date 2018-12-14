@@ -106,14 +106,14 @@
  * Testimonial styles
  * Loads on front end and back end
  */
-.ab-block-testimonial {
+.lsx-block-testimonial {
   background: #f2f2f2;
   color: #293038;
   margin: 0 auto;
   padding: 5%;
   border-radius: 5px;
   margin-bottom: 1.2em; }
-  .ab-block-testimonial .ab-testimonial-info {
+  .lsx-block-testimonial .lsx-testimonial-info {
     position: relative;
     display: inline-block;
     width: 100%;
@@ -121,60 +121,60 @@
     min-height: 55px;
     padding-top: 5px;
     line-height: 1.4; }
-  .ab-block-testimonial .ab-testimonial-info .blocks-editable {
+  .lsx-block-testimonial .lsx-testimonial-info .blocks-editable {
     padding-left: 0; }
-  .ab-block-testimonial .ab-testimonial-info .ab-testimonial-avatar-wrap {
+  .lsx-block-testimonial .lsx-testimonial-info .lsx-testimonial-avatar-wrap {
     position: absolute;
     left: 0;
     top: 0; }
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-name,
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-name + .ab-testimonial-title,
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .ab-testimonial-title,
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .editor-rich-text,
-  .ab-block-testimonial .ab-testimonial-avatar-wrap + .editor-rich-text + .editor-rich-text {
+  .lsx-block-testimonial .lsx-testimonial-avatar-wrap + .lsx-testimonial-name,
+  .lsx-block-testimonial .lsx-testimonial-avatar-wrap + .lsx-testimonial-name + .lsx-testimonial-title,
+  .lsx-block-testimonial .lsx-testimonial-avatar-wrap + .lsx-testimonial-title,
+  .lsx-block-testimonial .lsx-testimonial-avatar-wrap + .editor-rich-text,
+  .lsx-block-testimonial .lsx-testimonial-avatar-wrap + .editor-rich-text + .editor-rich-text {
     margin-left: 70px;
     padding-left: 0; }
-  .ab-block-testimonial .ab-testimonial-text p {
+  .lsx-block-testimonial .lsx-testimonial-text p {
     line-height: 1.6; }
-  .ab-block-testimonial .ab-testimonial-text a {
+  .lsx-block-testimonial .lsx-testimonial-text a {
     color: inherit;
     -webkit-box-shadow: 0 -1px 0 inset;
             box-shadow: 0 -1px 0 inset;
     text-decoration: none; }
-    .ab-block-testimonial .ab-testimonial-text a:hover {
+    .lsx-block-testimonial .lsx-testimonial-text a:hover {
       color: inherit;
       -webkit-box-shadow: 0 -2px 0 inset;
               box-shadow: 0 -2px 0 inset; }
-  .ab-block-testimonial .ab-testimonial-name {
+  .lsx-block-testimonial .lsx-testimonial-name {
     font-size: 1em;
     font-weight: bold;
     line-height: 1.2;
     margin: 0;
     padding: 0; }
-  .ab-block-testimonial .ab-testimonial-title {
+  .lsx-block-testimonial .lsx-testimonial-title {
     opacity: .8; }
-  .ab-block-testimonial .ab-testimonial-avatar {
+  .lsx-block-testimonial .lsx-testimonial-avatar {
     border-radius: 200px;
     max-width: 100px; }
-  .ab-block-testimonial .ab-testimonial-image-wrap {
+  .lsx-block-testimonial .lsx-testimonial-image-wrap {
     height: 55px;
     width: 55px;
     background: #ddd;
     border-radius: 200px;
     position: relative; }
-    .ab-block-testimonial .ab-testimonial-image-wrap button {
+    .lsx-block-testimonial .lsx-testimonial-image-wrap button {
       position: absolute;
       left: 19px;
       top: 16px;
       z-index: 50;
       padding: 0; }
-    .ab-block-testimonial .ab-testimonial-image-wrap button:focus {
+    .lsx-block-testimonial .lsx-testimonial-image-wrap button:focus {
       background: none;
       border: none;
       outline: none;
       -webkit-box-shadow: none;
               box-shadow: none; }
-    .ab-block-testimonial .ab-testimonial-image-wrap img {
+    .lsx-block-testimonial .lsx-testimonial-image-wrap img {
       -o-object-fit: cover;
          object-fit: cover;
       height: 100%;
@@ -184,28 +184,28 @@
       border-radius: 40px;
       z-index: 5; }
 
-#editor .ab-has-avatar .ab-testimonial-image-wrap button {
+#editor .lsx-has-avatar .lsx-testimonial-image-wrap button {
   top: 0;
   left: 0;
   opacity: 1 !important;
   height: 100%; }
 
-#editor .ab-has-avatar .ab-testimonial-image-wrap:hover {
+#editor .lsx-has-avatar .lsx-testimonial-image-wrap:hover {
   cursor: pointer; }
-  #editor .ab-has-avatar .ab-testimonial-image-wrap:hover img {
+  #editor .lsx-has-avatar .lsx-testimonial-image-wrap:hover img {
     opacity: .7; }
-  #editor .ab-has-avatar .ab-testimonial-image-wrap:hover button {
+  #editor .lsx-has-avatar .lsx-testimonial-image-wrap:hover button {
     opacity: 1; }
 
-.right-aligned .ab-testimonial-info {
+.right-aligned .lsx-testimonial-info {
   text-align: right; }
-  .right-aligned .ab-testimonial-info h2 {
+  .right-aligned .lsx-testimonial-info h2 {
     left: 0; }
-  .right-aligned .ab-testimonial-info .ab-testimonial-name,
-  .right-aligned .ab-testimonial-info .ab-testimonial-title {
+  .right-aligned .lsx-testimonial-info .lsx-testimonial-name,
+  .right-aligned .lsx-testimonial-info .lsx-testimonial-title {
     margin-right: 70px;
     margin-left: 0; }
-  .right-aligned .ab-testimonial-info .ab-testimonial-avatar-wrap {
+  .right-aligned .lsx-testimonial-info .lsx-testimonial-avatar-wrap {
     left: auto;
     right: 0; }
 /**
