@@ -51,44 +51,44 @@ const blockAttributes = {
 	},
 	buttonAlignment: {
 		type: 'string',
-		default: 'center'
+		default: 'center',
 	},
 	buttonBackgroundColor: {
 		type: 'string',
-		default: '#3373dc'
+		default: '#3373dc',
 	},
 	buttonTextColor: {
 		type: 'string',
-		default: '#ffffff'
+		default: '#ffffff',
 	},
 	buttonSize: {
 		type: 'string',
-		default: 'ab-button-size-medium'
+		default: 'lsx-button-size-small',
 	},
 	buttonShape: {
 		type: 'string',
-		default: 'ab-button-shape-rounded'
+		default: 'lsx-button-shape-rounded',
 	},
 	buttonTarget: {
 		type: 'boolean',
-		default: false
+		default: false,
 	},
 	ctaTitle: {
 		type: 'array',
-		selector: '.ab-cta-title',
+		selector: '.lsx-cta-title',
 		source: 'children',
 	},
 	ctaTitleFontSize: {
 		type: 'string',
-		default: '32'
+		default: '32',
 	},
 	ctaTextFontSize: {
 		type: 'string',
-		default: '20'
+		default: '20',
 	},
 	ctaText: {
 		type: 'array',
-		selector: '.ab-cta-text',
+		selector: '.lsx-cta-text',
 		source: 'children',
 	},
 	ctaWidth: {
@@ -97,11 +97,11 @@ const blockAttributes = {
 	},
 	ctaBackgroundColor: {
 		type: 'string',
-		default: '#f2f2f2'
+		default: '#f2f2f2',
 	},
 	ctaTextColor: {
 		type: 'string',
-		default: '#32373c'
+		default: '#32373c',
 	},
 	imgURL: {
 		type: 'string',
@@ -124,32 +124,30 @@ const blockAttributes = {
 	},
 };
 
-class ABCTABlock extends Component {
-
+class LSXCTABlock extends Component {
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
-			buttonText,
-			buttonUrl,
-			buttonAlignment,
-			buttonBackgroundColor,
-			buttonTextColor,
-			buttonSize,
-			buttonShape,
-			buttonTarget,
-			ctaTitle,
-			ctaText,
-			ctaTitleFontSize,
-			ctaTextFontSize,
-			ctaWidth,
-			ctaBackgroundColor,
-			ctaTextColor,
-			imgURL,
-			imgID,
-			imgAlt,
-			dimRatio,
+				buttonText,
+				buttonUrl,
+				buttonAlignment,
+				buttonBackgroundColor,
+				buttonTextColor,
+				buttonSize,
+				buttonShape,
+				buttonTarget,
+				ctaTitle,
+				ctaText,
+				ctaTitleFontSize,
+				ctaTextFontSize,
+				ctaWidth,
+				ctaBackgroundColor,
+				ctaTextColor,
+				imgURL,
+				imgID,
+				imgAlt,
+				dimRatio,
 			},
 			attributes,
 			isSelected,
@@ -168,7 +166,7 @@ class ABCTABlock extends Component {
 
 		return [
 			// Show the alignment toolbar on focus
-			<BlockControls>
+			<BlockControls key="controls">
 				<BlockAlignmentToolbar
 					value={ ctaWidth }
 					onChange={ ctaWidth => setAttributes( { ctaWidth } ) }
@@ -182,16 +180,16 @@ class ABCTABlock extends Component {
 				/>
 			</BlockControls>,
 			// Show the block controls on focus
-			<Inspector
+			<Inspector key="inspectors"
 				{ ...{ setAttributes, ...this.props } }
 			/>,
 			// Show the button markup in the editor
-			<CallToAction { ...this.props }>
+			<CallToAction key="cta" { ...this.props }>
 				{ imgURL && !! imgURL.length && (
-					<div class="ab-cta-image-wrap">
+					<div className="lsx-cta-image-wrap">
 						<img
 							className={ classnames(
-								'ab-cta-image',
+								'lsx-cta-image',
 								dimRatioToClass( dimRatio ),
 								{
 									'has-background-dim': dimRatio !== 0,
@@ -203,30 +201,30 @@ class ABCTABlock extends Component {
 					</div>
 				) }
 
-				<div class="ab-cta-content">
+				<div className="lsx-cta-content">
 					<RichText
 						tagName="h2"
-						placeholder={ __( 'Call-To-Action Title', 'atomic-blocks' ) }
+						placeholder={ __( 'Call-To-Action Title', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ ctaTitle }
 						className={ classnames(
-							'ab-cta-title',
-							'ab-font-size-' + ctaTitleFontSize,
+							'lsx-cta-title',
+							'lsx-font-size-' + ctaTitleFontSize,
 						) }
 						style={ {
 							color: ctaTextColor,
 						} }
-						onChange={ (value) => setAttributes( { ctaTitle: value } ) }
+						onChange={ ( value ) => setAttributes( { ctaTitle: value } ) }
 					/>
 					<RichText
 						tagName="div"
 						multiline="p"
-						placeholder={ __( 'Call To Action Text', 'atomic-blocks' ) }
+						placeholder={ __( 'Call To Action Text', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ ctaText }
 						className={ classnames(
-							'ab-cta-text',
-							'ab-font-size-' + ctaTextFontSize,
+							'lsx-cta-text',
+							'lsx-font-size-' + ctaTextFontSize,
 						) }
 						style={ {
 							color: ctaTextColor,
@@ -234,14 +232,14 @@ class ABCTABlock extends Component {
 						onChange={ ( value ) => setAttributes( { ctaText: value } ) }
 					/>
 				</div>
-				<div class="ab-cta-button">
+				<div className="lsx-cta-button">
 					<RichText
 						tagName="span"
-						placeholder={ __( 'Button text...', 'atomic-blocks' ) }
+						placeholder={ __( 'Button text...', 'lsx-blocks' ) }
 						value={ buttonText }
 						formattingControls={ [] }
 						className={ classnames(
-							'ab-button',
+							'lsx-button-back',
 							buttonShape,
 							buttonSize,
 						) }
@@ -249,12 +247,12 @@ class ABCTABlock extends Component {
 							color: buttonTextColor,
 							backgroundColor: buttonBackgroundColor,
 						} }
-						onChange={ (value) => setAttributes( { buttonText: value } ) }
+						onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 					/>
 					{ isSelected && (
 						<form
 							key="form-link"
-							className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
+							className={ `blocks-button__inline-link lsx-button-${ buttonAlignment }` }
 							onSubmit={ event => event.preventDefault() }
 							style={ {
 								textAlign: buttonAlignment,
@@ -268,27 +266,27 @@ class ABCTABlock extends Component {
 							/>
 							<IconButton
 								icon="editor-break"
-								label={ __( 'Apply', 'atomic-blocks' ) }
+								label={ __( 'Apply', 'lsx-blocks' ) }
 								type="submit"
 							/>
 						</form>
 					) }
 				</div>
-			</CallToAction>
+			</CallToAction>,
 		];
 	}
 }
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-cta', {
-	title: __( 'AB Call To Action', 'atomic-blocks' ),
-	description: __( 'Add a call to action section with a title, text, and a button.', 'atomic-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-cta', {
+	title: __( 'LSX Call To Action', 'lsx-blocks' ),
+	description: __( 'Add a call to action section with a title, text, and a button.', 'lsx-blocks' ),
 	icon: 'megaphone',
 	category: 'lsx-blocks',
 	keywords: [
-		__( 'call to action', 'atomic-blocks' ),
-		__( 'cta', 'atomic-blocks' ),
-		__( 'lsx', 'atomic-blocks' ),
+		__( 'call to action', 'lsx-blocks' ),
+		__( 'cta', 'lsx-blocks' ),
+		__( 'lsx', 'lsx-blocks' ),
 	],
 
 	attributes: blockAttributes,
@@ -300,11 +298,10 @@ registerBlockType( 'lsx-blocks/ab-cta', {
 	},
 
 	// Render the block components
-	edit: ABCTABlock,
+	edit: LSXCTABlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
-
 		// Setup the attributes
 		const {
 			buttonText,
@@ -332,10 +329,10 @@ registerBlockType( 'lsx-blocks/ab-cta', {
 		return (
 			<CallToAction { ...props }>
 				{ imgURL && (
-					<div class="ab-cta-image-wrap">
+					<div className="lsx-cta-image-wrap">
 						<img
 							className={ classnames(
-								'ab-cta-image',
+								'lsx-cta-image',
 								dimRatioToClass( dimRatio ),
 								{
 									'has-background-dim': dimRatio !== 0,
@@ -347,13 +344,13 @@ registerBlockType( 'lsx-blocks/ab-cta', {
 					</div>
 				) }
 
-				<div class="ab-cta-content">
+				<div className="lsx-cta-content">
 					{ ctaTitle && (
 						<RichText.Content
 							tagName="h2"
 							className={ classnames(
-								'ab-cta-title',
-								'ab-font-size-' + ctaTitleFontSize,
+								'lsx-cta-title',
+								'lsx-font-size-' + ctaTitleFontSize,
 							) }
 							style={ {
 								color: ctaTextColor,
@@ -365,8 +362,8 @@ registerBlockType( 'lsx-blocks/ab-cta', {
 						<RichText.Content
 							tagName="div"
 							className={ classnames(
-								'ab-cta-text',
-								'ab-font-size-' + ctaTextFontSize,
+								'lsx-cta-text',
+								'lsx-font-size-' + ctaTextFontSize,
 							) }
 							style={ {
 								color: ctaTextColor,
@@ -376,12 +373,12 @@ registerBlockType( 'lsx-blocks/ab-cta', {
 					) }
 				</div>
 				{ buttonText && (
-					<div class="ab-cta-button">
+					<div className="lsx-cta-button">
 						<a
 							href={ buttonUrl }
 							target={ buttonTarget ? '_blank' : '_self' }
 							className={ classnames(
-								'ab-button',
+								'lsx-button',
 								buttonShape,
 								buttonSize,
 							) }

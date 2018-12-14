@@ -230,25 +230,25 @@
 /**
  * Editor styles for the admin
  */
-.ab-block-profile {
+.lsx-block-profile {
   margin-bottom: 0; }
 
-.editor-block-list__layout [data-type="atomic-blocks/ab-profile-box"] {
+.editor-block-list__layout [data-type="lsx-blocks/lsx-profile-box"] {
   margin-bottom: 1.2em; }
 
-.ab-profile-image-wrap svg {
+.lsx-profile-image-wrap svg {
   pointer-events: none;
   margin: 0 auto; }
 
-.ab-profile-image-wrap .components-button:not(:disabled):not([aria-disabled=true]):focus {
+.lsx-profile-image-wrap .components-button:not(:disabled):not([aria-disabled=true]):focus {
   background: none;
   -webkit-box-shadow: none;
           box-shadow: none; }
 
-.ab-profile-content-wrap h2.editor-rich-text__tinymce {
+.lsx-profile-content-wrap h2.editor-rich-text__tinymce {
   line-height: 1.2; }
 
-.ab-profile-content-wrap p.editor-rich-text__tinymce {
+.lsx-profile-content-wrap p.editor-rich-text__tinymce {
   line-height: 1.6; }
 /**
  * Common styles
@@ -991,24 +991,42 @@
 /**
  * Editor styles for the admin
  */
-.ab-block-cta {
+.lsx-block-cta {
   margin-bottom: 0; }
+  .lsx-block-cta .lsx-button-back {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1 !important;
+    background-color: #32373c;
+    border: none;
+    border-radius: 50px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    padding: .6em 1em;
+    text-decoration: none;
+    word-break: break-word;
+    -webkit-transition: .3s ease;
+    -o-transition: .3s ease;
+    transition: .3s ease;
+    display: inline-block; }
 
-.editor-block-list__layout [data-type="atomic-blocks/ab-cta"] {
+.editor-block-list__layout [data-type="lsx-blocks/lsx-cta"] {
   margin-bottom: 1.2em; }
 
-.ab-cta-button .blocks-button__inline-link .editor-url-input {
+.lsx-cta-button .blocks-button__inline-link .editor-url-input {
   display: inline-block;
   width: auto; }
 
-.ab-cta-button .blocks-button__inline-link .components-button {
+.lsx-cta-button .blocks-button__inline-link .components-button {
   display: inline-block; }
 
-.ab-cta-button .blocks-button__inline-link svg {
+.lsx-cta-button .blocks-button__inline-link svg {
   vertical-align: middle;
   margin-right: 8px; }
 
-.ab-block-cta h2.editor-rich-text__tinymce.mce-content-body {
+.lsx-block-cta h2.editor-rich-text__tinymce.mce-content-body {
   line-height: 1.2; }
 /**
  * Common styles

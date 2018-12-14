@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .ab-block-profile {
+ .lsx-block-profile {
 	background: #f2f2f2;
 	color: #293038;
 	margin: 0 auto;
@@ -15,7 +15,7 @@
 	justify-content: space-around;
 	width: 100%;
 
-	.ab-profile-column {
+	.lsx-profile-column {
 		display: block;
 		padding: 15px;
 		flex: 3 0 0;
@@ -25,7 +25,7 @@
 		}
 	}
 
-	.ab-profile-avatar-wrap {
+	.lsx-profile-avatar-wrap {
 		position: relative;
 		z-index: 0;
 		flex: 1 0 0;
@@ -37,13 +37,13 @@
 		}
 	}
 
-	.ab-profile-content-wrap {
+	.lsx-profile-content-wrap {
 		@media only screen and (max-width: 600px) {
 			text-align: center;
 		}
 	}
 
-	.ab-profile-text {
+	.lsx-profile-text {
 		font-size: 18px;
 		padding-top: 1em;
 
@@ -59,7 +59,7 @@
 		}
 
 		p {
-			line-height: 1.6; 
+			line-height: 1.6;
 
 			&:last-child {
 			margin-bottom: 0;
@@ -67,20 +67,20 @@
 		}
 	}
 
-	.ab-profile-name {
+	.lsx-profile-name {
 		font-size: 1.4em;
 		font-weight: bold;
 		line-height: 1.2;
-		margin: 0; 
+		margin: 0;
 	}
 
-	.ab-profile-title {
+	.lsx-profile-title {
 		opacity: .8;
 		padding-top: 5px;
 		margin-bottom: 0;
 	}
 
-	.ab-profile-image-square {
+	.lsx-profile-image-square {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -89,13 +89,13 @@
 		z-index: 5;
 	}
 
-	.ab-profile-text:empty,
-	.ab-profile-title:empty,
-	.ab-profile-name:empty {
+	.lsx-profile-text:empty,
+	.lsx-profile-title:empty,
+	.lsx-profile-name:empty {
 		display: none;
 	}
 
-	.ab-profile-image-wrap {
+	.lsx-profile-image-wrap {
 		width: 100%;
 		background: #ddd;
 		position: relative;
@@ -111,7 +111,7 @@
 			position: absolute;
 			left: 0;
 			z-index: 50;
-			padding: 0; 
+			padding: 0;
 			height: 100%;
 			width: 100%;
 		}
@@ -120,7 +120,7 @@
 			background: none;
 			border: none;
 			outline: none;
-			box-shadow: none; 
+			box-shadow: none;
 		}
 
 		img {
@@ -132,7 +132,7 @@
 		}
 	}
 
-	.ab-social-links {
+	.lsx-social-links {
 		list-style: none;
 		margin: 0 0 0 0;
 		padding: 5% 0 0 0;
@@ -141,20 +141,20 @@
 		&:empty {
 			display: none;
 		}
-		
+
 		li {
 			display: inline-block;
 			margin: 0 8px 0 0;
 			padding: 0;
-		
+
 			a {
 				border: none;
-	
+
 				&:hover {
 					opacity: .9;
 				}
 			}
-	
+
 			i {
 				font-size: 18px;
 				background: #0393e3;
@@ -169,14 +169,14 @@
 	}
 }
 
-.right .ab-profile-avatar-wrap {
+.right .lsx-profile-avatar-wrap {
 	order: 2;
 }
 
-.round .ab-profile-image-wrap {
+.round .lsx-profile-image-wrap {
 	border-radius: 500px;
 	overflow: hidden;
-	
+
 	&:before {
 		content: '';
 		display: inline-block;
@@ -188,12 +188,12 @@
 	}
 }
 
-#editor .ab-has-avatar {
+#editor .lsx-has-avatar {
 
-	.ab-profile-image-square {
+	.lsx-profile-image-square {
 		&:hover {
 			cursor: pointer;
-			
+
 			img {
 				opacity: .7 !important;
 			}

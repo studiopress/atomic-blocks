@@ -21,7 +21,7 @@ export default class CallToAction extends Component {
 		// Setup the attributes
 		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaWidth, ctaBackgroundColor, ctaTextColor }  } = this.props;
 
-		return (	
+		return (
 			<div
 				style={ {
 					backgroundColor: ctaBackgroundColor,
@@ -30,8 +30,8 @@ export default class CallToAction extends Component {
 				className={ classnames(
 					this.props.className,
 					`align${ctaWidth}`,
-					'ab-block-cta',
-					'ab-font-size-' + ctaTextFontSize,
+					'lsx-block-cta',
+					'lsx-font-size-' + ctaTextFontSize,
 				) }
 			>{ this.props.children }</div>
 		);

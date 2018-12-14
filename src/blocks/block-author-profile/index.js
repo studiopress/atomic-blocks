@@ -41,16 +41,16 @@ const blockAttributes = {
 	profileName: {
 		type: 'array',
 		source: 'children',
-		selector: '.ab-profile-name',
+		selector: '.lsx-profile-name',
 	},
 	profileTitle: {
 		type: 'array',
 		source: 'children',
-		selector: '.ab-profile-title',
+		selector: '.lsx-profile-title',
 	},
 	profileContent: {
 		type: 'array',
-		selector: '.ab-profile-text',
+		selector: '.lsx-profile-text',
 		source: 'children',
 	},
 	profileAlignment: {
@@ -116,10 +116,8 @@ const blockAttributes = {
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
-class ABAuthorProfileBlock extends Component {
-
+class LSXAuthorProfileBlock extends Component {
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
@@ -167,13 +165,13 @@ class ABAuthorProfileBlock extends Component {
 				/>
 			</BlockControls>,
 			// Show the block controls on focus
-			<Inspector
+			<Inspector key="inspector"
 				{ ...{ setAttributes, ...this.props } }
 			/>,
 			// Show the block markup in the editor
-			<ProfileBox { ...this.props }>
+			<ProfileBox key="profile" { ...this.props }>
 				<AvatarColumn { ...this.props }>
-					<div class="ab-profile-image-square">
+					<div class="lsx-profile-image-square">
 						<MediaUpload
 							buttonProps={ {
 								className: 'change-image'
@@ -203,7 +201,7 @@ class ABAuthorProfileBlock extends Component {
 
 				<div
 					className={ classnames(
-						'ab-profile-column ab-profile-content-wrap'
+						'lsx-profile-column lsx-profile-content-wrap'
 					) }
 				>
 					<RichText
@@ -211,7 +209,7 @@ class ABAuthorProfileBlock extends Component {
 						placeholder={ __( 'Add name', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileName }
-						className='ab-profile-name'
+						className='lsx-profile-name'
 						style={ {
 							color: profileTextColor
 						} }
@@ -223,7 +221,7 @@ class ABAuthorProfileBlock extends Component {
 						placeholder={ __( 'Add title', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileTitle }
-						className='ab-profile-title'
+						className='lsx-profile-title'
 						style={ {
 							color: profileTextColor
 						} }
@@ -232,7 +230,7 @@ class ABAuthorProfileBlock extends Component {
 
 					<RichText
 						tagName="div"
-						className='ab-profile-text'
+						className='lsx-profile-text'
 						multiline="p"
 						placeholder={ __( 'Add profile text...', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
@@ -249,8 +247,8 @@ class ABAuthorProfileBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-profile-box', {
-	title: __( 'AB Profile Box', 'lsx-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-profile-box', {
+	title: __( 'LSX Author Profile Box', 'lsx-blocks' ),
 	description: __( 'Add a profile box with bio info and social media links.', 'lsx-blocks' ),
 	icon: 'admin-users',
 	category: 'lsx-blocks',
@@ -263,7 +261,7 @@ registerBlockType( 'lsx-blocks/ab-profile-box', {
 	attributes: blockAttributes,
 
 	// Render the block components
-	edit: ABAuthorProfileBlock,
+	edit: LSXAuthorProfileBlock,
 
 	// Save the block markup
 	save: function( props ) {
@@ -277,9 +275,9 @@ registerBlockType( 'lsx-blocks/ab-profile-box', {
 
 				{ profileImgURL && (
 					<AvatarColumn { ...props }>
-						<div class="ab-profile-image-square">
+						<div class="lsx-profile-image-square">
 							<img
-								class="ab-profile-avatar"
+								class="lsx-profile-avatar"
 								src={ profileImgURL }
 								alt="avatar"
 							/>
@@ -289,13 +287,13 @@ registerBlockType( 'lsx-blocks/ab-profile-box', {
 
 				<div
 					className={ classnames(
-						'ab-profile-column ab-profile-content-wrap'
+						'lsx-profile-column lsx-profile-content-wrap'
 					) }
 				>
 					{ profileName && (
 						<RichText.Content
 							tagName="h2"
-							className="ab-profile-name"
+							className="lsx-profile-name"
 							style={ {
 								color: profileTextColor
 							} }
@@ -306,7 +304,7 @@ registerBlockType( 'lsx-blocks/ab-profile-box', {
 					{ profileTitle && (
 						<RichText.Content
 							tagName="p"
-							className="ab-profile-title"
+							className="lsx-profile-title"
 							style={ {
 								color: profileTextColor
 							} }
@@ -317,7 +315,7 @@ registerBlockType( 'lsx-blocks/ab-profile-box', {
 					{ profileContent && (
 						<RichText.Content
 							tagName="div"
-							className="ab-profile-text"
+							className="lsx-profile-text"
 							value={ profileContent }
 						/>
 					) }
