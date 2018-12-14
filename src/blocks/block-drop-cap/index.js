@@ -36,7 +36,7 @@ const {
 	SelectControl,
 } = wp.components;
 
-class ABDropCapBlock extends Component {
+class LSXDropCapBlock extends Component {
 
 	render() {
 
@@ -65,8 +65,8 @@ class ABDropCapBlock extends Component {
 					value={ dropCapContent }
 					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 					className={ classnames(
-						'ab-drop-cap-text',
-						'ab-font-size-' + dropCapFontSize,
+						'lsx-drop-cap-text',
+						'lsx-font-size-' + dropCapFontSize,
 					) }
 					onChange={ ( value ) => this.props.setAttributes( { dropCapContent: value } ) }
 				/>
@@ -76,8 +76,8 @@ class ABDropCapBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-drop-cap', {
-	title: __( 'AB Drop Cap', 'lsx-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-drop-cap', {
+	title: __( 'LSX Drop Cap', 'lsx-blocks' ),
 	description: __( 'Add a styled drop cap to the beginning of your paragraph.', 'lsx-blocks' ),
 	icon: 'format-quote',
 	category: 'lsx-blocks',
@@ -89,7 +89,7 @@ registerBlockType( 'lsx-blocks/ab-drop-cap', {
 	attributes: {
 		dropCapContent: {
 			type: 'array',
-			selector: '.ab-drop-cap-text',
+			selector: '.lsx-drop-cap-text',
 			source: 'children',
 		},
 		dropCapAlignment: {
@@ -114,7 +114,7 @@ registerBlockType( 'lsx-blocks/ab-drop-cap', {
 	},
 
 	// Render the block components
-	edit: ABDropCapBlock,
+	edit: LSXDropCapBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
@@ -128,7 +128,7 @@ registerBlockType( 'lsx-blocks/ab-drop-cap', {
 					dropCapContent && (
 					<RichText.Content
 						tagName="div"
-						className="ab-drop-cap-text"
+						className="lsx-drop-cap-text"
 						value={ dropCapContent }
 					/>
 				) }

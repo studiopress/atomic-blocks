@@ -38,9 +38,9 @@ export default class Inspector extends Component {
 
 		// Drop cap style options
 		const dropCapOptions = [
-			{ value: 'ab-drop-cap-letter', label: __( 'Letter' ) },
-			{ value: 'ab-drop-cap-square', label: __( 'Square' ) },
-			{ value: 'ab-drop-cap-border', label: __( 'Border' ) },
+			{ value: 'lsx-drop-cap-letter', label: __( 'Letter' ) },
+			{ value: 'lsx-drop-cap-square', label: __( 'Square' ) },
+			{ value: 'lsx-drop-cap-border', label: __( 'Border' ) },
 		];
 
 		return (

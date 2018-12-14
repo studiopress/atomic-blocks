@@ -739,9 +739,9 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
  * Drop cap styles
  * Loads on front end and back end
  */
-.entry-content .ab-block-drop-cap {
+.entry-content .lsx-block-drop-cap {
   /* Font size styles */ }
-  .entry-content .ab-block-drop-cap .ab-drop-cap-text p:first-letter {
+  .entry-content .lsx-block-drop-cap .lsx-drop-cap-text p:first-letter {
     float: left;
     font-size: 75px;
     line-height: .7em;
@@ -750,41 +750,41 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     margin-bottom: 25px;
     font-weight: bold;
     text-transform: uppercase; }
-  .entry-content .ab-block-drop-cap.ab-drop-cap-square .ab-drop-cap-text p:first-letter {
+  .entry-content .lsx-block-drop-cap.lsx-drop-cap-square .lsx-drop-cap-text p:first-letter {
     background: #32373c;
     color: #fff;
     padding: .2em; }
-  .entry-content .ab-block-drop-cap.ab-drop-cap-border .ab-drop-cap-text p:first-letter {
+  .entry-content .lsx-block-drop-cap.lsx-drop-cap-border .lsx-drop-cap-text p:first-letter {
     color: #32373c;
     padding: .2em;
     border: solid 4px; }
   @media only screen and (min-width: 600px) {
-    .entry-content .ab-block-drop-cap.ab-font-size-1 .ab-drop-cap-text:first-letter {
+    .entry-content .lsx-block-drop-cap.lsx-font-size-1 .lsx-drop-cap-text:first-letter {
       font-size: 75px; }
-    .entry-content .ab-block-drop-cap.ab-font-size-2 .ab-drop-cap-text:first-letter {
+    .entry-content .lsx-block-drop-cap.lsx-font-size-2 .lsx-drop-cap-text:first-letter {
       font-size: 85px; }
-    .entry-content .ab-block-drop-cap.ab-font-size-3 .ab-drop-cap-text:first-letter {
+    .entry-content .lsx-block-drop-cap.lsx-font-size-3 .lsx-drop-cap-text:first-letter {
       font-size: 95px; }
-    .entry-content .ab-block-drop-cap.ab-font-size-4 .ab-drop-cap-text:first-letter {
+    .entry-content .lsx-block-drop-cap.lsx-font-size-4 .lsx-drop-cap-text:first-letter {
       font-size: 105px; }
-    .entry-content .ab-block-drop-cap.ab-font-size-5 .ab-drop-cap-text:first-letter {
+    .entry-content .lsx-block-drop-cap.lsx-font-size-5 .lsx-drop-cap-text:first-letter {
       font-size: 115px; }
-    .entry-content .ab-block-drop-cap.ab-font-size-6 .ab-drop-cap-text p:first-letter {
+    .entry-content .lsx-block-drop-cap.lsx-font-size-6 .lsx-drop-cap-text p:first-letter {
       font-size: 125px; } }
 
-.ab-block-drop-cap:before, .ab-block-drop-cap:after {
+.lsx-block-drop-cap:before, .lsx-block-drop-cap:after {
   content: '';
   display: table; }
 
-.ab-block-drop-cap:after {
+.lsx-block-drop-cap:after {
   clear: both; }
 
-.ab-block-drop-cap a {
+.lsx-block-drop-cap a {
   color: inherit;
   -webkit-box-shadow: 0 -1px 0 inset;
           box-shadow: 0 -1px 0 inset;
   text-decoration: none; }
-  .ab-block-drop-cap a:hover {
+  .lsx-block-drop-cap a:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset; }

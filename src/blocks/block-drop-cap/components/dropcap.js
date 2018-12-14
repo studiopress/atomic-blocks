@@ -31,8 +31,8 @@ export default class DropCap extends Component {
 				className={ classnames(
 					this.props.className,
 					dropCapStyle,
-					'ab-font-size-' + dropCapFontSize,
-					'ab-block-drop-cap',
+					'lsx-font-size-' + dropCapFontSize,
+					'lsx-block-drop-cap',
 				) }
 			>
 				{ this.props.children }
