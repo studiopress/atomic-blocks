@@ -23,13 +23,13 @@ export default class DismissButton extends Component {
 	}
 
 	render() {
-		
+
 		// Setup the attributes
 		const { attributes: { noticeTitleColor } } = this.props;
 
 		return (
-			<div 
-				className="ab-notice-dismiss" 
+			<div
+				className="lsx-notice-dismiss"
 				style={ {
 					fill: noticeTitleColor,
 					color: noticeTitleColor,

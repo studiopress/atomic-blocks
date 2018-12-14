@@ -575,11 +575,11 @@
  * Notice styles
  * Loads on front end and back end
  */
-.ab-block-notice {
+.lsx-block-notice {
   border-radius: 5px;
   position: relative;
   margin-bottom: 1.2em; }
-  .ab-block-notice .ab-notice-dismiss {
+  .lsx-block-notice .lsx-notice-dismiss {
     position: absolute;
     top: 13px;
     right: 13px;
@@ -589,12 +589,12 @@
     -webkit-transition: .3s ease;
     -o-transition: .3s ease;
     transition: .3s ease; }
-    .ab-block-notice .ab-notice-dismiss:hover {
+    .lsx-block-notice .lsx-notice-dismiss:hover {
       opacity: 1;
       cursor: pointer;
       -webkit-box-shadow: none;
               box-shadow: none; }
-  .ab-block-notice .ab-notice-title {
+  .lsx-block-notice .lsx-notice-title {
     font-weight: bold;
     padding: .5em 1em;
     color: #fff;
@@ -602,34 +602,34 @@
     border-top-left-radius: 5px;
     width: 100%;
     display: inline-block; }
-    .ab-block-notice .ab-notice-title p {
+    .lsx-block-notice .lsx-notice-title p {
       margin-bottom: 0; }
-    .ab-block-notice .ab-notice-title:empty {
+    .lsx-block-notice .lsx-notice-title:empty {
       display: none; }
-  .ab-block-notice .ab-notice-text {
+  .lsx-block-notice .lsx-notice-text {
     padding: 1em;
     border: solid 2px #333;
     border-radius: 5px;
     background: #fff; }
-    .ab-block-notice .ab-notice-text a {
+    .lsx-block-notice .lsx-notice-text a {
       color: inherit;
       -webkit-box-shadow: 0 -1px 0 inset;
               box-shadow: 0 -1px 0 inset;
       text-decoration: none; }
-      .ab-block-notice .ab-notice-text a:hover {
+      .lsx-block-notice .lsx-notice-text a:hover {
         color: inherit;
         -webkit-box-shadow: 0 -2px 0 inset;
                 box-shadow: 0 -2px 0 inset; }
-    .ab-block-notice .ab-notice-text p:last-child {
+    .lsx-block-notice .lsx-notice-text p:last-child {
       margin-bottom: 0; }
-  .ab-block-notice .ab-notice-title:not(:empty) + .notice-text,
-  .ab-block-notice .blocks-rich-text + .blocks-rich-text .ab-notice-text {
+  .lsx-block-notice .lsx-notice-title:not(:empty) + .notice-text,
+  .lsx-block-notice .blocks-rich-text + .blocks-rich-text .lsx-notice-text {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px; }
 
-body:not(.wp-admin) .ab-block-notice.ab-dismissable {
+body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   display: none; }
 /**
  * Common styles
