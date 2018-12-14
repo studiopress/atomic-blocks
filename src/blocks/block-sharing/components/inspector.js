@@ -55,29 +55,29 @@ export default class Inspector extends Component {
 
 		// Button style values
 		const buttonStyleOptions = [
-			{ value: 'ab-share-icon-text', label: __( 'Icon and Text' ) },
-			{ value: 'ab-share-icon-only', label: __( 'Icon Only' ) },
-			{ value: 'ab-share-text-only', label: __( 'Text Only' ) },
+			{ value: 'lsx-share-icon-text', label: __( 'Icon and Text' ) },
+			{ value: 'lsx-share-icon-only', label: __( 'Icon Only' ) },
+			{ value: 'lsx-share-text-only', label: __( 'Text Only' ) },
 		];
 
 		// Button shape values
 		const buttonShapeOptions = [
-			{ value: 'ab-share-shape-square', label: __( 'Square' ) },
-			{ value: 'ab-share-shape-rounded', label: __( 'Rounded Square' ) },
-			{ value: 'ab-share-shape-circular', label: __( 'Circular' ) },
+			{ value: 'lsx-share-shape-square', label: __( 'Square' ) },
+			{ value: 'lsx-share-shape-rounded', label: __( 'Rounded Square' ) },
+			{ value: 'lsx-share-shape-circular', label: __( 'Circular' ) },
 		];
 
 		// Button size values
 		const shareButtonSizeOptions = [
-			{ value: 'ab-share-size-small', label: __( 'Small' ) },
-			{ value: 'ab-share-size-medium', label: __( 'Medium' ) },
-			{ value: 'ab-share-size-large', label: __( 'Large' ) },
+			{ value: 'lsx-share-size-small', label: __( 'Small' ) },
+			{ value: 'lsx-share-size-medium', label: __( 'Medium' ) },
+			{ value: 'lsx-share-size-large', label: __( 'Large' ) },
 		];
 
 		// Button color values
 		const shareButtonColorOptions = [
-			{ value: 'ab-share-color-standard', label: __( 'Standard' ) },
-			{ value: 'ab-share-color-social', label: __( 'Social Colors' ) },
+			{ value: 'lsx-share-color-standard', label: __( 'Standard' ) },
+			{ value: 'lsx-share-color-social', label: __( 'Social Colors' ) },
 		];
 
 		return (

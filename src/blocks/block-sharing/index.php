@@ -18,7 +18,7 @@ function lsx_blocks_register_sharing() {
 
 	// Register the sharing block
 	register_block_type(
-		'atomic-blocks/ab-sharing', array(
+		'lsx-blocks/lsx-sharing', array(
 			'style' => 'lsx-blocks-style-css',
 			'attributes' => array(
                 'facebook' => array(
@@ -54,19 +54,19 @@ function lsx_blocks_register_sharing() {
 				),
 				'shareButtonStyle' => array(
 					'type' => 'string',
-					'default' => 'ab-share-icon-text',
+					'default' => 'lsx-share-icon-text',
 				),
 				'shareButtonShape' => array(
 					'type' => 'string',
-					'default' => 'ab-share-shape-circular',
+					'default' => 'lsx-share-shape-circular',
 				),
 				'shareButtonSize' => array(
 					'type' => 'string',
-					'default' => 'ab-share-size-medium',
+					'default' => 'lsx-share-size-medium',
 				),
 				'shareButtonColor' => array(
 					'type' => 'string',
-					'default' => 'ab-share-color-standard',
+					'default' => 'lsx-share-color-standard',
 				),
 			),
 			'render_callback' => 'lsx_blocks_render_sharing',
@@ -81,7 +81,7 @@ add_action( 'init', 'lsx_blocks_register_sharing' );
  */
 function lsx_blocks_social_icon_footer_script() { ?>
     <script type="text/javascript">
-        function atomicBlocksShare( url, title, w, h ){
+        function lsxBlocksShare( url, title, w, h ){
             var left = ( window.innerWidth / 2 )-( w / 2 );
             var top  = ( window.innerHeight / 2 )-( h / 2 );
             return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=600, height=600, top='+top+', left='+left);
@@ -133,10 +133,10 @@ function lsx_blocks_render_sharing( $attributes ) {
 			'<li>
 				<a
 					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-twitter"
+					onClick="javascript:lsxBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					class="lsx-share-twitter"
 					title="%2$s">
-					<i class="fab fa-twitter"></i> <span class="ab-social-text">%2$s</span>
+					<i class="fab fa-twitter"></i> <span class="lsx-social-text">%2$s</span>
 				</a>
 			</li>',
 			esc_url( $twitter_url ),
@@ -149,10 +149,10 @@ function lsx_blocks_render_sharing( $attributes ) {
 			'<li>
 				<a
 					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-facebook"
+					onClick="javascript:lsxBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					class="lsx-share-facebook"
 					title="%2$s">
-					<i class="fab fa-facebook-f"></i> <span class="ab-social-text">%2$s</span>
+					<i class="fab fa-facebook-f"></i> <span class="lsx-social-text">%2$s</span>
 				</a>
 			</li>',
 			esc_url( $facebook_url ),
@@ -165,10 +165,10 @@ function lsx_blocks_render_sharing( $attributes ) {
 			'<li>
 				<a
 					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-google"
+					onClick="javascript:lsxBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					class="lsx-share-google"
 					title="%2$s">
-					<i class="fab fa-google"></i> <span class="ab-social-text">%2$s</span>
+					<i class="fab fa-google"></i> <span class="lsx-social-text">%2$s</span>
 				</a>
 			</li>',
 			esc_url( $google_url ),
@@ -181,10 +181,10 @@ function lsx_blocks_render_sharing( $attributes ) {
 			'<li>
 				<a
 					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-pinterest"
+					onClick="javascript:lsxBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					class="lsx-share-pinterest"
 					title="%2$s">
-					<i class="fab fa-pinterest-p"></i> <span class="ab-social-text">%2$s</span>
+					<i class="fab fa-pinterest-p"></i> <span class="lsx-social-text">%2$s</span>
 				</a>
 			</li>',
 			esc_url( $pinterest_url ),
@@ -197,10 +197,10 @@ function lsx_blocks_render_sharing( $attributes ) {
 			'<li>
 				<a
 					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-linkedin"
+					onClick="javascript:lsxBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					class="lsx-share-linkedin"
 					title="%2$s">
-					<i class="fab fa-linkedin-in"></i> <span class="ab-social-text">%2$s</span>
+					<i class="fab fa-linkedin-in"></i> <span class="lsx-social-text">%2$s</span>
 				</a>
 			</li>',
 			esc_url( $linkedin_url ),
@@ -213,10 +213,10 @@ function lsx_blocks_render_sharing( $attributes ) {
 			'<li>
 				<a
 					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-reddit"
+					onClick="javascript:lsxBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					class="lsx-share-reddit"
 					title="%2$s">
-					<i class="fab fa-reddit-alien"></i> <span class="ab-social-text">%2$s</span>
+					<i class="fab fa-reddit-alien"></i> <span class="lsx-social-text">%2$s</span>
 				</a>
 			</li>',
 			esc_url( $reddit_url ),
@@ -229,9 +229,9 @@ function lsx_blocks_render_sharing( $attributes ) {
 			'<li>
 				<a
 					href="%1$s"
-					class="ab-share-email"
+					class="lsx-share-email"
 					title="%2$s">
-					<i class="fas fa-envelope"></i> <span class="ab-social-text">%2$s</span>
+					<i class="fas fa-envelope"></i> <span class="lsx-social-text">%2$s</span>
 				</a>
 			</li>',
 			esc_url( $email_url ),
@@ -241,8 +241,8 @@ function lsx_blocks_render_sharing( $attributes ) {
 
 	// Render the list of share links
 	$block_content = sprintf(
-		'<div class="wp-block-atomic-blocks-ab-sharing ab-block-sharing %2$s %3$s %4$s %5$s %6$s">
-			<ul class="ab-share-list">%1$s</ul>
+		'<div class="wp-block-lsx-blocks-lsx-sharing lsx-block-sharing %2$s %3$s %4$s %5$s %6$s">
+			<ul class="lsx-share-list">%1$s</ul>
 		</div>',
 		$share_url,
 		$attributes['shareButtonStyle'],

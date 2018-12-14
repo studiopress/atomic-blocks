@@ -37,8 +37,8 @@ const {
 } = wp.components;
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-sharing', {
-	title: __( 'AB Sharing', 'lsx-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-sharing', {
+	title: __( 'LSX Sharing', 'lsx-blocks' ),
 	description: __( 'Add sharing buttons to your posts and pages.', 'lsx-blocks' ),
 	icon: 'admin-links',
 	category: 'lsx-blocks',
@@ -90,12 +90,12 @@ registerBlockType( 'lsx-blocks/ab-sharing', {
 			/>,
 			// Show the button markup in the editor
 			<ShareLinks { ...props }>
-				<ul class="ab-share-list">
+				<ul class="lsx-share-list">
 				{ twitter &&
 					<li>
-						<a className='ab-share-twitter'>
+						<a className='lsx-share-twitter'>
 							<i class="fab fa-twitter"></i>
-							<span className={ 'ab-social-text' }>
+							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on Twitter', 'lsx-blocks' ) }
 							</span>
 						</a>
@@ -104,9 +104,9 @@ registerBlockType( 'lsx-blocks/ab-sharing', {
 
 				{ facebook &&
 					<li>
-						<a className='ab-share-facebook'>
+						<a className='lsx-share-facebook'>
 							<i class="fab fa-facebook-f"></i>
-							<span className={ 'ab-social-text' }>
+							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on Facebook', 'lsx-blocks' ) }
 							</span>
 						</a>
@@ -115,9 +115,9 @@ registerBlockType( 'lsx-blocks/ab-sharing', {
 
 				{ google &&
 					<li>
-						<a className='ab-share-google'>
+						<a className='lsx-share-google'>
 							<i class="fab fa-google"></i>
-							<span className={ 'ab-social-text' }>
+							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on Google', 'lsx-blocks' ) }
 							</span>
 						</a>
@@ -126,9 +126,9 @@ registerBlockType( 'lsx-blocks/ab-sharing', {
 
 				{ pinterest &&
 					<li>
-						<a className='ab-share-pinterest'>
+						<a className='lsx-share-pinterest'>
 							<i class="fab fa-pinterest-p"></i>
-							<span className={ 'ab-social-text' }>
+							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on Pinterest', 'lsx-blocks' ) }
 							</span>
 						</a>
@@ -137,9 +137,9 @@ registerBlockType( 'lsx-blocks/ab-sharing', {
 
 				{ linkedin &&
 					<li>
-						<a className='ab-share-linkedin'>
+						<a className='lsx-share-linkedin'>
 							<i class="fab fa-linkedin"></i>
-							<span className={ 'ab-social-text' }>
+							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on LinkedIn', 'lsx-blocks' ) }
 							</span>
 						</a>
@@ -148,9 +148,9 @@ registerBlockType( 'lsx-blocks/ab-sharing', {
 
 				{ reddit &&
 					<li>
-						<a className='ab-share-reddit'>
+						<a className='lsx-share-reddit'>
 							<i class="fab fa-reddit-alien"></i>
-							<span className={ 'ab-social-text' }>
+							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on reddit', 'lsx-blocks' ) }
 							</span>
 						</a>
@@ -159,9 +159,9 @@ registerBlockType( 'lsx-blocks/ab-sharing', {
 
 				{ email &&
 					<li>
-						<a className='ab-share-email'>
+						<a className='lsx-share-email'>
 							<i class="fas fa-envelope"></i>
-							<span className={ 'ab-social-text' }>
+							<span className={ 'lsx-social-text' }>
 								{ __( 'Share via Email', 'lsx-blocks' ) }
 							</span>
 						</a>
