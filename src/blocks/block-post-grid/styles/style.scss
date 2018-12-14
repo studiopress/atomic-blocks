@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .ab-block-post-grid {
+ .lsx-block-post-grid {
 	margin: 0 0 1.2em 0;
 	position: relative;
 
@@ -36,7 +36,7 @@
 		}
 	}
 
-	.ab-block-post-grid-image {
+	.lsx-block-post-grid-image {
 		margin-bottom: 1.2em;
 
 		img {
@@ -45,7 +45,7 @@
 		}
 	}
 
-	.ab-block-post-grid-text {
+	.lsx-block-post-grid-text {
 		text-align: left;
 	}
 
@@ -67,7 +67,7 @@
 		}
 	}
 
-	.ab-block-post-grid-byline {
+	.lsx-block-post-grid-byline {
 		text-transform: uppercase;
 		font-size: 13px;
 		letter-spacing: 1px;
@@ -75,8 +75,8 @@
 		margin-bottom: 15px;
 	}
 
-	.ab-block-post-grid-author, 
-	.ab-block-post-grid-date {
+	.lsx-block-post-grid-author,
+	.lsx-block-post-grid-date {
 		display: inline-block;
 
 		&:not(:last-child):after {
@@ -87,7 +87,7 @@
 		}
 	}
 
-	.ab-block-post-grid-author a {
+	.lsx-block-post-grid-author a {
 		box-shadow: none;
 
 		&:hover {
@@ -97,7 +97,7 @@
 		}
 	}
 
-	.ab-block-post-grid-text p {
+	.lsx-block-post-grid-text p {
 		margin: 0 0 15px 0;
 		line-height: 1.5;
 		font-size: 18px;
@@ -111,7 +111,7 @@
 		}
 	}
 
-	.ab-block-post-grid-link {
+	.lsx-block-post-grid-link {
 		display: inline-block;
 		box-shadow: none;
 		transition: .3s ease;
@@ -123,7 +123,7 @@
 		}
 	}
 
-	.ab-block-post-grid-excerpt div + p {
+	.lsx-block-post-grid-excerpt div + p {
 		margin-top: 15px;
 	}
 
@@ -150,7 +150,7 @@
 			}
 		}
 
-		.ab-block-post-grid-image {
+		.lsx-block-post-grid-image {
 			margin-bottom: 0;
 
 			@media only screen and (max-width: 600px) {
@@ -158,13 +158,13 @@
 			}
 		}
 
-		.ab-block-post-grid-title {
+		.lsx-block-post-grid-title {
 			@media only screen and (min-width: 600px) {
 				font-size: 34px;
 			}
 		}
 
-		.no-thumb .ab-block-post-grid-text {
+		.no-thumb .lsx-block-post-grid-text {
 			grid-column: span 2;
 		}
 	}

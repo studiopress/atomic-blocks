@@ -27,8 +27,8 @@ const validAlignments = [ 'center', 'wide' ];
 export const name = 'core/latest-posts';
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-post-grid', {
-	title: __( 'AB Post Grid', 'lsx-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-post-grid', {
+	title: __( 'LSX Post Grid', 'lsx-blocks' ),
 	description: __( 'Add a grid or list of customizable posts to your page.', 'lsx-blocks' ),
 	icon: 'grid-view',
 	category: 'lsx-blocks',
