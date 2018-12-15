@@ -63,6 +63,7 @@ class ABPricingTableBlock extends Component {
 							['atomic-blocks/ab-pricing-table-title', {
 								title: 'Price Title',
 								fontSize: 'medium',
+
 							}],
 							['atomic-blocks/ab-pricing-table-subtitle', {
 								subtitle: 'Price Subtitle Description',
@@ -105,7 +106,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 	attributes: {
 		columns: {
 			type: 'number',
-			default: 3,
+			default: 2,
 		},
 		tableAlignment: {
 			type: 'string',
@@ -128,9 +129,10 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		// Save the block markup for the front end
 		return (
 			<div
-				className={ classnames( {
-					[ `has-${ tableAlignment }-content` ]: tableAlignment !== 'center',
-				} ) }
+				className={ classnames(
+					tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+					'ab-block-pricing-table',
+				) }
 				itemscope
 				itemtype="http://schema.org/Product"
 			>

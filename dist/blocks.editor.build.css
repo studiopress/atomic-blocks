@@ -1565,21 +1565,3 @@
 /**
  * Editor styles for the admin
  */
-.ab-block-testimonial {
-  margin-bottom: 0; }
-  .ab-block-testimonial .components-button:not(:disabled):not([aria-disabled=true]):focus {
-    background: none;
-    -webkit-box-shadow: none;
-            box-shadow: none; }
-
-.editor-block-list__layout [data-type="atomic-blocks/ab-testimonial"] {
-  margin-bottom: 1.2em; }
-
-.ab-testimonial-info h2.editor-rich-text__tinymce {
-  line-height: 1.2; }
-
-.ab-testimonial-info p.editor-rich-text__tinymce {
-  line-height: 1.6; }
-
-.ab-testimonial-info .ab-testimonial-title + .ab-testimonial-title {
-  line-height: 1.8; }

@@ -9,14 +9,14 @@ import icons from '../icons';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { compose } = wp.compose;
 const { Component } = wp.element;
 
 const {
 	RichText,
 	getFontSizeClass,
 	FontSizePicker,
-  	withFontSizes,
+	withFontSizes,
+	getColorClassName,
 } = wp.editor;
 
 // Register the block
@@ -42,6 +42,18 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 		customFontSize: {
 			type: 'number',
 		},
+		textColor: {
+			type: 'string',
+		},
+		customTextColor: {
+			type: 'string',
+		},
+		backgroundColor: {
+			type: 'string',
+		},
+		customBackgroundColor: {
+			type: 'string',
+		},
 	},
 
 	// Render the block components
@@ -55,15 +67,33 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 			subtitle,
 			fontSize,
 			customFontSize,
+			backgroundColor,
+			textColor,
+			customBackgroundColor,
+			customTextColor,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
 		const fontSizeClass = getFontSizeClass( fontSize );
 
+		// Retreive the getColorClassName
+		const textClass = getColorClassName( 'color', textColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
 		// If there is no fontSizeClass, use customFontSize
 		const styles = {
 			fontSize: fontSizeClass ? undefined : customFontSize,
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			color: textClass ? undefined : customTextColor,
 		};
+
+		const className = classnames( {
+			'has-background': backgroundColor || customBackgroundColor,
+			'ab-pricing-table-subtitle': true,
+			[ fontSizeClass ]: fontSizeClass,
+			[ textClass ]: textClass,
+			[ backgroundClass ]: backgroundClass,
+		} );
 
 		// Save the block markup for the front end
 		return (
@@ -71,10 +101,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 				tagName="div"
 				value={ subtitle }
 				style={ styles }
-				className={ classnames(
-					'ab-pricing-table-subtitle',
-					fontSizeClass
-				) }
+				className={ className ? className : undefined }
 			/>
 		);
 	},

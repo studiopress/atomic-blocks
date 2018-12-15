@@ -2232,11 +2232,6 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
  * Pricing Table styles
  * Loads on front end and back end
  */
-[data-type="atomic-blocks/ab-pricing-table"] {
-  display: inline-block;
-  width: 50%;
-  vertical-align: top;
-  background: #f2f2f2; }
 /**
  * Common styles
  * Loads on front end and back end
@@ -2345,6 +2340,13 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
  * Pricing table styles
  * Loads on front end and back end
  */
+[data-type="atomic-blocks/ab-pricing-table"],
+.wp-block-atomic-blocks-ab-pricing-table {
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+  background: #f2f2f2; }
+
 .wp-block-atomic-blocks-ab-pricing-table {
   vertical-align: top; }
   .wp-block-atomic-blocks-ab-pricing-table .ab-pricing-table-description,

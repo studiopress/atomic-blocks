@@ -9,7 +9,6 @@ import icons from '../icons';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { compose } = wp.compose;
 const { Component } = wp.element;
 
 const {

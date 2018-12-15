@@ -9,7 +9,8 @@ const { Component, Fragment } = wp.element;
 
 const {
 	RichText,
-  	withFontSizes,
+	withFontSizes,
+	withColors,
 } = wp.editor;
 
 class Edit extends Component {
@@ -30,6 +31,8 @@ class Edit extends Component {
 			setAttributes,
 			fallbackFontSize,
 			fontSize,
+			backgroundColor,
+			textColor,
 		} = this.props;
 
 		return [
@@ -46,9 +49,15 @@ class Edit extends Component {
 					className={ classnames( {
 						'ab-pricing-table-subtitle': true,
 						[ fontSize.class ]: fontSize.class,
+						'has-text-color': textColor.color,
+						'has-background': backgroundColor.color,
+						[ backgroundColor.class ]: backgroundColor.class,
+						[ textColor.class ]: textColor.class,
 					} ) }
 					style={ {
 						fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+						backgroundColor: backgroundColor.color,
+						color: textColor.color,
 					} }
 				/>
 			</Fragment>
@@ -58,4 +67,5 @@ class Edit extends Component {
 
 export default compose( [
 	withFontSizes( 'fontSize' ),
+	withColors( 'backgroundColor', { textColor: 'color' } ),
 ] )( Edit );
