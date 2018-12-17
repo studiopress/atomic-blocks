@@ -61,9 +61,8 @@ class ABPricingTableBlock extends Component {
 						template={[
 							// Add placeholder blocks
 							['atomic-blocks/ab-pricing-table-title', {
-								title: 'Price Title',
+								title: '<strong>Test Content</strong>',
 								fontSize: 'medium',
-
 							}],
 							['atomic-blocks/ab-pricing-table-subtitle', {
 								subtitle: 'Price Subtitle Description',
