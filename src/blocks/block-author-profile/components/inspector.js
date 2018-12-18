@@ -34,7 +34,7 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape  } = this.props.attributes;
+		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, linkedin, email, website, profileAvatarShape  } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		// Avatar shape options
@@ -165,6 +165,13 @@ export default class Inspector extends Component {
 					type="url"
 					value={ github }
 					onChange={ ( value ) => this.props.setAttributes( { github: value } ) }
+				/>
+
+				<TextControl
+					label={ __( 'LinkedIn URL' ) }
+					type="url"
+					value={ linkedin }
+					onChange={ ( value ) => this.props.setAttributes( { linkedin: value } ) }
 				/>
 
 				<TextControl
