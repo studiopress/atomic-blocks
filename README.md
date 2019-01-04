@@ -73,6 +73,15 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.4.22**
+* Add title toggle to Post Grid block.
+* Update CTA block to account for Gutenberg changes.
+* Add LinkedIn icon to Author Profile block.
+* Add noreferrer to Button block.
+
+**1.4.21**
+* Remove notice to install Gutenberg.
+
 **1.4.2**
 * Fix category error in Post Grid block.
 * Change asset loading for WordPress 5.0.
