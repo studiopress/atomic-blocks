@@ -70,11 +70,13 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					$title = __( 'Untitled', 'atomic-blocks' );
 				}
 
-				$list_items_markup .= sprintf(
-					'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
-					esc_url( get_permalink( $post_id ) ),
-					esc_html( $title )
-				);
+				if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
+					$list_items_markup .= sprintf(
+						'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+						esc_url( get_permalink( $post_id ) ),
+						esc_html( $title )
+					);
+				}
 
 				// Wrap the byline content
 				$list_items_markup .= sprintf(
@@ -216,6 +218,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'default' => true,
 			),
 			'displayPostLink' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostTitle' => array(
 				'type' => 'boolean',
 				'default' => true,
 			),
