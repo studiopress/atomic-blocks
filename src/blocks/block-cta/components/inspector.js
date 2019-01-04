@@ -40,7 +40,26 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaBackgroundColor, ctaTextColor, dimRatio, imgURL, imgID, imgAlt } = this.props.attributes;
+		const {
+			buttonText,
+			buttonUrl,
+			buttonAlignment,
+			buttonBackgroundColor,
+			buttonTextColor,
+			buttonSize,
+			buttonShape,
+			buttonTarget,
+			ctaTitle,
+			ctaText,
+			titleFontSize,
+			ctaTextFontSize,
+			ctaBackgroundColor,
+			ctaTextColor,
+			dimRatio,
+			imgURL,
+			imgID,
+			imgAlt,
+		} = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		// Button size values
@@ -69,7 +88,7 @@ export default class Inspector extends Component {
 			{ color: '#7941b6', name: 'purple' },
 			{ color: '#F7812B', name: 'orange' },
 		];
-		
+
 		// Change the image
 		const onSelectImage = img => {
 			setAttributes( {
@@ -99,8 +118,8 @@ export default class Inspector extends Component {
 			<PanelBody title={ __( 'Text Options' ) } initialOpen={ true }>
 				<RangeControl
 					label={ __( 'Title Font Size' ) }
-					value={ ctaTitleFontSize }
-					onChange={ ( value ) => this.props.setAttributes( { ctaTitleFontSize: value } ) }
+					value={ titleFontSize }
+					onChange={ ( value ) => this.props.setAttributes( { titleFontSize: value } ) }
 					min={ 24 }
 					max={ 60 }
 					step={ 2 }

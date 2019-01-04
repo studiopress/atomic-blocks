@@ -6,6 +6,8 @@
 import classnames from 'classnames';
 import Inspector from './components/inspector';
 import CallToAction from './components/cta';
+import CallToAction_1_4_21 from './deprecated/1.4.21/components/cta';
+
 
 // Import CSS
 import './styles/style.scss';
@@ -78,13 +80,12 @@ const blockAttributes = {
 		selector: '.ab-cta-title',
 		source: 'children',
 	},
-	ctaTitleFontSize: {
-		type: 'string',
-		default: '32'
+	titleFontSize: {
+		type: 'number',
+		default: '32',
 	},
 	ctaTextFontSize: {
-		type: 'string',
-		default: '20'
+		type: 'number',
 	},
 	ctaText: {
 		type: 'array',
@@ -97,7 +98,6 @@ const blockAttributes = {
 	},
 	ctaBackgroundColor: {
 		type: 'string',
-		default: '#f2f2f2'
 	},
 	ctaTextColor: {
 		type: 'string',
@@ -122,6 +122,12 @@ const blockAttributes = {
 		type: 'number',
 		default: 50,
 	},
+
+	// Deprecated
+	ctaTitleFontSize: {
+		type: 'string',
+		default: '32'
+	},
 };
 
 class ABCTABlock extends Component {
@@ -131,25 +137,26 @@ class ABCTABlock extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-			buttonText,
-			buttonUrl,
-			buttonAlignment,
-			buttonBackgroundColor,
-			buttonTextColor,
-			buttonSize,
-			buttonShape,
-			buttonTarget,
-			ctaTitle,
-			ctaText,
-			ctaTitleFontSize,
-			ctaTextFontSize,
-			ctaWidth,
-			ctaBackgroundColor,
-			ctaTextColor,
-			imgURL,
-			imgID,
-			imgAlt,
-			dimRatio,
+				buttonText,
+				buttonUrl,
+				buttonAlignment,
+				buttonBackgroundColor,
+				buttonTextColor,
+				buttonSize,
+				buttonShape,
+				buttonTarget,
+				ctaTitle,
+				ctaText,
+				ctaTitleFontSize,
+				titleFontSize,
+				ctaTextFontSize,
+				ctaWidth,
+				ctaBackgroundColor,
+				ctaTextColor,
+				imgURL,
+				imgID,
+				imgAlt,
+				dimRatio,
 			},
 			attributes,
 			isSelected,
@@ -211,7 +218,7 @@ class ABCTABlock extends Component {
 						value={ ctaTitle }
 						className={ classnames(
 							'ab-cta-title',
-							'ab-font-size-' + ctaTitleFontSize,
+							'ab-font-size-' + titleFontSize,
 						) }
 						style={ {
 							color: ctaTextColor,
@@ -318,6 +325,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			ctaTitle,
 			ctaText,
 			ctaTitleFontSize,
+			titleFontSize,
 			ctaTextFontSize,
 			ctaWidth,
 			ctaBackgroundColor,
@@ -353,7 +361,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							tagName="h2"
 							className={ classnames(
 								'ab-cta-title',
-								'ab-font-size-' + ctaTitleFontSize,
+								'ab-font-size-' + titleFontSize,
 							) }
 							style={ {
 								color: ctaTextColor,
@@ -366,7 +374,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							tagName="div"
 							className={ classnames(
 								'ab-cta-text',
-								'ab-font-size-' + ctaTextFontSize,
+								'ab-font-size-' + ctaTitleFontSize,
 							) }
 							style={ {
 								color: ctaTextColor,
@@ -380,6 +388,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 						<a
 							href={ buttonUrl }
 							target={ buttonTarget ? '_blank' : '_self' }
+							rel={ buttonTarget ? 'noopener noreferrer' : null }
 							className={ classnames(
 								'ab-button',
 								buttonShape,
@@ -399,6 +408,174 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			</CallToAction>
 		);
 	},
+
+	deprecated: [
+        {
+            attributes: {
+                buttonText: {
+					type: 'string',
+				},
+				buttonUrl: {
+					type: 'string',
+					source: 'attribute',
+					selector: 'a',
+					attribute: 'href',
+				},
+				buttonAlignment: {
+					type: 'string',
+					default: 'center'
+				},
+				buttonBackgroundColor: {
+					type: 'string',
+					default: '#3373dc'
+				},
+				buttonTextColor: {
+					type: 'string',
+					default: '#ffffff'
+				},
+				buttonSize: {
+					type: 'string',
+					default: 'ab-button-size-medium'
+				},
+				buttonShape: {
+					type: 'string',
+					default: 'ab-button-shape-rounded'
+				},
+				buttonTarget: {
+					type: 'boolean',
+					default: false
+				},
+				ctaTitle: {
+					type: 'array',
+					selector: '.ab-cta-title',
+					source: 'children',
+				},
+				ctaTitleFontSize: {
+					type: 'string',
+					default: '32'
+				},
+				ctaTextFontSize: {
+					type: 'string',
+					default: '20'
+				},
+				ctaText: {
+					type: 'array',
+					selector: '.ab-cta-text',
+					source: 'children',
+				},
+				ctaWidth: {
+					type: 'string',
+					default: 'center',
+				},
+				ctaBackgroundColor: {
+					type: 'string',
+					default: '#f2f2f2'
+				},
+				ctaTextColor: {
+					type: 'string',
+					default: '#32373c'
+				},
+				imgURL: {
+					type: 'string',
+					source: 'attribute',
+					attribute: 'src',
+					selector: 'img',
+				},
+				imgID: {
+					type: 'number',
+				},
+				imgAlt: {
+					type: 'string',
+					source: 'attribute',
+					attribute: 'alt',
+					selector: 'img',
+				},
+				dimRatio: {
+					type: 'number',
+					default: 50,
+				},
+			},
+
+			migrate: attributes => {
+				return {
+					titleFontSize: attributes.ctaTitleFontSize,
+					...attributes,
+				}
+			},
+
+            save( props ) {
+                return (
+					<CallToAction_1_4_21 { ...props }>
+						{ props.attributes.imgURL && (
+							<div class="ab-cta-image-wrap">
+								<img
+									className={ classnames(
+										'ab-cta-image',
+										dimRatioToClass( props.attributes.dimRatio ),
+										{
+											'has-background-dim': props.attributes.dimRatio !== 0,
+										}
+									) }
+									src={ props.attributes.imgURL }
+									alt={ props.attributes.imgAlt }
+								/>
+							</div>
+						) }
+
+						<div class="ab-cta-content">
+							{ props.attributes.ctaTitle && (
+								<RichText.Content
+									tagName="h2"
+									className={ classnames(
+										'ab-cta-title',
+										'ab-font-size-' + props.attributes.ctaTitleFontSize,
+									) }
+									style={ {
+										color: props.attributes.ctaTextColor,
+									} }
+									value={ props.attributes.ctaTitle }
+								/>
+							) }
+							{ props.attributes.ctaText && (
+								<RichText.Content
+									tagName="div"
+									className={ classnames(
+										'ab-cta-text',
+										'ab-font-size-' + props.attributes.ctaTextFontSize,
+									) }
+									style={ {
+										color: props.attributes.ctaTextColor,
+									} }
+									value={ props.attributes.ctaText }
+								/>
+							) }
+						</div>
+						{ props.attributes.buttonText && (
+							<div class="ab-cta-button">
+								<a
+									href={ props.attributes.buttonUrl }
+									target={ props.attributes.buttonTarget ? '_blank' : '_self' }
+									className={ classnames(
+										'ab-button',
+										props.attributes.buttonShape,
+										props.attributes.buttonSize,
+									) }
+									style={ {
+										color: props.attributes.buttonTextColor,
+										backgroundColor: props.attributes.buttonBackgroundColor,
+									} }
+								>
+									<RichText.Content
+										value={ props.attributes.buttonText }
+									/>
+								</a>
+							</div>
+						) }
+					</CallToAction_1_4_21>
+				);
+            },
+        }
+    ],
 } );
 
 function dimRatioToClass( ratio ) {
