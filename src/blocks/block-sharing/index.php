@@ -239,23 +239,17 @@ function atomic_blocks_render_sharing( $attributes ) {
 		);
 	}
 
-	$shareButtonStyle = ( isset( $attributes['shareButtonStyle'] ) ? $attributes['shareButtonStyle'] : null );
-	$shareButtonShape = ( isset( $attributes['shareButtonShape'] ) ? $attributes['shareButtonShape'] : null );
-	$shareButtonSize = ( isset( $attributes['shareButtonSize'] ) ? $attributes['shareButtonSize'] : null );
-	$shareButtonColor = ( isset( $attributes['shareButtonColor'] ) ? $attributes['shareButtonColor'] : null );
-	$shareAlignment = ( isset( $attributes['shareAlignment'] ) ? $attributes['shareAlignment'] : null );
-
 	// Render the list of share links
 	$block_content = sprintf(
 		'<div class="wp-block-atomic-blocks-ab-sharing ab-block-sharing %2$s %3$s %4$s %5$s %6$s">
 			<ul class="ab-share-list">%1$s</ul>
 		</div>',
 		$share_url,
-		$shareButtonStyle,
-		$shareButtonShape,
-		$shareButtonSize,
-		$shareButtonColor,
-		$shareAlignment
+		isset( $attributes['shareButtonStyle'] ) ? $attributes['shareButtonStyle'] : null,
+		isset( $attributes['shareButtonShape'] ) ? $attributes['shareButtonShape'] : null,
+		isset( $attributes['shareButtonSize'] ) ? $attributes['shareButtonSize'] : null,
+		isset( $attributes['shareButtonColor'] ) ? $attributes['shareButtonColor'] : null,
+		isset( $attributes['shareAlignment'] ) ? $attributes['shareAlignment'] : null
 	);
 
 	return $block_content;
