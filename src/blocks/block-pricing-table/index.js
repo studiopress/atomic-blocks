@@ -45,7 +45,21 @@ class ABPricingTableBlock extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { columns, tableAlignment }, isSelected, className, setAttributes } = this.props;
+		const { attributes: {
+			featured,
+			featuredBorderWidth,
+			featuredBorderColor,
+			tableAlignment
+		},
+			isSelected,
+			className,
+			setAttributes
+		} = this.props;
+
+		const styles = {
+			borderWidth: featuredBorderWidth ? featuredBorderWidth : undefined,
+			borderColor: featuredBorderColor ? featuredBorderColor : undefined,
+		};
 
 		return [
 			<BlockControls key="controls">
@@ -56,12 +70,17 @@ class ABPricingTableBlock extends Component {
 					} }
 				/>
 			</BlockControls>,
+			<Inspector
+				{ ...{ setAttributes, ...this.props } }
+			/>,
 			<Fragment>
 				<div
 					className={ classnames(
 						tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+						featured ? 'ab-block-pricing-table-featured' : null,
 						'ab-block-pricing-table',
 					) }
+					style={ styles }
 					itemscope
 					itemtype="http://schema.org/Product"
 				>
@@ -114,9 +133,16 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		__( 'purchase', 'atomic-blocks' ),
 	],
 	attributes: {
-		columns: {
-			type: 'number',
-			default: 2,
+		featured: {
+			type: 'boolean',
+			default: false
+		},
+		featuredBorderWidth: {
+			type: 'string',
+			default: 0,
+		},
+		featuredBorderColor: {
+			type: 'string',
 		},
 		tableAlignment: {
 			type: 'string',
@@ -132,17 +158,27 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 
 		// Setup the attributes
 		const {
-			columns,
+			featured,
+			featuredBorderWidth,
+			featuredBorderColor,
 			tableAlignment,
+
 		} = props.attributes;
+
+		const styles = {
+			borderWidth: featuredBorderWidth > 0 ? featuredBorderWidth : undefined,
+			borderColor: featuredBorderColor ? featuredBorderColor : undefined,
+		};
 
 		// Save the block markup for the front end
 		return (
 			<div
 				className={ classnames(
 					tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+					featured ? 'ab-block-pricing-table-featured' : null,
 					'ab-block-pricing-table',
 				) }
+				style={ styles }
 				itemscope
 				itemtype="http://schema.org/Product"
 			>

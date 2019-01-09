@@ -23,6 +23,7 @@ const {
 	FormToggle,
 	RangeControl,
 	SelectControl,
+	ToggleControl,
 } = wp.components;
 
 /**
@@ -36,73 +37,40 @@ export default class Inspector extends Component {
 
 	render() {
 
-		const backgroundColors = [
-			{ color: '#00d1b2', name: 'teal' },
-			{ color: '#3373dc', name: 'royal blue' },
-			{ color: '#209cef', name: 'sky blue' },
-			{ color: '#22d25f', name: 'green' },
-		];
-
 		// Setup the attributes
-		const { attributes: { columns, testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, isSelected, className, setAttributes } = this.props;
+		const { attributes: {
+			featured,
+			featuredBorderWidth,
+			featuredBorderColor,
+		}, isSelected, className, setAttributes } = this.props;
 
-		// Update color values
-		const onChangeBackgroundColor = value => setAttributes( { testimonialBackgroundColor: value } );
-		const onChangeTextColor = value => setAttributes( { testimonialTextColor: value } );
+		const onChangeBorderColor = value => setAttributes( { featuredBorderColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
-				<RangeControl
-					label={ __( 'Columns' ) }
-					value={ columns }
-					onChange={ ( nextColumns ) => {
-						setAttributes( {
-							columns: nextColumns,
-						} );
-					} }
-					//onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
-					min={ 1 }
-					max={ 4 }
+				<ToggleControl
+					label={ __( 'Featured Price' ) }
+					checked={ featured }
+					onChange={ () => this.props.setAttributes( { featured: ! featured } ) }
 				/>
-
-				<RangeControl
-					label={ __( 'Font Size' ) }
-					value={ testimonialFontSize }
-					onChange={ ( value ) => this.props.setAttributes( { testimonialFontSize: value } ) }
-					min={ 14 }
-					max={ 24 }
-					step={ 1 }
-				/>
-
-				<SelectControl
-					label={ __( 'Cite Alignment' ) }
-					description={ __( 'Left or right align the cite name and title.' ) }
-					options={ citeAlignOptions }
-					value={ testimonialCiteAlign }
-					onChange={ ( value ) => this.props.setAttributes( { testimonialCiteAlign: value } ) }
-				/>
-
+				{ featured &&
+					<RangeControl
+						label={ __( 'Featured Price Border' ) }
+						value={ featuredBorderWidth }
+						onChange={ ( value ) => this.props.setAttributes( { featuredBorderWidth: value } ) }
+						min={ 0 }
+						max={ 10 }
+						step={ 1 }
+					/>
+				}
 				<PanelColorSettings
-					title={ __( 'Background Color' ) }
+					title={ __( 'Featured Price Border Color' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
-						value: testimonialBackgroundColor,
-						colors: backgroundColors,
-						onChange: onChangeBackgroundColor,
-						label: __( 'Background Color' ),
-
-					} ] }
-				>
-				</PanelColorSettings>
-
-				<PanelColorSettings
-					title={ __( 'Text Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: testimonialTextColor,
-						onChange: onChangeTextColor,
-						label: __( 'Text Color' ),
+						value: featuredBorderColor,
+						onChange: onChangeBorderColor,
+						label: __( 'Border Color' ),
 					} ] }
 				>
 				</PanelColorSettings>
