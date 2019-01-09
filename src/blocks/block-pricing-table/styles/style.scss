@@ -17,6 +17,8 @@
 
 .ab-block-pricing-table-inside {
 	background: #f2f2f2;
+	display: inline-block;
+    width: 100%;
 }
 
 .ab-pricing-columns-2 .ab-pricing-table-wrap {
@@ -59,6 +61,12 @@
 	}
 }
 
+/* Pricing table elements */
+
+.ab-pricing-table-price {
+	line-height: 1;
+}
+
  .wp-block-atomic-blocks-ab-pricing-table {
 	 vertical-align: top;
 
@@ -71,13 +79,20 @@
 
 ul.ab-pricing-table-description li {
 	list-style: none;
-	border-bottom: solid 1px #eee;
 	margin: 0;
-	padding: 10px 0;
+	padding: 4px 0;
 
 	&:last-child {
 		border-bottom: none;
 	}
+}
+
+.ab-pricing-table-wrap .ab-block-pricing-table-inside > * {
+	margin-bottom: 30px;
+}
+
+.ab-pricing-table-wrap .ab-block-pricing-table-inside > *:first-child {
+	margin-top: 30px;
 }
 
 .ab-block-pricing-table-center {
@@ -103,4 +118,8 @@ ul.ab-pricing-table-description li {
 
 .ab-pricing-table-price.has-background {
 	padding: 10px 15px;
+}
+
+.editor-styles-wrapper [data-type="atomic-blocks/ab-pricing-table-description"] ul {
+	list-style-type: none;
 }

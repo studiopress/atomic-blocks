@@ -32,6 +32,14 @@ const {
 	Fragment,
 } = wp.element;
 
+const ALLOWED_BLOCKS = [
+	'atomic-blocks/ab-pricing-table-description',
+	'atomic-blocks/ab-pricing-table-price',
+	'atomic-blocks/ab-pricing-table-subtitle',
+	'atomic-blocks/ab-pricing-table-title',
+	'atomic-blocks/ab-button',
+];
+
 class ABPricingTableBlock extends Component {
 
 	render() {
@@ -84,6 +92,7 @@ class ABPricingTableBlock extends Component {
 								}],
 							]}
 							templateLock={ false }
+							allowedBlocks={ ALLOWED_BLOCKS }
 						/>
 					</div>
 				</div>
