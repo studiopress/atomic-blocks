@@ -95,7 +95,7 @@ add_action( 'wp_footer', 'atomic_blocks_social_icon_footer_script' );
  */
 function atomic_blocks_render_sharing( $attributes ) {
 	global $post;
-	
+
 	// Setup the featured image
 	if ( has_post_thumbnail() ) {
 		$thumbnail_id = get_post_thumbnail_id( $post->ID );
@@ -245,11 +245,11 @@ function atomic_blocks_render_sharing( $attributes ) {
 			<ul class="ab-share-list">%1$s</ul>
 		</div>',
 		$share_url,
-		$attributes['shareButtonStyle'],
-		$attributes['shareButtonShape'],
-		$attributes['shareButtonSize'],
-		$attributes['shareButtonColor'],
-		$attributes['shareAlignment']
+		isset( $attributes['shareButtonStyle'] ) ? $attributes['shareButtonStyle'] : null,
+		isset( $attributes['shareButtonShape'] ) ? $attributes['shareButtonShape'] : null,
+		isset( $attributes['shareButtonSize'] ) ? $attributes['shareButtonSize'] : null,
+		isset( $attributes['shareButtonColor'] ) ? $attributes['shareButtonColor'] : null,
+		isset( $attributes['shareAlignment'] ) ? $attributes['shareAlignment'] : null
 	);
 
 	return $block_content;
