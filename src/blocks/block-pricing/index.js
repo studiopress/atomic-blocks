@@ -78,11 +78,13 @@ class ABPricingBlock extends Component {
 			/>,
 			// Show the block markup in the editor
 			<PricingTable { ...this.props }>
-				<InnerBlocks
-					template={ getPricingTemplate( columns ) }
-					templateLock="all"
-					allowedBlocks={ ALLOWED_BLOCKS }
-				/>
+				<div class="ab-pricing-table-wrap-admin">
+					<InnerBlocks
+						template={ getPricingTemplate( columns ) }
+						templateLock="all"
+						allowedBlocks={ ALLOWED_BLOCKS }
+					/>
+				</div>
 			</PricingTable>
 		];
 	}
@@ -124,7 +126,9 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		// Save the block markup for the front end
 		return (
 			<PricingTable { ...props }>
-				<InnerBlocks.Content />
+				<div class="ab-pricing-table-wrap">
+					<InnerBlocks.Content />
+				</div>
 			</PricingTable>
 		);
 	},

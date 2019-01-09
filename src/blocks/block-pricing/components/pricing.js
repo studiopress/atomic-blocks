@@ -21,12 +21,13 @@ export default class Pricing extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { testimonialAlignment, testimonialImgURL, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }  } = this.props;
+		const { attributes: { columns }  } = this.props;
 
 		return (
 			<div
 				className={ classnames(
 					this.props.className,
+					'ab-pricing-columns-' + columns,
 				) }
 			>
 				{ this.props.children }

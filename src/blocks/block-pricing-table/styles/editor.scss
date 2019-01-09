@@ -2,3 +2,54 @@
  * Editor styles for the admin
  */
 
+.edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-pricing-table"] {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.ab-pricing-table-wrap-admin > .editor-inner-blocks > .editor-block-list__layout {
+	display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 0 2em;
+    min-height: 0;
+}
+
+.ab-pricing-columns-2 .editor-block-list__layout {
+    grid-template-columns: 1fr 1fr;
+
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ab-pricing-columns-3 .editor-block-list__layout {
+	grid-template-columns: 1fr 1fr 1fr;
+
+	@media only screen and (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.ab-pricing-columns-4 .editor-block-list__layout {
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+
+	@media only screen and (max-width: 800px) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media only screen and (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.ab-pricing-columns-5 .editor-block-list__layout {
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+	@media only screen and (max-width: 800px) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media only screen and (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
