@@ -38,6 +38,8 @@ const ALLOWED_BLOCKS = [
 	'atomic-blocks/ab-pricing-table-subtitle',
 	'atomic-blocks/ab-pricing-table-title',
 	'atomic-blocks/ab-button',
+	'core/paragraph',
+	'core/list',
 ];
 
 class ABPricingTableBlock extends Component {
@@ -57,8 +59,9 @@ class ABPricingTableBlock extends Component {
 		} = this.props;
 
 		const styles = {
-			borderWidth: featuredBorderWidth ? featuredBorderWidth : undefined,
-			borderColor: featuredBorderColor ? featuredBorderColor : undefined,
+			borderWidth: featuredBorderWidth ? featuredBorderWidth : null,
+			borderStyle: featuredBorderWidth > 0 ? 'solid' : null,
+			borderColor: featuredBorderColor ? featuredBorderColor : null,
 		};
 
 		return [
@@ -108,6 +111,7 @@ class ABPricingTableBlock extends Component {
 								}],
 								['atomic-blocks/ab-button', {
 									buttonText: 'Buy Now',
+									buttonBackgroundColor: '#191e22'
 								}],
 							]}
 							templateLock={ false }
@@ -138,7 +142,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 			default: false
 		},
 		featuredBorderWidth: {
-			type: 'string',
+			type: 'number',
 			default: 0,
 		},
 		featuredBorderColor: {
@@ -166,8 +170,9 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		} = props.attributes;
 
 		const styles = {
-			borderWidth: featuredBorderWidth > 0 ? featuredBorderWidth : undefined,
-			borderColor: featuredBorderColor ? featuredBorderColor : undefined,
+			borderWidth: featuredBorderWidth ? featuredBorderWidth : null,
+			borderStyle: featuredBorderWidth > 0 ? 'solid' : null,
+			borderColor: featuredBorderColor ? featuredBorderColor : null,
 		};
 
 		// Save the block markup for the front end
