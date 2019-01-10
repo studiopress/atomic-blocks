@@ -21,3 +21,4 @@ import './blocks/block-pricing-table/components/price/price.js';
 import './blocks/block-pricing-table/components/description/description.js';
 import './blocks/block-pricing-table/components/title/title.js';
 import './blocks/block-pricing-table/components/subtitle/subtitle.js';
+import './blocks/block-pricing-table/components/image/image.js';
