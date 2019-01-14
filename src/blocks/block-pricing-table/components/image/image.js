@@ -13,6 +13,7 @@ const { Component } = wp.element;
 
 const {
 	RichText,
+	Fragment,
 } = wp.editor;
 
 // Register the block
@@ -33,11 +34,13 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-image', {
 			type: 'string',
 			source: 'attribute',
 			attribute: 'src',
+			selector: 'img',
 		},
 		alt: {
 			type: 'string',
 			source: 'attribute',
 			attribute: 'alt',
+			selector: 'img',
 		},
 		id: {
 			type: 'number',
@@ -52,33 +55,42 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-image', {
 
 		// Setup the attributes
 		const {
-			images,
 			url,
-			id,
 			alt,
 		} = props.attributes;
 
-		// If there is no fontSizeClass, use customFontSize
-		const styles = {
-			// fontSize: fontSizeClass ? undefined : customFontSize,
-			// backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			// color: textClass ? undefined : customTextColor,
-		};
+		// const productImage = ( src, alt ) => {
+		// 	if( !src ) return null;
 
-		const className = classnames( {
-			// 'has-background': backgroundColor || customBackgroundColor,
-			// 'ab-pricing-table-title': true,
-			// [ fontSizeClass ]: fontSizeClass,
-			// [ textClass ]: textClass,
-			// [ backgroundClass ]: backgroundClass,
-		} );
+		// 	if( alt ) {
+		// 		return (
+		// 			<img
+		// 				className="card__image"
+		// 				src={ src }
+		// 				alt={ alt }
+		// 			/>
+		// 		);
+		// 	}
 
-		// Save the block markup for the front end
+		// 	// No alt set, hide it from screen readers
+		// 	return (
+		// 		<img
+		// 			className="card__image"
+		// 			src={ src }
+		// 			alt=""
+		// 			aria-hidden="true"
+		// 		/>
+		// 	);
+		// };
+
 		return (
-			<RichText.Content
-				tagName="div"
-				itemprop="price"
-			/>
+			<div className="ab-block-pricing-table-image-wrap">
+				<img
+					className="ab-block-pricing-table-image"
+					src={ url }
+					alt={ alt }
+				/>
+			</div>
 		);
 	},
 } );

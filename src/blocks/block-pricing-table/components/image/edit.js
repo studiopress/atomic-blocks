@@ -29,7 +29,6 @@ export default class Edit extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-				images,
 				url,
 				id,
 				alt,
@@ -39,16 +38,8 @@ export default class Edit extends Component {
 			setAttributes,
 		} = this.props;
 
-		// const onSelectImage = img => {
-		// 	setAttributes( {
-		// 		id: img.id,
-		// 		url: img.url,
-		// 		alt: img.alt,
-		// 	} );
-		// };
-
 		const getImageButton = (openEvent) => {
-			if(url) {
+			if( url ) {
 				return (
 					<img
 						src={ url }
@@ -73,23 +64,25 @@ export default class Edit extends Component {
 
 		return [
 			<Fragment>
-				<MediaUpload
-					buttonProps={ {
-						className: 'change-image'
-					} }
-					onSelect={ ( img ) => setAttributes(
-						{
-							id: img.id,
-							url: img.url,
-							alt: img.alt,
-						}
-					) }
-					allowed={ ALLOWED_MEDIA_TYPES }
-					type="image"
-					value={ id }
-					render={ ({ open }) => getImageButton(open) }
-				>
-				</MediaUpload>
+				<div className="ab-block-pricing-table-image">
+					<MediaUpload
+						buttonProps={ {
+							className: 'change-image'
+						} }
+						onSelect={ ( img ) => setAttributes(
+							{
+								id: img.id,
+								url: img.url,
+								alt: img.alt,
+							}
+						) }
+						allowed={ ALLOWED_MEDIA_TYPES }
+						type="image"
+						value={ id }
+						render={ ({ open }) => getImageButton(open) }
+					>
+					</MediaUpload>
+				</div>
 			</Fragment>
 		];
 	}

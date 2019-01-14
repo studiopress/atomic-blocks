@@ -30,7 +30,6 @@ export default class Inspector extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-				images,
 				url,
 				id,
 				alt,
