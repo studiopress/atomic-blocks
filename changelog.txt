@@ -4,4 +4,4 @@
 * Adding travis and preparing for for submission to wordpress.org
 
 ### 1.0.0
-* First Version
+* First Version based on Atomic Blocks https://atomicblocks.com

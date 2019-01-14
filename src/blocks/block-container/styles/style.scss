@@ -1,0 +1,101 @@
+/**
+ * Container styles
+ * Loads on front end and back end
+ */
+
+ .ab-block-container {
+	margin: 0 0 1.2em 0;
+	position: relative;
+	padding: 0;
+
+	&.alignfull {
+		.editor-block-list__block {
+			max-width: 100%;
+		}
+	}
+
+	&.alignfull .ab-container-inside,
+	&.alignfull .ab-container-inside {
+		@media only screen and (min-width: 768px) {
+			max-width: 100%;
+			margin: 0 auto;
+		}
+	}
+
+	&.alignwide .ab-container-inside,
+	&.alignwide .ab-container-inside {
+		@media only screen and (min-width: 768px) {
+			max-width: 80%;
+			margin: 0 auto;
+		}
+	}
+
+	.ab-container-image-wrap {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		height: 100%;
+		z-index: 0;
+	}
+
+	.ab-container-image {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+		transition: .3s ease;
+	}
+
+	.ab-container-content {
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.ab-container-image:not(.has-background-dim) {
+		opacity: 0;
+	}
+
+	.has-background-dim {
+		opacity: .5;
+	}
+
+	.has-background-dim-10 {
+		opacity: .1;
+	}
+
+	.has-background-dim-20 {
+		opacity: .2;
+	}
+
+	.has-background-dim-30 {
+		opacity: .3;
+	}
+	
+	.has-background-dim-40 {
+		opacity: .4;
+	}
+
+	.has-background-dim-50 {
+		opacity: .5;
+	}
+
+	.has-background-dim-60 {
+		opacity: .6;
+	}
+
+	.has-background-dim-70 {
+		opacity: .7;
+	}
+
+	.has-background-dim-80 {
+		opacity: .8;
+	}
+
+	.has-background-dim-90 {
+		opacity: .9;
+	}
+
+	.has-background-dim-100 {
+		opacity: 1;
+	}
+}

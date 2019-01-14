@@ -1,0 +1,30 @@
+/**
+ * Editor styles for the admin
+ */
+
+.ab-block-testimonial {
+    margin-bottom: 0;
+
+    .components-button:not(:disabled):not([aria-disabled=true]):focus {
+        background: none;
+        box-shadow: none;
+    }
+}
+
+.editor-block-list__layout [data-type="atomic-blocks/ab-testimonial"] {
+    margin-bottom: 1.2em;
+}
+
+.ab-testimonial-info {
+    h2.editor-rich-text__tinymce {
+        line-height: 1.2;
+    }
+
+    p.editor-rich-text__tinymce {
+        line-height: 1.6;
+    }
+
+    .ab-testimonial-title + .ab-testimonial-title {
+        line-height: 1.8;
+    }
+}

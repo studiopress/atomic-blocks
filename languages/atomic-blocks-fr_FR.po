@@ -1,0 +1,587 @@
+# Translation of Plugins - Atomic Blocks &#8211; Gutenberg Blocks Collection - Stable (latest release) in French (France)
+# This file is distributed under the same license as the Plugins - Atomic Blocks &#8211; Gutenberg Blocks Collection - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-11-13 20:55+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Poedit 2.2\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - Atomic Blocks &#8211; Gutenberg Blocks Collection - Stable (latest release)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: dist/getting-started/getting-started.php:416
+msgid "Twitter"
+msgstr "Twitter"
+
+#: dist/getting-started/getting-started.php:415
+msgid "Docs"
+msgstr "Documentation"
+
+#: dist/getting-started/getting-started.php:414
+msgid "Blog"
+msgstr "Blog"
+
+#: dist/getting-started/getting-started.php:413
+msgid "AtomicBlocks.com"
+msgstr "AtomicBlocks.com"
+
+#: dist/getting-started/getting-started.php:411
+msgid "Made by the fine folks at %1$s and %2$s."
+msgstr "Réalisé par les gens formidables de %1$s et %2$s."
+
+#: dist/getting-started/getting-started.php:406
+msgid "Visit Gutenberg News"
+msgstr "Visiter Gutenberg News"
+
+#: dist/getting-started/getting-started.php:405
+msgid "Stay up to date with the new WordPress editor. Gutenberg News curates Gutenberg articles, tutorials, videos and more free resources."
+msgstr "Être informé.e sur le nouvel éditeur de WordPress. Gutenberg News procure des articles, des tutoriels, des vidéos et d&rsquo;autres ressources gratuites sur Gutenberg. "
+
+#: dist/getting-started/getting-started.php:404
+msgid "Gutenberg News"
+msgstr "Gutenberg News"
+
+#: dist/getting-started/getting-started.php:399
+msgid "Visit the Blog"
+msgstr "Visiter le blog"
+
+#: dist/getting-started/getting-started.php:397
+msgid "Articles & Tutorials"
+msgstr "Articles & Tutoriels"
+
+#: dist/getting-started/getting-started.php:392
+msgid "Subscribe Today"
+msgstr "S&rsquo;abonner aujourd&rsquo;hui"
+
+#: dist/getting-started/getting-started.php:390
+msgid "Blocks In Your Inbox"
+msgstr "Des blocs dans votre boîte de réception"
+
+#: dist/getting-started/getting-started.php:385
+msgid "Free Blocks and Resources"
+msgstr "Blocs gratuits et ressources"
+
+#: dist/getting-started/getting-started.php:345
+msgid "Install Now"
+msgstr "Installer maintenant"
+
+#: dist/getting-started/getting-started.php:237
+msgid "Add an adjustable spacer between your blocks with an optional divider with styling options."
+msgstr "Ajoutez un espacement ajustable entre vos blocs et un séparateur facultatif avec ses options de style."
+
+#: dist/getting-started/getting-started.php:236
+msgid "Spacer & Divider"
+msgstr "Espacement et Séparateur"
+
+#: dist/getting-started/getting-started.php:234
+msgid "Spacer and Divider Block"
+msgstr "Bloc Espacement et Séparateur"
+
+#: dist/getting-started/getting-started.php:229
+msgid "Add a stylized drop cap to the beginning of your paragraph. Choose from three different styles."
+msgstr "Ajoutez une lettrine stylisé au début de votre paragraphe. Choisissez entre trois styles différents."
+
+#: dist/getting-started/getting-started.php:226
+#: dist/getting-started/getting-started.php:228
+msgid "Drop Cap Block"
+msgstr "Bloc Lettrine"
+
+#: dist/getting-started/getting-started.php:221
+msgid "Add a fancy stylized button to your post or page with size, shape, target, and color options."
+msgstr "Ajoutez un bouton stylisé et raffiné à votre article ou à votre page avec des options de taille, de forme, de lien et de couleur."
+
+#: dist/getting-started/getting-started.php:220
+msgid "Customizable Button"
+msgstr "Bouton personnalisable"
+
+#: dist/getting-started/getting-started.php:218
+msgid "Customizable Button Block"
+msgstr "Bloc Bouton personnalisable"
+
+#: dist/getting-started/getting-started.php:213
+msgid "Add an accordion text toggle with a title and descriptive text. Includes font size and toggle options."
+msgstr "Ajoutez un texte en accordéon avec un titre et un texte descriptif. Inclut des options de taille de police et d&rsquo;ouverture/fermeture."
+
+#: dist/getting-started/getting-started.php:212
+msgid "Accordion Block"
+msgstr "Bloc Accordéon"
+
+#: dist/getting-started/getting-started.php:210
+msgid "Accordion Toggle"
+msgstr "Ouverture/Fermeture de l&rsquo;accordéon"
+
+#: dist/getting-started/getting-started.php:205
+msgid "Add a user profile box to your site with a title, bio info, an avatar and social media links."
+msgstr "Ajoutez une case de profil utilisateur à votre site avec un titre, une bio, un avatar et des liens de réseaux sociaux."
+
+#: dist/getting-started/getting-started.php:202
+#: dist/getting-started/getting-started.php:204
+msgid "Author Profile Block"
+msgstr "Bloc Profil d&rsquo;auteur"
+
+#: dist/getting-started/getting-started.php:197
+msgid "Add social sharing icons to your page with size, shape, color and style options."
+msgstr "Ajoutez des icônes de partage social à votre page avec des options de taille, de forme, de couleur et de style."
+
+#: dist/getting-started/getting-started.php:194
+#: dist/getting-started/getting-started.php:196
+msgid "Sharing Icons Block"
+msgstr "Bloc Icônes de partage"
+
+#: dist/getting-started/getting-started.php:189
+msgid "Add a colorful notice or message to your site with text, a title and a dismiss icon."
+msgstr "Ajoutez une notification ou un message colorés à votre site avec du texte, un titre et une icône pour l&rsquo;ignorer."
+
+#: dist/getting-started/getting-started.php:188
+msgid "Inline Notice Block"
+msgstr "Bloc Notification en ligne"
+
+#: dist/getting-started/getting-started.php:186
+msgid "Inline Notices Block"
+msgstr "Bloc Notifications en ligne"
+
+#: dist/getting-started/getting-started.php:181
+msgid "Add a customer or client testimonial to your site with an avatar, text, citation and more."
+msgstr "Ajoutez un témoignage client à votre site avec un avatar, un texte, une citation et plus encore."
+
+#: dist/getting-started/getting-started.php:180
+msgid "Testimonial Block"
+msgstr "Bloc Témoignage"
+
+#: dist/getting-started/getting-started.php:178
+msgid "Testimonials Block"
+msgstr "Bloc Témoignages"
+
+#: dist/getting-started/getting-started.php:172
+msgid "Call-To-Action Block"
+msgstr "Bloc Appel à l&rsquo;action"
+
+#: dist/getting-started/getting-started.php:170
+msgid "Call To Action Block"
+msgstr "Bloc Appel à l&rsquo;action"
+
+#: dist/getting-started/getting-started.php:165
+msgid "Wrap several blocks into a section and add padding, margins, background colors and images."
+msgstr "Intégrez plusieurs blocs dans une section et ajoutez de l&rsquo;espace, des marges, des couleurs d&rsquo;arrière-plan et des images."
+
+#: dist/getting-started/getting-started.php:164
+msgid "Container Block"
+msgstr "Bloc Conteneur"
+
+#: dist/getting-started/getting-started.php:157
+#: dist/getting-started/getting-started.php:173
+msgid "Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button."
+msgstr "Ajoutez une rubrique attrayante, pleine largeur avec un grand titre, un paragraphe de texte et un bouton personnalisable. "
+
+#: dist/getting-started/getting-started.php:156
+msgid "Post Grid Block"
+msgstr "Bloc Grille de publication"
+
+#: dist/getting-started/getting-started.php:150
+msgid "The following blocks are available in Atomic Blocks. More blocks are on the way so stay tuned!"
+msgstr "Les blocs suivants sont disponibles dans Atomic Blocks. Plus de blocs sont en cours alors restez branchés&nbsp;! "
+
+#: dist/getting-started/getting-started.php:149
+msgid "Available Atomic Blocks"
+msgstr "Atomic Blocks disponible"
+
+#: dist/getting-started/getting-started.php:142
+msgid "Atomic Blocks Theme"
+msgstr "Thème Atomic Blocks"
+
+#: dist/getting-started/getting-started.php:137
+msgid "The Atomic Blocks collection is now ready to use in your posts and pages. Simply search for \"atomic\" or \"ab\" in the block inserter to display the Atomic Blocks collection. Check out the help file link above for detailed instructions!"
+msgstr "La collection Atomic Blocks est maintenant prête à être utilisée dans vos publications et vos pages. Il suffit de rechercher \"atomic\" ou \"ab\" dans l&rsquo;insertion de blocs pour afficher la collection Atomic Blocks. Consultez le lien du fichier d&rsquo;aide ci-dessus pour des instructions détaillées&nbsp;!"
+
+#: dist/getting-started/getting-started.php:136
+msgid "Welcome to the future of site building with Gutenberg and Atomic Blocks!"
+msgstr "Bienvenue dans le futur de la construction de sites avec Gutenberg et Atomic Blocks&nbsp;!"
+
+#: dist/getting-started/getting-started.php:127
+msgid "You need to install the Gutenberg editor before using Atomic Blocks!"
+msgstr "Vous devez installer l&rsquo;éditeur Gutenberg avant d&rsquo;utiliser Atomic Blocks&nbsp;!"
+
+#: dist/getting-started/getting-started.php:114
+msgid "Getting Started"
+msgstr "Démarrez"
+
+#: src/blocks/block-post-grid/index.php:67
+msgid "Untitled"
+msgstr "Sans titre"
+
+#: src/blocks/block-sharing/index.php:238
+msgid "Share via Email"
+msgstr "Partager par e-mail"
+
+#: src/blocks/block-sharing/index.php:223
+msgid "Share on Reddit"
+msgstr "Partager sur Reddit"
+
+#: src/blocks/block-sharing/index.php:207
+msgid "Share on LinkedIn"
+msgstr "Partager sur LinkedIn"
+
+#: src/blocks/block-sharing/index.php:191
+msgid "Share on Pinterest"
+msgstr "Partager sur Pinterest"
+
+#: src/blocks/block-sharing/index.php:175
+msgid "Share on Google"
+msgstr "Partager sur Google"
+
+#: src/blocks/block-sharing/index.php:159
+msgid "Share on Facebook"
+msgstr "Partager sur Facebook"
+
+#: src/blocks/block-sharing/index.php:143
+msgid "Share on Twitter"
+msgstr "Partager sur Twitter"
+
+#: dist/getting-started/getting-started.php:336
+msgid "Free Theme Download"
+msgstr "Téléchargement gratuit du thème"
+
+#: dist/getting-started/getting-started.php:360
+#: dist/getting-started/getting-started.php:391
+msgid "Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!"
+msgstr "Inscrivez-vous à la newsletter pour recevoir des e-mails lorsque nous ajoutons de nouveaux blocs, publions des mises à jour de l’extension et du thème, envoyons des ressources gratuites, et plus !"
+
+#: dist/getting-started/getting-started.php:316
+msgid "Atomic Blocks adds several handy content blocks to the Gutenberg block editor."
+msgstr "Atomic Blocks ajoute au nouvel éditeur plusieurs blocs de contenu utiles."
+
+#: dist/getting-started/getting-started.php:308
+#: dist/getting-started/getting-started.php:310
+#: dist/getting-started/getting-started.php:322
+#: dist/getting-started/getting-started.php:324
+msgid "Plugin activated!"
+msgstr "Extension activée !"
+
+#: dist/getting-started/getting-started.php:302
+msgid "Gutenberg adds the new block-based editor to WordPress. You will need this to work with the Atomic Blocks plugin."
+msgstr "Gutenberg ajoute à WordPress le nouvel éditeur basé sur des blocs. Vous en aurez besoin pour travailler avec l’extension Atomic Blocks."
+
+#: dist/getting-started/getting-started.php:109
+#: dist/getting-started/getting-started.php:341
+msgid "Visit Atomic Blocks"
+msgstr "Visiter Atomic Blocks"
+
+#. Description of the plugin/theme
+msgid "A beautiful collection of handy Gutenberg blocks to help you get started with the new WordPress editor."
+msgstr "Une belle collection de blocs Gutenberg utiles pour vous aider à démarrer avec le nouvel éditeur de WordPress."
+
+#. Plugin Name of the plugin/theme
+msgid "Atomic Blocks - Gutenberg Blocks Collection"
+msgstr "Atomic Blocks - Collection de blocs Gutenberg"
+
+#. Author URI of the plugin/theme
+msgid "http://arraythemes.com"
+msgstr "http://arraythemes.com"
+
+#. Author of the plugin/theme
+msgid "atomicblocks"
+msgstr "atomicblocks"
+
+#. Plugin URI of the plugin/theme
+msgid "https://atomicblocks.com"
+msgstr "https://atomicblocks.com"
+
+#: dist/init.php:138
+msgid "No posts"
+msgstr "Aucune publication"
+
+#: dist/getting-started/getting-started.php:377
+msgid "Visit AtomicBlocks.com"
+msgstr "Visiter AtomicBlocks.com"
+
+#: dist/getting-started/getting-started.php:376
+#: dist/getting-started/getting-started.php:398
+msgid "Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!"
+msgstr "Consultez le site Atomic Blocks pour trouver des tutoriels sur le nouvel éditeur, des blocs gratuits et des mises à jour de l’extension et du thème Atomic Blocks !"
+
+#: dist/getting-started/getting-started.php:371
+msgid "Free Blocks & Tutorials"
+msgstr "Blocs et tutoriels gratuits"
+
+#: dist/getting-started/getting-started.php:362
+msgid "Subscribe Now"
+msgstr "S’abonner"
+
+#: dist/getting-started/getting-started.php:355
+msgid "Stay Updated"
+msgstr "Restez informé·e"
+
+#: dist/getting-started/getting-started.php:343
+msgid "Download our FREE Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor."
+msgstr "Téléchargez notre thème gratuit Atomic Blocks pour vous aider à démarrer avec l’extension Atomic Blocks et le nouvel éditeur de bloc de WordPress."
+
+#: dist/getting-started/getting-started.php:319
+msgid "Install Atomic Blocks now"
+msgstr "Installer Atomic Blocks maintenant"
+
+#: dist/getting-started/getting-started.php:315
+msgid "2. Install the Atomic Blocks plugin."
+msgstr "2. Installer l’extension Atomic Blocks."
+
+#: dist/getting-started/getting-started.php:128
+#: dist/getting-started/getting-started.php:305
+msgid "Install Gutenberg now"
+msgstr "Installer Gutenberg maintenant"
+
+#: dist/getting-started/getting-started.php:301
+msgid "1. Install the Gutenberg plugin."
+msgstr "1. Installer l’extension Gutenberg."
+
+#: dist/getting-started/getting-started.php:296
+msgid "Quick Start Checklist"
+msgstr "Checklist de démarrage rapide"
+
+#: dist/getting-started/getting-started.php:257
+#: dist/getting-started/getting-started.php:280
+msgid "This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime."
+msgstr "Le flux de ce fichier d’aide semble être temporairement indisponible. Vous pouvez toujours consulter le fichier d’aide sur le site Atomic Blocks en attendant (en anglais)."
+
+#: dist/getting-started/getting-started.php:117
+msgid "Theme Help File"
+msgstr "Fichier d’aide du thème"
+
+#: dist/getting-started/getting-started.php:115
+msgid "Plugin Help File"
+msgstr "Fichier d’aide de l’extension"
+
+#: dist/getting-started/getting-started.php:110
+msgid "Getting started with"
+msgstr "Démarrer avec"
+
+#: dist/getting-started/getting-started.php:49
+#: dist/getting-started/getting-started.php:50
+#: dist/getting-started/getting-started.php:110 dist/init.php:103
+msgid "Atomic Blocks"
+msgstr "Atomic Blocks"
+
+#: dist/custom-post-types/testimonials.php:100
+msgid "Testimonial Category"
+msgstr "Catégorie Témoignage"
+
+#: dist/custom-post-types/testimonials.php:99
+msgid "Testimonial Categories"
+msgstr "Catégories Témoignage"
+
+#: dist/custom-post-types/testimonials.php:66
+msgid "No testimonials found in trash"
+msgstr "Aucun témoignage dans la corbeille"
+
+#: dist/custom-post-types/testimonials.php:65
+msgid "No testimonials found"
+msgstr "Aucun témoignage trouvé"
+
+#: dist/custom-post-types/testimonials.php:64
+msgid "Search Testimonials"
+msgstr "Rechercher parmi les témoignages"
+
+#: dist/custom-post-types/testimonials.php:63
+msgid "View Testimonial"
+msgstr "Voir le témoignage"
+
+#: dist/custom-post-types/testimonials.php:62
+msgid "New Testimonial"
+msgstr "Nouveau témoignage"
+
+#: dist/custom-post-types/testimonials.php:61
+msgid "Edit Testimonial"
+msgstr "Modifier le témoignage"
+
+#: dist/custom-post-types/testimonials.php:60
+msgid "Add New Testimonial"
+msgstr "Ajouter un témoignage"
+
+#: dist/custom-post-types/testimonials.php:56
+#: dist/custom-post-types/testimonials.php:58
+msgid "Testimonial"
+msgstr "Témoignage"
+
+#: dist/custom-post-types/testimonials.php:55
+#: dist/custom-post-types/testimonials.php:57
+#: dist/custom-post-types/testimonials.php:67
+msgid "Testimonials"
+msgstr "Témoignages"
+
+#: dist/custom-post-types/team-members.php:100
+msgid "Team Member Category"
+msgstr "Catégorie membre d’équipe"
+
+#: dist/custom-post-types/team-members.php:99
+msgid "Team Member Categories"
+msgstr "Catégories membre d’équipe"
+
+#: dist/custom-post-types/team-members.php:66
+msgid "No team members found in trash"
+msgstr "Aucuns membre d’équipe dans la corbeille"
+
+#: dist/custom-post-types/team-members.php:65
+msgid "No team members found"
+msgstr "Aucun membre d’équipe trouvé"
+
+#: dist/custom-post-types/team-members.php:64
+msgid "Search Team Members"
+msgstr "Rechercher parmi les membres d’équipe"
+
+#: dist/custom-post-types/team-members.php:63
+msgid "View Team Member"
+msgstr "Voir les membres d’équipe"
+
+#: dist/custom-post-types/team-members.php:62
+msgid "New Team Member"
+msgstr "Nouveau membre d’équipe"
+
+#: dist/custom-post-types/team-members.php:61
+msgid "Edit Team Member"
+msgstr "Modifier le membre d’équipe"
+
+#: dist/custom-post-types/team-members.php:60
+msgid "Add New Team Member"
+msgstr "Ajouter un membre d’équipe"
+
+#: dist/custom-post-types/team-members.php:56
+msgid "Team Member"
+msgstr "Membre d’équipe"
+
+#: dist/custom-post-types/team-members.php:55
+#: dist/custom-post-types/team-members.php:57
+#: dist/custom-post-types/team-members.php:58
+#: dist/custom-post-types/team-members.php:67
+msgid "Team Members"
+msgstr "Membres d’équipe"
+
+#: dist/custom-post-types/pricing-tables.php:112
+#: dist/custom-post-types/team-members.php:112
+#: dist/custom-post-types/testimonials.php:112
+msgid "Parent Category:"
+msgstr "Catégorie parente :"
+
+#: dist/custom-post-types/pricing-tables.php:111
+#: dist/custom-post-types/team-members.php:111
+#: dist/custom-post-types/testimonials.php:111
+msgid "Parent Category"
+msgstr "Catégorie parente"
+
+#: dist/custom-post-types/pricing-tables.php:110
+#: dist/custom-post-types/team-members.php:110
+#: dist/custom-post-types/testimonials.php:110
+msgid "New Category Name"
+msgstr "Nom de la nouvelle catégorie"
+
+#: dist/custom-post-types/pricing-tables.php:109
+#: dist/custom-post-types/team-members.php:109
+#: dist/custom-post-types/testimonials.php:109
+msgid "Add New Category"
+msgstr "Ajouter une catégorie"
+
+#: dist/custom-post-types/pricing-tables.php:108
+#: dist/custom-post-types/team-members.php:108
+#: dist/custom-post-types/testimonials.php:108
+msgid "Update Category"
+msgstr "Mettre à jour la catégorie"
+
+#: dist/custom-post-types/pricing-tables.php:107
+#: dist/custom-post-types/team-members.php:107
+#: dist/custom-post-types/testimonials.php:107
+msgid "View Category"
+msgstr "Voir la catégorie"
+
+#: dist/custom-post-types/pricing-tables.php:106
+#: dist/custom-post-types/team-members.php:106
+#: dist/custom-post-types/testimonials.php:106
+msgid "Edit Category"
+msgstr "Modifier la catégorie"
+
+#: dist/custom-post-types/pricing-tables.php:105
+#: dist/custom-post-types/team-members.php:105
+#: dist/custom-post-types/testimonials.php:105
+msgid "All Categories"
+msgstr "Toutes les catégories"
+
+#: dist/custom-post-types/pricing-tables.php:104
+#: dist/custom-post-types/team-members.php:104
+#: dist/custom-post-types/testimonials.php:104
+msgid "Popular Categories"
+msgstr "Catégories populaires"
+
+#: dist/custom-post-types/pricing-tables.php:103
+#: dist/custom-post-types/team-members.php:103
+#: dist/custom-post-types/testimonials.php:103
+msgid "Search Categories"
+msgstr "Rechercher parmi les catégories"
+
+#: dist/custom-post-types/pricing-tables.php:102
+#: dist/custom-post-types/team-members.php:102
+#: dist/custom-post-types/testimonials.php:102
+msgid "Category"
+msgstr "Catégorie"
+
+#: dist/custom-post-types/pricing-tables.php:101
+#: dist/custom-post-types/team-members.php:101
+#: dist/custom-post-types/testimonials.php:101
+msgid "Categories"
+msgstr "Catégories"
+
+#: dist/custom-post-types/pricing-tables.php:100
+msgid "Pricing Table Category"
+msgstr "Catégorie de tableau de prix"
+
+#: dist/custom-post-types/pricing-tables.php:99
+msgid "Pricing Tables Categories"
+msgstr "Catégories de tableau de prix"
+
+#: dist/custom-post-types/pricing-tables.php:66
+msgid "No pricing tables found in trash"
+msgstr "Aucun tableau de prix dans la corbeille"
+
+#: dist/custom-post-types/pricing-tables.php:65
+msgid "No pricing tables found"
+msgstr "Aucun tableau de prix trouvé"
+
+#: dist/custom-post-types/pricing-tables.php:64
+msgid "Search Pricing Tables"
+msgstr "Rechercher parmi les tableaux de prix"
+
+#: dist/custom-post-types/pricing-tables.php:63
+msgid "View Pricing Table"
+msgstr "Voir le tableau de prix"
+
+#: dist/custom-post-types/pricing-tables.php:62
+msgid "New Pricing Table"
+msgstr "Nouveau tableau de prix"
+
+#: dist/custom-post-types/pricing-tables.php:61
+msgid "Edit Pricing Table"
+msgstr "Modifier le tableau de prix"
+
+#: dist/custom-post-types/pricing-tables.php:60
+msgid "Add New Pricing Table"
+msgstr "Ajouter un tableau de prix"
+
+#: dist/custom-post-types/pricing-tables.php:59
+#: dist/custom-post-types/team-members.php:59
+#: dist/custom-post-types/testimonials.php:59
+msgid "Add New"
+msgstr "Ajouter"
+
+#: dist/custom-post-types/pricing-tables.php:58
+msgid "Pricing"
+msgstr "Prix"
+
+#: dist/custom-post-types/pricing-tables.php:56
+msgid "Pricing Table"
+msgstr "Tableau de prix"
+
+#: dist/custom-post-types/pricing-tables.php:55
+#: dist/custom-post-types/pricing-tables.php:57
+#: dist/custom-post-types/pricing-tables.php:67
+msgid "Pricing Tables"
+msgstr "Tableaux de prix"

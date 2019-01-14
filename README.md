@@ -1,4 +1,4 @@
-# LSX Projects
+# LSX Blocks
 
 This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
 The LSX Block extension adds new blocks to the Gutenberg editor.

@@ -1,0 +1,51 @@
+/**
+ * Accordion styles
+ * Loads on front end and back end
+ */
+
+ .lsx-block-accordion {
+	margin-bottom: 1.2em;
+	background: #F5F5F5;
+	border: 1px solid #E0E0E0;
+	.lsx-accordion-title {
+		padding: 10px 15px;
+		p {
+			display: inline;
+		}
+	}
+
+	.lsx-accordion-text {
+		padding: 10px 15px;
+
+		a {
+			color: inherit;
+			box-shadow: 0 -1px 0 inset;
+			text-decoration: none;
+
+			&:hover {
+				color: inherit;
+				box-shadow: 0 -2px 0 inset;
+			}
+		}
+	}
+
+	a {
+		color: inherit;
+		box-shadow: 0 -1px 0 inset;
+		text-decoration: none;
+
+		&:hover {
+			color: inherit;
+			box-shadow: 0 -2px 0 inset;
+		}
+	}
+
+	.editor-rich-text .editor-rich-text__inline-toolbar {
+		display: block;
+		left: 40%;
+	}
+}
+
+.lsx-block-accordion + .lsx-block-accordion {
+	margin-top: -.6em;
+}

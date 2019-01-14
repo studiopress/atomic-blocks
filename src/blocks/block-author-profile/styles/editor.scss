@@ -1,0 +1,33 @@
+/**
+ * Editor styles for the admin
+ */
+
+.ab-block-profile {
+    margin-bottom: 0;
+}
+
+.editor-block-list__layout [data-type="atomic-blocks/ab-profile-box"] {
+    margin-bottom: 1.2em;
+}
+
+.ab-profile-image-wrap {
+    svg {
+        pointer-events: none;
+        margin: 0 auto;
+    }
+
+    .components-button:not(:disabled):not([aria-disabled=true]):focus {
+        background: none;
+        box-shadow: none;
+    }
+}
+
+.ab-profile-content-wrap {
+    h2.editor-rich-text__tinymce {
+        line-height: 1.2;
+    }
+
+    p.editor-rich-text__tinymce {
+        line-height: 1.6;
+    }
+}

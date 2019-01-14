@@ -1,17 +1,15 @@
 /**
- * Gutenberg Blocks
- *
- * All blocks related JavaScript files should be imported here.
- * You can create a new block folder in this dir and include code
- * for that block here as well.
- *
- * All blocks should be included here since this is the file that
- * Webpack is compiling as the input file.
+ * Import the blocks
  */
 
-import './block/block.js';
-import './cta-block/cta-block.js';
-import './faq-block/faq-block.js';
-import './team-block/team-block.js';
-import './testimonials-block/testimonials-block.js';
-import './post-block/post-block.js';
+import './blocks/block-testimonial/index.js';
+import './blocks/block-author-profile/index.js';
+import './blocks/block-notice/index.js';
+import './blocks/block-drop-cap/index.js';
+import './blocks/block-button/index.js';
+import './blocks/block-spacer/index.js';
+import './blocks/block-accordion/index.js';
+import './blocks/block-cta/index.js';
+import './blocks/block-sharing/index.js';
+import './blocks/block-post-grid/index.js';
+import './blocks/block-container/index.js';

@@ -1,0 +1,78 @@
+/**
+ * Notice styles
+ * Loads on front end and back end
+ */
+
+ .ab-block-notice {
+	border-radius: 5px;
+	position: relative;
+	margin-bottom: 1.2em;
+
+	.ab-notice-dismiss {
+		position: absolute;
+		top: 13px;
+		right: 13px;
+		opacity: .8;
+		padding: 0;
+		background: none;
+		transition: .3s ease;
+
+		&:hover {
+			opacity: 1;
+			cursor: pointer;
+			box-shadow: none;
+		}
+	}
+
+	.ab-notice-title {
+		font-weight: bold;
+		padding: .5em 1em;
+		color: #fff;
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
+		width: 100%;
+		display: inline-block;
+
+		p {
+			margin-bottom: 0;
+		}
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	.ab-notice-text {
+		padding: 1em;
+		border: solid 2px #333;
+		border-radius: 5px;
+		background: #fff;
+
+		a {
+			color: inherit;
+			box-shadow: 0 -1px 0 inset;
+			text-decoration: none;
+
+			&:hover {
+				color: inherit;
+				box-shadow: 0 -2px 0 inset;
+			}
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.ab-notice-title:not(:empty) + .notice-text,
+	.blocks-rich-text + .blocks-rich-text .ab-notice-text {
+		border-top-right-radius: 0;
+		border-top-left-radius: 0;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+}
+
+body:not(.wp-admin) .ab-block-notice.ab-dismissable {
+	display: none;
+}
