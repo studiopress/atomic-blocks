@@ -41,7 +41,7 @@ const {
 	withState,
 } = wp.components;
 
-class ABNoticeBlock extends Component {
+class LSXNoticeBlock extends Component {
 
 	render() {
 
@@ -81,17 +81,17 @@ class ABNoticeBlock extends Component {
 				/>
 			</BlockControls>,
 			// Show the block controls on focus
-			<Inspector
+			<Inspector key="inspector"
 				{ ...{ setAttributes, ...this.props } }
 			/>,
 			// Show the block markup in the editor
-			<NoticeBox { ...this.props }>
+			<NoticeBox key="notice" { ...this.props }>
 				{	// Check if the notice is dismissable and output the button
 					noticeDismiss && (
-					<DismissButton { ...this.props }>
-						{ icons.dismiss }
-					</DismissButton>
-				) }
+						<DismissButton { ...this.props }>
+							{ icons.dismiss }
+						</DismissButton>
+					) }
 
 				<RichText
 					tagName="p"
@@ -99,7 +99,7 @@ class ABNoticeBlock extends Component {
 					keepPlaceholderOnFocus
 					value={ noticeTitle }
 					className={ classnames(
-						'ab-notice-title'
+						'lsx-notice-title'
 					) }
 					style={ {
 						color: noticeTitleColor,
@@ -113,7 +113,7 @@ class ABNoticeBlock extends Component {
 					placeholder={ __( 'Add notice text...', 'lsx-blocks' ) }
 					value={ noticeContent }
 					className={ classnames(
-						'ab-notice-text'
+						'lsx-notice-text'
 					) }
 					style={ {
 						borderColor: noticeBackgroundColor,
@@ -126,8 +126,8 @@ class ABNoticeBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'lsx-blocks/ab-notice', {
-	title: __( 'AB Notice', 'lsx-blocks' ),
+registerBlockType( 'lsx-blocks/lsx-notice', {
+	title: __( 'LSX Inline Notice', 'lsx-blocks' ),
 	description: __( 'Add a stylized text notice.', 'lsx-blocks' ),
 	icon: 'format-aside',
 	category: 'lsx-blocks',
@@ -139,11 +139,11 @@ registerBlockType( 'lsx-blocks/ab-notice', {
 	attributes: {
 		noticeTitle: {
 			type: 'string',
-			selector: '.ab-notice-title',
+			selector: '.lsx-notice-title',
 		},
 		noticeContent: {
 			type: 'array',
-			selector: '.ab-notice-text',
+			selector: '.lsx-notice-text',
 			source: 'children',
 		},
 		noticeAlignment: {
@@ -172,7 +172,7 @@ registerBlockType( 'lsx-blocks/ab-notice', {
 	},
 
 	// Render the block components
-	edit: ABNoticeBlock,
+	edit: LSXNoticeBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
@@ -200,7 +200,7 @@ registerBlockType( 'lsx-blocks/ab-notice', {
 
 				{ noticeTitle && (
 					<div
-						class="ab-notice-title"
+						class="lsx-notice-title"
 						style={ {
 							color: noticeTitleColor
 						} }
@@ -215,7 +215,7 @@ registerBlockType( 'lsx-blocks/ab-notice', {
 				{ noticeContent && (
 					<RichText.Content
 						tagName="div"
-						class="ab-notice-text"
+						class="lsx-notice-text"
 						style={ {
 							borderColor: noticeBackgroundColor
 						} }

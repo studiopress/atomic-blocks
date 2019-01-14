@@ -3,12 +3,12 @@
  * Loads on front end and back end
  */
 
- .ab-block-notice {
+ .lsx-block-notice {
 	border-radius: 5px;
 	position: relative;
 	margin-bottom: 1.2em;
 
-	.ab-notice-dismiss {
+	.lsx-notice-dismiss {
 		position: absolute;
 		top: 13px;
 		right: 13px;
@@ -24,7 +24,7 @@
 		}
 	}
 
-	.ab-notice-title {
+	.lsx-notice-title {
 		font-weight: bold;
 		padding: .5em 1em;
 		color: #fff;
@@ -42,7 +42,7 @@
 		}
 	}
 
-	.ab-notice-text {
+	.lsx-notice-text {
 		padding: 1em;
 		border: solid 2px #333;
 		border-radius: 5px;
@@ -64,8 +64,8 @@
 		}
 	}
 
-	.ab-notice-title:not(:empty) + .notice-text,
-	.blocks-rich-text + .blocks-rich-text .ab-notice-text {
+	.lsx-notice-title:not(:empty) + .notice-text,
+	.blocks-rich-text + .blocks-rich-text .lsx-notice-text {
 		border-top-right-radius: 0;
 		border-top-left-radius: 0;
 		border-bottom-right-radius: 5px;
@@ -73,6 +73,6 @@
 	}
 }
 
-body:not(.wp-admin) .ab-block-notice.ab-dismissable {
+body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
 	display: none;
 }

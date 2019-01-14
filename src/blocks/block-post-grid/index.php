@@ -52,7 +52,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 				}
 
 				$list_items_markup .= sprintf(
-					'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+					'<div class="lsx-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
 					esc_url( get_permalink( $post_id ) ),
 					wp_get_attachment_image( $post_thumb_id, $post_thumb_size )
 				);
@@ -60,7 +60,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 
 			// Wrap the text content
 			$list_items_markup .= sprintf(
-				'<div class="ab-block-post-grid-text">'
+				'<div class="lsx-block-post-grid-text">'
 			);
 
 				// Get the post title
@@ -71,20 +71,20 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 				}
 
 				$list_items_markup .= sprintf(
-					'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+					'<h2 class="lsx-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
 					esc_url( get_permalink( $post_id ) ),
 					esc_html( $title )
 				);
 
 				// Wrap the byline content
 				$list_items_markup .= sprintf(
-					'<div class="ab-block-post-grid-byline">'
+					'<div class="lsx-block-post-grid-byline">'
 				);
 
 					// Get the post author
 					if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 						$list_items_markup .= sprintf(
-							'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
+							'<div class="lsx-block-post-grid-author"><a class="lsx-text-link" href="%2$s">%1$s</a></div>',
 							esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
 							esc_html( get_author_posts_url( $post->post_author ) )
 						);
@@ -93,7 +93,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 					// Get the post date
 					if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 						$list_items_markup .= sprintf(
-							'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
+							'<time datetime="%1$s" class="lsx-block-post-grid-date">%2$s</time>',
 							esc_attr( get_the_date( 'c', $post_id ) ),
 							esc_html( get_the_date( '', $post_id ) )
 						);
@@ -106,7 +106,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 
 				// Wrap the excerpt content
 				$list_items_markup .= sprintf(
-					'<div class="ab-block-post-grid-excerpt">'
+					'<div class="lsx-block-post-grid-excerpt">'
 				);
 
 					// Get the excerpt
@@ -126,7 +126,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 
 					if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 						$list_items_markup .= sprintf(
-							'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
+							'<p><a class="lsx-block-post-grid-link lsx-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
 							esc_url( get_permalink( $post_id ) ),
 							esc_html( $attributes['readMoreText'] )
 						);
@@ -148,13 +148,13 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 	}
 
 	// Build the classes
-	$class = "ab-block-post-grid align{$attributes['align']}";
+	$class = "lsx-block-post-grid align{$attributes['align']}";
 
 	if ( isset( $attributes['className'] ) ) {
 		$class .= ' ' . $attributes['className'];
 	}
 
-	$grid_class = 'ab-post-grid-items';
+	$grid_class = 'lsx-post-grid-items';
 
 	if ( isset( $attributes['postLayout'] ) && 'list' === $attributes['postLayout'] ) {
 		$grid_class .= ' is-list';
@@ -187,7 +187,7 @@ function lsx_blocks_register_block_core_latest_posts() {
 		return;
 	}
 
-	register_block_type( 'lsx-blocks/ab-post-grid', array(
+	register_block_type( 'lsx-blocks/lsx-post-grid', array(
 		'attributes' => array(
 			'categories' => array(
 				'type' => 'string',

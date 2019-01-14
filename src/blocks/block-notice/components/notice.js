@@ -26,8 +26,8 @@ export default class NoticeBox extends Component {
 		// Generate a unique ID for the dismissable notice
 		const blockID = uniqueID.generateUniqueID( noticeDismiss + noticeTitle )
 
-		return (	
-			<div 
+		return (
+			<div
 				style={ {
 					color: noticeTextColor,
 					textAlign: noticeAlignment,
@@ -36,9 +36,9 @@ export default class NoticeBox extends Component {
 				className={ classnames(
 					this.props.className,
 					noticeDismiss,
-					'ab-font-size-' + noticeFontSize,
-					'ab-block-notice'
-				) 
+					'lsx-font-size-' + noticeFontSize,
+					'lsx-block-notice'
+				)
 				}
 				data-id={ blockID }
 			>

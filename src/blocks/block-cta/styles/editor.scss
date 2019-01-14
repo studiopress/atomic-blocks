@@ -2,15 +2,31 @@
  * Editor styles for the admin
  */
 
-.ab-block-cta {
-    margin-bottom: 0;
+.lsx-block-cta {
+	margin-bottom: 0;
+	.lsx-button-back {
+		text-align: center;
+		font-size: 18px;
+		line-height: 1 !important;
+		background-color: #32373c;
+		border: none;
+		border-radius: 50px;
+		box-shadow: none;
+		color: #fff;
+		cursor: pointer;
+		padding: .6em 1em;
+		text-decoration: none;
+		word-break: break-word;
+		transition: .3s ease;
+		display: inline-block;
+	}
 }
 
-.editor-block-list__layout [data-type="atomic-blocks/ab-cta"] {
+.editor-block-list__layout [data-type="lsx-blocks/lsx-cta"] {
     margin-bottom: 1.2em;
 }
 
- .ab-cta-button {
+ .lsx-cta-button {
     .blocks-button__inline-link .editor-url-input {
         display: inline-block;
         width: auto;
@@ -26,6 +42,6 @@
     }
 }
 
-.ab-block-cta h2.editor-rich-text__tinymce.mce-content-body {
+.lsx-block-cta h2.editor-rich-text__tinymce.mce-content-body {
     line-height: 1.2;
 }

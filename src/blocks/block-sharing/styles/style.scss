@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .ab-block-sharing {
+ .lsx-block-sharing {
 	margin: 0 0 1.2em 0;
 	position: relative;
 
@@ -11,7 +11,7 @@
 		display: inline-flex;
 	}
 
-	.ab-share-list {
+	.lsx-share-list {
 		margin: 0;
 		padding: 0;
 
@@ -23,7 +23,7 @@
 
 		a {
 			background: #272c30;
-			color: #fff;
+			color: #fff !important;
 			padding: 10px 15px;
 			text-align: center;
 			display: block;
@@ -37,19 +37,19 @@
 		}
 	}
 
-	&.ab-share-icon-text {
+	&.lsx-share-icon-text {
 		i {
 			margin-right: 5px;
 		}
 	}
 
-	&.ab-share-icon-only {
+	&.lsx-share-icon-only {
 		a {
 			padding: 10px 11px;
 			min-width: 37px;
 		}
 
-		.ab-social-text {
+		.lsx-social-text {
 			border: 0;
 			clip: rect(1px, 1px, 1px, 1px);
 			clip-path: inset(50%);
@@ -63,105 +63,105 @@
 		}
 	}
 
-	&.ab-share-text-only {
+	&.lsx-share-text-only {
 		i {
 			display: none;
 		}
 	}
 
-	&.ab-share-shape-square {
+	&.lsx-share-shape-square {
 		a {
 			border-radius: 0;
 		}
 	}
 
-	&.ab-share-shape-rounded {
+	&.lsx-share-shape-rounded {
 		a {
 			border-radius: 5px;
 		}
 	}
 
-	&.ab-share-shape-circular {
+	&.lsx-share-shape-circular {
 		a {
 			border-radius: 100px;
 		}
 	}
 
-	&.ab-share-size-small {
+	&.lsx-share-size-small {
 		a {
 			font-size: 13px;
 		}
 	}
 
-	&.ab-share-size-small.ab-share-icon-only {
+	&.lsx-share-size-small.lsx-share-icon-only {
 		a {
 			padding: 7px 6px;
     		min-width: 28px;
 		}
 	}
 
-	&.ab-share-size-medium {
+	&.lsx-share-size-medium {
 		a {
 			font-size: 16px;
 		}
 	}
 
-	&.ab-share-size-large {
+	&.lsx-share-size-large {
 		a {
 			font-size: 20px;
 		}
 	}
 
-	&.ab-share-size-large.ab-share-icon-only {
+	&.lsx-share-size-large.lsx-share-icon-only {
 		a {
 			font-size: 26px;
 			min-width: 48px;
 		}
 	}
 
-	&.ab-share-size-large.ab-share-icon-text {
+	&.lsx-share-size-large.lsx-share-icon-text {
 		i {
 			margin-right: 10px;
 		}
 	}
 
-	&.ab-share-color-social {
+	&.lsx-share-color-social {
 		a {
 			color: #fff;
 		}
 
-		.ab-share-twitter {
-			background: #1ca1f3;	
+		.lsx-share-twitter {
+			background: #1ca1f3;
 		}
 
-		.ab-share-facebook {
-			background: #3b5999;	
+		.lsx-share-facebook {
+			background: #3b5999;
 		}
 
-		.ab-share-google {
-			background: #dc4b45;	
+		.lsx-share-google {
+			background: #dc4b45;
 		}
 
-		.ab-share-pinterest {
-			background: #bd091c;	
+		.lsx-share-pinterest {
+			background: #bd091c;
 		}
 
-		.ab-share-linkedin {
-			background: #0077b5;	
+		.lsx-share-linkedin {
+			background: #0077b5;
 		}
 
-		.ab-share-reddit {
-			background: #ff4500;	
+		.lsx-share-reddit {
+			background: #ff4500;
 		}
 	}
 }
 
-.ab-button-right {
+.lsx-button-right {
 	transform: translateX(-100%);
 	left: 100%;
 	position: relative;
 }
 
-.ab-button-center {
+.lsx-button-center {
 	margin: 0 auto;
 }

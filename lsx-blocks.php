@@ -33,7 +33,7 @@ function lsx_blocks_loader() {
 	/**
 	 * Load Getting Started page
 	 */
-	require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
+	//require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
 
 	/**
 	 * Load Social Block PHP
@@ -60,24 +60,24 @@ add_action( 'init', 'lsx_blocks_init' );
 /**
  * Add a check for our plugin before redirecting
  */
-function lsx_blocks_activate() {
-	add_option( 'lsx_blocks_do_activation_redirect', true );
-}
-register_activation_hook( __FILE__, 'lsx_blocks_activate' );
+// function lsx_blocks_activate() {
+// 	add_option( 'lsx_blocks_do_activation_redirect', true );
+// }
+// register_activation_hook( __FILE__, 'lsx_blocks_activate' );
 
 
 /**
  * Redirect to the LSX Blocks Getting Started page on single plugin activation
  */
-function lsx_blocks_redirect() {
-    if ( get_option( 'lsx_blocks_do_activation_redirect', false ) ) {
-        delete_option( 'lsx_blocks_do_activation_redirect' );
-        if( !isset( $_GET['activate-multi'] ) ) {
-            wp_redirect( "admin.php?page=atomic-blocks" );
-        }
-    }
-}
-add_action( 'admin_init', 'lsx_blocks_redirect' );
+// function lsx_blocks_redirect() {
+//     if ( get_option( 'lsx_blocks_do_activation_redirect', false ) ) {
+//         delete_option( 'lsx_blocks_do_activation_redirect' );
+//         if( !isset( $_GET['activate-multi'] ) ) {
+//             wp_redirect( "admin.php?page=lsx-blocks" );
+//         }
+//     }
+// }
+//add_action( 'admin_init', 'lsx_blocks_redirect' );
 
 
 /**
