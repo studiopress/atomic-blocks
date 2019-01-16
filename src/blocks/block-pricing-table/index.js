@@ -49,9 +49,9 @@ class ABPricingTableBlock extends Component {
 
 		// Setup the attributes
 		const { attributes: {
-			featured,
-			featuredBorderWidth,
-			featuredBorderColor,
+			borderWidth,
+			borderColor,
+			backgroundColor,
 			tableAlignment
 		},
 			isSelected,
@@ -60,9 +60,10 @@ class ABPricingTableBlock extends Component {
 		} = this.props;
 
 		const styles = {
-			borderWidth: featuredBorderWidth ? featuredBorderWidth : null,
-			borderStyle: featuredBorderWidth > 0 ? 'solid' : null,
-			borderColor: featuredBorderColor ? featuredBorderColor : null,
+			borderWidth: borderWidth ? borderWidth : null,
+			borderStyle: borderWidth > 0 ? 'solid' : null,
+			borderColor: borderColor ? borderColor : null,
+			backgroundColor: backgroundColor ? backgroundColor : null,
 		};
 
 		return [
@@ -81,14 +82,15 @@ class ABPricingTableBlock extends Component {
 				<div
 					className={ classnames(
 						tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
-						featured ? 'ab-block-pricing-table-featured' : null,
 						'ab-block-pricing-table',
 					) }
-					style={ styles }
 					itemscope
 					itemtype="http://schema.org/Product"
 				>
-					<div class="ab-block-pricing-table-inside">
+					<div
+						class="ab-block-pricing-table-inside"
+						style={ styles }
+					>
 						<InnerBlocks
 							template={[
 								// Add placeholder blocks
@@ -135,18 +137,17 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
-		__( 'purchase', 'atomic-blocks' ),
+		__( 'buy', 'atomic-blocks' ),
 	],
 	attributes: {
-		featured: {
-			type: 'boolean',
-			default: false
-		},
-		featuredBorderWidth: {
+		borderWidth: {
 			type: 'number',
-			default: 0,
+			default: 1,
 		},
-		featuredBorderColor: {
+		borderColor: {
+			type: 'string',
+		},
+		backgroundColor: {
 			type: 'string',
 		},
 		tableAlignment: {
@@ -163,17 +164,17 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 
 		// Setup the attributes
 		const {
-			featured,
-			featuredBorderWidth,
-			featuredBorderColor,
+			borderWidth,
+			borderColor,
+			backgroundColor,
 			tableAlignment,
-
 		} = props.attributes;
 
 		const styles = {
-			borderWidth: featuredBorderWidth ? featuredBorderWidth : null,
-			borderStyle: featuredBorderWidth > 0 ? 'solid' : null,
-			borderColor: featuredBorderColor ? featuredBorderColor : null,
+			borderWidth: borderWidth ? borderWidth : null,
+			borderStyle: borderWidth > 0 ? 'solid' : null,
+			borderColor: borderColor ? borderColor : null,
+			backgroundColor: backgroundColor ? backgroundColor : null,
 		};
 
 		// Save the block markup for the front end
@@ -181,14 +182,15 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 			<div
 				className={ classnames(
 					tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
-					featured ? 'ab-block-pricing-table-featured' : null,
 					'ab-block-pricing-table',
 				) }
-				style={ styles }
 				itemscope
 				itemtype="http://schema.org/Product"
 			>
-				<div class="ab-block-pricing-table-inside">
+				<div
+					class="ab-block-pricing-table-inside"
+					style={ styles }
+				>
 					<InnerBlocks.Content />
 				</div>
 			</div>

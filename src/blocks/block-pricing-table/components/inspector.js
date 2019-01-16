@@ -39,38 +39,42 @@ export default class Inspector extends Component {
 
 		// Setup the attributes
 		const { attributes: {
-			featured,
-			featuredBorderWidth,
-			featuredBorderColor,
+			borderWidth,
+			borderColor,
+			backgroundColor,
 		}, isSelected, className, setAttributes } = this.props;
 
-		const onChangeBorderColor = value => setAttributes( { featuredBorderColor: value } );
+		const onChangeBorderColor = value => setAttributes( { borderColor: value } );
+		const onChangeBackgroundColor = value => setAttributes( { backgroundColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
-				<ToggleControl
-					label={ __( 'Featured Price' ) }
-					checked={ featured }
-					onChange={ () => this.props.setAttributes( { featured: ! featured } ) }
+				<RangeControl
+					label={ __( 'Pricing Table Border' ) }
+					value={ borderWidth }
+					onChange={ ( value ) => this.props.setAttributes( { borderWidth: value } ) }
+					min={ 0 }
+					max={ 10 }
+					step={ 1 }
 				/>
-				{ featured &&
-					<RangeControl
-						label={ __( 'Featured Price Border' ) }
-						value={ featuredBorderWidth }
-						onChange={ ( value ) => this.props.setAttributes( { featuredBorderWidth: value } ) }
-						min={ 0 }
-						max={ 10 }
-						step={ 1 }
-					/>
-				}
 				<PanelColorSettings
-					title={ __( 'Featured Price Border Color' ) }
+					title={ __( 'Pricing Table Border Color' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
-						value: featuredBorderColor,
+						value: borderColor,
 						onChange: onChangeBorderColor,
 						label: __( 'Border Color' ),
+					} ] }
+				>
+				</PanelColorSettings>
+				<PanelColorSettings
+					title={ __( 'Pricing Table Background Color' ) }
+					initialOpen={ false }
+					colorSettings={ [ {
+						value: backgroundColor,
+						onChange: onChangeBackgroundColor,
+						label: __( 'Background Color' ),
 					} ] }
 				>
 				</PanelColorSettings>

@@ -37,7 +37,15 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { columns }, isSelected, className, setAttributes } = this.props;
+		const {
+			attributes: {
+				columns,
+				columnsGap,
+			},
+			isSelected,
+			className,
+			setAttributes
+		} = this.props;
 
 		return (
 		<InspectorControls key="inspector">
@@ -45,13 +53,17 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Pricing Columns' ) }
 					value={ columns }
-					onChange={ ( nextColumns ) => {
-						setAttributes( {
-							columns: nextColumns,
-						} );
-					} }
+					onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
 					min={ 1 }
 					max={ 4 }
+				/>
+				<RangeControl
+					label={ __( 'Pricing Columns Gap' ) }
+					value={ columnsGap }
+					onChange={ ( value ) => this.props.setAttributes( { columnsGap: value } ) }
+					min={ 0 }
+					max={ 5 }
+					step={ 1 }
 				/>
 			</PanelBody>
 		</InspectorControls>

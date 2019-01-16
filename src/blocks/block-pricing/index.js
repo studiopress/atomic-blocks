@@ -55,7 +55,8 @@ class ABPricingBlock extends Component {
 		const {
 			attributes: {
 				columns,
-				testimonialAlignment,
+				columnsGap,
+				align,
 			},
 			attributes,
 			isSelected,
@@ -67,9 +68,10 @@ class ABPricingBlock extends Component {
 		return [
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ testimonialAlignment }
-					onChange={ ( value ) => setAttributes( { testimonialAlignment: value } ) }
+				<BlockAlignmentToolbar
+					value={ align }
+					onChange={ align => setAttributes( { align } ) }
+					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
 			// Show the block controls on focus
@@ -78,7 +80,12 @@ class ABPricingBlock extends Component {
 			/>,
 			// Show the block markup in the editor
 			<PricingTable { ...this.props }>
-				<div class="ab-pricing-table-wrap-admin">
+				<div
+					className={ classnames(
+						'ab-pricing-table-wrap-admin',
+						'ab-block-pricing-table-gap-' + columnsGap
+					) }
+				>
 					<InnerBlocks
 						template={ getPricingTemplate( columns ) }
 						templateLock="all"
@@ -106,9 +113,18 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 			type: 'number',
 			default: 2,
 		},
-		testimonialAlignment: {
+		columnsGap: {
+			type: 'number',
+		},
+		align: {
 			type: 'string',
 		},
+	},
+
+	getEditWrapperProps( { align } ) {
+		if ( 'left' === align || 'right' === align || 'full' === align ) {
+			return { 'data-align': align };
+		}
 	},
 
 	// Render the block components
@@ -120,13 +136,19 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		// Setup the attributes
 		const {
 			columns,
-			testimonialAlignment,
+			columnsGap,
+			align,
 		} = props.attributes;
 
 		// Save the block markup for the front end
 		return (
 			<PricingTable { ...props }>
-				<div class="ab-pricing-table-wrap">
+				<div
+					className={ classnames(
+						'ab-pricing-table-wrap',
+						'ab-block-pricing-table-gap-' + columnsGap
+					) }
+				>
 					<InnerBlocks.Content />
 				</div>
 			</PricingTable>

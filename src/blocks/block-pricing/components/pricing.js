@@ -21,14 +21,24 @@ export default class Pricing extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { columns }  } = this.props;
+		const {
+			attributes: {
+				columns,
+				columnsGap,
+				align
+			}
+		} = this.props;
+
+		const className = classnames( [
+			this.props.className,
+			'ab-pricing-columns-' + columns,
+		], {
+			[ 'align' + align ]: align,
+		} )
 
 		return (
 			<div
-				className={ classnames(
-					this.props.className,
-					'ab-pricing-columns-' + columns,
-				) }
+				className={ className ? className : undefined }
 			>
 				{ this.props.children }
 			</div>
