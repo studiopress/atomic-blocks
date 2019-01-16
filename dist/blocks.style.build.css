@@ -2366,7 +2366,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
 .ab-block-pricing-table-inside {
   display: inline-block;
   width: 100%;
-  border-color: #999; }
+  border-color: #272c30; }
 
 .ab-block-pricing-table-gap-0 {
   grid-gap: 0 0; }
@@ -2435,10 +2435,10 @@ ul.ab-pricing-table-description li {
     border-bottom: none; }
 
 .ab-pricing-table-wrap .ab-block-pricing-table-inside > * {
-  margin-bottom: 30px; }
+  margin-bottom: 25px; }
 
-.ab-pricing-table-wrap .ab-block-pricing-table-inside > *:first-child {
-  margin-top: 30px; }
+.ab-pricing-table-wrap .ab-block-pricing-table-inside > *:last-child {
+  margin-bottom: 0; }
 
 .ab-block-pricing-table-center {
   text-align: center; }

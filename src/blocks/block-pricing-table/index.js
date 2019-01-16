@@ -52,7 +52,8 @@ class ABPricingTableBlock extends Component {
 			borderWidth,
 			borderColor,
 			backgroundColor,
-			tableAlignment
+			padding,
+			alignment
 		},
 			isSelected,
 			className,
@@ -64,14 +65,15 @@ class ABPricingTableBlock extends Component {
 			borderStyle: borderWidth > 0 ? 'solid' : null,
 			borderColor: borderColor ? borderColor : null,
 			backgroundColor: backgroundColor ? backgroundColor : null,
+			padding: padding ? padding + '%' : null,
 		};
 
 		return [
 			<BlockControls key="controls">
 				<AlignmentToolbar
-					value={ tableAlignment }
+					value={ alignment }
 					onChange={ ( nextAlign ) => {
-						setAttributes( { tableAlignment: nextAlign } );
+						setAttributes( { alignment: nextAlign } );
 					} }
 				/>
 			</BlockControls>,
@@ -81,7 +83,7 @@ class ABPricingTableBlock extends Component {
 			<Fragment>
 				<div
 					className={ classnames(
-						tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+						alignment ? 'ab-block-pricing-table-' + alignment : 'ab-block-pricing-table-center',
 						'ab-block-pricing-table',
 					) }
 					itemscope
@@ -142,7 +144,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 	attributes: {
 		borderWidth: {
 			type: 'number',
-			default: 1,
+			default: 2,
 		},
 		borderColor: {
 			type: 'string',
@@ -150,9 +152,12 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		backgroundColor: {
 			type: 'string',
 		},
-		tableAlignment: {
+		alignment: {
 			type: 'string',
-			default: 'center',
+		},
+		padding: {
+			type: 'number',
+			default: 10,
 		},
 	},
 
@@ -167,7 +172,8 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 			borderWidth,
 			borderColor,
 			backgroundColor,
-			tableAlignment,
+			alignment,
+			padding,
 		} = props.attributes;
 
 		const styles = {
@@ -175,13 +181,14 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 			borderStyle: borderWidth > 0 ? 'solid' : null,
 			borderColor: borderColor ? borderColor : null,
 			backgroundColor: backgroundColor ? backgroundColor : null,
+			padding: padding ? padding + '%' : null,
 		};
 
 		// Save the block markup for the front end
 		return (
 			<div
 				className={ classnames(
-					tableAlignment ? 'ab-block-pricing-table-' + tableAlignment : null,
+					alignment ? 'ab-block-pricing-table-' + alignment : 'ab-block-pricing-table-center',
 					'ab-block-pricing-table',
 				) }
 				itemscope

@@ -140,14 +140,17 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 			align,
 		} = props.attributes;
 
+		const className = classnames( [
+			'ab-pricing-table-wrap',
+		], {
+			[ 'ab-block-pricing-table-gap-' + columnsGap ]: columnsGap,
+		} )
+
 		// Save the block markup for the front end
 		return (
 			<PricingTable { ...props }>
 				<div
-					className={ classnames(
-						'ab-pricing-table-wrap',
-						'ab-block-pricing-table-gap-' + columnsGap
-					) }
+					className={ className ? className : undefined }
 				>
 					<InnerBlocks.Content />
 				</div>

@@ -42,7 +42,12 @@ export default class Inspector extends Component {
 			borderWidth,
 			borderColor,
 			backgroundColor,
-		}, isSelected, className, setAttributes } = this.props;
+			padding
+		},
+			isSelected,
+			className,
+			setAttributes
+		} = this.props;
 
 		const onChangeBorderColor = value => setAttributes( { borderColor: value } );
 		const onChangeBackgroundColor = value => setAttributes( { backgroundColor: value } );
@@ -50,6 +55,14 @@ export default class Inspector extends Component {
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
+				<RangeControl
+					label={ __( 'Pricing Table Padding' ) }
+					value={ padding }
+					onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
+					min={ 0 }
+					max={ 20 }
+					step={ 1 }
+				/>
 				<RangeControl
 					label={ __( 'Pricing Table Border' ) }
 					value={ borderWidth }
