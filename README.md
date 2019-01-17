@@ -73,6 +73,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.4.23**
+* Add block alignment class back to CTA block.
+* Refactor deprecated code format.
+
 **1.4.22**
 * Add title toggle to Post Grid block.
 * Update CTA block to account for Gutenberg changes.
