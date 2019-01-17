@@ -107,15 +107,15 @@
 	line-height: 1;
 }
 
- .wp-block-atomic-blocks-ab-pricing-table {
-	 vertical-align: top;
+.wp-block-atomic-blocks-ab-pricing-table {
+	vertical-align: top;
 
 	.ab-pricing-table-description,
 	.block-library-list & ul {
 		margin: 0;
 		padding: 0;
 	}
- }
+}
 
 ul.ab-pricing-table-description li {
 	list-style: none;
@@ -133,6 +133,12 @@ ul.ab-pricing-table-description li {
 
 .ab-pricing-table-wrap .ab-block-pricing-table-inside > *:last-child {
 	margin-bottom: 0;
+}
+
+.wp-block-atomic-blocks-ab-pricing .alignwide,
+.wp-block-atomic-blocks-ab-pricing .alignfull {
+	width: 100%;
+	margin-left: auto;
 }
 
 .ab-block-pricing-table-center {

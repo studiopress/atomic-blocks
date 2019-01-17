@@ -38,6 +38,7 @@ const ALLOWED_BLOCKS = [
 	'atomic-blocks/ab-pricing-table-subtitle',
 	'atomic-blocks/ab-pricing-table-title',
 	'atomic-blocks/ab-button',
+	'atomic-blocks/ab-spacer',
 	'core/paragraph',
 	'core/list',
 	'core/image',

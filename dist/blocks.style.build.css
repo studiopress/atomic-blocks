@@ -2440,6 +2440,11 @@ ul.ab-pricing-table-description li {
 .ab-pricing-table-wrap .ab-block-pricing-table-inside > *:last-child {
   margin-bottom: 0; }
 
+.wp-block-atomic-blocks-ab-pricing .alignwide,
+.wp-block-atomic-blocks-ab-pricing .alignfull {
+  width: 100%;
+  margin-left: auto; }
+
 .ab-block-pricing-table-center {
   text-align: center; }
   .ab-block-pricing-table-center .ab-block-button {

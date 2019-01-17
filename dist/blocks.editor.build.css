@@ -1565,10 +1565,6 @@
 /**
  * Editor styles for the admin
  */
-[data-type="atomic-blocks/ab-pricing-table"] .editor-block-list__block .editor-block-list__block-edit {
-  margin-bottom: 15px;
-  margin-top: 15px; }
-
 .edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-pricing-table"] {
   margin-left: 0;
   margin-right: 0; }
@@ -1626,3 +1622,15 @@
   @media only screen and (max-width: 600px) {
     .ab-pricing-columns-5 .editor-block-list__layout {
       grid-template-columns: 1fr; } }
+
+.ab-block-pricing-table-inside .editor-block-list__block[data-align=full],
+.ab-block-pricing-table-inside .editor-block-list__block[data-align=wide] {
+  margin-left: auto;
+  margin-right: auto; }
+
+.ab-block-pricing-table-inside .editor-block-list__block .editor-url-input input[type=text],
+.ab-block-pricing-table-inside .editor-url-input input[type=text] {
+  width: 210px; }
+
+div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-rich-text__tinymce {
+  line-height: 1; }
