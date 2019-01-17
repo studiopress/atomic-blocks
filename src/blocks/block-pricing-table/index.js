@@ -117,7 +117,7 @@ class ABPricingTableBlock extends Component {
 								}],
 								['atomic-blocks/ab-button', {
 									buttonText: 'Buy Now',
-									buttonBackgroundColor: '#191e22'
+									buttonBackgroundColor: '#272c30'
 								}],
 							]}
 							templateLock={ false }
