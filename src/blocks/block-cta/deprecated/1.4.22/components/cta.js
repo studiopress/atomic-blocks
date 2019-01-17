@@ -11,7 +11,7 @@ import classnames from 'classnames';
 /**
  * Create a CallToAction wrapper Component
  */
-export default class CallToAction extends Component {
+export default class CallToAction_1_4_22 extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -44,7 +44,6 @@ export default class CallToAction extends Component {
 			'ab-block-cta',
 		], {
 			[ 'ab-font-size-' + ctaTextFontSize ]: ctaTextFontSize,
-			[ 'align' + ctaWidth ]: ctaWidth,
 		} )
 
 		const styles = {
