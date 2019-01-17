@@ -25,8 +25,8 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-image', {
 	parent: [ 'atomic-blocks/ab-pricing-table' ],
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
-		__( 'shop', 'atomic-blocks' ),
 		__( 'image', 'atomic-blocks' ),
+		__( 'shop', 'atomic-blocks' ),
 	],
 
 	attributes: {

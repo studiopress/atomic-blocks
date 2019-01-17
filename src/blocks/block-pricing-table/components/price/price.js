@@ -28,8 +28,8 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 	parent: [ 'atomic-blocks/ab-pricing-table' ],
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
+		__( 'price', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
-		__( 'purchase', 'atomic-blocks' ),
 	],
 
 	attributes: {
