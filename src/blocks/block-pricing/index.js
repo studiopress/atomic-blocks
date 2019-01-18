@@ -47,7 +47,6 @@ const getPricingTemplate = memoize( ( columns ) => {
 	return times( columns, () => [ 'atomic-blocks/ab-pricing-table' ] );
 } );
 
-
 class ABPricingBlock extends Component {
 
 	render() {

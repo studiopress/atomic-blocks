@@ -122,6 +122,7 @@ class ABPricingTableBlock extends Component {
 							]}
 							templateLock={ false }
 							allowedBlocks={ ALLOWED_BLOCKS }
+							templateInsertUpdatesSelection={ false }
 						/>
 					</div>
 				</div>
