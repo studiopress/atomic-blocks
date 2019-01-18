@@ -44,8 +44,9 @@ const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];
 
 // Get the pricing template
 const getPricingTemplate = memoize( ( columns ) => {
-	return times( columns, n => [ 'atomic-blocks/ab-pricing-table' ] );
+	return times( columns, () => [ 'atomic-blocks/ab-pricing-table' ] );
 } );
+
 
 class ABPricingBlock extends Component {
 
@@ -121,6 +122,7 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		},
 	},
 
+	// Add alignment to block wrapper
 	getEditWrapperProps( { align } ) {
 		if ( 'left' === align || 'right' === align || 'full' === align ) {
 			return { 'data-align': align };
@@ -140,6 +142,7 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 			align,
 		} = props.attributes;
 
+		// Setup the classes
 		const className = classnames( [
 			'ab-pricing-table-wrap',
 		], {
