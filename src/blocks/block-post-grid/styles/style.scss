@@ -123,8 +123,13 @@
 		}
 	}
 
-	.lsx-block-post-grid-excerpt div + p {
-		margin-top: 15px;
+	.lsx-block-post-grid-excerpt {
+		div + p {
+			margin-top: 15px;
+		}
+		.moretag {
+			display: none;
+		}
 	}
 
 	.is-list {

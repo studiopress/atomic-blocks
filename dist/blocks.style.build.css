@@ -1943,6 +1943,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
               box-shadow: 0 -2px 0 inset; }
   .lsx-block-post-grid .lsx-block-post-grid-excerpt div + p {
     margin-top: 15px; }
+  .lsx-block-post-grid .lsx-block-post-grid-excerpt .moretag {
+    display: none; }
   .lsx-block-post-grid .is-list article {
     display: grid;
     grid-template-columns: 30% 1fr;
