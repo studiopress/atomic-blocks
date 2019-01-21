@@ -160,12 +160,12 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 							<TextControl
 								label={ __( 'Display Limit' ) }
 								value={ displaylimit }
-								onChange={ onChangeOrder }
+								onChange={ onChangeLimit }
 							/>
 							<TextControl
 								label={ __( 'Display Order (Choose between ASC or DESC' ) }
 								value={ displayorder }
-								onChange={ onChangeLimit }
+								onChange={ onChangeOrder }
 							/>
 							<TextControl
 								label={ __( 'Include only from comma seperated List of IDs' ) }
