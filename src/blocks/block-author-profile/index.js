@@ -106,6 +106,9 @@ const blockAttributes = {
 	github: {
 		type: 'url',
 	},
+	linkedin: {
+		type: 'url',
+	},
 	email: {
 		type: 'url',
 	},
@@ -269,7 +272,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, profileAvatarShape } = props.attributes;
+		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, linkedin, email, website, profileAvatarShape } = props.attributes;
 
 		return (
 			// Save the block markup for the front end

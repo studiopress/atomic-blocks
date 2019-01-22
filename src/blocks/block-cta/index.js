@@ -7,6 +7,9 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import CallToAction from './components/cta';
 
+// Deprecated components
+import deprecated from './deprecated/deprecated';
+
 // Import CSS
 import './styles/style.scss';
 import './styles/editor.scss';
@@ -78,13 +81,12 @@ const blockAttributes = {
 		selector: '.ab-cta-title',
 		source: 'children',
 	},
-	ctaTitleFontSize: {
-		type: 'string',
-		default: '32'
+	titleFontSize: {
+		type: 'number',
+		default: '32',
 	},
 	ctaTextFontSize: {
-		type: 'string',
-		default: '20'
+		type: 'number',
 	},
 	ctaText: {
 		type: 'array',
@@ -93,11 +95,9 @@ const blockAttributes = {
 	},
 	ctaWidth: {
 		type: 'string',
-		default: 'center',
 	},
 	ctaBackgroundColor: {
 		type: 'string',
-		default: '#f2f2f2'
 	},
 	ctaTextColor: {
 		type: 'string',
@@ -122,6 +122,12 @@ const blockAttributes = {
 		type: 'number',
 		default: 50,
 	},
+
+	// Deprecated
+	ctaTitleFontSize: {
+		type: 'string',
+		default: '32'
+	},
 };
 
 class ABCTABlock extends Component {
@@ -131,25 +137,26 @@ class ABCTABlock extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-			buttonText,
-			buttonUrl,
-			buttonAlignment,
-			buttonBackgroundColor,
-			buttonTextColor,
-			buttonSize,
-			buttonShape,
-			buttonTarget,
-			ctaTitle,
-			ctaText,
-			ctaTitleFontSize,
-			ctaTextFontSize,
-			ctaWidth,
-			ctaBackgroundColor,
-			ctaTextColor,
-			imgURL,
-			imgID,
-			imgAlt,
-			dimRatio,
+				buttonText,
+				buttonUrl,
+				buttonAlignment,
+				buttonBackgroundColor,
+				buttonTextColor,
+				buttonSize,
+				buttonShape,
+				buttonTarget,
+				ctaTitle,
+				ctaText,
+				ctaTitleFontSize,
+				titleFontSize,
+				ctaTextFontSize,
+				ctaWidth,
+				ctaBackgroundColor,
+				ctaTextColor,
+				imgURL,
+				imgID,
+				imgAlt,
+				dimRatio,
 			},
 			attributes,
 			isSelected,
@@ -211,7 +218,7 @@ class ABCTABlock extends Component {
 						value={ ctaTitle }
 						className={ classnames(
 							'ab-cta-title',
-							'ab-font-size-' + ctaTitleFontSize,
+							'ab-font-size-' + titleFontSize,
 						) }
 						style={ {
 							color: ctaTextColor,
@@ -318,6 +325,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			ctaTitle,
 			ctaText,
 			ctaTitleFontSize,
+			titleFontSize,
 			ctaTextFontSize,
 			ctaWidth,
 			ctaBackgroundColor,
@@ -353,7 +361,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							tagName="h2"
 							className={ classnames(
 								'ab-cta-title',
-								'ab-font-size-' + ctaTitleFontSize,
+								'ab-font-size-' + titleFontSize,
 							) }
 							style={ {
 								color: ctaTextColor,
@@ -366,7 +374,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							tagName="div"
 							className={ classnames(
 								'ab-cta-text',
-								'ab-font-size-' + ctaTextFontSize,
+								'ab-font-size-' + ctaTitleFontSize,
 							) }
 							style={ {
 								color: ctaTextColor,
@@ -380,6 +388,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 						<a
 							href={ buttonUrl }
 							target={ buttonTarget ? '_blank' : '_self' }
+							rel={ buttonTarget ? 'noopener noreferrer' : null }
 							className={ classnames(
 								'ab-button',
 								buttonShape,
@@ -399,6 +408,8 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			</CallToAction>
 		);
 	},
+
+	deprecated: deprecated,
 } );
 
 function dimRatioToClass( ratio ) {

@@ -52,6 +52,7 @@ class LatestPostsBlock extends Component {
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+		this.toggleDisplayPostTitle = this.toggleDisplayPostTitle.bind( this );
 	}
 
 	toggleDisplayPostDate() {
@@ -89,6 +90,13 @@ class LatestPostsBlock extends Component {
 		setAttributes( { displayPostLink: ! displayPostLink } );
 	}
 
+	toggleDisplayPostTitle() {
+		const { displayPostTitle } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostTitle: ! displayPostTitle } );
+	}
+
 	customizeReadMoreText() {
 		const { readMoreText } = this.props.attributes;
 		const { setAttributes } = this.props;
@@ -98,7 +106,7 @@ class LatestPostsBlock extends Component {
 
 	render() {
 		const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
-		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop, readMoreText } = attributes;
+		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage, displayPostLink, displayPostTitle, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop, readMoreText } = attributes;
 
 		// Thumbnail options
 		const imageCropOptions = [
@@ -143,6 +151,11 @@ class LatestPostsBlock extends Component {
 							onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
 						/>
 					}
+					<ToggleControl
+						label={ __( 'Display Post Title' ) }
+						checked={ displayPostTitle }
+						onChange={ this.toggleDisplayPostTitle }
+					/>
 					<ToggleControl
 						label={ __( 'Display Post Author' ) }
 						checked={ displayPostAuthor }
@@ -264,7 +277,9 @@ class LatestPostsBlock extends Component {
 								}
 
 								<div class="ab-block-post-grid-text">
-									<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+									{ displayPostTitle &&
+										<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+									}
 
 									<div class="ab-block-post-grid-byline">
 										{ displayPostAuthor && post.author_info.display_name &&
