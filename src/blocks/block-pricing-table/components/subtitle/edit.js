@@ -35,6 +35,23 @@ class Edit extends Component {
 			textColor,
 		} = this.props;
 
+		// Setup class names
+		const editClassName = classnames( {
+			'ab-pricing-table-subtitle': true,
+			[ fontSize.class ]: fontSize.class,
+			'has-text-color': textColor.color,
+			'has-background': backgroundColor.color,
+			[ backgroundColor.class ]: backgroundColor.class,
+			[ textColor.class ]: textColor.class,
+		} );
+
+		// Setup styles
+		const editStyles = {
+			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+			backgroundColor: backgroundColor.color,
+			color: textColor.color,
+		};
+
 		return [
 			<Fragment>
 				<Inspector
@@ -46,19 +63,8 @@ class Edit extends Component {
 					keepPlaceholderOnFocus
 					value={ subtitle }
 					onChange={ ( value ) => setAttributes( { subtitle: value } ) }
-					className={ classnames( {
-						'ab-pricing-table-subtitle': true,
-						[ fontSize.class ]: fontSize.class,
-						'has-text-color': textColor.color,
-						'has-background': backgroundColor.color,
-						[ backgroundColor.class ]: backgroundColor.class,
-						[ textColor.class ]: textColor.class,
-					} ) }
-					style={ {
-						fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-						backgroundColor: backgroundColor.color,
-						color: textColor.color,
-					} }
+					style={ editStyles }
+					className={ editClassName ? editClassName : undefined }
 				/>
 			</Fragment>
 		];

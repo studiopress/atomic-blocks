@@ -7,7 +7,6 @@ const { Component } = wp.element;
 
 // Import block dependencies and components
 import classnames from 'classnames';
-import * as fontSize from './../../../utils/helper';
 
 /**
  * Create a Pricing wrapper Component

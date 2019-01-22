@@ -41,6 +41,7 @@ export default class Inspector extends Component {
 		const { attributes: {
 			borderWidth,
 			borderColor,
+			borderRadius,
 			backgroundColor,
 			padding
 		},
@@ -71,6 +72,15 @@ export default class Inspector extends Component {
 					max={ 10 }
 					step={ 1 }
 				/>
+				<RangeControl
+					label={ __( 'Pricing Table Border Radius' ) }
+					value={ borderRadius }
+					onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
+					min={ 0 }
+					max={ 20 }
+					step={ 1 }
+				/>
+				{ ( borderWidth > 0 ) && (
 				<PanelColorSettings
 					title={ __( 'Pricing Table Border Color' ) }
 					initialOpen={ false }
@@ -81,6 +91,7 @@ export default class Inspector extends Component {
 					} ] }
 				>
 				</PanelColorSettings>
+				) }
 				<PanelColorSettings
 					title={ __( 'Pricing Table Background Color' ) }
 					initialOpen={ false }

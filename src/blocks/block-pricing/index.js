@@ -6,13 +6,8 @@
 import classnames from 'classnames';
 import Inspector from './components/inspector';
 import PricingTable from './components/pricing';
-import icons from './components/icons';
 import memoize from 'memize';
 import { times } from 'lodash';
-
-// Import CSS
-import './styles/style.scss';
-import './styles/editor.scss';
 
 // Internationalization
 const { __ } = wp.i18n;

@@ -5,7 +5,6 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import Inspector from './components/inspector';
-import icons from './components/icons';
 
 // Import CSS
 import './styles/style.scss';
@@ -52,6 +51,7 @@ class ABPricingTableBlock extends Component {
 		const { attributes: {
 			borderWidth,
 			borderColor,
+			borderRadius,
 			backgroundColor,
 			padding,
 			alignment
@@ -65,6 +65,7 @@ class ABPricingTableBlock extends Component {
 			borderWidth: borderWidth ? borderWidth : null,
 			borderStyle: borderWidth > 0 ? 'solid' : null,
 			borderColor: borderColor ? borderColor : null,
+			borderRadius: borderRadius ? borderRadius : null,
 			backgroundColor: backgroundColor ? backgroundColor : null,
 			padding: padding ? padding + '%' : null,
 		};
@@ -151,6 +152,9 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		borderColor: {
 			type: 'string',
 		},
+		borderRadius: {
+			type: 'number',
+		},
 		backgroundColor: {
 			type: 'string',
 		},
@@ -173,6 +177,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		const {
 			borderWidth,
 			borderColor,
+			borderRadius,
 			backgroundColor,
 			alignment,
 			padding,
@@ -182,6 +187,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 			borderWidth: borderWidth ? borderWidth : null,
 			borderStyle: borderWidth > 0 ? 'solid' : null,
 			borderColor: borderColor ? borderColor : null,
+			borderRadius: borderRadius ? borderRadius : null,
 			backgroundColor: backgroundColor ? backgroundColor : null,
 			padding: padding ? padding + '%' : null,
 		};

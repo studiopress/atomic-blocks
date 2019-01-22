@@ -1440,131 +1440,6 @@
 /**
  * Editor styles for the admin
  */
-.ab-block-testimonial {
-  margin-bottom: 0; }
-  .ab-block-testimonial .components-button:not(:disabled):not([aria-disabled=true]):focus {
-    background: none;
-    -webkit-box-shadow: none;
-            box-shadow: none; }
-
-.editor-block-list__layout [data-type="atomic-blocks/ab-testimonial"] {
-  margin-bottom: 1.2em; }
-
-.ab-testimonial-info h2.editor-rich-text__tinymce {
-  line-height: 1.2; }
-
-.ab-testimonial-info p.editor-rich-text__tinymce {
-  line-height: 1.6; }
-
-.ab-testimonial-info .ab-testimonial-title + .ab-testimonial-title {
-  line-height: 1.8; }
-/**
- * Common styles
- * Loads on front end and back end
- */
-/* Font size styles */
-@media only screen and (min-width: 600px) {
-  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-14.ab-block-cta p {
-    font-size: 14px; }
-  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-15.ab-block-cta p {
-    font-size: 15px; }
-  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-16.ab-block-cta p {
-    font-size: 16px; }
-  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-17.ab-block-cta p {
-    font-size: 17px; }
-  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-18.ab-block-cta p {
-    font-size: 18px; }
-  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-19.ab-block-cta p {
-    font-size: 19px; }
-  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-20.ab-block-cta p {
-    font-size: 20px; }
-  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-21.ab-block-cta p {
-    font-size: 21px; }
-  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-22.ab-block-cta p {
-    font-size: 22px; }
-  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-23.ab-block-cta p {
-    font-size: 23px; }
-  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-testimonial p,
-  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-notice p,
-  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-profile p,
-  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-accordion p,
-  div[class*="wp-block-atomic"].ab-font-size-24.ab-block-cta p {
-    font-size: 24px; } }
-
-.center {
-  text-align: center; }
-
-.left {
-  text-align: left; }
-
-.right {
-  text-align: right; }
-
-@media only screen and (min-width: 600px) {
-  .wp-block-columns .layout-column-1,
-  .wp-block-columns .layout-column-2 {
-    margin-right: 5%; } }
-
-.wp-block-image {
-  margin-bottom: 1.2em; }
-
-.ab-text-link {
-  color: inherit;
-  -webkit-box-shadow: 0 -1px 0 inset;
-          box-shadow: 0 -1px 0 inset;
-  text-decoration: none;
-  -webkit-transition: .3s ease;
-  -o-transition: .3s ease;
-  transition: .3s ease; }
-  .ab-text-link:hover {
-    color: inherit;
-    -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
-
-/**
- * Editor styles for the admin
- */
 .edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-pricing-table"] {
   margin-left: 0;
   margin-right: 0; }
@@ -1575,6 +1450,7 @@
   grid-gap: 0 2em;
   min-height: 0; }
 
+/* Grid gap classes */
 .ab-block-pricing-table-gap-0 > .editor-inner-blocks > .editor-block-list__layout {
   grid-gap: 0 0; }
 
@@ -1593,6 +1469,7 @@
 .ab-block-pricing-table-gap-5 > .editor-inner-blocks > .editor-block-list__layout {
   grid-gap: 0 5em; }
 
+/* Grid column classes */
 .ab-pricing-columns-2 .editor-block-list__layout {
   grid-template-columns: 1fr 1fr; }
   @media only screen and (max-width: 600px) {
@@ -1623,6 +1500,7 @@
     .ab-pricing-columns-5 .editor-block-list__layout {
       grid-template-columns: 1fr; } }
 
+/* Alignment styles */
 .ab-block-pricing-table-inside .editor-block-list__block[data-align=full],
 .ab-block-pricing-table-inside .editor-block-list__block[data-align=wide] {
   margin-left: auto;
@@ -1634,3 +1512,6 @@
 
 div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-rich-text__tinymce {
   line-height: 1; }
+
+.ab-pricing-table-title.editor-rich-text__tinymce:focus strong[data-mce-selected] {
+  background: transparent; }

@@ -1,11 +1,10 @@
 /**
- * BLOCK: Atomic Blocks Pricing Table - Subtitle Component
+ * BLOCK: Atomic Blocks Pricing Table - Price Component
  */
 
 // Import block dependencies and components
 import classnames from 'classnames';
 import Edit from './edit';
-import icons from '../icons';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -20,20 +19,20 @@ const {
 } = wp.editor;
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
-	title: __( 'Product Subtitle', 'atomic-blocks' ),
-	description: __( 'Adds a product subtitle component with schema markup.', 'atomic-blocks' ),
+registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
+	title: __( 'Product Price', 'atomic-blocks' ),
+	description: __( 'Adds a product price component with schema markup.', 'atomic-blocks' ),
 	icon: 'cart',
 	category: 'atomic-blocks',
 	parent: [ 'atomic-blocks/ab-pricing-table' ],
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
-		__( 'subtitle', 'atomic-blocks' ),
+		__( 'price', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
 	],
 
 	attributes: {
-		subtitle: {
+		price: {
 			type: 'string',
 		},
 		fontSize: {
@@ -64,7 +63,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 
 		// Setup the attributes
 		const {
-			subtitle,
+			price,
 			fontSize,
 			customFontSize,
 			backgroundColor,
@@ -80,28 +79,30 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-		// If there is no fontSizeClass, use customFontSize
+		// Setup class names
+		const className = classnames( {
+			'has-background': backgroundColor || customBackgroundColor,
+			'ab-pricing-table-price': true,
+			[ fontSizeClass ]: fontSizeClass,
+			[ textClass ]: textClass,
+			[ backgroundClass ]: backgroundClass,
+		} );
+
+		// Setup styles
 		const styles = {
 			fontSize: fontSizeClass ? undefined : customFontSize,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 		};
 
-		const className = classnames( {
-			'has-background': backgroundColor || customBackgroundColor,
-			'ab-pricing-table-subtitle': true,
-			[ fontSizeClass ]: fontSizeClass,
-			[ textClass ]: textClass,
-			[ backgroundClass ]: backgroundClass,
-		} );
-
 		// Save the block markup for the front end
 		return (
 			<RichText.Content
 				tagName="div"
-				value={ subtitle }
-				style={ styles }
+				itemprop="price"
+				value={ price }
 				className={ className ? className : undefined }
+				style={ styles }
 			/>
 		);
 	},

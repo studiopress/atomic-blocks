@@ -37,6 +37,8 @@
 	border-color: #272c30;
 }
 
+/* Grid gap classes */
+
 .ab-block-pricing-table-gap-0 {
 	grid-gap: 0 0;
 }
@@ -61,6 +63,8 @@
 	grid-gap: 0 5em;
 }
 
+/* Grid column classes */
+
 .ab-pricing-columns-2 .ab-pricing-table-wrap {
 	grid-template-columns: 1fr 1fr;
 
@@ -82,6 +86,10 @@
 
 	@media only screen and (max-width: 800px) {
 		grid-template-columns: 1fr 1fr;
+
+		.wp-block-atomic-blocks-ab-pricing-table {
+			margin-bottom: 1.5em;
+		}
 	}
 
 	@media only screen and (max-width: 600px) {
@@ -89,19 +97,7 @@
 	}
 }
 
-.ab-pricing-columns-5 .ab-pricing-table-wrap {
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
-	@media only screen and (max-width: 800px) {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	@media only screen and (max-width: 600px) {
-		grid-template-columns: 1fr;
-	}
-}
-
-/* Pricing table elements */
+/* Pricing table components */
 
 .ab-pricing-table-price {
 	line-height: 1;

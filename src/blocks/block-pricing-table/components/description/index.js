@@ -1,11 +1,10 @@
 /**
- * BLOCK: Atomic Blocks Pricing Table - Title Component
+ * BLOCK: Atomic Blocks Pricing Table - Description Component
  */
 
 // Import block dependencies and components
 import classnames from 'classnames';
 import Edit from './edit';
-import icons from '../icons';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -20,21 +19,24 @@ const {
 } = wp.editor;
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
-	title: __( 'Product Title', 'atomic-blocks' ),
-	description: __( 'Adds a product title component with schema markup.', 'atomic-blocks' ),
+registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
+	title: __( 'Product Description', 'atomic-blocks' ),
+	description: __( 'Adds a product description component with schema markup.', 'atomic-blocks' ),
 	icon: 'cart',
 	category: 'atomic-blocks',
 	parent: [ 'atomic-blocks/ab-pricing-table' ],
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
-		__( 'title', 'atomic-blocks' ),
+		__( 'description', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
 	],
 
 	attributes: {
-		title: {
+		description: {
 			type: 'string',
+			source: 'html',
+			selector: 'ol,ul',
+			multiline: 'li',
 		},
 		fontSize: {
 			type: 'string',
@@ -64,7 +66,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 
 		// Setup the attributes
 		const {
-			title,
+			description,
 			fontSize,
 			customFontSize,
 			backgroundColor,
@@ -80,29 +82,30 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-		// If there is no fontSizeClass, use customFontSize
+		// Setup class names
+		const className = classnames( {
+			'has-background': backgroundColor || customBackgroundColor,
+			'ab-pricing-table-description': true,
+			[ fontSizeClass ]: fontSizeClass,
+			[ textClass ]: textClass,
+			[ backgroundClass ]: backgroundClass,
+		} );
+
+		// Setup styles
 		const styles = {
 			fontSize: fontSizeClass ? undefined : customFontSize,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 		};
 
-		const className = classnames( {
-			'has-background': backgroundColor || customBackgroundColor,
-			'ab-pricing-table-title': true,
-			[ fontSizeClass ]: fontSizeClass,
-			[ textClass ]: textClass,
-			[ backgroundClass ]: backgroundClass,
-		} );
-
 		// Save the block markup for the front end
 		return (
 			<RichText.Content
-				tagName="div"
-				itemprop="name"
-				value={ title }
-				style={ styles }
+				tagName="ul"
+				itemprop="description"
+				value={ description }
 				className={ className ? className : undefined }
+				style={ styles }
 			/>
 		);
 	},
