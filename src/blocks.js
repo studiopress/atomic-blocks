@@ -1,7 +1,6 @@
 /**
- * Import the blocks
+ * Import blocks
  */
-
 import './blocks/block-testimonial/index.js';
 import './blocks/block-author-profile/index.js';
 import './blocks/block-notice/index.js';
@@ -14,10 +13,12 @@ import './blocks/block-sharing/index.js';
 import './blocks/block-post-grid/index.js';
 import './blocks/block-container/index.js';
 
-// Pricing Table
-import './blocks/block-pricing/index.js';
+/**
+ * Pricing Table
+ */
 import './blocks/block-pricing-table/index.js';
-import './blocks/block-pricing-table/components/price/index.js';
-import './blocks/block-pricing-table/components/description/index.js';
-import './blocks/block-pricing-table/components/title/index.js';
-import './blocks/block-pricing-table/components/subtitle/index.js';
+import './blocks/block-pricing-table/block-pricing-inner/index.js';
+import './blocks/block-pricing-table/block-pricing-inner/components/price/index.js';
+import './blocks/block-pricing-table/block-pricing-inner/components/description/index.js';
+import './blocks/block-pricing-table/block-pricing-inner/components/title/index.js';
+import './blocks/block-pricing-table/block-pricing-inner/components/subtitle/index.js';

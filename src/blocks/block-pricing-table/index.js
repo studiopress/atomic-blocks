@@ -5,10 +5,9 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import Inspector from './components/inspector';
-
-// Import CSS
-import './styles/style.scss';
-import './styles/editor.scss';
+import PricingTable from './components/pricing';
+import memoize from 'memize';
+import { times } from 'lodash';
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -21,194 +20,138 @@ const { registerBlockType } = wp.blocks;
 
 // Register editor components
 const {
-	InnerBlocks,
+	RichText,
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
+	MediaUpload,
+	InnerBlocks,
 } = wp.editor;
 
+// Register components
 const {
-	Fragment,
-} = wp.element;
+	Button,
+	SelectControl,
+} = wp.components;
 
-const ALLOWED_BLOCKS = [
-	'atomic-blocks/ab-pricing-table-description',
-	'atomic-blocks/ab-pricing-table-price',
-	'atomic-blocks/ab-pricing-table-subtitle',
-	'atomic-blocks/ab-pricing-table-title',
-	'atomic-blocks/ab-button',
-	'atomic-blocks/ab-spacer',
-	'core/paragraph',
-	'core/list',
-	'core/image',
-];
+// Set allowed blocks and media
+const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];
 
-class ABPricingTableBlock extends Component {
+// Get the pricing template
+const getPricingTemplate = memoize( ( columns ) => {
+	return times( columns, () => [ 'atomic-blocks/ab-pricing-table' ] );
+} );
+
+class ABPricingBlock extends Component {
 
 	render() {
 
 		// Setup the attributes
-		const { attributes: {
-			borderWidth,
-			borderColor,
-			borderRadius,
-			backgroundColor,
-			padding,
-			alignment
-		},
+		const {
+			attributes: {
+				columns,
+				columnsGap,
+				align,
+			},
+			attributes,
 			isSelected,
+			editable,
 			className,
 			setAttributes
 		} = this.props;
 
-		const styles = {
-			borderWidth: borderWidth ? borderWidth : null,
-			borderStyle: borderWidth > 0 ? 'solid' : null,
-			borderColor: borderColor ? borderColor : null,
-			borderRadius: borderRadius ? borderRadius : null,
-			backgroundColor: backgroundColor ? backgroundColor : null,
-			padding: padding ? padding + '%' : null,
-		};
-
 		return [
+			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ alignment }
-					onChange={ ( nextAlign ) => {
-						setAttributes( { alignment: nextAlign } );
-					} }
+				<BlockAlignmentToolbar
+					value={ align }
+					onChange={ align => setAttributes( { align } ) }
+					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
+			// Show the block controls on focus
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,
-			<Fragment>
+			// Show the block markup in the editor
+			<PricingTable { ...this.props }>
 				<div
 					className={ classnames(
-						alignment ? 'ab-block-pricing-table-' + alignment : 'ab-block-pricing-table-center',
-						'ab-block-pricing-table',
+						'ab-pricing-table-wrap-admin',
+						'ab-block-pricing-table-gap-' + columnsGap
 					) }
-					itemscope
-					itemtype="http://schema.org/Product"
 				>
-					<div
-						class="ab-block-pricing-table-inside"
-						style={ styles }
-					>
-						<InnerBlocks
-							template={[
-								// Add placeholder blocks
-								['atomic-blocks/ab-pricing-table-title', {
-									title: '<strong>Test Content</strong>',
-									fontSize: 'medium',
-								}],
-								['atomic-blocks/ab-pricing-table-subtitle', {
-									subtitle: 'Price Subtitle Description',
-									fontSize: 'normal',
-								}],
-								['atomic-blocks/ab-pricing-table-price', {
-									price: '$49',
-									fontSize: 'huge',
-								}],
-								['atomic-blocks/ab-pricing-table-description', {
-									description: '<li>Product Feature One</li><li>Product Feature Two</li><li>Product Feature Three</li><li>Product Feature Four</li>',
-									multilineTag: 'li',
-									ordered: false,
-									fontSize: 'normal',
-								}],
-								['atomic-blocks/ab-button', {
-									buttonText: 'Buy Now',
-									buttonBackgroundColor: '#272c30'
-								}],
-							]}
-							templateLock={ false }
-							allowedBlocks={ ALLOWED_BLOCKS }
-							templateInsertUpdatesSelection={ false }
-						/>
-					</div>
+					<InnerBlocks
+						template={ getPricingTemplate( columns ) }
+						templateLock="all"
+						allowedBlocks={ ALLOWED_BLOCKS }
+					/>
 				</div>
-			</Fragment>
+			</PricingTable>
 		];
 	}
 }
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-pricing-table', {
-	title: __( 'AB Pricing Table', 'atomic-blocks' ),
+registerBlockType( 'atomic-blocks/ab-pricing', {
+	title: __( 'AB Pricing', 'atomic-blocks' ),
 	description: __( 'Add a pricing table.', 'atomic-blocks' ),
 	icon: 'cart',
 	category: 'atomic-blocks',
-	parent: [ 'atomic-blocks/ab-pricing' ],
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
-		__( 'buy', 'atomic-blocks' ),
+		__( 'purchase', 'atomic-blocks' ),
 	],
 	attributes: {
-		borderWidth: {
+		columns: {
 			type: 'number',
 			default: 2,
 		},
-		borderColor: {
-			type: 'string',
-		},
-		borderRadius: {
+		columnsGap: {
 			type: 'number',
 		},
-		backgroundColor: {
+		align: {
 			type: 'string',
-		},
-		alignment: {
-			type: 'string',
-		},
-		padding: {
-			type: 'number',
-			default: 10,
 		},
 	},
 
+	// Add alignment to block wrapper
+	getEditWrapperProps( { align } ) {
+		if ( 'left' === align || 'right' === align || 'full' === align ) {
+			return { 'data-align': align };
+		}
+	},
+
 	// Render the block components
-	edit: ABPricingTableBlock,
+	edit: ABPricingBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
 
 		// Setup the attributes
 		const {
-			borderWidth,
-			borderColor,
-			borderRadius,
-			backgroundColor,
-			alignment,
-			padding,
+			columns,
+			columnsGap,
+			align,
 		} = props.attributes;
 
-		const styles = {
-			borderWidth: borderWidth ? borderWidth : null,
-			borderStyle: borderWidth > 0 ? 'solid' : null,
-			borderColor: borderColor ? borderColor : null,
-			borderRadius: borderRadius ? borderRadius : null,
-			backgroundColor: backgroundColor ? backgroundColor : null,
-			padding: padding ? padding + '%' : null,
-		};
+		// Setup the classes
+		const className = classnames( [
+			'ab-pricing-table-wrap',
+		], {
+			[ 'ab-block-pricing-table-gap-' + columnsGap ]: columnsGap,
+		} )
 
 		// Save the block markup for the front end
 		return (
-			<div
-				className={ classnames(
-					alignment ? 'ab-block-pricing-table-' + alignment : 'ab-block-pricing-table-center',
-					'ab-block-pricing-table',
-				) }
-				itemscope
-				itemtype="http://schema.org/Product"
-			>
+			<PricingTable { ...props }>
 				<div
-					class="ab-block-pricing-table-inside"
-					style={ styles }
+					className={ className ? className : undefined }
 				>
 					<InnerBlocks.Content />
 				</div>
-			</div>
+			</PricingTable>
 		);
 	},
 } );

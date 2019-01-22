@@ -9,9 +9,6 @@ const { Component } = wp.element;
 // Import block components
 const {
 	InspectorControls,
-	BlockDescription,
-	ColorPalette,
-	PanelColorSettings,
 } = wp.editor;
 
 // Import Inspector components
@@ -20,10 +17,7 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	FormToggle,
 	RangeControl,
-	SelectControl,
-	ToggleControl,
 } = wp.components;
 
 /**
@@ -38,70 +32,34 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: {
-			borderWidth,
-			borderColor,
-			borderRadius,
-			backgroundColor,
-			padding
-		},
+		const {
+			attributes: {
+				columns,
+				columnsGap,
+			},
 			isSelected,
 			className,
 			setAttributes
 		} = this.props;
 
-		const onChangeBorderColor = value => setAttributes( { borderColor: value } );
-		const onChangeBackgroundColor = value => setAttributes( { backgroundColor: value } );
-
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Pricing Table Padding' ) }
-					value={ padding }
-					onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
-					min={ 0 }
-					max={ 20 }
-					step={ 1 }
+					label={ __( 'Pricing Columns' ) }
+					value={ columns }
+					onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
+					min={ 1 }
+					max={ 4 }
 				/>
 				<RangeControl
-					label={ __( 'Pricing Table Border' ) }
-					value={ borderWidth }
-					onChange={ ( value ) => this.props.setAttributes( { borderWidth: value } ) }
+					label={ __( 'Pricing Columns Gap' ) }
+					value={ columnsGap }
+					onChange={ ( value ) => this.props.setAttributes( { columnsGap: value } ) }
 					min={ 0 }
-					max={ 10 }
+					max={ 5 }
 					step={ 1 }
 				/>
-				<RangeControl
-					label={ __( 'Pricing Table Border Radius' ) }
-					value={ borderRadius }
-					onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
-					min={ 0 }
-					max={ 20 }
-					step={ 1 }
-				/>
-				{ ( borderWidth > 0 ) && (
-				<PanelColorSettings
-					title={ __( 'Pricing Table Border Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: borderColor,
-						onChange: onChangeBorderColor,
-						label: __( 'Border Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-				) }
-				<PanelColorSettings
-					title={ __( 'Pricing Table Background Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: backgroundColor,
-						onChange: onChangeBackgroundColor,
-						label: __( 'Background Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
 			</PanelBody>
 		</InspectorControls>
 		);
