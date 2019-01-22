@@ -19,6 +19,7 @@ const {
 	PanelBody,
 	RangeControl,
 	TextControl,
+	SelectControl,
 } = wp.components;
 
 /**
@@ -41,7 +42,35 @@ const blockAttributes = {
 	},
 	shortcodetitle: {
 		type: 'string',
-		default: 'Testimonials',
+		default: 'Testimonial',
+	},
+	displaylimit: {
+		type: 'string',
+		default: '',
+	},
+	displayorder: {
+		type: 'string',
+		default: 'ASC',
+	},
+	orderby: {
+		type: 'string',
+		default: 'none',
+	},
+	carousel: {
+		type: 'string',
+		default: 'true',
+	},
+	showimage: {
+		type: 'string',
+		default: 'true',
+	},
+	include: {
+		type: 'string',
+		default: '',
+	},
+	imagesize: {
+		type: 'number',
+		default: 150,
 	},
 };
 
@@ -57,7 +86,7 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 	attributes: blockAttributes,
 
 	edit( { attributes, className, setAttributes } ) {
-		const { alignment, columns, shortcodetitle } = attributes;
+		const { alignment, columns, shortcodetitle, displaylimit, displayorder, orderby, carousel, showimage, include, imagesize } = attributes;
 
 		function onChangeTitle( updatedTitle ) {
 			setAttributes( { shortcodetitle: updatedTitle } );
@@ -71,20 +100,51 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 			setAttributes( { columns: updatedColumns } );
 		}
 
+		function onChangeLimit( updatedLimit ) {
+			setAttributes( { displaylimit: updatedLimit } );
+		}
+
+		function onChangeOrder( updatedOrder ) {
+			setAttributes( { displayorder: updatedOrder } );
+		}
+
+		function onChangeInclude( updatedInclude ) {
+			setAttributes( { include: updatedInclude } );
+		}
+
+		function onChangeImagesize( updatedImagesize ) {
+			setAttributes( { imagesize: updatedImagesize } );
+		}
+		// Orderby options
+		const orderbyOptions = [
+			{ value: 'none', label: __( 'None' ) },
+			{ value: 'ID', label: __( 'Post ID' ) },
+			{ value: 'name', label: __( 'Name' ) },
+			{ value: 'date', label: __( 'Date' ) },
+		];
+
+		// Carousel options
+		const carouselOptions = [
+			{ value: 'true', label: __( 'Yes' ) },
+			{ value: 'false', label: __( 'No' ) },
+		];
+
+		// Show Image options
+		const showimageOptions = [
+			{ value: 'true', label: __( 'Yes' ) },
+			{ value: 'false', label: __( 'No' ) },
+		];
+
 		return (
 			<div>
 				{
 					<InspectorControls key="inspector">
-						<PanelBody title={ __( 'Shortcode Settings' ) } >
+						<PanelBody title={ __( 'Shortcode Settings test' ) } >
 							<TextControl
 								label={ __( 'Title' ) }
 								type="text"
 								value={ shortcodetitle }
 								onChange={ onChangeTitle }
-							/>
-							<AlignmentToolbar
-								value={ alignment }
-								onChange={ onChangeAlignment }
 							/>
 							<RangeControl
 								label={ __( 'Columns' ) }
@@ -93,6 +153,54 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 								min={ 1 }
 								max={ 6 }
 							/>
+							<AlignmentToolbar
+								value={ alignment }
+								onChange={ onChangeAlignment }
+							/>
+							<TextControl
+								label={ __( 'Display Limit' ) }
+								value={ displaylimit }
+								onChange={ onChangeLimit }
+							/>
+							<TextControl
+								label={ __( 'Display Order (Choose between ASC or DESC' ) }
+								value={ displayorder }
+								onChange={ onChangeOrder }
+							/>
+							<TextControl
+								label={ __( 'Include only from comma seperated List of IDs' ) }
+								value={ include }
+								onChange={ onChangeInclude }
+							/>
+							<RangeControl
+								label={ __( 'Image Size' ) }
+								value={ imagesize }
+								onChange={ onChangeImagesize }
+								min={ 100 }
+								max={ 300 }
+							/>
+							<SelectControl
+								label={ __( 'Orderby' ) }
+								description={ __( 'Choose the parameter you wish your testimonials to be ordered by' ) }
+								options={ orderbyOptions }
+								value={ orderby }
+								onChange={ ( value ) => setAttributes( { orderby: value } ) }
+							/>
+							<SelectControl
+								label={ __( 'Carousel' ) }
+								description={ __( 'Choose if the testimonials will show as carousel' ) }
+								options={ carouselOptions }
+								value={ carousel }
+								onChange={ ( value ) => setAttributes( { carousel: value } ) }
+							/>
+							<SelectControl
+								label={ __( 'Show Avatar' ) }
+								description={ __( 'Choose if the testimonials will show the avatar' ) }
+								options={ showimageOptions }
+								value={ showimage }
+								onChange={ ( value ) => setAttributes( { showimage: value } ) }
+							/>
+
 						</PanelBody>
 					</InspectorControls>
 				}
@@ -100,21 +208,21 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
 				</div>
 				<div style={ { textAlign: alignment } }>
-					[lsx_testimonials back columns=&quot;{ columns }&quot; ]
+						[lsx_testimonials back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; order=&quot;{ displayorder }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; size=&quot;{ imagesize }&quot; ]
 				</div>
 			</div>
 		);
 	},
 
 	save( { attributes, className } ) {
-		const { alignment, columns, shortcodetitle } = attributes;
+		const { alignment, columns, shortcodetitle, displaylimit, displayorder, orderby, carousel, showimage, include, imagesize } = attributes;
 		return (
 			<div className={ className }>
 				<div>
 					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
 				</div>
 				<div style={ { textAlign: alignment } }>
-					[lsx_testimonials back columns=&quot;{ columns }&quot; ]
+						[lsx_testimonials back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; order=&quot;{ displayorder }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; size=&quot;{ imagesize }&quot; ]
 				</div>
 			</div>
 		);
