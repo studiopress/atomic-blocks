@@ -1372,7 +1372,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   background: #f2f2f2;
   color: #293038;
   padding: 5% 3%;
-  border-radius: 5px; }
+  border-radius: 5px;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important; }
   .lsx-block-cta .components-autocomplete {
     display: inline-block;
     width: auto;

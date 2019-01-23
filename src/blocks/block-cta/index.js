@@ -57,6 +57,10 @@ const blockAttributes = {
 		type: 'string',
 		default: '#3373dc',
 	},
+	buttonShadowColor: {
+		type: 'string',
+		default: '#27639e',
+	},
 	buttonTextColor: {
 		type: 'string',
 		default: '#ffffff',
@@ -133,6 +137,7 @@ class LSXCTABlock extends Component {
 				buttonUrl,
 				buttonAlignment,
 				buttonBackgroundColor,
+				buttonShadowColor,
 				buttonTextColor,
 				buttonSize,
 				buttonShape,
@@ -246,6 +251,7 @@ class LSXCTABlock extends Component {
 						style={ {
 							color: buttonTextColor,
 							backgroundColor: buttonBackgroundColor,
+							boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
 						} }
 						onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 					/>
@@ -308,6 +314,7 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 			buttonUrl,
 			buttonAlignment,
 			buttonBackgroundColor,
+			buttonShadowColor,
 			buttonTextColor,
 			buttonSize,
 			buttonShape,
@@ -385,6 +392,7 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 							style={ {
 								color: buttonTextColor,
 								backgroundColor: buttonBackgroundColor,
+								boxShadow: '2px 2px 0 0' + buttonShadowColor,
 							} }
 						>
 							<RichText.Content
