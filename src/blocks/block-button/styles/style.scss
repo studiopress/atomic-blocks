@@ -31,14 +31,9 @@
 		border-radius: 3px;
 		display: inline-block;
 		font-size: 14px;
-		font-weight: 700;
-		height: 48px;
-		left: 0;
 		letter-spacing: 0.6px;
 		line-height: 1.25;
-		padding: 15px 40px;
-		position: relative;
-		top: 0;
+		padding: 10px 40px;
 		transition: all 100ms ease;
 		box-shadow: 2px 2px 0 0 #27639e;
 		&:hover {
@@ -74,6 +69,17 @@
 	.lsx-button-size-extralarge {
 		font-size: 34px;
 		padding: .8em 1.2em;
+	}
+
+	.lsx-button-no-border {
+		border: none !important;
+	}
+
+	.lsx-button-border-btn {
+		border-width: 2px;
+		border-style: solid;
+		background-color: transparent !important;
+		box-shadow: none !important;
 	}
 }
 

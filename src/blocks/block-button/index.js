@@ -43,7 +43,7 @@ class LSXButtonBlock extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonHoverColor, buttonTarget }, isSelected, className, setAttributes } = this.props;
 
 		return [
 			// Show the alignment toolbar on focus
@@ -71,10 +71,13 @@ class LSXButtonBlock extends Component {
 						'lsx-button',
 						buttonShape,
 						buttonSize,
+						buttonGhost,
 					) }
 					style={ {
 						color: buttonTextColor,
 						backgroundColor: buttonBackgroundColor,
+						boxShadow: buttonShadowColor,
+						boxShadow: '2px 2px 0 0' + buttonShadowColor,
 					} }
 					onChange={ (value) => setAttributes( { buttonText: value } ) }
 				/>
@@ -133,6 +136,14 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 			type: 'string',
 			default: '#3373dc'
 		},
+		buttonShadowColor: {
+			type: 'string',
+			default: '#27639e'
+		},
+		buttonHoverColor: {
+			type: 'string',
+			default: '#27639D'
+		},
 		buttonTextColor: {
 			type: 'string',
 			default: '#ffffff'
@@ -144,6 +155,10 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 		buttonShape: {
 			type: 'string',
 			default: 'lsx-button-shape-rounded'
+		},
+		buttonGhost: {
+			type: 'string',
+			default: 'lsx-button-no-border'
 		},
 		buttonTarget: {
 			type: 'boolean',
@@ -158,31 +173,34 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
 		// Save the block markup for the front end
 		return (
 			<CustomButton { ...props }>
 				{	// Check if there is button text and output
 					buttonText && (
-					<a
-						href={ buttonUrl }
-						target={ buttonTarget ? '_blank' : '_self' }
-						className={ classnames(
-							'lsx-button',
-							buttonShape,
-							buttonSize,
-						) }
-						style={ {
-							color: buttonTextColor,
-							backgroundColor: buttonBackgroundColor,
-						} }
-					>
-						<RichText.Content
-							value={ buttonText }
-						/>
-					</a>
-				) }
+						<a
+							href={ buttonUrl }
+							target={ buttonTarget ? '_blank' : '_self' }
+							className={ classnames(
+								'lsx-button',
+								buttonShape,
+								buttonSize,
+								buttonGhost,
+							) }
+							style={ {
+								color: buttonTextColor,
+								backgroundColor: buttonBackgroundColor,
+								borderColor: buttonBackgroundColor,
+								boxShadow: '2px 2px 0 0' + buttonShadowColor,
+							} }
+						>
+							<RichText.Content
+								value={ buttonText }
+							/>
+						</a>
+					) }
 			</CustomButton>
 		);
 	},

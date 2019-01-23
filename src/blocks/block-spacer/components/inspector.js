@@ -39,7 +39,7 @@ export default class Inspector extends Component {
 		// Setup the attributes
 		//const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = this.props.attributes;
 
-		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerWidth, spacerDividerHeight }, isSelected, className, setAttributes } = this.props;
 
 		// Button size values
 		const spacerStyleOptions = [
@@ -62,6 +62,8 @@ export default class Inspector extends Component {
 
 		// Update color values
 		const onChangeDividerColor = value => setAttributes( { spacerDividerColor: value } );
+
+		const onChangeDividerWidth = value => setAttributes( { spacerDividerWidth: value } );
 
 		return (
 		<InspectorControls key="inspector">
@@ -98,6 +100,14 @@ export default class Inspector extends Component {
 						onChange={ ( value ) => this.props.setAttributes( { spacerDividerHeight: value } ) }
 						min={ 1 }
 						max={ 5 }
+					/>
+
+					<RangeControl
+						label={ __( 'Divider Width' ) }
+						value={ spacerDividerWidth || '' }
+						onChange={ ( value ) => this.props.setAttributes( { spacerDividerWidth: value } ) }
+						min={ 1 }
+						max={ 60 }
 					/>
 
 					<PanelColorSettings

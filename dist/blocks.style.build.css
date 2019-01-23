@@ -438,7 +438,7 @@
         background: #0393e3;
         color: #fff;
         padding: 10px;
-        border-radius: 100px;
+        border-radius: 50%;
         height: 38px;
         width: 38px;
         text-align: center; }
@@ -921,14 +921,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     border-radius: 3px;
     display: inline-block;
     font-size: 14px;
-    font-weight: 700;
-    height: 48px;
-    left: 0;
     letter-spacing: 0.6px;
     line-height: 1.25;
-    padding: 15px 40px;
-    position: relative;
-    top: 0;
+    padding: 10px 40px;
     -webkit-transition: all 100ms ease;
     -o-transition: all 100ms ease;
     transition: all 100ms ease;
@@ -952,6 +947,14 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   .lsx-block-button .lsx-button-size-extralarge {
     font-size: 34px;
     padding: .8em 1.2em; }
+  .lsx-block-button .lsx-button-no-border {
+    border: none !important; }
+  .lsx-block-button .lsx-button-border-btn {
+    border-width: 2px;
+    border-style: solid;
+    background-color: transparent !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important; }
 
 .lsx-button-right {
   -webkit-transform: translateX(-100%);
@@ -1071,7 +1074,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
  * Loads on front end and back end
  */
 .lsx-block-spacer {
-  margin: 0 0 1.2em 0;
+  margin: 0 auto 1.2em;
   position: relative; }
   .lsx-block-spacer hr {
     border: none;
@@ -1208,15 +1211,29 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
  * Loads on front end and back end
  */
 .lsx-block-accordion {
-  margin-bottom: 1.2em;
+  margin-bottom: 2em;
   background: #F5F5F5;
   border: 1px solid #E0E0E0; }
+  .lsx-block-accordion details summary::-webkit-details-marker {
+    display: none; }
+  .lsx-block-accordion details summary:after {
+    content: "+";
+    color: #418AD0;
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: -5px 10px 0 0; }
+  .lsx-block-accordion details[open] summary:after {
+    content: "-";
+    font-size: 2em;
+    margin: -13px 10px 0 0; }
   .lsx-block-accordion .lsx-accordion-title {
-    padding: 10px 15px; }
+    padding: 10px 15px;
+    font-weight: bold; }
     .lsx-block-accordion .lsx-accordion-title p {
       display: inline; }
   .lsx-block-accordion .lsx-accordion-text {
-    padding: 10px 15px; }
+    padding: 10px 15px 10px 40px; }
     .lsx-block-accordion .lsx-accordion-text a {
       color: inherit;
       -webkit-box-shadow: 0 -1px 0 inset;

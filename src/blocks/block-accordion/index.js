@@ -129,7 +129,7 @@ registerBlockType( 'lsx-blocks/lsx-accordion', {
 		return (
 			<Accordion { ...props }>
 				<details open={accordionOpen}>
-					<summary class="lsx-accordion-title">
+					<summary class="lsx-accordion-title" style={ { fontSize: accordionFontSize } } >
 						<RichText.Content
 							value={ accordionTitle }
 						/>

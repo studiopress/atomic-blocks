@@ -20,12 +20,13 @@ export default class Spacer extends Component {
 	render() {
 
 		// Setup the attributes
-		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = this.props.attributes;
+		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerWidth, spacerDividerHeight } = this.props.attributes;
 
 		return (
 			<div
 				style={ {
-					color: spacerDividerColor
+					color: spacerDividerColor,
+					width: spacerDividerWidth + '%',
 				} }
 				className={ classnames(
 					this.props.className,
