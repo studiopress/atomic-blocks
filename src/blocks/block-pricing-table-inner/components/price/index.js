@@ -8,7 +8,10 @@ import Edit from './edit';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { Component } = wp.element;
+const {
+	Component,
+	Fragment
+} = wp.element;
 
 const {
 	RichText,
@@ -101,13 +104,24 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 
 		// Save the block markup for the front end
 		return (
-			<RichText.Content
-				tagName="div"
-				itemprop="price"
-				value={ price }
-				className={ className ? className : undefined }
-				style={ styles }
-			/>
+			<div class="ab-pricing-table-price-wrap">
+				<RichText.Content
+					tagName="div"
+					itemprop="price"
+					value={ price }
+					className={ className ? className : undefined }
+					style={ styles }
+				/>
+				{ term && (
+					<RichText.Content
+						tagName="span"
+						value={ term }
+						className={ classnames(
+							'ab-pricing-table-term',
+						) }
+					/>
+				) }
+			</div>
 		);
 	},
 } );

@@ -73,13 +73,13 @@ class Inspector extends Component {
 					onChange={ setFontSize }
 				/>
 			</PanelBody>
-			<PanelBody title={ __( 'Price Settings', 'atomic-blocks' ) }>
+			{/* <PanelBody title={ __( 'Price Settings', 'atomic-blocks' ) }>
 				<TextControl
 					label={ __( 'Pricing Length (month, year, etc.)', 'atomic-blocks' ) }
 					value={ term }
 					onChange={ ( value ) => this.props.setAttributes( { term: value } ) }
 				/>
-			</PanelBody>
+			</PanelBody> */}
 			<PanelColorSettings
 				title={ __( 'Color Settings', 'atomic-blocks' ) }
 				initialOpen={ false }
