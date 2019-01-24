@@ -115,9 +115,9 @@ export default class Inspector extends Component {
 
 		return (
 		<InspectorControls key="inspector">
-			<PanelBody title={ __( 'Text Options' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Text Options', 'atomic-blocks' ) } initialOpen={ true }>
 				<RangeControl
-					label={ __( 'Title Font Size' ) }
+					label={ __( 'Title Font Size', 'atomic-blocks' ) }
 					value={ titleFontSize }
 					onChange={ ( value ) => this.props.setAttributes( { titleFontSize: value } ) }
 					min={ 24 }
@@ -126,7 +126,7 @@ export default class Inspector extends Component {
 				/>
 
 				<RangeControl
-					label={ __( 'Text Font Size' ) }
+					label={ __( 'Text Font Size', 'atomic-blocks' ) }
 					value={ ctaTextFontSize }
 					onChange={ ( value ) => this.props.setAttributes( { ctaTextFontSize: value } ) }
 					min={ 14 }
@@ -135,19 +135,19 @@ export default class Inspector extends Component {
 				/>
 
 				<PanelColorSettings
-					title={ __( 'Text Color' ) }
+					title={ __( 'Text Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: ctaTextColor,
 						onChange: onChangeTextColor,
-						label: __( 'Text Color' ),
+						label: __( 'Text Color', 'atomic-blocks' ),
 					} ] }
 				>
 				</PanelColorSettings>
 			</PanelBody>
 
-			<PanelBody title={ __( 'Background Options' ) } initialOpen={ false }>
-				<p>{ __( 'Select a background image:' ) }</p>
+			<PanelBody title={ __( 'Background Options', 'atomic-blocks' ) } initialOpen={ false }>
+				<p>{ __( 'Select a background image:', 'atomic-blocks' ) }</p>
 				<MediaUpload
 					onSelect={ onSelectImage }
 					type="image"
@@ -156,21 +156,21 @@ export default class Inspector extends Component {
 						<div>
 							<IconButton
 								className="ab-cta-inspector-media"
-								label={ __( 'Edit image' ) }
+								label={ __( 'Edit image', 'atomic-blocks' ) }
 								icon="format-image"
 								onClick={ open }
 							>
-								{ __( 'Select Image' ) }
+								{ __( 'Select Image', 'atomic-blocks' ) }
 							</IconButton>
 
 							{ imgURL && !! imgURL.length && (
 								<IconButton
 									className="ab-cta-inspector-media"
-									label={ __( 'Remove Image' ) }
+									label={ __( 'Remove Image', 'atomic-blocks' ) }
 									icon="dismiss"
 									onClick={ onRemoveImage }
 								>
-									{ __( 'Remove' ) }
+									{ __( 'Remove', 'atomic-blocks' ) }
 								</IconButton>
 							) }
 						</div>
@@ -180,7 +180,7 @@ export default class Inspector extends Component {
 
 				{ imgURL && !! imgURL.length && (
 					<RangeControl
-						label={ __( 'Image Opacity' ) }
+						label={ __( 'Image Opacity', 'atomic-blocks' ) }
 						value={ dimRatio }
 						onChange={ ( value ) => this.props.setAttributes( { dimRatio: value } ) }
 						min={ 0 }
@@ -190,27 +190,27 @@ export default class Inspector extends Component {
 				) }
 
 				<PanelColorSettings
-					title={ __( 'Background Color' ) }
+					title={ __( 'Background Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: ctaBackgroundColor,
 						onChange: onChangeBackgroundColor,
-						label: __( 'Overlay Color' ),
+						label: __( 'Overlay Color', 'atomic-blocks' ),
 						colors: buttonColors,
 					} ] }
 				>
 				</PanelColorSettings>
 			</PanelBody>
 
-			<PanelBody title={ __( 'Button Options' ) } initialOpen={ false }>
+			<PanelBody title={ __( 'Button Options', 'atomic-blocks' ) } initialOpen={ false }>
 				<ToggleControl
-					label={ __( 'Open link in new window' ) }
+					label={ __( 'Open link in new window', 'atomic-blocks' ) }
 					checked={ buttonTarget }
 					onChange={ () => this.props.setAttributes( { buttonTarget: ! buttonTarget } ) }
 				/>
 
 				<SelectControl
-					label={ __( 'Button Size' ) }
+					label={ __( 'Button Size', 'atomic-blocks' ) }
 					value={ buttonSize }
 					options={ buttonSizeOptions.map( ({ value, label }) => ( {
 						value: value,
@@ -220,7 +220,7 @@ export default class Inspector extends Component {
 				/>
 
 				<SelectControl
-					label={ __( 'Button Shape' ) }
+					label={ __( 'Button Shape', 'atomic-blocks' ) }
 					value={ buttonShape }
 					options={ buttonShapeOptions.map( ({ value, label }) => ( {
 						value: value,
@@ -230,24 +230,24 @@ export default class Inspector extends Component {
 				/>
 
 				<PanelColorSettings
-					title={ __( 'Button Color' ) }
+					title={ __( 'Button Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: buttonBackgroundColor,
 						onChange: onChangeButtonColor,
-						label: __( 'Button Color' ),
+						label: __( 'Button Color', 'atomic-blocks' ),
 						colors: buttonColors,
 					} ] }
 				>
 				</PanelColorSettings>
 
 				<PanelColorSettings
-					title={ __( 'Button Text Color' ) }
+					title={ __( 'Button Text Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: buttonTextColor,
 						onChange: onChangeButtonTextColor,
-						label: __( 'Button Text Color' ),
+						label: __( 'Button Text Color', 'atomic-blocks' ),
 					} ] }
 				>
 				</PanelColorSettings>
