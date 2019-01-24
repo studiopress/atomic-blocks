@@ -2158,3 +2158,375 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     opacity: .9; }
   .lsx-block-container .has-background-dim-100 {
     opacity: 1; }
+/**
+ * Common styles
+ * Loads on front end and back end
+ */
+/* Font size styles */
+@media only screen and (min-width: 600px) {
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-cta p {
+    font-size: 14px; }
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-cta p {
+    font-size: 15px; }
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-cta p {
+    font-size: 16px; }
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-cta p {
+    font-size: 17px; }
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-cta p {
+    font-size: 18px; }
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-cta p {
+    font-size: 19px; }
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-cta p {
+    font-size: 20px; }
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-cta p {
+    font-size: 21px; }
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-cta p {
+    font-size: 22px; }
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-cta p {
+    font-size: 23px; }
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-cta p {
+    font-size: 24px; } }
+
+.center {
+  text-align: center; }
+
+.left {
+  text-align: left; }
+
+.right {
+  text-align: right; }
+
+@media only screen and (min-width: 600px) {
+  .wp-block-columns .layout-column-1,
+  .wp-block-columns .layout-column-2 {
+    margin-right: 5%; } }
+
+.wp-block-image {
+  margin-bottom: 1.2em; }
+
+.lsx-text-link {
+  color: inherit;
+  -webkit-box-shadow: 0 -1px 0 inset;
+          box-shadow: 0 -1px 0 inset;
+  text-decoration: none;
+  -webkit-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease; }
+  .lsx-text-link:hover {
+    color: inherit;
+    -webkit-box-shadow: 0 -2px 0 inset;
+            box-shadow: 0 -2px 0 inset;
+    color: #5a3fd6; }
+
+/**
+ * Team styles
+ * Loads on front end and back end
+ */
+.wp-block-lsx-blocks-block-team {
+  margin: 0 auto;
+  margin-bottom: 1.2em; }
+  .wp-block-lsx-blocks-block-team .lsx-team-shortcode {
+    width: 100% !important; }
+/**
+ * Common styles
+ * Loads on front end and back end
+ */
+/* Font size styles */
+@media only screen and (min-width: 600px) {
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-cta p {
+    font-size: 14px; }
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-cta p {
+    font-size: 15px; }
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-cta p {
+    font-size: 16px; }
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-cta p {
+    font-size: 17px; }
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-cta p {
+    font-size: 18px; }
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-cta p {
+    font-size: 19px; }
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-cta p {
+    font-size: 20px; }
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-cta p {
+    font-size: 21px; }
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-cta p {
+    font-size: 22px; }
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-cta p {
+    font-size: 23px; }
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-cta p {
+    font-size: 24px; } }
+
+.center {
+  text-align: center; }
+
+.left {
+  text-align: left; }
+
+.right {
+  text-align: right; }
+
+@media only screen and (min-width: 600px) {
+  .wp-block-columns .layout-column-1,
+  .wp-block-columns .layout-column-2 {
+    margin-right: 5%; } }
+
+.wp-block-image {
+  margin-bottom: 1.2em; }
+
+.lsx-text-link {
+  color: inherit;
+  -webkit-box-shadow: 0 -1px 0 inset;
+          box-shadow: 0 -1px 0 inset;
+  text-decoration: none;
+  -webkit-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease; }
+  .lsx-text-link:hover {
+    color: inherit;
+    -webkit-box-shadow: 0 -2px 0 inset;
+            box-shadow: 0 -2px 0 inset;
+    color: #5a3fd6; }
+
+/**
+ * card styles
+ * Loads on front end and back end
+ */
+.lsx-block-card {
+  background: #f2f2f2;
+  color: #293038;
+  margin: 0 auto;
+  padding: 3%;
+  border-radius: 5px;
+  margin-bottom: 1.2em;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%; }
+  .lsx-block-card .lsx-card-column {
+    display: block;
+    padding: 15px;
+    -ms-flex: 3 0 0px;
+        flex: 3 0 0; }
+    @media only screen and (max-width: 600px) {
+      .lsx-block-card .lsx-card-column {
+        -ms-flex: auto;
+            flex: auto; } }
+  .lsx-block-card .lsx-card-avatar-wrap {
+    position: relative;
+    z-index: 0;
+    -ms-flex: 1 0 0px;
+        flex: 1 0 0; }
+    @media only screen and (max-width: 600px) {
+      .lsx-block-card .lsx-card-avatar-wrap {
+        -ms-flex: auto;
+            flex: auto;
+        max-width: 210px;
+        margin: 0 auto; } }
+  @media only screen and (max-width: 600px) {
+    .lsx-block-card .lsx-card-content-wrap {
+      text-align: center; } }
+  .lsx-block-card .lsx-card-text {
+    font-size: 18px;
+    padding-top: 1em; }
+    .lsx-block-card .lsx-card-text a {
+      color: inherit;
+      -webkit-box-shadow: 0 -1px 0 inset;
+              box-shadow: 0 -1px 0 inset;
+      text-decoration: none; }
+      .lsx-block-card .lsx-card-text a:hover {
+        color: inherit;
+        -webkit-box-shadow: 0 -2px 0 inset;
+                box-shadow: 0 -2px 0 inset; }
+    .lsx-block-card .lsx-card-text p {
+      line-height: 1.6; }
+      .lsx-block-card .lsx-card-text p:last-child {
+        margin-bottom: 0; }
+  .lsx-block-card .lsx-card-name {
+    font-size: 1.4em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0; }
+  .lsx-block-card .lsx-card-title {
+    opacity: .8;
+    padding-top: 5px;
+    margin-bottom: 0; }
+  .lsx-block-card .lsx-card-image-square {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5; }
+  .lsx-block-card .lsx-card-text:empty,
+  .lsx-block-card .lsx-card-title:empty,
+  .lsx-block-card .lsx-card-name:empty {
+    display: none; }
+  .lsx-block-card .lsx-card-image-wrap {
+    width: 100%;
+    background: #ddd;
+    position: relative;
+    width: 100%; }
+    .lsx-block-card .lsx-card-image-wrap:before {
+      content: '';
+      display: inline-block;
+      padding-top: 100%; }
+    .lsx-block-card .lsx-card-image-wrap button {
+      position: absolute;
+      left: 0;
+      z-index: 50;
+      padding: 0;
+      height: 100%;
+      width: 100%; }
+    .lsx-block-card .lsx-card-image-wrap button:focus {
+      background: none;
+      border: none;
+      outline: none;
+      -webkit-box-shadow: none;
+              box-shadow: none; }
+    .lsx-block-card .lsx-card-image-wrap img {
+      -o-object-fit: cover;
+         object-fit: cover;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      z-index: 5; }
+  .lsx-block-card .lsx-social-links {
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 5% 0 0 0;
+    font-size: 0; }
+    .lsx-block-card .lsx-social-links:empty {
+      display: none; }
+    .lsx-block-card .lsx-social-links li {
+      display: inline-block;
+      margin: 0 8px 0 0;
+      padding: 0; }
+      .lsx-block-card .lsx-social-links li a {
+        border: none; }
+        .lsx-block-card .lsx-social-links li a:hover {
+          opacity: .9; }
+      .lsx-block-card .lsx-social-links li i {
+        font-size: 18px;
+        background: #0393e3;
+        color: #fff;
+        padding: 10px;
+        border-radius: 50%;
+        height: 38px;
+        width: 38px;
+        text-align: center; }
+
+.right .lsx-card-avatar-wrap {
+  -ms-flex-order: 2;
+      order: 2; }
+
+.round .lsx-card-image-wrap {
+  border-radius: 500px;
+  overflow: hidden; }
+  .round .lsx-card-image-wrap:before {
+    content: '';
+    display: inline-block;
+    padding-top: 92%; }
+  .round .lsx-card-image-wrap img {
+    border-radius: 500px; }
+
+#editor .lsx-has-avatar .lsx-card-image-square:hover {
+  cursor: pointer; }
+  #editor .lsx-has-avatar .lsx-card-image-square:hover img {
+    opacity: .7 !important; }
+
+#editor .lsx-has-avatar .lsx-card-image-square button {
+  top: 0;
+  left: 0;
+  opacity: 1 !important;
+  height: 100%; }

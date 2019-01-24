@@ -1353,3 +1353,255 @@
 /**
  * Editor styles for the admin
  */
+/**
+ * Common styles
+ * Loads on front end and back end
+ */
+/* Font size styles */
+@media only screen and (min-width: 600px) {
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-cta p {
+    font-size: 14px; }
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-cta p {
+    font-size: 15px; }
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-cta p {
+    font-size: 16px; }
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-cta p {
+    font-size: 17px; }
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-cta p {
+    font-size: 18px; }
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-cta p {
+    font-size: 19px; }
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-cta p {
+    font-size: 20px; }
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-cta p {
+    font-size: 21px; }
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-cta p {
+    font-size: 22px; }
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-cta p {
+    font-size: 23px; }
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-cta p {
+    font-size: 24px; } }
+
+.center {
+  text-align: center; }
+
+.left {
+  text-align: left; }
+
+.right {
+  text-align: right; }
+
+@media only screen and (min-width: 600px) {
+  .wp-block-columns .layout-column-1,
+  .wp-block-columns .layout-column-2 {
+    margin-right: 5%; } }
+
+.wp-block-image {
+  margin-bottom: 1.2em; }
+
+.lsx-text-link {
+  color: inherit;
+  -webkit-box-shadow: 0 -1px 0 inset;
+          box-shadow: 0 -1px 0 inset;
+  text-decoration: none;
+  -webkit-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease; }
+  .lsx-text-link:hover {
+    color: inherit;
+    -webkit-box-shadow: 0 -2px 0 inset;
+            box-shadow: 0 -2px 0 inset;
+    color: #5a3fd6; }
+
+/**
+ * Editor styles for the admin
+ */
+.lsx-block-team {
+  margin-bottom: 0; }
+  .lsx-block-team .components-button:not(:disabled):not([aria-disabled=true]):focus {
+    background: none;
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+
+.editor-block-list__layout [data-type="lsx-blocks/lsx-team"] {
+  margin-bottom: 1.2em; }
+
+.lsx-team-info h2.editor-rich-text__tinymce {
+  line-height: 1.2; }
+
+.lsx-team-info p.editor-rich-text__tinymce {
+  line-height: 1.6; }
+
+.lsx-team-info .lsx-team-title + .lsx-team-title {
+  line-height: 1.8; }
+/**
+ * Common styles
+ * Loads on front end and back end
+ */
+/* Font size styles */
+@media only screen and (min-width: 600px) {
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-cta p {
+    font-size: 14px; }
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-15.lsx-block-cta p {
+    font-size: 15px; }
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-16.lsx-block-cta p {
+    font-size: 16px; }
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-17.lsx-block-cta p {
+    font-size: 17px; }
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-18.lsx-block-cta p {
+    font-size: 18px; }
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-19.lsx-block-cta p {
+    font-size: 19px; }
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-20.lsx-block-cta p {
+    font-size: 20px; }
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-21.lsx-block-cta p {
+    font-size: 21px; }
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-22.lsx-block-cta p {
+    font-size: 22px; }
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-23.lsx-block-cta p {
+    font-size: 23px; }
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-testimonial p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-notice p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-profile p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-accordion p,
+  div[class*="wp-block-lsx"].lsx-font-size-24.lsx-block-cta p {
+    font-size: 24px; } }
+
+.center {
+  text-align: center; }
+
+.left {
+  text-align: left; }
+
+.right {
+  text-align: right; }
+
+@media only screen and (min-width: 600px) {
+  .wp-block-columns .layout-column-1,
+  .wp-block-columns .layout-column-2 {
+    margin-right: 5%; } }
+
+.wp-block-image {
+  margin-bottom: 1.2em; }
+
+.lsx-text-link {
+  color: inherit;
+  -webkit-box-shadow: 0 -1px 0 inset;
+          box-shadow: 0 -1px 0 inset;
+  text-decoration: none;
+  -webkit-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease; }
+  .lsx-text-link:hover {
+    color: inherit;
+    -webkit-box-shadow: 0 -2px 0 inset;
+            box-shadow: 0 -2px 0 inset;
+    color: #5a3fd6; }
+
+/**
+ * Editor styles for the admin
+ */
+.lsx-block-card {
+  margin-bottom: 0; }
+
+.editor-block-list__layout [data-type="lsx-blocks/lsx-card-box"] {
+  margin-bottom: 1.2em; }
+
+.lsx-card-image-wrap svg {
+  pointer-events: none;
+  margin: 0 auto; }
+
+.lsx-card-image-wrap .components-button:not(:disabled):not([aria-disabled=true]):focus {
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+.lsx-card-content-wrap h2.editor-rich-text__tinymce {
+  line-height: 1.2; }
+
+.lsx-card-content-wrap p.editor-rich-text__tinymce {
+  line-height: 1.6; }
