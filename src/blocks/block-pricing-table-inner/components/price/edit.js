@@ -68,6 +68,16 @@ class Edit extends Component {
 					style={ editStyles }
 					className={ editClassName ? editClassName : undefined }
 				/>
+				<RichText
+					tagName="span"
+					value={ term }
+					placeholder={ __( '/mo', 'atomic-blocks' ) }
+					keepPlaceholderOnFocus
+					onChange={ ( value ) => setAttributes( { term: value } ) }
+					className={ classnames(
+						'ab-pricing-table-term',
+					) }
+				/>
 			</Fragment>
 		];
 	}

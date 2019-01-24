@@ -2321,6 +2321,13 @@ ul.ab-pricing-table-description li {
   ul.ab-pricing-table-description li:last-child {
     border-bottom: none; }
 
+.ab-pricing-table-price,
+.ab-pricing-table-term {
+  display: inline; }
+
+span.ab-pricing-table-term {
+  margin-left: 5px; }
+
 .ab-pricing-table-wrap .ab-block-pricing-table-inside > * {
   margin-bottom: 25px; }
 

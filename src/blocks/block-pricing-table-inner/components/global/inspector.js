@@ -1,6 +1,7 @@
 /**
  * Inspector Controls
  * Font size, color, background color
+ * This is used for multiple pricing table components using the same inspector settings
  */
 
 // Import block dependencies and components
@@ -70,18 +71,18 @@ class Inspector extends Component {
 				/>
 			</PanelBody>
 			<PanelColorSettings
-				title={ __( 'Color Settings' ) }
+				title={ __( 'Color Settings', 'atomic-blocks' ) }
 				initialOpen={ false }
 				colorSettings={ [
 					{
 						value: backgroundColor.color,
 						onChange: setBackgroundColor,
-						label: __( 'Background Color' ),
+						label: __( 'Background Color', 'atomic-blocks' ),
 					},
 					{
 						value: textColor.color,
 						onChange: setTextColor,
-						label: __( 'Text Color' ),
+						label: __( 'Text Color', 'atomic-blocks' ),
 					},
 				] }
 			>
