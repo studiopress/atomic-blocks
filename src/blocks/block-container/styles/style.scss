@@ -49,6 +49,9 @@
 	.lsx-container-content {
 		margin: 0 auto;
 		position: relative;
+		@media only screen and (max-width: 900px) {
+			padding: 1em 3em;
+		}
 	}
 
 	.lsx-container-image:not(.has-background-dim) {

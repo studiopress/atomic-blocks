@@ -2131,6 +2131,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   .lsx-block-container .lsx-container-content {
     margin: 0 auto;
     position: relative; }
+    @media only screen and (max-width: 900px) {
+      .lsx-block-container .lsx-container-content {
+        padding: 1em 3em; } }
   .lsx-block-container .lsx-container-image:not(.has-background-dim) {
     opacity: 0; }
   .lsx-block-container .has-background-dim {
