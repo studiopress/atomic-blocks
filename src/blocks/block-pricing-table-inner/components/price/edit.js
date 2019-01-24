@@ -25,6 +25,7 @@ class Edit extends Component {
 		const {
 			attributes: {
 				price,
+				term,
 			},
 			isSelected,
 			className,

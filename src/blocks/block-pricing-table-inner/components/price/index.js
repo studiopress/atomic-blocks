@@ -53,6 +53,9 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 		customBackgroundColor: {
 			type: 'string',
 		},
+		term: {
+			type: 'string',
+		},
 	},
 
 	// Render the block components
@@ -70,6 +73,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			textColor,
 			customBackgroundColor,
 			customTextColor,
+			term,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass

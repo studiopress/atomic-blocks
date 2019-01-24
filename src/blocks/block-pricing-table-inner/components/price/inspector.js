@@ -19,6 +19,7 @@ const {
 const {
 	withFallbackStyles,
 	PanelBody,
+	TextControl,
 } = wp.components;
 
 // Apply fallback styles
@@ -48,6 +49,7 @@ class Inspector extends Component {
 		const {
 			attributes: {
 				price,
+				term,
 			},
 			isSelected,
 			setAttributes,
@@ -71,19 +73,26 @@ class Inspector extends Component {
 					onChange={ setFontSize }
 				/>
 			</PanelBody>
+			<PanelBody title={ __( 'Price Settings', 'atomic-blocks' ) }>
+				<TextControl
+					label={ __( 'Pricing Length (month, year, etc.)', 'atomic-blocks' ) }
+					value={ term }
+					onChange={ ( value ) => this.props.setAttributes( { term: value } ) }
+				/>
+			</PanelBody>
 			<PanelColorSettings
-				title={ __( 'Color Settings' ) }
+				title={ __( 'Color Settings', 'atomic-blocks' ) }
 				initialOpen={ false }
 				colorSettings={ [
 					{
 						value: backgroundColor.color,
 						onChange: setBackgroundColor,
-						label: __( 'Background Color' ),
+						label: __( 'Background Color', 'atomic-blocks' ),
 					},
 					{
 						value: textColor.color,
 						onChange: setTextColor,
-						label: __( 'Text Color' ),
+						label: __( 'Text Color', 'atomic-blocks' ),
 					},
 				] }
 			>

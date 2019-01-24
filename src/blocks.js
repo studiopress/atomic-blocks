@@ -17,8 +17,8 @@ import './blocks/block-container/index.js';
  * Pricing Table
  */
 import './blocks/block-pricing-table/index.js';
-import './blocks/block-pricing-table/block-pricing-inner/index.js';
-import './blocks/block-pricing-table/block-pricing-inner/components/price/index.js';
-import './blocks/block-pricing-table/block-pricing-inner/components/description/index.js';
-import './blocks/block-pricing-table/block-pricing-inner/components/title/index.js';
-import './blocks/block-pricing-table/block-pricing-inner/components/subtitle/index.js';
+import './blocks/block-pricing-table-inner/index.js';
+import './blocks/block-pricing-table-inner/components/price/index.js';
+import './blocks/block-pricing-table-inner/components/description/index.js';
+import './blocks/block-pricing-table-inner/components/title/index.js';
+import './blocks/block-pricing-table-inner/components/subtitle/index.js';
