@@ -1591,6 +1591,9 @@
 .editor-block-list__layout [data-type="lsx-blocks/lsx-card-box"] {
   margin-bottom: 1.2em; }
 
+.lsx-card-image-wrap button {
+  position: relative !important; }
+
 .lsx-card-image-wrap svg {
   pointer-events: none;
   margin: 0 auto; }

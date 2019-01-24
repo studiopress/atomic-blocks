@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import Inspector from './components/inspector';
 import CardBox from './components/card';
-import SocialIcons from './components/social';
+//import SocialIcons from './components/social';
 import AvatarColumn from './components/avatar';
 import icons from './components/icons';
 
@@ -239,7 +239,7 @@ class LSXAuthorCardBlock extends Component {
 						onChange={ ( value ) => setAttributes( { cardContent: value } ) }
 					/>
 
-					<SocialIcons { ...this.props } />
+
 				</div>
 			</CardBox>
 		];
@@ -319,7 +319,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 						/>
 					) }
 
-					<SocialIcons { ...props } />
+
 				</div>
 			</CardBox>
 		);

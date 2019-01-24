@@ -11,6 +11,9 @@
 }
 
 .lsx-card-image-wrap {
+	button {
+		position: relative !important;
+	}
     svg {
         pointer-events: none;
         margin: 0 auto;
