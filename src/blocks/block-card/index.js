@@ -218,7 +218,7 @@ class LSXAuthorCardBlock extends Component {
 
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Add title', 'lsx-blocks' ) }
+						placeholder={ __( 'Add Card Subtitle', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ cardTitle }
 						className='lsx-card-title'
@@ -250,7 +250,7 @@ class LSXAuthorCardBlock extends Component {
 registerBlockType( 'lsx-blocks/lsx-card-box', {
 	title: __( 'LSX Card Box', 'lsx-blocks' ),
 	description: __( 'Add a card box with content and media.', 'lsx-blocks' ),
-	icon: 'admin-users',
+	icon: 'images-alt',
 	category: 'lsx-blocks',
 	keywords: [
 		__( 'card', 'lsx-blocks' ),

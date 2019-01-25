@@ -95,7 +95,7 @@ export default class Inspector extends Component {
 					/>
 
 					<RangeControl
-						label={ __( 'Divider Height' ) }
+						label={ __( 'Divider Height (px)' ) }
 						value={ spacerDividerHeight || '' }
 						onChange={ ( value ) => this.props.setAttributes( { spacerDividerHeight: value } ) }
 						min={ 1 }
@@ -103,7 +103,7 @@ export default class Inspector extends Component {
 					/>
 
 					<RangeControl
-						label={ __( 'Divider Width' ) }
+						label={ __( 'Divider Width (%)' ) }
 						value={ spacerDividerWidth || '' }
 						onChange={ ( value ) => this.props.setAttributes( { spacerDividerWidth: value } ) }
 						min={ 1 }
