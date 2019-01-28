@@ -3,11 +3,28 @@
  */
 
  .lsx-block-card {
-    margin-bottom: 0;
+	margin-bottom: 0;
+	&+ .blocks-button__inline-link .editor-url-input {
+        display: inline-block;
+        width: auto;
+    }
+
+    &+ .blocks-button__inline-link .components-button {
+        display: inline-block;
+    }
+
+    &+ .blocks-button__inline-link svg {
+        vertical-align: middle;
+        margin-right: 8px;
+    }
 }
 
 .editor-block-list__layout [data-type="lsx-blocks/lsx-card-box"] {
     margin-bottom: 1.2em;
+}
+
+.wp-block-lsx-blocks-lsx-card-box {
+	margin-top: 1em;
 }
 
 .lsx-card-image-wrap {

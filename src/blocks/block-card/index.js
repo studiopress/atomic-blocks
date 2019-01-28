@@ -6,6 +6,7 @@
 import classnames from 'classnames';
 import Inspector from './components/inspector';
 import CardBox from './components/card';
+import CustomButton from './components/card';
 //import SocialIcons from './components/social';
 import AvatarColumn from './components/avatar';
 import icons from './components/icons';
@@ -30,14 +31,65 @@ const {
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
+	URLInput,
 } = wp.editor;
 
 // Register Inspector components
 const {
 	Button,
+	Dashicon,
+	IconButton,
 } = wp.components;
 
 const blockAttributes = {
+	buttonText: {
+		type: 'string',
+	},
+	buttonTextColor: {
+		type: 'string',
+		default: '#ffffff'
+	},
+	buttonUrl: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'a',
+		attribute: 'href',
+	},
+	buttonAlignment: {
+		type: 'string',
+	},
+	buttonBackgroundColor: {
+		type: 'string',
+		default: '#3373dc',
+	},
+	buttonShadowColor: {
+		type: 'string',
+		default: '#27639e',
+	},
+	buttonHoverColor: {
+		type: 'string',
+		default: '#27639D',
+	},
+	buttonFlat: {
+		type: 'string',
+		default: 'lsx-button-normal',
+	},
+	buttonSize: {
+		type: 'string',
+		default: 'lsx-button-size-medium',
+	},
+	buttonShape: {
+		type: 'string',
+		default: 'lsx-button-shape-rounded',
+	},
+	buttonGhost: {
+		type: 'string',
+		default: 'lsx-button-no-border',
+	},
+	buttonTarget: {
+		type: 'boolean',
+		default: false,
+	},
 	cardName: {
 		type: 'array',
 		source: 'children',
@@ -121,6 +173,16 @@ class LSXAuthorCardBlock extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
+				buttonText,
+				buttonTextColor,
+				buttonBackgroundColor,
+				buttonShadowColor,
+				buttonAlignment,
+				buttonUrl,
+				buttonShape,
+				buttonSize,
+				buttonFlat,
+				buttonGhost,
 				cardName,
 				cardTitle,
 				cardContent,
@@ -239,6 +301,49 @@ class LSXAuthorCardBlock extends Component {
 						onChange={ ( value ) => setAttributes( { cardContent: value } ) }
 					/>
 
+					<CustomButton { ...this.props }>
+						<RichText
+							tagName="span"
+							placeholder={ __( 'Button text...', 'lsx-blocks' ) }
+							keepPlaceholderOnFocus
+							value={ buttonText }
+							formattingControls={ [] }
+							className={ classnames(
+								'lsx-button',
+								buttonShape,
+								buttonSize,
+								buttonFlat,
+								buttonGhost,
+							) }
+							style={ {
+								color: buttonTextColor,
+								backgroundColor: buttonBackgroundColor,
+								borderColor: buttonShadowColor,
+								boxShadow: '2px 2px 0 0' + buttonShadowColor,
+							} }
+							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+						/>
+					</CustomButton>
+					<form
+						key="form-link"
+						className={ `blocks-button__inline-link lsx-button-${ buttonAlignment }` }
+						onSubmit={ event => event.preventDefault() }
+						style={ {
+							textAlign: buttonAlignment,
+						} }
+					>
+						<Dashicon icon={ 'admin-links' } />
+						<URLInput
+							className="button-url"
+							value={ buttonUrl }
+							onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
+						/>
+						<IconButton
+							icon="editor-break"
+							label={ __( 'Apply', 'lsx-blocks' ) }
+							type="submit"
+						/>
+					</form>
 
 				</div>
 			</CardBox>
@@ -266,7 +371,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, cardAvatarShape } = props.attributes;
+		const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, cardAvatarShape, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
 		return (
 			// Save the block markup for the front end
@@ -321,6 +426,32 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 
 
 				</div>
+				<CustomButton { ...props }>
+					{	// Check if there is button text and output
+						buttonText && (
+							<a
+								href={ buttonUrl }
+								target={ buttonTarget ? '_blank' : '_self' }
+								className={ classnames(
+									'lsx-button',
+									buttonShape,
+									buttonSize,
+									buttonFlat,
+									buttonGhost,
+								) }
+								style={ {
+									color: buttonTextColor,
+									backgroundColor: buttonBackgroundColor,
+									borderColor: buttonBackgroundColor,
+									boxShadow: '2px 2px 0 0' + buttonShadowColor,
+								} }
+							>
+								<RichText.Content
+									value={ buttonText }
+								/>
+							</a>
+						) }
+				</CustomButton>
 			</CardBox>
 		);
 	},

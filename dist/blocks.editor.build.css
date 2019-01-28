@@ -1587,9 +1587,20 @@
  */
 .lsx-block-card {
   margin-bottom: 0; }
+  .lsx-block-card + .blocks-button__inline-link .editor-url-input {
+    display: inline-block;
+    width: auto; }
+  .lsx-block-card + .blocks-button__inline-link .components-button {
+    display: inline-block; }
+  .lsx-block-card + .blocks-button__inline-link svg {
+    vertical-align: middle;
+    margin-right: 8px; }
 
 .editor-block-list__layout [data-type="lsx-blocks/lsx-card-box"] {
   margin-bottom: 1.2em; }
+
+.wp-block-lsx-blocks-lsx-card-box {
+  margin-top: 1em; }
 
 .lsx-card-image-wrap button {
   position: relative !important; }

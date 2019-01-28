@@ -47,6 +47,7 @@
 	.lsx-card-text {
 		font-size: 18px;
 		padding-top: 1em;
+		padding-bottom: 1em;
 		a {
 			color: inherit;
 			box-shadow: 0 -1px 0 inset;
@@ -73,6 +74,7 @@
 		line-height: 1.2;
 		margin: 0;
 		text-align: center;
+		margin-top: 1em;
 	}
 
 	.lsx-card-title {
@@ -175,3 +177,104 @@
 	}
 
 }
+
+/**
+ * Button styles
+ */
+
+ .lsx-block-card {
+
+	// .blocks-rich-text {
+	// 	display: inline-flex;
+	// }
+
+	.components-autocomplete {
+		display: inline-block;
+		width: auto;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.lsx-button {
+		margin: 0 15px;
+		text-align: center;
+		background-color: #32373c;
+		border-radius: 50px;
+		box-shadow: none;
+		color: #fff;
+		cursor: pointer;
+		text-decoration: none;
+		word-break: break-word;
+		border: 0 none;
+		border-radius: 3px;
+		display: inline-block;
+		font-size: 14px;
+		letter-spacing: 0.6px;
+		line-height: 1.25;
+		padding: 10px 40px;
+		transition: all 100ms ease;
+		box-shadow: 2px 2px 0 0 #27639e;
+		&:hover {
+			background-color: #27639e;
+		}
+	}
+
+	.lsx-button-shape-square {
+		border-radius: 0;
+	}
+
+	.lsx-button-shape-rounded {
+		border-radius: 3px;
+	}
+
+	.lsx-button-shape-circular {
+		border-radius: 100px;
+	}
+
+	.lsx-button-size-small {
+		font-size: 14px;
+	}
+
+	.lsx-button-size-medium {
+		font-size: 20px;
+	}
+
+	.lsx-button-size-large {
+		font-size: 26px;
+		padding: .8em 1.2em;
+	}
+
+	.lsx-button-size-extralarge {
+		font-size: 34px;
+		padding: .8em 1.2em;
+	}
+
+	.lsx-button-no-border {
+		border: none !important;
+	}
+
+	.lsx-button-border-btn {
+		border-width: 2px;
+		border-style: solid;
+		background-color: transparent !important;
+		box-shadow: none !important;
+	}
+
+	.lsx-button-flat {
+		box-shadow: none !important;
+		border-radius: 0 !important;
+		margin: 0;
+		margin-bottom: -1em;
+	}
+}
+
+.lsx-button-right {
+	transform: translateX(-100%);
+	left: 100%;
+	position: relative;
+}
+
+.lsx-button-center {
+	margin: 0 auto;
+}
+
