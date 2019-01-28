@@ -69,7 +69,7 @@ function lsx_blocks_editor_assets() {
 		'lsx-blocks-block-js',
 		'lsx_globals',
 		array(
-			'rest_url' => esc_url( rest_url() )
+			'rest_url' => esc_url( rest_url() ),
 		)
 	);
 }
