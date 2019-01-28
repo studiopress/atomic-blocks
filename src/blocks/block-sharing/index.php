@@ -21,35 +21,35 @@ function lsx_blocks_register_sharing() {
 		'lsx-blocks/lsx-sharing', array(
 			'style' => 'lsx-blocks-style-css',
 			'attributes' => array(
-                'facebook' => array(
+				'facebook' => array(
+						'type'    => 'boolean',
+						'default' => true,
+				),
+				'twitter' => array(
 					'type'    => 'boolean',
 					'default' => true,
-                ),
-                'twitter' => array(
+				),
+				'google' => array(
 					'type'    => 'boolean',
 					'default' => true,
-                ),
-                'google' => array(
-					'type'    => 'boolean',
-					'default' => true,
-                ),
-                'linkedin' => array(
+				),
+				'linkedin' => array(
 					'type'    => 'boolean',
 					'default' => false,
-                ),
-                'pinterest' => array(
+				),
+				'pinterest' => array(
 					'type'    => 'boolean',
 					'default' => false,
-                ),
-                'email' => array(
+				),
+				'email' => array(
 					'type'    => 'boolean',
 					'default' => false,
-                ),
-                'reddit' => array(
+				),
+				'reddit' => array(
 					'type'    => 'boolean',
 					'default' => false,
-                ),
-                'shareAlignment' => array(
+				),
+				'shareAlignment' => array(
 					'type' => 'string',
 				),
 				'shareButtonStyle' => array(
@@ -79,15 +79,17 @@ add_action( 'init', 'lsx_blocks_register_sharing' );
 /**
  * Add the pop-up share window to the footer
  */
-function lsx_blocks_social_icon_footer_script() { ?>
-    <script type="text/javascript">
-        function lsxBlocksShare( url, title, w, h ){
-            var left = ( window.innerWidth / 2 )-( w / 2 );
-            var top  = ( window.innerHeight / 2 )-( h / 2 );
-            return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=600, height=600, top='+top+', left='+left);
-        }
-    </script>
-<?php }
+function lsx_blocks_social_icon_footer_script() {
+	?>
+	<script type="text/javascript">
+		function lsxBlocksShare( url, title, w, h ){
+			var left = ( window.innerWidth / 2 )-( w / 2 );
+			var top  = ( window.innerHeight / 2 )-( h / 2 );
+			return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=600, height=600, top='+top+', left='+left);
+		}
+	</script>
+<?php
+}
 add_action( 'wp_footer', 'lsx_blocks_social_icon_footer_script' );
 
 /**
@@ -104,25 +106,25 @@ function lsx_blocks_render_sharing( $attributes ) {
 		$thumbnail = null;
 	}
 
-    // Twitter share URL
+	// Twitter share URL
 	$twitter_url = 'http://twitter.com/share?text=' . get_the_title() . '&url=' . get_the_permalink() . '';
 
 	// Facebook share URL
 	$facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . get_the_permalink() . '&title=' . get_the_title() . '';
 
-    // Google share URL
-    $google_url = 'https://plus.google.com/share?url=' . get_the_permalink() . '';
+	// Google share URL
+	$google_url = 'https://plus.google.com/share?url=' . get_the_permalink() . '';
 
 	// LinkedIn share URL
 	$linkedin_url = 'https://www.linkedin.com/shareArticle?mini=true&url=' . get_the_permalink() . '&title=' . get_the_title() . '';
 
 	// Pinterest share URL
-    $pinterest_url = 'https://pinterest.com/pin/create/button/?&url=' . get_the_permalink() . '&description=' . get_the_title() . '&media=' . esc_url( $thumbnail ) . '';
+	$pinterest_url = 'https://pinterest.com/pin/create/button/?&url=' . get_the_permalink() . '&description=' . get_the_title() . '&media=' . esc_url( $thumbnail ) . '';
 
-    // Email URL
-    $email_url = 'mailto:?subject=' . get_the_title() . '&body=' . get_the_title() . '&mdash;' . get_the_permalink() . '';
+	// Email URL
+	$email_url = 'mailto:?subject=' . get_the_title() . '&body=' . get_the_title() . '&mdash;' . get_the_permalink() . '';
 
-    // Reddit URL
+	// Reddit URL
 	$reddit_url = 'https://www.reddit.com/submit?url=' . get_the_permalink() . '';
 
 	// Build the share URLs

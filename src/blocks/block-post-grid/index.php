@@ -45,7 +45,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 
 			// Get the featured image
 			if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
-				if( $attributes['imageCrop'] === 'landscape' ) {
+				if ( 'landscape' === $attributes['imageCrop'] ) {
 					$post_thumb_size = 'lsx-block-post-grid-landscape';
 				} else {
 					$post_thumb_size = 'lsx-block-post-grid-square';
@@ -119,7 +119,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 					// Get the excerpt
 					$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
 
-					if( empty( $excerpt ) ) {
+					if ( empty( $excerpt ) ) {
 						$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
 					}
 
@@ -128,7 +128,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 					}
 
 					if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-						$list_items_markup .=  wp_kses_post( $excerpt );
+						$list_items_markup .= wp_kses_post( $excerpt );
 					}
 
 					if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
