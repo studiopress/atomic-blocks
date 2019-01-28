@@ -2312,14 +2312,44 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .wp-block-atomic-blocks-ab-pricing-table .ab-pricing-table-description,
   .block-library-list .wp-block-atomic-blocks-ab-pricing-table ul {
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    border: none; }
+
+.editor-styles-wrapper [data-type="atomic-blocks/ab-pricing-table-description"] ul {
+  list-style-type: none;
+  display: block; }
+
+.ab-list-border-solid li {
+  border-bottom-style: solid; }
+
+.ab-list-border-dashed li {
+  border-bottom-style: dashed; }
+
+.ab-list-border-dotted li {
+  border-bottom-style: dotted; }
 
 ul.ab-pricing-table-description li {
   list-style: none;
   margin: 0;
-  padding: 4px 0; }
+  padding: 4px 0;
+  border-color: inherit; }
   ul.ab-pricing-table-description li:last-child {
     border-bottom: none; }
+
+.ab-list-border-width-1 li {
+  border-width: 1px; }
+
+.ab-list-border-width-2 li {
+  border-width: 2px; }
+
+.ab-list-border-width-3 li {
+  border-width: 3px; }
+
+.ab-list-border-width-4 li {
+  border-width: 4px; }
+
+.ab-list-border-width-5 li {
+  border-width: 5px; }
 
 .ab-pricing-table-price,
 .ab-pricing-table-term {
@@ -2355,6 +2385,3 @@ span.ab-pricing-table-term {
 
 .ab-pricing-table-price.has-background {
   padding: 10px 15px; }
-
-.editor-styles-wrapper [data-type="atomic-blocks/ab-pricing-table-description"] ul {
-  list-style-type: none; }

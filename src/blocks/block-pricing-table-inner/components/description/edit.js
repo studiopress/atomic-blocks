@@ -1,6 +1,6 @@
 // Import block dependencies and components
 import classnames from 'classnames';
-import Inspector from '../global/inspector';
+import Inspector from './inspector';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -25,6 +25,9 @@ class Edit extends Component {
 		const {
 			attributes: {
 				description,
+				borderStyle,
+				borderColor,
+				borderWidth,
 			},
 			isSelected,
 			className,
@@ -37,12 +40,14 @@ class Edit extends Component {
 
 		// Setup class names
 		const editClassName = classnames( {
-			'ab-pricing-table-price': true,
+			'ab-pricing-table-description': true,
 			[ fontSize.class ]: fontSize.class,
 			'has-text-color': textColor.color,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
+			[ borderStyle ]: borderStyle,
+			[ 'ab-list-border-width-' + borderWidth ]: borderWidth,
 		} );
 
 		// Setup styles
@@ -50,6 +55,7 @@ class Edit extends Component {
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
+			borderColor: borderColor ? borderColor : undefined,
 		};
 
 		return [

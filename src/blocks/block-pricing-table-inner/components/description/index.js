@@ -56,6 +56,17 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 		customBackgroundColor: {
 			type: 'string',
 		},
+		borderStyle: {
+			type: 'string',
+			default: 'ab-list-border-none',
+		},
+		borderColor: {
+			type: 'string',
+		},
+		borderWidth: {
+			type: 'number',
+			default: 1
+		},
 	},
 
 	// Render the block components
@@ -73,6 +84,9 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 			textColor,
 			customBackgroundColor,
 			customTextColor,
+			borderStyle,
+			borderColor,
+			borderWidth,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
@@ -89,6 +103,8 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 			[ fontSizeClass ]: fontSizeClass,
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,
+			[ borderStyle ]: borderStyle,
+			[ 'ab-list-border-width-' + borderWidth ]: borderWidth,
 		} );
 
 		// Setup styles
@@ -96,6 +112,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 			fontSize: fontSizeClass ? undefined : customFontSize,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
+			borderColor: borderColor ? borderColor : undefined,
 		};
 
 		// Save the block markup for the front end

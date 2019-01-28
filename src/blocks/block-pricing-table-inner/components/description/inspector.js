@@ -14,12 +14,16 @@ const {
 	withColors,
 	ContrastChecker,
 	PanelColorSettings,
+	ColorPalette,
 } = wp.editor;
 
 const {
 	withFallbackStyles,
 	PanelBody,
-	TextControl,
+	PanelRow,
+	SelectControl,
+	BaseControl,
+	RangeControl,
 } = wp.components;
 
 // Apply fallback styles
@@ -49,7 +53,9 @@ class Inspector extends Component {
 		const {
 			attributes: {
 				price,
-				term,
+				borderStyle,
+				borderColor,
+				borderWidth,
 			},
 			isSelected,
 			setAttributes,
@@ -64,6 +70,16 @@ class Inspector extends Component {
 			fallbackTextColor,
 		} = this.props;
 
+		// Border styles
+		const borderStyles = [
+			{ value: 'ab-list-border-none', label: __( 'None' ) },
+			{ value: 'ab-list-border-solid', label: __( 'Solid' ) },
+			{ value: 'ab-list-border-dotted', label: __( 'Dotted' ) },
+			{ value: 'ab-list-border-dashed', label: __( 'Dashed' ) },
+		];
+
+		const onChangeBorderColor = value => setAttributes( { borderColor: value } );
+
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody title={ __( 'Text Settings', 'atomic-blocks' ) }>
@@ -72,14 +88,40 @@ class Inspector extends Component {
 					value={ fontSize.size }
 					onChange={ setFontSize }
 				/>
-			</PanelBody>
-			{/* <PanelBody title={ __( 'Price Settings', 'atomic-blocks' ) }>
-				<TextControl
-					label={ __( 'Pricing Length (month, year, etc.)', 'atomic-blocks' ) }
-					value={ term }
-					onChange={ ( value ) => this.props.setAttributes( { term: value } ) }
+				<SelectControl
+					label={ __( 'List Border Style', 'atomic-blocks' ) }
+					value={ borderStyle }
+					options={ borderStyles.map( ({ value, label }) => ( {
+						value: value,
+						label: label,
+					} ) ) }
+					onChange={ ( value ) => { this.props.setAttributes( { borderStyle: value } ) } }
 				/>
-			</PanelBody> */}
+				{ ( borderStyle != 'ab-list-border-none' ) && (
+					<RangeControl
+						label={ __( 'List Border Width' ) }
+						value={ borderWidth }
+						onChange={ ( value ) => this.props.setAttributes( { borderWidth: value } ) }
+						min={ 1 }
+						max={ 5 }
+						step={ 1 }
+					/>
+				) }
+				{ ( borderStyle != 'ab-list-border-none' ) && (
+					<PanelRow>
+						<BaseControl
+							label={ __( 'List Border Color', 'atomic-blocks' ) }
+						>
+							<ColorPalette
+								initialOpen={ false }
+								value={ borderColor }
+								onChange={ onChangeBorderColor }
+							>
+							</ColorPalette>
+						</BaseControl>
+					</PanelRow>
+				) }
+			</PanelBody>
 			<PanelColorSettings
 				title={ __( 'Color Settings', 'atomic-blocks' ) }
 				initialOpen={ false }
