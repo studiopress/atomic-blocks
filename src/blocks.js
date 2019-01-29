@@ -15,3 +15,4 @@ import './blocks/block-post-grid/index.js';
 import './blocks/block-container/index.js';
 import './blocks/block-team/index.js';
 import './blocks/block-card/index.js';
+import './blocks/block-banner/index.js';
