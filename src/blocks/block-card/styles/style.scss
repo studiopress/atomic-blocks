@@ -15,7 +15,9 @@
 	flex-direction: column;
 	justify-content: space-around;
 	width: 100%;
-
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		display: inline-block;
+	}
 	.lsx-card-column {
 		display: block;
 		flex: 3 0 0;
@@ -32,7 +34,7 @@
 
 		@media only screen and (max-width: 600px) {
 			flex: auto;
-			max-width: 210px;
+			//max-width: 210px;
 			margin: 0 auto;
 		}
 	}

@@ -2320,6 +2320,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   width: 100%; }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .lsx-block-card {
+      display: inline-block; } }
   .lsx-block-card .lsx-card-column {
     display: block;
     -ms-flex: 3 0 0px;
@@ -2337,7 +2340,6 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       .lsx-block-card .lsx-card-avatar-wrap {
         -ms-flex: auto;
             flex: auto;
-        max-width: 210px;
         margin: 0 auto; } }
   .lsx-block-card .lsx-card-content-wrap {
     padding: 15px; }
