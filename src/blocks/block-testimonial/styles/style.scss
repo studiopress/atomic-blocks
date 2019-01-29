@@ -4,72 +4,10 @@
  */
 
  .wp-block-lsx-blocks-block-testimonials {
-
-
-	.lsx-testimonial-body {
-		h2 {
-			display: none;
-		}
+	blockquote:before {
+		content: '”' !important;
 	}
 
-	.lsx-testimonial-info {
-		position: relative;
-		display: inline-block;
-		width: 100%;
-		margin-top: 15px;
-		min-height: 55px;
-		padding-top: 5px;
-		line-height: 1.4;
-	}
-
-	.lsx-testimonials-content {
-		border-color: #DADDDF;
-	}
-
-	.lsx-testimonial-info {
-		.blocks-editable {
-			padding-left: 0;
-		}
-
-		.lsx-testimonial-avatar-wrap {
-			position: absolute;
-			left: 0;
-			top: 0;
-		}
-	}
-
-	.lsx-testimonial-avatar-wrap + .lsx-testimonial-name,
-	.lsx-testimonial-avatar-wrap + .lsx-testimonial-name + .lsx-testimonial-title,
-	.lsx-testimonial-avatar-wrap + .lsx-testimonial-title,
-	.lsx-testimonial-avatar-wrap + .editor-rich-text,
-	.lsx-testimonial-avatar-wrap + .editor-rich-text + .editor-rich-text {
-		margin-left: 70px;
-		padding-left: 0;
-	}
-
-}
-
-#editor .lsx-has-avatar {
-	.lsx-testimonial-image-wrap {
-		button {
-			top: 0;
-			left: 0;
-			opacity: 1 !important;
-			height: 100%;
-		}
-
-		&:hover {
-			cursor: pointer;
-
-			img {
-				opacity: .7;
-			}
-
-			button {
-				opacity: 1;
-			}
-		}
-	}
 }
 
 .right-aligned {
