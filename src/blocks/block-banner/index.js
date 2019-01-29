@@ -118,23 +118,23 @@ const blockAttributes = {
 	},
 	bannerBackgroundColor: {
 		type: 'string',
-		default: '#f2f2f2'
+		default: '#f2f2f2',
 	},
 	bannerTextColor: {
 		type: 'string',
-		default: '#32373c'
+		default: '#32373c',
 	},
 	bannerLinkColor: {
 		type: 'string',
-		default: '#392f43'
+		default: '#392f43',
 	},
 	bannerFontSize: {
 		type: 'number',
-		default: 18
+		default: 18,
 	},
-	bannerImageShape: {
+	bannerTitlePosition: {
 		type: 'string',
-		default: 'square',
+		default: 'title-centered',
 	},
 	twitter: {
 		type: 'url',
@@ -201,7 +201,7 @@ class LSXAuthorBannerBlock extends Component {
 				github,
 				email,
 				website,
-				bannerImageShape
+				bannerTitlePosition
 			},
 			attributes,
 			isSelected,
@@ -262,7 +262,7 @@ class LSXAuthorBannerBlock extends Component {
 
 				<div
 					className={ classnames(
-						'lsx-banner-column lsx-banner-content-wrap'
+						'lsx-banner-content-wrap'
 					) }
 				>
 					<RichText
@@ -288,17 +288,6 @@ class LSXAuthorBannerBlock extends Component {
 						} }
 						onChange={ ( value ) => setAttributes( { bannerTitle: value } ) }
 					/>
-
-					{/* <RichText
-						tagName="div"
-						className='lsx-banner-text'
-						multiline="p"
-						placeholder={ __( 'Add content...', 'lsx-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ bannerContent }
-						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-						onChange={ ( value ) => setAttributes( { bannerContent: value } ) }
-					/> */}
 
 					<CustomButton { ...this.props }>
 						<RichText
@@ -370,87 +359,84 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, bannerLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, bannerImageShape, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
 		return (
 			// Save the block markup for the front end
 			<BannerBox { ...props }>
-
-				{ bannerImgURL && (
-					<ImageColumn { ...props }>
-						<div class="lsx-banner-image-square">
-							<img
-								class="lsx-banner-image"
-								src={ bannerImgURL }
-								alt="image"
-							/>
-						</div>
-					</ImageColumn>
-				) }
+				<ImageColumn { ...props }>
+					{ bannerImgURL && (
+						<picture className="lazyimage lazyloaded">
+							<source data-srcset={ bannerImgURL } media="(min-width: 100rem)" srcSet={ bannerImgURL } />
+							<source data-srcset={ bannerImgURL } media="(min-width: 61.25rem)" srcSet={ bannerImgURL } />
+							<source data-srcset={ bannerImgURL } media="(min-width: 30rem)" srcSet={ bannerImgURL } />
+							<img alt={ bannerTitle } title={ bannerName } className="lazyimage lazyloaded" data-src={ bannerImgURL } src={ bannerImgURL } />
+						</picture>
+					) }
+				</ImageColumn>
 
 				<div
 					className={ classnames(
-						'lsx-banner-column lsx-banner-content-wrap'
+						'lsx-banner-content-wrap'
 					) }
 				>
-					{ bannerName && (
-						<RichText.Content
-							tagName="h2"
-							className="lsx-banner-name"
-							style={ {
-								color: bannerTextColor
-							} }
-							value={ bannerName }
-						/>
-					) }
-
-					{ bannerTitle && (
-						<RichText.Content
-							tagName="p"
-							className="lsx-banner-title"
-							style={ {
-								color: bannerTextColor
-							} }
-							value={ bannerTitle }
-						/>
-					) }
-
-					{/* { bannerContent && (
-						<RichText.Content
-							tagName="div"
-							className="lsx-banner-text"
-							value={ bannerContent }
-						/>
-					) } */}
-
-
-				</div>
-				<CustomButton { ...props }>
-					{	// Check if there is button text and output
-						buttonText && (
-							<a
-								href={ buttonUrl }
-								target={ buttonTarget ? '_blank' : '_self' }
-								className={ classnames(
-									'lsx-button',
-									buttonShape,
-									buttonSize,
-									buttonFlat,
-									buttonGhost,
-								) }
-								style={ {
-									color: buttonTextColor,
-									backgroundColor: buttonBackgroundColor,
-									borderColor: buttonBackgroundColor,
-									boxShadow: '2px 2px 0 0' + buttonShadowColor,
-								} }
-							>
-								<RichText.Content
-									value={ buttonText }
-								/>
-							</a>
+					<div
+						className={ classnames(
+							'header-headings'
 						) }
-				</CustomButton>
+					>
+						<header className={ classnames(
+							'page-header'
+						) }>
+							{ bannerName && (
+								<RichText.Content
+									tagName="h2"
+									className="lsx-banner-name"
+									style={ {
+										color: bannerTextColor,
+									} }
+									value={ bannerName }
+								/>
+							) }
+						</header>
+						{ bannerTitle && (
+							<RichText.Content
+								tagName="p"
+								className="lsx-banner-title"
+								style={ {
+									color: bannerTextColor,
+								} }
+								value={ bannerTitle }
+							/>
+						) }
+						<CustomButton { ...props }>
+							{	// Check if there is button text and output
+								buttonText && (
+									<a
+										href={ buttonUrl }
+										target={ buttonTarget ? '_blank' : '_self' }
+										className={ classnames(
+											'lsx-button',
+											buttonShape,
+											buttonSize,
+											buttonFlat,
+											buttonGhost,
+										) }
+										style={ {
+											color: buttonTextColor,
+											backgroundColor: buttonBackgroundColor,
+											borderColor: buttonBackgroundColor,
+											boxShadow: '2px 2px 0 0' + buttonShadowColor,
+										} }
+									>
+										<RichText.Content
+											value={ buttonText }
+										/>
+									</a>
+								) }
+						</CustomButton>
+					</div>
+				</div>
 			</BannerBox>
 		);
 	},

@@ -2655,3 +2655,56 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
+
+.wp-block-lsx-blocks-lsx-banner-box {
+  position: relative;
+  margin-bottom: 5rem; }
+  @media only screen and (max-width: 766px) {
+    .wp-block-lsx-blocks-lsx-banner-box {
+      padding-left: 0 !important;
+      padding-right: 0 !important; } }
+  .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column {
+    margin-bottom: 4rem;
+    position: relative; }
+    @media only screen and (min-width: 600px) {
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column {
+        min-height: 150px; } }
+    @media only screen and (min-width: 766px) {
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column {
+        min-height: 250px;
+        margin-bottom: 1rem; } }
+    .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap picture {
+      max-height: 500px; }
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap picture img {
+        max-height: 500px; }
+  .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap {
+    width: 100%;
+    z-index: 4;
+    padding-left: 50px;
+    padding-right: 50px; }
+    @media only screen and (min-width: 600px) {
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap {
+        position: absolute;
+        bottom: 25%; } }
+    .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings {
+      text-align: center; }
+      @media only screen and (min-width: 600px) {
+        .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings {
+          max-width: 75rem;
+          background: rgba(255, 255, 255, 0.83);
+          border: 0;
+          padding: 1.875rem;
+          max-width: 74.5%;
+          text-align: center;
+          bottom: 4rem;
+          margin: 0 auto; } }
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header {
+        width: 100%;
+        max-width: 100%; }
+  .wp-block-lsx-blocks-lsx-banner-box.title-bottom .lsx-banner-content-wrap {
+    position: relative; }
+    .wp-block-lsx-blocks-lsx-banner-box.title-bottom .lsx-banner-content-wrap .header-headings {
+      background: white;
+      max-width: 90%;
+      margin-top: -8rem;
+      padding: 1.25rem; }

@@ -35,13 +35,13 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, bannerLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, bannerImageShape, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget, buttonFlat } = this.props.attributes;
+		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, bannerLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget, buttonFlat } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		// Image shape options
-		const bannerImageShapeOptions = [
-			{ value: 'square', label: __( 'Square' ) },
-			{ value: 'round', label: __( 'Round' ) },
+		const bannerTitlePositionOptions = [
+			{ value: 'title-centered', label: __( 'Centered' ) },
+			{ value: 'title-bottom', label: __( 'Bottom' ) },
 		];
 
 		// Button size values
@@ -103,11 +103,11 @@ export default class Inspector extends Component {
 					/>
 
 					<SelectControl
-						label={ __( 'Image Shape' ) }
-						description={ __( 'Choose between a round or square image shape.' ) }
-						options={ bannerImageShapeOptions }
-						value={ bannerImageShape }
-						onChange={ ( value ) => this.props.setAttributes( { bannerImageShape: value } ) }
+						label={ __( 'Banner content position' ) }
+						description={ __( 'Choose between the banner title on top or bottom of the image' ) }
+						options={ bannerTitlePositionOptions }
+						value={ bannerTitlePosition }
+						onChange={ ( value ) => this.props.setAttributes( { bannerTitlePosition: value } ) }
 					/>
 
 					<PanelColorSettings

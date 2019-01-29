@@ -22,12 +22,20 @@ export default class ImageColumn extends Component {
 	}
 
 	render() {
+
+		// Setup the attributes
+		const { bannerBackgroundColor } = this.props.attributes;
+
 		return (
-			<div class="lsx-banner-column lsx-banner-image-wrap">
-				<div class="lsx-banner-image-wrap">
+			<div className="lsx-banner-column"
+				style={ {
+					backgroundColor: bannerBackgroundColor,
+				} }>
+				<div className="lsx-banner-image-wrap">
 					{ this.props.children }
 				</div>
 			</div>
+
 		);
 	}
 }

@@ -1722,3 +1722,9 @@
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
+
+.wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap:before {
+  padding-bottom: 0; }
+
+.wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap {
+  position: relative; }
