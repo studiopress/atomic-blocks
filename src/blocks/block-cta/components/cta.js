@@ -26,7 +26,8 @@ export default class CallToAction extends Component {
 				style={ {
 					backgroundColor: ctaBackgroundColor,
 					textAlign: buttonAlignment,
-					boxShadow: '2px 2px 0 0' + buttonShadowColor,
+					boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+					borderColor: buttonBackgroundColor,
 				} }
 				className={ classnames(
 					this.props.className,

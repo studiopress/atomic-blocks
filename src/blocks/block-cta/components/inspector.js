@@ -40,7 +40,7 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaBackgroundColor, ctaTextColor, dimRatio, imgURL, imgID, imgAlt } = this.props.attributes;
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaBackgroundColor, ctaTextColor, dimRatio, imgURL, imgID, imgAlt } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		// Button size values
@@ -93,6 +93,7 @@ export default class Inspector extends Component {
 		const onChangeTextColor = value => setAttributes( { ctaTextColor: value } );
 		const onChangeButtonColor = value => setAttributes( { buttonBackgroundColor: value } );
 		const onChangeButtonShadowColor = value => setAttributes( { buttonShadowColor: value } );
+		const onChangeButtonHoverColor = value => setAttributes( { buttonHoverColor: value } );
 		const onChangeButtonTextColor = value => setAttributes( { buttonTextColor: value } );
 
 		const onChangectaTitleFontSize = value => setAttributes( { ctaTitleFontSize: value } );
@@ -232,6 +233,18 @@ export default class Inspector extends Component {
 							value: buttonShadowColor,
 							onChange: onChangeButtonShadowColor,
 							label: __( 'Button Shadow Color' ),
+							colors: buttonColors,
+						} ] }
+					>
+					</PanelColorSettings>
+
+					<PanelColorSettings
+						title={ __( 'Button Hover Color' ) }
+						initialOpen={ false }
+						colorSettings={ [ {
+							value: buttonHoverColor,
+							onChange: onChangeButtonHoverColor,
+							label: __( 'Button Hover Color' ),
 							colors: buttonColors,
 						} ] }
 					>

@@ -306,8 +306,8 @@ class LSXAuthorBannerBlock extends Component {
 							style={ {
 								color: buttonTextColor,
 								backgroundColor: buttonBackgroundColor,
-								borderColor: buttonShadowColor,
-								boxShadow: '2px 2px 0 0' + buttonShadowColor,
+								boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+								borderColor: buttonBackgroundColor,
 							} }
 							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 						/>
@@ -425,9 +425,13 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 										style={ {
 											color: buttonTextColor,
 											backgroundColor: buttonBackgroundColor,
+											boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
 											borderColor: buttonBackgroundColor,
-											boxShadow: '2px 2px 0 0' + buttonShadowColor,
 										} }
+										data-onhover={ buttonHoverColor }
+										data-offhover={ buttonBackgroundColor }
+										onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+										onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
 									>
 										<RichText.Content
 											value={ buttonText }

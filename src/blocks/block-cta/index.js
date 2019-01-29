@@ -61,6 +61,10 @@ const blockAttributes = {
 		type: 'string',
 		default: '#27639e',
 	},
+	buttonHoverColor: {
+		type: 'string',
+		default: '#27639D',
+	},
 	buttonTextColor: {
 		type: 'string',
 		default: '#ffffff',
@@ -138,6 +142,7 @@ class LSXCTABlock extends Component {
 				buttonAlignment,
 				buttonBackgroundColor,
 				buttonShadowColor,
+				buttonHoverColor,
 				buttonTextColor,
 				buttonSize,
 				buttonShape,
@@ -252,6 +257,7 @@ class LSXCTABlock extends Component {
 							color: buttonTextColor,
 							backgroundColor: buttonBackgroundColor,
 							boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+							borderColor: buttonBackgroundColor,
 						} }
 						onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 					/>
@@ -315,6 +321,7 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 			buttonAlignment,
 			buttonBackgroundColor,
 			buttonShadowColor,
+			buttonHoverColor,
 			buttonTextColor,
 			buttonSize,
 			buttonShape,
@@ -392,8 +399,13 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 							style={ {
 								color: buttonTextColor,
 								backgroundColor: buttonBackgroundColor,
-								boxShadow: '2px 2px 0 0' + buttonShadowColor,
+								boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+								borderColor: buttonBackgroundColor,
 							} }
+							data-onhover={ buttonHoverColor }
+							data-offhover={ buttonBackgroundColor }
+							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+							onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
 						>
 							<RichText.Content
 								value={ buttonText }

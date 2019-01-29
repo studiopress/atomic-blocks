@@ -124,9 +124,9 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 		},
 		buttonUrl: {
 			type: 'string',
-            source: 'attribute',
-            selector: 'a',
-            attribute: 'href',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
 		},
 		buttonAlignment: {
 			type: 'string',
@@ -161,15 +161,15 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 		},
 		buttonTarget: {
 			type: 'boolean',
-			default: false
+			default: false,
 		},
 	},
 
 	// Render the block components
 	edit: LSXButtonBlock,
 
-    onMouseEnterHandler: function () {
-        console.log('testing the hover');
+	onMouseEnterHandler: function() {
+		console.log( 'testing the hover' );
 	},
 
 	// Save the attributes and markup
@@ -195,13 +195,13 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 							style={ {
 								color: buttonTextColor,
 								backgroundColor: buttonBackgroundColor,
-                                boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+								boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
 								borderColor: buttonBackgroundColor,
 							} }
 							data-onhover={ buttonHoverColor }
-                            data-offhover={ buttonBackgroundColor }
-                            onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
-                            onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+							data-offhover={ buttonBackgroundColor }
+							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+							onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
 						>
 							<RichText.Content
 								value={ buttonText }
