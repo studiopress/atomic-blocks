@@ -1,5 +1,9 @@
 .wp-block-lsx-blocks-lsx-banner-box {
 	.lsx-banner-column {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
 		.lsx-banner-image-wrap{
 			&:before {
 				padding-bottom: 0;
@@ -8,5 +12,8 @@
 	}
 	.lsx-banner-content-wrap {
 		position: relative;
+		max-width: 60%;
+		margin: 0 auto;
+		padding: 1em;
 	}
 }

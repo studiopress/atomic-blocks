@@ -35,7 +35,7 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, bannerLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget, buttonFlat } = this.props.attributes;
+		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerFontOpacity, bannerLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget, buttonFlat } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		// Image shape options
@@ -88,7 +88,10 @@ export default class Inspector extends Component {
 
 		// Update color values
 		const onChangeBackgroundColor = value => setAttributes( { bannerBackgroundColor: value } );
+
 		const onChangeBannerTextColor = value => setAttributes( { bannerTextColor: value } );
+
+		const onChangeTextBackgroundColor = value => setAttributes( { textBannerBackgroundColor: value } );
 
 		return (
 			<InspectorControls key="inspector">
@@ -97,8 +100,8 @@ export default class Inspector extends Component {
 						label={ __( 'Font Size' ) }
 						value={ bannerFontSize }
 						onChange={ ( value ) => this.props.setAttributes( { bannerFontSize: value } ) }
-						min={ 14 }
-						max={ 24 }
+						min={ 20 }
+						max={ 60 }
 						step={ 1 }
 					/>
 
@@ -131,6 +134,26 @@ export default class Inspector extends Component {
 						} ] }
 					>
 					</PanelColorSettings>
+
+					<PanelColorSettings
+						title={ __( 'Text Background Color' ) }
+						initialOpen={ false }
+						colorSettings={ [ {
+							value: textBannerBackgroundColor,
+							onChange: onChangeTextBackgroundColor,
+							label: __( 'Text Background Color' ),
+						} ] }
+					>
+					</PanelColorSettings>
+
+					<RangeControl
+						label={ __( 'Text Background Opacity' ) }
+						value={ bannerFontOpacity }
+						onChange={ ( value ) => this.props.setAttributes( { bannerFontOpacity: value } ) }
+						min={ 0 }
+						max={ 1 }
+						step={ 0.1 }
+					/>
 
 					<PanelBody title={ __( 'Button Options' ) } initialOpen={ false }>
 						<ToggleControl

@@ -9,17 +9,34 @@
 		margin-bottom: 4rem;
 		position: relative;
 		@media only screen and (min-width: 600px) {
-			min-height: 150px;
+			min-height: 50vh;
 		}
-		@media only screen and (min-width: 766px) {
-			min-height: 250px;
-			margin-bottom: 1rem;
-		}
+		// @media only screen and (min-width: 600px) {
+		// 	min-height: calc(100vh - 50rem);
+		// }
+		// @media only screen and (min-width: 766px) {
+		// 	min-height: calc(100vh - 40rem);
+		// 	margin-bottom: 1rem;
+		// }
 		.lsx-banner-image-wrap {
+			max-height: 80vh;
+			position: relative;
+			overflow: hidden;
+			// &:before {
+			// 	content: '';
+			// 	display: block;
+			// 	width: 100%;
+			// 	padding-bottom: calc(100vh - 40rem);
+			// }
+
 			picture {
-				max-height: 500px;
+				// position: absolute;
+				// top: 0;
+				// left: 0;
+				width: 100%;
+				height: 100%;
 				img {
-					max-height: 500px;
+					width: 100%;
 				}
 			}
 		}
@@ -31,10 +48,13 @@
 		padding-right: 50px;
 		@media only screen and (min-width: 600px) {
 			position: absolute;
-			bottom: 25%;
+			bottom: 20%;
 		}
 		.header-headings {
 			text-align: center;
+			@media only screen and (max-width: 600px) {
+				background: transparent !important;
+			}
 			@media only screen and (min-width: 600px) {
 				max-width: 75rem;
 				background: rgba(255, 255, 255, 0.83);
@@ -55,10 +75,12 @@
 		.lsx-banner-content-wrap {
 			position: relative;
 			.header-headings {
-				background: white;
-				max-width: 90%;
+				background: white !important;
 				margin-top: -8rem;
-				padding: 1.25rem;
+				padding: 2.5rem;
+				@media only screen and (min-width: 600px) {
+					max-width: 90%;
+				}
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 
 // Import block dependencies and components
 import classnames from 'classnames';
+import hexToRgba from 'hex-to-rgba';
 import Inspector from './components/inspector';
 import BannerBox from './components/banner';
 import CustomButton from './components/button';
@@ -27,6 +28,7 @@ const { registerBlockType } = wp.blocks;
 const {
 	RichText,
 	AlignmentToolbar,
+	BlockAlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
@@ -56,6 +58,7 @@ const blockAttributes = {
 	},
 	buttonAlignment: {
 		type: 'string',
+		default: 'center',
 	},
 	buttonBackgroundColor: {
 		type: 'string',
@@ -106,6 +109,11 @@ const blockAttributes = {
 	},
 	bannerAlignment: {
 		type: 'string',
+		default: 'center',
+	},
+	bannerWidth: {
+		type: 'string',
+		default: 'full',
 	},
 	bannerImgURL: {
 		type: 'string',
@@ -120,6 +128,14 @@ const blockAttributes = {
 		type: 'string',
 		default: '#f2f2f2',
 	},
+	textBannerBackgroundColor: {
+		type: 'string',
+		default: '#ffffff',
+	},
+	bannerFontOpacity: {
+		type: 'number',
+		default: 0.5,
+	},
 	bannerTextColor: {
 		type: 'string',
 		default: '#32373c',
@@ -130,7 +146,7 @@ const blockAttributes = {
 	},
 	bannerFontSize: {
 		type: 'number',
-		default: 18,
+		default: 40,
 	},
 	bannerTitlePosition: {
 		type: 'string',
@@ -177,6 +193,7 @@ class LSXAuthorBannerBlock extends Component {
 				buttonBackgroundColor,
 				buttonShadowColor,
 				buttonAlignment,
+				bannerWidth,
 				buttonUrl,
 				buttonShape,
 				buttonSize,
@@ -190,6 +207,8 @@ class LSXAuthorBannerBlock extends Component {
 				bannerImgID,
 				bannerFontSize,
 				bannerBackgroundColor,
+				textBannerBackgroundColor,
+				bannerFontOpacity,
 				bannerTextColor,
 				bannerLinkColor,
 				twitter,
@@ -224,6 +243,11 @@ class LSXAuthorBannerBlock extends Component {
 					value={ bannerAlignment }
 					onChange={ ( value ) => setAttributes( { bannerAlignment: value } ) }
 				/>
+				<BlockAlignmentToolbar
+					value={ bannerWidth }
+					//onChange={ bannerWidth => setAttributes( { bannerWidth } ) }
+					controls={ [ 'full' ] }
+				/>
 			</BlockControls>,
 			// Show the block controls on focus
 			<Inspector key="inspector"
@@ -232,10 +256,10 @@ class LSXAuthorBannerBlock extends Component {
 			// Show the block markup in the editor
 			<BannerBox key="banner" { ...this.props }>
 				<ImageColumn { ...this.props }>
-					<div class="lsx-banner-image-square">
+					<div className="lsx-banner-image-square">
 						<MediaUpload
 							buttonProps={ {
-								className: 'change-image'
+								className: 'change-image',
 							} }
 							onSelect={ ( img ) => setAttributes(
 								{
@@ -249,10 +273,10 @@ class LSXAuthorBannerBlock extends Component {
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
 									{ ! bannerImgID ? icons.upload : <img
-										class="banner-image"
+										className="banner-image"
 										src={ bannerImgURL }
-										alt="banner"
-									/>  }
+										alt={ bannerTitle }
+									/> }
 								</Button>
 							) }
 						>
@@ -264,15 +288,19 @@ class LSXAuthorBannerBlock extends Component {
 					className={ classnames(
 						'lsx-banner-content-wrap'
 					) }
+					style={ {
+						backgroundColor: hexToRgba( textBannerBackgroundColor, bannerFontOpacity ),
+					} }
 				>
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Add Banner Title', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ bannerName }
-						className='lsx-banner-name'
+						className="lsx-banner-name"
 						style={ {
-							color: bannerTextColor
+							color: bannerTextColor,
+							fontSize: bannerFontSize,
 						} }
 						onChange={ ( value ) => setAttributes( { bannerName: value } ) }
 					/>
@@ -282,9 +310,10 @@ class LSXAuthorBannerBlock extends Component {
 						placeholder={ __( 'Add Banner Subtitle', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ bannerTitle }
-						className='lsx-banner-title'
+						className="lsx-banner-title"
 						style={ {
-							color: bannerTextColor
+							color: bannerTextColor,
+							fontSize: 'calc(' + bannerFontSize + 'px /2)',
 						} }
 						onChange={ ( value ) => setAttributes( { bannerTitle: value } ) }
 					/>
@@ -352,6 +381,10 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 	// Setup the block attributes
 	attributes: blockAttributes,
 
+	getEditWrapperProps( { bannerWidth } ) {
+		return { 'data-align': bannerWidth };
+	},
+
 	// Render the block components
 	edit: LSXAuthorBannerBlock,
 
@@ -359,7 +392,7 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
 		return (
 			// Save the block markup for the front end
@@ -370,11 +403,10 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 							<source data-srcset={ bannerImgURL } media="(min-width: 100rem)" srcSet={ bannerImgURL } />
 							<source data-srcset={ bannerImgURL } media="(min-width: 61.25rem)" srcSet={ bannerImgURL } />
 							<source data-srcset={ bannerImgURL } media="(min-width: 30rem)" srcSet={ bannerImgURL } />
-							<img alt={ bannerTitle } title={ bannerName } className="lazyimage lazyloaded" data-src={ bannerImgURL } src={ bannerImgURL } />
+							<img title={ bannerName } className="lazyimage lazyloaded" data-src={ bannerImgURL } src={ bannerImgURL } alt={ bannerTitle } />
 						</picture>
 					) }
 				</ImageColumn>
-
 				<div
 					className={ classnames(
 						'lsx-banner-content-wrap'
@@ -384,6 +416,9 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 						className={ classnames(
 							'header-headings'
 						) }
+						style={ {
+							backgroundColor: hexToRgba( textBannerBackgroundColor, bannerFontOpacity ),
+						} }
 					>
 						<header className={ classnames(
 							'page-header'
@@ -394,6 +429,7 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 									className="lsx-banner-name"
 									style={ {
 										color: bannerTextColor,
+										fontSize: bannerFontSize,
 									} }
 									value={ bannerName }
 								/>
@@ -405,6 +441,7 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 								className="lsx-banner-title"
 								style={ {
 									color: bannerTextColor,
+									fontSize: 'calc(' + bannerFontSize + 'px /2)',
 								} }
 								value={ bannerTitle }
 							/>
