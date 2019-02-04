@@ -118,7 +118,7 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 
 	// Add alignment to block wrapper
 	getEditWrapperProps( { align } ) {
-		if ( 'left' === align || 'right' === align || 'full' === align ) {
+		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {
 			return { 'data-align': align };
 		}
 	},
