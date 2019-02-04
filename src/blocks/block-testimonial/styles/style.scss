@@ -7,6 +7,11 @@
 	blockquote:before {
 		content: '”' !important;
 	}
+	.lsx-testimonial-body {
+		.lsx-title {
+			display: none;
+		}
+	}
 
 }
 

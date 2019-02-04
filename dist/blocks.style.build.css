@@ -110,6 +110,9 @@
 .wp-block-lsx-blocks-block-testimonials blockquote:before {
   content: '”' !important; }
 
+.wp-block-lsx-blocks-block-testimonials .lsx-testimonial-body .lsx-title {
+  display: none; }
+
 .right-aligned .lsx-testimonial-info {
   text-align: right; }
   .right-aligned .lsx-testimonial-info h2 {
