@@ -39,7 +39,6 @@ const ALLOWED_BLOCKS = [
 	'atomic-blocks/ab-button',
 	'atomic-blocks/ab-spacer',
 	'core/paragraph',
-	'core/list',
 	'core/image',
 ];
 
