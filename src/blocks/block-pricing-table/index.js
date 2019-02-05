@@ -110,6 +110,7 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		},
 		columnsGap: {
 			type: 'number',
+			default: 2,
 		},
 		align: {
 			type: 'string',
@@ -139,9 +140,8 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		// Setup the classes
 		const className = classnames( [
 			'ab-pricing-table-wrap',
-		], {
-			[ 'ab-block-pricing-table-gap-' + columnsGap ]: columnsGap,
-		} )
+			'ab-block-pricing-table-gap-' + columnsGap
+		])
 
 		// Save the block markup for the front end
 		return (
