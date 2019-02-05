@@ -11,7 +11,7 @@ import classnames from 'classnames';
 /**
  * Create a Button wrapper Component
  */
-export default class Container extends Component {
+export default class Container_1_4_23 extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -20,17 +20,6 @@ export default class Container extends Component {
 	render() {
 		// Setup the attributes
 		const { attributes: { containerBackgroundColor, containerAlignment, containerPaddingTop, containerPaddingRight, containerPaddingBottom, containerPaddingLeft, containerMarginTop, containerMarginBottom, containerWidth, containerMaxWidth }  } = this.props;
-
-		const styles = {
-			backgroundColor: containerBackgroundColor ? containerBackgroundColor : undefined,
-			textAlign: containerAlignment ? containerAlignment : undefined,
-			paddingLeft: containerPaddingLeft ? `${containerPaddingLeft}%` : undefined,
-			paddingRight: containerPaddingRight ? `${containerPaddingRight}%` : undefined,
-			paddingBottom: containerPaddingBottom ? `${containerPaddingBottom}%` : undefined,
-			paddingTop: containerPaddingTop ? `${containerPaddingTop}%` : undefined,
-			marginTop: containerMarginTop ? `${containerMarginTop}%` : undefined,
-			marginBottom: containerMarginBottom ? `${containerMarginBottom}%` : undefined,
-		};
 
 		const className = classnames( [
 			this.props.className,
@@ -41,7 +30,16 @@ export default class Container extends Component {
 
 		return (
 			<div
-				style={ styles }
+				style={ {
+					backgroundColor: containerBackgroundColor,
+					textAlign: containerAlignment,
+					paddingLeft: `${containerPaddingLeft}%`,
+					paddingRight: `${containerPaddingRight}%`,
+					paddingBottom: `${containerPaddingBottom}%`,
+					paddingTop: `${containerPaddingTop}%`,
+					marginTop: `${containerMarginTop}%`,
+					marginBottom: `${containerMarginBottom}%`,
+				} }
 				className={ className ? className : undefined }
 			>{ this.props.children }</div>
 		);

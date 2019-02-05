@@ -7,12 +7,15 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import Container from './components/container';
 
+// Deprecated components
+import deprecated from './deprecated/deprecated';
+
 // Import CSS
 import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -43,31 +46,24 @@ const {
 const blockAttributes = {
 	containerPaddingTop: {
 		type: 'number',
-		default: 0,
 	},
 	containerPaddingRight: {
 		type: 'number',
-		default: 0,
 	},
 	containerPaddingBottom: {
 		type: 'number',
-		default: 0,
 	},
 	containerPaddingLeft: {
 		type: 'number',
-		default: 0,
 	},
 	containerMarginTop: {
 		type: 'number',
-		default: 0,
 	},
 	containerMarginBottom: {
 		type: 'number',
-		default: 0,
 	},
 	containerWidth: {
 		type: 'string',
-		default: 'center',
 	},
 	containerMaxWidth: {
 		type: 'number',
@@ -75,7 +71,6 @@ const blockAttributes = {
 	},
 	containerBackgroundColor: {
 		type: 'string',
-		default: '#fff',
 	},
 	containerImgURL: {
 		type: 'string',
@@ -255,6 +250,9 @@ registerBlockType( 'atomic-blocks/ab-container', {
 			</Container>
 		);
 	},
+
+	deprecated: deprecated,
+
 } );
 
 function dimRatioToClass( ratio ) {
