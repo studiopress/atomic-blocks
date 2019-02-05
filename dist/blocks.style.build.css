@@ -2384,5 +2384,5 @@ span.ab-pricing-table-term {
 .ab-block-pricing-table-right {
   text-align: right; }
 
-.ab-pricing-table-price.has-background {
+.ab-pricing-table-price-wrap.has-background {
   padding: 10px 15px; }

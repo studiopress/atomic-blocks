@@ -86,25 +86,37 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-		// Setup class names
-		const className = classnames( {
+		// Setup wrapper class names
+		const wrapperClassName = classnames( {
 			'has-background': backgroundColor || customBackgroundColor,
-			'ab-pricing-table-price': true,
-			[ fontSizeClass ]: fontSizeClass,
+			'ab-pricing-table-price-wrap': true,
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,
 		} );
 
+		// Setup class names
+		const className = classnames( {
+			'ab-pricing-table-price': true,
+			[ fontSizeClass ]: fontSizeClass,
+		} );
+
 		// Setup styles
-		const styles = {
-			fontSize: fontSizeClass ? undefined : customFontSize,
+		const wrapperStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 		};
 
+		// Setup styles
+		const styles = {
+			fontSize: fontSizeClass ? undefined : customFontSize,
+		};
+
 		// Save the block markup for the front end
 		return (
-			<div class="ab-pricing-table-price-wrap">
+			<div
+				className={ wrapperClassName ? wrapperClassName : undefined }
+				style={ wrapperStyles }
+			>
 				<RichText.Content
 					tagName="div"
 					itemprop="price"

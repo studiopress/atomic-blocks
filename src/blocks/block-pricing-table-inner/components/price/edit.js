@@ -36,21 +36,30 @@ class Edit extends Component {
 			textColor,
 		} = this.props;
 
-		// Setup class names
-		const editClassName = classnames( {
-			'ab-pricing-table-price': true,
-			[ fontSize.class ]: fontSize.class,
+		// Setup wrapper class names
+		const editClassWrapperName = classnames( {
+			'ab-pricing-table-price-wrap': true,
 			'has-text-color': textColor.color,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 		} );
 
-		// Setup styles
-		const editStyles = {
-			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+		// Setup price class names
+		const editClassName = classnames( {
+			'ab-pricing-table-price': true,
+			[ fontSize.class ]: fontSize.class,
+		} );
+
+		// Setup wrapper styles
+		const editWrapStyles = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
+		};
+
+		// Setup price styles
+		const editStyles = {
+			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
 		return [
@@ -58,26 +67,31 @@ class Edit extends Component {
 				<Inspector
 					{ ...this.props }
 				/>
-				<RichText
-					tagName="div"
-					itemprop="price"
-					placeholder={ __( '$49', 'atomic-blocks' ) }
-					keepPlaceholderOnFocus
-					value={ price }
-					onChange={ ( value ) => setAttributes( { price: value } ) }
-					style={ editStyles }
-					className={ editClassName ? editClassName : undefined }
-				/>
-				<RichText
-					tagName="span"
-					value={ term }
-					placeholder={ __( '/mo', 'atomic-blocks' ) }
-					keepPlaceholderOnFocus
-					onChange={ ( value ) => setAttributes( { term: value } ) }
-					className={ classnames(
-						'ab-pricing-table-term',
-					) }
-				/>
+				<div
+					className={ editClassWrapperName ? editClassWrapperName : undefined }
+					style={ editWrapStyles }
+				>
+					<RichText
+						tagName="div"
+						itemprop="price"
+						placeholder={ __( '$49', 'atomic-blocks' ) }
+						keepPlaceholderOnFocus
+						value={ price }
+						onChange={ ( value ) => setAttributes( { price: value } ) }
+						style={ editStyles }
+						className={ editClassName ? editClassName : undefined }
+					/>
+					<RichText
+						tagName="span"
+						value={ term }
+						placeholder={ __( '/mo', 'atomic-blocks' ) }
+						keepPlaceholderOnFocus
+						onChange={ ( value ) => setAttributes( { term: value } ) }
+						className={ classnames(
+							'ab-pricing-table-term',
+						) }
+					/>
+				</div>
 			</Fragment>
 		];
 	}
