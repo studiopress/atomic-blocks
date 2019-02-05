@@ -2317,7 +2317,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
 
 .editor-styles-wrapper [data-type="atomic-blocks/ab-pricing-table-description"] ul {
   list-style-type: none;
-  display: block; }
+  display: block;
+  white-space: initial; }
 
 .ab-list-border-solid li {
   border-bottom-style: solid; }
