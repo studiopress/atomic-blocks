@@ -2098,6 +2098,28 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     opacity: .9; }
   .lsx-block-container .has-background-dim-100 {
     opacity: 1; }
+  .lsx-block-container .lsx-container-bottom {
+    -o-object-position: bottom;
+       object-position: bottom; }
+  .lsx-block-container .lsx-container-top {
+    -o-object-position: top;
+       object-position: top; }
+  .lsx-block-container .lsx-container-center {
+    -o-object-position: center;
+       object-position: center; }
+  .lsx-block-container .lsx-container-left {
+    -o-object-position: left;
+       object-position: left;
+    -o-object-fit: contain;
+       object-fit: contain; }
+  .lsx-block-container .lsx-container-right {
+    -o-object-position: right;
+       object-position: right;
+    -o-object-fit: contain;
+       object-fit: contain; }
+  .lsx-block-container .lsx-container-clear {
+    -o-object-position: initial;
+       object-position: initial; }
 /**
  * Common styles
  * Loads on front end and back end

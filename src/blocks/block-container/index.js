@@ -92,6 +92,10 @@ const blockAttributes = {
 		attribute: 'alt',
 		selector: 'img',
 	},
+	bgPosition: {
+		type: 'string',
+		default: 'lsx-container-initial',
+	},
 	containerDimRatio: {
 		type: 'number',
 		default: 50,
@@ -117,6 +121,7 @@ class LSXContainerBlock extends Component {
 				containerImgURL,
 				containerImgID,
 				containerImgAlt,
+				bgPosition,
 				containerDimRatio,
 			},
 			attributes,
@@ -155,6 +160,8 @@ class LSXContainerBlock extends Component {
 							<img
 								className={ classnames(
 									'lsx-container-image',
+									bgPosition,
+									{ containerImgAlt },
 									dimRatioToClass( containerDimRatio ),
 									{
 										'has-background-dim': containerDimRatio !== 0,
@@ -220,6 +227,7 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 			containerImgURL,
 			containerImgID,
 			containerImgAlt,
+			bgPosition,
 			containerDimRatio,
 		} = props.attributes;
 
@@ -232,6 +240,7 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 							<img
 								className={ classnames(
 									'lsx-container-image',
+									bgPosition,
 									dimRatioToClass( containerDimRatio ),
 									{
 										'has-background-dim': containerDimRatio !== 0,
