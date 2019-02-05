@@ -105,24 +105,10 @@
 /**
  * Editor styles for the admin
  */
-.lsx-block-testimonial {
-  margin-bottom: 0; }
-  .lsx-block-testimonial .components-button:not(:disabled):not([aria-disabled=true]):focus {
-    background: none;
-    -webkit-box-shadow: none;
-            box-shadow: none; }
-
-.editor-block-list__layout [data-type="lsx-blocks/lsx-testimonial"] {
-  margin-bottom: 1.2em; }
-
-.lsx-testimonial-info h2.editor-rich-text__tinymce {
-  line-height: 1.2; }
-
-.lsx-testimonial-info p.editor-rich-text__tinymce {
-  line-height: 1.6; }
-
-.lsx-testimonial-info .lsx-testimonial-title + .lsx-testimonial-title {
-  line-height: 1.8; }
+.wp-block-lsx-blocks-block-testimonials {
+  text-align: center; }
+  .wp-block-lsx-blocks-block-testimonials .lsx-title small {
+    display: block; }
 /**
  * Common styles
  * Loads on front end and back end

@@ -219,6 +219,9 @@
 		&:hover {
 			background-color: #27639e;
 		}
+		@media only screen and (max-width: 600px) {
+			width: 100%;
+		}
 	}
 
 	.lsx-button-shape-square {

@@ -847,6 +847,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             box-shadow: 2px 2px 0 0 #27639e; }
     .lsx-block-button .lsx-button:hover {
       background-color: #27639e; }
+    @media only screen and (max-width: 600px) {
+      .lsx-block-button .lsx-button {
+        width: 100%; } }
   .lsx-block-button .lsx-button-shape-square {
     border-radius: 0; }
   .lsx-block-button .lsx-button-shape-rounded {
@@ -1334,11 +1337,15 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     display: inline-block;
     width: 100%;
     margin-bottom: .3em;
-    line-height: 1.2; }
+    line-height: 1.2;
+    max-width: 100%; }
   .lsx-block-cta .lsx-cta-text {
     line-height: 1.4; }
     .lsx-block-cta .lsx-cta-text p {
-      color: inherit; }
+      color: inherit;
+      display: inline-block;
+      width: 100%;
+      max-width: 100%; }
     .lsx-block-cta .lsx-cta-text a {
       color: inherit;
       -webkit-box-shadow: 0 -1px 0 inset;
@@ -1673,6 +1680,10 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     background: #0077b5; }
   .lsx-block-sharing.lsx-share-color-social .lsx-share-reddit {
     background: #ff4500; }
+
+@media only screen and (max-width: 600px) {
+  .lsx-button {
+    width: 100%; } }
 
 .lsx-button-right {
   -webkit-transform: translateX(-100%);
@@ -2467,6 +2478,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
           box-shadow: 2px 2px 0 0 #27639e; }
   .lsx-block-card .lsx-button:hover {
     background-color: #27639e; }
+  @media only screen and (max-width: 600px) {
+    .lsx-block-card .lsx-button {
+      width: 100%; } }
 
 .lsx-block-card .lsx-button-shape-square {
   border-radius: 0; }

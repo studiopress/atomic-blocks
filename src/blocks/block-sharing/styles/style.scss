@@ -155,7 +155,11 @@
 		}
 	}
 }
-
+.lsx-button {
+	@media only screen and (max-width: 600px) {
+		width: 100%;
+	}
+}
 .lsx-button-right {
 	transform: translateX(-100%);
 	left: 100%;

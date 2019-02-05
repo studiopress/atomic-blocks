@@ -13,7 +13,6 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const {
 	InspectorControls,
-	AlignmentToolbar,
 } = wp.editor;
 const {
 	PanelBody,
@@ -32,17 +31,17 @@ const {
  */
 
 const blockAttributes = {
-	alignment: {
-		type: 'string',
-		default: 'center',
-	},
 	columns: {
 		type: 'number',
 		default: 3,
 	},
 	shortcodetitle: {
 		type: 'string',
-		default: 'Testimonial',
+		default: 'Testimonials',
+	},
+	shortcodeSubtitle: {
+		type: 'string',
+		default: 'What our clients are saying...',
 	},
 	displaylimit: {
 		type: 'string',
@@ -72,10 +71,6 @@ const blockAttributes = {
 		type: 'string',
 		default: '',
 	},
-	imagesize: {
-		type: 'number',
-		default: 150,
-	},
 };
 
 registerBlockType( 'lsx-blocks/block-testimonials', {
@@ -90,14 +85,14 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 	attributes: blockAttributes,
 
 	edit( { attributes, className, setAttributes } ) {
-		const { alignment, columns, shortcodetitle, displaylimit, displayexcerpt, displayorder, orderby, carousel, showimage, include, imagesize } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, displayorder, orderby, carousel, showimage, include } = attributes;
 
 		function onChangeTitle( updatedTitle ) {
 			setAttributes( { shortcodetitle: updatedTitle } );
 		}
 
-		function onChangeAlignment( updatedAlignment ) {
-			setAttributes( { alignment: updatedAlignment } );
+		function onChangeSubTitle( updatedSubTitle ) {
+			setAttributes( { shortcodeSubtitle: updatedSubTitle } );
 		}
 
 		function onChangeColumns( updatedColumns ) {
@@ -120,9 +115,6 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 			setAttributes( { include: updatedInclude } );
 		}
 
-		function onChangeImagesize( updatedImagesize ) {
-			setAttributes( { imagesize: updatedImagesize } );
-		}
 		// Orderby options
 		const orderbyOptions = [
 			{ value: 'none', label: __( 'None' ) },
@@ -154,16 +146,18 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 								value={ shortcodetitle }
 								onChange={ onChangeTitle }
 							/>
+							<TextControl
+								label={ __( 'Subtitle' ) }
+								type="text"
+								value={ shortcodeSubtitle }
+								onChange={ onChangeSubTitle }
+							/>
 							<RangeControl
 								label={ __( 'Columns' ) }
 								value={ columns }
 								onChange={ onChangeColumns }
 								min={ 1 }
 								max={ 6 }
-							/>
-							<AlignmentToolbar
-								value={ alignment }
-								onChange={ onChangeAlignment }
 							/>
 							<TextControl
 								label={ __( 'Display Limit' ) }
@@ -184,13 +178,6 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 								label={ __( 'Include only from comma seperated List of IDs' ) }
 								value={ include }
 								onChange={ onChangeInclude }
-							/>
-							<RangeControl
-								label={ __( 'Image Size' ) }
-								value={ imagesize }
-								onChange={ onChangeImagesize }
-								min={ 100 }
-								max={ 300 }
 							/>
 							<SelectControl
 								label={ __( 'Orderby' ) }
@@ -218,24 +205,26 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 					</InspectorControls>
 				}
 				<div className={ className }>
-					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
+					<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
 				</div>
-				<div className="lsx-testimonial-body" style={ { textAlign: alignment } }>
-						[lsx_testimonials back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; order=&quot;{ displayorder }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; size=&quot;{ imagesize }&quot; ]
+				<div className="lsx-testimonial-body">
+						[lsx_testimonials back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; order=&quot;{ displayorder }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; ]
 				</div>
 			</div>
 		);
 	},
 
 	save( { attributes, className } ) {
-		const { alignment, columns, shortcodetitle, displaylimit, displayexcerpt, displayorder, orderby, carousel, showimage, include, imagesize } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, displayorder, orderby, carousel, showimage, include } = attributes;
 		return (
 			<div className={ className }>
-				<div>
-					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
-				</div>
-				<div className="lsx-testimonial-body" style={ { textAlign: alignment } }>
-						[lsx_testimonials back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; order=&quot;{ displayorder }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; size=&quot;{ imagesize }&quot; ]
+				{ shortcodetitle && (
+					<div>
+						<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
+					</div>
+				) }
+				<div className="lsx-testimonial-body">
+						[lsx_testimonials back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; order=&quot;{ displayorder }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; ]
 				</div>
 			</div>
 		);
