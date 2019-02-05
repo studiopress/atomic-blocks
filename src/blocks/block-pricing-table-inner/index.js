@@ -110,8 +110,8 @@ class ABPricingTableBlock extends Component {
 									price: '$49',
 									fontSize: 'huge',
 								}],
-								['atomic-blocks/ab-pricing-table-description', {
-									description: '<li>Product Feature One</li><li>Product Feature Two</li><li>Product Feature Three</li><li>Product Feature Four</li>',
+								['atomic-blocks/ab-pricing-table-features', {
+									features: '<li>Product Feature One</li><li>Product Feature Two</li><li>Product Feature Three</li><li>Product Feature Four</li>',
 									multilineTag: 'li',
 									ordered: false,
 									fontSize: 'normal',

@@ -1,5 +1,5 @@
 /**
- * BLOCK: Atomic Blocks Pricing Table - Description Component
+ * BLOCK: Atomic Blocks Pricing Table - Features Component
  */
 
 // Import block dependencies and components
@@ -19,20 +19,20 @@ const {
 } = wp.editor;
 
 // Register the block
-registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
-	title: __( 'Product Description', 'atomic-blocks' ),
-	description: __( 'Adds a product description component with schema markup.', 'atomic-blocks' ),
+registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
+	title: __( 'Product Features', 'atomic-blocks' ),
+	description: __( 'Adds a product feature component with schema markup.', 'atomic-blocks' ),
 	icon: 'cart',
 	category: 'atomic-blocks',
 	parent: [ 'atomic-blocks/ab-pricing-table' ],
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
-		__( 'description', 'atomic-blocks' ),
+		__( 'features', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
 	],
 
 	attributes: {
-		description: {
+		features: {
 			type: 'string',
 			source: 'html',
 			selector: 'ol,ul',
@@ -77,7 +77,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 
 		// Setup the attributes
 		const {
-			description,
+			features,
 			fontSize,
 			customFontSize,
 			backgroundColor,
@@ -99,7 +99,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 		// Setup class names
 		const className = classnames( {
 			'has-background': backgroundColor || customBackgroundColor,
-			'ab-pricing-table-description': true,
+			'ab-pricing-table-features': true,
 			[ fontSizeClass ]: fontSizeClass,
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,
@@ -120,7 +120,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-description', {
 			<RichText.Content
 				tagName="ul"
 				itemprop="description"
-				value={ description }
+				value={ features }
 				className={ className ? className : undefined }
 				style={ styles }
 			/>

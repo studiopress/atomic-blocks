@@ -52,7 +52,6 @@ class Inspector extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-				price,
 				borderStyle,
 				borderColor,
 				borderWidth,

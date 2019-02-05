@@ -24,7 +24,7 @@ class Edit extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-				description,
+				features,
 				borderStyle,
 				borderColor,
 				borderWidth,
@@ -40,7 +40,7 @@ class Edit extends Component {
 
 		// Setup class names
 		const editClassName = classnames( {
-			'ab-pricing-table-description': true,
+			'ab-pricing-table-features': true,
 			[ fontSize.class ]: fontSize.class,
 			'has-text-color': textColor.color,
 			'has-background': backgroundColor.color,
@@ -67,10 +67,10 @@ class Edit extends Component {
 					tagName="ul"
 					multiline="li"
 					itemprop="description"
-					placeholder={ __( 'Add a product description', 'atomic-blocks' ) }
+					placeholder={ __( 'Add a product feature', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
-					value={ description }
-					onChange={ ( value ) => setAttributes( { description: value } ) }
+					value={ features }
+					onChange={ ( value ) => setAttributes( { features: value } ) }
 					style={ editStyles }
 					className={ editClassName ? editClassName : undefined }
 				/>

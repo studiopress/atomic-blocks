@@ -2309,13 +2309,13 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
 
 .wp-block-atomic-blocks-ab-pricing-table {
   vertical-align: top; }
-  .wp-block-atomic-blocks-ab-pricing-table .ab-pricing-table-description,
+  .wp-block-atomic-blocks-ab-pricing-table .ab-pricing-table-features,
   .block-library-list .wp-block-atomic-blocks-ab-pricing-table ul {
     margin: 0;
     padding: 0;
     border: none; }
 
-.editor-styles-wrapper [data-type="atomic-blocks/ab-pricing-table-description"] ul {
+.editor-styles-wrapper [data-type="atomic-blocks/ab-pricing-table-features"] ul {
   list-style-type: none;
   display: block;
   white-space: initial; }
@@ -2329,12 +2329,12 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
 .ab-list-border-dotted li {
   border-bottom-style: dotted; }
 
-ul.ab-pricing-table-description li {
+ul.ab-pricing-table-features li {
   list-style: none;
   margin: 0;
   padding: 4px 0;
   border-color: inherit; }
-  ul.ab-pricing-table-description li:last-child {
+  ul.ab-pricing-table-features li:last-child {
     border-bottom: none; }
 
 .ab-list-border-width-1 li {
