@@ -1453,6 +1453,11 @@
     -webkit-box-shadow: none;
             box-shadow: none; }
 
+.wp-block-lsx-blocks-block-team {
+  text-align: center; }
+  .wp-block-lsx-blocks-block-team .lsx-title small {
+    display: block; }
+
 .editor-block-list__layout [data-type="lsx-blocks/lsx-team"] {
   margin-bottom: 1.2em; }
 

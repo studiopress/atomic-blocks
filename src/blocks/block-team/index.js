@@ -13,7 +13,6 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const {
 	InspectorControls,
-	AlignmentToolbar,
 } = wp.editor;
 const {
 	PanelBody,
@@ -32,10 +31,6 @@ const {
  */
 
 const blockAttributes = {
-	alignment: {
-		type: 'string',
-		default: 'center',
-	},
 	columns: {
 		type: 'number',
 		default: 2,
@@ -43,6 +38,10 @@ const blockAttributes = {
 	shortcodetitle: {
 		type: 'string',
 		default: 'Team',
+	},
+	shortcodeSubtitle: {
+		type: 'string',
+		default: 'This is Our Team...',
 	},
 	displaylimit: {
 		type: 'string',
@@ -86,14 +85,14 @@ registerBlockType( 'lsx-blocks/block-team', {
 	attributes: blockAttributes,
 
 	edit( { attributes, className, setAttributes } ) {
-		const { alignment, columns, shortcodetitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, imagesize } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, imagesize } = attributes;
 
 		function onChangeTitle( updatedTitle ) {
 			setAttributes( { shortcodetitle: updatedTitle } );
 		}
 
-		function onChangeAlignment( updatedAlignment ) {
-			setAttributes( { alignment: updatedAlignment } );
+		function onChangeSubTitle( updatedSubTitle ) {
+			setAttributes( { shortcodeSubtitle: updatedSubTitle } );
 		}
 
 		function onChangeColumns( updatedColumns ) {
@@ -146,16 +145,18 @@ registerBlockType( 'lsx-blocks/block-team', {
 								value={ shortcodetitle }
 								onChange={ onChangeTitle }
 							/>
+							<TextControl
+								label={ __( 'Subtitle' ) }
+								type="text"
+								value={ shortcodeSubtitle }
+								onChange={ onChangeSubTitle }
+							/>
 							<RangeControl
 								label={ __( 'Columns' ) }
 								value={ columns }
 								onChange={ onChangeColumns }
 								min={ 1 }
 								max={ 6 }
-							/>
-							<AlignmentToolbar
-								value={ alignment }
-								onChange={ onChangeAlignment }
 							/>
 							<TextControl
 								label={ __( 'Display Limit' ) }
@@ -205,9 +206,9 @@ registerBlockType( 'lsx-blocks/block-team', {
 					</InspectorControls>
 				}
 				<div className={ className }>
-					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
+					<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
 				</div>
-				<div style={ { textAlign: alignment } }>
+				<div>
 						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; size=&quot;{ imagesize }&quot; ]
 				</div>
 			</div>
@@ -215,13 +216,15 @@ registerBlockType( 'lsx-blocks/block-team', {
 	},
 
 	save( { attributes, className } ) {
-		const { alignment, columns, shortcodetitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, imagesize } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, imagesize } = attributes;
 		return (
 			<div className={ className }>
+				{ shortcodetitle && (
+					<div>
+						<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
+					</div>
+				) }
 				<div>
-					<h2 className="lsx-title" style={ { textAlign: alignment } }>{ shortcodetitle }</h2>
-				</div>
-				<div style={ { textAlign: alignment } }>
 						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; size=&quot;{ imagesize }&quot; ]
 				</div>
 			</div>
