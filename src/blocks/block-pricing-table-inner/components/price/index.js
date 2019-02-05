@@ -59,6 +59,10 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 		term: {
 			type: 'string',
 		},
+		showTerm: {
+			type: 'boolean',
+			default: true
+		},
 	},
 
 	// Render the block components
@@ -77,6 +81,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			customBackgroundColor,
 			customTextColor,
 			term,
+			showTerm,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
@@ -124,7 +129,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 					className={ className ? className : undefined }
 					style={ styles }
 				/>
-				{ term && (
+				{ term && showTerm && (
 					<RichText.Content
 						tagName="span"
 						value={ term }

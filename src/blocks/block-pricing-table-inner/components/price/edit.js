@@ -1,6 +1,6 @@
 // Import block dependencies and components
 import classnames from 'classnames';
-import Inspector from '../global/inspector';
+import Inspector from './inspector';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -26,6 +26,7 @@ class Edit extends Component {
 			attributes: {
 				price,
 				term,
+				showTerm,
 			},
 			isSelected,
 			className,
@@ -81,16 +82,18 @@ class Edit extends Component {
 						style={ editStyles }
 						className={ editClassName ? editClassName : undefined }
 					/>
-					<RichText
-						tagName="span"
-						value={ term }
-						placeholder={ __( '/mo', 'atomic-blocks' ) }
-						keepPlaceholderOnFocus
-						onChange={ ( value ) => setAttributes( { term: value } ) }
-						className={ classnames(
-							'ab-pricing-table-term',
-						) }
-					/>
+					{ showTerm && (
+						<RichText
+							tagName="span"
+							value={ term }
+							placeholder={ __( '/mo', 'atomic-blocks' ) }
+							keepPlaceholderOnFocus
+							onChange={ ( value ) => setAttributes( { term: value } ) }
+							className={ classnames(
+								'ab-pricing-table-term',
+							) }
+						/>
+					) }
 				</div>
 			</Fragment>
 		];

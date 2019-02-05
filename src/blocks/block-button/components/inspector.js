@@ -76,13 +76,13 @@ export default class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<ToggleControl
-					label={ __( 'Open link in new window' ) }
+					label={ __( 'Open link in new window', 'atomic-blocks' ) }
 					checked={ buttonTarget }
 					onChange={ () => this.props.setAttributes( { buttonTarget: ! buttonTarget } ) }
 				/>
 
 				<SelectControl
-					label={ __( 'Button Size' ) }
+					label={ __( 'Button Size', 'atomic-blocks' ) }
 					value={ buttonSize }
 					options={ buttonSizeOptions.map( ({ value, label }) => ( {
 						value: value,
@@ -92,7 +92,7 @@ export default class Inspector extends Component {
 				/>
 
 				<SelectControl
-					label={ __( 'Button Shape' ) }
+					label={ __( 'Button Shape', 'atomic-blocks' ) }
 					value={ buttonShape }
 					options={ buttonShapeOptions.map( ({ value, label }) => ( {
 						value: value,
@@ -102,24 +102,24 @@ export default class Inspector extends Component {
 				/>
 
 				<PanelColorSettings
-					title={ __( 'Button Color' ) }
+					title={ __( 'Button Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: buttonBackgroundColor,
 						onChange: onChangeButtonColor,
-						label: __( 'Button Color' ),
+						label: __( 'Button Color', 'atomic-blocks' ),
 						colors: buttonColors,
 					} ] }
 				>
 				</PanelColorSettings>
 
 				<PanelColorSettings
-					title={ __( 'Button Text Color' ) }
+					title={ __( 'Button Text Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: buttonTextColor,
 						onChange: onChangeButtonTextColor,
-						label: __( 'Button Text Color' ),
+						label: __( 'Button Text Color', 'atomic-blocks' ),
 					} ] }
 				>
 				</PanelColorSettings>
