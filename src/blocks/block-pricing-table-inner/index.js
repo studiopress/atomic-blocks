@@ -154,6 +154,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		},
 		borderRadius: {
 			type: 'number',
+			default: 0,
 		},
 		backgroundColor: {
 			type: 'string',
