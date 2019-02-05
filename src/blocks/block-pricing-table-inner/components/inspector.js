@@ -57,7 +57,7 @@ export default class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Pricing Table Padding' ) }
+					label={ __( 'Pricing Column Padding' ) }
 					value={ padding }
 					onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
 					min={ 0 }
@@ -65,7 +65,7 @@ export default class Inspector extends Component {
 					step={ 1 }
 				/>
 				<RangeControl
-					label={ __( 'Pricing Table Border' ) }
+					label={ __( 'Pricing Column Border' ) }
 					value={ borderWidth }
 					onChange={ ( value ) => this.props.setAttributes( { borderWidth: value } ) }
 					min={ 0 }
@@ -73,7 +73,7 @@ export default class Inspector extends Component {
 					step={ 1 }
 				/>
 				<RangeControl
-					label={ __( 'Pricing Table Border Radius' ) }
+					label={ __( 'Pricing Column Border Radius' ) }
 					value={ borderRadius }
 					onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
 					min={ 0 }
@@ -82,7 +82,7 @@ export default class Inspector extends Component {
 				/>
 				{ ( borderWidth > 0 ) && (
 				<PanelColorSettings
-					title={ __( 'Pricing Table Border Color' ) }
+					title={ __( 'Pricing Column Border Color' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: borderColor,
@@ -93,7 +93,7 @@ export default class Inspector extends Component {
 				</PanelColorSettings>
 				) }
 				<PanelColorSettings
-					title={ __( 'Pricing Table Background Color' ) }
+					title={ __( 'Pricing Column Background Color' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: backgroundColor,
