@@ -2221,6 +2221,10 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
 .wp-block-lsx-blocks-block-team {
   margin: 0 auto;
   margin-bottom: 1.2em; }
+  .wp-block-lsx-blocks-block-team .true-icons .lsx-team-socials {
+    display: initial; }
+  .wp-block-lsx-blocks-block-team .false-icons .lsx-team-socials {
+    display: none; }
   .wp-block-lsx-blocks-block-team .lsx-team-shortcode {
     width: 100% !important; }
 /**

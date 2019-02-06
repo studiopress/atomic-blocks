@@ -63,6 +63,10 @@ const blockAttributes = {
 		type: 'string',
 		default: 'true',
 	},
+	showicons: {
+		type: 'string',
+		default: 'true',
+	},
 	include: {
 		type: 'string',
 		default: '',
@@ -85,7 +89,7 @@ registerBlockType( 'lsx-blocks/block-team', {
 	attributes: blockAttributes,
 
 	edit( { attributes, className, setAttributes } ) {
-		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, role } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, showicons, include, role } = attributes;
 
 		function onChangeTitle( updatedTitle ) {
 			setAttributes( { shortcodetitle: updatedTitle } );
@@ -131,6 +135,12 @@ registerBlockType( 'lsx-blocks/block-team', {
 
 		// Show Image options
 		const showimageOptions = [
+			{ value: 'true', label: __( 'Yes' ) },
+			{ value: 'false', label: __( 'No' ) },
+		];
+
+		// Show Social Icon options
+		const showiconsOptions = [
 			{ value: 'true', label: __( 'Yes' ) },
 			{ value: 'false', label: __( 'No' ) },
 		];
@@ -200,6 +210,13 @@ registerBlockType( 'lsx-blocks/block-team', {
 								value={ showimage }
 								onChange={ ( value ) => setAttributes( { showimage: value } ) }
 							/>
+							<SelectControl
+								label={ __( 'Show Social Icons' ) }
+								description={ __( 'Choose if the teams member will show the social icons' ) }
+								options={ showiconsOptions }
+								value={ showicons }
+								onChange={ ( value ) => setAttributes( { showicons: value } ) }
+							/>
 
 						</PanelBody>
 					</InspectorControls>
@@ -207,7 +224,9 @@ registerBlockType( 'lsx-blocks/block-team', {
 				<div className={ className }>
 					<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
 				</div>
-				<div>
+				<div className={
+					showicons + '-icons'
+				}>
 						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; role=&quot;{ role }&quot; ]
 				</div>
 			</div>
@@ -215,7 +234,7 @@ registerBlockType( 'lsx-blocks/block-team', {
 	},
 
 	save( { attributes, className } ) {
-		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, role } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, showicons, include, role } = attributes;
 		return (
 			<div className={ className }>
 				{ shortcodetitle && (
@@ -223,7 +242,9 @@ registerBlockType( 'lsx-blocks/block-team', {
 						<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
 					</div>
 				) }
-				<div>
+				<div className={
+					showicons + '-icons'
+				}>
 						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; role=&quot;{ role }&quot; ]
 				</div>
 			</div>

@@ -6,7 +6,17 @@
  .wp-block-lsx-blocks-block-team {
 	margin: 0 auto;
 	margin-bottom: 1.2em;
-	.lsx-team-shortcode{
+	.true-icons {
+		.lsx-team-socials {
+			display: initial;
+		}
+	}
+	.false-icons {
+		.lsx-team-socials {
+			display: none;
+		}
+	}
+	.lsx-team-shortcode {
 		width: 100% !important;
 	}
 }
