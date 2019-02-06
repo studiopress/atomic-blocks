@@ -24,14 +24,19 @@ export default class ImageColumn extends Component {
 	render() {
 
 		// Setup the attributes
-		const { bannerBackgroundColor } = this.props.attributes;
+		const { bannerBackgroundColor, bannerHeight } = this.props.attributes;
 
 		return (
 			<div className="lsx-banner-column"
 				style={ {
 					backgroundColor: bannerBackgroundColor,
+					height: bannerHeight + 'vh',
+					minHeight: bannerHeight + 'vh',
 				} }>
-				<div className="lsx-banner-image-wrap">
+				<div className="lsx-banner-image-wrap"
+					style={ {
+						maxHeight: bannerHeight + 'vh',
+					} } >
 					{ this.props.children }
 				</div>
 			</div>

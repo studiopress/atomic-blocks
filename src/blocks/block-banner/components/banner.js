@@ -18,12 +18,14 @@ export default class BannerBox extends Component {
 	render() {
 
 		// Setup the attributes
-		const { bannerAlignment, bannerImgURL, bannerFontSize, bannerBackgroundColor, bannerTextColor, bannerTitlePosition } = this.props.attributes;
+		const { bannerAlignment, bannerImgURL, bannerFontSize, bannerBackgroundColor, bgPosition, bannerTextColor, bannerTitlePosition } = this.props.attributes;
 
 		return (
 			<div
 				style={ {
 					color: bannerTextColor,
+					backgroundColor: bannerBackgroundColor,
+					backgroundImage: 'url("' + bannerImgURL + '")',
 				} }
 				className={ classnames(
 					this.props.className,
@@ -34,6 +36,7 @@ export default class BannerBox extends Component {
 					'lsx-block-banner',
 					'lsx-banner-columns',
 					'alignfull',
+					bgPosition,
 				) }>
 				{ this.props.children }
 			</div>

@@ -11,7 +11,8 @@ const {
 	InspectorControls,
 	BlockDescription,
 	ColorPalette,
-  	PanelColorSettings,
+	PanelColorSettings,
+	MediaUpload,
 } = wp.editor;
 
 // Import Inspector components
@@ -23,6 +24,7 @@ const {
 	SelectControl,
 	TextControl,
 	ToggleControl,
+	IconButton,
 } = wp.components;
 
 // Create an Inspector Controls wrapper Component
@@ -35,7 +37,7 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerFontOpacity, bannerLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget, buttonFlat } = this.props.attributes;
+		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgID, bgPosition, bannerFontSize, bannerHeight, bannerBackgroundColor, bannerImgURL, bannerTextColor, textBannerBackgroundColor, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget, buttonFlat } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		// Image shape options
@@ -43,6 +45,33 @@ export default class Inspector extends Component {
 			{ value: 'title-centered', label: __( 'Centered' ) },
 			{ value: 'title-bottom', label: __( 'Bottom' ) },
 		];
+
+		// Image position
+		const bgPositionOptions = [
+			{ value: 'lsx-container-bottom', label: __( 'Bottom' ) },
+			{ value: 'lsx-container-top', label: __( 'Top' ) },
+			{ value: 'lsx-container-center', label: __( 'Center' ) },
+			{ value: 'lsx-container-left', label: __( 'Left' ) },
+			{ value: 'lsx-container-right', label: __( 'Right' ) },
+			{ value: 'lsx-container-initial', label: __( 'Clear' ) },
+		];
+
+		// Upload Image options
+		const onSelectImage = img => {
+			setAttributes( {
+				bannerImgID: img.id,
+				bannerImgURL: img.url,
+				bannerImgAlt: img.alt,
+			} );
+		};
+
+		const onRemoveImage = () => {
+			setAttributes( {
+				bannerImgID: null,
+				bannerImgURL: null,
+				bannerImgAlt: null,
+			} );
+		};
 
 		// Button size values
 		const buttonSizeOptions = [
@@ -113,6 +142,54 @@ export default class Inspector extends Component {
 						onChange={ ( value ) => this.props.setAttributes( { bannerTitlePosition: value } ) }
 					/>
 
+					<RangeControl
+						label={ __( 'Background Height' ) }
+						value={ bannerHeight }
+						onChange={ ( value ) => this.props.setAttributes( { bannerHeight: value } ) }
+						min={ 20 }
+						max={ 100 }
+						step={ 1 }
+					/>
+					<PanelBody title={ __( 'Banner image' ) } initialOpen={ true }>
+						<MediaUpload
+							onSelect={ onSelectImage }
+							type="image"
+							value={ bannerImgID }
+							render={ ( { open } ) => (
+								<div>
+									<IconButton
+										className="lsx-banner-inspector-media"
+										label={ __( 'Edit image' ) }
+										icon="format-image"
+										onClick={ open }
+									>
+										{ __( 'Select Image' ) }
+									</IconButton>
+
+									{ bannerImgURL && !! bannerImgURL.length && (
+										<IconButton
+											className="lsx-banner-inspector-media"
+											label={ __( 'Remove Image' ) }
+											icon="dismiss"
+											onClick={ onRemoveImage }
+										>
+											{ __( 'Remove' ) }
+										</IconButton>
+									) }
+								</div>
+							) }
+						>
+						</MediaUpload>
+						{/* { bannerImgURL && (
+							<SelectControl
+								label={ __( 'Background Image Position' ) }
+								options={ bgPositionOptions }
+								value={ bgPosition }
+								onChange={ ( value ) => setAttributes( { bgPosition: value } ) }
+							/>
+						) } */}
+					</PanelBody>
+
 					<PanelColorSettings
 						title={ __( 'Background Color' ) }
 						initialOpen={ false }
@@ -146,14 +223,16 @@ export default class Inspector extends Component {
 					>
 					</PanelColorSettings>
 
-					<RangeControl
-						label={ __( 'Text Background Opacity' ) }
-						value={ bannerFontOpacity }
-						onChange={ ( value ) => this.props.setAttributes( { bannerFontOpacity: value } ) }
-						min={ 0 }
-						max={ 1 }
-						step={ 0.1 }
-					/>
+					<PanelBody title={ __( 'Text Background Opacity' ) } initialOpen={ false }>
+						<RangeControl
+							label={ __( 'Text Background Opacity' ) }
+							value={ bannerFontOpacity }
+							onChange={ ( value ) => this.props.setAttributes( { bannerFontOpacity: value } ) }
+							min={ 0 }
+							max={ 1 }
+							step={ 0.1 }
+						/>
+					</PanelBody>
 
 					<PanelBody title={ __( 'Button Options' ) } initialOpen={ false }>
 						<ToggleControl

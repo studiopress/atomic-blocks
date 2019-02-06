@@ -2657,9 +2657,14 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
+.gutenberg-compatible-template.using-gutenberg .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image {
+  background-image: none !important; }
+
 .wp-block-lsx-blocks-lsx-banner-box {
   position: relative;
   margin-bottom: 5rem; }
+  .wp-block-lsx-blocks-lsx-banner-box:not(.lsx-has-image) {
+    padding-bottom: 1em; }
   @media only screen and (max-width: 766px) {
     .wp-block-lsx-blocks-lsx-banner-box {
       padding-left: 0 !important;
@@ -2669,7 +2674,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     position: relative; }
     @media only screen and (min-width: 600px) {
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column {
-        min-height: 50vh; } }
+        min-height: 40vh; } }
     .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap {
       max-height: 80vh;
       position: relative;
@@ -2679,6 +2684,30 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
         height: 100%; }
         .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap picture img {
           width: 100%; }
+  .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image .lsx-banner-column {
+    min-height: 100%; }
+  .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image.lsx-container-bottom img {
+    -o-object-position: bottom;
+       object-position: bottom; }
+  .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image.lsx-container-top img {
+    -o-object-position: top;
+       object-position: top; }
+  .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image.lsx-container-center img {
+    -o-object-position: center;
+       object-position: center; }
+  .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image.lsx-container-left img {
+    -o-object-position: left;
+       object-position: left;
+    -o-object-fit: contain;
+       object-fit: contain; }
+  .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image.lsx-container-right img {
+    -o-object-position: right;
+       object-position: right;
+    -o-object-fit: contain;
+       object-fit: contain; }
+  .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image.lsx-container-clear img {
+    -o-object-position: initial;
+       object-position: initial; }
   .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap {
     width: 100%;
     z-index: 4;
@@ -2688,24 +2717,23 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap {
         position: absolute;
         bottom: 20%; } }
-    .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings {
-      text-align: center; }
-      @media only screen and (max-width: 600px) {
-        .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings {
-          background: transparent !important; } }
-      @media only screen and (min-width: 600px) {
-        .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings {
-          max-width: 75rem;
-          background: rgba(255, 255, 255, 0.83);
-          border: 0;
-          padding: 1.875rem;
-          max-width: 74.5%;
-          text-align: center;
-          bottom: 4rem;
-          margin: 0 auto; } }
-      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header {
-        width: 100%;
-        max-width: 100%; }
+    @media only screen and (max-width: 600px) {
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings {
+        background: transparent !important; } }
+    @media only screen and (min-width: 600px) {
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings {
+        max-width: 75rem;
+        background: rgba(255, 255, 255, 0.83);
+        border: 0;
+        padding: 1.875rem;
+        max-width: 74.5%;
+        bottom: 4rem;
+        margin: 0 auto; } }
+    .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-banner-title, .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-block-button {
+      max-width: 80%;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto; }
   .wp-block-lsx-blocks-lsx-banner-box.title-bottom .lsx-banner-content-wrap {
     position: relative; }
     .wp-block-lsx-blocks-lsx-banner-box.title-bottom .lsx-banner-content-wrap .header-headings {

@@ -43,27 +43,27 @@ const {
 const blockAttributes = {
 	containerPaddingTop: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerPaddingRight: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerPaddingBottom: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerPaddingLeft: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerMarginTop: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerMarginBottom: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerWidth: {
 		type: 'string',
@@ -71,7 +71,7 @@ const blockAttributes = {
 	},
 	containerMaxWidth: {
 		type: 'number',
-		default: 1600,
+		default: 1200,
 	},
 	containerBackgroundColor: {
 		type: 'string',

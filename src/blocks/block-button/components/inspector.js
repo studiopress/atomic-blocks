@@ -108,7 +108,7 @@ export default class Inspector extends Component {
 					/>
 
 					<SelectControl
-						label={ __( 'Ghost Button' ) }
+						label={ __( 'Border Button' ) }
 						value={ buttonGhost }
 						options={ buttonGhostOptions.map( ({ value, label }) => ( {
 							value: value,
