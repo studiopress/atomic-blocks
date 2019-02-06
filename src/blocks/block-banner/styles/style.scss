@@ -19,13 +19,10 @@
 		@media only screen and (min-width: 600px) {
 			min-height: 40vh;
 		}
-		// @media only screen and (min-width: 600px) {
-		// 	min-height: calc(100vh - 50rem);
-		// }
-		// @media only screen and (min-width: 766px) {
-		// 	min-height: calc(100vh - 40rem);
-		// 	margin-bottom: 1rem;
-		// }
+		@media only screen and (max-width: 600px) {
+			height: 100% !important;
+			min-height: initial !important;
+		}
 		.lsx-banner-image-wrap {
 			max-height: 80vh;
 			position: relative;

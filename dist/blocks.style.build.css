@@ -2675,6 +2675,10 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     @media only screen and (min-width: 600px) {
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column {
         min-height: 40vh; } }
+    @media only screen and (max-width: 600px) {
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column {
+        height: 100% !important;
+        min-height: initial !important; } }
     .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap {
       max-height: 80vh;
       position: relative;
