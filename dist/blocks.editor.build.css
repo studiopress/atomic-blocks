@@ -977,27 +977,6 @@
 /**
  * Editor styles for the admin
  */
-.lsx-block-cta {
-  margin-bottom: 0; }
-  .lsx-block-cta .lsx-button-back {
-    text-align: center;
-    font-size: 18px;
-    line-height: 1 !important;
-    background-color: #32373c;
-    border: none;
-    border-radius: 50px;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-    color: #fff;
-    cursor: pointer;
-    padding: .6em 1em;
-    text-decoration: none;
-    word-break: break-word;
-    -webkit-transition: .3s ease;
-    -o-transition: .3s ease;
-    transition: .3s ease;
-    display: inline-block; }
-
 .editor-block-list__layout [data-type="lsx-blocks/lsx-cta"] {
   margin-bottom: 1.2em; }
 
@@ -1012,7 +991,7 @@
   vertical-align: middle;
   margin-right: 8px; }
 
-.lsx-block-cta h2.editor-rich-text__tinymce.mce-content-body {
+.wp-block-lsx-blocks-lsx-cta h2.editor-rich-text__tinymce.mce-content-body {
   line-height: 1.2; }
 /**
  * Common styles

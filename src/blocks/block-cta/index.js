@@ -55,7 +55,7 @@ const blockAttributes = {
 	},
 	buttonBackgroundColor: {
 		type: 'string',
-		default: '#3373dc',
+		default: '#418ad0',
 	},
 	buttonShadowColor: {
 		type: 'string',
@@ -71,7 +71,7 @@ const blockAttributes = {
 	},
 	buttonSize: {
 		type: 'string',
-		default: 'lsx-button-size-small',
+		default: 'lsx-button-size-medium',
 	},
 	buttonShape: {
 		type: 'string',
@@ -128,7 +128,7 @@ const blockAttributes = {
 	},
 	dimRatio: {
 		type: 'number',
-		default: 50,
+		default: 100,
 	},
 };
 
@@ -249,7 +249,7 @@ class LSXCTABlock extends Component {
 						value={ buttonText }
 						formattingControls={ [] }
 						className={ classnames(
-							'lsx-button-back',
+							'lsx-button',
 							buttonShape,
 							buttonSize,
 						) }
