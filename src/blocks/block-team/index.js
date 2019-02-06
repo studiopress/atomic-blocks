@@ -67,9 +67,9 @@ const blockAttributes = {
 		type: 'string',
 		default: '',
 	},
-	imagesize: {
-		type: 'number',
-		default: 150,
+	role: {
+		type: 'string',
+		default: '',
 	},
 };
 
@@ -85,7 +85,7 @@ registerBlockType( 'lsx-blocks/block-team', {
 	attributes: blockAttributes,
 
 	edit( { attributes, className, setAttributes } ) {
-		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, imagesize } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, role } = attributes;
 
 		function onChangeTitle( updatedTitle ) {
 			setAttributes( { shortcodetitle: updatedTitle } );
@@ -111,9 +111,10 @@ registerBlockType( 'lsx-blocks/block-team', {
 			setAttributes( { include: updatedInclude } );
 		}
 
-		function onChangeImagesize( updatedImagesize ) {
-			setAttributes( { imagesize: updatedImagesize } );
+		function onChangeRole( updatedRole ) {
+			setAttributes( { role: updatedRole } );
 		}
+
 		// Orderby options
 		const orderbyOptions = [
 			{ value: 'none', label: __( 'None' ) },
@@ -164,7 +165,7 @@ registerBlockType( 'lsx-blocks/block-team', {
 								onChange={ onChangeLimit }
 							/>
 							<TextControl
-								label={ __( 'Display Excerpt? (Choose between "excerpt" or "full"' ) }
+								label={ __( 'Display Excerpt? (Choose between "excerpt" "full" or "none"' ) }
 								value={ displayexcerpt }
 								onChange={ onChangeExcerpt }
 							/>
@@ -173,12 +174,10 @@ registerBlockType( 'lsx-blocks/block-team', {
 								value={ include }
 								onChange={ onChangeInclude }
 							/>
-							<RangeControl
-								label={ __( 'Image Size' ) }
-								value={ imagesize }
-								onChange={ onChangeImagesize }
-								min={ 100 }
-								max={ 300 }
+							<TextControl
+								label={ __( 'Role: Include only from comma seperated List of Role IDs' ) }
+								value={ role }
+								onChange={ onChangeRole }
 							/>
 							<SelectControl
 								label={ __( 'Orderby' ) }
@@ -209,14 +208,14 @@ registerBlockType( 'lsx-blocks/block-team', {
 					<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
 				</div>
 				<div>
-						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; size=&quot;{ imagesize }&quot; ]
+						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; role=&quot;{ role }&quot; ]
 				</div>
 			</div>
 		);
 	},
 
 	save( { attributes, className } ) {
-		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, imagesize } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, include, role } = attributes;
 		return (
 			<div className={ className }>
 				{ shortcodetitle && (
@@ -225,7 +224,7 @@ registerBlockType( 'lsx-blocks/block-team', {
 					</div>
 				) }
 				<div>
-						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; size=&quot;{ imagesize }&quot; ]
+						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; role=&quot;{ role }&quot; ]
 				</div>
 			</div>
 		);
