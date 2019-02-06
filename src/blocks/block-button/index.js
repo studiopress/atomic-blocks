@@ -133,31 +133,31 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 		},
 		buttonBackgroundColor: {
 			type: 'string',
-			default: '#3373dc'
+			default: '#418AD0',
 		},
 		buttonShadowColor: {
 			type: 'string',
-			default: '#27639e'
+			default: '#27639e',
 		},
 		buttonHoverColor: {
 			type: 'string',
-			default: '#27639D'
+			default: '#27639D',
 		},
 		buttonTextColor: {
 			type: 'string',
-			default: '#ffffff'
+			default: '#ffffff',
 		},
 		buttonSize: {
 			type: 'string',
-			default: 'lsx-button-size-medium'
+			default: 'lsx-button-size-medium',
 		},
 		buttonShape: {
 			type: 'string',
-			default: 'lsx-button-shape-rounded'
+			default: 'lsx-button-shape-rounded',
 		},
 		buttonGhost: {
 			type: 'string',
-			default: 'lsx-button-no-border'
+			default: 'lsx-button-no-border',
 		},
 		buttonTarget: {
 			type: 'boolean',

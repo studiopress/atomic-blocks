@@ -825,11 +825,6 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     position: relative; }
   .lsx-block-button .lsx-button {
     text-align: center;
-    background-color: #32373c;
-    border-radius: 50px;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-    color: #fff;
     cursor: pointer;
     text-decoration: none;
     word-break: break-word;
@@ -837,16 +832,13 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     border-radius: 3px;
     display: inline-block;
     font-size: 14px;
-    letter-spacing: 0.6px;
+    font-weight: 600;
+    letter-spacing: 0.54px;
     line-height: 1.25;
-    padding: 10px 40px;
+    padding: 15px 40px;
     -webkit-transition: all 100ms ease;
     -o-transition: all 100ms ease;
-    transition: all 100ms ease;
-    -webkit-box-shadow: 2px 2px 0 0 #27639e;
-            box-shadow: 2px 2px 0 0 #27639e; }
-    .lsx-block-button .lsx-button:hover {
-      background-color: #27639e; }
+    transition: all 100ms ease; }
     @media only screen and (max-width: 600px) {
       .lsx-block-button .lsx-button {
         width: 100%; } }
@@ -857,14 +849,14 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   .lsx-block-button .lsx-button-shape-circular {
     border-radius: 100px; }
   .lsx-block-button .lsx-button-size-small {
-    font-size: 14px; }
+    font-size: 10px; }
   .lsx-block-button .lsx-button-size-medium {
-    font-size: 20px; }
+    font-size: 14px; }
   .lsx-block-button .lsx-button-size-large {
-    font-size: 26px;
+    font-size: 22px;
     padding: .8em 1.2em; }
   .lsx-block-button .lsx-button-size-extralarge {
-    font-size: 34px;
+    font-size: 30px;
     padding: .8em 1.2em; }
   .lsx-block-button .lsx-button-no-border {
     border: none !important; }
