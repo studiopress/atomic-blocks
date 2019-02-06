@@ -867,6 +867,27 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-box-shadow: none !important;
             box-shadow: none !important; }
 
+.lsx-button-line {
+  text-align: center; }
+  .lsx-button-line a {
+    display: inline-block;
+    position: relative; }
+    .lsx-button-line a:before, .lsx-button-line a:after {
+      content: '';
+      display: block;
+      height: 2px;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+      width: 25vw;
+      background-color: #DADDDF; }
+    .lsx-button-line a:before {
+      right: 120%; }
+    .lsx-button-line a:after {
+      left: 120%; }
+
 .lsx-button-right {
   -webkit-transform: translateX(-100%);
       -ms-transform: translateX(-100%);

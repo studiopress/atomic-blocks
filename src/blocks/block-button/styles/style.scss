@@ -80,6 +80,31 @@
 	}
 }
 
+.lsx-button-line {
+	text-align: center;
+	a {
+		display: inline-block;
+		position: relative;
+		&:before, &:after {
+			content: '';
+			display: block;
+			height: 2px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 25vw;
+			background-color: #DADDDF;
+		}
+		&:before {
+			right: 120%;
+		}
+		&:after {
+			left: 120%;
+		}
+	}
+
+}
+
 .lsx-button-right {
 	transform: translateX(-100%);
 	left: 100%;

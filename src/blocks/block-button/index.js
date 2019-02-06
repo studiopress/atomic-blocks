@@ -43,7 +43,7 @@ class LSXButtonBlock extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonHoverColor, buttonTarget }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonLine, buttonHoverColor, buttonTarget }, isSelected, className, setAttributes } = this.props;
 
 		return [
 			// Show the alignment toolbar on focus
@@ -159,6 +159,10 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 			type: 'string',
 			default: 'lsx-button-no-border',
 		},
+		buttonLine: {
+			type: 'string',
+			default: 'lsx-button-no-line',
+		},
 		buttonTarget: {
 			type: 'boolean',
 			default: false,
@@ -176,7 +180,7 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonLine, buttonTarget } = props.attributes;
 
 		// Save the block markup for the front end
 		return (

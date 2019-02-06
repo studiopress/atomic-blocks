@@ -19,6 +19,8 @@ export default class customButton extends Component {
 
 	render() {
 
+		const { buttonLine } = this.props.attributes;
+
 		return (
 			<div
 				style={ {
@@ -26,7 +28,8 @@ export default class customButton extends Component {
 				} }
 				className={ classnames(
 					this.props.className,
-					'lsx-block-button'
+					'lsx-block-button',
+					buttonLine,
 				) }
 			>
 				{ this.props.children }

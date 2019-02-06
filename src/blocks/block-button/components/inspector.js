@@ -38,7 +38,7 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget } = this.props.attributes;
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonLine, buttonTarget } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		// Button size values
@@ -56,10 +56,18 @@ export default class Inspector extends Component {
 			{ value: 'lsx-button-shape-circular', label: __( 'Circular' ) },
 		];
 
+		// Button Border Options
 		const buttonGhostOptions = [
 			{ value: 'lsx-button-border-btn', label: __( 'Border' ) },
 			{ value: 'lsx-button-no-border', label: __( 'No Border' ) },
 		];
+
+		// Button Lines Options
+		const buttonLineOptions = [
+			{ value: 'lsx-button-line', label: __( 'Add Line' ) },
+			{ value: 'lsx-button-no-line', label: __( 'No Line' ) },
+		];
+
 		// Button colors
 		const buttonColors = [
 			{ color: '#F7941D', name: 'yellow' },
@@ -108,7 +116,7 @@ export default class Inspector extends Component {
 					/>
 
 					<SelectControl
-						label={ __( 'Border Button' ) }
+						label={ __( 'Border Button with no Background' ) }
 						value={ buttonGhost }
 						options={ buttonGhostOptions.map( ({ value, label }) => ( {
 							value: value,
@@ -117,6 +125,15 @@ export default class Inspector extends Component {
 						onChange={ ( value ) => { this.props.setAttributes( { buttonGhost: value } ) } }
 					/>
 
+					<SelectControl
+						label={ __( 'Add Divider Lines Around Button' ) }
+						value={ buttonLine }
+						options={ buttonLineOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { buttonLine: value } ) } }
+					/>
 					<PanelColorSettings
 						title={ __( 'Button Color' ) }
 						initialOpen={ false }
