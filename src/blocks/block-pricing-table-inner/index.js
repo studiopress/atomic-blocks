@@ -133,13 +133,13 @@ class ABPricingTableBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-pricing-table', {
-	title: __( 'AB Pricing Table', 'atomic-blocks' ),
-	description: __( 'Add a pricing table.', 'atomic-blocks' ),
+	title: __( 'AB Pricing Column', 'atomic-blocks' ),
+	description: __( 'Add a pricing column.', 'atomic-blocks' ),
 	icon: 'cart',
 	category: 'atomic-blocks',
 	parent: [ 'atomic-blocks/ab-pricing' ],
 	keywords: [
-		__( 'pricing table', 'atomic-blocks' ),
+		__( 'pricing', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
 		__( 'buy', 'atomic-blocks' ),
 	],
