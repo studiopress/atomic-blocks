@@ -2524,17 +2524,17 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   border-radius: 100px; }
 
 .lsx-block-card .lsx-button-size-small {
-  font-size: 14px; }
+  font-size: 11px; }
 
 .lsx-block-card .lsx-button-size-medium {
-  font-size: 20px; }
+  font-size: 15px; }
 
 .lsx-block-card .lsx-button-size-large {
-  font-size: 26px;
+  font-size: 23px;
   padding: .8em 1.2em; }
 
 .lsx-block-card .lsx-button-size-extralarge {
-  font-size: 34px;
+  font-size: 31px;
   padding: .8em 1.2em; }
 
 .lsx-block-card .lsx-button-no-border {
@@ -2552,7 +2552,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
           box-shadow: none !important;
   border-radius: 0 !important;
   margin: 0;
-  margin-bottom: -1em; }
+  margin-bottom: -1.2em; }
 
 .lsx-button-right {
   -webkit-transform: translateX(-100%);
