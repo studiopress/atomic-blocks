@@ -1514,7 +1514,8 @@ div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-rich-text__tinymce
   line-height: 1; }
 
 .ab-pricing-table-title.editor-rich-text__tinymce:focus strong[data-mce-selected] {
-  background: transparent; }
+  background: transparent;
+  color: inherit; }
 
 /* Pricing table components */
 div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-block-list__block-edit div .editor-rich-text {

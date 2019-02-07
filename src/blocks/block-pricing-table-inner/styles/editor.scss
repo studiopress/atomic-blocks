@@ -101,6 +101,7 @@ div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-rich-text__tinymce
 
 .ab-pricing-table-title.editor-rich-text__tinymce:focus strong[data-mce-selected] {
 	background: transparent;
+	color: inherit;
 }
 
 /* Pricing table components */
