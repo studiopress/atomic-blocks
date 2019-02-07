@@ -2398,7 +2398,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       .lsx-block-card .lsx-card-content-wrap {
         text-align: center; } }
   .lsx-block-card .lsx-card-text {
-    font-size: 18px;
+    font-size: 15px;
     padding-top: 1em;
     padding-bottom: 1em; }
     .lsx-block-card .lsx-card-text a {
@@ -2493,7 +2493,6 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
 .lsx-block-card .lsx-button {
   margin: 0 15px;
   text-align: center;
-  background-color: #32373c;
   border-radius: 50px;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -2507,14 +2506,10 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   font-size: 14px;
   letter-spacing: 0.6px;
   line-height: 1.25;
-  padding: 10px 40px;
+  padding: 15px 40px;
   -webkit-transition: all 100ms ease;
   -o-transition: all 100ms ease;
-  transition: all 100ms ease;
-  -webkit-box-shadow: 2px 2px 0 0 #27639e;
-          box-shadow: 2px 2px 0 0 #27639e; }
-  .lsx-block-card .lsx-button:hover {
-    background-color: #27639e; }
+  transition: all 100ms ease; }
   @media only screen and (max-width: 600px) {
     .lsx-block-card .lsx-button {
       width: 100%; } }

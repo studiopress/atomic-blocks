@@ -1589,6 +1589,9 @@
 
 .lsx-card-content-wrap p.editor-rich-text__tinymce {
   line-height: 1.6; }
+
+.lsx-button {
+  margin: 0; }
 /**
  * Common styles
  * Loads on front end and back end
