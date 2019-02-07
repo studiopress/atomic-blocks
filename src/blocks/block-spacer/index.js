@@ -44,7 +44,7 @@ class LSXSpacerBlock extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor }, isSelected, className, setAttributes, toggleSelection, spacerDividerHeight } = this.props;
+		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor }, isSelected, className, setAttributes, toggleSelection, spacerDividerWidth, spacerDividerHeight } = this.props;
 
 		return [
 			// Show the block controls on focus
@@ -101,6 +101,10 @@ registerBlockType( 'lsx-blocks/lsx-spacer', {
 			type: 'number',
 			default: 30,
 		},
+		spacerDividerWidth: {
+			type: 'number',
+			default: 10,
+		},
 		spacerDivider: {
 			type: 'boolean',
 			default: false
@@ -126,7 +130,7 @@ registerBlockType( 'lsx-blocks/lsx-spacer', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = props.attributes;
+		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerWidth, spacerDividerHeight } = props.attributes;
 
 		// Save the block markup for the front end
 		return (

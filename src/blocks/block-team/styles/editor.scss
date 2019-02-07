@@ -1,0 +1,39 @@
+/**
+ * Editor styles for the admin
+ */
+
+ .lsx-block-team {
+    margin-bottom: 0;
+
+    .components-button:not(:disabled):not([aria-disabled=true]):focus {
+        background: none;
+        box-shadow: none;
+    }
+}
+
+.wp-block-lsx-blocks-block-team {
+	text-align: center;
+	.lsx-title {
+		small {
+			display: block;
+		}
+	}
+}
+
+.editor-block-list__layout [data-type="lsx-blocks/lsx-team"] {
+    margin-bottom: 1.2em;
+}
+
+.lsx-team-info {
+    h2.editor-rich-text__tinymce {
+        line-height: 1.2;
+    }
+
+    p.editor-rich-text__tinymce {
+        line-height: 1.6;
+    }
+
+    .lsx-team-title + .lsx-team-title {
+        line-height: 1.8;
+    }
+}

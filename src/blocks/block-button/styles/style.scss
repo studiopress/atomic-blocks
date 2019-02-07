@@ -20,10 +20,6 @@
 
 	.lsx-button {
 		text-align: center;
-		background-color: #32373c;
-		border-radius: 50px;
-		box-shadow: none;
-		color: #fff;
 		cursor: pointer;
 		text-decoration: none;
 		word-break: break-word;
@@ -31,18 +27,13 @@
 		border-radius: 3px;
 		display: inline-block;
 		font-size: 14px;
-		font-weight: 700;
-		height: 48px;
-		left: 0;
-		letter-spacing: 0.6px;
+		font-weight: 600;
+		letter-spacing: 0.54px;
 		line-height: 1.25;
 		padding: 15px 40px;
-		position: relative;
-		top: 0;
 		transition: all 100ms ease;
-		box-shadow: 2px 2px 0 0 #27639e;
-		&:hover {
-			background-color: #27639e;
+		@media only screen and (max-width: 600px) {
+			width: 100%;
 		}
 	}
 
@@ -59,22 +50,59 @@
 	}
 
 	.lsx-button-size-small {
-		font-size: 14px;
+		font-size: 10px;
 	}
 
 	.lsx-button-size-medium {
-		font-size: 20px;
+		font-size: 14px;
 	}
 
 	.lsx-button-size-large {
-		font-size: 26px;
+		font-size: 22px;
 		padding: .8em 1.2em;
 	}
 
 	.lsx-button-size-extralarge {
-		font-size: 34px;
+		font-size: 30px;
 		padding: .8em 1.2em;
 	}
+
+	.lsx-button-no-border {
+		border: none !important;
+	}
+
+	.lsx-button-border-btn {
+		border-width: 2px;
+		border-style: solid;
+		background-color: transparent !important;
+		box-shadow: none !important;
+
+	}
+}
+
+.lsx-button-line {
+	text-align: center;
+	a {
+		display: inline-block;
+		position: relative;
+		&:before, &:after {
+			content: '';
+			display: block;
+			height: 2px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 25vw;
+			background-color: #DADDDF;
+		}
+		&:before {
+			right: 120%;
+		}
+		&:after {
+			left: 120%;
+		}
+	}
+
 }
 
 .lsx-button-right {

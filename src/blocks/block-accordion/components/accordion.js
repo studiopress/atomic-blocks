@@ -31,7 +31,6 @@ export default class Accordion extends Component {
 					this.props.className,
 					accordionAlignment,
 					'lsx-block-accordion',
-					'lsx-font-size-' + accordionFontSize,
 				) }
 			>
 				{ this.props.children }

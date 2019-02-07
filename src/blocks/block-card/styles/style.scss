@@ -1,0 +1,285 @@
+/**
+ * card styles
+ * Loads on front end and back end
+ */
+
+ .lsx-block-card {
+	background: #f2f2f2;
+	color: #293038;
+	margin: 0 auto;
+	//padding: 3%;
+	border-radius: 5px;
+	margin-bottom: 1.2em;
+	display: flex;
+	flex-flow: row wrap;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 100%;
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		display: inline-block;
+	}
+	.lsx-card-column {
+		display: block;
+		flex: 3 0 0;
+
+		@media only screen and (max-width: 600px) {
+			flex: auto;
+		}
+	}
+
+	.lsx-card-avatar-wrap {
+		position: relative;
+		z-index: 0;
+		flex: 1 0 0;
+
+		@media only screen and (max-width: 600px) {
+			flex: auto;
+			//max-width: 210px;
+			margin: 0 auto;
+		}
+	}
+
+	.lsx-card-content-wrap {
+		padding: 15px;
+		@media only screen and (max-width: 600px) {
+			text-align: center;
+		}
+	}
+
+	.lsx-card-text {
+		font-size: 18px;
+		padding-top: 1em;
+		padding-bottom: 1em;
+		a {
+			color: inherit;
+			box-shadow: 0 -1px 0 inset;
+			text-decoration: none;
+
+			&:hover {
+				color: inherit;
+				box-shadow: 0 -2px 0 inset;
+			}
+		}
+
+		p {
+			line-height: 1.6;
+
+			&:last-child {
+			margin-bottom: 0;
+			}
+		}
+	}
+
+	.lsx-card-name {
+		font-size: 1.4em;
+		font-weight: bold;
+		line-height: 1.2;
+		margin: 0;
+		text-align: center;
+		margin-top: 1em;
+	}
+
+	.lsx-card-title {
+		text-align: center;
+		opacity: .8;
+		padding-top: 5px;
+		margin-bottom: 0;
+	}
+
+	.lsx-card-image-square {
+		// position: absolute;
+		// top: 0;
+		// left: 0;
+		// height: 100%;
+		// width: 100%;
+		// z-index: 5;
+	}
+
+	.lsx-card-text:empty,
+	.lsx-card-title:empty,
+	.lsx-card-name:empty {
+		display: none;
+	}
+
+	.lsx-card-image-wrap {
+		width: 100%;
+		background: #ddd;
+		position: relative;
+		width: 100%;
+
+		// &:before {
+		// 	content: '';
+		// 	display: inline-block;
+		// 	padding-top: 100%;
+		// }
+
+		button {
+			position: absolute;
+			left: 0;
+			z-index: 50;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		button:focus {
+			background: none;
+			border: none;
+			outline: none;
+			box-shadow: none;
+		}
+
+		img {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+			position: relative;
+			z-index: 5;
+		}
+	}
+
+}
+
+.right .lsx-card-avatar-wrap {
+	order: 2;
+}
+
+.round .lsx-card-image-wrap {
+	border-radius: 500px;
+	overflow: hidden;
+
+	&:before {
+		content: '';
+		display: inline-block;
+		padding-top: 92%;
+	}
+
+	img {
+		border-radius: 500px;
+	}
+}
+
+#editor .lsx-has-avatar {
+
+	.lsx-card-image-square {
+		&:hover {
+			cursor: pointer;
+
+			img {
+				opacity: .7 !important;
+			}
+		}
+
+		button {
+			top: 0;
+			left: 0;
+			opacity: 1 !important;
+			height: 100%;
+		}
+	}
+
+}
+
+/**
+ * Button styles
+ */
+
+ .lsx-block-card {
+
+	// .blocks-rich-text {
+	// 	display: inline-flex;
+	// }
+
+	.components-autocomplete {
+		display: inline-block;
+		width: auto;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.lsx-button {
+		margin: 0 15px;
+		text-align: center;
+		background-color: #32373c;
+		border-radius: 50px;
+		box-shadow: none;
+		color: #fff;
+		cursor: pointer;
+		text-decoration: none;
+		word-break: break-word;
+		border: 0 none;
+		border-radius: 3px;
+		display: inline-block;
+		font-size: 14px;
+		letter-spacing: 0.6px;
+		line-height: 1.25;
+		padding: 10px 40px;
+		transition: all 100ms ease;
+		box-shadow: 2px 2px 0 0 #27639e;
+		&:hover {
+			background-color: #27639e;
+		}
+		@media only screen and (max-width: 600px) {
+			width: 100%;
+		}
+	}
+
+	.lsx-button-shape-square {
+		border-radius: 0;
+	}
+
+	.lsx-button-shape-rounded {
+		border-radius: 3px;
+	}
+
+	.lsx-button-shape-circular {
+		border-radius: 100px;
+	}
+
+	.lsx-button-size-small {
+		font-size: 14px;
+	}
+
+	.lsx-button-size-medium {
+		font-size: 20px;
+	}
+
+	.lsx-button-size-large {
+		font-size: 26px;
+		padding: .8em 1.2em;
+	}
+
+	.lsx-button-size-extralarge {
+		font-size: 34px;
+		padding: .8em 1.2em;
+	}
+
+	.lsx-button-no-border {
+		border: none !important;
+	}
+
+	.lsx-button-border-btn {
+		border-width: 2px;
+		border-style: solid;
+		background-color: transparent !important;
+		box-shadow: none !important;
+	}
+
+	.lsx-button-flat {
+		box-shadow: none !important;
+		border-radius: 0 !important;
+		margin: 0;
+		margin-bottom: -1em;
+	}
+}
+
+.lsx-button-right {
+	transform: translateX(-100%);
+	left: 100%;
+	position: relative;
+}
+
+.lsx-button-center {
+	margin: 0 auto;
+}
+

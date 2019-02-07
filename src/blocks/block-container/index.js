@@ -43,27 +43,27 @@ const {
 const blockAttributes = {
 	containerPaddingTop: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerPaddingRight: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerPaddingBottom: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerPaddingLeft: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerMarginTop: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerMarginBottom: {
 		type: 'number',
-		default: 0,
+		default: 3,
 	},
 	containerWidth: {
 		type: 'string',
@@ -71,7 +71,7 @@ const blockAttributes = {
 	},
 	containerMaxWidth: {
 		type: 'number',
-		default: 1600,
+		default: 1200,
 	},
 	containerBackgroundColor: {
 		type: 'string',
@@ -91,6 +91,10 @@ const blockAttributes = {
 		source: 'attribute',
 		attribute: 'alt',
 		selector: 'img',
+	},
+	bgPosition: {
+		type: 'string',
+		default: 'lsx-container-initial',
 	},
 	containerDimRatio: {
 		type: 'number',
@@ -117,6 +121,7 @@ class LSXContainerBlock extends Component {
 				containerImgURL,
 				containerImgID,
 				containerImgAlt,
+				bgPosition,
 				containerDimRatio,
 			},
 			attributes,
@@ -155,6 +160,8 @@ class LSXContainerBlock extends Component {
 							<img
 								className={ classnames(
 									'lsx-container-image',
+									bgPosition,
+									{ containerImgAlt },
 									dimRatioToClass( containerDimRatio ),
 									{
 										'has-background-dim': containerDimRatio !== 0,
@@ -220,6 +227,7 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 			containerImgURL,
 			containerImgID,
 			containerImgAlt,
+			bgPosition,
 			containerDimRatio,
 		} = props.attributes;
 
@@ -232,6 +240,7 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 							<img
 								className={ classnames(
 									'lsx-container-image',
+									bgPosition,
 									dimRatioToClass( containerDimRatio ),
 									{
 										'has-background-dim': containerDimRatio !== 0,

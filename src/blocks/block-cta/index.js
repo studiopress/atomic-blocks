@@ -55,7 +55,15 @@ const blockAttributes = {
 	},
 	buttonBackgroundColor: {
 		type: 'string',
-		default: '#3373dc',
+		default: '#418ad0',
+	},
+	buttonShadowColor: {
+		type: 'string',
+		default: '#27639e',
+	},
+	buttonHoverColor: {
+		type: 'string',
+		default: '#27639D',
 	},
 	buttonTextColor: {
 		type: 'string',
@@ -63,7 +71,7 @@ const blockAttributes = {
 	},
 	buttonSize: {
 		type: 'string',
-		default: 'lsx-button-size-small',
+		default: 'lsx-button-size-medium',
 	},
 	buttonShape: {
 		type: 'string',
@@ -120,7 +128,7 @@ const blockAttributes = {
 	},
 	dimRatio: {
 		type: 'number',
-		default: 50,
+		default: 100,
 	},
 };
 
@@ -133,6 +141,8 @@ class LSXCTABlock extends Component {
 				buttonUrl,
 				buttonAlignment,
 				buttonBackgroundColor,
+				buttonShadowColor,
+				buttonHoverColor,
 				buttonTextColor,
 				buttonSize,
 				buttonShape,
@@ -239,13 +249,15 @@ class LSXCTABlock extends Component {
 						value={ buttonText }
 						formattingControls={ [] }
 						className={ classnames(
-							'lsx-button-back',
+							'lsx-button',
 							buttonShape,
 							buttonSize,
 						) }
 						style={ {
 							color: buttonTextColor,
 							backgroundColor: buttonBackgroundColor,
+							boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+							borderColor: buttonBackgroundColor,
 						} }
 						onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 					/>
@@ -308,6 +320,8 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 			buttonUrl,
 			buttonAlignment,
 			buttonBackgroundColor,
+			buttonShadowColor,
+			buttonHoverColor,
 			buttonTextColor,
 			buttonSize,
 			buttonShape,
@@ -385,7 +399,13 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 							style={ {
 								color: buttonTextColor,
 								backgroundColor: buttonBackgroundColor,
+								boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+								borderColor: buttonBackgroundColor,
 							} }
+							data-onhover={ buttonHoverColor }
+							data-offhover={ buttonBackgroundColor }
+							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+							onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
 						>
 							<RichText.Content
 								value={ buttonText }

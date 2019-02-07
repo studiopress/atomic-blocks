@@ -4,18 +4,44 @@
  */
 
  .lsx-block-accordion {
-	margin-bottom: 1.2em;
+	margin-bottom: 2em;
 	background: #F5F5F5;
 	border: 1px solid #E0E0E0;
+	details {
+		summary {
+			&::-webkit-details-marker {
+				display: none
+			}
+			&:after {
+				content: "+";
+				color: #418AD0;
+				float: left;
+				font-size: 1.5em;
+				font-weight: bold;
+				margin: -5px 10px 0 0;
+			}
+		}
+		&[open] {
+			summary {
+				&:after {
+					content: "-";
+					font-size: 2em;
+					margin: -13px 10px 0 0;
+				}
+			}
+		}
+	}
+
 	.lsx-accordion-title {
 		padding: 10px 15px;
+		font-weight: bold;
 		p {
 			display: inline;
 		}
 	}
 
 	.lsx-accordion-text {
-		padding: 10px 15px;
+		padding: 10px 15px 10px 40px;
 
 		a {
 			color: inherit;

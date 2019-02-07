@@ -1,7 +1,7 @@
 /**
- * BLOCK: Testimonials Shortcode Block
+ * BLOCK: Team Members Shortcode Block
  *
- * Registering a testimonials shortcode block with Gutenberg.
+ * Registering a team members shortcode block with Gutenberg.
  */
 
 // Import styles
@@ -33,15 +33,15 @@ const {
 const blockAttributes = {
 	columns: {
 		type: 'number',
-		default: 3,
+		default: 2,
 	},
 	shortcodetitle: {
 		type: 'string',
-		default: 'Testimonials',
+		default: 'Team',
 	},
 	shortcodeSubtitle: {
 		type: 'string',
-		default: 'What our clients are saying...',
+		default: 'This is Our Team...',
 	},
 	displaylimit: {
 		type: 'string',
@@ -50,10 +50,6 @@ const blockAttributes = {
 	displayexcerpt: {
 		type: 'string',
 		default: 'excerpt',
-	},
-	displayorder: {
-		type: 'string',
-		default: 'ASC',
 	},
 	orderby: {
 		type: 'string',
@@ -67,25 +63,33 @@ const blockAttributes = {
 		type: 'string',
 		default: 'true',
 	},
+	showicons: {
+		type: 'string',
+		default: 'true',
+	},
 	include: {
+		type: 'string',
+		default: '',
+	},
+	role: {
 		type: 'string',
 		default: '',
 	},
 };
 
-registerBlockType( 'lsx-blocks/block-testimonials', {
-	title: __( 'LSX Testimonials Shortcode' ), // Block title.
-	icon: 'format-quote', // Block icon
+registerBlockType( 'lsx-blocks/block-team', {
+	title: __( 'LSX Team Members Shortcode' ), // Block title.
+	icon: 'groups', // Block icon
 	category: 'lsx-blocks', // Block category
 	keywords: [
 		__( 'LSX' ),
-		__( 'TESTIMONIALS' ),
+		__( 'Team Members' ),
 		__( 'Shortcode' ),
 	],
 	attributes: blockAttributes,
 
 	edit( { attributes, className, setAttributes } ) {
-		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, displayorder, orderby, carousel, showimage, include } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, showicons, include, role } = attributes;
 
 		function onChangeTitle( updatedTitle ) {
 			setAttributes( { shortcodetitle: updatedTitle } );
@@ -107,12 +111,12 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 			setAttributes( { displayexcerpt: updatedExcerpt } );
 		}
 
-		function onChangeOrder( updatedOrder ) {
-			setAttributes( { displayorder: updatedOrder } );
-		}
-
 		function onChangeInclude( updatedInclude ) {
 			setAttributes( { include: updatedInclude } );
+		}
+
+		function onChangeRole( updatedRole ) {
+			setAttributes( { role: updatedRole } );
 		}
 
 		// Orderby options
@@ -131,6 +135,12 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 
 		// Show Image options
 		const showimageOptions = [
+			{ value: 'true', label: __( 'Yes' ) },
+			{ value: 'false', label: __( 'No' ) },
+		];
+
+		// Show Social Icon options
+		const showiconsOptions = [
 			{ value: 'true', label: __( 'Yes' ) },
 			{ value: 'false', label: __( 'No' ) },
 		];
@@ -165,40 +175,47 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 								onChange={ onChangeLimit }
 							/>
 							<TextControl
-								label={ __( 'Display Excerpt? (Choose between "excerpt" or "full"' ) }
+								label={ __( 'Display Excerpt? (Choose between "excerpt" "full" or "none"' ) }
 								value={ displayexcerpt }
 								onChange={ onChangeExcerpt }
-							/>
-							<TextControl
-								label={ __( 'Display Order (Choose between ASC or DESC' ) }
-								value={ displayorder }
-								onChange={ onChangeOrder }
 							/>
 							<TextControl
 								label={ __( 'Include only from comma seperated List of IDs' ) }
 								value={ include }
 								onChange={ onChangeInclude }
 							/>
+							<TextControl
+								label={ __( 'Role: Include only from comma seperated List of Role IDs' ) }
+								value={ role }
+								onChange={ onChangeRole }
+							/>
 							<SelectControl
 								label={ __( 'Orderby' ) }
-								description={ __( 'Choose the parameter you wish your testimonials to be ordered by' ) }
+								description={ __( 'Choose the parameter you wish your teams to be ordered by' ) }
 								options={ orderbyOptions }
 								value={ orderby }
 								onChange={ ( value ) => setAttributes( { orderby: value } ) }
 							/>
 							<SelectControl
 								label={ __( 'Carousel' ) }
-								description={ __( 'Choose if the testimonials will show as carousel' ) }
+								description={ __( 'Choose if the teams will show as carousel' ) }
 								options={ carouselOptions }
 								value={ carousel }
 								onChange={ ( value ) => setAttributes( { carousel: value } ) }
 							/>
 							<SelectControl
 								label={ __( 'Show Avatar' ) }
-								description={ __( 'Choose if the testimonials will show the avatar' ) }
+								description={ __( 'Choose if the teams will show the avatar' ) }
 								options={ showimageOptions }
 								value={ showimage }
 								onChange={ ( value ) => setAttributes( { showimage: value } ) }
+							/>
+							<SelectControl
+								label={ __( 'Show Social Icons' ) }
+								description={ __( 'Choose if the teams member will show the social icons' ) }
+								options={ showiconsOptions }
+								value={ showicons }
+								onChange={ ( value ) => setAttributes( { showicons: value } ) }
 							/>
 
 						</PanelBody>
@@ -207,15 +224,17 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 				<div className={ className }>
 					<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
 				</div>
-				<div className="lsx-testimonial-body">
-						[lsx_testimonials back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; order=&quot;{ displayorder }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; ]
+				<div className={
+					showicons + '-icons'
+				}>
+						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; role=&quot;{ role }&quot; ]
 				</div>
 			</div>
 		);
 	},
 
 	save( { attributes, className } ) {
-		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, displayorder, orderby, carousel, showimage, include } = attributes;
+		const { columns, shortcodetitle, shortcodeSubtitle, displaylimit, displayexcerpt, orderby, carousel, showimage, showicons, include, role } = attributes;
 		return (
 			<div className={ className }>
 				{ shortcodetitle && (
@@ -223,8 +242,10 @@ registerBlockType( 'lsx-blocks/block-testimonials', {
 						<h2 className="lsx-title">{ shortcodetitle }<small>{ shortcodeSubtitle }</small></h2>
 					</div>
 				) }
-				<div className="lsx-testimonial-body">
-						[lsx_testimonials back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; order=&quot;{ displayorder }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; ]
+				<div className={
+					showicons + '-icons'
+				}>
+						[lsx_team back columns=&quot;{ columns }&quot; limit=&quot;{ displaylimit }&quot; display=&quot;{ displayexcerpt }&quot; orderby=&quot;{ orderby }&quot; carousel=&quot;{ carousel }&quot; show_image=&quot;{ showimage }&quot; include=&quot;{ include }&quot; role=&quot;{ role }&quot; ]
 				</div>
 			</div>
 		);

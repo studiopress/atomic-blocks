@@ -38,7 +38,7 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = this.props.attributes;
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonLine, buttonTarget } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		// Button size values
@@ -56,6 +56,18 @@ export default class Inspector extends Component {
 			{ value: 'lsx-button-shape-circular', label: __( 'Circular' ) },
 		];
 
+		// Button Border Options
+		const buttonGhostOptions = [
+			{ value: 'lsx-button-border-btn', label: __( 'Border' ) },
+			{ value: 'lsx-button-no-border', label: __( 'No Border' ) },
+		];
+
+		// Button Lines Options
+		const buttonLineOptions = [
+			{ value: 'lsx-button-line', label: __( 'Add Line' ) },
+			{ value: 'lsx-button-no-line', label: __( 'No Line' ) },
+		];
+
 		// Button colors
 		const buttonColors = [
 			{ color: '#F7941D', name: 'yellow' },
@@ -70,61 +82,106 @@ export default class Inspector extends Component {
 
 		// Update color values
 		const onChangeButtonColor = value => setAttributes( { buttonBackgroundColor: value } );
+		const onChangeButtonShadowColor = value => setAttributes( { buttonShadowColor: value } );
+		const onChangeButtonHoverColor = value => setAttributes( { buttonHoverColor: value } );
 		const onChangeButtonTextColor = value => setAttributes( { buttonTextColor: value } );
 
 		return (
-		<InspectorControls key="inspector">
-			<PanelBody>
-				<ToggleControl
-					label={ __( 'Open link in new window' ) }
-					checked={ buttonTarget }
-					onChange={ () => this.props.setAttributes( { buttonTarget: ! buttonTarget } ) }
-				/>
+			<InspectorControls key="inspector">
+				<PanelBody>
+					<ToggleControl
+						label={ __( 'Open link in new window' ) }
+						checked={ buttonTarget }
+						onChange={ () => this.props.setAttributes( { buttonTarget: ! buttonTarget } ) }
+					/>
 
-				<SelectControl
-					label={ __( 'Button Size' ) }
-					value={ buttonSize }
-					options={ buttonSizeOptions.map( ({ value, label }) => ( {
-						value: value,
-						label: label,
-					} ) ) }
-					onChange={ ( value ) => { this.props.setAttributes( { buttonSize: value } ) } }
-				/>
+					<SelectControl
+						label={ __( 'Button Size' ) }
+						value={ buttonSize }
+						options={ buttonSizeOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { buttonSize: value } ) } }
+					/>
 
-				<SelectControl
-					label={ __( 'Button Shape' ) }
-					value={ buttonShape }
-					options={ buttonShapeOptions.map( ({ value, label }) => ( {
-						value: value,
-						label: label,
-					} ) ) }
-					onChange={ ( value ) => { this.props.setAttributes( { buttonShape: value } ) } }
-				/>
+					<SelectControl
+						label={ __( 'Button Shape' ) }
+						value={ buttonShape }
+						options={ buttonShapeOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { buttonShape: value } ) } }
+					/>
 
-				<PanelColorSettings
-					title={ __( 'Button Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: buttonBackgroundColor,
-						onChange: onChangeButtonColor,
-						label: __( 'Button Color' ),
-						colors: buttonColors,
-					} ] }
-				>
-				</PanelColorSettings>
+					<SelectControl
+						label={ __( 'Border Button with no Background' ) }
+						value={ buttonGhost }
+						options={ buttonGhostOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { buttonGhost: value } ) } }
+					/>
 
-				<PanelColorSettings
-					title={ __( 'Button Text Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: buttonTextColor,
-						onChange: onChangeButtonTextColor,
-						label: __( 'Button Text Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-			</PanelBody>
-		</InspectorControls>
+					<SelectControl
+						label={ __( 'Add Divider Lines Around Button' ) }
+						value={ buttonLine }
+						options={ buttonLineOptions.map( ({ value, label }) => ( {
+							value: value,
+							label: label,
+						} ) ) }
+						onChange={ ( value ) => { this.props.setAttributes( { buttonLine: value } ) } }
+					/>
+					<PanelColorSettings
+						title={ __( 'Button Color' ) }
+						initialOpen={ false }
+						colorSettings={ [ {
+							value: buttonBackgroundColor,
+							onChange: onChangeButtonColor,
+							label: __( 'Button Color' ),
+							colors: buttonColors,
+						} ] }
+					>
+					</PanelColorSettings>
+
+					<PanelColorSettings
+						title={ __( 'Button Shadow Color' ) }
+						initialOpen={ false }
+						colorSettings={ [ {
+							value: buttonShadowColor,
+							onChange: onChangeButtonShadowColor,
+							label: __( 'Button Shadow Color' ),
+							colors: buttonColors,
+						} ] }
+					>
+					</PanelColorSettings>
+
+					<PanelColorSettings
+						title={ __( 'Button Hover Color' ) }
+						initialOpen={ false }
+						colorSettings={ [ {
+							value: buttonHoverColor,
+							onChange: onChangeButtonHoverColor,
+							label: __( 'Button Hover Color' ),
+							colors: buttonColors,
+						} ] }
+					>
+					</PanelColorSettings>
+
+					<PanelColorSettings
+						title={ __( 'Button Text Color' ) }
+						initialOpen={ false }
+						colorSettings={ [ {
+							value: buttonTextColor,
+							onChange: onChangeButtonTextColor,
+							label: __( 'Button Text Color' ),
+						} ] }
+					>
+					</PanelColorSettings>
+				</PanelBody>
+			</InspectorControls>
 		);
 	}
 }

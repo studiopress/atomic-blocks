@@ -1,0 +1,23 @@
+/**
+ * Team styles
+ * Loads on front end and back end
+ */
+
+ .wp-block-lsx-blocks-block-team {
+	margin: 0 auto;
+	margin-bottom: 1.2em;
+	.true-icons {
+		.lsx-team-socials {
+			display: initial;
+		}
+	}
+	.false-icons {
+		.lsx-team-socials {
+			display: none;
+		}
+	}
+	.lsx-team-shortcode {
+		width: 100% !important;
+	}
+}
+

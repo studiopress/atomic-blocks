@@ -19,13 +19,15 @@ export default class CallToAction extends Component {
 
 	render() {
 		// Setup the attributes
-		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaWidth, ctaBackgroundColor, ctaTextColor }  } = this.props;
+		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaWidth, ctaBackgroundColor, ctaTextColor }  } = this.props;
 
 		return (
 			<div
 				style={ {
 					backgroundColor: ctaBackgroundColor,
 					textAlign: buttonAlignment,
+					boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+					borderColor: buttonBackgroundColor,
 				} }
 				className={ classnames(
 					this.props.className,

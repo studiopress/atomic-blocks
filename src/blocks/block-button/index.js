@@ -43,7 +43,7 @@ class LSXButtonBlock extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonLine, buttonHoverColor, buttonTarget }, isSelected, className, setAttributes } = this.props;
 
 		return [
 			// Show the alignment toolbar on focus
@@ -71,9 +71,11 @@ class LSXButtonBlock extends Component {
 						'lsx-button',
 						buttonShape,
 						buttonSize,
+						buttonGhost,
 					) }
 					style={ {
 						color: buttonTextColor,
+                        boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
 						backgroundColor: buttonBackgroundColor,
 					} }
 					onChange={ (value) => setAttributes( { buttonText: value } ) }
@@ -122,67 +124,94 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 		},
 		buttonUrl: {
 			type: 'string',
-            source: 'attribute',
-            selector: 'a',
-            attribute: 'href',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
 		},
 		buttonAlignment: {
 			type: 'string',
 		},
 		buttonBackgroundColor: {
 			type: 'string',
-			default: '#3373dc'
+			default: '#418AD0',
+		},
+		buttonShadowColor: {
+			type: 'string',
+			default: '#27639e',
+		},
+		buttonHoverColor: {
+			type: 'string',
+			default: '#27639D',
 		},
 		buttonTextColor: {
 			type: 'string',
-			default: '#ffffff'
+			default: '#ffffff',
 		},
 		buttonSize: {
 			type: 'string',
-			default: 'lsx-button-size-medium'
+			default: 'lsx-button-size-medium',
 		},
 		buttonShape: {
 			type: 'string',
-			default: 'lsx-button-shape-rounded'
+			default: 'lsx-button-shape-rounded',
+		},
+		buttonGhost: {
+			type: 'string',
+			default: 'lsx-button-no-border',
+		},
+		buttonLine: {
+			type: 'string',
+			default: 'lsx-button-no-line',
 		},
 		buttonTarget: {
 			type: 'boolean',
-			default: false
+			default: false,
 		},
 	},
 
 	// Render the block components
 	edit: LSXButtonBlock,
 
+	onMouseEnterHandler: function() {
+		console.log( 'testing the hover' );
+	},
+
 	// Save the attributes and markup
 	save: function( props ) {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
+		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonLine, buttonTarget } = props.attributes;
 
 		// Save the block markup for the front end
 		return (
 			<CustomButton { ...props }>
 				{	// Check if there is button text and output
 					buttonText && (
-					<a
-						href={ buttonUrl }
-						target={ buttonTarget ? '_blank' : '_self' }
-						className={ classnames(
-							'lsx-button',
-							buttonShape,
-							buttonSize,
-						) }
-						style={ {
-							color: buttonTextColor,
-							backgroundColor: buttonBackgroundColor,
-						} }
-					>
-						<RichText.Content
-							value={ buttonText }
-						/>
-					</a>
-				) }
+						<a
+							href={ buttonUrl }
+							target={ buttonTarget ? '_blank' : '_self' }
+							className={ classnames(
+								'lsx-button',
+								buttonShape,
+								buttonSize,
+								buttonGhost,
+							) }
+							style={ {
+								color: buttonTextColor,
+								backgroundColor: buttonBackgroundColor,
+								boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+								borderColor: buttonBackgroundColor,
+							} }
+							data-onhover={ buttonHoverColor }
+							data-offhover={ buttonBackgroundColor }
+							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+							onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+						>
+							<RichText.Content
+								value={ buttonText }
+							/>
+						</a>
+					) }
 			</CustomButton>
 		);
 	},

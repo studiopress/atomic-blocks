@@ -1,0 +1,53 @@
+/**
+ * Editor styles for the admin
+ */
+
+ .lsx-block-card {
+	margin-bottom: 0;
+	&+ .blocks-button__inline-link .editor-url-input {
+        display: inline-block;
+        width: auto;
+    }
+
+    &+ .blocks-button__inline-link .components-button {
+        display: inline-block;
+    }
+
+    &+ .blocks-button__inline-link svg {
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+}
+
+.editor-block-list__layout [data-type="lsx-blocks/lsx-card-box"] {
+    margin-bottom: 1.2em;
+}
+
+.wp-block-lsx-blocks-lsx-card-box {
+	margin-top: 1em;
+}
+
+.lsx-card-image-wrap {
+	button {
+		position: relative !important;
+	}
+    svg {
+        pointer-events: none;
+        margin: 0 auto;
+    }
+
+    .components-button:not(:disabled):not([aria-disabled=true]):focus {
+        background: none;
+        box-shadow: none;
+    }
+}
+
+.lsx-card-content-wrap {
+    h2.editor-rich-text__tinymce {
+        line-height: 1.2;
+    }
+
+    p.editor-rich-text__tinymce {
+        line-height: 1.6;
+    }
+}

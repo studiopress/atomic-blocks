@@ -19,17 +19,14 @@ export default class customButton extends Component {
 
 	render() {
 
-		const { buttonLine } = this.props.attributes;
-
 		return (
 			<div
 				style={ {
-					textAlign: this.props.attributes.buttonAlignment,
+					textAlign: this.props.attributes.bannerAlignment,
 				} }
 				className={ classnames(
 					this.props.className,
-					'lsx-block-button',
-					buttonLine,
+					'lsx-block-button lsx-block-banner-button'
 				) }
 			>
 				{ this.props.children }
@@ -37,4 +34,3 @@ export default class customButton extends Component {
 		);
 	}
 }
-

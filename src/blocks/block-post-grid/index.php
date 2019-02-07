@@ -45,7 +45,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 
 			// Get the featured image
 			if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
-				if( $attributes['imageCrop'] === 'landscape' ) {
+				if ( 'landscape' === $attributes['imageCrop'] ) {
 					$post_thumb_size = 'lsx-block-post-grid-landscape';
 				} else {
 					$post_thumb_size = 'lsx-block-post-grid-square';
@@ -70,16 +70,25 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 					$title = __( 'Untitled', 'lsx-blocks' );
 				}
 
-				$list_items_markup .= sprintf(
-					'<h2 class="lsx-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
-					esc_url( get_permalink( $post_id ) ),
-					esc_html( $title )
-				);
-
 				// Wrap the byline content
 				$list_items_markup .= sprintf(
 					'<div class="lsx-block-post-grid-byline">'
 				);
+
+					if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
+						$list_items_markup .= sprintf(
+							'<div class="lsx-block-post-avatar"><img src="%1$s" alt="avatar"/></div>',
+							esc_html( get_avatar_url( $post->post_author ) )
+						);
+					}
+					// Get the post date
+					if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+						$list_items_markup .= sprintf(
+							'<time datetime="%1$s" class="lsx-block-post-grid-date">%2$s</time>',
+							esc_attr( get_the_date( 'c', $post_id ) ),
+							esc_html( get_the_date( '', $post_id ) )
+						);
+					}
 
 					// Get the post author
 					if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
@@ -90,18 +99,16 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 						);
 					}
 
-					// Get the post date
-					if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-						$list_items_markup .= sprintf(
-							'<time datetime="%1$s" class="lsx-block-post-grid-date">%2$s</time>',
-							esc_attr( get_the_date( 'c', $post_id ) ),
-							esc_html( get_the_date( '', $post_id ) )
-						);
-					}
-
 				// Close the byline content
+
 				$list_items_markup .= sprintf(
 					'</div>'
+				);
+
+				$list_items_markup .= sprintf(
+					'<h2 class="lsx-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+					esc_url( get_permalink( $post_id ) ),
+					esc_html( $title )
 				);
 
 				// Wrap the excerpt content
@@ -112,7 +119,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 					// Get the excerpt
 					$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
 
-					if( empty( $excerpt ) ) {
+					if ( empty( $excerpt ) ) {
 						$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
 					}
 
@@ -121,7 +128,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 					}
 
 					if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-						$list_items_markup .=  wp_kses_post( $excerpt );
+						$list_items_markup .= wp_kses_post( $excerpt );
 					}
 
 					if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
@@ -332,6 +339,9 @@ function lsx_blocks_get_author_info( $object, $field_name, $request ) {
 
 	// Get the author link
 	$author_data['author_link'] = get_author_posts_url( $object['author'] );
+
+	// Get the author avatar
+	$author_data['author_avatar'] = get_avatar_url( $object['author'] );
 
 	// Return the author data
 	return $author_data;

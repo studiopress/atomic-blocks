@@ -49,6 +49,9 @@
 	.lsx-container-content {
 		margin: 0 auto;
 		position: relative;
+		@media only screen and (max-width: 900px) {
+			padding: 1em 3em;
+		}
 	}
 
 	.lsx-container-image:not(.has-background-dim) {
@@ -97,5 +100,29 @@
 
 	.has-background-dim-100 {
 		opacity: 1;
+	}
+
+	.lsx-container-bottom {
+		object-position: bottom;
+	}
+
+	.lsx-container-top {
+		object-position: top;
+	}
+
+	.lsx-container-center {
+		object-position: center;
+	}
+
+	.lsx-container-left {
+		object-position: left;
+		object-fit: contain;
+	}
+	.lsx-container-right {
+		object-position: right;
+		object-fit: contain;
+	}
+	.lsx-container-clear {
+		object-position: initial;
 	}
 }

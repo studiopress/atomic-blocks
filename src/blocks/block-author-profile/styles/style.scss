@@ -87,6 +87,11 @@
 		height: 100%;
 		width: 100%;
 		z-index: 5;
+		// @media  only screen and (max-width: 767px) {
+		// 	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		// 		left: -50%;
+		// 	}
+		// }
 	}
 
 	.lsx-profile-text:empty,
@@ -160,7 +165,7 @@
 				background: #0393e3;
 				color: #fff;
 				padding: 10px;
-				border-radius: 100px;
+				border-radius: 50%;
 				height: 38px;
 				width: 38px;
 				text-align: center;
