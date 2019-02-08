@@ -3,12 +3,13 @@ Contributors: feedmymedia
 Donate link: https://www.lsdev.biz/
 Tags: lsx, gutenberg, blocks
 Requires at least: 4.3
-Tested up to: 4.8
+Tested up to: 5.0
 Requires PHP: 7.0
 Stable tag: 1.0.1
 License: GPLv3
 
 LSX Blocks adds adds new blocks to the Gutenberg editor.
+This plugins is based on Atomic Blocks https://atomicblocks.com
 
 = Blocks List =
 
@@ -49,7 +50,7 @@ Bugs can be reported either in our support forum or preferably on the [LSX Block
 Yes you can! Join in on our [GitHub repository](https://github.com/lightspeeddevelopment/lsx-blocks) :)
 
 = Credit =
-The LSX Blocks plugin was developed with the use of Jetpack & Sharedaddy’s open source software.
+The LSX Blocks plugin was developed with the use of Atomic Blocks https://atomicblocks.com
 
 
 == Screenshots ==

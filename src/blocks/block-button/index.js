@@ -172,15 +172,27 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 	// Render the block components
 	edit: LSXButtonBlock,
 
-	onMouseEnterHandler: function() {
-		console.log( 'testing the hover' );
-	},
-
 	// Save the attributes and markup
 	save: function( props ) {
 
 		// Setup the attributes
 		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonLine, buttonTarget } = props.attributes;
+
+        var bgDefaultColour = buttonBackgroundColor;
+        var bgHoverColour = buttonHoverColor;
+
+        var textDefaultColour = buttonTextColor;
+        var textHoverColour = buttonTextColor;
+
+        if ( 'transparent' === buttonGhost ) {
+
+            bgDefaultColour = buttonBackgroundColor;
+            bgHoverColour = buttonTextColor;
+
+            textDefaultColour = buttonTextColor;
+            textHoverColour = buttonBackgroundColor;
+
+        }
 
 		// Save the block markup for the front end
 		return (
@@ -197,17 +209,16 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 								'lsx-border' + buttonGhost,
 							) }
 							style={ {
-								color: buttonTextColor,
-								backgroundColor: buttonBackgroundColor,
-								background: buttonGhost,
-								boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
-								borderColor: buttonBackgroundColor,
+                                color: buttonTextColor,
+                                boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+                                backgroundColor: buttonBackgroundColor,
 							} }
-							data-onhover={ buttonHoverColor }
-							data-offhover={ buttonBackgroundColor }
-							data-offhoverghost={ buttonGhost }
-							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-offhoverghost');"
-							onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+							data-on-bg-hover={ bgHoverColour }
+							data-off-bg-hover={ bgDefaultColour }
+                            data-on-txt-hover={ textHoverColour }
+                            data-off-txt-hover={ textDefaultColour }
+							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-on-bg-hover');this.style.color=this.getAttribute('data-on-txt-hover');"
+							onMouseLeave="this.style.backgroundColor=this.getAttribute('data-off-bg-hover');this.style.color=this.getAttribute('data-off-txt-hover');"
 						>
 							<RichText.Content
 								value={ buttonText }
