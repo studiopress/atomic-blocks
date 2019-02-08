@@ -26,7 +26,8 @@ export default class customButton extends Component {
 				} }
 				className={ classnames(
 					this.props.className,
-					'lsx-block-button lsx-block-card-button'
+					'lsx-block-button',
+					'lsx-block-card-button'
 				) }
 			>
 				{ this.props.children }

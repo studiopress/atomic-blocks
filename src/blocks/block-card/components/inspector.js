@@ -35,14 +35,8 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, cardAvatarShape, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget, buttonFlat } = this.props.attributes;
+		const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonGhost, buttonTarget, buttonFlat } = this.props.attributes;
 		const { setAttributes } = this.props;
-
-		// Avatar shape options
-		const cardAvatarShapeOptions = [
-			{ value: 'square', label: __( 'Square' ) },
-			{ value: 'round', label: __( 'Round' ) },
-		];
 
 		// Button size values
 		const buttonSizeOptions = [
@@ -97,17 +91,9 @@ export default class Inspector extends Component {
 						label={ __( 'Font Size' ) }
 						value={ cardFontSize }
 						onChange={ ( value ) => this.props.setAttributes( { cardFontSize: value } ) }
-						min={ 14 }
+						min={ 15 }
 						max={ 24 }
 						step={ 1 }
-					/>
-
-					<SelectControl
-						label={ __( 'Avatar Shape' ) }
-						description={ __( 'Choose between a round or square avatar shape.' ) }
-						options={ cardAvatarShapeOptions }
-						value={ cardAvatarShape }
-						onChange={ ( value ) => this.props.setAttributes( { cardAvatarShape: value } ) }
 					/>
 
 					<PanelColorSettings
@@ -170,7 +156,7 @@ export default class Inspector extends Component {
 						/>
 
 						<SelectControl
-							label={ __( 'Ghost Button' ) }
+							label={ __( 'Border Button with transparent Background?' ) }
 							value={ buttonGhost }
 							options={ buttonGhostOptions.map( ( { value, label } ) => ( {
 								value: value,

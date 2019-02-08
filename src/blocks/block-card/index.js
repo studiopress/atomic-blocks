@@ -119,50 +119,19 @@ const blockAttributes = {
 	},
 	cardBackgroundColor: {
 		type: 'string',
-		default: '#f2f2f2'
+		default: '#f2f2f2',
 	},
 	cardTextColor: {
 		type: 'string',
-		default: '#32373c'
+		default: '#32373c',
 	},
 	cardLinkColor: {
 		type: 'string',
-		default: '#392f43'
+		default: '#392f43',
 	},
 	cardFontSize: {
 		type: 'number',
-		default: 18
-	},
-	cardAvatarShape: {
-		type: 'string',
-		default: 'square',
-	},
-	twitter: {
-		type: 'url',
-	},
-	facebook: {
-		type: 'url',
-	},
-	instagram: {
-		type: 'url',
-	},
-	pinterest: {
-		type: 'url',
-	},
-	google: {
-		type: 'url',
-	},
-	youtube: {
-		type: 'url',
-	},
-	github: {
-		type: 'url',
-	},
-	email: {
-		type: 'url',
-	},
-	website: {
-		type: 'url',
+		default: 15,
 	},
 };
 
@@ -193,16 +162,6 @@ class LSXAuthorCardBlock extends Component {
 				cardBackgroundColor,
 				cardTextColor,
 				cardLinkColor,
-				twitter,
-				facebook,
-				instagram,
-				pinterest,
-				google,
-				youtube,
-				github,
-				email,
-				website,
-				cardAvatarShape
 			},
 			attributes,
 			isSelected,
@@ -233,10 +192,10 @@ class LSXAuthorCardBlock extends Component {
 			// Show the block markup in the editor
 			<CardBox key="card" { ...this.props }>
 				<AvatarColumn { ...this.props }>
-					<div class="lsx-card-image-square">
+					<div className="lsx-card-image-square">
 						<MediaUpload
 							buttonProps={ {
-								className: 'change-image'
+								className: 'change-image',
 							} }
 							onSelect={ ( img ) => setAttributes(
 								{
@@ -250,7 +209,7 @@ class LSXAuthorCardBlock extends Component {
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
 									{ ! cardImgID ? icons.upload : <img
-										class="card-avatar"
+										className="card-avatar"
 										src={ cardImgURL }
 										alt="avatar"
 									/>  }
@@ -271,9 +230,10 @@ class LSXAuthorCardBlock extends Component {
 						placeholder={ __( 'Add Card Title', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ cardName }
-						className='lsx-card-name'
+						className="lsx-card-name"
 						style={ {
-							color: cardTextColor
+							color: cardTextColor,
+							fontSize: 'calc(' + cardFontSize + 'px + 5px)',
 						} }
 						onChange={ ( value ) => setAttributes( { cardName: value } ) }
 					/>
@@ -283,16 +243,22 @@ class LSXAuthorCardBlock extends Component {
 						placeholder={ __( 'Add Card Subtitle', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ cardTitle }
-						className='lsx-card-title'
+						className="lsx-card-title"
 						style={ {
-							color: cardTextColor
+							color: cardTextColor,
+							fontSize: 'calc(' + cardFontSize + 'px - 2px)',
 						} }
 						onChange={ ( value ) => setAttributes( { cardTitle: value } ) }
 					/>
 
 					<RichText
 						tagName="div"
-						className='lsx-card-text'
+						className={ classnames(
+							'lsx-card-text',
+						) }
+						style={ {
+							fontSize: cardFontSize + 'px',
+						} }
 						multiline="p"
 						placeholder={ __( 'Add content...', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
@@ -371,7 +337,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, email, website, cardAvatarShape, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+		const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
 		return (
 			// Save the block markup for the front end
@@ -379,9 +345,9 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 
 				{ cardImgURL && (
 					<AvatarColumn { ...props }>
-						<div class="lsx-card-image-square">
+						<div className="lsx-card-image-square">
 							<img
-								class="lsx-card-avatar"
+								className="lsx-card-avatar"
 								src={ cardImgURL }
 								alt="avatar"
 							/>
@@ -399,7 +365,8 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 							tagName="h2"
 							className="lsx-card-name"
 							style={ {
-								color: cardTextColor
+								color: cardTextColor,
+								fontSize: 'calc(' + cardFontSize + 'px + 5px)',
 							} }
 							value={ cardName }
 						/>
@@ -410,7 +377,8 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 							tagName="p"
 							className="lsx-card-title"
 							style={ {
-								color: cardTextColor
+								color: cardTextColor,
+								fontSize: 'calc(' + cardFontSize + 'px - 2px)',
 							} }
 							value={ cardTitle }
 						/>
@@ -419,7 +387,12 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 					{ cardContent && (
 						<RichText.Content
 							tagName="div"
-							className="lsx-card-text"
+							className={ classnames(
+								'lsx-card-text',
+							) }
+							style={ {
+								fontSize: cardFontSize + 'px',
+							} }
 							value={ cardContent }
 						/>
 					) }
