@@ -75,7 +75,7 @@ const blockAttributes = {
 	},
 	containerBackgroundColor: {
 		type: 'string',
-		default: '#fff',
+		default: 'transparent',
 	},
 	containerImgURL: {
 		type: 'string',
