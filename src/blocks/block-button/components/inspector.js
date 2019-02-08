@@ -58,8 +58,8 @@ export default class Inspector extends Component {
 
 		// Button Border Options
 		const buttonGhostOptions = [
-			{ value: 'lsx-button-border-btn', label: __( 'Border' ) },
-			{ value: 'lsx-button-no-border', label: __( 'No Border' ) },
+			{ value: 'transparent', label: __( 'Border' ) },
+			{ value: '', label: __( 'No Border' ) },
 		];
 
 		// Button Lines Options

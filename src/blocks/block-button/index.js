@@ -71,7 +71,7 @@ class LSXButtonBlock extends Component {
 						'lsx-button',
 						buttonShape,
 						buttonSize,
-						buttonGhost,
+						'lsx-border' + buttonGhost,
 					) }
 					style={ {
 						color: buttonTextColor,
@@ -157,7 +157,7 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 		},
 		buttonGhost: {
 			type: 'string',
-			default: 'lsx-button-no-border',
+			default: '',
 		},
 		buttonLine: {
 			type: 'string',
@@ -194,17 +194,19 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 								'lsx-button',
 								buttonShape,
 								buttonSize,
-								buttonGhost,
+								'lsx-border' + buttonGhost,
 							) }
 							style={ {
 								color: buttonTextColor,
 								backgroundColor: buttonBackgroundColor,
+								background: buttonGhost,
 								boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
 								borderColor: buttonBackgroundColor,
 							} }
 							data-onhover={ buttonHoverColor }
 							data-offhover={ buttonBackgroundColor }
-							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+							data-offhoverghost={ buttonGhost }
+							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-offhoverghost');"
 							onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
 						>
 							<RichText.Content

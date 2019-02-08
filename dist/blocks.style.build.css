@@ -860,10 +860,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     padding: .8em 1.2em; }
   .lsx-block-button .lsx-button-no-border {
     border: none !important; }
-  .lsx-block-button .lsx-button-border-btn {
+  .lsx-block-button .lsx-bordertransparent {
     border-width: 2px;
     border-style: solid;
-    background-color: transparent !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important; }
 
