@@ -1912,10 +1912,12 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     .lsx-block-post-grid .lsx-block-post-grid-link:after {
       content: " \27F6";
       padding-left: 5px; }
-  .lsx-block-post-grid .lsx-block-post-grid-excerpt div + p {
-    margin-top: 15px; }
-  .lsx-block-post-grid .lsx-block-post-grid-excerpt .moretag {
-    display: none; }
+  .lsx-block-post-grid .lsx-block-post-grid-excerpt {
+    padding: 2em; }
+    .lsx-block-post-grid .lsx-block-post-grid-excerpt div + p {
+      margin-top: 15px; }
+    .lsx-block-post-grid .lsx-block-post-grid-excerpt .moretag {
+      display: none; }
   .lsx-block-post-grid .is-list article {
     display: grid;
     grid-template-columns: 30% 1fr;
