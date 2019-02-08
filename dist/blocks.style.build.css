@@ -1821,7 +1821,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     grid-template-rows: 1fr;
     grid-gap: 0 2em; }
     .lsx-block-post-grid .is-grid article {
-      margin-bottom: 2.5em; }
+      margin-bottom: 2.5em;
+      background-color: #fff; }
   .lsx-block-post-grid .is-grid.columns-2 {
     grid-template-columns: 1fr 1fr; }
   .lsx-block-post-grid .is-grid.columns-3 {
