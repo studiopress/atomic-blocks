@@ -9,6 +9,7 @@ import Inspector from './components/inspector';
 import BannerBox from './components/banner';
 import CustomButton from './components/button';
 import ImageColumn from './components/image';
+import LogoColumn from './components/logo';
 import icons from './components/icons';
 
 // Import styles
@@ -115,13 +116,28 @@ const blockAttributes = {
 		type: 'string',
 		default: 'full',
 	},
-	bannerImgURL: {
-		type: 'string',
-		source: 'attribute',
-		attribute: 'src',
-		selector: 'img',
-	},
 	bannerImgID: {
+		type: 'number',
+	},
+	images: {
+		type: 'array',
+		source: 'query',
+		query: {
+			bannerImgURL: {
+				type: 'string',
+				source: 'attribute',
+				attribute: 'src',
+				selector: 'img',
+			},
+			bannerLogoURL: {
+				type: 'string',
+				source: 'attribute',
+				attribute: 'src',
+				selector: 'logo',
+			},
+		},
+	},
+	bannerLogoID: {
 		type: 'number',
 	},
 	bgPosition: {
@@ -164,7 +180,7 @@ const blockAttributes = {
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
-class LSXAuthorBannerBlock extends Component {
+class LSXBannerBlock extends Component {
 	render() {
 		// Setup the attributes
 		const {
@@ -184,6 +200,8 @@ class LSXAuthorBannerBlock extends Component {
 				bannerTitle,
 				bannerContent,
 				bannerAlignment,
+				bannerLogoID,
+				bannerLogoURL,
 				bannerImgURL,
 				bannerImgID,
 				bgPosition,
@@ -203,10 +221,20 @@ class LSXAuthorBannerBlock extends Component {
 			setAttributes
 		} = this.props;
 
-		const onSelectImage = img => {
+		// Upload Image options
+		const onSelectLogo = logo => {
 			setAttributes( {
-				bannerImgID: img.id,
-				bannerImgURL: img.url,
+				bannerLogoID: logo.id,
+				bannerLogoURL: logo.url,
+				bannerLogoAlt: logo.alt,
+			} );
+		};
+
+		const onRemoveLogo = () => {
+			setAttributes( {
+				bannerLogoID: null,
+				bannerLogoURL: null,
+				bannerLogoAlt: null,
 			} );
 		};
 
@@ -237,6 +265,29 @@ class LSXAuthorBannerBlock extends Component {
 						backgroundColor: hexToRgba( textBannerBackgroundColor, bannerFontOpacity ),
 					} }
 				>
+
+					<div className="lsx-banner-logo">
+						<MediaUpload
+							buttonProps={ {
+								className: 'change-logo',
+							} }
+							onSelect={ onSelectLogo }
+							allowed={ ALLOWED_MEDIA_TYPES }
+							type="logo"
+							value={ bannerLogoID }
+							render={ ( { open } ) => (
+								<Button onClick={ open }>
+									{ ! bannerLogoID ? icons.upload : <img
+										className="banner-logo"
+										src={ bannerLogoURL }
+										alt="logo"
+									/> }
+								</Button>
+							) }
+						>
+						</MediaUpload>
+					</div>
+
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Add Banner Title', 'lsx-blocks' ) }
@@ -308,7 +359,7 @@ class LSXAuthorBannerBlock extends Component {
 					</form>
 
 				</div>
-			</BannerBox>
+			</BannerBox>,
 
 		];
 	}
@@ -332,13 +383,13 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 	},
 
 	// Render the block components
-	edit: LSXAuthorBannerBlock,
+	edit: LSXBannerBlock,
 
 	// Save the block markup
 	save: function( props ) {
 
 		// Setup the attributes
-		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerHeight, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerLogoID, bannerLogoURL, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerHeight, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
 		return (
 			// Save the block markup for the front end
@@ -358,6 +409,13 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 						'lsx-banner-content-wrap',
 					) }
 				>
+					<div className="lsx-banner-logo">
+						<img
+							className="lsx-banner-logo-img"
+							src={ bannerLogoURL }
+							alt="logo"
+						/>
+					</div>
 					<div
 						className={ classnames(
 							'header-headings',

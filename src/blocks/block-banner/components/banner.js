@@ -18,7 +18,7 @@ export default class BannerBox extends Component {
 	render() {
 
 		// Setup the attributes
-		const { bannerAlignment, bannerImgURL, bannerFontSize, bannerBackgroundColor, bgPosition, bannerTextColor, bannerTitlePosition } = this.props.attributes;
+		const { bannerAlignment, bannerImgURL, bannerLogoID, bannerLogoURL, bannerFontSize, bannerBackgroundColor, bgPosition, bannerTextColor, bannerTitlePosition } = this.props.attributes;
 
 		return (
 			<div

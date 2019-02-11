@@ -142,7 +142,7 @@
 	}
 
 	.lsx-block-post-grid-excerpt {
-		padding: 2em;
+		padding: 0 2em 2em 2em;
 		div + p {
 			margin-top: 15px;
 		}
@@ -183,6 +183,7 @@
 		}
 
 		.lsx-block-post-grid-title {
+			padding: 0 1em;
 			@media only screen and (min-width: 600px) {
 				font-size: 34px;
 			}

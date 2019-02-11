@@ -120,7 +120,7 @@ function lsx_blocks_render_block_core_latest_posts( $attributes ) {
 					$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
 
 					if ( empty( $excerpt ) ) {
-						$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+						$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 20 ) );
 					}
 
 					if ( ! $excerpt ) {
