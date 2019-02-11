@@ -346,11 +346,16 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 				{ cardImgURL && (
 					<AvatarColumn { ...props }>
 						<div className="lsx-card-image-square">
-							<img
-								className="lsx-card-avatar"
-								src={ cardImgURL }
-								alt="avatar"
-							/>
+							<a
+								href={ buttonUrl }
+								target={ buttonTarget ? '_blank' : '_self' }
+							>
+								<img
+									className="lsx-card-avatar"
+									src={ cardImgURL }
+									alt="avatar"
+								/>
+							</a>
 						</div>
 					</AvatarColumn>
 				) }
