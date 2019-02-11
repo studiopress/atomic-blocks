@@ -211,7 +211,8 @@ registerBlockType( 'lsx-blocks/lsx-button', {
 							style={ {
                                 color: buttonTextColor,
                                 boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
-                                backgroundColor: buttonBackgroundColor,
+								backgroundColor: buttonBackgroundColor,
+								borderColor: textDefaultColour,
 							} }
 							data-on-bg-hover={ bgHoverColour }
 							data-off-bg-hover={ bgDefaultColour }

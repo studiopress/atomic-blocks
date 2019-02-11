@@ -116,7 +116,7 @@ export default class Inspector extends Component {
 					/>
 
 					<SelectControl
-						label={ __( 'Border Button with no Background' ) }
+						label={ __( 'Change border color' ) }
 						value={ buttonGhost }
 						options={ buttonGhostOptions.map( ({ value, label }) => ( {
 							value: value,

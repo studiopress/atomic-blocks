@@ -76,7 +76,9 @@
 		border-style: solid;
 		//background-color: transparent !important;
 		box-shadow: none !important;
-
+		&:hover {
+			border-radius: 3px;
+		}
 	}
 }
 
