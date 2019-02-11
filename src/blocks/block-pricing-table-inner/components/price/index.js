@@ -38,6 +38,9 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 		price: {
 			type: 'string',
 		},
+		currency: {
+			type: 'string',
+		},
 		fontSize: {
 			type: 'string',
 		},
@@ -74,6 +77,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 		// Setup the attributes
 		const {
 			price,
+			currency,
 			fontSize,
 			customFontSize,
 			backgroundColor,
@@ -116,28 +120,43 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			fontSize: fontSizeClass ? undefined : customFontSize,
 		};
 
+		// Setup currency styles
+		var computedFontSize = fontSizeClass ? undefined : customFontSize;
+		var currencySize = Math.floor(computedFontSize / 2.5);
+		const currencyStyles = {
+			fontSize: computedFontSize ? currencySize + 'px' : undefined,
+		};
+
 		// Save the block markup for the front end
 		return (
 			<div
 				className={ wrapperClassName ? wrapperClassName : undefined }
 				style={ wrapperStyles }
 			>
-				<RichText.Content
-					tagName="div"
-					itemprop="price"
-					value={ price }
-					className={ className ? className : undefined }
-					style={ styles }
-				/>
-				{ term && showTerm && (
+				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 					<RichText.Content
 						tagName="span"
-						value={ term }
-						className={ classnames(
-							'ab-pricing-table-term',
-						) }
+						itemprop="priceCurrency"
+						placeholder={ __( '$', 'atomic-blocks' ) }
+						value={ currency }
+						className="ab-pricing-table-currency"
+						style={ currencyStyles }
 					/>
-				) }
+					<RichText.Content
+						tagName="div"
+						itemprop="price"
+						value={ price }
+						className={ className ? className : undefined }
+						style={ styles }
+					/>
+					{ term && showTerm && (
+						<RichText.Content
+							tagName="span"
+							value={ term }
+							className="ab-pricing-table-term"
+						/>
+					) }
+				</div>
 			</div>
 		);
 	},

@@ -106,12 +106,13 @@ class ABPricingTableBlock extends Component {
 									fontSize: 'normal',
 								}],
 								['atomic-blocks/ab-pricing-table-price', {
-									price: '$49',
+									price: '49',
+									currency: '$',
 									customFontSize: 50,
 									term: '/mo',
 								}],
 								['atomic-blocks/ab-pricing-table-features', {
-									features: '<li>Product Feature One</li><li>Product Feature Two</li><li>Product Feature Three</li><li>Product Feature Four</li>',
+									features: '<li>Product Feature One</li><li>Product Feature Two</li><li>Product Feature Three</li>',
 									multilineTag: 'li',
 									ordered: false,
 									fontSize: 'normal',

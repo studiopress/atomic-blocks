@@ -25,6 +25,7 @@ class Edit extends Component {
 		const {
 			attributes: {
 				price,
+				currency,
 				term,
 				showTerm,
 			},
@@ -63,6 +64,12 @@ class Edit extends Component {
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
+		// Setup currency styles
+		var currencySize = Math.floor(fontSize.size / 2.5);
+		const currencyStyles = {
+			fontSize: fontSize.size ? currencySize + 'px' : undefined,
+		};
+
 		return [
 			<Fragment>
 				<Inspector
@@ -72,28 +79,38 @@ class Edit extends Component {
 					className={ editClassWrapperName ? editClassWrapperName : undefined }
 					style={ editWrapStyles }
 				>
-					<RichText
-						tagName="div"
-						itemprop="price"
-						placeholder={ __( '$49', 'atomic-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ price }
-						onChange={ ( value ) => setAttributes( { price: value } ) }
-						style={ editStyles }
-						className={ editClassName ? editClassName : undefined }
-					/>
-					{ showTerm && (
+					<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 						<RichText
 							tagName="span"
-							value={ term }
-							placeholder={ __( '/mo', 'atomic-blocks' ) }
+							itemprop="priceCurrency"
+							placeholder={ __( '$', 'atomic-blocks' ) }
 							keepPlaceholderOnFocus
-							onChange={ ( value ) => setAttributes( { term: value } ) }
-							className={ classnames(
-								'ab-pricing-table-term',
-							) }
+							value={ currency }
+							onChange={ ( value ) => setAttributes( { currency: value } ) }
+							className="ab-pricing-table-currency"
+							style={ currencyStyles }
 						/>
-					) }
+						<RichText
+							tagName="div"
+							itemprop="price"
+							placeholder={ __( '49', 'atomic-blocks' ) }
+							keepPlaceholderOnFocus
+							value={ price }
+							onChange={ ( value ) => setAttributes( { price: value } ) }
+							style={ editStyles }
+							className={ editClassName ? editClassName : undefined }
+						/>
+						{ showTerm && (
+							<RichText
+								tagName="span"
+								value={ term }
+								placeholder={ __( '/mo', 'atomic-blocks' ) }
+								keepPlaceholderOnFocus
+								onChange={ ( value ) => setAttributes( { term: value } ) }
+								className="ab-pricing-table-term"
+							/>
+						) }
+					</div>
 				</div>
 			</Fragment>
 		];

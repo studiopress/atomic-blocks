@@ -2307,6 +2307,13 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
 .ab-pricing-table-price {
   line-height: 1; }
 
+.ab-pricing-table-currency {
+  vertical-align: top;
+  margin-top: .4em;
+  margin-right: 3px;
+  display: inline-block;
+  line-height: 1; }
+
 .wp-block-atomic-blocks-ab-pricing-table {
   vertical-align: top; }
   .wp-block-atomic-blocks-ab-pricing-table .ab-pricing-table-features,
