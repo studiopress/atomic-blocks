@@ -1,0 +1,38 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-lsx-blocks-faq-block {
+	details {
+		background: #fff;
+		border: 1px solid #DDDDDD;
+		padding: 20px 30px;
+		margin-bottom: 15px;
+		summary {
+			&::-webkit-details-marker{
+				float: right;
+				color: #418ad0;
+				padding-top: 5px;
+			}
+			h2.faq-accordion-title {
+				margin: 0;
+				font-family: 'Noto Sans', sans-serif;
+				font-size: 16px;
+				&:before {
+					content: 'Q: ';
+					font-weight: bold;
+				}
+			}
+		}
+		.faq-accordion-text {
+			margin-top: 30px;
+			&:before {
+				content: 'A: ';
+				font-weight: bold;
+				color: #418ad0;
+			}
+		}
+	}
+}

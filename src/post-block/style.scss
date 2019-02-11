@@ -1,0 +1,20 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-lsx-blocks-post-block {
+	.meta-off {
+		.lsx-blog-customizer-posts-wrapper {
+			.post-slot {
+				.post-info, .post-meta {
+					display: none;
+				}
+				.post-title {
+					padding-top: 1em;
+				}
+			}
+		}
+	}
+}
