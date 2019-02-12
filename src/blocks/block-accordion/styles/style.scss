@@ -18,7 +18,7 @@
 				float: left;
 				font-size: 1.5em;
 				font-weight: bold;
-				margin: -5px 10px 0 0;
+				margin: -9px 10px 0 0;
 			}
 		}
 		&[open] {
@@ -26,7 +26,7 @@
 				&:after {
 					content: "-";
 					font-size: 2em;
-					margin: -13px 10px 0 0;
+					margin: -17px 10px 0 0;
 				}
 			}
 		}
