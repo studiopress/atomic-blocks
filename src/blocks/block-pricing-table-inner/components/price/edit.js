@@ -28,6 +28,7 @@ class Edit extends Component {
 				currency,
 				term,
 				showTerm,
+				showCurrency,
 			},
 			isSelected,
 			className,
@@ -45,6 +46,7 @@ class Edit extends Component {
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
+			'ab-pricing-has-currency': showCurrency,
 		} );
 
 		// Setup price class names
@@ -70,6 +72,12 @@ class Edit extends Component {
 			fontSize: fontSize.size ? currencySize + 'px' : undefined,
 		};
 
+		// Setup term styles
+		var termSize = Math.floor(fontSize.size / 2.5);
+		const termStyles = {
+			fontSize: fontSize.size ? termSize + 'px' : undefined,
+		};
+
 		return [
 			<Fragment>
 				<Inspector
@@ -80,16 +88,18 @@ class Edit extends Component {
 					style={ editWrapStyles }
 				>
 					<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-						<RichText
-							tagName="span"
-							itemprop="priceCurrency"
-							placeholder={ __( '$', 'atomic-blocks' ) }
-							keepPlaceholderOnFocus
-							value={ currency }
-							onChange={ ( value ) => setAttributes( { currency: value } ) }
-							className="ab-pricing-table-currency"
-							style={ currencyStyles }
-						/>
+						{ showCurrency && (
+							<RichText
+								tagName="span"
+								itemprop="priceCurrency"
+								placeholder={ __( '$', 'atomic-blocks' ) }
+								keepPlaceholderOnFocus
+								value={ currency }
+								onChange={ ( value ) => setAttributes( { currency: value } ) }
+								className="ab-pricing-table-currency"
+								style={ currencyStyles }
+							/>
+						) }
 						<RichText
 							tagName="div"
 							itemprop="price"
@@ -108,6 +118,7 @@ class Edit extends Component {
 								keepPlaceholderOnFocus
 								onChange={ ( value ) => setAttributes( { term: value } ) }
 								className="ab-pricing-table-term"
+								style={ termStyles }
 							/>
 						) }
 					</div>

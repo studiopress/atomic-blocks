@@ -66,6 +66,10 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			type: 'boolean',
 			default: true
 		},
+		showCurrency: {
+			type: 'boolean',
+			default: true
+		},
 	},
 
 	// Render the block components
@@ -86,6 +90,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			customTextColor,
 			term,
 			showTerm,
+			showCurrency,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
@@ -101,6 +106,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			'ab-pricing-table-price-wrap': true,
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,
+			'ab-pricing-has-currency': showCurrency && currency,
 		} );
 
 		// Setup class names
@@ -127,6 +133,12 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			fontSize: computedFontSize ? currencySize + 'px' : undefined,
 		};
 
+		// Setup term styles
+		var termSize = Math.floor(computedFontSize / 2.5);
+		const termStyles = {
+			fontSize: computedFontSize ? termSize + 'px' : undefined,
+		};
+
 		// Save the block markup for the front end
 		return (
 			<div
@@ -134,14 +146,16 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 				style={ wrapperStyles }
 			>
 				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-					<RichText.Content
-						tagName="span"
-						itemprop="priceCurrency"
-						placeholder={ __( '$', 'atomic-blocks' ) }
-						value={ currency }
-						className="ab-pricing-table-currency"
-						style={ currencyStyles }
-					/>
+					{ currency && showCurrency && (
+						<RichText.Content
+							tagName="span"
+							itemprop="priceCurrency"
+							placeholder={ __( '$', 'atomic-blocks' ) }
+							value={ currency }
+							className="ab-pricing-table-currency"
+							style={ currencyStyles }
+						/>
+					) }
 					<RichText.Content
 						tagName="div"
 						itemprop="price"
@@ -154,6 +168,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 							tagName="span"
 							value={ term }
 							className="ab-pricing-table-term"
+							style={ termStyles }
 						/>
 					) }
 				</div>

@@ -22,6 +22,7 @@ const {
 	withFallbackStyles,
 	PanelBody,
 	ToggleControl,
+	TextControl,
 } = wp.components;
 
 // Apply fallback styles
@@ -51,6 +52,9 @@ class Inspector extends Component {
 		const {
 			attributes: {
 				showTerm,
+				showCurrency,
+				term,
+				currency,
 			},
 			isSelected,
 			setAttributes,
@@ -74,10 +78,31 @@ class Inspector extends Component {
 					onChange={ setFontSize }
 				/>
 				<ToggleControl
+					label={ __( 'Show currency symbol', 'atomic-blocks' ) }
+					checked={ showCurrency }
+					onChange={ () => this.props.setAttributes( { showCurrency: ! showCurrency } ) }
+				/>
+				{ showCurrency && (
+					<TextControl
+						label={ __( 'Currency Symbol', 'atomic-blocks' ) }
+						type="text"
+						value={ currency }
+						onChange={ ( value ) => this.props.setAttributes( { currency: value } ) }
+					/>
+				) }
+				<ToggleControl
 					label={ __( 'Show pricing duration', 'atomic-blocks' ) }
 					checked={ showTerm }
 					onChange={ () => this.props.setAttributes( { showTerm: ! showTerm } ) }
 				/>
+				{ showTerm && (
+					<TextControl
+						label={ __( 'Pricing Duration', 'atomic-blocks' ) }
+						type="text"
+						value={ term }
+						onChange={ ( value ) => this.props.setAttributes( { term: value } ) }
+					/>
+				) }
 			</PanelBody>
 			<PanelColorSettings
 				title={ __( 'Color Settings', 'atomic-blocks' ) }
