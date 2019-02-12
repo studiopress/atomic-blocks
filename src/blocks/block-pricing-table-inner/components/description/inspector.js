@@ -98,7 +98,7 @@ class Inspector extends Component {
 				/>
 				{ ( borderStyle != 'ab-list-border-none' ) && (
 					<RangeControl
-						label={ __( 'List Border Width' ) }
+						label={ __( 'List Border Width', 'atomic-blocks' ) }
 						value={ borderWidth }
 						onChange={ ( value ) => this.props.setAttributes( { borderWidth: value } ) }
 						min={ 1 }

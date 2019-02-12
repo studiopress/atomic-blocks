@@ -70,6 +70,18 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			type: 'boolean',
 			default: true
 		},
+		paddingTop: {
+			type: 'number',
+		},
+		paddingRight: {
+			type: 'number',
+		},
+		paddingBottom: {
+			type: 'number',
+		},
+		paddingLeft: {
+			type: 'number',
+		},
 	},
 
 	// Render the block components
@@ -91,6 +103,8 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			term,
 			showTerm,
 			showCurrency,
+			horizontalPadding,
+			verticalPadding,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass

@@ -2391,5 +2391,8 @@ span.ab-pricing-table-term {
 .ab-block-pricing-table-right {
   text-align: right; }
 
-.ab-pricing-table-price-wrap.has-background {
-  padding: 10px 15px; }
+.ab-pricing-table-price-wrap {
+  padding: 10% 0; }
+
+.ab-pricing-table-subtitle {
+  padding: 5% 0; }

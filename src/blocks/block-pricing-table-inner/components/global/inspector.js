@@ -16,6 +16,7 @@ const {
 	withColors,
 	ContrastChecker,
 	PanelColorSettings,
+	RangeControl,
 } = wp.editor;
 
 const {
