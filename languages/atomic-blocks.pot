@@ -1,16 +1,16 @@
-# Copyright (C) 2018 atomicblocks
+# Copyright (C) 2019 atomicblocks
 # This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.3.7\n"
+"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.4.23\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2018-11-13T00:24:26+00:00\n"
-"PO-Revision-Date: 2018-11-13T00:24:26+00:00\n"
+"POT-Creation-Date: 2019-01-29T18:35:48+00:00\n"
+"PO-Revision-Date: 2019-01-29T18:35:48+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: atomic-blocks\n"
 
@@ -34,14 +34,237 @@ msgstr ""
 msgid "http://arraythemes.com"
 msgstr ""
 
+#: dist/init.php:103
 #: dist/getting-started/getting-started.php:49
 #: dist/getting-started/getting-started.php:50
 #: dist/getting-started/getting-started.php:110
 msgid "Atomic Blocks"
 msgstr ""
 
+#: dist/custom-post-types/pricing-tables.php:55
+#: dist/custom-post-types/pricing-tables.php:57
+#: dist/custom-post-types/pricing-tables.php:67
+msgid "Pricing Tables"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:56
+msgid "Pricing Table"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:58
+msgid "Pricing"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:59
+#: dist/custom-post-types/testimonials.php:59
+#: dist/custom-post-types/team-members.php:59
+msgid "Add New"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:60
+msgid "Add New Pricing Table"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:61
+msgid "Edit Pricing Table"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:62
+msgid "New Pricing Table"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:63
+msgid "View Pricing Table"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:64
+msgid "Search Pricing Tables"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:65
+msgid "No pricing tables found"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:66
+msgid "No pricing tables found in trash"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:99
+msgid "Pricing Tables Categories"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:100
+msgid "Pricing Table Category"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:101
+#: dist/custom-post-types/testimonials.php:101
+#: dist/custom-post-types/team-members.php:101
+msgid "Categories"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:102
+#: dist/custom-post-types/testimonials.php:102
+#: dist/custom-post-types/team-members.php:102
+msgid "Category"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:103
+#: dist/custom-post-types/testimonials.php:103
+#: dist/custom-post-types/team-members.php:103
+msgid "Search Categories"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:104
+#: dist/custom-post-types/testimonials.php:104
+#: dist/custom-post-types/team-members.php:104
+msgid "Popular Categories"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:105
+#: dist/custom-post-types/testimonials.php:105
+#: dist/custom-post-types/team-members.php:105
+msgid "All Categories"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:106
+#: dist/custom-post-types/testimonials.php:106
+#: dist/custom-post-types/team-members.php:106
+msgid "Edit Category"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:107
+#: dist/custom-post-types/testimonials.php:107
+#: dist/custom-post-types/team-members.php:107
+msgid "View Category"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:108
+#: dist/custom-post-types/testimonials.php:108
+#: dist/custom-post-types/team-members.php:108
+msgid "Update Category"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:109
+#: dist/custom-post-types/testimonials.php:109
+#: dist/custom-post-types/team-members.php:109
+msgid "Add New Category"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:110
+#: dist/custom-post-types/testimonials.php:110
+#: dist/custom-post-types/team-members.php:110
+msgid "New Category Name"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:111
+#: dist/custom-post-types/testimonials.php:111
+#: dist/custom-post-types/team-members.php:111
+msgid "Parent Category"
+msgstr ""
+
+#: dist/custom-post-types/pricing-tables.php:112
+#: dist/custom-post-types/testimonials.php:112
+#: dist/custom-post-types/team-members.php:112
+msgid "Parent Category:"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:55
+#: dist/custom-post-types/testimonials.php:57
+#: dist/custom-post-types/testimonials.php:67
+msgid "Testimonials"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:56
+#: dist/custom-post-types/testimonials.php:58
+msgid "Testimonial"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:60
+msgid "Add New Testimonial"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:61
+msgid "Edit Testimonial"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:62
+msgid "New Testimonial"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:63
+msgid "View Testimonial"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:64
+msgid "Search Testimonials"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:65
+msgid "No testimonials found"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:66
+msgid "No testimonials found in trash"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:99
+msgid "Testimonial Categories"
+msgstr ""
+
+#: dist/custom-post-types/testimonials.php:100
+msgid "Testimonial Category"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:55
+#: dist/custom-post-types/team-members.php:57
+#: dist/custom-post-types/team-members.php:58
+#: dist/custom-post-types/team-members.php:67
+msgid "Team Members"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:56
+msgid "Team Member"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:60
+msgid "Add New Team Member"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:61
+msgid "Edit Team Member"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:62
+msgid "New Team Member"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:63
+msgid "View Team Member"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:64
+msgid "Search Team Members"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:65
+msgid "No team members found"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:66
+msgid "No team members found in trash"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:99
+msgid "Team Member Categories"
+msgstr ""
+
+#: dist/custom-post-types/team-members.php:100
+msgid "Team Member Category"
+msgstr ""
+
 #: dist/getting-started/getting-started.php:109
-#: dist/getting-started/getting-started.php:341
+#: dist/getting-started/getting-started.php:333
 msgid "Visit Atomic Blocks"
 msgstr ""
 
@@ -61,270 +284,266 @@ msgstr ""
 msgid "Theme Help File"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:127
-msgid "You need to install the Gutenberg editor before using Atomic Blocks!"
-msgstr ""
-
 #: dist/getting-started/getting-started.php:128
-#: dist/getting-started/getting-started.php:305
-msgid "Install Gutenberg now"
-msgstr ""
-
-#: dist/getting-started/getting-started.php:136
 msgid "Welcome to the future of site building with Gutenberg and Atomic Blocks!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:137
+#: dist/getting-started/getting-started.php:129
 msgid "The Atomic Blocks collection is now ready to use in your posts and pages. Simply search for \"atomic\" or \"ab\" in the block inserter to display the Atomic Blocks collection. Check out the help file link above for detailed instructions!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:142
+#: dist/getting-started/getting-started.php:134
 msgid "Atomic Blocks Theme"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:149
+#: dist/getting-started/getting-started.php:141
 msgid "Available Atomic Blocks"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:150
+#: dist/getting-started/getting-started.php:142
 msgid "The following blocks are available in Atomic Blocks. More blocks are on the way so stay tuned!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:156
+#: dist/getting-started/getting-started.php:148
 msgid "Post Grid Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:157
-#: dist/getting-started/getting-started.php:173
+#: dist/getting-started/getting-started.php:149
+#: dist/getting-started/getting-started.php:165
 msgid "Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:164
+#: dist/getting-started/getting-started.php:156
 msgid "Container Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:165
+#: dist/getting-started/getting-started.php:157
 msgid "Wrap several blocks into a section and add padding, margins, background colors and images."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:170
+#: dist/getting-started/getting-started.php:162
 msgid "Call To Action Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:172
+#: dist/getting-started/getting-started.php:164
 msgid "Call-To-Action Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:178
+#: dist/getting-started/getting-started.php:170
 msgid "Testimonials Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:180
+#: dist/getting-started/getting-started.php:172
 msgid "Testimonial Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:181
+#: dist/getting-started/getting-started.php:173
 msgid "Add a customer or client testimonial to your site with an avatar, text, citation and more."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:186
+#: dist/getting-started/getting-started.php:178
 msgid "Inline Notices Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:188
+#: dist/getting-started/getting-started.php:180
 msgid "Inline Notice Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:189
+#: dist/getting-started/getting-started.php:181
 msgid "Add a colorful notice or message to your site with text, a title and a dismiss icon."
+msgstr ""
+
+#: dist/getting-started/getting-started.php:186
+#: dist/getting-started/getting-started.php:188
+msgid "Sharing Icons Block"
+msgstr ""
+
+#: dist/getting-started/getting-started.php:189
+msgid "Add social sharing icons to your page with size, shape, color and style options."
 msgstr ""
 
 #: dist/getting-started/getting-started.php:194
 #: dist/getting-started/getting-started.php:196
-msgid "Sharing Icons Block"
-msgstr ""
-
-#: dist/getting-started/getting-started.php:197
-msgid "Add social sharing icons to your page with size, shape, color and style options."
-msgstr ""
-
-#: dist/getting-started/getting-started.php:202
-#: dist/getting-started/getting-started.php:204
 msgid "Author Profile Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:205
+#: dist/getting-started/getting-started.php:197
 msgid "Add a user profile box to your site with a title, bio info, an avatar and social media links."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:210
+#: dist/getting-started/getting-started.php:202
 msgid "Accordion Toggle"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:212
+#: dist/getting-started/getting-started.php:204
 msgid "Accordion Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:213
+#: dist/getting-started/getting-started.php:205
 msgid "Add an accordion text toggle with a title and descriptive text. Includes font size and toggle options."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:218
+#: dist/getting-started/getting-started.php:210
 msgid "Customizable Button Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:220
+#: dist/getting-started/getting-started.php:212
 msgid "Customizable Button"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:221
+#: dist/getting-started/getting-started.php:213
 msgid "Add a fancy stylized button to your post or page with size, shape, target, and color options."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:226
-#: dist/getting-started/getting-started.php:228
+#: dist/getting-started/getting-started.php:218
+#: dist/getting-started/getting-started.php:220
 msgid "Drop Cap Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:229
+#: dist/getting-started/getting-started.php:221
 msgid "Add a stylized drop cap to the beginning of your paragraph. Choose from three different styles."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:234
+#: dist/getting-started/getting-started.php:226
 msgid "Spacer and Divider Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:236
+#: dist/getting-started/getting-started.php:228
 msgid "Spacer & Divider"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:237
+#: dist/getting-started/getting-started.php:229
 msgid "Add an adjustable spacer between your blocks with an optional divider with styling options."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:257
-#: dist/getting-started/getting-started.php:280
+#: dist/getting-started/getting-started.php:249
+#: dist/getting-started/getting-started.php:272
 msgid "This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:296
+#: dist/getting-started/getting-started.php:288
 msgid "Quick Start Checklist"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:301
+#: dist/getting-started/getting-started.php:293
 msgid "1. Install the Gutenberg plugin."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:302
+#: dist/getting-started/getting-started.php:294
 msgid "Gutenberg adds the new block-based editor to WordPress. You will need this to work with the Atomic Blocks plugin."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:308
-#: dist/getting-started/getting-started.php:310
-#: dist/getting-started/getting-started.php:322
-#: dist/getting-started/getting-started.php:324
+#: dist/getting-started/getting-started.php:297
+msgid "Install Gutenberg now"
+msgstr ""
+
+#: dist/getting-started/getting-started.php:300
+#: dist/getting-started/getting-started.php:302
+#: dist/getting-started/getting-started.php:314
+#: dist/getting-started/getting-started.php:316
 msgid "Plugin activated!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:315
+#: dist/getting-started/getting-started.php:307
 msgid "2. Install the Atomic Blocks plugin."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:316
+#: dist/getting-started/getting-started.php:308
 msgid "Atomic Blocks adds several handy content blocks to the Gutenberg block editor."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:319
+#: dist/getting-started/getting-started.php:311
 msgid "Install Atomic Blocks now"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:336
+#: dist/getting-started/getting-started.php:328
 msgid "Free Theme Download"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:343
+#: dist/getting-started/getting-started.php:335
 msgid "Download our FREE Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:345
+#: dist/getting-started/getting-started.php:337
 msgid "Install Now"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:355
+#: dist/getting-started/getting-started.php:347
 msgid "Stay Updated"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:360
-#: dist/getting-started/getting-started.php:391
+#: dist/getting-started/getting-started.php:352
+#: dist/getting-started/getting-started.php:383
 msgid "Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:362
+#: dist/getting-started/getting-started.php:354
 msgid "Subscribe Now"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:371
+#: dist/getting-started/getting-started.php:363
 msgid "Free Blocks & Tutorials"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:376
-#: dist/getting-started/getting-started.php:398
+#: dist/getting-started/getting-started.php:368
+#: dist/getting-started/getting-started.php:390
 msgid "Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:377
+#: dist/getting-started/getting-started.php:369
 msgid "Visit AtomicBlocks.com"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:385
+#: dist/getting-started/getting-started.php:377
 msgid "Free Blocks and Resources"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:390
+#: dist/getting-started/getting-started.php:382
 msgid "Blocks In Your Inbox"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:392
+#: dist/getting-started/getting-started.php:384
 msgid "Subscribe Today"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:397
+#: dist/getting-started/getting-started.php:389
 msgid "Articles & Tutorials"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:399
+#: dist/getting-started/getting-started.php:391
 msgid "Visit the Blog"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:404
+#: dist/getting-started/getting-started.php:396
 msgid "Gutenberg News"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:405
+#: dist/getting-started/getting-started.php:397
 msgid "Stay up to date with the new WordPress editor. Gutenberg News curates Gutenberg articles, tutorials, videos and more free resources."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:406
+#: dist/getting-started/getting-started.php:398
 msgid "Visit Gutenberg News"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:411
+#: dist/getting-started/getting-started.php:403
 msgid "Made by the fine folks at %1$s and %2$s."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:413
+#: dist/getting-started/getting-started.php:405
 msgid "AtomicBlocks.com"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:414
+#: dist/getting-started/getting-started.php:406
 msgid "Blog"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:415
+#: dist/getting-started/getting-started.php:407
 msgid "Docs"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:416
+#: dist/getting-started/getting-started.php:408
+#: src/blocks/block-author-profile/components/social.js:27
 msgid "Twitter"
 msgstr ""
 
@@ -362,7 +581,7 @@ msgstr ""
 msgid "Share via Email"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.php:67
+#: src/blocks/block-post-grid/index.php:70
 msgid "Untitled"
 msgstr ""
 
@@ -384,14 +603,14 @@ msgstr ""
 
 #: src/blocks/block-spacer/index.js:97
 #: src/blocks/block-accordion/index.js:115
-#: src/blocks/block-cta/index.js:291
+#: src/blocks/block-cta/index.js:298
 #: src/blocks/block-sharing/index.js:48
-#: src/blocks/block-author-profile/index.js:257
+#: src/blocks/block-author-profile/index.js:263
 #: src/blocks/block-container/index.js:192
 #: src/blocks/block-post-grid/index.js:38
 #: src/blocks/block-notice/index.js:137
 #: src/blocks/block-button/index.js:117
-#: src/blocks/block-testimonial/index.js:168
+#: src/blocks/block-testimonial/index.js:171
 #: src/blocks/block-drop-cap/index.js:87
 msgid "atomic"
 msgstr ""
@@ -416,38 +635,121 @@ msgstr ""
 msgid "list"
 msgstr ""
 
-#: src/blocks/block-cta/index.js:209
+#: src/blocks/block-cta/index.js:216
 msgid "Call-To-Action Title"
 msgstr ""
 
-#: src/blocks/block-cta/index.js:224
+#: src/blocks/block-cta/index.js:231
 msgid "Call To Action Text"
 msgstr ""
 
-#: src/blocks/block-cta/index.js:240
+#: src/blocks/block-cta/index.js:247
 #: src/blocks/block-button/index.js:66
 msgid "Button text..."
 msgstr ""
 
-#: src/blocks/block-cta/index.js:271
+#: src/blocks/block-cta/index.js:278
 #: src/blocks/block-button/index.js:99
 msgid "Apply"
 msgstr ""
 
-#: src/blocks/block-cta/index.js:284
+#: src/blocks/block-cta/index.js:291
 msgid "AB Call To Action"
 msgstr ""
 
-#: src/blocks/block-cta/index.js:285
+#: src/blocks/block-cta/index.js:292
 msgid "Add a call to action section with a title, text, and a button."
 msgstr ""
 
-#: src/blocks/block-cta/index.js:289
+#: src/blocks/block-cta/index.js:296
 msgid "call to action"
 msgstr ""
 
-#: src/blocks/block-cta/index.js:290
+#: src/blocks/block-cta/index.js:297
 msgid "cta"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:118
+msgid "Text Options"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:120
+msgid "Title Font Size"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:129
+msgid "Text Font Size"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:138
+#: src/blocks/block-cta/components/inspector.js:143
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:137
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:85
+msgid "Text Color"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:149
+msgid "Background Options"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:150
+msgid "Select a background image:"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:159
+msgid "Edit image"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:163
+msgid "Select Image"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:169
+msgid "Remove Image"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:173
+msgid "Remove"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:183
+msgid "Image Opacity"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:193
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:132
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:80
+msgid "Background Color"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:198
+msgid "Overlay Color"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:205
+msgid "Button Options"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:207
+msgid "Open link in new window"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:213
+msgid "Button Size"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:223
+msgid "Button Shape"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:233
+#: src/blocks/block-cta/components/inspector.js:238
+msgid "Button Color"
+msgstr ""
+
+#: src/blocks/block-cta/components/inspector.js:245
+#: src/blocks/block-cta/components/inspector.js:250
+msgid "Button Text Color"
 msgstr ""
 
 #: src/blocks/block-sharing/index.js:41
@@ -470,34 +772,70 @@ msgstr ""
 msgid "Share on reddit"
 msgstr ""
 
-#: src/blocks/block-author-profile/index.js:208
-#: src/blocks/block-testimonial/index.js:132
+#: src/blocks/block-author-profile/index.js:214
+#: src/blocks/block-testimonial/index.js:135
 msgid "Add name"
 msgstr ""
 
-#: src/blocks/block-author-profile/index.js:220
-#: src/blocks/block-testimonial/index.js:144
+#: src/blocks/block-author-profile/index.js:226
+#: src/blocks/block-testimonial/index.js:147
 msgid "Add title"
 msgstr ""
 
-#: src/blocks/block-author-profile/index.js:234
+#: src/blocks/block-author-profile/index.js:240
 msgid "Add profile text..."
 msgstr ""
 
-#: src/blocks/block-author-profile/index.js:250
+#: src/blocks/block-author-profile/index.js:256
 msgid "AB Profile Box"
 msgstr ""
 
-#: src/blocks/block-author-profile/index.js:251
+#: src/blocks/block-author-profile/index.js:257
 msgid "Add a profile box with bio info and social media links."
 msgstr ""
 
-#: src/blocks/block-author-profile/index.js:255
+#: src/blocks/block-author-profile/index.js:261
 msgid "author"
 msgstr ""
 
-#: src/blocks/block-author-profile/index.js:256
+#: src/blocks/block-author-profile/index.js:262
 msgid "profile"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:21
+msgid "Website"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:33
+msgid "Facebook"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:39
+msgid "Instagram"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:45
+msgid "Pinterest"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:51
+msgid "Google"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:57
+msgid "YouTube"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:63
+msgid "LinkedIn"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:69
+msgid "Github"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/social.js:75
+msgid "Email"
 msgstr ""
 
 #: src/blocks/block-container/index.js:185
@@ -530,6 +868,139 @@ msgstr ""
 
 #: src/blocks/block-post-grid/index.js:37
 msgid "grid"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/index.js:137
+msgid "AB Pricing Table"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/index.js:138
+#: src/blocks/block-pricing-table/index.js:98
+msgid "Add a pricing table."
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/index.js:143
+#: src/blocks/block-pricing-table-inner/components/title/index.js:29
+#: src/blocks/block-pricing-table-inner/components/price/index.js:32
+#: src/blocks/block-pricing-table-inner/components/description/index.js:29
+#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:29
+#: src/blocks/block-pricing-table/index.js:102
+msgid "pricing table"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/index.js:144
+#: src/blocks/block-pricing-table-inner/components/title/index.js:31
+#: src/blocks/block-pricing-table-inner/components/price/index.js:34
+#: src/blocks/block-pricing-table-inner/components/description/index.js:31
+#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:31
+#: src/blocks/block-pricing-table/index.js:103
+msgid "shop"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/index.js:145
+msgid "buy"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/title/edit.js:46
+msgid "Price Title"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/title/index.js:23
+msgid "Product Title"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/title/index.js:24
+msgid "Adds a product title component with schema markup."
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/title/index.js:30
+msgid "title"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/edit.js:64
+msgid "$49"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/edit.js:74
+msgid "/mo"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/index.js:26
+msgid "Product Price"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/index.js:27
+msgid "Adds a product price component with schema markup."
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/index.js:33
+msgid "price"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/edit.js:70
+msgid "Add a product description"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:85
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:66
+msgid "Text Settings"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:92
+msgid "List Border Style"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:113
+msgid "List Border Color"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:126
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:74
+msgid "Color Settings"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/index.js:23
+msgid "Product Description"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/index.js:24
+msgid "Adds a product description component with schema markup."
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/index.js:30
+msgid "description"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/subtitle/edit.js:62
+msgid "Price Subtitle"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:23
+msgid "Product Subtitle"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:24
+msgid "Adds a product subtitle component with schema markup."
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:30
+msgid "subtitle"
+msgstr ""
+
+#: src/blocks/block-pricing-table/index.js:97
+msgid "AB Pricing"
+msgstr ""
+
+#: src/blocks/block-pricing-table/index.js:104
+msgid "purchase"
+msgstr ""
+
+#: src/blocks/block-pricing-table/components/inspector.js:49
+msgid "Pricing Columns"
+msgstr ""
+
+#: src/blocks/block-pricing-table/components/inspector.js:56
+msgid "Pricing Columns Gap"
 msgstr ""
 
 #: src/blocks/block-notice/index.js:98
@@ -572,23 +1043,23 @@ msgstr ""
 msgid "link"
 msgstr ""
 
-#: src/blocks/block-testimonial/index.js:88
+#: src/blocks/block-testimonial/index.js:90
 msgid "Add testimonial text..."
 msgstr ""
 
-#: src/blocks/block-testimonial/index.js:161
+#: src/blocks/block-testimonial/index.js:164
 msgid "AB Testimonial"
 msgstr ""
 
-#: src/blocks/block-testimonial/index.js:162
+#: src/blocks/block-testimonial/index.js:165
 msgid "Add a user testimonial with a name and title."
 msgstr ""
 
-#: src/blocks/block-testimonial/index.js:166
+#: src/blocks/block-testimonial/index.js:169
 msgid "testimonial"
 msgstr ""
 
-#: src/blocks/block-testimonial/index.js:167
+#: src/blocks/block-testimonial/index.js:170
 #: src/blocks/block-drop-cap/index.js:86
 msgid "quote"
 msgstr ""

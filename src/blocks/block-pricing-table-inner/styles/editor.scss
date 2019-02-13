@@ -1,0 +1,122 @@
+/**
+ * Editor styles for the admin
+ */
+
+.edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-pricing-table"] {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.ab-pricing-table-wrap-admin > .editor-inner-blocks > .editor-block-list__layout {
+	display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 0 2em;
+    min-height: 0;
+}
+
+/* Grid gap classes */
+
+.ab-block-pricing-table-gap-0 > .editor-inner-blocks > .editor-block-list__layout {
+	grid-gap: 0 0;
+}
+
+.ab-block-pricing-table-gap-1 > .editor-inner-blocks > .editor-block-list__layout {
+	grid-gap: 0 1em;
+}
+
+.ab-block-pricing-table-gap-2 > .editor-inner-blocks > .editor-block-list__layout {
+	grid-gap: 0 2em;
+}
+
+.ab-block-pricing-table-gap-3 > .editor-inner-blocks > .editor-block-list__layout {
+	grid-gap: 0 3em;
+}
+
+.ab-block-pricing-table-gap-4 > .editor-inner-blocks > .editor-block-list__layout {
+	grid-gap: 0 4em;
+}
+
+.ab-block-pricing-table-gap-5 > .editor-inner-blocks > .editor-block-list__layout {
+	grid-gap: 0 5em;
+}
+
+/* Grid column classes */
+
+.ab-pricing-columns-2 .editor-block-list__layout {
+    grid-template-columns: 1fr 1fr;
+
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ab-pricing-columns-3 .editor-block-list__layout {
+	grid-template-columns: 1fr 1fr 1fr;
+
+	@media only screen and (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.ab-pricing-columns-4 .editor-block-list__layout {
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+
+	@media only screen and (max-width: 800px) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media only screen and (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.ab-pricing-columns-5 .editor-block-list__layout {
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+	@media only screen and (max-width: 800px) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media only screen and (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Alignment styles */
+
+.ab-block-pricing-table-inside .editor-block-list__block[data-align=full],
+.ab-block-pricing-table-inside .editor-block-list__block[data-align=wide] {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ab-block-pricing-table-inside .editor-block-list__block .editor-url-input input[type=text],
+.ab-block-pricing-table-inside .editor-url-input input[type=text] {
+	width: 185px;
+}
+
+div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-rich-text__tinymce {
+	line-height: 1;
+}
+
+.ab-pricing-has-currency div .editor-rich-text:first-child {
+	vertical-align: top;
+	margin-top: .7em;
+	margin-right: 3px;
+	line-height: 1;
+}
+
+.ab-pricing-table-title.editor-rich-text__tinymce:focus strong[data-mce-selected] {
+	background: transparent;
+	color: inherit;
+}
+
+/* Pricing table components */
+
+div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-block-list__block-edit div .editor-rich-text {
+	display: inline-block;
+}
+
+.ab-block-pricing-table .editor-block-list__layout div:first-child .editor-block-list__block-edit {
+	margin-top: 0;
+}

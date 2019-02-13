@@ -19,8 +19,8 @@ export default class customButton extends Component {
 
 	render() {
 
-		return (	
-			<div 
+		return (
+			<div
 				style={ {
 					textAlign: this.props.attributes.buttonAlignment,
 				} }
