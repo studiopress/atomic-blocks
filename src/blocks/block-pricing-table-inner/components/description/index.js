@@ -69,15 +69,19 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 		},
 		paddingTop: {
 			type: 'number',
+			default: 10,
 		},
 		paddingRight: {
 			type: 'number',
+			default: 20,
 		},
 		paddingBottom: {
 			type: 'number',
+			default: 10,
 		},
 		paddingLeft: {
 			type: 'number',
+			default: 20,
 		},
 	},
 
