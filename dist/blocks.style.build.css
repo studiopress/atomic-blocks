@@ -1829,8 +1829,12 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     grid-template-columns: 1fr 1fr; }
   .lsx-block-post-grid .is-grid.columns-3 {
     grid-template-columns: 1fr 1fr 1fr; }
+    .lsx-block-post-grid .is-grid.columns-3 .lsx-block-post-grid-image img {
+      max-height: 170px; }
   .lsx-block-post-grid .is-grid.columns-4 {
     grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .lsx-block-post-grid .is-grid.columns-4 .lsx-block-post-grid-image img {
+      max-height: 160px; }
   @media only screen and (max-width: 600px) {
     .lsx-block-post-grid div[class*="columns"].is-grid {
       grid-template-columns: 1fr; } }
