@@ -73,7 +73,7 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
-**1.4.3**
+**1.5.0**
 * Add Pricing Table block.
 * Fix container background clearing bug.
 
