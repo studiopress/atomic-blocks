@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.4.23\n"
+"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-01-29T18:35:48+00:00\n"
-"PO-Revision-Date: 2019-01-29T18:35:48+00:00\n"
+"POT-Creation-Date: 2019-02-13T19:33:59+00:00\n"
+"PO-Revision-Date: 2019-02-13T19:33:59+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: atomic-blocks\n"
 
@@ -606,7 +606,7 @@ msgstr ""
 #: src/blocks/block-cta/index.js:298
 #: src/blocks/block-sharing/index.js:48
 #: src/blocks/block-author-profile/index.js:263
-#: src/blocks/block-container/index.js:192
+#: src/blocks/block-container/index.js:187
 #: src/blocks/block-post-grid/index.js:38
 #: src/blocks/block-notice/index.js:137
 #: src/blocks/block-button/index.js:117
@@ -644,6 +644,7 @@ msgid "Call To Action Text"
 msgstr ""
 
 #: src/blocks/block-cta/index.js:247
+#: src/blocks/block-pricing-table-inner/components/button/edit.js:77
 #: src/blocks/block-button/index.js:66
 msgid "Button text..."
 msgstr ""
@@ -683,8 +684,11 @@ msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:138
 #: src/blocks/block-cta/components/inspector.js:143
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:137
-#: src/blocks/block-pricing-table-inner/components/global/inspector.js:85
+#: src/blocks/block-author-profile/components/inspector.js:95
+#: src/blocks/block-author-profile/components/inspector.js:100
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:158
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:174
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:126
 msgid "Text Color"
 msgstr ""
 
@@ -717,8 +721,12 @@ msgid "Image Opacity"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:193
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:132
-#: src/blocks/block-pricing-table-inner/components/global/inspector.js:80
+#: src/blocks/block-author-profile/components/inspector.js:84
+#: src/blocks/block-author-profile/components/inspector.js:89
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:153
+#: src/blocks/block-pricing-table-inner/components/button/inspector.js:142
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:169
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:121
 msgid "Background Color"
 msgstr ""
 
@@ -731,24 +739,31 @@ msgid "Button Options"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:207
+#: src/utils/inspector/button.js:55
 msgid "Open link in new window"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:213
+#: src/utils/inspector/button.js:62
 msgid "Button Size"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:223
+#: src/utils/inspector/button.js:72
 msgid "Button Shape"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:233
 #: src/blocks/block-cta/components/inspector.js:238
+#: src/utils/inspector/button.js:82
+#: src/utils/inspector/button.js:87
 msgid "Button Color"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:245
 #: src/blocks/block-cta/components/inspector.js:250
+#: src/utils/inspector/button.js:94
+#: src/utils/inspector/button.js:99
 msgid "Button Text Color"
 msgstr ""
 
@@ -802,6 +817,80 @@ msgstr ""
 msgid "profile"
 msgstr ""
 
+#: src/blocks/block-author-profile/components/inspector.js:42
+#: src/utils/inspector/button.js:35
+msgid "Square"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:43
+msgid "Round"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:67
+msgid "Font Size"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:76
+msgid "Avatar Shape"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:77
+msgid "Choose between a round or square avatar shape."
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:106
+#: src/blocks/block-author-profile/components/inspector.js:111
+msgid "Social Link Color"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:118
+msgid "Social Links"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:119
+msgid "Add links to your social media site and they will appear in the bottom of the profile box."
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:122
+msgid "Twitter URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:129
+msgid "Facebook URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:136
+msgid "Instagram URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:143
+msgid "Pinterest URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:150
+msgid "Google URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:157
+msgid "YouTube URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:164
+msgid "Github URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:171
+msgid "LinkedIn URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:178
+msgid "Email URL"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:185
+msgid "Website URL"
+msgstr ""
+
 #: src/blocks/block-author-profile/components/social.js:21
 msgid "Website"
 msgstr ""
@@ -838,19 +927,19 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: src/blocks/block-container/index.js:185
+#: src/blocks/block-container/index.js:180
 msgid "AB Container"
 msgstr ""
 
-#: src/blocks/block-container/index.js:186
+#: src/blocks/block-container/index.js:181
 msgid "Add a container block to wrap several blocks in a parent container."
 msgstr ""
 
-#: src/blocks/block-container/index.js:190
+#: src/blocks/block-container/index.js:185
 msgid "container"
 msgstr ""
 
-#: src/blocks/block-container/index.js:191
+#: src/blocks/block-container/index.js:186
 msgid "section"
 msgstr ""
 
@@ -870,38 +959,33 @@ msgstr ""
 msgid "grid"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/index.js:137
-msgid "AB Pricing Table"
+#: src/blocks/block-pricing-table-inner/index.js:157
+msgid "AB Pricing Column"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/index.js:138
-#: src/blocks/block-pricing-table/index.js:98
-msgid "Add a pricing table."
+#: src/blocks/block-pricing-table-inner/index.js:158
+msgid "Add a pricing column."
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/index.js:143
-#: src/blocks/block-pricing-table-inner/components/title/index.js:29
-#: src/blocks/block-pricing-table-inner/components/price/index.js:32
-#: src/blocks/block-pricing-table-inner/components/description/index.js:29
-#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:29
-#: src/blocks/block-pricing-table/index.js:102
-msgid "pricing table"
+#: src/blocks/block-pricing-table-inner/index.js:163
+msgid "pricing"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/index.js:144
+#: src/blocks/block-pricing-table-inner/index.js:164
 #: src/blocks/block-pricing-table-inner/components/title/index.js:31
 #: src/blocks/block-pricing-table-inner/components/price/index.js:34
+#: src/blocks/block-pricing-table-inner/components/button/index.js:32
 #: src/blocks/block-pricing-table-inner/components/description/index.js:31
 #: src/blocks/block-pricing-table-inner/components/subtitle/index.js:31
 #: src/blocks/block-pricing-table/index.js:103
 msgid "shop"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/index.js:145
+#: src/blocks/block-pricing-table-inner/index.js:165
 msgid "buy"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/title/edit.js:46
+#: src/blocks/block-pricing-table-inner/components/title/edit.js:71
 msgid "Price Title"
 msgstr ""
 
@@ -913,16 +997,66 @@ msgstr ""
 msgid "Adds a product title component with schema markup."
 msgstr ""
 
+#: src/blocks/block-pricing-table-inner/components/title/index.js:29
+#: src/blocks/block-pricing-table-inner/components/price/index.js:32
+#: src/blocks/block-pricing-table-inner/components/button/index.js:30
+#: src/blocks/block-pricing-table-inner/components/description/index.js:29
+#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:29
+#: src/blocks/block-pricing-table/index.js:102
+msgid "pricing table"
+msgstr ""
+
 #: src/blocks/block-pricing-table-inner/components/title/index.js:30
 msgid "title"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/price/edit.js:64
-msgid "$49"
+#: src/blocks/block-pricing-table-inner/components/price/edit.js:103
+#: src/blocks/block-pricing-table-inner/components/price/index.js:178
+msgid "$"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/price/edit.js:74
+#: src/blocks/block-pricing-table-inner/components/price/edit.js:114
+msgid "49"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/edit.js:125
 msgid "/mo"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:82
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:91
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:76
+msgid "Text Settings"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:89
+msgid "Show currency symbol"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:95
+msgid "Currency Symbol"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:102
+msgid "Show pricing duration"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:108
+msgid "Pricing Duration"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:116
+#: src/blocks/block-pricing-table-inner/components/button/inspector.js:105
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:132
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:84
+msgid "Padding Settings"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:147
+#: src/blocks/block-pricing-table-inner/components/button/inspector.js:136
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:163
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:115
+msgid "Color Settings"
 msgstr ""
 
 #: src/blocks/block-pricing-table-inner/components/price/index.js:26
@@ -937,41 +1071,52 @@ msgstr ""
 msgid "price"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/description/edit.js:70
-msgid "Add a product description"
+#: src/blocks/block-pricing-table-inner/components/button/inspector.js:81
+msgid "Button Settings"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:85
-#: src/blocks/block-pricing-table-inner/components/global/inspector.js:66
-msgid "Text Settings"
+#: src/blocks/block-pricing-table-inner/components/button/index.js:24
+msgid "Product Button"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:92
+#: src/blocks/block-pricing-table-inner/components/button/index.js:25
+msgid "Adds a product button component."
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/button/index.js:31
+#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:30
+msgid "subtitle"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/edit.js:78
+msgid "Add a product feature"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:98
 msgid "List Border Style"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:113
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:108
+msgid "List Border Width"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:119
 msgid "List Border Color"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:126
-#: src/blocks/block-pricing-table-inner/components/global/inspector.js:74
-msgid "Color Settings"
-msgstr ""
-
 #: src/blocks/block-pricing-table-inner/components/description/index.js:23
-msgid "Product Description"
+msgid "Product Features"
 msgstr ""
 
 #: src/blocks/block-pricing-table-inner/components/description/index.js:24
-msgid "Adds a product description component with schema markup."
+msgid "Adds a product feature component with schema markup."
 msgstr ""
 
 #: src/blocks/block-pricing-table-inner/components/description/index.js:30
-msgid "description"
+msgid "features"
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/subtitle/edit.js:62
+#: src/blocks/block-pricing-table-inner/components/subtitle/edit.js:70
 msgid "Price Subtitle"
 msgstr ""
 
@@ -983,12 +1128,12 @@ msgstr ""
 msgid "Adds a product subtitle component with schema markup."
 msgstr ""
 
-#: src/blocks/block-pricing-table-inner/components/subtitle/index.js:30
-msgid "subtitle"
-msgstr ""
-
 #: src/blocks/block-pricing-table/index.js:97
 msgid "AB Pricing"
+msgstr ""
+
+#: src/blocks/block-pricing-table/index.js:98
+msgid "Add a pricing table."
 msgstr ""
 
 #: src/blocks/block-pricing-table/index.js:104
@@ -1078,4 +1223,52 @@ msgstr ""
 
 #: src/blocks/block-drop-cap/index.js:85
 msgid "drop cap"
+msgstr ""
+
+#: src/utils/inspector/padding.js:49
+msgid "Padding Top"
+msgstr ""
+
+#: src/utils/inspector/padding.js:58
+msgid "Padding Right"
+msgstr ""
+
+#: src/utils/inspector/padding.js:67
+msgid "Padding Bottom"
+msgstr ""
+
+#: src/utils/inspector/padding.js:76
+msgid "Padding Left"
+msgstr ""
+
+#: src/utils/inspector/padding.js:85
+msgid "Padding Vertical"
+msgstr ""
+
+#: src/utils/inspector/padding.js:94
+msgid "Padding Horizontal"
+msgstr ""
+
+#: src/utils/inspector/button.js:27
+msgid "Small"
+msgstr ""
+
+#: src/utils/inspector/button.js:28
+msgid "Medium"
+msgstr ""
+
+#: src/utils/inspector/button.js:29
+msgid "Large"
+msgstr ""
+
+#: src/utils/inspector/button.js:30
+msgid "Extra Large"
+msgstr ""
+
+#: src/utils/inspector/button.js:36
+msgid "Rounded Square"
+msgstr ""
+
+#: src/utils/inspector/button.js:37
+msgid "Circular"
 msgstr ""
