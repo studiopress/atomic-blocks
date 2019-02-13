@@ -1074,7 +1074,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     height: 1px;
     border-top: solid 1px;
     position: absolute;
-    top: 50%; }
+    top: 50%;
+    left: 0; }
   .ab-block-spacer.ab-divider-solid.ab-spacer-divider:after {
     border-top-style: solid; }
   .ab-block-spacer.ab-divider-dotted.ab-spacer-divider:after {
@@ -2366,9 +2367,6 @@ ul.ab-pricing-table-features li {
 span.ab-pricing-table-term {
   margin-left: 5px; }
 
-.ab-pricing-table-wrap .ab-block-pricing-table-inside > * {
-  margin-bottom: 25px; }
-
 .ab-pricing-table-wrap .ab-block-pricing-table-inside > *:last-child {
   margin-bottom: 0; }
 
@@ -2391,8 +2389,5 @@ span.ab-pricing-table-term {
 .ab-block-pricing-table-right {
   text-align: right; }
 
-.ab-pricing-table-price-wrap {
-  padding: 10% 0; }
-
-.ab-pricing-table-subtitle {
-  padding: 5% 0; }
+.ab-pricing-table-button .ab-block-button {
+  margin-bottom: 0; }

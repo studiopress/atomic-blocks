@@ -113,46 +113,34 @@ class Inspector extends Component {
 				) }
 			</PanelBody>
 			<PanelBody
-				title={ __( 'Padding', 'atomic-blocks' ) }
+				title={ __( 'Padding Settings', 'atomic-blocks' ) }
 				initialOpen={ false }
 			>
 				<Padding
+					// Top padding
 					paddingEnableTop={ true }
 					paddingTop={ paddingTop }
-					paddingTopMin="1"
-					paddingTopMax="10"
+					paddingTopMin="0"
+					paddingTopMax="100"
+					onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
+					// Right padding
 					paddingEnableRight={ true }
 					paddingRight={ paddingRight }
-					paddingRightMin="1"
-					paddingRightMax="10"
+					paddingRightMin="0"
+					paddingRightMax="100"
+					onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
+					// Bottom padding
 					paddingEnableBottom={ true }
 					paddingBottom={ paddingBottom }
-					paddingBottomMin="1"
-					paddingBottomMax="10"
+					paddingBottomMin="0"
+					paddingBottomMax="100"
+					onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
+					// Left padding
 					paddingEnableLeft={ true }
 					paddingLeft={ paddingLeft }
-					paddingLeftMin="1"
-					paddingLeftMax="10"
-					onChangePadTop={ value =>
-						setAttributes( {
-							paddingTop: value === undefined ? 0 : value
-						} )
-					}
-					onChangePadRight={ value =>
-						setAttributes( {
-							paddingRight: value === undefined ? 0 : value
-						} )
-					}
-					onChangePadBottom={ value =>
-						setAttributes( {
-							paddingBottom: value === undefined ? 0 : value
-						} )
-					}
-					onChangePadLeft={ value =>
-						setAttributes({
-							paddingLeft: value === undefined ? 0 : value
-						} )
-					}
+					paddingLeftMin="0"
+					paddingLeftMax="100"
+					onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
 				/>
 			</PanelBody>
 			<PanelColorSettings

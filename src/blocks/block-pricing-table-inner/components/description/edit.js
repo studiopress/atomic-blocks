@@ -28,6 +28,10 @@ class Edit extends Component {
 				borderStyle,
 				borderColor,
 				borderWidth,
+				paddingTop,
+				paddingRight,
+				paddingBottom,
+				paddingLeft,
 			},
 			isSelected,
 			className,
@@ -56,6 +60,10 @@ class Edit extends Component {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			borderColor: borderColor ? borderColor : undefined,
+			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
+			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
+			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 		};
 
 		return [

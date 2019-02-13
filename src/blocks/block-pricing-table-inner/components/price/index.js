@@ -103,8 +103,10 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			term,
 			showTerm,
 			showCurrency,
-			horizontalPadding,
-			verticalPadding,
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
@@ -133,6 +135,10 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 		const wrapperStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
+			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
+			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
+			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 		};
 
 		// Setup styles

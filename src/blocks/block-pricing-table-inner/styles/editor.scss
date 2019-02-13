@@ -92,7 +92,7 @@
 
 .ab-block-pricing-table-inside .editor-block-list__block .editor-url-input input[type=text],
 .ab-block-pricing-table-inside .editor-url-input input[type=text] {
-	width: 210px;
+	width: 185px;
 }
 
 div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-rich-text__tinymce {
@@ -117,7 +117,6 @@ div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-block-list__block-
 	display: inline-block;
 }
 
-.ab-block-pricing-table-inside .editor-block-list__layout>.editor-block-list__block>.editor-block-list__block-edit {
+.ab-block-pricing-table .editor-block-list__layout div:first-child .editor-block-list__block-edit {
 	margin-top: 0;
-	margin-bottom: 0;
 }

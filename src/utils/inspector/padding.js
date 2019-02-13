@@ -4,57 +4,100 @@ const { RangeControl } = wp.components;
 
 export default function Padding( props ) {
     const {
+        // Padding top props
         paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft,
         paddingTopMin,
-        paddingRightMin,
-        paddingBottomMin,
-        paddingLeftMin,
         paddingTopMax,
-        paddingRightMax,
-        paddingBottomMax,
-        paddingLeftMax,
         paddingEnableTop,
-        onChangePadTop = () => {},
-        onChangePadRight = () => {},
-        onChangePadBottom = () => {},
-        onChangePadLeft = () => {}
+        onChangePaddingTop = () => {},
+        // Padding right props
+        paddingRight,
+        paddingRightMin,
+        paddingRightMax,
+        paddingEnableRight,
+        onChangePaddingRight = () => {},
+        // Padding bottom props
+        paddingBottom,
+        paddingBottomMin,
+        paddingBottomMax,
+        paddingEnableBottom,
+        onChangePaddingBottom = () => {},
+        // Padding left props
+        paddingLeft,
+        paddingLeftMin,
+        paddingLeftMax,
+        paddingEnableLeft,
+        onChangePaddingLeft = () => {},
+        // Padding vertical props
+        paddingVertical,
+        paddingEnableVertical,
+        paddingVerticalMin,
+        paddingVerticalMax,
+        onChangePaddingVertical = () => {},
+        // Padding horizontal props
+        paddingHorizontal,
+        paddingEnableHorizontal,
+        paddingHorizontalMin,
+        paddingHorizontalMax,
+        onChangePaddingHorizontal = () => {},
     } = props;
 
     return (
         <Fragment>
             { paddingEnableTop && (
-            <RangeControl
-                label={ __( 'Padding Top', 'atomic-blocks' ) }
-                value={ paddingTop }
-                min={ paddingTopMin }
-                max={ paddingTopMax }
-                onChange={ onChangePadTop }
-            />
+                <RangeControl
+                    label={ __( 'Padding Top', 'atomic-blocks' ) }
+                    value={ paddingTop }
+                    min={ paddingTopMin }
+                    max={ paddingTopMax }
+                    onChange={ onChangePaddingTop }
+                />
             ) }
-            <RangeControl
-                label={ __( 'Padding Right', 'atomic-blocks' ) }
-                value={ paddingRight }
-                min={ paddingRightMin }
-                max={ paddingRightMax }
-                onChange={ onChangePadRight }
-            />
-            <RangeControl
-                label={ __( 'Padding Bottom', 'atomic-blocks' ) }
-                value={ paddingBottom }
-                min={ paddingBottomMin }
-                max={ paddingBottomMax }
-                onChange={ onChangePadBottom }
-            />
-            <RangeControl
-                label={ __( 'Padding Left', 'atomic-blocks' ) }
-                value={ paddingLeft }
-                min={ paddingLeftMin }
-                max={ paddingLeftMax }
-                onChange={ onChangePadLeft }
-            />
+            { paddingEnableRight && (
+                <RangeControl
+                    label={ __( 'Padding Right', 'atomic-blocks' ) }
+                    value={ paddingRight }
+                    min={ paddingRightMin }
+                    max={ paddingRightMax }
+                    onChange={ onChangePaddingRight }
+                />
+            ) }
+            { paddingEnableBottom && (
+                <RangeControl
+                    label={ __( 'Padding Bottom', 'atomic-blocks' ) }
+                    value={ paddingBottom }
+                    min={ paddingBottomMin }
+                    max={ paddingBottomMax }
+                    onChange={ onChangePaddingBottom }
+                />
+            ) }
+            { paddingEnableLeft && (
+                <RangeControl
+                    label={ __( 'Padding Left', 'atomic-blocks' ) }
+                    value={ paddingLeft }
+                    min={ paddingLeftMin }
+                    max={ paddingLeftMax }
+                    onChange={ onChangePaddingLeft }
+                />
+            ) }
+            { paddingEnableVertical && (
+                <RangeControl
+                    label={ __( 'Padding Vertical', 'atomic-blocks' ) }
+                    value={ paddingVertical }
+                    min={ paddingVerticalMin }
+                    max={ paddingVerticalMax }
+                    onChange={ onChangePaddingVertical }
+                />
+            ) }
+            { paddingEnableHorizontal && (
+                <RangeControl
+                    label={ __( 'Padding Horizontal', 'atomic-blocks' ) }
+                    value={ paddingHorizontal }
+                    min={ paddingHorizontalMin }
+                    max={ paddingHorizontalMax }
+                    onChange={ onChangePaddingHorizontal }
+                />
+            ) }
         </Fragment>
     );
 }

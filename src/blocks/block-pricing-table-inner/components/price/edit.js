@@ -29,6 +29,10 @@ class Edit extends Component {
 				term,
 				showTerm,
 				showCurrency,
+				paddingTop,
+				paddingRight,
+				paddingBottom,
+				paddingLeft,
 			},
 			isSelected,
 			className,
@@ -59,6 +63,10 @@ class Edit extends Component {
 		const editWrapStyles = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
+			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
+			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
+			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 		};
 
 		// Setup price styles

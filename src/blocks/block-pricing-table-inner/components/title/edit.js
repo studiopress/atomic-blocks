@@ -25,6 +25,10 @@ class Edit extends Component {
 		const {
 			attributes: {
 				title,
+				paddingTop,
+				paddingRight,
+				paddingBottom,
+				paddingLeft,
 			},
 			isSelected,
 			className,
@@ -34,6 +38,27 @@ class Edit extends Component {
 			backgroundColor,
 			textColor,
 		} = this.props;
+
+		// Setup class names
+		const editClassName = classnames( {
+			'ab-pricing-table-title': true,
+			[ fontSize.class ]: fontSize.class,
+			'has-text-color': textColor.color,
+			'has-background': backgroundColor.color,
+			[ backgroundColor.class ]: backgroundColor.class,
+			[ textColor.class ]: textColor.class,
+		} );
+
+		// Setup styles
+		const editStyles = {
+			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+			backgroundColor: backgroundColor.color,
+			color: textColor.color,
+			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
+			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
+			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
+		};
 
 		return [
 			<Fragment>
@@ -47,19 +72,8 @@ class Edit extends Component {
 					keepPlaceholderOnFocus
 					value={ title }
 					onChange={ ( value ) => setAttributes( { title: value } ) }
-					className={ classnames( {
-						'ab-pricing-table-title': true,
-						[ fontSize.class ]: fontSize.class,
-						'has-text-color': textColor.color,
-						'has-background': backgroundColor.color,
-						[ backgroundColor.class ]: backgroundColor.class,
-						[ textColor.class ]: textColor.class,
-					} ) }
-					style={ {
-						fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-						backgroundColor: backgroundColor.color,
-						color: textColor.color,
-					} }
+					style={ editStyles }
+					className={ editClassName ? editClassName : undefined }
 				/>
 			</Fragment>
 		];

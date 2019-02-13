@@ -4,6 +4,9 @@
  * This is used for multiple pricing table components using the same inspector settings
  */
 
+ // Import Inspector settings
+import Padding from './../../../../utils/inspector/padding';
+
 // Import block dependencies and components
 const { __ } = wp.i18n;
 const { Component } = wp.element;
@@ -49,6 +52,12 @@ class Inspector extends Component {
 
 		// Setup the attributes
 		const {
+			attributes: {
+				paddingTop,
+				paddingRight,
+				paddingBottom,
+				paddingLeft,
+			},
 			isSelected,
 			setAttributes,
 			fallbackFontSize,
@@ -69,6 +78,37 @@ class Inspector extends Component {
 					fallbackFontSize={ fallbackFontSize }
 					value={ fontSize.size }
 					onChange={ setFontSize }
+				/>
+			</PanelBody>
+			<PanelBody
+				title={ __( 'Padding Settings', 'atomic-blocks' ) }
+				initialOpen={ false }
+			>
+				<Padding
+					// Top padding
+					paddingEnableTop={ true }
+					paddingTop={ paddingTop }
+					paddingTopMin="0"
+					paddingTopMax="100"
+					onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
+					// Right padding
+					paddingEnableRight={ true }
+					paddingRight={ paddingRight }
+					paddingRightMin="0"
+					paddingRightMax="100"
+					onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
+					// Bottom padding
+					paddingEnableBottom={ true }
+					paddingBottom={ paddingBottom }
+					paddingBottomMin="0"
+					paddingBottomMax="100"
+					onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
+					// Left padding
+					paddingEnableLeft={ true }
+					paddingLeft={ paddingLeft }
+					paddingLeftMin="0"
+					paddingLeftMax="100"
+					onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
 				/>
 			</PanelBody>
 			<PanelColorSettings

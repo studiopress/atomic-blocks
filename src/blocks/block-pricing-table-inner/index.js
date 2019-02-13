@@ -36,8 +36,7 @@ const ALLOWED_BLOCKS = [
 	'atomic-blocks/ab-pricing-table-price',
 	'atomic-blocks/ab-pricing-table-subtitle',
 	'atomic-blocks/ab-pricing-table-title',
-	'atomic-blocks/ab-button',
-	'atomic-blocks/ab-spacer',
+	'atomic-blocks/ab-pricing-table-button',
 	'core/paragraph',
 	'core/image',
 ];
@@ -100,26 +99,46 @@ class ABPricingTableBlock extends Component {
 								['atomic-blocks/ab-pricing-table-title', {
 									title: '<strong>Price Title</strong>',
 									fontSize: 'medium',
+									paddingTop: 30,
+									paddingRight: 20,
+									paddingBottom: 10,
+									paddingLeft: 20,
 								}],
 								['atomic-blocks/ab-pricing-table-subtitle', {
 									subtitle: 'Price Subtitle Description',
-									fontSize: 'normal',
+									customFontSize: 20,
+									paddingTop: 10,
+									paddingRight: 20,
+									paddingBottom: 10,
+									paddingLeft: 20,
 								}],
 								['atomic-blocks/ab-pricing-table-price', {
 									price: '49',
 									currency: '$',
-									customFontSize: 50,
+									customFontSize: 60,
 									term: '/mo',
+									paddingTop: 10,
+									paddingRight: 20,
+									paddingBottom: 10,
+									paddingLeft: 20,
 								}],
 								['atomic-blocks/ab-pricing-table-features', {
 									features: '<li>Product Feature One</li><li>Product Feature Two</li><li>Product Feature Three</li>',
 									multilineTag: 'li',
 									ordered: false,
-									fontSize: 'normal',
+									customFontSize: 20,
+									paddingTop: 15,
+									paddingRight: 20,
+									paddingBottom: 15,
+									paddingLeft: 20,
 								}],
-								['atomic-blocks/ab-button', {
+								['atomic-blocks/ab-pricing-table-button', {
 									buttonText: 'Buy Now',
-									buttonBackgroundColor: '#272c30'
+									buttonBackgroundColor: '#272c30',
+									paddingTop: 15,
+									paddingRight: 20,
+									paddingBottom: 35,
+									paddingLeft: 20,
 								}],
 							]}
 							templateLock={ false }
@@ -165,7 +184,6 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		},
 		padding: {
 			type: 'number',
-			default: 10,
 		},
 	},
 

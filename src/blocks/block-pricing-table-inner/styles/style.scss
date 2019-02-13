@@ -196,10 +196,6 @@ span.ab-pricing-table-term {
 	margin-left: 5px;
 }
 
-.ab-pricing-table-wrap .ab-block-pricing-table-inside > * {
-	margin-bottom: 25px;
-}
-
 .ab-pricing-table-wrap .ab-block-pricing-table-inside > *:last-child {
 	margin-bottom: 0;
 }
@@ -231,14 +227,6 @@ span.ab-pricing-table-term {
 	text-align: right;
 }
 
-.ab-pricing-table-price-wrap {
-	padding: 10% 0;
-}
-
-.ab-pricing-table-price-wrap.has-background {
-
-}
-
-.ab-pricing-table-subtitle {
-	padding: 5% 0;
+.ab-pricing-table-button .ab-block-button {
+	margin-bottom: 0;
 }
