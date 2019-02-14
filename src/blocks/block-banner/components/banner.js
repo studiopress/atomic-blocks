@@ -25,7 +25,6 @@ export default class BannerBox extends Component {
 				style={ {
 					color: bannerTextColor,
 					backgroundColor: bannerBackgroundColor,
-					backgroundImage: 'url("' + bannerImgURL + '")',
 				} }
 				className={ classnames(
 					this.props.className,

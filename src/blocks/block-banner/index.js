@@ -257,6 +257,17 @@ class LSXBannerBlock extends Component {
 			/>,
 			// Show the block markup in the editor
 			<BannerBox key="banner" { ...this.props }>
+                <ImageColumn { ...props }>
+                    { bannerImgURL && (
+                        <picture className="lazyload">
+                            <source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } media="(min-width: 100rem)" srcSet={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } />
+                            <source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*' } media="(min-width: 61.25rem)" srcSet={ bannerImgURL  + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*'} />
+                            <source data-srcset={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=768:*' } media="(min-width: 30rem)" srcSet={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=768:*' } />
+                            <img title={ bannerName } className="lazyload" data-src={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=640:*' } src={ bannerImgURL } alt={ bannerTitle } />
+                        </picture>
+                    ) }
+                </ImageColumn>
+
 				<div
 					className={ classnames(
 						'lsx-banner-content-wrap'
@@ -391,6 +402,8 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 		// Setup the attributes
 		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerLogoID, bannerLogoURL, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerHeight, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
+        console.log(bannerLogoURL);
+
 		return (
 			// Save the block markup for the front end
 			<BannerBox { ...props }>
@@ -409,13 +422,15 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 						'lsx-banner-content-wrap',
 					) }
 				>
-					<div className="lsx-banner-logo">
-						<img
-							className="lsx-banner-logo-img"
-							src={ bannerLogoURL }
-							alt="logo"
-						/>
-					</div>
+                    { '' !== bannerLogoURL && (
+                        <div className="lsx-banner-logo">
+                            <img
+                                className="lsx-banner-logo-img"
+                                src={ bannerLogoURL }
+                                alt="logo"
+                            />
+                        </div>
+                    ) }
 					<div
 						className={ classnames(
 							'header-headings',
