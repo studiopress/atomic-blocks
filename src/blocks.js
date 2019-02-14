@@ -17,3 +17,4 @@ import './blocks/block-team/index.js';
 import './blocks/block-card/index.js';
 import './blocks/block-banner/index.js';
 import './blocks/block-projects/index.js';
+import './blocks/block-post-carousel/index.js';
