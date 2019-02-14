@@ -267,7 +267,25 @@ export const callToAction_1_4_21_attr = {
 
 export const callToAction_1_4_21_save = props => {
 	const {
-		callToAction_1_4_21_attr
+        buttonText,
+        buttonUrl,
+        buttonAlignment,
+        buttonBackgroundColor,
+        buttonTextColor,
+        buttonSize,
+        buttonShape,
+        buttonTarget,
+        ctaTitle,
+        ctaText,
+        ctaTitleFontSize,
+        ctaTextFontSize,
+        ctaWidth,
+        ctaBackgroundColor,
+        ctaTextColor,
+        imgURL,
+        imgID,
+        imgAlt,
+        dimRatio,
 	} = props.attributes
 
 	return (
