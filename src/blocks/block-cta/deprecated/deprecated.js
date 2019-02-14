@@ -106,7 +106,7 @@ export const callToAction_1_4_22_save = props => {
 
 	return (
 		<CallToAction_1_4_22 { ...props }>
-            { imgURL && (
+            { imgURL && !! imgURL.length && (
                 <div class="ab-cta-image-wrap">
                     <img
                         className={ classnames(
@@ -272,7 +272,7 @@ export const callToAction_1_4_21_save = props => {
 
 	return (
 		<CallToAction_1_4_21 { ...props }>
-            { props.attributes.imgURL && (
+            { props.attributes.imgURL && !! props.attributes.imgURL.length && (
                 <div class="ab-cta-image-wrap">
                     <img
                         className={ classnames(
