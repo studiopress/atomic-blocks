@@ -339,7 +339,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 		// Save the block markup for the front end
 		return (
 			<CallToAction { ...props }>
-				{ imgURL && (
+				{ imgURL && !! imgURL.length && (
 					<div class="ab-cta-image-wrap">
 						<img
 							className={ classnames(
