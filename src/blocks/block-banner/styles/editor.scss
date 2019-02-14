@@ -1,4 +1,18 @@
+.gutenberg-compatible-template.using-gutenberg {
+	.wp-block-lsx-blocks-lsx-banner-box.lsx-has-image {
+		background-image: none !important;
+	}
+}
 .wp-block-lsx-blocks-lsx-banner-box {
+	position: relative;
+	margin-bottom: 5rem;
+	&:not(.lsx-has-image) {
+		padding-bottom: 1em;
+	}
+	@media only screen and (max-width: 766px) {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
 	.lsx-banner-column {
 		margin-bottom: 4rem;
 		position: relative;
@@ -28,14 +42,85 @@
 				height: 100%;
 				img {
 					width: 100%;
+					height: 100%;
 				}
 			}
 		}
 	}
+	&.lsx-has-image {
+		.lsx-banner-column {
+			min-height: 100%;
+		}
+		&.lsx-container-bottom {
+			img {
+				object-position: bottom;
+				//object-fit: none;
+			}
+		}
+
+		&.lsx-container-top {
+			img {
+				object-position: top;
+				//object-fit: none;
+			}
+		}
+
+		&.lsx-container-center {
+			img {
+				object-position: center;
+				//object-fit: none;
+			}
+		}
+
+		&.lsx-container-left {
+			img {
+				object-position: left;
+				object-fit: contain;
+			}
+		}
+		&.lsx-container-right {
+			img {
+				object-position: right;
+				object-fit: contain;
+			}
+		}
+		&.lsx-container-clear {
+			img {
+				object-position: initial;
+			}
+		}
+	}
+
 	.lsx-banner-content-wrap {
-		position: relative;
-		max-width: 60%;
-		margin: 0 auto;
-		padding: 1em;
+		width: 100%;
+		z-index: 4;
+		padding-left: 50px;
+		padding-right: 50px;
+		@media only screen and (min-width: 600px) {
+			position: absolute;
+			top: 0;
+		}
+		.header-headings {
+			//text-align: center;
+			@media only screen and (max-width: 600px) {
+				background: transparent !important;
+			}
+			@media only screen and (min-width: 600px) {
+				max-width: 75rem;
+				background: rgba(255, 255, 255, 0.83);
+				border: 0;
+				padding: 1.875rem;
+				max-width: 74.5%;
+				//text-align: center;
+				bottom: 4rem;
+				margin: 0 auto;
+			}
+		}
+	}
+}
+.lsx-banner-logo {
+	.lsx-banner-logo-img {
+		max-width: 200px;
+		margin: 1em auto;
 	}
 }

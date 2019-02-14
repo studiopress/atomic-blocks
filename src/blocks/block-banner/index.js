@@ -25,6 +25,9 @@ const { Component } = wp.element;
 // Register block
 const { registerBlockType } = wp.blocks;
 
+//API FETCH
+const { apiFetch } = wp;
+
 // Register components
 const {
 	RichText,
@@ -116,31 +119,25 @@ const blockAttributes = {
 		type: 'string',
 		default: 'full',
 	},
-	bannerImgID: {
-		type: 'number',
+	bannerImgURL: {
+		type: 'string',
+		source: 'attribute',
+		attribute: 'src',
+		selector: 'img.lazyload',
 	},
-	images: {
-		type: 'array',
-		source: 'query',
-		query: {
-			bannerImgURL: {
-				type: 'string',
-				source: 'attribute',
-				attribute: 'src',
-				selector: 'img',
-			},
-			bannerLogoURL: {
-				type: 'string',
-				source: 'attribute',
-				attribute: 'src',
-				selector: 'logo',
-			},
-		},
+	bannerLogoURL: {
+		type: 'string',
+		source: 'attribute',
+		attribute: 'src',
+		selector: 'img.lsx-banner-logo-img',
 	},
-	bannerLogoID: {
-		type: 'number',
-	},
-	bgPosition: {
+    bannerImgID: {
+        type: 'number',
+    },
+    bannerLogoID: {
+        type: 'number',
+    },
+    bgPosition: {
 		type: 'string',
 		default: 'lsx-container-initial',
 	},
@@ -223,6 +220,7 @@ class LSXBannerBlock extends Component {
 
 		// Upload Image options
 		const onSelectLogo = logo => {
+			console.log( logo );
 			setAttributes( {
 				bannerLogoID: logo.id,
 				bannerLogoURL: logo.url,
@@ -238,7 +236,7 @@ class LSXBannerBlock extends Component {
 			} );
 		};
 
-		console.log('Test');
+		console.log('Test2');
         console.log(bannerImgURL);
 
 		return [
@@ -274,7 +272,7 @@ class LSXBannerBlock extends Component {
 
 				<div
 					className={ classnames(
-						'lsx-banner-content-wrap test'
+						'lsx-banner-content-wrap'
 					) }
 					style={ {
 						backgroundColor: hexToRgba( textBannerBackgroundColor, bannerFontOpacity ),
@@ -406,9 +404,10 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 		// Setup the attributes
 		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerLogoID, bannerLogoURL, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerHeight, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
-        console.log(bannerLogoURL);
+        console.log('Save');
+        console.log(props);
 
-		return (
+        return (
 			// Save the block markup for the front end
 			<BannerBox { ...props }>
 				<ImageColumn { ...props }>
@@ -426,15 +425,17 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 						'lsx-banner-content-wrap',
 					) }
 				>
+                    <div className="lsx-banner-logo">
                     { undefined !== bannerLogoURL && (
-                        <div className="lsx-banner-logo">
+
                             <img
                                 className="lsx-banner-logo-img"
                                 src={ bannerLogoURL }
                                 alt="logo"
                             />
-                        </div>
+
                     ) }
+                    </div>
 					<div
 						className={ classnames(
 							'header-headings',
