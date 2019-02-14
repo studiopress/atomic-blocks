@@ -6,6 +6,7 @@ Along with the content blocks you'll find in Atomic Blocks, we're also publishin
 
 ## Atomic Blocks currently includes the following blocks:
 
+* Pricing Table Block - [Block Demo](https://atomicblocks.com/blocks/pricing-table-block/)
 * Post Grid Block - [Block Demo](https://atomicblocks.com/blocks/post-grid-block/)
 * Container Block - [Block Demo](https://atomicblocks.com/blocks/container-block/)
 * Testimonial Block - [Block Demo](https://atomicblocks.com/blocks/testimonial-block/)
@@ -72,6 +73,9 @@ Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomi
 Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) to use Atomic Blocks. Eventually, Gutenberg (the block editor) will be merged into WordPress and you won't need the plugin.
 
 ## Changelog
+
+**1.5.2**
+* Fix bug with undefined dim ratio.
 
 **1.5.1**
 * Fix bug with lodash scoping.

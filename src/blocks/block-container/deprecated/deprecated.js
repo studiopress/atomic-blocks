@@ -117,6 +117,12 @@ export const Container_1_4_23_save = props => {
 	)
 }
 
+function dimRatioToClass( ratio ) {
+	return ( ratio === 0 || ratio === 50 ) ?
+		null :
+		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
+}
+
 // Build deprecated list
 
 const deprecated = [
