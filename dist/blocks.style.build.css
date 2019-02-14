@@ -843,11 +843,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       .lsx-block-button .lsx-button {
         width: 100%; } }
   .lsx-block-button .lsx-button-shape-square {
-    border-radius: 0; }
+    border-radius: 0 !important; }
   .lsx-block-button .lsx-button-shape-rounded {
     border-radius: 3px; }
   .lsx-block-button .lsx-button-shape-circular {
-    border-radius: 100px; }
+    border-radius: 100px !important; }
   .lsx-block-button .lsx-button-size-small {
     font-size: 10px; }
   .lsx-block-button .lsx-button-size-medium {
@@ -2902,6 +2902,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
  * Loads on front end and back end
  */
 /* Font size styles */
+@import url(~slick-carousel/slick/slick.css);
+@import url(~slick-carousel/slick/slick-theme.css);
 @media only screen and (min-width: 600px) {
   div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-testimonial p,
   div[class*="wp-block-lsx"].lsx-font-size-14.lsx-block-notice p,

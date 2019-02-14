@@ -31,6 +31,8 @@
     "react": "16.2.0",
     "react-lazy-load": "^3.0.13",
     "react-lazyload": "^2.5.0",
+    "react-slick": "^0.23.2",
+    "slick-carousel": "^1.8.1",
     "sshpk": "^1.15.2",
     "styled-components": "^3.4.10"
   },

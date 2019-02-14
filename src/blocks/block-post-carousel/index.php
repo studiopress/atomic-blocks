@@ -39,7 +39,7 @@ function lsx_blocks_render_block_core_latest_posts_carousel( $attributes ) {
 
 			// Start the markup for the post
 			$list_items_markup .= sprintf(
-				'<article class="%1$s">',
+				'<div class="%1$s">',
 				esc_attr( $post_thumb_class )
 			);
 
@@ -150,12 +150,12 @@ function lsx_blocks_render_block_core_latest_posts_carousel( $attributes ) {
 			);
 
 			// Close the markup for the post
-			$list_items_markup .= "</article>\n";
+			$list_items_markup .= "</div>\n";
 		}
 	}
 
 	// Build the classes
-	$class = "lsx-block-post-grid align{$attributes['alignCarousel']}";
+	$class = "lsx-block-post-grid slick-slider align{$attributes['alignCarousel']}";
 
 	if ( isset( $attributes['className'] ) ) {
 		$class .= ' ' . $attributes['className'];
@@ -173,9 +173,14 @@ function lsx_blocks_render_block_core_latest_posts_carousel( $attributes ) {
 		$grid_class .= ' columns-' . $attributes['columnsCarousel'];
 	}
 
+	$slides_to_show   = $attributes['columnsCarousel'];
+	$slides_to_scroll = $attributes['columnsCarousel'];
+	$interval         = 'data-interval="false"';
+	$slick_internal   = "data-slick='{ \"slidesToShow\": {$slides_to_show}, \"slidesToScroll\": {$slides_to_scroll} }'";
+
 	// Output the post markup
 	$block_content = sprintf(
-		'<div class="%1$s"><div class="%2$s">%3$s</div></div>',
+		'<div class="%1$s"><div class="%2$s"' . $slick_internal . $interval . '>%3$s</div></div>',
 		esc_attr( $class ),
 		esc_attr( $grid_class ),
 		$list_items_markup
@@ -232,7 +237,7 @@ function lsx_blocks_register_block_core_latest_posts_carousel() {
 			),
 			'columnsCarousel' => array(
 				'type' => 'number',
-				'default' => 2,
+				'default' => 3,
 			),
 			'alignCarousel' => array(
 				'type' => 'string',

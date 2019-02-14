@@ -5,6 +5,7 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import edit from './edit';
+import Slider from "react-slick";
 
 // Import CSS
 import './styles/style.scss';

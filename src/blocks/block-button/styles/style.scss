@@ -38,7 +38,7 @@
 	}
 
 	.lsx-button-shape-square {
-		border-radius: 0;
+		border-radius: 0 !important;
 	}
 
 	.lsx-button-shape-rounded {
@@ -46,7 +46,7 @@
 	}
 
 	.lsx-button-shape-circular {
-		border-radius: 100px;
+		border-radius: 100px !important;
 	}
 
 	.lsx-button-size-small {
