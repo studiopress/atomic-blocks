@@ -1,12 +1,34 @@
 .wp-block-lsx-blocks-lsx-banner-box {
 	.lsx-banner-column {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		.lsx-banner-image-wrap{
-			&:before {
-				padding-bottom: 0;
+		margin-bottom: 4rem;
+		position: relative;
+		@media only screen and (min-width: 600px) {
+			min-height: 40vh;
+		}
+		@media only screen and (max-width: 600px) {
+			height: 100% !important;
+			min-height: initial !important;
+		}
+		.lsx-banner-image-wrap {
+			max-height: 80vh;
+			position: relative;
+			overflow: hidden;
+			// &:before {
+			// 	content: '';
+			// 	display: block;
+			// 	width: 100%;
+			// 	padding-bottom: calc(100vh - 40rem);
+			// }
+
+			picture {
+				// position: absolute;
+				// top: 0;
+				// left: 0;
+				width: 100%;
+				height: 100%;
+				img {
+					width: 100%;
+				}
 			}
 		}
 	}

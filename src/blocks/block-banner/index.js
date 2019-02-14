@@ -238,6 +238,9 @@ class LSXBannerBlock extends Component {
 			} );
 		};
 
+		console.log('Test');
+        console.log(bannerImgURL);
+
 		return [
 			// Show the block alignment controls on focus
 			<BlockControls key="controls">
@@ -257,7 +260,7 @@ class LSXBannerBlock extends Component {
 			/>,
 			// Show the block markup in the editor
 			<BannerBox key="banner" { ...this.props }>
-                <ImageColumn { ...props }>
+                <ImageColumn { ...this.props }>
                     { bannerImgURL && (
                         <picture className="lazyload">
                             <source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } media="(min-width: 100rem)" srcSet={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } />
@@ -271,7 +274,7 @@ class LSXBannerBlock extends Component {
 
 				<div
 					className={ classnames(
-						'lsx-banner-content-wrap'
+						'lsx-banner-content-wrap test'
 					) }
 					style={ {
 						backgroundColor: hexToRgba( textBannerBackgroundColor, bannerFontOpacity ),
@@ -423,7 +426,7 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 						'lsx-banner-content-wrap',
 					) }
 				>
-                    { '' !== bannerLogoURL && (
+                    { undefined !== bannerLogoURL && (
                         <div className="lsx-banner-logo">
                             <img
                                 className="lsx-banner-logo-img"
