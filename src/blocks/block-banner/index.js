@@ -25,6 +25,9 @@ const { Component } = wp.element;
 // Register block
 const { registerBlockType } = wp.blocks;
 
+//API FETCH
+const { apiFetch } = wp;
+
 // Register components
 const {
 	RichText,
@@ -116,25 +119,20 @@ const blockAttributes = {
 		type: 'string',
 		default: 'full',
 	},
-	images: {
-		type: 'array',
-		source: 'query',
-		query: {
-			bannerImgURL: {
-				type: 'string',
-				source: 'attribute',
-				attribute: 'src',
-				selector: 'img',
-			},
-            bannerImgID: {
-                type: 'number',
-            },
-        },
+	bannerImgURL: {
+		type: 'string',
+		source: 'attribute',
+		attribute: 'src',
+		selector: 'img.lazyload',
 	},
-    bannerLogoURL: {
-        type: 'string',
-        source: 'attribute',
-        selector: 'logo',
+	bannerLogoURL: {
+		type: 'string',
+		source: 'attribute',
+		attribute: 'src',
+		selector: 'img.lsx-banner-logo-img',
+	},
+    bannerImgID: {
+        type: 'number',
     },
     bannerLogoID: {
         type: 'number',
@@ -289,7 +287,7 @@ class LSXBannerBlock extends Component {
 							onSelect={ onSelectLogo }
 							allowed={ ALLOWED_MEDIA_TYPES }
 							type="logo"
-							value={ bannerLogoURL }
+							value={ bannerLogoID }
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
 									{ ! bannerLogoID ? icons.upload : <img
@@ -406,10 +404,10 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 		// Setup the attributes
 		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerLogoID, bannerLogoURL, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerHeight, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
-		console.log('render');
-        console.log( props );
+        console.log('Save');
+        console.log(props);
 
-		return (
+        return (
 			// Save the block markup for the front end
 			<BannerBox { ...props }>
 				<ImageColumn { ...props }>

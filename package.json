@@ -9,6 +9,7 @@
     "makepot": "wp i18n make-pot . languages/lsx-blocks.pot --include=src,dist/getting-started"
   },
   "dependencies": {
+    "@wordpress/api-fetch": "^2.2.8",
     "@wordpress/data": "^1.2.1",
     "@wordpress/html-entities": "^1.0.3",
     "@wordpress/i18n": "^1.2.3",
