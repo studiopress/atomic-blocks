@@ -268,6 +268,7 @@ class LSXBannerBlock extends Component {
                     ) }
                 </ImageColumn>
 
+
 				<div
 					className={ classnames(
 						'lsx-banner-content-wrap'
