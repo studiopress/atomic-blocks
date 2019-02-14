@@ -44,6 +44,11 @@ function lsx_blocks_loader() {
 	 * Load Post Grid PHP
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-post-grid/index.php';
+
+	/**
+	 * Load Post Carousel PHP
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-post-carousel/index.php';
 }
 add_action( 'plugins_loaded', 'lsx_blocks_loader' );
 
