@@ -73,6 +73,10 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.5.1**
+* Fix bug with lodash scoping.
+* Fix bug with URL input on pricing table.
+
 **1.5.0**
 * Add Pricing Table block.
 * Fix container background clearing bug.

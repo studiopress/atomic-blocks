@@ -15,7 +15,13 @@ const {
 	withFontSizes,
 	withColors,
 	InnerBlocks,
+	URLInput,
 } = wp.editor;
+
+const {
+	IconButton,
+	Dashicon,
+} = wp.components;
 
 class Edit extends Component {
 
@@ -90,6 +96,28 @@ class Edit extends Component {
 							onChange={ (value) => setAttributes( { buttonText: value } ) }
 						/>
 					</CustomButton>
+					{ isSelected && (
+						<form
+							key="form-link"
+							className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
+							onSubmit={ event => event.preventDefault() }
+							style={ {
+								textAlign: buttonAlignment,
+							} }
+						>
+							<Dashicon icon={ 'admin-links' } />
+							<URLInput
+								className="button-url"
+								value={ buttonUrl }
+								onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
+							/>
+							<IconButton
+								icon="editor-break"
+								label={ __( 'Apply', 'atomic-blocks' ) }
+								type="submit"
+							/>
+						</form>
+					) }
 				</div>
 			</Fragment>
 		];
