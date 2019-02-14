@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import PricingTable from './components/pricing';
 import memoize from 'memize';
-import { times } from 'lodash';
+import _times from 'lodash/times';
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -39,7 +39,7 @@ const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];
 
 // Get the pricing template
 const getPricingTemplate = memoize( ( columns ) => {
-	return times( columns, () => [ 'atomic-blocks/ab-pricing-table' ] );
+	return _times( columns, () => [ 'atomic-blocks/ab-pricing-table' ] );
 } );
 
 class ABPricingBlock extends Component {
