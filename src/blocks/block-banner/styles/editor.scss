@@ -33,9 +33,52 @@
 		}
 	}
 	.lsx-banner-content-wrap {
-		position: relative;
-		max-width: 60%;
-		margin: 0 auto;
-		padding: 1em;
+		width: 100%;
+		z-index: 4;
+		padding-left: 50px;
+		padding-right: 50px;
+		@media only screen and (min-width: 600px) {
+			position: absolute;
+			bottom: 20%;
+		}
+		.header-headings {
+			//text-align: center;
+			@media only screen and (max-width: 600px) {
+				background: transparent !important;
+			}
+			@media only screen and (min-width: 600px) {
+				max-width: 75rem;
+				background: rgba(255, 255, 255, 0.83);
+				border: 0;
+				padding: 1.875rem;
+				max-width: 74.5%;
+				//text-align: center;
+				bottom: 4rem;
+				margin: 0 auto;
+			}
+			// .page-header {
+			// 	width: 100%;
+			// 	max-width: 100%;
+			// }
+			.lsx-banner-title, .lsx-block-button {
+				max-width: 80%;
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+	&.title-bottom {
+		.lsx-banner-content-wrap {
+			position: relative;
+			.header-headings {
+				background: white !important;
+				margin-top: -8rem;
+				padding: 2.5rem;
+				@media only screen and (min-width: 600px) {
+					max-width: 90%;
+				}
+			}
+		}
 	}
 }
