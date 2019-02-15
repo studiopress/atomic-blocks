@@ -141,15 +141,14 @@ export default class Inspector extends Component {
 						value={ bannerTitlePosition }
 						onChange={ ( value ) => this.props.setAttributes( { bannerTitlePosition: value } ) }
 					/>
-
-					<RangeControl
+					{/* <RangeControl
 						label={ __( 'Background Height' ) }
 						value={ bannerHeight }
 						onChange={ ( value ) => this.props.setAttributes( { bannerHeight: value } ) }
 						min={ 20 }
 						max={ 100 }
 						step={ 1 }
-					/>
+					/> */}
 					<PanelBody title={ __( 'Banner image' ) } initialOpen={ true }>
 						<MediaUpload
 							onSelect={ onSelectImage }

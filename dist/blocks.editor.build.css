@@ -1774,8 +1774,9 @@
         bottom: 4rem;
         margin: 0 auto; } }
 
-.lsx-banner-logo .lsx-banner-logo-img {
-  max-width: 200px;
+.lsx-banner-logo .banner-logo {
+  max-width: 95px;
+  max-height: 95px;
   margin: 1em auto; }
 /**
  * Common styles

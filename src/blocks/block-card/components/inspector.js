@@ -88,7 +88,7 @@ export default class Inspector extends Component {
 			<InspectorControls key="inspector">
 				<PanelBody>
 					<RangeControl
-						label={ __( 'Font Size' ) }
+						label={ __( 'Content Font Size (the title and subtitle font sizes are proportional to this)' ) }
 						value={ cardFontSize }
 						onChange={ ( value ) => this.props.setAttributes( { cardFontSize: value } ) }
 						min={ 15 }

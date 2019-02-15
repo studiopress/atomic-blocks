@@ -94,3 +94,19 @@ function lsx_blocks_image_sizes() {
 	add_image_size( 'lsx-block-post-grid-square', 600, 600, true );
 }
 add_action( 'after_setup_theme', 'lsx_blocks_image_sizes' );
+
+/**
+ * Add the class 'has-block-banner' if the banner block is the first thing on the page.
+ */
+function add_gutenberg_test( $classes ) {
+	$post = get_post();
+	if ( has_blocks( $post->post_content ) ) {
+		$blocks = parse_blocks( $post->post_content );
+
+		if ( 'lsx-blocks/lsx-banner-box' === $blocks[0]['blockName'] ) {
+			$classes[] = 'has-block-banner';
+		}
+	}
+	return $classes;
+}
+add_filter( 'body_class', __NAMESPACE__ . '\add_gutenberg_test' );
