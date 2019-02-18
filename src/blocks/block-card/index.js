@@ -593,6 +593,113 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 
     deprecated: [
     	//V1
+		{
+            attributes: blockAttributes,
+
+			save: function ( props ) {
+                // Setup the attributes
+                const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+
+                return (
+                    // Save the block markup for the front end
+                    <CardBox { ...props }>
+
+                        { cardImgURL && (
+                            <AvatarColumn { ...props }>
+                                <div className="lsx-card-image-square">
+                                    <a
+                                        href={ buttonUrl }
+                                        target={ buttonTarget ? '_blank' : '_self' }
+                                    >
+                                        <img
+                                            className="lsx-card-avatar"
+                                            src={ cardImgURL }
+                                            alt="avatar"
+                                        />
+                                    </a>
+                                </div>
+                            </AvatarColumn>
+                        ) }
+
+                        <div
+                            className={ classnames(
+                                'lsx-card-column lsx-card-content-wrap'
+                            ) }
+                        >
+                            { cardName && (
+                                <RichText.Content
+                                    tagName="h2"
+                                    className="lsx-card-name"
+                                    style={ {
+                                        color: cardTextColor,
+                                        fontSize: 'calc(' + cardFontSize + 'px + 5px)',
+                                    } }
+                                    value={ cardName }
+                                />
+                            ) }
+
+                            { cardTitle && (
+                                <RichText.Content
+                                    tagName="p"
+                                    className="lsx-card-title"
+                                    style={ {
+                                        color: cardTextColor,
+                                        fontSize: 'calc(' + cardFontSize + 'px - 2px)',
+                                    } }
+                                    value={ cardTitle }
+                                />
+                            ) }
+
+                            { cardContent && (
+                                <RichText.Content
+                                    tagName="div"
+                                    className={ classnames(
+                                        'lsx-card-text',
+                                    ) }
+                                    style={ {
+                                        fontSize: cardFontSize + 'px',
+                                    } }
+                                    value={ cardContent }
+                                />
+                            ) }
+
+
+                        </div>
+                        <CustomButton { ...props }>
+                            {	// Check if there is button text and output
+                                buttonText && (
+                                    <a
+                                        href={ buttonUrl }
+                                        target={ buttonTarget ? '_blank' : '_self' }
+                                        className={ classnames(
+                                            'lsx-button',
+                                            buttonShape,
+                                            buttonSize,
+                                            buttonFlat,
+                                            buttonGhost,
+                                        ) }
+                                        style={ {
+                                            color: buttonTextColor,
+                                            backgroundColor: buttonBackgroundColor,
+                                            boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+                                            borderColor: buttonBackgroundColor,
+                                        } }
+                                        data-onhover={ buttonHoverColor }
+                                        data-offhover={ buttonBackgroundColor }
+                                        onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+                                        onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+                                    >
+                                        <RichText.Content
+                                            value={ buttonText }
+                                        />
+                                    </a>
+                                ) }
+                        </CustomButton>
+                    </CardBox>
+                );
+            },
+		},
+    	//V2
         {
             attributes: blockAttributes,
 
@@ -601,10 +708,6 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                     cardSubTitle: attributes.cardTitle,
                     cardTitle: attributes.cardName,
                 };
-            },
-
-            isEligible: function( attributes ) {
-                return true;
             },
 
             save: function( props ) {
