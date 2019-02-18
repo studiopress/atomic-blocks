@@ -333,11 +333,11 @@ class LSXAuthorCardBlock extends Component {
 				>
 
 					<RichText
-						tagName="h2"
+						tagName="p"
 						placeholder={ __( 'Add Card Title', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ cardTitle }
-						className="lsx-card-name"
+						className="lsx-card-title"
 						style={ {
 							color: cardTextColor,
 							fontSize: 'calc(' + cardFontSize + 'px - 2px)',
@@ -346,11 +346,11 @@ class LSXAuthorCardBlock extends Component {
 					/>
 
                     <RichText
-                        tagName="p"
+                        tagName="h2"
                         placeholder={ __( 'Add Card Subtitle', 'lsx-blocks' ) }
                         keepPlaceholderOnFocus
                         value={ cardSubTitle }
-                        className="lsx-card-title"
+                        className="lsx-card-sub-title"
                         style={ {
                             color: cardTextColor,
                             fontSize: 'calc(' + cardFontSize + 'px + 5px)',
@@ -592,7 +592,6 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 	},
 
     deprecated: [
-    	//V1
         {
             attributes: blockAttributes,
 

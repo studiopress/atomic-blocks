@@ -10,6 +10,7 @@ import CallToAction from './components/cta';
 // Import CSS
 import './styles/style.scss';
 import './styles/editor.scss';
+import Container from "../block-container/components/container";
 
 // Components
 const { __ } = wp.i18n;
@@ -130,7 +131,17 @@ const blockAttributes = {
 		type: 'number',
 		default: 100,
 	},
+	//V2 Attributes
+    blockPadding: {
+        type: 'string',
+        default: '5% 3%',
+    },
+    blockMargin: {
+        type: 'string',
+        default: '0 0 1.2em 0',
+    },
 };
+
 
 class LSXCTABlock extends Component {
 	render() {
@@ -289,6 +300,19 @@ class LSXCTABlock extends Component {
 	}
 }
 
+
+function dimRatioToClass( ratio ) {
+    return ( ratio === 0 || ratio === 50 ) ?
+        null :
+        'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
+}
+
+function backgroundImageStyles( url ) {
+    return url ?
+        { backgroundImage: `url(${ url })` } :
+        undefined;
+}
+
 // Register the block
 registerBlockType( 'lsx-blocks/lsx-cta', {
 	title: __( 'LSX Call To Action', 'lsx-blocks' ),
@@ -337,6 +361,10 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 			imgID,
 			imgAlt,
 			dimRatio,
+			//V2 Attributes
+            blockPadding,
+            blockMargin,
+
 		} = props.attributes;
 
 		// Save the block markup for the front end
@@ -416,16 +444,121 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 			</CallToAction>
 		);
 	},
+    deprecated: [
+        // V1
+        {
+            attributes: blockAttributes,
+
+            migrate: function( attributes ) {
+                return {
+                    blockPadding: '5% 3%',
+                    blockMargin: '0 0 1.2em 0',
+                };
+            },
+
+            save: function( props ) {
+                // Setup the attributes
+                const {
+                    buttonText,
+                    buttonUrl,
+                    buttonAlignment,
+                    buttonBackgroundColor,
+                    buttonShadowColor,
+                    buttonHoverColor,
+                    buttonTextColor,
+                    buttonSize,
+                    buttonShape,
+                    buttonTarget,
+                    ctaTitle,
+                    ctaText,
+                    ctaTitleFontSize,
+                    ctaTextFontSize,
+                    ctaWidth,
+                    ctaBackgroundColor,
+                    ctaTextColor,
+                    imgURL,
+                    imgID,
+                    imgAlt,
+                    dimRatio,
+                } = props.attributes;
+
+                // Save the block markup for the front end
+                return (
+                    <CallToAction { ...props }>
+                        { imgURL && (
+                            <div className="lsx-cta-image-wrap">
+                                <img
+                                    className={ classnames(
+                                        'lsx-cta-image',
+                                        dimRatioToClass( dimRatio ),
+                                        {
+                                            'has-background-dim': dimRatio !== 0,
+                                        }
+                                    ) }
+                                    src={ imgURL }
+                                    alt={ imgAlt }
+                                />
+                            </div>
+                        ) }
+
+                        <div className="lsx-cta-content">
+                            { ctaTitle && (
+                                <RichText.Content
+                                    tagName="h2"
+                                    className={ classnames(
+                                        'lsx-cta-title',
+                                        'lsx-font-size-' + ctaTitleFontSize,
+                                    ) }
+                                    style={ {
+                                        color: ctaTextColor,
+                                    } }
+                                    value={ ctaTitle }
+                                />
+                            ) }
+                            { ctaText && (
+                                <RichText.Content
+                                    tagName="div"
+                                    className={ classnames(
+                                        'lsx-cta-text',
+                                        'lsx-font-size-' + ctaTextFontSize,
+                                    ) }
+                                    style={ {
+                                        color: ctaTextColor,
+                                    } }
+                                    value={ ctaText }
+                                />
+                            ) }
+                        </div>
+                        { buttonText && (
+                            <div className="lsx-cta-button">
+                                <a
+                                    href={ buttonUrl }
+                                    target={ buttonTarget ? '_blank' : '_self' }
+                                    className={ classnames(
+                                        'lsx-button',
+                                        buttonShape,
+                                        buttonSize,
+                                    ) }
+                                    style={ {
+                                        color: buttonTextColor,
+                                        backgroundColor: buttonBackgroundColor,
+                                        boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+                                        borderColor: buttonBackgroundColor,
+                                    } }
+                                    data-onhover={ buttonHoverColor }
+                                    data-offhover={ buttonBackgroundColor }
+                                    onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+                                    onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+                                >
+                                    <RichText.Content
+                                        value={ buttonText }
+                                    />
+                                </a>
+                            </div>
+                        ) }
+                    </CallToAction>
+                );
+            },
+        },
+    ]
 } );
-
-function dimRatioToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
-		null :
-		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
-}
-
-function backgroundImageStyles( url ) {
-	return url ?
-		{ backgroundImage: `url(${ url })` } :
-		undefined;
-}

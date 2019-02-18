@@ -26,6 +26,7 @@ const {
 	SelectControl,
 	ToggleControl,
 	IconButton,
+    TextControl,
 } = wp.components;
 
 /**
@@ -40,7 +41,32 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonShape, buttonTarget, ctaTitle, ctaText, ctaTitleFontSize, ctaTextFontSize, ctaBackgroundColor, ctaTextColor, dimRatio, imgURL, imgID, imgAlt } = this.props.attributes;
+		const {
+			buttonText,
+			buttonUrl,
+			buttonAlignment,
+			buttonBackgroundColor,
+			buttonShadowColor,
+			buttonHoverColor,
+			buttonTextColor,
+			buttonSize,
+			buttonShape,
+			buttonTarget,
+			ctaTitle,
+			ctaText,
+			ctaTitleFontSize,
+			ctaTextFontSize,
+			ctaBackgroundColor,
+			ctaTextColor,
+			dimRatio,
+			imgURL,
+			imgID,
+			imgAlt,
+            //V2 Attributes
+            blockPadding,
+            blockMargin,
+		} = this.props.attributes;
+
 		const { setAttributes } = this.props;
 
 		// Button size values
@@ -260,6 +286,22 @@ export default class Inspector extends Component {
 						} ] }
 					>
 					</PanelColorSettings>
+				</PanelBody>
+
+                <PanelBody title={ __( 'Block Options' ) } initialOpen={ false }>
+                    <TextControl
+                        label={ __( 'Padding' ) }
+                        type="text"
+                        value={ blockPadding }
+                        onChange={ ( value ) => this.props.setAttributes( { blockPadding: value } ) }
+                    />
+
+                    <TextControl
+                        label={ __( 'Margin' ) }
+                        type="text"
+                        value={ blockMargin }
+                        onChange={ ( value ) => this.props.setAttributes( { blockMargin: value } ) }
+                    />
 				</PanelBody>
 			</InspectorControls>
 		);
