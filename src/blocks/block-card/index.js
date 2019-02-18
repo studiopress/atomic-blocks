@@ -562,7 +562,9 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 
             migrate: function( attributes ) {
                 return {
-                    cardSubTitle: attributes.cardName,
+                    cardImgURL: attributes.cardImgURL,
+                    cardImgID: attributes.cardImgID,
+                    cardSubTitle: attributes.cardTitle,
                     cardTitle: attributes.cardName,
                 };
             },
