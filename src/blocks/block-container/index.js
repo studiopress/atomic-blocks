@@ -10,6 +10,8 @@ import Container from './components/container';
 // Import CSS
 import './styles/style.scss';
 import './styles/editor.scss';
+import CardBox from "../block-card/components/card";
+import AvatarColumn from "../block-card/components/avatar";
 
 // Components
 const { __ } = wp.i18n;
@@ -96,6 +98,10 @@ const blockAttributes = {
 		type: 'string',
 		default: 'lsx-container-initial',
 	},
+    bgFit: {
+        type: 'string',
+        default: 'lsx-container-fit',
+    },
 	containerDimRatio: {
 		type: 'number',
 		default: 50,
@@ -122,6 +128,7 @@ class LSXContainerBlock extends Component {
 				containerImgID,
 				containerImgAlt,
 				bgPosition,
+                bgFit,
 				containerDimRatio,
 			},
 			attributes,
@@ -161,6 +168,7 @@ class LSXContainerBlock extends Component {
 								className={ classnames(
 									'lsx-container-image',
 									bgPosition,
+                                    bgRepeat,
 									{ containerImgAlt },
 									dimRatioToClass( containerDimRatio ),
 									{
@@ -185,6 +193,18 @@ class LSXContainerBlock extends Component {
 			</Container>
 		];
 	}
+}
+
+function dimRatioToClass( ratio ) {
+    return ( ratio === 0 || ratio === 50 ) ?
+        null :
+        'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
+}
+
+function backgroundImageStyles( url ) {
+    return url ?
+        { backgroundImage: `url(${ url })` } :
+        undefined;
 }
 
 // Register the block
@@ -228,6 +248,7 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 			containerImgID,
 			containerImgAlt,
 			bgPosition,
+            bgFit,
 			containerDimRatio,
 		} = props.attributes;
 
@@ -241,6 +262,7 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 								className={ classnames(
 									'lsx-container-image',
 									bgPosition,
+                                    bgFit,
 									dimRatioToClass( containerDimRatio ),
 									{
 										'has-background-dim': containerDimRatio !== 0,
@@ -264,16 +286,71 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 			</Container>
 		);
 	},
+    deprecated: [
+    	// V1
+        {
+            attributes: blockAttributes,
+
+            migrate: function( attributes ) {
+                return {
+                    bgPosition: attributes.bgPosition+'-center',
+                    bgFit: 'lsx-container-fit',
+                };
+            },
+
+            save: function( props ) {
+
+                // Setup the attributes
+                const {
+                    containerPaddingTop,
+                    containerPaddingRight,
+                    containerPaddingBottom,
+                    containerPaddingLeft,
+                    containerMarginTop,
+                    containerMarginBottom,
+                    containerWidth,
+                    containerMaxWidth,
+                    containerBackgroundColor,
+                    containerImgURL,
+                    containerImgID,
+                    containerImgAlt,
+                    bgPosition,
+                    containerDimRatio,
+                } = props.attributes;
+
+                // Save the block markup for the front end
+                return (
+                    <Container { ...props }>
+                        <div class="lsx-container-inside">
+                            { containerImgURL && !! containerImgURL.length && (
+                                <div class="lsx-container-image-wrap">
+                                    <img
+                                        className={ classnames(
+                                            'lsx-container-image',
+                                            bgPosition,
+                                            dimRatioToClass( containerDimRatio ),
+                                            {
+                                                'has-background-dim': containerDimRatio !== 0,
+                                            }
+                                        ) }
+                                        src={ containerImgURL }
+                                        alt={ containerImgAlt }
+                                    />
+                                </div>
+                            ) }
+
+                            <div
+                                class="lsx-container-content"
+                                style={ {
+                                    maxWidth: `${containerMaxWidth}px`,
+                                } }
+                            >
+                                <InnerBlocks.Content />
+                            </div>
+                        </div>
+                    </Container>
+                );
+            },
+        }
+    ]
 } );
-
-function dimRatioToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
-		null :
-		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
-}
-
-function backgroundImageStyles( url ) {
-	return url ?
-		{ backgroundImage: `url(${ url })` } :
-		undefined;
-}
