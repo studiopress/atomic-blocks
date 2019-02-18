@@ -30,12 +30,12 @@ export default class ImageColumn extends Component {
 			<div className="lsx-banner-column"
 				style={ {
 					backgroundColor: bannerBackgroundColor,
-					height: bannerHeight + 'vh',
-					minHeight: bannerHeight + 'vh',
+					// height: bannerHeight + 'vh',
+					// minHeight: bannerHeight + 'vh',
 				} }>
 				<div className="lsx-banner-image-wrap"
 					style={ {
-						maxHeight: bannerHeight + 'vh',
+						//maxHeight: bannerHeight + 'vh',
 					} } >
 					{ this.props.children }
 				</div>

@@ -96,11 +96,18 @@ function lsx_blocks_image_sizes() {
 }
 add_action( 'after_setup_theme', 'lsx_blocks_image_sizes' );
 
-function lsx_blocks_enqueue_scripts() {
-	if ( function_exists( '' ) ) {
-		wp_enqueue_script( 'lsx-blocks-slick-init', LSX_TESTIMONIALS_URL . 'assets/js/slick-init.js', array(
-			'jquery',
-			'slick',
-		), LSX_BLOCKS_VER, true );
+/**
+ * Add the class 'has-block-banner' if the banner block is the first thing on the page.
+ */
+function add_gutenberg_test( $classes ) {
+	$post = get_post();
+	if ( has_blocks( $post->post_content ) ) {
+		$blocks = parse_blocks( $post->post_content );
+
+		if ( 'lsx-blocks/lsx-banner-box' === $blocks[0]['blockName'] ) {
+			$classes[] = 'has-block-banner';
+		}
 	}
+	return $classes;
 }
+add_filter( 'body_class', __NAMESPACE__ . '\add_gutenberg_test' );

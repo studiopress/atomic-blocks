@@ -52,7 +52,7 @@ const blockAttributes = {
 	},
 	buttonTextColor: {
 		type: 'string',
-		default: '#ffffff'
+		default: '#ffffff',
 	},
 	buttonUrl: {
 		type: 'string',
@@ -131,19 +131,19 @@ const blockAttributes = {
 		attribute: 'src',
 		selector: 'img.lsx-banner-logo-img',
 	},
-    bannerImgID: {
-        type: 'number',
-    },
-    bannerLogoID: {
-        type: 'number',
-    },
-    bgPosition: {
+	bannerImgID: {
+		type: 'number',
+	},
+	bannerLogoID: {
+		type: 'number',
+	},
+	bgPosition: {
 		type: 'string',
 		default: 'lsx-container-initial',
 	},
 	bannerBackgroundColor: {
 		type: 'string',
-		default: '#f2f2f2',
+		default: '#ffffff',
 	},
 	textBannerBackgroundColor: {
 		type: 'string',
@@ -237,7 +237,7 @@ class LSXBannerBlock extends Component {
 		};
 
 		console.log('Test2');
-        console.log(bannerImgURL);
+		console.log(bannerImgURL);
 
 		return [
 			// Show the block alignment controls on focus
@@ -258,17 +258,16 @@ class LSXBannerBlock extends Component {
 			/>,
 			// Show the block markup in the editor
 			<BannerBox key="banner" { ...this.props }>
-                <ImageColumn { ...this.props }>
-                    { bannerImgURL && (
-                        <picture className="lazyload">
-                            <source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } media="(min-width: 100rem)" srcSet={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } />
-                            <source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*' } media="(min-width: 61.25rem)" srcSet={ bannerImgURL  + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*'} />
-                            <source data-srcset={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=768:*' } media="(min-width: 30rem)" srcSet={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=768:*' } />
-                            <img title={ bannerName } className="lazyload" data-src={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=640:*' } src={ bannerImgURL } alt={ bannerTitle } />
-                        </picture>
-                    ) }
-                </ImageColumn>
-
+				<ImageColumn { ...this.props }>
+					{ bannerImgURL && (
+						<picture className="lazyload">
+							<source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } media="(min-width: 100rem)" srcSet={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } />
+							<source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*' } media="(min-width: 61.25rem)" srcSet={ bannerImgURL  + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*'} />
+							<source data-srcset={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=768:*' } media="(min-width: 30rem)" srcSet={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=768:*' } />
+							<img title={ bannerName } className="lazyload" data-src={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=640:*' } src={ bannerImgURL } alt={ bannerTitle } />
+						</picture>
+					) }
+				</ImageColumn>
 
 				<div
 					className={ classnames(
@@ -404,10 +403,10 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 		// Setup the attributes
 		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerLogoID, bannerLogoURL, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerHeight, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
 
-        console.log('Save');
-        console.log(props);
+		console.log('Save');
+		console.log(props);
 
-        return (
+		return (
 			// Save the block markup for the front end
 			<BannerBox { ...props }>
 				<ImageColumn { ...props }>
@@ -425,17 +424,6 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 						'lsx-banner-content-wrap',
 					) }
 				>
-                    <div className="lsx-banner-logo">
-                    { undefined !== bannerLogoURL && (
-
-                            <img
-                                className="lsx-banner-logo-img"
-                                src={ bannerLogoURL }
-                                alt="logo"
-                            />
-
-                    ) }
-                    </div>
 					<div
 						className={ classnames(
 							'header-headings',
@@ -445,6 +433,17 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 							backgroundColor: hexToRgba( textBannerBackgroundColor, bannerFontOpacity ),
 						} }
 					>
+						<div className="lsx-banner-logo">
+							{ undefined !== bannerLogoURL && (
+
+								<img
+									className="lsx-banner-logo-img"
+									src={ bannerLogoURL }
+									alt="logo"
+								/>
+
+							) }
+						</div>
 						<header className={ classnames(
 							'page-header'
 						) }>
