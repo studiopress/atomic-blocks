@@ -566,6 +566,24 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                     cardImgID: attributes.cardImgID,
                     cardSubTitle: attributes.cardTitle,
                     cardTitle: attributes.cardName,
+
+					//Unaltered Attributes
+                    buttonText: attributes.buttonText,
+                    buttonTextColor: attributes.buttonTextColor,
+                    buttonBackgroundColor: attributes.buttonBackgroundColor,
+                    buttonShadowColor: attributes.buttonShadowColor,
+                    buttonAlignment: attributes.buttonAlignment,
+                    buttonUrl: attributes.buttonUrl,
+                    buttonShape: attributes.buttonShape,
+                    buttonSize: attributes.buttonSize,
+                    buttonFlat: attributes.buttonFlat,
+                    buttonGhost: attributes.buttonGhost,
+                    cardContent: attributes.cardContent,
+                    cardAlignment: attributes.cardAlignment,
+                    cardFontSize: attributes.cardFontSize,
+                    cardBackgroundColor: attributes.cardBackgroundColor,
+                    cardTextColor: attributes.cardTextColor,
+                    cardLinkColor: attributes.cardLinkColor,
                 };
             },
 
