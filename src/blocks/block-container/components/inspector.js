@@ -74,8 +74,8 @@ export default class Inspector extends Component {
 		];
 
         const bgFitOptions = [
-            { value: 'lsx-container-fit', label: __( 'Fit to Container' ) },
-            { value: '', label: __( 'Original Size' ) },
+            { value: 'lsx-container-fit', label: __( 'Original Size' ) },
+            { value: '', label: __( 'Fit to Container' ) },
         ];
 
 		// Update color values

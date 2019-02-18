@@ -100,7 +100,7 @@ const blockAttributes = {
 	},
     bgFit: {
         type: 'string',
-        default: 'lsx-container-fit',
+        default: '',
     },
 	containerDimRatio: {
 		type: 'number',
