@@ -90,21 +90,26 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
-	cardName: {
-		type: 'array',
-		source: 'children',
-		selector: '.lsx-card-name',
-	},
 	cardTitle: {
 		type: 'array',
 		source: 'children',
 		selector: '.lsx-card-title',
 	},
+    cardSubTitle: {
+        type: 'array',
+        source: 'children',
+        selector: '.lsx-card-name',
+    },
 	cardContent: {
 		type: 'array',
 		selector: '.lsx-card-text',
 		source: 'children',
 	},
+    cardFooter: {
+        type: 'array',
+        selector: '.lsx-card-footer',
+        source: 'children',
+    },
 	cardAlignment: {
 		type: 'string',
 	},
@@ -133,6 +138,106 @@ const blockAttributes = {
 		type: 'number',
 		default: 15,
 	},
+	/* ===== DEPRECATED ATTRIBUTES ===== */
+    cardName: {
+        type: 'array',
+        source: 'children',
+        selector: '.lsx-card-title',
+    },
+};
+
+const deprecatedBlockAttributes = {
+    buttonText: {
+        type: 'string',
+    },
+    buttonTextColor: {
+        type: 'string',
+        default: '#ffffff'
+    },
+    buttonUrl: {
+        type: 'string',
+        source: 'attribute',
+        selector: 'a',
+        attribute: 'href',
+    },
+    buttonAlignment: {
+        type: 'string',
+    },
+    buttonBackgroundColor: {
+        type: 'string',
+        default: '#3373dc',
+    },
+    buttonShadowColor: {
+        type: 'string',
+        default: '#27639e',
+    },
+    buttonHoverColor: {
+        type: 'string',
+        default: '#27639D',
+    },
+    buttonFlat: {
+        type: 'string',
+        default: 'lsx-button-normal',
+    },
+    buttonSize: {
+        type: 'string',
+        default: 'lsx-button-size-medium',
+    },
+    buttonShape: {
+        type: 'string',
+        default: 'lsx-button-shape-rounded',
+    },
+    buttonGhost: {
+        type: 'string',
+        default: 'lsx-button-no-border',
+    },
+    buttonTarget: {
+        type: 'boolean',
+        default: false,
+    },
+    cardName: {
+        type: 'array',
+        source: 'children',
+        selector: '.lsx-card-name',
+    },
+    cardTitle: {
+        type: 'array',
+        source: 'children',
+        selector: '.lsx-card-title',
+    },
+    cardContent: {
+        type: 'array',
+        selector: '.lsx-card-text',
+        source: 'children',
+    },
+    cardAlignment: {
+        type: 'string',
+    },
+    cardImgURL: {
+        type: 'string',
+        source: 'attribute',
+        attribute: 'src',
+        selector: 'img',
+    },
+    cardImgID: {
+        type: 'number',
+    },
+    cardBackgroundColor: {
+        type: 'string',
+        default: '#f2f2f2',
+    },
+    cardTextColor: {
+        type: 'string',
+        default: '#32373c',
+    },
+    cardLinkColor: {
+        type: 'string',
+        default: '#392f43',
+    },
+    cardFontSize: {
+        type: 'number',
+        default: 15,
+    },
 };
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
@@ -152,9 +257,10 @@ class LSXAuthorCardBlock extends Component {
 				buttonSize,
 				buttonFlat,
 				buttonGhost,
-				cardName,
 				cardTitle,
+                cardSubTitle,
 				cardContent,
+                cardFooter,
 				cardAlignment,
 				cardImgURL,
 				cardImgID,
@@ -225,22 +331,10 @@ class LSXAuthorCardBlock extends Component {
 						'lsx-card-column lsx-card-content-wrap'
 					) }
 				>
-					<RichText
-						tagName="h2"
-						placeholder={ __( 'Add Card Title', 'lsx-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ cardName }
-						className="lsx-card-name"
-						style={ {
-							color: cardTextColor,
-							fontSize: 'calc(' + cardFontSize + 'px + 5px)',
-						} }
-						onChange={ ( value ) => setAttributes( { cardName: value } ) }
-					/>
 
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Add Card Subtitle', 'lsx-blocks' ) }
+						placeholder={ __( 'Add Card Title', 'lsx-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ cardTitle }
 						className="lsx-card-title"
@@ -250,6 +344,19 @@ class LSXAuthorCardBlock extends Component {
 						} }
 						onChange={ ( value ) => setAttributes( { cardTitle: value } ) }
 					/>
+
+                    <RichText
+                        tagName="h2"
+                        placeholder={ __( 'Add Card Subtitle', 'lsx-blocks' ) }
+                        keepPlaceholderOnFocus
+                        value={ cardSubTitle }
+                        className="lsx-card-sub-title"
+                        style={ {
+                            color: cardTextColor,
+                            fontSize: 'calc(' + cardFontSize + 'px + 5px)',
+                        } }
+                        onChange={ ( value ) => setAttributes( { cardSubTitle: value } ) }
+                    />
 
 					<RichText
 						tagName="div"
@@ -266,6 +373,22 @@ class LSXAuthorCardBlock extends Component {
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 						onChange={ ( value ) => setAttributes( { cardContent: value } ) }
 					/>
+
+                    <RichText
+                        tagName="div"
+                        className={ classnames(
+                            'lsx-card-footer',
+                        ) }
+                        style={ {
+                            fontSize: cardFooter + 'px',
+                        } }
+                        multiline="p"
+                        placeholder={ __( 'Footer content...', 'lsx-blocks' ) }
+                        keepPlaceholderOnFocus
+                        value={ cardFooter }
+                        formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
+                        onChange={ ( value ) => setAttributes( { cardFooter: value } ) }
+                    />
 
 					<CustomButton { ...this.props }>
 						<RichText
@@ -337,7 +460,21 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+		const { cardTitle, cardSubTitle, cardContent, cardFooter, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+
+        var bgDefaultColour = buttonBackgroundColor;
+        var bgHoverColour = buttonHoverColor;
+
+        var textDefaultColour = buttonTextColor;
+        var textHoverColour = buttonTextColor;
+
+        if ( 'transparent' === buttonGhost ) {
+            bgDefaultColour = buttonBackgroundColor;
+            bgHoverColour = buttonTextColor;
+
+            textDefaultColour = buttonTextColor;
+            textHoverColour = buttonBackgroundColor;
+        }
 
 		return (
 			// Save the block markup for the front end
@@ -365,21 +502,10 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 						'lsx-card-column lsx-card-content-wrap'
 					) }
 				>
-					{ cardName && (
-						<RichText.Content
-							tagName="h2"
-							className="lsx-card-name"
-							style={ {
-								color: cardTextColor,
-								fontSize: 'calc(' + cardFontSize + 'px + 5px)',
-							} }
-							value={ cardName }
-						/>
-					) }
 
 					{ cardTitle && (
 						<RichText.Content
-							tagName="p"
+							tagName="h2"
 							className="lsx-card-title"
 							style={ {
 								color: cardTextColor,
@@ -388,6 +514,18 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 							value={ cardTitle }
 						/>
 					) }
+
+                    { cardSubTitle && (
+                        <RichText.Content
+                            tagName="p"
+                            className="lsx-card-sub-title"
+                            style={ {
+                                color: cardTextColor,
+                                fontSize: 'calc(' + cardFontSize + 'px + 5px)',
+                            } }
+                            value={ cardSubTitle }
+                        />
+                    ) }
 
 					{ cardContent && (
 						<RichText.Content
@@ -401,6 +539,19 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 							value={ cardContent }
 						/>
 					) }
+
+                    { cardFooter && (
+                        <RichText.Content
+                            tagName="div"
+                            className={ classnames(
+                                'lsx-card-footer',
+                            ) }
+                            style={ {
+                                fontSize: cardFontSize + 'px',
+                            } }
+                            value={ cardFooter }
+                        />
+                    ) }
 
 
 				</div>
@@ -423,10 +574,12 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 									boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
 									borderColor: buttonBackgroundColor,
 								} }
-								data-onhover={ buttonHoverColor }
-								data-offhover={ buttonBackgroundColor }
-								onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
-								onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+                                data-on-bg-hover={ bgHoverColour }
+                                data-off-bg-hover={ bgDefaultColour }
+                                data-on-txt-hover={ textHoverColour }
+                                data-off-txt-hover={ textDefaultColour }
+                                onMouseEnter="this.style.backgroundColor=this.getAttribute('data-on-bg-hover');this.style.color=this.getAttribute('data-on-txt-hover');"
+                                onMouseLeave="this.style.backgroundColor=this.getAttribute('data-off-bg-hover');this.style.color=this.getAttribute('data-off-txt-hover');"
 							>
 								<RichText.Content
 									value={ buttonText }
@@ -437,4 +590,124 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 			</CardBox>
 		);
 	},
+
+    deprecated: [
+        {
+            attributes: blockAttributes,
+
+            migrate: function( attributes ) {
+                return {
+                    cardSubTitle: attributes.cardTitle,
+                    cardTitle: attributes.cardName,
+                };
+            },
+
+            isEligible: function( attributes ) {
+                return true;
+            },
+
+            save: function( props ) {
+
+                // Setup the attributes
+                const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+
+                return (
+                    // Save the block markup for the front end
+                    <CardBox { ...props }>
+
+                        { cardImgURL && (
+                            <AvatarColumn { ...props }>
+                                <div className="lsx-card-image-square">
+                                    <a
+                                        href={ buttonUrl }
+                                        target={ buttonTarget ? '_blank' : '_self' }
+                                    >
+                                        <img
+                                            className="lsx-card-avatar"
+                                            src={ cardImgURL }
+                                            alt="avatar"
+                                        />
+                                    </a>
+                                </div>
+                            </AvatarColumn>
+                        ) }
+
+                        <div
+                            className={ classnames(
+                                'lsx-card-column lsx-card-content-wrap'
+                            ) }
+                        >
+                            { cardName && (
+                                <RichText.Content
+                                    tagName="h2"
+                                    className="lsx-card-name"
+                                    style={ {
+                                        color: cardTextColor,
+                                        fontSize: 'calc(' + cardFontSize + 'px + 5px)',
+                                    } }
+                                    value={ cardName }
+                                />
+                            ) }
+
+                            { cardTitle && (
+                                <RichText.Content
+                                    tagName="p"
+                                    className="lsx-card-title"
+                                    style={ {
+                                        color: cardTextColor,
+                                        fontSize: 'calc(' + cardFontSize + 'px - 2px)',
+                                    } }
+                                    value={ cardTitle }
+                                />
+                            ) }
+
+                            { cardContent && (
+                                <RichText.Content
+                                    tagName="div"
+                                    className={ classnames(
+                                        'lsx-card-text',
+                                    ) }
+                                    style={ {
+                                        fontSize: cardFontSize + 'px',
+                                    } }
+                                    value={ cardContent }
+                                />
+                            ) }
+
+                        </div>
+                        <CustomButton { ...props }>
+                            {	// Check if there is button text and output
+                                buttonText && (
+                                    <a
+                                        href={ buttonUrl }
+                                        target={ buttonTarget ? '_blank' : '_self' }
+                                        className={ classnames(
+                                            'lsx-button',
+                                            buttonShape,
+                                            buttonSize,
+                                            buttonFlat,
+                                            buttonGhost,
+                                        ) }
+                                        style={ {
+                                            color: buttonTextColor,
+                                            backgroundColor: buttonBackgroundColor,
+                                            boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
+                                            borderColor: buttonBackgroundColor,
+                                        } }
+                                        data-onhover={ buttonHoverColor }
+                                        data-offhover={ buttonBackgroundColor }
+                                        onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
+                                        onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+                                    >
+                                        <RichText.Content
+                                            value={ buttonText }
+                                        />
+                                    </a>
+                                ) }
+                        </CustomButton>
+                    </CardBox>
+                );
+            },
+        }
+    ]
 } );
