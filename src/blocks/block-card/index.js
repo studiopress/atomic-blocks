@@ -594,7 +594,13 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
     deprecated: [
     	//V1
 		{
-            attributes: blockAttributes,
+            attributes: deprecatedBlockAttributes,
+
+            migrate: function( attributes ) {
+                return {
+                    cardSubTitle: attributes.cardName,
+                };
+            },
 
 			save: function ( props ) {
                 // Setup the attributes
@@ -701,7 +707,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 		},
     	//V2
         {
-            attributes: blockAttributes,
+            attributes: deprecatedBlockAttributes,
 
             migrate: function( attributes ) {
                 return {
