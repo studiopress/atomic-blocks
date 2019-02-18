@@ -12,6 +12,7 @@
  * @package LSX BLOCKS
  */
 
+define( 'LSX_BLOCKS_VER', '1.0.0' );
 
 /**
  * Exit if accessed directly
@@ -94,3 +95,12 @@ function lsx_blocks_image_sizes() {
 	add_image_size( 'lsx-block-post-grid-square', 600, 600, true );
 }
 add_action( 'after_setup_theme', 'lsx_blocks_image_sizes' );
+
+function lsx_blocks_enqueue_scripts() {
+	if ( function_exists( '' ) ) {
+		wp_enqueue_script( 'lsx-blocks-slick-init', LSX_TESTIMONIALS_URL . 'assets/js/slick-init.js', array(
+			'jquery',
+			'slick',
+		), LSX_BLOCKS_VER, true );
+	}
+}
