@@ -168,7 +168,7 @@ class LSXContainerBlock extends Component {
 								className={ classnames(
 									'lsx-container-image',
 									bgPosition,
-                                    bgRepeat,
+                                    bgFit,
 									{ containerImgAlt },
 									dimRatioToClass( containerDimRatio ),
 									{
