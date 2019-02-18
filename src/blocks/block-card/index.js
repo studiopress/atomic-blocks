@@ -105,11 +105,6 @@ const blockAttributes = {
 		selector: '.lsx-card-text',
 		source: 'children',
 	},
-    cardFooter: {
-        type: 'array',
-        selector: '.lsx-card-footer',
-        source: 'children',
-    },
 	cardAlignment: {
 		type: 'string',
 	},
@@ -260,7 +255,6 @@ class LSXAuthorCardBlock extends Component {
 				cardTitle,
                 cardSubTitle,
 				cardContent,
-                cardFooter,
 				cardAlignment,
 				cardImgURL,
 				cardImgID,
@@ -373,22 +367,6 @@ class LSXAuthorCardBlock extends Component {
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
 						onChange={ ( value ) => setAttributes( { cardContent: value } ) }
 					/>
-
-                    <RichText
-                        tagName="div"
-                        className={ classnames(
-                            'lsx-card-footer',
-                        ) }
-                        style={ {
-                            fontSize: cardFooter + 'px',
-                        } }
-                        multiline="p"
-                        placeholder={ __( 'Footer content...', 'lsx-blocks' ) }
-                        keepPlaceholderOnFocus
-                        value={ cardFooter }
-                        formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-                        onChange={ ( value ) => setAttributes( { cardFooter: value } ) }
-                    />
 
 					<CustomButton { ...this.props }>
 						<RichText
@@ -540,20 +518,6 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 						/>
 					) }
 
-                    { cardFooter && (
-                        <RichText.Content
-                            tagName="div"
-                            className={ classnames(
-                                'lsx-card-footer',
-                            ) }
-                            style={ {
-                                fontSize: cardFontSize + 'px',
-                            } }
-                            value={ cardFooter }
-                        />
-                    ) }
-
-
 				</div>
 				<CustomButton { ...props }>
 					{	// Check if there is button text and output
@@ -599,6 +563,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
             migrate: function( attributes ) {
                 return {
                     cardSubTitle: attributes.cardName,
+                    cardTitle: attributes.cardName,
                 };
             },
 
