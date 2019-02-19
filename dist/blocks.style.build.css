@@ -1301,11 +1301,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
  * Loads on front end and back end
  */
 .lsx-block-cta {
-  margin: 0 0 1.2em 0;
   position: relative;
   background: #f2f2f2;
   color: #293038;
-  padding: 5% 3%;
   border-radius: 5px;
   -webkit-box-shadow: none !important;
           box-shadow: none !important; }
@@ -2120,28 +2118,39 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     opacity: .9; }
   .lsx-block-container .has-background-dim-100 {
     opacity: 1; }
-  .lsx-block-container .lsx-container-bottom {
-    -o-object-position: bottom;
-       object-position: bottom; }
-  .lsx-block-container .lsx-container-top {
-    -o-object-position: top;
-       object-position: top; }
-  .lsx-block-container .lsx-container-center {
-    -o-object-position: center;
-       object-position: center; }
-  .lsx-block-container .lsx-container-left {
-    -o-object-position: left;
-       object-position: left;
+  .lsx-block-container .lsx-container-left-top {
+    -o-object-position: left top;
+       object-position: left top; }
+  .lsx-block-container .lsx-container-left-center {
+    -o-object-position: left center;
+       object-position: left center; }
+  .lsx-block-container .lsx-container-left-bottom {
+    -o-object-position: left bottom;
+       object-position: left bottom; }
+  .lsx-block-container .lsx-container-center-left {
+    -o-object-position: center left;
+       object-position: center left; }
+  .lsx-block-container .lsx-container-center-center {
+    -o-object-position: center center;
+       object-position: center center; }
+  .lsx-block-container .lsx-container-center-right {
+    -o-object-position: center right;
+       object-position: center right; }
+  .lsx-block-container .lsx-container-right-top {
+    -o-object-position: right top;
+       object-position: right top; }
+  .lsx-block-container .lsx-container-right-center {
+    -o-object-position: right center;
+       object-position: right center; }
+  .lsx-block-container .lsx-container-right-bottom {
+    -o-object-position: right bottom;
+       object-position: right bottom; }
+  .lsx-block-container .lsx-container-parallax {
+    -o-object-position: parallax;
+       object-position: parallax; }
+  .lsx-block-container .lsx-container-fit {
     -o-object-fit: contain;
        object-fit: contain; }
-  .lsx-block-container .lsx-container-right {
-    -o-object-position: right;
-       object-position: right;
-    -o-object-fit: contain;
-       object-fit: contain; }
-  .lsx-block-container .lsx-container-clear {
-    -o-object-position: initial;
-       object-position: initial; }
 /**
  * Common styles
  * Loads on front end and back end

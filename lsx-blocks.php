@@ -12,6 +12,7 @@
  * @package LSX BLOCKS
  */
 
+define( 'LSX_BLOCKS_VER', '1.0.0' );
 
 /**
  * Exit if accessed directly

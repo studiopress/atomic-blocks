@@ -40,7 +40,7 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { containerPaddingTop, containerPaddingRight, containerPaddingBottom, containerPaddingLeft, containerMarginTop, containerMarginBottom, containerMaxWidth, containerBackgroundColor, containerDimRatio, bgPosition, containerImgURL, containerImgID, containerImgAlt } = this.props.attributes;
+		const { containerPaddingTop, containerPaddingRight, containerPaddingBottom, containerPaddingLeft, containerMarginTop, containerMarginBottom, containerMaxWidth, containerBackgroundColor, containerDimRatio, bgPosition, bgFit, containerImgURL, containerImgID, containerImgAlt } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		const onSelectImage = img => {
@@ -60,13 +60,23 @@ export default class Inspector extends Component {
 		};
 
 		const bgPositionOptions = [
-			{ value: 'lsx-container-bottom', label: __( 'Bottom' ) },
-			{ value: 'lsx-container-top', label: __( 'Top' ) },
-			{ value: 'lsx-container-center', label: __( 'Center' ) },
-			{ value: 'lsx-container-left', label: __( 'Left' ) },
-			{ value: 'lsx-container-right', label: __( 'Right' ) },
-			{ value: 'lsx-container-initial', label: __( 'Clear' ) },
+			{ value: 'lsx-container-left-top', label: __( 'Left Top' ) },
+			{ value: 'lsx-container-left-center', label: __( 'Left Center' ) },
+			{ value: 'lsx-container-left-bottom', label: __( 'Left Bottom' ) },
+			{ value: 'lsx-container-center-top', label: __( 'Center Top' ) },
+			{ value: 'lsx-container-center-center', label: __( 'Center Center' ) },
+			{ value: 'lsx-container-center-bottom', label: __( 'Center Bottom' ) },
+            { value: 'lsx-container-right-top', label: __( 'Right Top' ) },
+            { value: 'lsx-container-right-center', label: __( 'Right Center' ) },
+            { value: 'lsx-container-right-bottom', label: __( 'Right Bottom' ) },
+            { value: 'lsx-container-parallax', label: __( 'Parallax' ) },
+            { value: 'lsx-container-initial', label: __( 'Clear' ) },
 		];
+
+        const bgFitOptions = [
+            { value: 'lsx-container-fit', label: __( 'Original Size' ) },
+            { value: '', label: __( 'Fit to Container' ) },
+        ];
 
 		// Update color values
 		const onChangeBackgroundColor = value => setAttributes( { containerBackgroundColor: value } );
@@ -189,6 +199,15 @@ export default class Inspector extends Component {
 							onChange={ ( value ) => setAttributes( { bgPosition: value } ) }
 						/>
 					) }
+
+                    { containerImgURL && !! containerImgURL.length && (
+                        <SelectControl
+                            label={ __( 'Background Fit' ) }
+                            options={ bgFitOptions }
+                            value={ bgFit }
+                            onChange={ ( value ) => setAttributes( { bgFit: value } ) }
+                        />
+                    ) }
 
 					<PanelColorSettings
 						title={ __( 'Background Color' ) }

@@ -102,27 +102,47 @@
 		opacity: 1;
 	}
 
-	.lsx-container-bottom {
-		object-position: bottom;
+	.lsx-container-left-top {
+		object-position: left top;
 	}
 
-	.lsx-container-top {
-		object-position: top;
+	.lsx-container-left-center {
+		object-position: left center;
 	}
 
-	.lsx-container-center {
-		object-position: center;
+	.lsx-container-left-bottom {
+		object-position: left bottom;
 	}
 
-	.lsx-container-left {
-		object-position: left;
+	.lsx-container-center-left {
+		object-position: center left;
+	}
+
+	.lsx-container-center-center {
+		object-position: center center;
+	}
+
+	.lsx-container-center-right {
+		object-position: center right;
+	}
+
+	.lsx-container-right-top {
+		object-position: right top;
+	}
+
+	.lsx-container-right-center {
+		object-position: right center;
+	}
+
+	.lsx-container-right-bottom {
+		object-position: right bottom;
+	}
+
+	.lsx-container-parallax {
+	 	object-position: parallax;
+	}
+
+	.lsx-container-fit {
 		object-fit: contain;
-	}
-	.lsx-container-right {
-		object-position: right;
-		object-fit: contain;
-	}
-	.lsx-container-clear {
-		object-position: initial;
 	}
 }

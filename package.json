@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@wordpress/api-fetch": "^2.2.8",
+    "@wordpress/block-library": "^2.2.16",
     "@wordpress/data": "^1.2.1",
     "@wordpress/html-entities": "^1.0.3",
     "@wordpress/i18n": "^1.2.3",
