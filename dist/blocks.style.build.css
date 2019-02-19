@@ -849,9 +849,10 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   .lsx-block-button .lsx-button-shape-circular {
     border-radius: 100px !important; }
   .lsx-block-button .lsx-button-size-small {
-    font-size: 10px; }
+    font-size: 10px;
+    font-family: 'Source Sans Pro', sans-serif; }
   .lsx-block-button .lsx-button-size-medium {
-    font-size: 14px; }
+    font-size: 15px; }
   .lsx-block-button .lsx-button-size-large {
     font-size: 22px;
     padding: .8em 1.2em; }

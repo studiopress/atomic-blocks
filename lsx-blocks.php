@@ -98,7 +98,7 @@ add_action( 'after_setup_theme', 'lsx_blocks_image_sizes' );
 /**
  * Add the class 'has-block-banner' if the banner block is the first thing on the page.
  */
-function add_gutenberg_test( $classes ) {
+function lsx_block_has_banner( $classes ) {
 	$post = get_post();
 	if ( has_blocks( $post->post_content ) ) {
 		$blocks = parse_blocks( $post->post_content );
@@ -109,4 +109,4 @@ function add_gutenberg_test( $classes ) {
 	}
 	return $classes;
 }
-add_filter( 'body_class', __NAMESPACE__ . '\add_gutenberg_test' );
+add_filter( 'body_class', __NAMESPACE__ . '\lsx_block_has_banner' );
