@@ -8,7 +8,7 @@
 	color: #293038;
 	margin: 0 auto;
 	//padding: 3%;
-	border-radius: 5px;
+	//border-radius: 5px;
 	margin-bottom: 1.2em;
 	display: flex;
 	flex-flow: row wrap;
@@ -31,7 +31,8 @@
 		position: relative;
 		z-index: 0;
 		flex: 1 0 0;
-
+		margin: 0 auto;
+		width: 100%;
 		@media only screen and (max-width: 600px) {
 			flex: auto;
 			//max-width: 210px;
@@ -131,8 +132,8 @@
 
 		img {
 			object-fit: cover;
-			height: 100%;
-			width: 100%;
+			height: auto;
+    		width: 100%;
 			position: relative;
 			z-index: 5;
 		}

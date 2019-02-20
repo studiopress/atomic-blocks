@@ -127,6 +127,7 @@
 		.slick-slide {
 			margin-bottom: 2.5em;
 			background-color: #fff;
+			padding: 1em;
 		}
 
 		.is-grid.columns-2 {
@@ -202,9 +203,11 @@
 				margin-bottom: -4em;
 				img {
 					border-radius: 50%;
-					width: 75px;
+					width: 75px !important;
 					margin-bottom: 1em;
 					border: 2px solid #FFF;
+					margin-left: auto;
+					margin-right: auto;
 				}
 			}
 		}
