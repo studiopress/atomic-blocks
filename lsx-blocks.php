@@ -13,6 +13,9 @@
  */
 
 define( 'LSX_BLOCKS_VER', '1.0.0' );
+define( 'LSX_BLOCKS_PATH',  plugin_dir_path( __FILE__ ) );
+define( 'LSX_BLOCKS_CORE',  __FILE__ );
+define( 'LSX_BLOCKS_URL',  plugin_dir_url( __FILE__ ) );
 
 /**
  * Exit if accessed directly
@@ -21,93 +24,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
-/**
- * Initialize the blocks
- */
-function lsx_blocks_loader() {
-	/**
-	 * Load the blocks functionality
-	 */
-	require_once plugin_dir_path( __FILE__ ) . 'dist/init.php';
-
-	/**
-	 * Load Getting Started page
-	 */
-	//require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
-
-	/**
-	 * Load Social Block PHP
-	 */
-	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-sharing/index.php';
-
-	/**
-	 * Load Post Grid PHP
-	 */
-	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-post-grid/index.php';
-
-	/**
-	 * Load Post Carousel PHP
-	 */
-	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-post-carousel/index.php';
-}
-add_action( 'plugins_loaded', 'lsx_blocks_loader' );
-
-
-/**
- * Load the plugin textdomain
- */
-function lsx_blocks_init() {
-	load_plugin_textdomain( 'lsx-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
-}
-add_action( 'init', 'lsx_blocks_init' );
-
-
-/**
- * Add a check for our plugin before redirecting
- */
-// function lsx_blocks_activate() {
-// 	add_option( 'lsx_blocks_do_activation_redirect', true );
-// }
-// register_activation_hook( __FILE__, 'lsx_blocks_activate' );
-
-
-/**
- * Redirect to the LSX Blocks Getting Started page on single plugin activation
- */
-// function lsx_blocks_redirect() {
-//     if ( get_option( 'lsx_blocks_do_activation_redirect', false ) ) {
-//         delete_option( 'lsx_blocks_do_activation_redirect' );
-//         if( !isset( $_GET['activate-multi'] ) ) {
-//             wp_redirect( "admin.php?page=lsx-blocks" );
-//         }
-//     }
-// }
-//add_action( 'admin_init', 'lsx_blocks_redirect' );
-
-
-/**
- * Add image sizes
- */
-function lsx_blocks_image_sizes() {
-	// Post Grid Block
-	add_image_size( 'lsx-block-post-grid-landscape', 600, 400, true );
-	add_image_size( 'lsx-block-post-grid-square', 600, 600, true );
-}
-add_action( 'after_setup_theme', 'lsx_blocks_image_sizes' );
-
-/**
- * Add the class 'has-block-banner' if the banner block is the first thing on the page.
- */
-function add_gutenberg_test( $classes ) {
-	$post = get_post();
-	if ( has_blocks( $post->post_content ) ) {
-		$blocks = parse_blocks( $post->post_content );
-
-		if ( 'lsx-blocks/lsx-banner-box' === $blocks[0]['blockName'] ) {
-			$classes[] = 'has-block-banner';
-		}
-	}
-	return $classes;
-}
-add_filter( 'body_class', __NAMESPACE__ . '\add_gutenberg_test' );
+// Load internals
+require_once( LSX_BLOCKS_PATH . 'classes/class-core.php' );
+$lsx_blocks = lsx\blocks\classes\Core::get_instance();
