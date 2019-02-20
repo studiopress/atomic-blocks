@@ -12,9 +12,7 @@ var LSX_BLOCKS = Object.create( null );
      * Start the JS Class
      */
     LSX_BLOCKS.init = function() {
-
-        //Init the sliders
-        LSX_BLOCKS.sliders.element = jQuery('.lsx-member-directory-slider');
+        LSX_BLOCKS.sliders.element = jQuery('.lsx-block-post-carousel .slick-slider');
         if ( 0 <  LSX_BLOCKS.sliders.element.length ) {
             LSX_BLOCKS.sliders.init();
         }

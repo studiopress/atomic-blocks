@@ -34,6 +34,7 @@ class Frontend {
 	 */
 	private function __construct() {
 		add_action( 'body_class', array( $this, 'banner_class' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
 	}
 
 	/**
@@ -71,7 +72,7 @@ class Frontend {
 	 */
 	public function scripts() {
 		if ( function_exists( 'has_blocks' ) && has_blocks() ) {
-			wp_enqueue_script( 'lsx_blocks_script', get_template_directory_uri() . '/dist/assets/js/frontend.js', array( 'jquery', 'slick' ), LSX_BLOCKS_VER, true );
+			wp_enqueue_script( 'lsx_blocks_script', LSX_BLOCKS_URL . '/dist/assets/js/frontend.js', array( 'jquery', 'slick' ), LSX_BLOCKS_VER, true );
 		}
 	}
 }

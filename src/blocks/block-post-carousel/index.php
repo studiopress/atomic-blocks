@@ -155,13 +155,13 @@ function lsx_blocks_render_block_core_latest_posts_carousel( $attributes ) {
 	}
 
 	// Build the classes
-	$class = "lsx-block-post-grid slick-slider align{$attributes['alignCarousel']}";
+	$class = "lsx-block-post-carousel align{$attributes['alignCarousel']}";
 
 	if ( isset( $attributes['className'] ) ) {
 		$class .= ' ' . $attributes['className'];
 	}
 
-	$grid_class = 'lsx-post-carousel-items';
+	$grid_class = 'lsx-post-carousel-items slick-slider';
 
 	if ( isset( $attributes['columnsCarousel'] ) ) {
 		$grid_class .= ' columns-' . $attributes['columnsCarousel'];
