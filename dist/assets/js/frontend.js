@@ -23,6 +23,20 @@ var LSX_BLOCKS = Object.create( null );
      */
     LSX_BLOCKS.sliders.init = function( ) {
         LSX_BLOCKS.sliders.element.each( function() {
+
+            var slidesToShow = 3;
+            var slidesToScroll = 3;
+            var slickData = $(this).attr('data-slick');
+            if ( undefined !== slickData) {
+
+                if ( undefined !== slickData.slidesToShow ) {
+                    slidesToShow = slickData.slidesToShow;
+                }
+                if ( undefined !== slickData.slidesToScroll ) {
+                    slidesToScroll = slickData.slidesToScroll;
+                }
+            }
+
             $(this).slick({
                 dots: true,
                 infinite: false,
@@ -33,8 +47,8 @@ var LSX_BLOCKS = Object.create( null );
                     {
                         breakpoint: 1024,
                         settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
+                            slidesToShow: slidesToShow,
+                            slidesToScroll: slidesToScroll,
                             infinite: true,
                             dots: true
                         }
