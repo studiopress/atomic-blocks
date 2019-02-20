@@ -98,7 +98,7 @@ class LatestPostsBlockCarousel extends Component {
 
 	render() {
 		const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
-		const { displayPostDateCarousel, displayPostExcerptCarousel, displayPostAuthorCarousel, displayPostImageCarousel, displayPostLinkCarousel, alignCarousel, postLayoutCarousel, columnsCarousel, orderCarousel, orderByCarousel, categories, postsToShowCarousel, width, imageCrop, readMoreText } = attributes;
+		const { displayPostDateCarousel, displayPostExcerptCarousel, displayPostAuthorCarousel, displayPostImageCarousel, displayPostLinkCarousel, alignCarousel, columnsCarousel, orderCarousel, orderByCarousel, categories, postsToShowCarousel, width, imageCrop, readMoreText } = attributes;
 
 		// Thumbnail options
 		const imageCropOptions = [
@@ -121,15 +121,13 @@ class LatestPostsBlockCarousel extends Component {
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShowCarousel: value } ) }
 					/>
-					{ postLayoutCarousel === 'grid' &&
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ columnsCarousel }
-							onChange={ ( value ) => setAttributes( { columnsCarousel: value } ) }
-							min={ 2 }
-							max={ ! hasPosts ? MAX_POSTS_COLUMNS_CAROUSEL : Math.min( MAX_POSTS_COLUMNS_CAROUSEL, latestPosts.length ) }
-						/>
-					}
+					<RangeControl
+						label={ __( 'Columns' ) }
+						value={ columnsCarousel }
+						onChange={ ( value ) => setAttributes( { columnsCarousel: value } ) }
+						min={ 2 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS_CAROUSEL : Math.min( MAX_POSTS_COLUMNS_CAROUSEL, latestPosts.length ) }
+					/>
 					<ToggleControl
 						label={ __( 'Display Featured Image' ) }
 						checked={ displayPostImageCarousel }
@@ -199,21 +197,6 @@ class LatestPostsBlockCarousel extends Component {
 			latestPosts.slice( 0, postsToShowCarousel ) :
 			latestPosts;
 
-		const layoutControls = [
-			{
-				icon: 'grid-view',
-				title: __( 'Grid View' ),
-				onClick: () => setAttributes( { postLayoutCarousel: 'grid' } ),
-				isActive: postLayoutCarousel === 'grid',
-			},
-			{
-				icon: 'list-view',
-				title: __( 'List View' ),
-				onClick: () => setAttributes( { postLayoutCarousel: 'list' } ),
-				isActive: postLayoutCarousel === 'list',
-			},
-		];
-
 		return (
 			<Fragment>
 				{ inspectorControls }
@@ -225,21 +208,15 @@ class LatestPostsBlockCarousel extends Component {
 						} }
 						controls={ [ 'center', 'wide' ] }
 					/>
-					<Toolbar controls={ layoutControls } />
 				</BlockControls>
 				<div
 					className={ classnames(
 						this.props.className,
-						'lsx-block-post-grid',
+						'lsx-block-post-carousel',
 					) }
 				>
 					<div
-						className={ classnames( {
-							'is-grid': postLayoutCarousel === 'grid',
-							'is-list': postLayoutCarousel === 'list',
-							[ `columns-${ columnsCarousel }` ]: postLayoutCarousel === 'grid',
-							'lsx-post-grid-items' : 'lsx-post-grid-items'
-						} ) }
+						className={ classnames( 'lsx-post-carousel-items' ) }
 					>
 						{ displayPostsCarousel.map( ( post, i ) =>
 							<article

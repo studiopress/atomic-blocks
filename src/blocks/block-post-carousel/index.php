@@ -161,15 +161,9 @@ function lsx_blocks_render_block_core_latest_posts_carousel( $attributes ) {
 		$class .= ' ' . $attributes['className'];
 	}
 
-	$grid_class = 'lsx-post-grid-items';
+	$grid_class = 'lsx-post-carousel-items';
 
-	if ( isset( $attributes['postLayoutCarousel'] ) && 'list' === $attributes['postLayoutCarousel'] ) {
-		$grid_class .= ' is-list';
-	} else {
-		$grid_class .= ' is-grid';
-	}
-
-	if ( isset( $attributes['columnsCarousel'] ) && 'grid' === $attributes['postLayoutCarousel'] ) {
+	if ( isset( $attributes['columnsCarousel'] ) ) {
 		$grid_class .= ' columns-' . $attributes['columnsCarousel'];
 	}
 
@@ -230,10 +224,6 @@ function lsx_blocks_register_block_core_latest_posts_carousel() {
 			'displayPostLinkCarousel' => array(
 				'type' => 'boolean',
 				'default' => true,
-			),
-			'postLayoutCarousel' => array(
-				'type' => 'string',
-				'default' => 'grid',
 			),
 			'columnsCarousel' => array(
 				'type' => 'number',
