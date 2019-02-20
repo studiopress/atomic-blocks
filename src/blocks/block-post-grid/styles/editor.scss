@@ -2,13 +2,46 @@
  * Editor styles for the admin
  */
 
- .lsx-block-post-grid {
-     h2 a {
-         text-decoration: none;
-     }
- }
+.lsx-block-post-carousel {
+	h2 a {
+		text-decoration: none;
+	}
 
-div[data-type="lsx-blocks/lsx-post-grid"] .editor-block-list__block-edit:before {
+	article {
+		display:none;
+	}
+	&.columns-2 {
+		article {
+			width: 50%;
+			&:nth-child(1), &:nth-child(2) {
+				display: inline-block;
+			}
+		}
+	}
+
+	&.columns-3 {
+		article{
+			width: 33.33%;
+			&:nth-child(1), &:nth-child(2), &:nth-child(3) {
+				display: inline-block;
+			}
+		}
+	}
+	&.columns-4 {
+		article {
+			width: 25%;
+			&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+				display: inline-block;
+			}
+		}
+	}
+
+	.slick-dots:not(.dropdown-menu) {
+		flex-flow: row;
+	}
+}
+
+div[data-type="lsx-blocks/lsx-post-carousel"] .editor-block-list__block-edit:before {
 
 }
 

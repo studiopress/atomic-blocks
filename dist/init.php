@@ -48,6 +48,16 @@ add_action( 'init', 'lsx_blocks_block_assets' );
  */
 function lsx_blocks_editor_assets() {
 
+	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
+
+	// Load the FontAwesome icon library
+	wp_enqueue_style(
+		'lsx-blocks-fontawesome',
+		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
+	);
+
 	// Load the compiled blocks into the editor
 	wp_enqueue_script(
 		'lsx-blocks-block-js',

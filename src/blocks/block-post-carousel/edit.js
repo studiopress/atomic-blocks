@@ -197,6 +197,8 @@ class LatestPostsBlockCarousel extends Component {
 			latestPosts.slice( 0, postsToShowCarousel ) :
 			latestPosts;
 
+		const articleCounter = 0;
+
 		return (
 			<Fragment>
 				{ inspectorControls }
@@ -213,60 +215,99 @@ class LatestPostsBlockCarousel extends Component {
 					className={ classnames(
 						this.props.className,
 						'lsx-block-post-carousel',
+                        [ `columns-${ columnsCarousel }` ]
 					) }
 				>
 					<div
-						className={ classnames( 'lsx-post-carousel-items' ) }
+						className={ classnames( 'lsx-post-carousel-items slick-slider slick-initialized slick-dotted' ) }
 					>
-						{ displayPostsCarousel.map( ( post, i ) =>
-							<article
-								key={ i }
-								className={ classnames(
-									post.featured_image_src && displayPostImageCarousel ? 'has-thumb' : 'no-thumb'
-								) }
-							>
-								{
-									displayPostImageCarousel && post.featured_image_src !== undefined && post.featured_image_src ? (
-										<div class="lsx-block-post-grid-image">
-											<a href={ post.link } target="_blank" rel="bookmark">
-												<img
-													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-												/>
-											</a>
-										</div>
-									) : (
-										null
-									)
-								}
 
-								<div class="lsx-block-post-grid-text">
-									<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+                        <button
+							type="button"
+							className="slick-prev slick-arrow slick-disabled"
+                            style={{display: 'block'}}>
+							{ __( '(Previous)' ) }
+                        </button>
 
-									<div class="lsx-block-post-grid-byline">
-										{ displayPostAuthorCarousel && post.author_info.display_name &&
-											<div class="lsx-block-post-grid-author"><a class="lsx-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-										}
+                        <div
+                            className="slick-list"
+                        >
 
-										{ displayPostDateCarousel && post.date_gmt &&
-											<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'lsx-block-post-grid-date' }>
-												{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-											</time>
-										}
-									</div>
+                            { displayPostsCarousel.map( ( post, i ) =>
+                                <article
+                                    key={ i }
+                                    className={ classnames(
+                                        post.featured_image_src && displayPostImageCarousel ? 'has-thumb' : 'no-thumb'
+                                    ) }
+                                >
+                                    {
+                                        displayPostImageCarousel && post.featured_image_src !== undefined && post.featured_image_src ? (
+                                            <div class="lsx-block-post-grid-image">
+                                                <a href={ post.link } target="_blank" rel="bookmark">
+                                                    <img
+                                                        src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+                                                        alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+                                                    />
+                                                </a>
+                                            </div>
+                                        ) : (
+                                            null
+                                        )
+                                    }
 
-									<div class="lsx-block-post-grid-excerpt">
-										{ displayPostExcerptCarousel && post.excerpt &&
-											<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-										}
+                                    <div class="lsx-block-post-grid-text">
+                                        <h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 
-										{ displayPostLinkCarousel &&
-											<p><a class="lsx-block-post-grid-link lsx-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
-										}
-									</div>
-								</div>
-							</article>
-						) }
+                                        <div class="lsx-block-post-grid-byline">
+                                            { displayPostAuthorCarousel && post.author_info.display_name &&
+                                                <div class="lsx-block-post-grid-author"><a class="lsx-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+                                            }
+
+                                            { displayPostDateCarousel && post.date_gmt &&
+                                                <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'lsx-block-post-grid-date' }>
+                                                    { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                </time>
+                                            }
+                                        </div>
+
+                                        <div class="lsx-block-post-grid-excerpt">
+                                            { displayPostExcerptCarousel && post.excerpt &&
+                                                <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+                                            }
+
+                                            { displayPostLinkCarousel &&
+                                                <p><a class="lsx-block-post-grid-link lsx-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+                                            }
+                                        </div>
+                                    </div>
+                                </article>
+                            ) }
+                        </div>
+
+                        <button
+                            type="button"
+                            className="slick-next slick-arrow slick-disabled fa fa-clock-o"
+                            style={{display: 'block'}}>
+                            { __( '(Next)' ) }
+                        </button>
+
+                        <ul
+                            className="slick-dots"
+                        >
+                            <li className="slick-active">
+                                <button type="button">1</button>
+                            </li>
+                            <li>
+                                <button type="button">2</button>
+                            </li>
+                            <li>
+                                <button type="button">3</button>
+                            </li>
+                            <li>
+                                <button type="button">4</button>
+                            </li>
+                        </ul>
+
 					</div>
 				</div>
 			</Fragment>

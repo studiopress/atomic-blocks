@@ -73,4 +73,11 @@ class Core {
 		require_once( LSX_BLOCKS_PATH . 'classes/class-frontend.php' );
 		$this->frontend = Frontend::get_instance();
 	}
+
+	/**
+	 * Load the plugin textdomain
+	 */
+	public function lsx_blocks_init() {
+		load_plugin_textdomain( 'lsx-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
+	}
 }
