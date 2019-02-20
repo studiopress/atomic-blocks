@@ -286,7 +286,7 @@ class LatestPostsBlockCarousel extends Component {
 
                         <button
                             type="button"
-                            className="slick-next slick-arrow slick-disabled fa fa-clock-o"
+                            className="slick-next slick-arrow slick-disabled"
                             style={{display: 'block'}}>
                             { __( '(Next)' ) }
                         </button>
