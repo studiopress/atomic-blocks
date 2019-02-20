@@ -334,7 +334,7 @@ class LSXAuthorCardBlock extends Component {
 						className="lsx-card-name"
 						style={ {
 							color: cardTextColor,
-							fontSize: 'calc(' + cardFontSize + 'px - 2px)',
+							fontSize: 'calc(' + cardFontSize + 'px + 5px)',
 						} }
 						onChange={ ( value ) => setAttributes( { cardTitle: value } ) }
 					/>
@@ -347,7 +347,7 @@ class LSXAuthorCardBlock extends Component {
                         className="lsx-card-title"
                         style={ {
                             color: cardTextColor,
-                            fontSize: 'calc(' + cardFontSize + 'px + 5px)',
+                            fontSize: 'calc(' + cardFontSize + 'px - 2px)',
                         } }
                         onChange={ ( value ) => setAttributes( { cardSubTitle: value } ) }
                     />
@@ -487,7 +487,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
 							className="lsx-card-name"
 							style={ {
 								color: cardTextColor,
-								fontSize: 'calc(' + cardFontSize + 'px - 2px)',
+								fontSize: 'calc(' + cardFontSize + 'px + 5px)',
 							} }
 							value={ cardTitle }
 						/>
@@ -499,7 +499,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                             className="lsx-card-title"
                             style={ {
                                 color: cardTextColor,
-                                fontSize: 'calc(' + cardFontSize + 'px + 5px)',
+                                fontSize: 'calc(' + cardFontSize + 'px - 2px)',
                             } }
                             value={ cardSubTitle }
                         />

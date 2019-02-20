@@ -2785,7 +2785,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   .wp-block-lsx-blocks-lsx-banner-box.title-bottom .lsx-banner-content-wrap {
     position: relative; }
     .wp-block-lsx-blocks-lsx-banner-box.title-bottom .lsx-banner-content-wrap .header-headings {
-      background: white !important;
+      background: white;
       margin-top: -8rem;
       padding: 2.5rem; }
       @media only screen and (min-width: 600px) {
