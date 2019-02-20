@@ -236,9 +236,6 @@ class LSXBannerBlock extends Component {
 			} );
 		};
 
-		console.log('Test2');
-		console.log(bannerImgURL);
-
 		return [
 			// Show the block alignment controls on focus
 			<BlockControls key="controls">
@@ -402,9 +399,6 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 
 		// Setup the attributes
 		const { bannerName, bannerTitle, bannerContent, bannerAlignment, bannerImgURL, bannerImgID, bannerLogoID, bannerLogoURL, bannerFontSize, bannerBackgroundColor, bannerTextColor, textBannerBackgroundColor, bannerHeight, bannerFontOpacity, bannerLinkColor, bannerTitlePosition, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
-
-		console.log('Save');
-		console.log(props);
 
 		return (
 			// Save the block markup for the front end
