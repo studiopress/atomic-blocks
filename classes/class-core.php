@@ -29,6 +29,11 @@ class Core {
 	public $setup;
 
 	/**
+	 * @var object \lsx\member_directory\classes\Admin();
+	 */
+	public $admin;
+
+	/**
 	 * @var object \lsx\member_directory\classes\Frontend();
 	 */
 	public $frontend;
@@ -69,6 +74,9 @@ class Core {
 	private function load_classes() {
 		require_once( LSX_BLOCKS_PATH . 'classes/class-setup.php' );
 		$this->setup = Setup::get_instance();
+
+		require_once( LSX_BLOCKS_PATH . 'classes/class-admin.php' );
+		$this->admin = Admin::get_instance();
 
 		require_once( LSX_BLOCKS_PATH . 'classes/class-frontend.php' );
 		$this->frontend = Frontend::get_instance();

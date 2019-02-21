@@ -35,6 +35,8 @@ class Frontend {
 	private function __construct() {
 		add_action( 'body_class', array( $this, 'banner_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
+		add_filter( 'lsx_page_banner_disable', array( $this, 'disable_lsx_page_title' ));
+		add_filter( 'lsx_global_header_disable', array( $this, 'disable_lsx_page_title' ));
 	}
 
 	/**
@@ -74,5 +76,19 @@ class Frontend {
 		if ( function_exists( 'has_blocks' ) && has_blocks() ) {
 			wp_enqueue_script( 'lsx_blocks_script', LSX_BLOCKS_URL . '/dist/assets/js/frontend.js', array( 'jquery', 'slick' ), LSX_BLOCKS_VER, true );
 		}
+	}
+
+	/**
+	 * Disables the page title banner for LSX
+	 * @param $disable boolean
+	 *
+	 * @return boolean
+	 */
+	public function disable_lsx_page_title( $disable ) {
+		$disable_title = get_post_meta( get_the_ID(), 'lsx_disable_title', true );
+		if ( 'yes' === $disable_title ) {
+			$disable = true;
+		}
+		return $disable;
 	}
 }
