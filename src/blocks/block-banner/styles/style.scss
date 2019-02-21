@@ -57,6 +57,10 @@
 				height: 100%;
 				img {
 					width: 100%;
+					@media (max-width:600px) {
+						object-fit: cover;
+						min-height: 300px;
+					}
 				}
 			}
 		}
@@ -140,7 +144,11 @@
 					margin-bottom: 0;
 				}
 			}
-
+			@media (max-width:600px) {
+				.lsx-banner-title, .lsx-banner-name {
+					text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2);
+				}
+			}
 		}
 	}
 	&.title-bottom {
@@ -164,3 +172,4 @@
 		max-width: 95px;
 	}
 }
+
