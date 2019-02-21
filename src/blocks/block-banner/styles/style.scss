@@ -1,11 +1,14 @@
 .gutenberg-compatible-template.using-gutenberg {
-	&.has-block-banner {
-		.breadcrumbs-container {
-			position: relative;
-			margin-bottom: -50px;
-			z-index: 5;
+	@media (min-width:768px) {
+		&.has-block-banner {
+			.breadcrumbs-container {
+				position: relative;
+				margin-bottom: -50px;
+				z-index: 5;
+			}
 		}
 	}
+
 	.wp-block-lsx-blocks-lsx-banner-box.lsx-has-image {
 		background-image: none !important;
 	}

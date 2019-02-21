@@ -813,7 +813,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
  * Loads on front end and back end
  */
 .lsx-block-button {
-  margin: 0 0 1.2em 0;
+  margin: 0 0 1em 0;
   position: relative; }
   .lsx-block-button .blocks-rich-text {
     display: -ms-inline-flexbox;
@@ -1828,12 +1828,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     grid-template-columns: 1fr 1fr; }
   .lsx-block-post-grid .is-grid.columns-3 {
     grid-template-columns: 1fr 1fr 1fr; }
-    .lsx-block-post-grid .is-grid.columns-3 .lsx-block-post-grid-image img {
-      max-height: 170px; }
   .lsx-block-post-grid .is-grid.columns-4 {
     grid-template-columns: 1fr 1fr 1fr 1fr; }
-    .lsx-block-post-grid .is-grid.columns-4 .lsx-block-post-grid-image img {
-      max-height: 160px; }
   @media only screen and (max-width: 600px) {
     .lsx-block-post-grid div[class*="columns"].is-grid {
       grid-template-columns: 1fr; } }
@@ -2688,10 +2684,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
-.gutenberg-compatible-template.using-gutenberg.has-block-banner .breadcrumbs-container {
-  position: relative;
-  margin-bottom: -50px;
-  z-index: 5; }
+@media (min-width: 768px) {
+  .gutenberg-compatible-template.using-gutenberg.has-block-banner .breadcrumbs-container {
+    position: relative;
+    margin-bottom: -50px;
+    z-index: 5; } }
 
 .gutenberg-compatible-template.using-gutenberg .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image {
   background-image: none !important; }
@@ -3178,12 +3175,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       grid-template-columns: 1fr 1fr; }
     .lsx-block-post-carousel .lsx-post-carousel-items .is-grid.columns-3 {
       grid-template-columns: 1fr 1fr 1fr; }
-      .lsx-block-post-carousel .lsx-post-carousel-items .is-grid.columns-3 .lsx-block-post-grid-image img {
-        max-height: 170px; }
     .lsx-block-post-carousel .lsx-post-carousel-items .is-grid.columns-4 {
       grid-template-columns: 1fr 1fr 1fr 1fr; }
-      .lsx-block-post-carousel .lsx-post-carousel-items .is-grid.columns-4 .lsx-block-post-grid-image img {
-        max-height: 160px; }
     @media only screen and (max-width: 600px) {
       .lsx-block-post-carousel .lsx-post-carousel-items div[class*="columns"].is-grid {
         grid-template-columns: 1fr; } }
