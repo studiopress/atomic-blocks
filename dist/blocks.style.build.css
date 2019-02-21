@@ -3195,7 +3195,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
         width: 100%; }
     .lsx-block-post-carousel .lsx-post-carousel-items .lsx-block-post-grid-text {
       text-align: left;
-      background: #fff; }
+      background: #fff;
+      margin-top: -15px;
+      padding-top: 15px; }
     .lsx-block-post-carousel .lsx-post-carousel-items h2 {
       text-align: center;
       margin-top: 0;
