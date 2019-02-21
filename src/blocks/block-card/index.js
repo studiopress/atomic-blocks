@@ -698,8 +698,8 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                 return {
                     cardImgURL: attributes.cardImgURL,
                     cardImgID: attributes.cardImgID,
-                    cardSubTitle: attributes.cardTitle,
                     cardTitle: attributes.cardName,
+                    cardName: attributes.cardName,
 
                     //Unaltered Attributes
                     buttonText: attributes.buttonText,
@@ -718,13 +718,30 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                     cardBackgroundColor: attributes.cardBackgroundColor,
                     cardTextColor: attributes.cardTextColor,
                     cardLinkColor: attributes.cardLinkColor,
+
+                    buttonHoverColor: attributes.buttonHoverColor,
+
                 };
             },
 
             save: function( props ) {
 
                 // Setup the attributes
-                const { cardName, cardTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+                const { cardTitle, cardName, cardSubTitle, cardContent, cardAlignment, cardImgURL, cardImgID, cardFontSize, cardBackgroundColor, cardTextColor, cardLinkColor, buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonShadowColor, buttonHoverColor, buttonTextColor, buttonSize, buttonFlat, buttonShape, buttonGhost, buttonTarget } = props.attributes;
+
+                var bgDefaultColour = buttonBackgroundColor;
+                var bgHoverColour = buttonHoverColor;
+
+                var textDefaultColour = buttonTextColor;
+                var textHoverColour = buttonTextColor;
+
+                if ( 'transparent' === buttonGhost ) {
+                    bgDefaultColour = buttonBackgroundColor;
+                    bgHoverColour = buttonTextColor;
+
+                    textDefaultColour = buttonTextColor;
+                    textHoverColour = buttonBackgroundColor;
+                }
 
                 return (
                     // Save the block markup for the front end
@@ -752,6 +769,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                                 'lsx-card-column lsx-card-content-wrap'
                             ) }
                         >
+
                             { cardName && (
                                 <RichText.Content
                                     tagName="h2"
@@ -788,7 +806,6 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                                     value={ cardContent }
                                 />
                             ) }
-
                         </div>
                         <CustomButton { ...props }>
                             {	// Check if there is button text and output
@@ -809,10 +826,12 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                                             boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
                                             borderColor: buttonBackgroundColor,
                                         } }
-                                        data-onhover={ buttonHoverColor }
-                                        data-offhover={ buttonBackgroundColor }
-                                        onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
-                                        onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+                                        data-on-bg-hover={ bgHoverColour }
+                                        data-off-bg-hover={ bgDefaultColour }
+                                        data-on-txt-hover={ textHoverColour }
+                                        data-off-txt-hover={ textDefaultColour }
+                                        onMouseEnter="this.style.backgroundColor=this.getAttribute('data-on-bg-hover');this.style.color=this.getAttribute('data-on-txt-hover');"
+                                        onMouseLeave="this.style.backgroundColor=this.getAttribute('data-off-bg-hover');this.style.color=this.getAttribute('data-off-txt-hover');"
                                     >
                                         <RichText.Content
                                             value={ buttonText }
