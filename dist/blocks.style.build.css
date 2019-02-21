@@ -2695,7 +2695,6 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
 
 .wp-block-lsx-blocks-lsx-banner-box {
   position: relative;
-  margin-bottom: 5rem;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -2704,6 +2703,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       flex-direction: column; }
   .wp-block-lsx-blocks-lsx-banner-box:not(.lsx-has-image) {
     padding-bottom: 1em; }
+  .wp-block-lsx-blocks-lsx-banner-box + div {
+    padding-top: 5rem; }
   @media only screen and (max-width: 766px) {
     .wp-block-lsx-blocks-lsx-banner-box {
       padding-left: 0 !important;
@@ -2757,8 +2758,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     padding-right: 50px; }
     @media only screen and (min-width: 600px) {
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap {
-        position: absolute;
-        bottom: 20%; } }
+        position: absolute; } }
     @media only screen and (max-width: 600px) {
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings {
         background: transparent !important; } }
@@ -3110,7 +3110,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -o-transition: border 300ms ease;
     transition: border 300ms ease;
     width: 4rem;
-    z-index: 3; }
+    z-index: 3;
+    color: #374750;
+    border-color: #374750; }
     .lsx-block-post-carousel .slick-arrow:before {
       display: block;
       font-family: 'FontAwesome';

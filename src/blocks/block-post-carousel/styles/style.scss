@@ -56,7 +56,8 @@
 		transition: border 300ms ease;
 		width: 4rem;
 		z-index: 3;
-
+		color: #374750;
+    	border-color: #374750;
 		&:before {
 			display: block;
 			font-family: 'FontAwesome';
