@@ -2496,7 +2496,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   top: 0;
   left: 0;
   opacity: 1 !important;
-  height: 100%; }
+  height: auto; }
 
 /**
  * Button styles

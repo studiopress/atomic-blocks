@@ -98,7 +98,7 @@ class LatestPostsBlockCarousel extends Component {
 
 	render() {
 		const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
-		const { displayPostDateCarousel, displayPostExcerptCarousel, displayPostAuthorCarousel, displayPostImageCarousel, displayPostLinkCarousel, alignCarousel, columnsCarousel, orderCarousel, orderByCarousel, categories, postsToShowCarousel, width, imageCrop, readMoreText } = attributes;
+		const { customTaxonomy, customTermID, displayPostDateCarousel, displayPostExcerptCarousel, displayPostAuthorCarousel, displayPostImageCarousel, displayPostLinkCarousel, alignCarousel, columnsCarousel, orderCarousel, orderByCarousel, categories, postsToShowCarousel, width, imageCrop, readMoreText } = attributes;
 
 		// Thumbnail options
 		const imageCropOptions = [
@@ -119,7 +119,7 @@ class LatestPostsBlockCarousel extends Component {
 						onOrderChange={ ( value ) => setAttributes( { orderCarousel: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderByCarousel: value } ) }
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShowCarousel: value } ) }
+                        onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShowCarousel: value } ) }
 					/>
 					<RangeControl
 						label={ __( 'Columns' ) }
@@ -171,6 +171,24 @@ class LatestPostsBlockCarousel extends Component {
 					}
 
 				</PanelBody>
+                <PanelBody title={ __( 'Custom Taxonomy' ) }>
+                    <TextControl
+                        label={ __( 'Taxonomy Slug' ) }
+                        type="text"
+                        value={ customTaxonomy }
+                        onChange={ ( value ) => this.props.setAttributes( { customTaxonomy: value } ) }
+                        help={ __( 'Enter the slug of your custom taxonomy (e.g post_tag)' ) }
+                    />
+                    { customTaxonomy &&
+                    <TextControl
+                        label={ __( 'Term' ) }
+                        type="text"
+                        value={ customTermID }
+                        onChange={ ( value ) => this.props.setAttributes( { customTermID: value } ) }
+                        help={ __( 'Enter the term slug or term_id, you can enter several items separated by a comma.' ) }
+                    />
+                    }
+                </PanelBody>
 			</InspectorControls>
 		);
 
@@ -307,7 +325,6 @@ class LatestPostsBlockCarousel extends Component {
                                 <button type="button">4</button>
                             </li>
                         </ul>
-
 					</div>
 				</div>
 			</Fragment>
@@ -318,6 +335,7 @@ class LatestPostsBlockCarousel extends Component {
 export default withSelect( ( select, props ) => {
 	const { postsToShowCarousel, orderCarousel, orderByCarousel, categories } = props.attributes;
 	const { getEntityRecords } = select( 'core' );
+
 	const latestPostsQueryCarousel = pickBy( {
 		categories,
 		orderCarousel,
