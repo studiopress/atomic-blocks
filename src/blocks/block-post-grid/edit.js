@@ -257,7 +257,9 @@ class LatestPostsBlock extends Component {
 						{ displayPosts.map( ( post, i ) =>
 							<article
 								key={ i }
+								id={ 'post-' + post.id }
 								className={ classnames(
+									'post-' + post.id,
 									post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
 								) }
 							>

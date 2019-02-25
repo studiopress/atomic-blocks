@@ -37,10 +37,13 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				$post_thumb_class = 'no-thumb';
 			}
 
+			$post_classes = join( ' ', get_post_class( $post_thumb_class, $post->ID ) );
+
 			// Start the markup for the post
 			$list_items_markup .= sprintf(
-				'<article class="%1$s">',
-				esc_attr( $post_thumb_class )
+				'<article id="post-%1$s" class="%2$s">',
+				esc_attr( $post->ID ),
+				esc_attr( $post_classes )
 			);
 
 			// Get the featured image
