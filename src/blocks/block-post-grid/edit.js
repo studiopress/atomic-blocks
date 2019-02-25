@@ -97,28 +97,44 @@ class LatestPostsBlock extends Component {
 		setAttributes( { displayPostTitle: ! displayPostTitle } );
 	}
 
-	customizeReadMoreText() {
-		const { readMoreText } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { readMoreText: ! readMoreText } );
-	}
-
 	render() {
-		const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
-		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage, displayPostLink, displayPostTitle, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop, readMoreText } = attributes;
+		const {
+			attributes,
+			categoriesList,
+			setAttributes,
+			latestPosts
+		} = this.props;
+		const {
+			displayPostDate,
+			displayPostExcerpt,
+			displayPostAuthor,
+			displayPostImage,
+			displayPostLink,
+			displayPostTitle,
+			align,
+			postLayout,
+			columns,
+			order,
+			orderBy,
+			categories,
+			postsToShow,
+			width,
+			imageCrop,
+			readMoreText,
+			offset,
+		} = attributes;
 
 		// Thumbnail options
 		const imageCropOptions = [
-			{ value: 'landscape', label: __( 'Landscape' ) },
-			{ value: 'square', label: __( 'Square' ) },
+			{ value: 'landscape', label: __( 'Landscape', 'atomic-blocks' ) },
+			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) },
 		];
 
 		const isLandscape = imageCrop === 'landscape';
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Post Grid Settings' ) }>
+				<PanelBody title={ __( 'Post Grid Settings', 'atomic-blocks' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -129,9 +145,16 @@ class LatestPostsBlock extends Component {
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
+					<RangeControl
+						label={ __( 'Number of items to offset', 'atomic-blocks' ) }
+						value={ offset }
+						onChange={ ( value ) => setAttributes( { offset: value } ) }
+						min={ 0 }
+						max={ 20 }
+					/>
 					{ postLayout === 'grid' &&
 						<RangeControl
-							label={ __( 'Columns' ) }
+							label={ __( 'Columns', 'atomic-blocks' ) }
 							value={ columns }
 							onChange={ ( value ) => setAttributes( { columns: value } ) }
 							min={ 2 }
@@ -139,46 +162,46 @@ class LatestPostsBlock extends Component {
 						/>
 					}
 					<ToggleControl
-						label={ __( 'Display Featured Image' ) }
+						label={ __( 'Display Featured Image', 'atomic-blocks' ) }
 						checked={ displayPostImage }
 						onChange={ this.toggleDisplayPostImage }
 					/>
 					{ displayPostImage &&
 						<SelectControl
-							label={ __( 'Featured Image Style' ) }
+							label={ __( 'Featured Image Style', 'atomic-blocks' ) }
 							options={ imageCropOptions }
 							value={ imageCrop }
 							onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
 						/>
 					}
 					<ToggleControl
-						label={ __( 'Display Post Title' ) }
+						label={ __( 'Display Post Title', 'atomic-blocks' ) }
 						checked={ displayPostTitle }
 						onChange={ this.toggleDisplayPostTitle }
 					/>
 					<ToggleControl
-						label={ __( 'Display Post Author' ) }
+						label={ __( 'Display Post Author', 'atomic-blocks' ) }
 						checked={ displayPostAuthor }
 						onChange={ this.toggleDisplayPostAuthor }
 					/>
 					<ToggleControl
-						label={ __( 'Display Post Date' ) }
+						label={ __( 'Display Post Date', 'atomic-blocks' ) }
 						checked={ displayPostDate }
 						onChange={ this.toggleDisplayPostDate }
 					/>
 					<ToggleControl
-						label={ __( 'Display Post Excerpt' ) }
+						label={ __( 'Display Post Excerpt', 'atomic-blocks' ) }
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
 					<ToggleControl
-						label={ __( 'Display Continue Reading Link' ) }
+						label={ __( 'Display Continue Reading Link', 'atomic-blocks' ) }
 						checked={ displayPostLink }
 						onChange={ this.toggleDisplayPostLink }
 					/>
 					{ displayPostLink &&
 					<TextControl
-						label={ __( 'Customize Read More Link' ) }
+						label={ __( 'Customize Read More Link', 'atomic-blocks' ) }
 						type="text"
 						value={ readMoreText }
 						onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
@@ -196,11 +219,11 @@ class LatestPostsBlock extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ __( 'Atomic Blocks Post Grid' ) }
+						label={ __( 'Atomic Blocks Post Grid', 'atomic-blocks' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( 'No posts found.' )
+							__( 'No posts found.', 'atomic-blocks' )
 						}
 					</Placeholder>
 				</Fragment>
@@ -215,13 +238,13 @@ class LatestPostsBlock extends Component {
 		const layoutControls = [
 			{
 				icon: 'grid-view',
-				title: __( 'Grid View' ),
+				title: __( 'Grid View', 'atomic-blocks' ),
 				onClick: () => setAttributes( { postLayout: 'grid' } ),
 				isActive: postLayout === 'grid',
 			},
 			{
 				icon: 'list-view',
-				title: __( 'List View' ),
+				title: __( 'List View', 'atomic-blocks' ),
 				onClick: () => setAttributes( { postLayout: 'list' } ),
 				isActive: postLayout === 'list',
 			},
@@ -269,7 +292,7 @@ class LatestPostsBlock extends Component {
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<img
 													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
 												/>
 											</a>
 										</div>
@@ -280,7 +303,7 @@ class LatestPostsBlock extends Component {
 
 								<div class="ab-block-post-grid-text">
 									{ displayPostTitle &&
-										<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+										<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></h2>
 									}
 
 									<div class="ab-block-post-grid-byline">
@@ -290,7 +313,7 @@ class LatestPostsBlock extends Component {
 
 										{ displayPostDate && post.date_gmt &&
 											<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
-												{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+												{ moment( post.date_gmt ).local().format( 'MMMM DD, Y', 'atomic-blocks' ) }
 											</time>
 										}
 									</div>
@@ -315,13 +338,20 @@ class LatestPostsBlock extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-	const { postsToShow, order, orderBy, categories } = props.attributes;
-	const { getEntityRecords } = select( 'core' );
+	const {
+		postsToShow,
+		order,
+		orderBy,
+		categories,
+		offset
+	} = props.attributes;
+	const { getEntityRecords } = select( 'core', 'atomic-blocks' );
 	const latestPostsQuery = pickBy( {
 		categories,
 		order,
 		orderby: orderBy,
 		per_page: postsToShow,
+		offset: offset,
 	}, ( value ) => ! isUndefined( value ) );
 	const categoriesListQuery = {
 		per_page: 100,

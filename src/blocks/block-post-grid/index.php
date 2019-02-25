@@ -19,6 +19,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		'order' => $attributes['order'],
 		'orderby' => $attributes['orderBy'],
 		'category' => $categories,
+		'offset' => $attributes['offset'],
 	), 'OBJECT' );
 
 	$list_items_markup = '';
@@ -259,6 +260,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 			'readMoreText'  => array(
 				'type' => 'string',
 				'default' => 'Continue Reading',
+			),
+			'offset' => array(
+				'type' => 'number',
+				'default' => 0,
 			),
 		),
 		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',
