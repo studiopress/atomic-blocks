@@ -17,21 +17,22 @@ function lsx_blocks_render_block_core_latest_posts_carousel( $attributes ) {
 	$custom_terms = isset( $attributes['customTermID'] ) ? $attributes['customTermID'] : '';
 
 	$post_args = array(
-		'numberposts' => $attributes['postsToShowCarousel'],
+		'posts_per_page' => $attributes['postsToShowCarousel'],
 		'post_status' => 'publish',
 		'order' => $attributes['orderCarousel'],
 		'orderby' => $attributes['orderByCarousel'],
 		'category' => $categories,
+		'post_type' => 'post'
 	);
 	if ( '' !== $custom_taxonomy && '' !== $custom_terms ) {
 		unset( $post_args );
 		$post_args[ $custom_taxonomy ] = $custom_terms;
 	}
-	$recent_posts = wp_get_recent_posts( $post_args, 'OBJECT' );
+	$recent_posts = new WP_Query( $post_args );
 
 	$list_items_markup = '';
 
-	if ( $recent_posts ) {
+	if ( $recent_posts->have_posts() ) {
 		foreach ( $recent_posts as $post ) {
 			// Get the post ID
 			$post_id = $post->ID;
