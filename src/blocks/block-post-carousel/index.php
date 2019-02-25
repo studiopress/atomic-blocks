@@ -22,18 +22,26 @@ function lsx_blocks_render_block_core_latest_posts_carousel( $attributes ) {
 		'order' => $attributes['orderCarousel'],
 		'orderby' => $attributes['orderByCarousel'],
 		'category' => $categories,
-		'post_type' => 'post'
+		'post_type' => 'post',
+		'suppress_filters' => true,
 	);
 	if ( '' !== $custom_taxonomy && '' !== $custom_terms ) {
-		unset( $post_args );
-		$post_args[ $custom_taxonomy ] = $custom_terms;
+		unset( $post_args['category'] );
+		$post_args[ trim( $custom_taxonomy ) ] = trim( $custom_terms );
 	}
-	$recent_posts = new WP_Query( $post_args );
+	$recent_posts = get_posts( $post_args );
+
+	/*if (isset($_GET['debug'])) {
+		print_r('<pre>');
+		print_r($recent_posts);
+		print_r('</pre>');
+	}*/
 
 	$list_items_markup = '';
 
-	if ( $recent_posts->have_posts() ) {
+	if ( ! empty( $recent_posts ) ) {
 		foreach ( $recent_posts as $post ) {
+
 			// Get the post ID
 			$post_id = $post->ID;
 
@@ -72,86 +80,86 @@ function lsx_blocks_render_block_core_latest_posts_carousel( $attributes ) {
 				'<div class="lsx-block-post-grid-text">'
 			);
 
-				// Get the post title
-				$title = get_the_title( $post_id );
+			// Get the post title
+			$title = get_the_title( $post_id );
 
-				if ( ! $title ) {
-					$title = __( 'Untitled', 'lsx-blocks' );
-				}
+			if ( ! $title ) {
+				$title = __( 'Untitled', 'lsx-blocks' );
+			}
 
-				// Wrap the byline content
+			// Wrap the byline content
+			$list_items_markup .= sprintf(
+				'<div class="lsx-block-post-grid-byline">'
+			);
+
+			if ( isset( $attributes['displayPostAuthorCarousel'] ) && $attributes['displayPostAuthorCarousel'] ) {
 				$list_items_markup .= sprintf(
-					'<div class="lsx-block-post-grid-byline">'
+					'<div class="lsx-block-post-avatar"><img src="%1$s" alt="avatar"/></div>',
+					esc_html( get_avatar_url( $post->post_author ) )
 				);
-
-					if ( isset( $attributes['displayPostAuthorCarousel'] ) && $attributes['displayPostAuthorCarousel'] ) {
-						$list_items_markup .= sprintf(
-							'<div class="lsx-block-post-avatar"><img src="%1$s" alt="avatar"/></div>',
-							esc_html( get_avatar_url( $post->post_author ) )
-						);
-					}
-					// Get the post date
-					if ( isset( $attributes['displayPostDateCarousel'] ) && $attributes['displayPostDateCarousel'] ) {
-						$list_items_markup .= sprintf(
-							'<time datetime="%1$s" class="lsx-block-post-grid-date">%2$s</time>',
-							esc_attr( get_the_date( 'c', $post_id ) ),
-							esc_html( get_the_date( '', $post_id ) )
-						);
-					}
-
-					// Get the post author
-					if ( isset( $attributes['displayPostAuthorCarousel'] ) && $attributes['displayPostAuthorCarousel'] ) {
-						$list_items_markup .= sprintf(
-							'<div class="lsx-block-post-grid-author"><a class="lsx-text-link" href="%2$s">%1$s</a></div>',
-							esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
-							esc_html( get_author_posts_url( $post->post_author ) )
-						);
-					}
-
-				// Close the byline content
-
+			}
+			// Get the post date
+			if ( isset( $attributes['displayPostDateCarousel'] ) && $attributes['displayPostDateCarousel'] ) {
 				$list_items_markup .= sprintf(
-					'</div>'
+					'<time datetime="%1$s" class="lsx-block-post-grid-date">%2$s</time>',
+					esc_attr( get_the_date( 'c', $post_id ) ),
+					esc_html( get_the_date( '', $post_id ) )
 				);
+			}
 
+			// Get the post author
+			if ( isset( $attributes['displayPostAuthorCarousel'] ) && $attributes['displayPostAuthorCarousel'] ) {
 				$list_items_markup .= sprintf(
-					'<h2 class="lsx-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+					'<div class="lsx-block-post-grid-author"><a class="lsx-text-link" href="%2$s">%1$s</a></div>',
+					esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
+					esc_html( get_author_posts_url( $post->post_author ) )
+				);
+			}
+
+			// Close the byline content
+
+			$list_items_markup .= sprintf(
+				'</div>'
+			);
+
+			$list_items_markup .= sprintf(
+				'<h2 class="lsx-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+				esc_url( get_permalink( $post_id ) ),
+				esc_html( $title )
+			);
+
+			// Wrap the excerpt content
+			$list_items_markup .= sprintf(
+				'<div class="lsx-block-post-grid-excerpt">'
+			);
+
+			// Get the excerpt
+			$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
+
+			if ( empty( $excerpt ) ) {
+				$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 20 ) );
+			}
+
+			if ( ! $excerpt ) {
+				$excerpt = null;
+			}
+
+			if ( isset( $attributes['displayPostExcerptCarousel'] ) && $attributes['displayPostExcerptCarousel'] ) {
+				$list_items_markup .= wp_kses_post( $excerpt );
+			}
+
+			if ( isset( $attributes['displayPostLinkCarousel'] ) && $attributes['displayPostLinkCarousel'] ) {
+				$list_items_markup .= sprintf(
+					'<p><a class="lsx-block-post-grid-link lsx-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
 					esc_url( get_permalink( $post_id ) ),
-					esc_html( $title )
+					esc_html( $attributes['readMoreText'] )
 				);
+			}
 
-				// Wrap the excerpt content
-				$list_items_markup .= sprintf(
-					'<div class="lsx-block-post-grid-excerpt">'
-				);
-
-					// Get the excerpt
-					$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
-
-					if ( empty( $excerpt ) ) {
-						$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 20 ) );
-					}
-
-					if ( ! $excerpt ) {
-						$excerpt = null;
-					}
-
-					if ( isset( $attributes['displayPostExcerptCarousel'] ) && $attributes['displayPostExcerptCarousel'] ) {
-						$list_items_markup .= wp_kses_post( $excerpt );
-					}
-
-					if ( isset( $attributes['displayPostLinkCarousel'] ) && $attributes['displayPostLinkCarousel'] ) {
-						$list_items_markup .= sprintf(
-							'<p><a class="lsx-block-post-grid-link lsx-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
-							esc_url( get_permalink( $post_id ) ),
-							esc_html( $attributes['readMoreText'] )
-						);
-					}
-
-				// Close the excerpt content
-				$list_items_markup .= sprintf(
-					'</div>'
-				);
+			// Close the excerpt content
+			$list_items_markup .= sprintf(
+				'</div>'
+			);
 
 			// Wrap the text content
 			$list_items_markup .= sprintf(
