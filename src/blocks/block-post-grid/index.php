@@ -20,6 +20,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		'orderby' => $attributes['orderBy'],
 		'category' => $categories,
 		'offset' => $attributes['offset'],
+		'post__not_in' => get_option('sticky_posts')
 	), 'OBJECT' );
 
 	$list_items_markup = '';
@@ -228,6 +229,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 			'displayPostTitle' => array(
 				'type' => 'boolean',
 				'default' => true,
+			),
+			'excludeSticky' => array(
+				'type' => 'boolean',
+				'default' => false,
 			),
 			'postLayout' => array(
 				'type' => 'string',

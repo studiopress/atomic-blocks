@@ -53,6 +53,7 @@ class LatestPostsBlock extends Component {
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
 		this.toggleDisplayPostTitle = this.toggleDisplayPostTitle.bind( this );
+		this.toggleExcludeSticky = this.toggleExcludeSticky.bind( this );
 	}
 
 	toggleDisplayPostDate() {
@@ -97,6 +98,13 @@ class LatestPostsBlock extends Component {
 		setAttributes( { displayPostTitle: ! displayPostTitle } );
 	}
 
+	toggleExcludeSticky() {
+		const { excludeSticky } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { excludeSticky: ! excludeSticky } );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -111,6 +119,7 @@ class LatestPostsBlock extends Component {
 			displayPostImage,
 			displayPostLink,
 			displayPostTitle,
+			excludeSticky,
 			align,
 			postLayout,
 			columns,
@@ -161,6 +170,11 @@ class LatestPostsBlock extends Component {
 							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 						/>
 					}
+					<ToggleControl
+						label={ __( 'Exclude Sticky Posts', 'atomic-blocks' ) }
+						checked={ excludeSticky }
+						onChange={ this.toggleExcludeSticky }
+					/>
 					<ToggleControl
 						label={ __( 'Display Featured Image', 'atomic-blocks' ) }
 						checked={ displayPostImage }
@@ -343,8 +357,13 @@ export default withSelect( ( select, props ) => {
 		order,
 		orderBy,
 		categories,
-		offset
+		offset,
+		excludeSticky,
 	} = props.attributes;
+
+	// Exclude the sticky posts
+	const excludeStickyPosts = excludeSticky ? false : undefined;
+
 	const { getEntityRecords } = select( 'core', 'atomic-blocks' );
 	const latestPostsQuery = pickBy( {
 		categories,
@@ -352,6 +371,7 @@ export default withSelect( ( select, props ) => {
 		orderby: orderBy,
 		per_page: postsToShow,
 		offset: offset,
+		sticky: excludeStickyPosts
 	}, ( value ) => ! isUndefined( value ) );
 	const categoriesListQuery = {
 		per_page: 100,
