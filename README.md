@@ -74,8 +74,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.5.3**
+* Fix bug with undefined dim ratio in CTA.
+
 **1.5.2**
-* Fix bug with undefined dim ratio.
+* Fix bug with undefined dim ratio in Container.
 
 **1.5.1**
 * Fix bug with lodash scoping.

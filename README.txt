@@ -3,8 +3,8 @@ Contributors: atomicblocks, mindctrl, arrayhq
 Donate link: https://atomicblocks.com
 Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
 Requires at least: 4.7
-Tested up to: 5.0
-Stable tag: 1.5.2
+Tested up to: 5.1
+Stable tag: 1.5.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -95,8 +95,11 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 == Changelog ==
 
+= 1.5.3 =
+* Fix bug with undefined dim ratio in CTA.
+
 = 1.5.2 =
-* Fix bug with undefined dim ratio.
+* Fix bug with undefined dim ratio in Container.
 
 = 1.5.1 =
 * Fix bug with lodash scoping.
