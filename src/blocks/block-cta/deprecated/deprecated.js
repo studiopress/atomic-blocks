@@ -568,7 +568,7 @@ export const callToAction_1_4_21_save = props => {
 const deprecated = [
     // Version 1_5_2
 	{
-		attributes: callToAction_1_5_2_attr,
+        attributes: callToAction_1_5_2_attr,
         save: callToAction_1_5_2_save,
     },
     // Version 1_4_22
