@@ -388,7 +388,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 						<a
 							href={ buttonUrl }
 							target={ buttonTarget ? '_blank' : '_self' }
-							rel={ buttonTarget ? 'noopener noreferrer' : null }
+							rel="noopener noreferrer"
 							className={ classnames(
 								'ab-button',
 								buttonShape,
