@@ -384,7 +384,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 					) }
 				</div>
 				{ buttonText && (
-					<div class="ab-cta-button ab-button-test">
+					<div class="ab-cta-button">
 						<a
 							href={ buttonUrl }
 							target={ buttonTarget ? '_blank' : '_self' }
