@@ -417,9 +417,3 @@ function dimRatioToClass( ratio ) {
 		null :
 		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
 }
-
-function backgroundImageStyles( url ) {
-	return url ?
-		{ backgroundImage: `url(${ url })` } :
-		undefined;
-}
