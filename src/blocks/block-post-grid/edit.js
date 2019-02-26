@@ -175,6 +175,13 @@ class LatestPostsBlock extends Component {
 						checked={ excludeSticky }
 						onChange={ this.toggleExcludeSticky }
 					/>
+
+
+				</PanelBody>
+				<PanelBody
+					title={ __( 'Post Grid Content', 'atomic-blocks' ) }
+					initialOpen={ false }
+				>
 					<ToggleControl
 						label={ __( 'Display Featured Image', 'atomic-blocks' ) }
 						checked={ displayPostImage }
@@ -214,14 +221,13 @@ class LatestPostsBlock extends Component {
 						onChange={ this.toggleDisplayPostLink }
 					/>
 					{ displayPostLink &&
-					<TextControl
-						label={ __( 'Customize Read More Link', 'atomic-blocks' ) }
-						type="text"
-						value={ readMoreText }
-						onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-					/>
+						<TextControl
+							label={ __( 'Customize Read More Link', 'atomic-blocks' ) }
+							type="text"
+							value={ readMoreText }
+							onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
+						/>
 					}
-
 				</PanelBody>
 			</InspectorControls>
 		);
@@ -365,6 +371,7 @@ export default withSelect( ( select, props ) => {
 	const excludeStickyPosts = excludeSticky ? false : undefined;
 
 	const { getEntityRecords } = select( 'core', 'atomic-blocks' );
+
 	const latestPostsQuery = pickBy( {
 		categories,
 		order,
@@ -373,9 +380,11 @@ export default withSelect( ( select, props ) => {
 		offset: offset,
 		sticky: excludeStickyPosts
 	}, ( value ) => ! isUndefined( value ) );
+
 	const categoriesListQuery = {
 		per_page: 100,
 	};
+
 	return {
 		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
 		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
