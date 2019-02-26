@@ -4,7 +4,7 @@
 
 // Import block dependencies and components
 import classnames from 'classnames';
-import edit from './edit';
+import edit from './components/edit';
 
 // Import CSS
 import './styles/style.scss';

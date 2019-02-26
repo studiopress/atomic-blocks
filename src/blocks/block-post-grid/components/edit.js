@@ -8,6 +8,7 @@ import pickBy from 'lodash/pickBy';
 import moment from 'moment';
 import classnames from 'classnames';
 import { stringify } from 'querystringify';
+import Inspector from './inspector';
 
 const { Component, Fragment } = wp.element;
 
@@ -41,70 +42,7 @@ const {
 	BlockControls,
 } = wp.editor;
 
-const MAX_POSTS_COLUMNS = 4;
-
 class LatestPostsBlock extends Component {
-	constructor() {
-		super( ...arguments );
-
-		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
-		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
-		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
-		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
-		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
-		this.toggleDisplayPostTitle = this.toggleDisplayPostTitle.bind( this );
-		this.toggleExcludeSticky = this.toggleExcludeSticky.bind( this );
-	}
-
-	toggleDisplayPostDate() {
-		const { displayPostDate } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostDate: ! displayPostDate } );
-	}
-
-	toggleDisplayPostExcerpt() {
-		const { displayPostExcerpt } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
-	}
-
-	toggleDisplayPostAuthor() {
-		const { displayPostAuthor } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostAuthor: ! displayPostAuthor } );
-	}
-
-	toggleDisplayPostImage() {
-		const { displayPostImage } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostImage: ! displayPostImage } );
-	}
-
-	toggleDisplayPostLink() {
-		const { displayPostLink } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostLink: ! displayPostLink } );
-	}
-
-	toggleDisplayPostTitle() {
-		const { displayPostTitle } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostTitle: ! displayPostTitle } );
-	}
-
-	toggleExcludeSticky() {
-		const { excludeSticky } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { excludeSticky: ! excludeSticky } );
-	}
-
 	render() {
 		const {
 			attributes,
@@ -112,6 +50,7 @@ class LatestPostsBlock extends Component {
 			setAttributes,
 			latestPosts
 		} = this.props;
+
 		const {
 			displayPostDate,
 			displayPostExcerpt,
@@ -134,117 +73,15 @@ class LatestPostsBlock extends Component {
 			excerptLength,
 		} = attributes;
 
-		// Thumbnail options
-		const imageCropOptions = [
-			{ value: 'landscape', label: __( 'Landscape', 'atomic-blocks' ) },
-			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) },
-		];
-
 		const isLandscape = imageCrop === 'landscape';
-
-		const inspectorControls = (
-			<InspectorControls>
-				<PanelBody title={ __( 'Post Grid Settings', 'atomic-blocks' ) }>
-					<QueryControls
-						{ ...{ order, orderBy } }
-						numberOfItems={ postsToShow }
-						categoriesList={ categoriesList }
-						selectedCategoryId={ categories }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
-					/>
-					<RangeControl
-						label={ __( 'Number of items to offset', 'atomic-blocks' ) }
-						value={ offset }
-						onChange={ ( value ) => setAttributes( { offset: value } ) }
-						min={ 0 }
-						max={ 20 }
-					/>
-					{ postLayout === 'grid' &&
-						<RangeControl
-							label={ __( 'Columns', 'atomic-blocks' ) }
-							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
-							min={ 2 }
-							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-						/>
-					}
-					<ToggleControl
-						label={ __( 'Exclude Sticky Posts', 'atomic-blocks' ) }
-						checked={ excludeSticky }
-						onChange={ this.toggleExcludeSticky }
-					/>
-				</PanelBody>
-				<PanelBody
-					title={ __( 'Post Grid Content', 'atomic-blocks' ) }
-					initialOpen={ false }
-				>
-					<ToggleControl
-						label={ __( 'Display Featured Image', 'atomic-blocks' ) }
-						checked={ displayPostImage }
-						onChange={ this.toggleDisplayPostImage }
-					/>
-					{ displayPostImage &&
-						<SelectControl
-							label={ __( 'Featured Image Style', 'atomic-blocks' ) }
-							options={ imageCropOptions }
-							value={ imageCrop }
-							onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
-						/>
-					}
-					<ToggleControl
-						label={ __( 'Display Post Title', 'atomic-blocks' ) }
-						checked={ displayPostTitle }
-						onChange={ this.toggleDisplayPostTitle }
-					/>
-					<ToggleControl
-						label={ __( 'Display Post Author', 'atomic-blocks' ) }
-						checked={ displayPostAuthor }
-						onChange={ this.toggleDisplayPostAuthor }
-					/>
-					<ToggleControl
-						label={ __( 'Display Post Date', 'atomic-blocks' ) }
-						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
-					/>
-					<ToggleControl
-						label={ __( 'Display Post Excerpt', 'atomic-blocks' ) }
-						checked={ displayPostExcerpt }
-						onChange={ this.toggleDisplayPostExcerpt }
-					/>
-					{ displayPostExcerpt &&
-						<RangeControl
-							label={ __( 'Excerpt Length', 'atomic-blocks' ) }
-							value={ excerptLength }
-							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-							min={ 0 }
-							max={ 150 }
-						/>
-					}
-					<ToggleControl
-						label={ __( 'Display Continue Reading Link', 'atomic-blocks' ) }
-						checked={ displayPostLink }
-						onChange={ this.toggleDisplayPostLink }
-					/>
-					{ displayPostLink &&
-						<TextControl
-							label={ __( 'Customize Read More Link', 'atomic-blocks' ) }
-							type="text"
-							value={ readMoreText }
-							onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-						/>
-					}
-				</PanelBody>
-			</InspectorControls>
-		);
-
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+
 		if ( ! hasPosts ) {
 			return (
 				<Fragment>
-					{ inspectorControls }
+					<Inspector
+						{ ...{ setAttributes, ...this.props } }
+					/>,
 					<Placeholder
 						icon="admin-post"
 						label={ __( 'Atomic Blocks Post Grid', 'atomic-blocks' ) }
@@ -280,7 +117,9 @@ class LatestPostsBlock extends Component {
 
 		return (
 			<Fragment>
-				{ inspectorControls }
+				<Inspector
+					{ ...{ setAttributes, ...this.props } }
+				/>,
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
