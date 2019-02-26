@@ -56,10 +56,19 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					$post_thumb_size = 'ab-block-post-grid-square';
 				}
 
+				$alt = get_post_meta( $post_thumb_id, '_wp_attachment_image_alt', true );
+
+				if ( ! $alt ) {
+					$link_alt = get_the_title( $post_id );
+				} else {
+					$link_alt = null;
+				}
+
 				$list_items_markup .= sprintf(
-					'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+					'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark" alt="%3$s">%2$s</a></div>',
 					esc_url( get_permalink( $post_id ) ),
-					wp_get_attachment_image( $post_thumb_id, $post_thumb_size )
+					wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
+					esc_attr( $link_alt )
 				);
 			}
 
@@ -133,9 +142,10 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 					if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 						$list_items_markup .= sprintf(
-							'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
+							'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s <span class="screen-reader-text">%3$s</span></a></p>',
 							esc_url( get_permalink( $post_id ) ),
-							esc_html( $attributes['readMoreText'] )
+							esc_html( $attributes['readMoreText'] ),
+							esc_html( $title )
 						);
 					}
 
