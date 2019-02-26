@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .ab-block-post-grid {
+.ab-block-post-grid {
 	margin: 0 0 1.2em 0;
 	position: relative;
 
@@ -49,6 +49,10 @@
 		text-align: left;
 	}
 
+	a {
+		text-decoration: none;
+	}
+
 	h2 {
 		margin-top: 0;
 		margin-bottom: 15px;
@@ -90,6 +94,7 @@
 
 	.ab-block-post-grid-author a {
 		box-shadow: none;
+		color: inherit;
 
 		&:hover {
 			color: inherit;

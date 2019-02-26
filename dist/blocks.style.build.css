@@ -1863,6 +1863,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
       width: 100%; }
   .ab-block-post-grid .ab-block-post-grid-text {
     text-align: left; }
+  .ab-block-post-grid a {
+    text-decoration: none; }
   .ab-block-post-grid h2 {
     margin-top: 0;
     margin-bottom: 15px;
@@ -1897,7 +1899,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
       line-height: 1; }
   .ab-block-post-grid .ab-block-post-grid-author a {
     -webkit-box-shadow: none;
-            box-shadow: none; }
+            box-shadow: none;
+    color: inherit; }
     .ab-block-post-grid .ab-block-post-grid-author a:hover {
       color: inherit;
       -webkit-box-shadow: 0 -1px 0 inset;

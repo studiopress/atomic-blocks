@@ -119,8 +119,8 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					// Get the excerpt
 					$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
 
-					if( empty( $excerpt ) ) {
-						$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+					if( empty( $excerpt ) && isset( $attributes['excerptLength'] ) ) {
+						$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, $attributes['excerptLength'] ) );
 					}
 
 					if ( ! $excerpt ) {
@@ -269,6 +269,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 			'offset' => array(
 				'type' => 'number',
 				'default' => 0,
+			),
+			'excerptLength' => array(
+				'type' => 'number',
+				'default' => 55,
 			),
 		),
 		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',

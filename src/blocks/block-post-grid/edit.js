@@ -131,6 +131,7 @@ class LatestPostsBlock extends Component {
 			imageCrop,
 			readMoreText,
 			offset,
+			excerptLength,
 		} = attributes;
 
 		// Thumbnail options
@@ -175,8 +176,6 @@ class LatestPostsBlock extends Component {
 						checked={ excludeSticky }
 						onChange={ this.toggleExcludeSticky }
 					/>
-
-
 				</PanelBody>
 				<PanelBody
 					title={ __( 'Post Grid Content', 'atomic-blocks' ) }
@@ -215,6 +214,15 @@ class LatestPostsBlock extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
+					{ displayPostExcerpt &&
+						<RangeControl
+							label={ __( 'Excerpt Length', 'atomic-blocks' ) }
+							value={ excerptLength }
+							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+							min={ 0 }
+							max={ 150 }
+						/>
+					}
 					<ToggleControl
 						label={ __( 'Display Continue Reading Link', 'atomic-blocks' ) }
 						checked={ displayPostLink }
@@ -340,7 +348,7 @@ class LatestPostsBlock extends Component {
 
 									<div class="ab-block-post-grid-excerpt">
 										{ displayPostExcerpt && post.excerpt &&
-											<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+											<div dangerouslySetInnerHTML={ { __html: truncate( post.excerpt.rendered, excerptLength ) } } />
 										}
 
 										{ displayPostLink &&
@@ -390,3 +398,8 @@ export default withSelect( ( select, props ) => {
 		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
 } )( LatestPostsBlock );
+
+// Truncate excerpt
+function truncate(str, no_words) {
+	return str.split(" ").splice(0,no_words).join(" ");
+}
