@@ -99,8 +99,7 @@
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Testimonial styles
@@ -309,8 +308,7 @@
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Profile styles
@@ -568,8 +566,7 @@
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Notice styles
@@ -732,8 +729,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Drop cap styles
@@ -889,8 +885,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Button styles
@@ -1055,8 +1050,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Spacer styles
@@ -1193,8 +1187,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Accordion styles
@@ -1334,8 +1327,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * CTA styles
@@ -1642,8 +1634,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Sharing styles
@@ -1840,8 +1831,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Post grid styles
@@ -1884,11 +1874,12 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
               box-shadow: none;
       -webkit-transition: .3s ease;
       -o-transition: .3s ease;
-      transition: .3s ease; }
+      transition: .3s ease;
+      text-decoration: none; }
       .ab-block-post-grid h2 a:hover {
-        -webkit-box-shadow: inset 0 -2px 0 #5a3fd6;
-                box-shadow: inset 0 -2px 0 #5a3fd6;
-        color: #5a3fd6; }
+        -webkit-box-shadow: inset 0 -2px 0;
+                box-shadow: inset 0 -2px 0;
+        color: inherit; }
   .ab-block-post-grid .ab-block-post-grid-byline {
     text-transform: uppercase;
     font-size: 13px;
@@ -1911,7 +1902,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
       color: inherit;
       -webkit-box-shadow: 0 -1px 0 inset;
               box-shadow: 0 -1px 0 inset;
-      color: #5a3fd6; }
+      color: inherit; }
   .ab-block-post-grid .ab-block-post-grid-text p {
     margin: 0 0 15px 0;
     line-height: 1.5;
@@ -1940,6 +1931,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     grid-template-columns: 30% 1fr;
     grid-template-rows: 1fr;
     grid-gap: 0 2em; }
+    .ab-block-post-grid .is-list article:before {
+      display: none; }
     .ab-block-post-grid .is-list article:not(:last-child) {
       margin-bottom: 5%;
       padding-bottom: 5%; }
@@ -2060,8 +2053,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Container styles
@@ -2226,8 +2218,7 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   .ab-text-link:hover {
     color: inherit;
     -webkit-box-shadow: 0 -2px 0 inset;
-            box-shadow: 0 -2px 0 inset;
-    color: #5a3fd6; }
+            box-shadow: 0 -2px 0 inset; }
 
 /**
  * Pricing table styles
