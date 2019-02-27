@@ -7,3 +7,7 @@
          text-decoration: none;
      }
  }
+
+ .atomic-blocks-hide-query .components-base-control:nth-of-type(3) {
+     display: none;
+ }

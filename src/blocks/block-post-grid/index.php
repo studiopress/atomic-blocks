@@ -20,7 +20,8 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		'orderby' => $attributes['orderBy'],
 		'category' => $categories,
 		'offset' => $attributes['offset'],
-		'post__not_in' => get_option('sticky_posts')
+		'post__not_in' => get_option('sticky_posts'),
+		'post_type' => $attributes['postType'],
 	), 'OBJECT' );
 
 	$list_items_markup = '';
@@ -92,33 +93,35 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					);
 				}
 
-				// Wrap the byline content
-				$list_items_markup .= sprintf(
-					'<div class="ab-block-post-grid-byline">'
-				);
+				if ( isset( $attributes['postType'] ) && $attributes['postType'] == 'post' ) {
+					// Wrap the byline content
+					$list_items_markup .= sprintf(
+						'<div class="ab-block-post-grid-byline">'
+					);
 
-					// Get the post author
-					if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
-						$list_items_markup .= sprintf(
-							'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
-							esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
-							esc_html( get_author_posts_url( $post->post_author ) )
-						);
-					}
+						// Get the post author
+						if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
+							$list_items_markup .= sprintf(
+								'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
+								esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
+								esc_html( get_author_posts_url( $post->post_author ) )
+							);
+						}
 
-					// Get the post date
-					if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-						$list_items_markup .= sprintf(
-							'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
-							esc_attr( get_the_date( 'c', $post_id ) ),
-							esc_html( get_the_date( '', $post_id ) )
-						);
-					}
+						// Get the post date
+						if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+							$list_items_markup .= sprintf(
+								'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
+								esc_attr( get_the_date( 'c', $post_id ) ),
+								esc_html( get_the_date( '', $post_id ) )
+							);
+						}
 
-				// Close the byline content
-				$list_items_markup .= sprintf(
-					'</div>'
-				);
+					// Close the byline content
+					$list_items_markup .= sprintf(
+						'</div>'
+					);
+				}
 
 				// Wrap the excerpt content
 				$list_items_markup .= sprintf(
@@ -283,6 +286,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 			'excerptLength' => array(
 				'type' => 'number',
 				'default' => 55,
+			),
+			'postType' => array(
+				'type' => 'string',
+				'default' => 'post',
 			),
 		),
 		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',

@@ -124,7 +124,8 @@ export default class Inspector extends Component {
 			imageCrop,
 			readMoreText,
 			offset,
-			excerptLength,
+            excerptLength,
+            postType,
 		} = attributes;
 
 		// Thumbnail options
@@ -133,12 +134,30 @@ export default class Inspector extends Component {
 			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) },
         ];
 
+        // Thumbnail options
+		const postTypeOptions = [
+			{ value: 'post', label: __( 'Post', 'atomic-blocks' ) },
+			{ value: 'page', label: __( 'Page', 'atomic-blocks' ) },
+        ];
+
         // Check for posts
         const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
+        // Check the post type
+		const isPost = postType === 'post';
+
 		return (
             <InspectorControls>
-                <PanelBody title={ __( 'Post Grid Settings', 'atomic-blocks' ) }>
+                <PanelBody
+                    title={ __( 'Post Grid Settings', 'atomic-blocks' ) }
+                    className={ isPost ? null : 'atomic-blocks-hide-query' }
+                >
+                    <SelectControl
+                        label={ __( 'Content Type', 'atomic-blocks' ) }
+                        options={ postTypeOptions }
+                        value={ postType }
+                        onChange={ ( value ) => this.props.setAttributes( { postType: value } ) }
+                    />
                     <QueryControls
                         { ...{ order, orderBy } }
                         numberOfItems={ postsToShow }
@@ -165,11 +184,13 @@ export default class Inspector extends Component {
                             max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
                         />
                     }
-                    <ToggleControl
-                        label={ __( 'Exclude Sticky Posts', 'atomic-blocks' ) }
-                        checked={ excludeSticky }
-                        onChange={ this.toggleExcludeSticky }
-                    />
+                    { isPost &&
+                        <ToggleControl
+                            label={ __( 'Exclude Sticky Posts', 'atomic-blocks' ) }
+                            checked={ excludeSticky }
+                            onChange={ this.toggleExcludeSticky }
+                        />
+                    }
                 </PanelBody>
                 <PanelBody
                     title={ __( 'Post Grid Content', 'atomic-blocks' ) }
@@ -193,16 +214,20 @@ export default class Inspector extends Component {
                         checked={ displayPostTitle }
                         onChange={ this.toggleDisplayPostTitle }
                     />
-                    <ToggleControl
-                        label={ __( 'Display Post Author', 'atomic-blocks' ) }
-                        checked={ displayPostAuthor }
-                        onChange={ this.toggleDisplayPostAuthor }
-                    />
-                    <ToggleControl
-                        label={ __( 'Display Post Date', 'atomic-blocks' ) }
-                        checked={ displayPostDate }
-                        onChange={ this.toggleDisplayPostDate }
-                    />
+                    { isPost &&
+                        <ToggleControl
+                            label={ __( 'Display Post Author', 'atomic-blocks' ) }
+                            checked={ displayPostAuthor }
+                            onChange={ this.toggleDisplayPostAuthor }
+                        />
+                    }
+                    { isPost &&
+                        <ToggleControl
+                            label={ __( 'Display Post Date', 'atomic-blocks' ) }
+                            checked={ displayPostDate }
+                            onChange={ this.toggleDisplayPostDate }
+                        />
+                    }
                     <ToggleControl
                         label={ __( 'Display Post Excerpt', 'atomic-blocks' ) }
                         checked={ displayPostExcerpt }

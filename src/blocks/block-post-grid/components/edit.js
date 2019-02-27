@@ -71,17 +71,24 @@ class LatestPostsBlock extends Component {
 			readMoreText,
 			offset,
 			excerptLength,
+			postType,
 		} = attributes;
 
+		// Check the image orientation
 		const isLandscape = imageCrop === 'landscape';
+
+		// Check if there are posts
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+
+		// Check the post type
+		const isPost = postType === 'post';
 
 		if ( ! hasPosts ) {
 			return (
 				<Fragment>
 					<Inspector
 						{ ...{ setAttributes, ...this.props } }
-					/>,
+					/>
 					<Placeholder
 						icon="admin-post"
 						label={ __( 'Atomic Blocks Post Grid', 'atomic-blocks' ) }
@@ -119,7 +126,7 @@ class LatestPostsBlock extends Component {
 			<Fragment>
 				<Inspector
 					{ ...{ setAttributes, ...this.props } }
-				/>,
+				/>
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
@@ -173,17 +180,19 @@ class LatestPostsBlock extends Component {
 										<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></h2>
 									}
 
-									<div class="ab-block-post-grid-byline">
-										{ displayPostAuthor && post.author_info.display_name &&
-											<div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-										}
+									{ isPost &&
+										<div class="ab-block-post-grid-byline">
+											{ displayPostAuthor && post.author_info.display_name &&
+												<div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+											}
 
-										{ displayPostDate && post.date_gmt &&
-											<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
-												{ moment( post.date_gmt ).local().format( 'MMMM DD, Y', 'atomic-blocks' ) }
-											</time>
-										}
-									</div>
+											{ displayPostDate && post.date_gmt &&
+												<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+													{ moment( post.date_gmt ).local().format( 'MMMM DD, Y', 'atomic-blocks' ) }
+												</time>
+											}
+										</div>
+									}
 
 									<div class="ab-block-post-grid-excerpt">
 										{ displayPostExcerpt && post.excerpt &&
@@ -212,6 +221,7 @@ export default withSelect( ( select, props ) => {
 		categories,
 		offset,
 		excludeSticky,
+		postType,
 	} = props.attributes;
 
 	// Exclude the sticky posts
@@ -225,7 +235,7 @@ export default withSelect( ( select, props ) => {
 		orderby: orderBy,
 		per_page: postsToShow,
 		offset: offset,
-		sticky: excludeStickyPosts
+		sticky: excludeStickyPosts,
 	}, ( value ) => ! isUndefined( value ) );
 
 	const categoriesListQuery = {
@@ -233,7 +243,7 @@ export default withSelect( ( select, props ) => {
 	};
 
 	return {
-		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
+		latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
 		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
 } )( LatestPostsBlock );

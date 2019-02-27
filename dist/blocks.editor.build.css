@@ -1216,6 +1216,9 @@
  */
 .ab-block-post-grid h2 a {
   text-decoration: none; }
+
+.atomic-blocks-hide-query .components-base-control:nth-of-type(3) {
+  display: none; }
 /**
  * Common styles
  * Loads on front end and back end
