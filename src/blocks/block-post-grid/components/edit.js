@@ -176,25 +176,27 @@ class LatestPostsBlock extends Component {
 								}
 
 								<div class="ab-block-post-grid-text">
-									{ displayPostTitle &&
-										<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></h2>
-									}
+									<header class="entry-header">
+										{ displayPostTitle &&
+											<h2 class="ab-block-post-grid-title entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></h2>
+										}
 
-									{ isPost &&
-										<div class="ab-block-post-grid-byline">
-											{ displayPostAuthor && post.author_info.display_name &&
-												<div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-											}
+										{ isPost &&
+											<div class="ab-block-post-grid-byline entry-meta">
+												{ displayPostAuthor && post.author_info.display_name &&
+													<div class="ab-block-post-grid-author entry-author"><a class="ab-text-link entry-author-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+												}
 
-											{ displayPostDate && post.date_gmt &&
-												<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
-													{ moment( post.date_gmt ).local().format( 'MMMM DD, Y', 'atomic-blocks' ) }
-												</time>
-											}
-										</div>
-									}
+												{ displayPostDate && post.date_gmt &&
+													<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+														{ moment( post.date_gmt ).local().format( 'MMMM DD, Y', 'atomic-blocks' ) }
+													</time>
+												}
+											</div>
+										}
+									</header>
 
-									<div class="ab-block-post-grid-excerpt">
+									<div class="ab-block-post-grid-excerpt entry-content">
 										{ displayPostExcerpt && post.excerpt &&
 											<div dangerouslySetInnerHTML={ { __html: truncate( post.excerpt.rendered, excerptLength ) } } />
 										}

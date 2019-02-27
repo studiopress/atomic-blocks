@@ -78,54 +78,62 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				'<div class="ab-block-post-grid-text">'
 			);
 
-				// Get the post title
-				$title = get_the_title( $post_id );
+				$list_items_markup .= sprintf(
+					'<header class="entry-header">'
+				);
 
-				if ( ! $title ) {
-					$title = __( 'Untitled', 'atomic-blocks' );
-				}
+					// Get the post title
+					$title = get_the_title( $post_id );
 
-				if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
-					$list_items_markup .= sprintf(
-						'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
-						esc_url( get_permalink( $post_id ) ),
-						esc_html( $title )
-					);
-				}
+					if ( ! $title ) {
+						$title = __( 'Untitled', 'atomic-blocks' );
+					}
 
-				if ( isset( $attributes['postType'] ) && $attributes['postType'] == 'post' ) {
-					// Wrap the byline content
-					$list_items_markup .= sprintf(
-						'<div class="ab-block-post-grid-byline">'
-					);
+					if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
+						$list_items_markup .= sprintf(
+							'<h2 class="ab-block-post-grid-title entry-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+							esc_url( get_permalink( $post_id ) ),
+							esc_html( $title )
+						);
+					}
 
-						// Get the post author
-						if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
-							$list_items_markup .= sprintf(
-								'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
-								esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
-								esc_html( get_author_posts_url( $post->post_author ) )
-							);
-						}
+					if ( isset( $attributes['postType'] ) && $attributes['postType'] == 'post' ) {
+						// Wrap the byline content
+						$list_items_markup .= sprintf(
+							'<div class="ab-block-post-grid-byline entry-meta">'
+						);
 
-						// Get the post date
-						if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-							$list_items_markup .= sprintf(
-								'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
-								esc_attr( get_the_date( 'c', $post_id ) ),
-								esc_html( get_the_date( '', $post_id ) )
-							);
-						}
+							// Get the post author
+							if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
+								$list_items_markup .= sprintf(
+									'<div class="ab-block-post-grid-author entry-author" itemprop="author" itemtype="https://schema.org/Person"><a class="ab-text-link entry-author-link" href="%2$s" itemprop="url" rel="author"><span class="entry-author-name" itemprop="name">%1$s</span></a></div>',
+									esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
+									esc_html( get_author_posts_url( $post->post_author ) )
+								);
+							}
 
-					// Close the byline content
-					$list_items_markup .= sprintf(
-						'</div>'
-					);
-				}
+							// Get the post date
+							if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+								$list_items_markup .= sprintf(
+									'<time datetime="%1$s" class="ab-block-post-grid-date entry-time" itemprop="datePublished">%2$s</time>',
+									esc_attr( get_the_date( 'c', $post_id ) ),
+									esc_html( get_the_date( '', $post_id ) )
+								);
+							}
+
+						// Close the byline content
+						$list_items_markup .= sprintf(
+							'</div>'
+						);
+					}
+
+				$list_items_markup .= sprintf(
+					'</header>'
+				);
 
 				// Wrap the excerpt content
 				$list_items_markup .= sprintf(
-					'<div class="ab-block-post-grid-excerpt">'
+					'<div class="ab-block-post-grid-excerpt entry-content">'
 				);
 
 					// Get the excerpt
@@ -168,7 +176,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	}
 
 	// Build the classes
-	$class = "ab-block-post-grid align{$attributes['align']}";
+	$class = "ab-block-post-grid featured{$attributes['postType']} align{$attributes['align']}";
 
 	if ( isset( $attributes['className'] ) ) {
 		$class .= ' ' . $attributes['className'];
@@ -188,7 +196,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 	// Output the post markup
 	$block_content = sprintf(
-		'<div class="%1$s"><div class="%2$s">%3$s</div></div>',
+		'<section class="%1$s"><div class="%2$s">%3$s</div></section>',
 		esc_attr( $class ),
 		esc_attr( $grid_class ),
 		$list_items_markup
