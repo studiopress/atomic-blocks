@@ -45,7 +45,7 @@ export default class Inspector extends Component {
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
 		this.toggleDisplayPostTitle = this.toggleDisplayPostTitle.bind( this );
-		this.toggleExcludeSticky = this.toggleExcludeSticky.bind( this );
+        this.toggleExcludeSticky = this.toggleExcludeSticky.bind( this );
 	}
 
 	toggleDisplayPostDate() {
@@ -95,7 +95,7 @@ export default class Inspector extends Component {
 		const { setAttributes } = this.props;
 
 		setAttributes( { excludeSticky: ! excludeSticky } );
-	}
+    }
 
 	render() {
 
@@ -113,7 +113,7 @@ export default class Inspector extends Component {
 			displayPostAuthor,
 			displayPostImage,
 			displayPostLink,
-			displayPostTitle,
+            displayPostTitle,
 			excludeSticky,
 			postLayout,
 			columns,
@@ -126,6 +126,7 @@ export default class Inspector extends Component {
 			offset,
             excerptLength,
             postType,
+            sectionTitle,
 		} = attributes;
 
 		// Thumbnail options
@@ -196,6 +197,12 @@ export default class Inspector extends Component {
                     title={ __( 'Post Grid Content', 'atomic-blocks' ) }
                     initialOpen={ false }
                 >
+                    <TextControl
+                        label={ __( 'Section Title', 'atomic-blocks' ) }
+                        type="text"
+                        value={ sectionTitle }
+                        onChange={ ( value ) => this.props.setAttributes( { sectionTitle: value } ) }
+                    />
                     <ToggleControl
                         label={ __( 'Display Featured Image', 'atomic-blocks' ) }
                         checked={ displayPostImage }
@@ -249,7 +256,7 @@ export default class Inspector extends Component {
                     />
                     { displayPostLink &&
                         <TextControl
-                            label={ __( 'Customize Read More Link', 'atomic-blocks' ) }
+                            label={ __( 'Customize Continue Reading Text', 'atomic-blocks' ) }
                             type="text"
                             value={ readMoreText }
                             onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }

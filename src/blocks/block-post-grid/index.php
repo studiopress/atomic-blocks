@@ -182,6 +182,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		$class .= ' ' . $attributes['className'];
 	}
 
+	// Layout orientation class
 	$grid_class = 'ab-post-grid-items';
 
 	if ( isset( $attributes['postLayout'] ) && 'list' === $attributes['postLayout'] ) {
@@ -190,16 +191,25 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		$grid_class .= ' is-grid';
 	}
 
+	// Grid columns class
 	if ( isset( $attributes['columns'] ) && 'grid' === $attributes['postLayout'] ) {
 		$grid_class .= ' columns-' . $attributes['columns'];
 	}
 
+	// Post grid section title
+	if ( ! empty( $attributes['sectionTitle'] ) ) {
+		$section_title = '<h3>' . $attributes['sectionTitle'] . '</h3>';
+	} else {
+		$section_title = null;
+	}
+
 	// Output the post markup
 	$block_content = sprintf(
-		'<section class="%1$s"><div class="%2$s">%3$s</div></section>',
+		'<section class="%1$s">%4$s<div class="%2$s">%3$s</div></section>',
 		esc_attr( $class ),
 		esc_attr( $grid_class ),
-		$list_items_markup
+		$list_items_markup,
+		$section_title
 	);
 
 	return $block_content;
@@ -251,6 +261,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'type' => 'boolean',
 				'default' => true,
 			),
+			'displaySectionTitle' => array(
+				'type' => 'boolean',
+				'default' => false,
+			),
 			'excludeSticky' => array(
 				'type' => 'boolean',
 				'default' => false,
@@ -298,6 +312,9 @@ function atomic_blocks_register_block_core_latest_posts() {
 			'postType' => array(
 				'type' => 'string',
 				'default' => 'post',
+			),
+			'sectionTitle' => array(
+				'type' => 'string',
 			),
 		),
 		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',

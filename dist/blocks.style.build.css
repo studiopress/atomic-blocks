@@ -1856,6 +1856,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   @media only screen and (max-width: 600px) {
     .ab-block-post-grid div[class*="columns"].is-grid {
       grid-template-columns: 1fr; } }
+  .ab-block-post-grid .ab-post-grid-section-title {
+    text-align: left; }
   .ab-block-post-grid .ab-block-post-grid-image {
     margin-bottom: 1.2em; }
     .ab-block-post-grid .ab-block-post-grid-image img {

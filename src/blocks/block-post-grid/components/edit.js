@@ -72,6 +72,7 @@ class LatestPostsBlock extends Component {
 			offset,
 			excerptLength,
 			postType,
+			sectionTitle,
 		} = attributes;
 
 		// Check the image orientation
@@ -143,6 +144,10 @@ class LatestPostsBlock extends Component {
 						'ab-block-post-grid',
 					) }
 				>
+					{ sectionTitle &&
+						<h3 class="ab-post-grid-section-title">{ sectionTitle }</h3>
+					}
+
 					<div
 						className={ classnames( {
 							'is-grid': postLayout === 'grid',

@@ -28,14 +28,14 @@ export const name = 'core/latest-posts';
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-post-grid', {
-	title: __( 'AB Post Grid', 'atomic-blocks' ),
-	description: __( 'Add a grid or list of customizable posts to your page.', 'atomic-blocks' ),
+	title: __( 'AB Post and Page Grid', 'atomic-blocks' ),
+	description: __( 'Add a grid or list of customizable posts or pages.', 'atomic-blocks' ),
 	icon: 'grid-view',
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'post', 'atomic-blocks' ),
+		__( 'page', 'atomic-blocks' ),
 		__( 'grid', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	getEditWrapperProps( attributes ) {
