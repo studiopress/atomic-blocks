@@ -34,6 +34,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			// Get the post thumbnail
 			$post_thumb_id = get_post_thumbnail_id( $post_id );
 
+			// Setup a post thumbnail class
 			if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
 				$post_thumb_class = 'has-thumb';
 			} else {
@@ -127,6 +128,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 						);
 					}
 
+				// Close the header content
 				$list_items_markup .= sprintf(
 					'</header>'
 				);
@@ -151,6 +153,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 						$list_items_markup .=  wp_kses_post( $excerpt );
 					}
 
+					// Get the read more link
 					if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 						$list_items_markup .= sprintf(
 							'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s <span class="screen-reader-text">%3$s</span></a></p>',
@@ -165,7 +168,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					'</div>'
 				);
 
-			// Wrap the text content
+			// Close the text content
 			$list_items_markup .= sprintf(
 				'</div>'
 			);
@@ -173,9 +176,9 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			// Close the markup for the post
 			$list_items_markup .= "</article>\n";
 		}
-	}
+	} // End of recent_posts
 
-	// Build the classes
+	// Build the block classes
 	$class = "ab-block-post-grid featured{$attributes['postType']} align{$attributes['align']}";
 
 	if ( isset( $attributes['className'] ) ) {
@@ -216,7 +219,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 }
 
 /**
- * Registers the `core/latest-posts` block on server.
+ * Registers the post grid block on server
  */
 function atomic_blocks_register_block_core_latest_posts() {
 
@@ -225,6 +228,7 @@ function atomic_blocks_register_block_core_latest_posts() {
 		return;
 	}
 
+	// Block attributes
 	register_block_type( 'atomic-blocks/ab-post-grid', array(
 		'attributes' => array(
 			'categories' => array(
@@ -320,7 +324,6 @@ function atomic_blocks_register_block_core_latest_posts() {
 		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',
 	) );
 }
-
 add_action( 'init', 'atomic_blocks_register_block_core_latest_posts' );
 
 
