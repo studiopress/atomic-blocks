@@ -150,7 +150,7 @@ export default class Inspector extends Component {
 		return (
             <InspectorControls>
                 <PanelBody
-                    title={ __( 'Post Grid Settings', 'atomic-blocks' ) }
+                    title={ __( 'Post and Page Grid Settings', 'atomic-blocks' ) }
                     className={ isPost ? null : 'atomic-blocks-hide-query' }
                 >
                     <SelectControl
@@ -194,7 +194,7 @@ export default class Inspector extends Component {
                     }
                 </PanelBody>
                 <PanelBody
-                    title={ __( 'Post Grid Content', 'atomic-blocks' ) }
+                    title={ __( 'Post and Page Grid Content', 'atomic-blocks' ) }
                     initialOpen={ false }
                 >
                     <TextControl
@@ -217,26 +217,26 @@ export default class Inspector extends Component {
                         />
                     }
                     <ToggleControl
-                        label={ __( 'Display Post Title', 'atomic-blocks' ) }
+                        label={ __( 'Display Title', 'atomic-blocks' ) }
                         checked={ displayPostTitle }
                         onChange={ this.toggleDisplayPostTitle }
                     />
                     { isPost &&
                         <ToggleControl
-                            label={ __( 'Display Post Author', 'atomic-blocks' ) }
+                            label={ __( 'Display Author', 'atomic-blocks' ) }
                             checked={ displayPostAuthor }
                             onChange={ this.toggleDisplayPostAuthor }
                         />
                     }
                     { isPost &&
                         <ToggleControl
-                            label={ __( 'Display Post Date', 'atomic-blocks' ) }
+                            label={ __( 'Display Date', 'atomic-blocks' ) }
                             checked={ displayPostDate }
                             onChange={ this.toggleDisplayPostDate }
                         />
                     }
                     <ToggleControl
-                        label={ __( 'Display Post Excerpt', 'atomic-blocks' ) }
+                        label={ __( 'Display Excerpt', 'atomic-blocks' ) }
                         checked={ displayPostExcerpt }
                         onChange={ this.toggleDisplayPostExcerpt }
                     />

@@ -92,7 +92,7 @@ class LatestPostsBlock extends Component {
 					/>
 					<Placeholder
 						icon="admin-post"
-						label={ __( 'Atomic Blocks Post Grid', 'atomic-blocks' ) }
+						label={ __( 'Atomic Blocks Post and Page Grid', 'atomic-blocks' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
@@ -108,6 +108,7 @@ class LatestPostsBlock extends Component {
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts;
 
+		// Add toolbar controls to change layout
 		const layoutControls = [
 			{
 				icon: 'grid-view',
