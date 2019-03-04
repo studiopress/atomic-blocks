@@ -1847,6 +1847,9 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     grid-gap: 0 2em; }
     .ab-block-post-grid .is-grid article {
       margin-bottom: 2.5em; }
+    @media only screen and (max-width: 600px) {
+      .ab-block-post-grid .is-grid article.entry {
+        margin-bottom: 2em; } }
   .ab-block-post-grid .is-grid.columns-2 {
     grid-template-columns: 1fr 1fr; }
   .ab-block-post-grid .is-grid.columns-3 {
@@ -1867,6 +1870,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     text-align: left; }
   .ab-block-post-grid a {
     text-decoration: none; }
+  .ab-block-post-grid .entry .entry-header {
+    margin: 0; }
   .ab-block-post-grid .entry-header h2 {
     margin-top: 0;
     margin-bottom: 15px;
