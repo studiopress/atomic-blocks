@@ -3,32 +3,59 @@
   "version": "1.9.3",
   "private": true,
   "scripts": {
-    "start": "cgb-scripts start",
-    "build": "cgb-scripts build",
-    "eject": "cgb-scripts eject",
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
     "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --include=src,dist/getting-started"
   },
   "dependencies": {
     "@wordpress/data": "^1.2.1",
     "@wordpress/html-entities": "^1.0.3",
     "@wordpress/i18n": "^1.2.3",
+    "autoprefixer": "^7.2.4",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.1",
+    "babel-preset-cgb": "^1.4.0",
     "babel-preset-es2015": "^6.24.1",
-    "cgb-scripts": "1.9.6",
+    "cgb-dev-utils": "^1.4.0",
+    "chalk": "^2.3.0",
     "classnames": "^2.2.6",
+    "cross-env": "^5.0.1",
+    "cross-spawn": "^5.1.0",
     "cryptiles": "^4.1.3",
     "deep-extend": "^0.6.0",
+    "eslint": "^4.15.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-plugin-jest": "^21.6.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-wordpress": "^0.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "filesize": "^3.5.11",
+    "fs-extra": "^5.0.0",
+    "gzip-size": "^4.1.0",
     "hoek": "^5.0.4",
+    "inquirer": "^5.0.0",
     "lodash": "^4.17.11",
     "md5": "^2.2.1",
     "memize": "^1.0.5",
     "moment": "^2.22.2",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.7.2",
+    "ora": "^1.3.0",
+    "postcss-loader": "^2.0.10",
     "querystringify": "^2.1.0",
     "randomatic": "^3.1.1",
+    "raw-loader": "^0.5.1",
     "re-resizable": "^4.10.0",
     "react": "16.2.0",
+    "resolve-pkg": "^1.0.0",
+    "sass-loader": "^6.0.6",
+    "shelljs": "^0.8.0",
     "sshpk": "^1.15.2",
-    "styled-components": "^3.4.10"
+    "style-loader": "^0.19.1",
+    "styled-components": "^3.4.10",
+    "update-notifier": "^2.3.0",
+    "webpack": "^3.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
@@ -38,5 +65,51 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "grunt-wp-i18n": "^1.0.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "last 2 Chrome versions",
+              "last 2 Firefox versions",
+              "last 2 Safari versions",
+              "last 2 iOS versions",
+              "last 1 Android version",
+              "last 1 ChromeAndroid version",
+              "ie 11"
+            ]
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "transform-object-rest-spread"
+      ],
+      [
+        "transform-object-rest-spread",
+        {
+          "useBuiltIns": true
+        }
+      ],
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "wp.element.createElement"
+        }
+      ],
+      [
+        "transform-runtime",
+        {
+          "helpers": false,
+          "polyfill": false,
+          "regenerator": true
+        }
+      ]
+    ]
   }
 }
