@@ -7,7 +7,7 @@
     "build": "npm-run-all node-makepot build-assets",
     "build-assets": "node scripts/build.js",
     "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --include=src,dist/getting-started",
-    "node-makepot": "wpi18n makepot --exclude=config,node_modules,scripts,vendor"
+    "node-makepot": "wpi18n makepot --pot-file languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor"
   },
   "dependencies": {
     "@wordpress/data": "^1.2.1",
