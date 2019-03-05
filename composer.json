@@ -1,0 +1,13 @@
+{
+    "require": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.0",
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "^3.4",
+        "wp-coding-standards/wpcs": "^2.0"
+    },
+    "scripts": {
+        "phpcs": "phpcs *.php dist src -sp --runtime-set testVersion 5.2-",
+        "phpcs-changed": "./bin/phpcs-changed.sh"
+    }
+}
