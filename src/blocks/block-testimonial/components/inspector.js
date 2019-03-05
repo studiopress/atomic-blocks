@@ -42,6 +42,17 @@ export default class Inspector extends Component {
 			{ value: 'right-aligned', label: __( 'Right Aligned' ) },
 		];
 
+		const backgroundColors = [
+			{ color: '#00d1b2', name: 'teal' },
+			{ color: '#3373dc', name: 'royal blue' },
+			{ color: '#209cef', name: 'sky blue' },
+			{ color: '#22d25f', name: 'green' },
+			{ color: '#ffdd57', name: 'yellow' },
+			{ color: '#ff3860', name: 'pink' },
+			{ color: '#7941b6', name: 'purple' },
+			{ color: '#392F43', name: 'black' },
+		];
+
 		// Setup the attributes
 		const { attributes: { testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, isSelected, className, setAttributes } = this.props;
 
@@ -74,8 +85,10 @@ export default class Inspector extends Component {
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: testimonialBackgroundColor,
+						colors: backgroundColors,
 						onChange: onChangeBackgroundColor,
 						label: __( 'Background Color' ),
+
 					} ] }
 				>
 				</PanelColorSettings>

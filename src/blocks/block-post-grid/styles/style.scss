@@ -16,12 +16,6 @@
 		article {
 			margin-bottom: 2.5em;
 		}
-
-		@media only screen and (max-width: 600px) {
-			article.entry {
-				margin-bottom: 2em;
-			}
-		}
 	}
 
 	.is-grid.columns-2 {
@@ -61,10 +55,6 @@
 
 	a {
 		text-decoration: none;
-	}
-
-	.entry .entry-header {
-		margin: 0;
 	}
 
 	.entry-header h2 {
