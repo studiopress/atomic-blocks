@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --include=src,dist/getting-started"
+    "build": "npm-run-all node-makepot build-assets",
+    "build-assets": "node scripts/build.js",
+    "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --include=src,dist/getting-started",
+    "node-makepot": "wpi18n makepot --exclude=config,node_modules,scripts,vendor"
   },
   "dependencies": {
     "@wordpress/data": "^1.2.1",
@@ -34,6 +36,7 @@
     "filesize": "^3.5.11",
     "fs-extra": "^5.0.0",
     "gzip-size": "^4.1.0",
+    "har-validator": "^5.1.3",
     "hoek": "^5.0.4",
     "inquirer": "^5.0.0",
     "lodash": "^4.17.11",
@@ -64,7 +67,9 @@
     "babel-plugin-lodash": "^3.3.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
-    "grunt-wp-i18n": "^1.0.2"
+    "grunt-wp-i18n": "^1.0.2",
+    "node-wp-i18n": "^1.2.3",
+    "npm-run-all": "^4.1.5"
   },
   "babel": {
     "presets": [
