@@ -36,9 +36,9 @@ config.codekit
 .CVS
 .idea
 node_modules/
+vendor/
+
+# Build files, possibly removed later.
 Gruntfile.js
-<<<<<<< HEAD
 package-lock.json
-=======
-package-lock.json
->>>>>>> 4adcc92d34bf069aac2b091b9878ec1d4b63592f
+composer.lock
