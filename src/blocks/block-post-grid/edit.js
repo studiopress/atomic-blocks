@@ -263,7 +263,7 @@ class LatestPostsBlock extends Component {
 							>
 								{
 									displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-										<div class="ab-block-post-grid-image">
+										<div className="ab-block-post-grid-image">
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<img
 													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
@@ -276,14 +276,14 @@ class LatestPostsBlock extends Component {
 									)
 								}
 
-								<div class="ab-block-post-grid-text">
+								<div className="ab-block-post-grid-text">
 									{ displayPostTitle &&
-										<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+										<h2 className="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 									}
 
-									<div class="ab-block-post-grid-byline">
+									<div className="ab-block-post-grid-byline">
 										{ displayPostAuthor && post.author_info.display_name &&
-											<div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+											<div className="ab-block-post-grid-author"><a className="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
 										}
 
 										{ displayPostDate && post.date_gmt &&
@@ -293,13 +293,13 @@ class LatestPostsBlock extends Component {
 										}
 									</div>
 
-									<div class="ab-block-post-grid-excerpt">
+									<div className="ab-block-post-grid-excerpt">
 										{ displayPostExcerpt && post.excerpt &&
 											<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 										}
 
 										{ displayPostLink &&
-											<p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+											<p><a className="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
 										}
 									</div>
 								</div>

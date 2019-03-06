@@ -90,7 +90,7 @@ class ABPricingTableBlock extends Component {
 					itemtype="http://schema.org/Product"
 				>
 					<div
-						class="ab-block-pricing-table-inside"
+						className="ab-block-pricing-table-inside"
 						style={ styles }
 					>
 						<InnerBlocks
@@ -223,7 +223,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 				itemtype="http://schema.org/Product"
 			>
 				<div
-					class="ab-block-pricing-table-inside"
+					className="ab-block-pricing-table-inside"
 					style={ styles }
 				>
 					<InnerBlocks.Content />

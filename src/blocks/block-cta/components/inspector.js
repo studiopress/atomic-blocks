@@ -223,7 +223,6 @@ export default class Inspector extends Component {
 						value: buttonBackgroundColor,
 						onChange: onChangeButtonColor,
 						label: __( 'Button Color', 'atomic-blocks' ),
-						colors: buttonColors,
 					} ] }
 				>
 				</PanelColorSettings>
