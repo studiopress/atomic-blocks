@@ -67,7 +67,7 @@ class Edit extends Component {
 				/>
 				<RichText
 					tagName="div"
-					itemprop="name"
+					itemProp="name"
 					placeholder={ __( 'Price Title', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ title }

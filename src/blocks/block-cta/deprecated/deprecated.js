@@ -123,7 +123,7 @@ export const callToAction_1_5_2_save = props => {
 	return (
 		<CallToAction_1_5_2 { ...props }>
             { imgURL && !! imgURL.length && (
-                <div class="ab-cta-image-wrap">
+                <div className="ab-cta-image-wrap">
                     <img
                         className={ classnames(
                             'ab-cta-image',
@@ -138,7 +138,7 @@ export const callToAction_1_5_2_save = props => {
                 </div>
             ) }
 
-            <div class="ab-cta-content">
+            <div className="ab-cta-content">
                 { ctaTitle && (
                     <RichText.Content
                         tagName="h2"
@@ -167,7 +167,7 @@ export const callToAction_1_5_2_save = props => {
                 ) }
             </div>
             { buttonText && (
-                <div class="ab-cta-button">
+                <div className="ab-cta-button">
                     <a
                         href={ buttonUrl }
                         target={ buttonTarget ? '_blank' : '_self' }
@@ -311,7 +311,7 @@ export const callToAction_1_4_22_save = props => {
 	return (
 		<CallToAction_1_4_22 { ...props }>
             { imgURL && !! imgURL.length && (
-                <div class="ab-cta-image-wrap">
+                <div className="ab-cta-image-wrap">
                     <img
                         className={ classnames(
                             'ab-cta-image',
@@ -326,7 +326,7 @@ export const callToAction_1_4_22_save = props => {
                 </div>
             ) }
 
-            <div class="ab-cta-content">
+            <div className="ab-cta-content">
                 { ctaTitle && (
                     <RichText.Content
                         tagName="h2"
@@ -355,7 +355,7 @@ export const callToAction_1_4_22_save = props => {
                 ) }
             </div>
             { buttonText && (
-                <div class="ab-cta-button">
+                <div className="ab-cta-button">
                     <a
                         href={ buttonUrl }
                         target={ buttonTarget ? '_blank' : '_self' }
@@ -495,7 +495,7 @@ export const callToAction_1_4_21_save = props => {
 	return (
 		<CallToAction_1_4_21 { ...props }>
             { imgURL && !! imgURL.length && (
-                <div class="ab-cta-image-wrap">
+                <div className="ab-cta-image-wrap">
                     <img
                         className={ classnames(
                             'ab-cta-image',
@@ -510,7 +510,7 @@ export const callToAction_1_4_21_save = props => {
                 </div>
             ) }
 
-            <div class="ab-cta-content">
+            <div className="ab-cta-content">
                 { ctaTitle && (
                     <RichText.Content
                         tagName="h2"
@@ -539,7 +539,7 @@ export const callToAction_1_4_21_save = props => {
                 ) }
             </div>
             { buttonText && (
-                <div class="ab-cta-button">
+                <div className="ab-cta-button">
                     <a
                         href={ buttonUrl }
                         target={ buttonTarget ? '_blank' : '_self' }

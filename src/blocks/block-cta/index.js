@@ -195,7 +195,7 @@ class ABCTABlock extends Component {
 			// Show the button markup in the editor
 			<CallToAction { ...this.props }>
 				{ imgURL && !! imgURL.length && (
-					<div class="ab-cta-image-wrap">
+					<div className="ab-cta-image-wrap">
 						<img
 							className={ classnames(
 								'ab-cta-image',
@@ -210,7 +210,7 @@ class ABCTABlock extends Component {
 					</div>
 				) }
 
-				<div class="ab-cta-content">
+				<div className="ab-cta-content">
 					<RichText
 						tagName="h2"
 						placeholder={ __( 'Call-To-Action Title', 'atomic-blocks' ) }
@@ -241,7 +241,7 @@ class ABCTABlock extends Component {
 						onChange={ ( value ) => setAttributes( { ctaText: value } ) }
 					/>
 				</div>
-				<div class="ab-cta-button">
+				<div className="ab-cta-button">
 					<RichText
 						tagName="span"
 						placeholder={ __( 'Button text...', 'atomic-blocks' ) }
@@ -340,7 +340,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 		return (
 			<CallToAction { ...props }>
 				{ imgURL && !! imgURL.length && (
-					<div class="ab-cta-image-wrap">
+					<div className="ab-cta-image-wrap">
 						<img
 							className={ classnames(
 								'ab-cta-image',
@@ -355,7 +355,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 					</div>
 				) }
 
-				<div class="ab-cta-content">
+				<div className="ab-cta-content">
 					{ ctaTitle && (
 						<RichText.Content
 							tagName="h2"
@@ -384,7 +384,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 					) }
 				</div>
 				{ buttonText && (
-					<div class="ab-cta-button">
+					<div className="ab-cta-button">
 						<a
 							href={ buttonUrl }
 							target={ buttonTarget ? '_blank' : '_self' }

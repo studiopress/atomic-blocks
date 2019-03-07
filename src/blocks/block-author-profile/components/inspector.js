@@ -48,18 +48,6 @@ export default class Inspector extends Component {
 		const onChangeProfileTextColor = value => setAttributes( { profileTextColor: value } );
 		const onChangeSocialLinkColor = value => setAttributes( { profileLinkColor: value } );
 
-		// Social button colors
-		const socialColors = [
-			{ color: '#392F43', name: 'black' },
-			{ color: '#3373dc', name: 'royal blue' },
-			{ color: '#2DBAA3', name: 'teal' },
-			{ color: '#209cef', name: 'sky blue' },
-			{ color: '#2BAD59', name: 'green' },
-			{ color: '#ff3860', name: 'pink' },
-			{ color: '#7941b6', name: 'purple' },
-			{ color: '#F7812B', name: 'orange' },
-		];
-
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
@@ -105,11 +93,10 @@ export default class Inspector extends Component {
 				<PanelColorSettings
 					title={ __( 'Social Link Color', 'atomic-blocks' ) }
 					initialOpen={ false }
-					colorSettings={ [ {
+						colorSettings={ [ {
 						value: profileLinkColor,
 						onChange: onChangeSocialLinkColor,
 						label: __( 'Social Link Color', 'atomic-blocks' ),
-						colors: socialColors,
 					} ] }
 				>
 				</PanelColorSettings>

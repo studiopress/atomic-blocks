@@ -16,7 +16,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Internationalization
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -200,7 +200,7 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 
 				{ noticeTitle && (
 					<div
-						class="ab-notice-title"
+						className="ab-notice-title"
 						style={ {
 							color: noticeTitleColor
 						} }
@@ -215,7 +215,7 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 				{ noticeContent && (
 					<RichText.Content
 						tagName="div"
-						class="ab-notice-text"
+						className="ab-notice-text"
 						style={ {
 							borderColor: noticeBackgroundColor
 						} }
