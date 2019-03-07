@@ -86,8 +86,8 @@ class ABPricingTableBlock extends Component {
 						alignment ? 'ab-block-pricing-table-' + alignment : 'ab-block-pricing-table-center',
 						'ab-block-pricing-table',
 					) }
-					itemscope
-					itemtype="http://schema.org/Product"
+					itemScope
+					itemType="http://schema.org/Product"
 				>
 					<div
 						className="ab-block-pricing-table-inside"
@@ -219,8 +219,8 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 					alignment ? 'ab-block-pricing-table-' + alignment : 'ab-block-pricing-table-center',
 					'ab-block-pricing-table',
 				) }
-				itemscope
-				itemtype="http://schema.org/Product"
+				itemScope
+				itemType="http://schema.org/Product"
 			>
 				<div
 					className="ab-block-pricing-table-inside"

@@ -143,7 +143,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 		return (
 			<RichText.Content
 				tagName="ul"
-				itemprop="description"
+				itemProp="description"
 				value={ features }
 				className={ className ? className : undefined }
 				style={ styles }
