@@ -82,8 +82,11 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**1.5.3**
+* Fix bug with undefined dim ratio in CTA.
+
 **1.5.2**
-* Fix bug with undefined dim ratio.
+* Fix bug with undefined dim ratio in Container.
 
 **1.5.1**
 * Fix bug with lodash scoping.

@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
 Tested up to: 5.1
-Stable tag: 1.5.4
+Stable tag: 1.5.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -108,8 +108,11 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 == Changelog ==
 
+= 1.5.3 =
+* Fix bug with undefined dim ratio in CTA.
+
 = 1.5.2 =
-* Fix bug with undefined dim ratio.
+* Fix bug with undefined dim ratio in Container.
 
 = 1.5.1 =
 * Fix bug with lodash scoping.
