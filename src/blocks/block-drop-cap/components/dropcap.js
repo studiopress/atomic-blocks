@@ -1,5 +1,5 @@
 /**
- * Testimonial Block Wrapper
+ * Dropcap Block Wrapper
  */
 
 // Setup the block

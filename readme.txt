@@ -13,9 +13,19 @@ This plugins is based on Atomic Blocks https://atomicblocks.com
 
 = Blocks List =
 
-1. Team Block
-2. FAQ Block
-3. CTA Block
+1. Accordion Block
+2. Author Profile Block
+3. Banner Block
+4. Button Blocks
+5. Card Block
+6. Container Block
+7. CTA Block
+8. Drop Cap Block
+9. Notice Block
+10. Post Carousel Block
+11. Post Grid Block
+12. Sharing Block
+13. Spacer Block
 
 = Works with the LSX Theme =
 We've also made a fantastic [theme](https://www.lsdev.biz/product/lsx-wordpress-theme/) that work well with the LSX Blocks plugin.
