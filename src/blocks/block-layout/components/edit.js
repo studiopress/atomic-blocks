@@ -4,6 +4,9 @@ import Inspector from './inspector';
 import Layout from './layout';
 import memoize from 'memize';
 import _times from 'lodash/times';
+import icons from './icons';
+import layoutColumns from './layout-columns';
+import map from 'lodash/map';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -17,6 +20,13 @@ const {
 	BlockAlignmentToolbar,
 	InnerBlocks,
 } = wp.editor;
+
+const {
+	Placeholder,
+	ButtonGroup,
+	Tooltip,
+	Button,
+} = wp.components;
 
 // Set allowed blocks and media
 const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-layout-column' ];
@@ -46,6 +56,7 @@ export default class Edit extends Component {
 				align,
 				layoutClass,
 				layout,
+				columnStyle,
 			},
 			attributes,
 			isSelected,
@@ -54,87 +65,87 @@ export default class Edit extends Component {
 			setAttributes
 		} = this.props;
 
-		// Show the layout placeholder
-		// if ( ! layout && this.state.selectLayout ) {
-		// 	return [
-		// 		<Fragment>
-		// 			{ isSelected && (
-		// 				<Inspector
-		// 					{ ...this.props }
-		// 				/>
-		// 			) }
-		// 			<Placeholder
-		// 				key="placeholder"
-		// 				icon={ columns ? rowIcons.layout : rowIcons.row }
-		// 				label={ columns ? __( 'Row Layout' ) : __( 'Row' ) }
-		// 				instructions={ columns ? sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) : __( 'Select the number of columns for this row.' ) }
-		// 				className={ 'components-coblocks-visual-dropdown' }
-		// 			>
-		// 				{ ! columns ?
-		// 					<ButtonGroup aria-label={ __( 'Select Row Columns' ) }>
-		// 						{ map( columnOptions, ( { name, key, icon, columns } ) => (
-		// 							<Tooltip text={ name }>
-		// 								<div className="components-coblocks-visual-dropdown__button-wrapper">
-		// 									<Button
-		// 										className="components-coblocks-visual-dropdown__button"
-		// 										isSmall
-		// 										onClick={ () => {
-		// 											setAttributes( {
-		// 												columns: columns,
-		// 												layout: columns === 1 ? key : null,
-		// 											} );
+		let selectedRows = 1;
 
-		// 											{ columns === 1 &&
-		// 												this.setState( { 'layoutSelection' : false } );
-		// 											}
-		// 										} }
-		// 									>
-		// 										{ icon }
-		// 									</Button>
-		// 								</div>
-		// 							</Tooltip>
-		// 						) ) }
-		// 					</ButtonGroup>
-		// 				:
-		// 					<Fragment>
-		// 						<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
-		// 							<IconButton
-		// 								icon="exit"
-		// 								className="components-coblocks-visual-dropdown__back"
-		// 								onClick={ () => {
-		// 									setAttributes( {
-		// 										columns: null,
-		// 									} );
-		// 									this.setState( { 'layoutSelection' : true } );
-		// 								} }
-		// 								label={ __( 'Back to Columns' ) }
-		// 							/>
-		// 							{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
-		// 								<Tooltip text={ name }>
-		// 									<div className="components-coblocks-visual-dropdown__button-wrapper">
-		// 										<Button
-		// 											key={ key }
-		// 											className="components-coblocks-visual-dropdown__button"
-		// 											isSmall
-		// 											onClick={ () => {
-		// 												setAttributes( {
-		// 													layout: key,
-		// 												} );
-		// 												this.setState( { 'layoutSelection' : false } );
-		// 											} }
-		// 										>
-		// 											{ icon }
-		// 										</Button>
-		// 									</div>
-		// 								</Tooltip>
-		// 							) ) }
-		// 						</ButtonGroup>
-		// 					</Fragment>
-		// 				}
-		// 			</Placeholder>
-		// 		</Fragment>
-		// 	];
-		// }
+		if ( columns ) {
+			selectedRows = parseInt( columns.toString().split('-') );
+		}
+
+		// Show the layout placeholder
+		if ( ! columns && this.state.selectLayout ) {
+			return [
+				<Fragment>
+					{ isSelected && (
+						<Inspector
+							{ ...this.props }
+						/>
+					) }
+					<Placeholder
+						key="placeholder"
+						//icon={ columns ? rowIcons.layout : rowIcons.row }
+						icon="welcome-widgets-menus"
+						label={ columns ? __( 'Row Layout' ) : __( 'Select Column Layout' ) }
+						instructions={ columns ? sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) : __( 'Select the number of columns for this layout.' ) }
+						//className={ '' }
+					>
+						{ ! columns ?
+							<ButtonGroup aria-label={ __( 'Select Row Columns' ) }>
+								{ map( layoutColumns, ( { name, key, icon, col, layout } ) => (
+									<Tooltip text={ name }>
+										<Button
+											key={ key }
+											className="kt-layout-btn"
+											//isSmall
+											// isPrimary={ selectColLayout === key }
+											// aria-pressed={ selectColLayout === key }
+											onClick={ () => this.props.setAttributes( {
+												layoutClass: layout,
+												columns: col,
+											} ) }
+										>
+											{ icon }
+										</Button>
+									</Tooltip>
+								) ) }
+							</ButtonGroup>
+						:
+							<Fragment>
+								<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+									<IconButton
+										icon="exit"
+										className=""
+										onClick={ () => {
+											setAttributes( {
+												columns: null,
+											} );
+											this.setState( { 'layoutSelection' : true } );
+										} }
+										label={ __( 'Back to Columns' ) }
+									/>
+									{ map( columnStyle[ selectedRows ], ( { name, key, icon, col, layout } ) => (
+										<Tooltip text={ name }>
+											<Button
+												key={ key }
+												className="kt-layout-btn"
+												//isSmall
+												// isPrimary={ selectColLayout === key }
+												// aria-pressed={ selectColLayout === key }
+												onClick={ () => this.props.setAttributes( {
+													layoutClass: layout,
+													columns: col,
+												} ) }
+											>
+												{ icon }
+											</Button>
+										</Tooltip>
+									) ) }
+								</ButtonGroup>
+							</Fragment>
+						}
+					</Placeholder>
+				</Fragment>
+			];
+		}
 
 		return [
 			// Show the alignment toolbar on focus

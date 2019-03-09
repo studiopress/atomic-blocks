@@ -48,7 +48,9 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 	attributes: {
 		columns: {
 			type: 'number',
-			default: 2,
+		},
+		columnStyle: {
+			type: 'string',
 		},
 		columnsGap: {
 			type: 'number',

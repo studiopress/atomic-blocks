@@ -5,6 +5,7 @@
  // Import icons
 import icons from './icons';
 import map from 'lodash/map';
+import layoutColumns from './layout-columns';
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -52,17 +53,10 @@ export default class Inspector extends Component {
 
 
 		//let layoutOptions;
-		const startlayoutOptions = [
-			{ key: 'equal', col: 1, name: __( 'Row' ), icon: icons.row },
-			{ key: 'equal', col: 2, name: __( 'Two: Equal' ), icon: icons.twocol },
-		];
-
-
-		const layoutOptions = [
-			{ key: 'equal', col: 1, name: __( 'Row' ), icon: icons.row },
-			{ key: 'equal', col: 2, name: __( 'Two: Equal' ), icon: icons.twocol },
-			{ key: 'center-wide', col: 3, name: __( 'Three: Wide Center' ), icon: icons.widecenter, layout: 'wide-center' },
-		];
+		// const startlayoutOptions = [
+		// 	{ key: 'equal', col: 1, name: __( 'Row' ), icon: icons.row },
+		// 	{ key: 'equal', col: 2, name: __( 'Two: Equal' ), icon: icons.twocol },
+		// ];
 
 
 		return (
@@ -85,7 +79,7 @@ export default class Inspector extends Component {
 				/>
 
 				<ButtonGroup aria-label={ __( 'Column Layout' ) }>
-					{ map( layoutOptions, ( { name, key, icon, col, layout } ) => (
+					{ map( layoutColumns, ( { name, key, icon, col, layout } ) => (
 						<Tooltip text={ name }>
 							<Button
 								key={ key }
