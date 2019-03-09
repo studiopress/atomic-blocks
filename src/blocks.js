@@ -23,3 +23,9 @@ import './blocks/block-pricing-table-inner/components/description/index.js';
 import './blocks/block-pricing-table-inner/components/title/index.js';
 import './blocks/block-pricing-table-inner/components/subtitle/index.js';
 import './blocks/block-pricing-table-inner/components/button/index.js';
+
+/**
+ * Layouts
+ */
+import './blocks/block-layout/index.js';
+import './blocks/block-layout-inner/index.js';
