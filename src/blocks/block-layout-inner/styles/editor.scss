@@ -124,3 +124,23 @@ div[data-type="atomic-blocks/ab-layout-column-price"] .editor-block-list__block-
 .ab-block-layout-column .editor-block-list__layout div:first-child .editor-block-list__block-edit {
 	margin-top: 0;
 }
+
+.ab-layout-selector-group {
+	.ab-layout-selector:last-child {
+		svg {
+
+		}
+	}
+}
+
+.ab-layout-selector-button-back {
+	margin-top: 23px;
+	line-height: 1.4;
+	display: inherit;
+	vertical-align: middle;
+
+	svg {
+		width: 16px;
+    	margin-right: 5px;
+	}
+}

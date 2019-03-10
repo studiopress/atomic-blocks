@@ -49,7 +49,7 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 		columns: {
 			type: 'number',
 		},
-		columnStyle: {
+		layout: {
 			type: 'string',
 		},
 		columnsGap: {

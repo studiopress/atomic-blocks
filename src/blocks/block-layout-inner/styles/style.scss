@@ -234,3 +234,27 @@ span.ab-layout-column-term {
 .ab-layout-column-button .ab-block-button {
 	margin-bottom: 0;
 }
+
+.ab-layout-selector-group {
+	margin-top: 10px;
+}
+
+.ab-layout-selector {
+	display: inline-block;
+	margin: 0 5px;
+
+	button.ab-layout-selector-button {
+		padding: 15px;
+		height: auto;
+		border-radius: 5px;
+		background: #fff;
+
+		&:hover {
+			background: #fff;
+		}
+	}
+
+	button.components-button.is-button:last-child {
+		border-radius: 5px;
+	}
+}

@@ -51,6 +51,12 @@ export default class Inspector extends Component {
 			setAttributes
 		} = this.props;
 
+		let selectedRows = 1;
+
+		if ( columns ) {
+			selectedRows = parseInt( columns.toString().split('-') );
+		}
+
 
 		//let layoutOptions;
 		// const startlayoutOptions = [
@@ -79,7 +85,7 @@ export default class Inspector extends Component {
 				/>
 
 				<ButtonGroup aria-label={ __( 'Column Layout' ) }>
-					{ map( layoutColumns, ( { name, key, icon, col, layout } ) => (
+					{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col, layout } ) => (
 						<Tooltip text={ name }>
 							<Button
 								key={ key }

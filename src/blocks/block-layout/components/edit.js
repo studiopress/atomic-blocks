@@ -26,6 +26,8 @@ const {
 	ButtonGroup,
 	Tooltip,
 	Button,
+	IconButton,
+	Dashicon,
 } = wp.components;
 
 // Set allowed blocks and media
@@ -56,7 +58,6 @@ export default class Edit extends Component {
 				align,
 				layoutClass,
 				layout,
-				columnStyle,
 			},
 			attributes,
 			isSelected,
@@ -71,8 +72,17 @@ export default class Edit extends Component {
 			selectedRows = parseInt( columns.toString().split('-') );
 		}
 
+		const columnOptions = [
+			{ columns: 1, name: __( 'One Column' ), icon: icons.row, key: '100', },
+			{ columns: 2, name: __( 'Two Columns' ), icon: icons.twocol },
+			{ columns: 3, name: __( 'Three Columns' ), icon: icons.threecol },
+			{ columns: 4, name: __( 'Four Columns' ), icon: icons.fourcol },
+		];
+
+		console.log( icons.twocol );
+
 		// Show the layout placeholder
-		if ( ! columns && this.state.selectLayout ) {
+		if ( ! layout && this.state.selectLayout ) {
 			return [
 				<Fragment>
 					{ isSelected && (
@@ -85,60 +95,70 @@ export default class Edit extends Component {
 						//icon={ columns ? rowIcons.layout : rowIcons.row }
 						icon="welcome-widgets-menus"
 						label={ columns ? __( 'Row Layout' ) : __( 'Select Column Layout' ) }
-						instructions={ columns ? sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) : __( 'Select the number of columns for this layout.' ) }
+						instructions={ columns ? sprintf( __( 'Select a layout for this column.' ) ) : __( 'Select the number of columns for this layout.' ) }
 						//className={ '' }
 					>
 						{ ! columns ?
-							<ButtonGroup aria-label={ __( 'Select Row Columns' ) }>
-								{ map( layoutColumns, ( { name, key, icon, col, layout } ) => (
+							<ButtonGroup aria-label={ __( 'Select Row Columns' ) } className="ab-layout-selector-group">
+								{ map( columnOptions, ( { name, key, icon, columns } ) => (
 									<Tooltip text={ name }>
-										<Button
-											key={ key }
-											className="kt-layout-btn"
-											//isSmall
-											// isPrimary={ selectColLayout === key }
-											// aria-pressed={ selectColLayout === key }
-											onClick={ () => this.props.setAttributes( {
-												layoutClass: layout,
-												columns: col,
-											} ) }
-										>
-											{ icon }
-										</Button>
+										<div className="ab-layout-selector">
+											<Button
+												className="ab-layout-selector-button"
+												isSmall
+												onClick={ () => {
+													setAttributes( {
+														columns: columns,
+														layout: columns === 1 ? key : null,
+													} );
+
+													{ columns === 1 &&
+														this.setState( { 'selectLayout' : false } );
+													}
+												} }
+											>
+												{ icon }
+											</Button>
+										</div>
 									</Tooltip>
+
 								) ) }
 							</ButtonGroup>
 						:
 							<Fragment>
-								<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
-									<IconButton
-										icon="exit"
-										className=""
+								<ButtonGroup
+									aria-label={ __( 'Select Row Layout' ) } className="ab-layout-selector-group"
+									>
+									{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
+										<Tooltip text={ name }>
+											<div className="ab-layout-selector">
+												<Button
+													key={ key }
+													className="ab-layout-selector-button"
+													isSmall
+													onClick={ () => {
+														setAttributes( {
+															layout: key,
+														} );
+														this.setState( { 'selectLayout' : false } );
+													} }
+												>
+													{ icon }
+												</Button>
+											</div>
+										</Tooltip>
+									) ) }
+									<Button
+										className="ab-layout-selector-button-back"
 										onClick={ () => {
 											setAttributes( {
 												columns: null,
 											} );
-											this.setState( { 'layoutSelection' : true } );
+											this.setState( { 'selectLayout' : true } );
 										} }
-										label={ __( 'Back to Columns' ) }
-									/>
-									{ map( columnStyle[ selectedRows ], ( { name, key, icon, col, layout } ) => (
-										<Tooltip text={ name }>
-											<Button
-												key={ key }
-												className="kt-layout-btn"
-												//isSmall
-												// isPrimary={ selectColLayout === key }
-												// aria-pressed={ selectColLayout === key }
-												onClick={ () => this.props.setAttributes( {
-													layoutClass: layout,
-													columns: col,
-												} ) }
-											>
-												{ icon }
-											</Button>
-										</Tooltip>
-									) ) }
+									>
+										<Dashicon icon="arrow-left-alt" /> { __( 'Return to Column Selection' ) }
+									</Button>
 								</ButtonGroup>
 							</Fragment>
 						}
