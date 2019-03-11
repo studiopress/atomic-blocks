@@ -73,13 +73,40 @@ export default class Edit extends Component {
 		}
 
 		const columnOptions = [
-			{ columns: 1, name: __( 'One Column' ), icon: icons.row, key: '100', },
-			{ columns: 2, name: __( 'Two Columns' ), icon: icons.twocol },
-			{ columns: 3, name: __( 'Three Columns' ), icon: icons.threecol },
-			{ columns: 4, name: __( 'Four Columns' ), icon: icons.fourcol },
+			{
+				name: __( '1 Column', 'atomic-blocks' ),
+				key: 'one-equal',
+				columns: 1,
+				icon: icons.row,
+			},
+			{
+				name: __( '2 Columns', 'atomic-blocks' ),
+				columns: 2,
+				icon: icons.twoEqual
+			},
+			{
+				name: __( '3 Columns', 'atomic-blocks' ),
+				columns: 3,
+				icon:icons.threeEqual
+			},
+			{
+				name: __( '4 Columns', 'atomic-blocks' ),
+				columns: 4,
+				icon: icons.fourEqual
+			},
+			{
+				name: __( '5 Columns', 'atomic-blocks' ),
+				key: 'five-equal',
+				columns: 5,
+				icon: icons.fiveEqual,
+			},
+			{
+				name: __( '6 Columns', 'atomic-blocks' ),
+				key: 'six-equal',
+				columns: 6,
+				icon: icons.sixEqual,
+			},
 		];
-
-		console.log( icons.twocol );
 
 		// Show the layout placeholder
 		if ( ! layout && this.state.selectLayout ) {
@@ -92,14 +119,13 @@ export default class Edit extends Component {
 					) }
 					<Placeholder
 						key="placeholder"
-						//icon={ columns ? rowIcons.layout : rowIcons.row }
 						icon="welcome-widgets-menus"
-						label={ columns ? __( 'Row Layout' ) : __( 'Select Column Layout' ) }
-						instructions={ columns ? sprintf( __( 'Select a layout for this column.' ) ) : __( 'Select the number of columns for this layout.' ) }
-						//className={ '' }
+						label={ columns ? __( 'Select Column', 'atomic-blocks' ) : __( 'Select Column Layout', 'atomic-blocks' ) }
+						instructions={ columns ? sprintf( __( 'Select a layout for this column.', 'atomic-blocks' ) ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
+						className={ 'ab-layout-selector-placeholder' }
 					>
 						{ ! columns ?
-							<ButtonGroup aria-label={ __( 'Select Row Columns' ) } className="ab-layout-selector-group">
+							<ButtonGroup aria-label={ __( 'Select Row Columns', 'atomic-blocks' ) } className="ab-layout-selector-group">
 								{ map( columnOptions, ( { name, key, icon, columns } ) => (
 									<Tooltip text={ name }>
 										<div className="ab-layout-selector">
@@ -109,7 +135,7 @@ export default class Edit extends Component {
 												onClick={ () => {
 													setAttributes( {
 														columns: columns,
-														layout: columns === 1 ? key : null,
+														layout: columns === 1 || columns === 5 || columns === 6 ? key : null,
 													} );
 
 													{ columns === 1 &&
@@ -127,7 +153,7 @@ export default class Edit extends Component {
 						:
 							<Fragment>
 								<ButtonGroup
-									aria-label={ __( 'Select Row Layout' ) } className="ab-layout-selector-group"
+									aria-label={ __( 'Select Row Layout', 'atomic-blocks' ) } className="ab-layout-selector-group"
 									>
 									{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
 										<Tooltip text={ name }>
@@ -157,7 +183,7 @@ export default class Edit extends Component {
 											this.setState( { 'selectLayout' : true } );
 										} }
 									>
-										<Dashicon icon="arrow-left-alt" /> { __( 'Return to Column Selection' ) }
+										{ __( 'Return to Column Selection', 'atomic-blocks' ) }
 									</Button>
 								</ButtonGroup>
 							</Fragment>

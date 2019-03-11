@@ -57,14 +57,6 @@ export default class Inspector extends Component {
 			selectedRows = parseInt( columns.toString().split('-') );
 		}
 
-
-		//let layoutOptions;
-		// const startlayoutOptions = [
-		// 	{ key: 'equal', col: 1, name: __( 'Row' ), icon: icons.row },
-		// 	{ key: 'equal', col: 2, name: __( 'Two: Equal' ), icon: icons.twocol },
-		// ];
-
-
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
@@ -84,7 +76,7 @@ export default class Inspector extends Component {
 					step={ 1 }
 				/>
 
-				<ButtonGroup aria-label={ __( 'Column Layout' ) }>
+				<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
 					{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col, layout } ) => (
 						<Tooltip text={ name }>
 							<Button
