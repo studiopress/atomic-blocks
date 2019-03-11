@@ -65,7 +65,7 @@ export default class Inspector extends Component {
 					value={ columns }
 					onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
 					min={ 1 }
-					max={ 4 }
+					max={ 6 }
 				/>
 				<RangeControl
 					label={ __( 'Layout Columns Gap', 'atomic-blocks' ) }

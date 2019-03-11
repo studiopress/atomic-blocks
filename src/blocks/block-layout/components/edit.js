@@ -77,7 +77,7 @@ export default class Edit extends Component {
 				name: __( '1 Column', 'atomic-blocks' ),
 				key: 'one-equal',
 				columns: 1,
-				icon: icons.row,
+				icon: icons.oneEqual,
 			},
 			{
 				name: __( '2 Columns', 'atomic-blocks' ),
@@ -120,7 +120,7 @@ export default class Edit extends Component {
 					<Placeholder
 						key="placeholder"
 						icon="welcome-widgets-menus"
-						label={ columns ? __( 'Select Column', 'atomic-blocks' ) : __( 'Select Column Layout', 'atomic-blocks' ) }
+						label={ columns ? __( 'Column Layout', 'atomic-blocks' ) : __( 'Column Number', 'atomic-blocks' ) }
 						instructions={ columns ? sprintf( __( 'Select a layout for this column.', 'atomic-blocks' ) ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
 						className={ 'ab-layout-selector-placeholder' }
 					>
