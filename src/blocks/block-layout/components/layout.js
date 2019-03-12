@@ -25,14 +25,14 @@ export default class Layout extends Component {
 				columns,
 				columnsGap,
 				align,
-				layoutClass,
+				layout,
 			}
 		} = this.props;
 
 		const className = classnames( [
 			this.props.className,
 			'ab-layout-columns-' + columns,
-			layoutClass,
+			layout,
 		], {
 			[ 'align' + align ]: align,
 		} )

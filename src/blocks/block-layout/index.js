@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import Edit from './components/edit';
 import Save from './components/save';
+import marginAttributes from '../../utils/components/margin/margin';
 
 
 // Internationalization
@@ -62,6 +63,7 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 		layoutClass: {
 			type: 'string',
 		},
+		...marginAttributes,
 	},
 
 	// Add alignment to block wrapper

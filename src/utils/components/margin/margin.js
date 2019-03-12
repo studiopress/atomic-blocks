@@ -2,7 +2,7 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { RangeControl } = wp.components;
 
-export default function Margin( props ) {
+export default function MarginSettings( props ) {
     const {
         // Margin top props
         marginTop,
@@ -97,7 +97,7 @@ export default function Margin( props ) {
                     max={ marginHorizontalMax }
                     onChange={ onChangeMarginHorizontal }
                 />
-            ) }
+			) }
         </Fragment>
     );
 }

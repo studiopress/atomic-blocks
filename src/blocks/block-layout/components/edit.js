@@ -147,13 +147,12 @@ export default class Edit extends Component {
 											</Button>
 										</div>
 									</Tooltip>
-
 								) ) }
 							</ButtonGroup>
 						:
 							<Fragment>
 								<ButtonGroup
-									aria-label={ __( 'Select Row Layout', 'atomic-blocks' ) } className="ab-layout-selector-group"
+									aria-label={ __( 'Select Column Layout', 'atomic-blocks' ) } className="ab-layout-selector-group"
 									>
 									{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
 										<Tooltip text={ name }>

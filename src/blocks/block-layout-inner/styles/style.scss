@@ -73,8 +73,12 @@
 	}
 }
 
-.wide-center {
-	grid-template-columns: 1fr 2fr 1fr !important;
+.ab-2-col-wideleft .ab-layout-column-wrap {
+	grid-template-columns: 2fr 1fr;
+}
+
+.ab-2-col-wideright .ab-layout-column-wrap {
+	grid-template-columns: 1fr 2fr;
 }
 
 .ab-layout-columns-3 .ab-layout-column-wrap {
@@ -83,6 +87,18 @@
 	@media only screen and (max-width: 600px) {
 		grid-template-columns: 1fr;
 	}
+}
+
+.ab-3-col-widecenter .ab-layout-column-wrap {
+	grid-template-columns: 1fr 2fr 1fr;
+}
+
+.ab-3-col-wideleft .ab-layout-column-wrap {
+	grid-template-columns: 2fr 1fr 1fr;
+}
+
+.ab-3-col-wideright .ab-layout-column-wrap {
+	grid-template-columns: 1fr 1fr 2fr;
 }
 
 .ab-layout-columns-4 .ab-layout-column-wrap {
@@ -99,6 +115,14 @@
 	@media only screen and (max-width: 600px) {
 		grid-template-columns: 1fr;
 	}
+}
+
+.ab-4-col-wideleft .ab-layout-column-wrap {
+	grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.ab-4-col-wideright .ab-layout-column-wrap {
+	grid-template-columns: 1fr 1fr 1fr 2fr;
 }
 
 /* Pricing column components */
