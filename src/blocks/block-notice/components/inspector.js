@@ -82,43 +82,42 @@ export default class Inspector extends Component {
 					value={ noticeDismiss }
 					onChange={ ( value ) => this.props.setAttributes( { noticeDismiss: value } ) }
 				/>
-
-				<PanelColorSettings
-					title={ __( 'Notice Color' ) }
-					colorValue={ noticeBackgroundColor }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: noticeBackgroundColor,
-						onChange: onChangeBackgroundColor,
-						colors: noticeColors,
-						label: __( 'Notice Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-
-				<PanelColorSettings
-					title={ __( 'Title Color' ) }
-					initialOpen={ false }
-					colorSettings = { [ {
-						value: noticeTitleColor,
-						onChange: onChangeTitleColor,
-						label: __( 'Title Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-
-				<PanelColorSettings
-					title={ __( 'Text Color' ) }
-					colorValue={ noticeTextColor }
-					initialOpen={ false }
-					colorSettings = { [ {
-						value: noticeTextColor,
-						onChange: onChangeTextColor,
-						label: __( 'Text Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
 			</PanelBody>
+			<PanelColorSettings
+				title={ __( 'Notice Color' ) }
+				colorValue={ noticeBackgroundColor }
+				initialOpen={ false }
+				colorSettings={ [ {
+					value: noticeBackgroundColor,
+					onChange: onChangeBackgroundColor,
+					colors: noticeColors,
+					label: __( 'Notice Color' ),
+				} ] }
+			>
+			</PanelColorSettings>
+
+			<PanelColorSettings
+				title={ __( 'Title Color' ) }
+				initialOpen={ false }
+				colorSettings = { [ {
+					value: noticeTitleColor,
+					onChange: onChangeTitleColor,
+					label: __( 'Title Color' ),
+				} ] }
+			>
+			</PanelColorSettings>
+
+			<PanelColorSettings
+				title={ __( 'Text Color' ) }
+				colorValue={ noticeTextColor }
+				initialOpen={ false }
+				colorSettings = { [ {
+					value: noticeTextColor,
+					onChange: onChangeTextColor,
+					label: __( 'Text Color' ),
+				} ] }
+			>
+			</PanelColorSettings>
 		</InspectorControls>
 		);
 	}
