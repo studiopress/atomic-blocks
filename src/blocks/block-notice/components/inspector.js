@@ -39,7 +39,7 @@ export default class Inspector extends Component {
 		// Notice dismiss options
 		const noticeDismissOptions = [
 			{ value: null, label: __( 'Always Show', 'atomic-blocks' ) },
-			{ value: 'ab-dismissable', label: __( 'Dismissable', 'atomic-blocks' ) },
+			{ value: 'ab-dismissable', label: __( 'Dismissible', 'atomic-blocks' ) },
 		];
 
 		// Notice colors
@@ -77,7 +77,7 @@ export default class Inspector extends Component {
 
 				<SelectControl
 					label={ __( 'Notice Display', 'atomic-blocks' ) }
-					description={ __( 'Do you want the message to always show or dismissable?', 'atomic-blocks' ) }
+					description={ __( 'Do you want the message to always show or dismissible?', 'atomic-blocks' ) }
 					options={ noticeDismissOptions }
 					value={ noticeDismiss }
 					onChange={ ( value ) => this.props.setAttributes( { noticeDismiss: value } ) }
