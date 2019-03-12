@@ -38,8 +38,8 @@ export default class Inspector extends Component {
 
 		// Cite Alignment Options
 		const citeAlignOptions = [
-			{ value: 'left-aligned', label: __( 'Left Aligned' ) },
-			{ value: 'right-aligned', label: __( 'Right Aligned' ) },
+			{ value: 'left-aligned', label: __( 'Left Aligned', 'atomic-blocks' ) },
+			{ value: 'right-aligned', label: __( 'Right Aligned', 'atomic-blocks' ) },
 		];
 
 		// Setup the attributes
@@ -53,7 +53,7 @@ export default class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Font Size' ) }
+					label={ __( 'Font Size', 'atomic-blocks' ) }
 					value={ testimonialFontSize }
 					onChange={ ( value ) => this.props.setAttributes( { testimonialFontSize: value } ) }
 					min={ 14 }
@@ -62,31 +62,31 @@ export default class Inspector extends Component {
 				/>
 
 				<SelectControl
-					label={ __( 'Cite Alignment' ) }
-					description={ __( 'Left or right align the cite name and title.' ) }
+					label={ __( 'Cite Alignment', 'atomic-blocks' ) }
+					description={ __( 'Left or right align the cite name and title.', 'atomic-blocks' ) }
 					options={ citeAlignOptions }
 					value={ testimonialCiteAlign }
 					onChange={ ( value ) => this.props.setAttributes( { testimonialCiteAlign: value } ) }
 				/>
 			</PanelBody>
 			<PanelColorSettings
-				title={ __( 'Background Color' ) }
+				title={ __( 'Background Color', 'atomic-blocks' ) }
 				initialOpen={ false }
 				colorSettings={ [ {
 					value: testimonialBackgroundColor,
 					onChange: onChangeBackgroundColor,
-					label: __( 'Background Color' ),
+					label: __( 'Background Color', 'atomic-blocks' ),
 				} ] }
 			>
 			</PanelColorSettings>
 
 			<PanelColorSettings
-				title={ __( 'Text Color' ) }
+				title={ __( 'Text Color', 'atomic-blocks' ) }
 				initialOpen={ false }
 				colorSettings={ [ {
 					value: testimonialTextColor,
 					onChange: onChangeTextColor,
-					label: __( 'Text Color' ),
+					label: __( 'Text Color', 'atomic-blocks' ),
 				} ] }
 			>
 			</PanelColorSettings>
