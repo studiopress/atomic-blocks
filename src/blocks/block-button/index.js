@@ -220,6 +220,7 @@ registerBlockType( 'lsx-blocks/lsx-button', {
                             data-off-txt-hover={ textDefaultColour }
 							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-on-bg-hover');this.style.color=this.getAttribute('data-on-txt-hover');"
 							onMouseLeave="this.style.backgroundColor=this.getAttribute('data-off-bg-hover');this.style.color=this.getAttribute('data-off-txt-hover');"
+							rel="noopener noreferrer"
 						>
 							<RichText.Content
 								value={ buttonText }

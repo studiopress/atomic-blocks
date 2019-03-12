@@ -407,7 +407,7 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 					{ bannerImgURL && (
 						<picture className="lazyload">
 							<source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } media="(min-width: 100rem)" srcSet={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=2048:*' } />
-							<source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*' } media="(min-width: 61.25rem)" srcSet={ bannerImgURL  + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*'} />
+							<source data-srcset={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*' } media="(min-width: 61.25rem)" srcSet={ bannerImgURL + '?crop=1.00xw:0.887xh;0,0.108xh&resize=1200:*' } />
 							<source data-srcset={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=768:*' } media="(min-width: 30rem)" srcSet={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=768:*' } />
 							<img title={ bannerName } className="lazyload" data-src={ bannerImgURL + '?crop=0.851xw:1.00xh;0.0753xw,0&resize=640:*' } src={ bannerImgURL } alt={ bannerTitle } />
 						</picture>
@@ -487,6 +487,7 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 										data-offhover={ buttonBackgroundColor }
 										onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"
 										onMouseLeave="this.style.backgroundColor=this.getAttribute('data-offhover');"
+										rel="noopener noreferrer"
 									>
 										<RichText.Content
 											value={ buttonText }
