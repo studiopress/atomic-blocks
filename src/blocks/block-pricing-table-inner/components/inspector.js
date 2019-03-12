@@ -57,7 +57,7 @@ export default class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Pricing Column Padding' ) }
+					label={ __( 'Pricing Column Padding', 'atomic-blocks' ) }
 					value={ padding }
 					onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
 					min={ 0 }
@@ -65,7 +65,7 @@ export default class Inspector extends Component {
 					step={ 1 }
 				/>
 				<RangeControl
-					label={ __( 'Pricing Column Border' ) }
+					label={ __( 'Pricing Column Border', 'atomic-blocks' ) }
 					value={ borderWidth }
 					onChange={ ( value ) => this.props.setAttributes( { borderWidth: value } ) }
 					min={ 0 }
@@ -73,36 +73,36 @@ export default class Inspector extends Component {
 					step={ 1 }
 				/>
 				<RangeControl
-					label={ __( 'Pricing Column Border Radius' ) }
+					label={ __( 'Pricing Column Border Radius', 'atomic-blocks' ) }
 					value={ borderRadius }
 					onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
 					min={ 0 }
 					max={ 20 }
 					step={ 1 }
 				/>
-				{ ( borderWidth > 0 ) && (
+			</PanelBody>
+			{ ( borderWidth > 0 ) && (
 				<PanelColorSettings
-					title={ __( 'Pricing Column Border Color' ) }
+					title={ __( 'Pricing Column Border Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: borderColor,
 						onChange: onChangeBorderColor,
-						label: __( 'Border Color' ),
+						label: __( 'Border Color', 'atomic-blocks' ),
 					} ] }
 				>
 				</PanelColorSettings>
 				) }
-				<PanelColorSettings
-					title={ __( 'Pricing Column Background Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: backgroundColor,
-						onChange: onChangeBackgroundColor,
-						label: __( 'Background Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-			</PanelBody>
+			<PanelColorSettings
+				title={ __( 'Pricing Column Background Color', 'atomic-blocks' ) }
+				initialOpen={ false }
+				colorSettings={ [ {
+					value: backgroundColor,
+					onChange: onChangeBackgroundColor,
+					label: __( 'Background Color', 'atomic-blocks' ),
+				} ] }
+			>
+			</PanelColorSettings>
 		</InspectorControls>
 		);
 	}
