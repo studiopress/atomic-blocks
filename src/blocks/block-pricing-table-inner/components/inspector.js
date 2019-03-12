@@ -80,7 +80,8 @@ export default class Inspector extends Component {
 					max={ 20 }
 					step={ 1 }
 				/>
-				{ ( borderWidth > 0 ) && (
+			</PanelBody>
+			{ ( borderWidth > 0 ) && (
 				<PanelColorSettings
 					title={ __( 'Pricing Column Border Color' ) }
 					initialOpen={ false }
@@ -92,17 +93,16 @@ export default class Inspector extends Component {
 				>
 				</PanelColorSettings>
 				) }
-				<PanelColorSettings
-					title={ __( 'Pricing Column Background Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: backgroundColor,
-						onChange: onChangeBackgroundColor,
-						label: __( 'Background Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-			</PanelBody>
+			<PanelColorSettings
+				title={ __( 'Pricing Column Background Color' ) }
+				initialOpen={ false }
+				colorSettings={ [ {
+					value: backgroundColor,
+					onChange: onChangeBackgroundColor,
+					label: __( 'Background Color' ),
+				} ] }
+			>
+			</PanelColorSettings>
 		</InspectorControls>
 		);
 	}
