@@ -68,29 +68,28 @@ export default class Inspector extends Component {
 					value={ testimonialCiteAlign }
 					onChange={ ( value ) => this.props.setAttributes( { testimonialCiteAlign: value } ) }
 				/>
-
-				<PanelColorSettings
-					title={ __( 'Background Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: testimonialBackgroundColor,
-						onChange: onChangeBackgroundColor,
-						label: __( 'Background Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-
-				<PanelColorSettings
-					title={ __( 'Text Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: testimonialTextColor,
-						onChange: onChangeTextColor,
-						label: __( 'Text Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
 			</PanelBody>
+			<PanelColorSettings
+				title={ __( 'Background Color' ) }
+				initialOpen={ false }
+				colorSettings={ [ {
+					value: testimonialBackgroundColor,
+					onChange: onChangeBackgroundColor,
+					label: __( 'Background Color' ),
+				} ] }
+			>
+			</PanelColorSettings>
+
+			<PanelColorSettings
+				title={ __( 'Text Color' ) }
+				initialOpen={ false }
+				colorSettings={ [ {
+					value: testimonialTextColor,
+					onChange: onChangeTextColor,
+					label: __( 'Text Color' ),
+				} ] }
+			>
+			</PanelColorSettings>
 		</InspectorControls>
 		);
 	}
