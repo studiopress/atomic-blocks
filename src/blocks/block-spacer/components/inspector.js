@@ -40,7 +40,16 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = this.props.attributes;
+		const {
+			attributes: {
+				spacerHeight,
+				spacerDivider,
+				spacerDividerStyle,
+				spacerDividerColor,
+				spacerDividerHeight
+			},
+			setAttributes
+		} = this.props;
 
 		// Button size values
 		const spacerStyleOptions = [
