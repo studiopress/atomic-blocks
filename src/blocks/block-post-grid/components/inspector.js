@@ -47,6 +47,7 @@ export default class Inspector extends Component {
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
 		this.toggleDisplayPostTitle = this.toggleDisplayPostTitle.bind( this );
+		this.toggleDisplaySectionTitle = this.toggleDisplaySectionTitle.bind( this );
         this.toggleExcludeSticky = this.toggleExcludeSticky.bind( this );
 	}
 
@@ -92,6 +93,13 @@ export default class Inspector extends Component {
 		setAttributes( { displayPostTitle: ! displayPostTitle } );
 	}
 
+	toggleDisplaySectionTitle() {
+		const { displaySectionTitle } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displaySectionTitle: ! displaySectionTitle } );
+	}
+
 	toggleExcludeSticky() {
 		const { excludeSticky } = this.props.attributes;
 		const { setAttributes } = this.props;
@@ -115,7 +123,8 @@ export default class Inspector extends Component {
 			displayPostAuthor,
 			displayPostImage,
 			displayPostLink,
-            displayPostTitle,
+			displayPostTitle,
+			displaySectionTitle,
 			excludeSticky,
 			postLayout,
 			columns,
@@ -223,12 +232,19 @@ export default class Inspector extends Component {
                     title={ __( 'Post and Page Grid Content', 'atomic-blocks' ) }
                     initialOpen={ false }
                 >
-                    <TextControl
-                        label={ __( 'Section Title', 'atomic-blocks' ) }
-                        type="text"
-                        value={ sectionTitle }
-                        onChange={ ( value ) => this.props.setAttributes( { sectionTitle: value } ) }
-                    />
+					<ToggleControl
+						label={ __( 'Display Section Title', 'atomic-blocks' ) }
+						checked={ displaySectionTitle }
+						onChange={ this.toggleDisplaySectionTitle }
+					/>
+					{ displaySectionTitle &&
+						<TextControl
+							label={ __( 'Section Title', 'atomic-blocks' ) }
+							type="text"
+							value={ sectionTitle }
+							onChange={ ( value ) => this.props.setAttributes( { sectionTitle: value } ) }
+						/>
+					}
                     <ToggleControl
                         label={ __( 'Display Featured Image', 'atomic-blocks' ) }
                         checked={ displayPostImage }
