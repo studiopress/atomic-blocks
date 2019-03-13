@@ -1,7 +1,5 @@
 # LSX Blocks
 
-## LSX Blocks for the new Gutenberg Block Editor.
-
 The new Gutenberg editor is here, and with it comes the new block editor. 
 
 We have built these content blocks so you can simply drag and drop them into your editor, configure to your wishes and you are done! 
