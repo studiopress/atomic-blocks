@@ -182,7 +182,7 @@ class LatestPostsBlock extends Component {
 								}
 
 								<div class="ab-block-post-grid-text">
-									<header>
+									<header class="ab-block-post-grid-header">
 										{ displayPostTitle &&
 											<h2 class="ab-block-post-grid-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></h2>
 										}
@@ -208,7 +208,7 @@ class LatestPostsBlock extends Component {
 										}
 
 										{ displayPostLink &&
-											<p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+											<p><a class="ab-block-post-grid-more-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
 										}
 									</div>
 								</div>
