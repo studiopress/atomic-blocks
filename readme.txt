@@ -101,3 +101,8 @@ The LSX Blocks plugin was developed with the use of Atomic Blocks https://atomic
 **1.0**
 * Initial release.
 
+== Upgrade Notice ==
+
+**1.0.1**
+* Block bug fix.
+
