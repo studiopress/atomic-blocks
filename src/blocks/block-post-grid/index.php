@@ -13,6 +13,13 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 	$categories = isset( $attributes['categories'] ) ? $attributes['categories'] : '';
 
+	// Exclude sticky posts
+	if ( isset( $attributes['excludeSticky'] ) && $attributes['excludeSticky'] ) {
+		$sticky = get_option( 'sticky_posts' );
+	} else {
+		$sticky = null;
+	}
+
 	$recent_posts = wp_get_recent_posts( array(
 		'numberposts' => $attributes['postsToShow'],
 		'post_status' => 'publish',
@@ -20,7 +27,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 		'orderby' => $attributes['orderBy'],
 		'category' => $categories,
 		'offset' => $attributes['offset'],
-		'post__not_in' => get_option('sticky_posts'),
+		'post__not_in' => $sticky,
 		'post_type' => $attributes['postType'],
 	), 'OBJECT' );
 
@@ -80,7 +87,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			);
 
 				$list_items_markup .= sprintf(
-					'<header>'
+					'<header class="ab-block-post-grid-header">'
 				);
 
 					// Get the post title
@@ -156,7 +163,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					// Get the read more link
 					if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 						$list_items_markup .= sprintf(
-							'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s <span class="screen-reader-text">%3$s</span></a></p>',
+							'<p><a class="ab-block-post-grid-more-link ab-text-link" href="%1$s" rel="bookmark">%2$s <span class="screen-reader-text">%3$s</span></a></p>',
 							esc_url( get_permalink( $post_id ) ),
 							esc_html( $attributes['readMoreText'] ),
 							esc_html( $title )
