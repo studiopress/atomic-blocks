@@ -4,12 +4,14 @@
 
 // Setup the block
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const {
+	Component,
+	Fragment,
+} = wp.element;
 
 // Import block components
 const {
   InspectorControls,
-  BlockDescription,
   ColorPalette,
   PanelColorSettings,
   MediaUpload,
@@ -125,8 +127,11 @@ export default class Inspector extends Component {
 			readMoreText,
 			offset,
             excerptLength,
-            postType,
-            sectionTitle,
+			postType,
+			sectionTag,
+			sectionTitle,
+			sectionTitleTag,
+			postTitleTag,
 		} = attributes;
 
 		// Thumbnail options
@@ -135,10 +140,31 @@ export default class Inspector extends Component {
 			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) },
         ];
 
-        // Thumbnail options
+        // Post type options
 		const postTypeOptions = [
 			{ value: 'post', label: __( 'Post', 'atomic-blocks' ) },
 			{ value: 'page', label: __( 'Page', 'atomic-blocks' ) },
+		];
+
+		// Section title tags
+		const sectionTags = [
+			{ value: 'div', label: __( 'div', 'atomic-blocks' ) },
+			{ value: 'header', label: __( 'header', 'atomic-blocks' ) },
+			{ value: 'section', label: __( 'section', 'atomic-blocks' ) },
+			{ value: 'article', label: __( 'article', 'atomic-blocks' ) },
+			{ value: 'main', label: __( 'main', 'atomic-blocks' ) },
+			{ value: 'aside', label: __( 'aside', 'atomic-blocks' ) },
+			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) },
+        ];
+
+		// Section title tags
+		const sectionTitleTags = [
+			{ value: 'h1', label: __( 'H1', 'atomic-blocks' ) },
+			{ value: 'h2', label: __( 'H2', 'atomic-blocks' ) },
+			{ value: 'h3', label: __( 'H3', 'atomic-blocks' ) },
+			{ value: 'h4', label: __( 'H4', 'atomic-blocks' ) },
+			{ value: 'h5', label: __( 'H5', 'atomic-blocks' ) },
+			{ value: 'h6', label: __( 'H6', 'atomic-blocks' ) },
         ];
 
         // Check for posts
@@ -263,6 +289,37 @@ export default class Inspector extends Component {
                         />
                     }
                 </PanelBody>
+				<PanelBody
+                    title={ __( 'Post and Page Grid Markup', 'atomic-blocks' ) }
+					initialOpen={ false }
+					className="ab-block-post-grid-markup-settings"
+                >
+					<SelectControl
+						label={ __( 'Post Grid Section Tag', 'atomic-blocks' ) }
+						options={ sectionTags }
+						value={ sectionTag }
+						onChange={ ( value ) => this.props.setAttributes( { sectionTag: value } ) }
+						help={ __( 'Change the post grid section tag to match your content hierarchy.', 'atomic-blocks' ) }
+					/>
+					{ sectionTitle &&
+						<SelectControl
+							label={ __( 'Section Title Heading Tag', 'atomic-blocks' ) }
+							options={ sectionTitleTags }
+							value={ sectionTitleTag }
+							onChange={ ( value ) => this.props.setAttributes( { sectionTitleTag: value } ) }
+							help={ __( 'Change the post/page section title tag to match your content hierarchy.', 'atomic-blocks' ) }
+						/>
+                    }
+					{ displayPostTitle &&
+                        <SelectControl
+                            label={ __( 'Post Title Heading Tag', 'atomic-blocks' ) }
+                            options={ sectionTitleTags }
+                            value={ postTitleTag }
+							onChange={ ( value ) => this.props.setAttributes( { postTitleTag: value } ) }
+							help={ __( 'Change the post/page title tag to match your content hierarchy.', 'atomic-blocks' ) }
+                        />
+					}
+				</PanelBody>
             </InspectorControls>
 		);
 	}

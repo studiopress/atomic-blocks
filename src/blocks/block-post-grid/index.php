@@ -99,10 +99,18 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					}
 
 					if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
+
+						if ( isset( $attributes['postTitleTag'] ) ) {
+							$post_title_tag = $attributes['postTitleTag'];
+						} else {
+							$post_title_tag = 'h2';
+						}
+
 						$list_items_markup .= sprintf(
-							'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+							'<%3$s class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></%3$s>',
 							esc_url( get_permalink( $post_id ) ),
-							esc_html( $title )
+							esc_html( $title ),
+							esc_attr( $post_title_tag )
 						);
 					}
 
@@ -209,18 +217,32 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 	// Post grid section title
 	if ( ! empty( $attributes['sectionTitle'] ) ) {
-		$section_title = '<h3>' . $attributes['sectionTitle'] . '</h3>';
+		if ( isset( $attributes['sectionTitleTag'] ) ) {
+			$section_title_tag = $attributes['sectionTitleTag'];
+		} else {
+			$section_title_tag = 'h2';
+		}
+
+		$section_title = '<' . esc_attr( $section_title_tag ) . '>' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 	} else {
 		$section_title = null;
 	}
 
+	// Post grid section tag
+	if ( isset( $attributes['sectionTag'] ) ) {
+		$section_tag = $attributes['sectionTag'];
+	} else {
+		$section_tag = 'section';
+	}
+
 	// Output the post markup
 	$block_content = sprintf(
-		'<section class="%1$s">%4$s<div class="%2$s">%3$s</div></section>',
+		'<%5$s class="%1$s">%4$s<div class="%2$s">%3$s</div></%4$s>',
 		esc_attr( $class ),
 		esc_attr( $grid_class ),
 		$list_items_markup,
-		$section_title
+		$section_title,
+		$section_tag
 	);
 
 	return $block_content;
@@ -277,6 +299,9 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'type' => 'boolean',
 				'default' => false,
 			),
+			'postTitleTag' => array(
+				'type' => 'string',
+			),
 			'excludeSticky' => array(
 				'type' => 'boolean',
 				'default' => false,
@@ -325,7 +350,14 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => 'post',
 			),
+			'sectionTag' => array(
+				'type' => 'string',
+				'default' => 'section',
+			),
 			'sectionTitle' => array(
+				'type' => 'string',
+			),
+			'sectionTitleTag' => array(
 				'type' => 'string',
 			),
 		),
@@ -341,7 +373,7 @@ add_action( 'init', 'atomic_blocks_register_block_core_latest_posts' );
 function atomic_blocks_register_rest_fields() {
 	// Add landscape featured image source
 	register_rest_field(
-		'post',
+		array( 'post', 'page' ),
 		'featured_image_src',
 		array(
 			'get_callback' => 'atomic_blocks_get_image_src_landscape',
@@ -352,7 +384,7 @@ function atomic_blocks_register_rest_fields() {
 
 	// Add square featured image source
 	register_rest_field(
-		'post',
+		array( 'post', 'page' ),
 		'featured_image_src_square',
 		array(
 			'get_callback' => 'atomic_blocks_get_image_src_square',

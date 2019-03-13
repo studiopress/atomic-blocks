@@ -72,7 +72,10 @@ class LatestPostsBlock extends Component {
 			offset,
 			excerptLength,
 			postType,
+			sectionTag,
 			sectionTitle,
+			sectionTitleTag,
+			postTitleTag,
 		} = attributes;
 
 		// Check the image orientation
@@ -124,6 +127,15 @@ class LatestPostsBlock extends Component {
 			},
 		];
 
+		// Get the section tag
+		const SectionTag = sectionTag ? sectionTag : "section"
+
+		// Get the section title tag
+		const SectionTitleTag = sectionTitleTag ? sectionTitleTag : "h2"
+
+		// Get the post title tag
+		const PostTag = postTitleTag ? postTitleTag : "h3"
+
 		return (
 			<Fragment>
 				<Inspector
@@ -139,14 +151,14 @@ class LatestPostsBlock extends Component {
 					/>
 					<Toolbar controls={ layoutControls } />
 				</BlockControls>
-				<div
+				<SectionTag
 					className={ classnames(
 						this.props.className,
 						'ab-block-post-grid',
 					) }
 				>
 					{ sectionTitle &&
-						<h3 class="ab-post-grid-section-title">{ sectionTitle }</h3>
+						<SectionTitleTag class="ab-post-grid-section-title">{ sectionTitle }</SectionTitleTag>
 					}
 
 					<div
@@ -184,7 +196,7 @@ class LatestPostsBlock extends Component {
 								<div class="ab-block-post-grid-text">
 									<header class="ab-block-post-grid-header">
 										{ displayPostTitle &&
-											<h2 class="ab-block-post-grid-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></h2>
+											<PostTag class="ab-block-post-grid-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></PostTag>
 										}
 
 										{ isPost &&
@@ -215,7 +227,7 @@ class LatestPostsBlock extends Component {
 							</article>
 						) }
 					</div>
-				</div>
+				</SectionTag>
 			</Fragment>
 		);
 	}
