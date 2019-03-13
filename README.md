@@ -9,10 +9,10 @@ Reminder: To make use of the LSX Blocks plugin, remember to have the [LSX Theme]
 ## Getting Started with LSX Blocks 
 
 * Login to the backend of your Wordpress website.
-* Navigate to the "Plugins" item in your dashboard
-* Select "Add New"
-* Search for "LSX Blocks" in the plugin search bar 
-* Once you see the plugin, select "Install"
+* Navigate to the "Plugins" item in your dashboard.
+* Select "Add New".
+* Search for "LSX Blocks" in the plugin search bar.
+* Once you see the plugin, select "Install".
 * Activate the plugin. 
 * That's it, you can now make use of the LSX Blocks when building a new post or page! 
 
