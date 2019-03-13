@@ -30,7 +30,7 @@ We have built these content blocks so you can simply drag and drop them into you
 
 = It's free, and always will be. =
 
-We’re firm believers in open source - that’s why we’re releasing the LSX Blocks plugin for free, forever. We offer free support on the [LSX Blocks support forums](https://wordpress.org/support/plugin/lsx-blocks).
+We’re firm believers in open source - that’s why we’re releasing the LSX Blocks plugin for free, forever. Check out our support forums, or post a question for free support! [LSX Blocks support forums](https://wordpress.org/support/plugin/lsx-blocks).
 
 = What do I need in order to run LSX Blocks? =
 
