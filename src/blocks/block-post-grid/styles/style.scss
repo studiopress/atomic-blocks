@@ -166,6 +166,10 @@
 			}
 		}
 
+		article:not(.has-post-thumbnail) {
+			grid-template-columns: 1fr;
+		}
+
 		.ab-block-post-grid-image {
 			margin-bottom: 0;
 

@@ -41,14 +41,15 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			// Get the post thumbnail
 			$post_thumb_id = get_post_thumbnail_id( $post_id );
 
-			// Setup a post thumbnail class
-			if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
-				$post_thumb_class = 'has-thumb';
+			$post_classes = 'ab-post-grid-item';
+
+			if ( is_sticky( $post_id ) ) {
+				$post_classes .= ' sticky';
 			} else {
-				$post_thumb_class = 'no-thumb';
+				$post_classes .= null;
 			}
 
-			$post_classes = join( ' ', get_post_class( $post_thumb_class, $post->ID ) );
+			$post_classes = join( ' ', get_post_class( $post_classes, $post->ID ) );
 
 			// Start the markup for the post
 			$list_items_markup .= sprintf(
