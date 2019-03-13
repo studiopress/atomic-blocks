@@ -2,7 +2,7 @@
 Contributors: feedmymedia
 Donate link: https://www.lsdev.biz/
 Tags: lsx, gutenberg, blocks
-Requires at least: 4.3
+Requires at least: 5.1.1
 Tested up to: 5.0
 Requires PHP: 7.0
 Stable tag: 1.0.1
@@ -65,4 +65,22 @@ The LSX Blocks plugin was developed with the use of Atomic Blocks https://atomic
 
 == Screenshots ==
 
-1.
+1. Accordion Block
+2. Author Profile Block
+3. Banner Block
+4. Button Blocks
+5. Card Block
+6. Container Block
+7. CTA Block
+8. Drop Cap Block
+9. Notice Block
+10. Post Carousel Block
+11. Post Grid Block
+12. Sharing Block
+13. Spacer Block
+
+== Changelog ==
+
+**1.0**
+* Initial release.
+
