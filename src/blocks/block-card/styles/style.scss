@@ -94,6 +94,13 @@
 		// height: 100%;
 		// width: 100%;
 		// z-index: 5;
+		text-align: center;
+		.lsx-card-avatar {
+			&[src$=".svg"] {
+				max-width: 90px;
+				padding-top: 30px;
+			}
+		}
 	}
 
 	.lsx-card-text:empty,
@@ -104,7 +111,7 @@
 
 	.lsx-card-image-wrap {
 		width: 100%;
-		background: #ddd;
+		background: transparent;
 		position: relative;
 		width: 100%;
 
@@ -176,6 +183,13 @@
 			left: 0;
 			opacity: 1 !important;
 			height: auto;
+		}
+	}
+	.card-avatar {
+		&[src$=".svg"] {
+			max-width: 90px;
+			padding-top: 30px;
+			text-align: center;
 		}
 	}
 

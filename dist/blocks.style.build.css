@@ -2195,13 +2195,18 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     opacity: .8;
     padding-top: 5px;
     margin-bottom: 0; }
+  .lsx-block-card .lsx-card-image-square {
+    text-align: center; }
+    .lsx-block-card .lsx-card-image-square .lsx-card-avatar[src$=".svg"] {
+      max-width: 90px;
+      padding-top: 30px; }
   .lsx-block-card .lsx-card-text:empty,
   .lsx-block-card .lsx-card-title:empty,
   .lsx-block-card .lsx-card-name:empty {
     display: none; }
   .lsx-block-card .lsx-card-image-wrap {
     width: 100%;
-    background: #ddd;
+    background: transparent;
     position: relative;
     width: 100%; }
     .lsx-block-card .lsx-card-image-wrap button {
@@ -2249,6 +2254,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   left: 0;
   opacity: 1 !important;
   height: auto; }
+
+#editor .lsx-has-avatar .card-avatar[src$=".svg"] {
+  max-width: 90px;
+  padding-top: 30px;
+  text-align: center; }
 
 /**
  * Button styles
