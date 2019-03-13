@@ -4,7 +4,10 @@
 
 // Setup the block
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const {
+	Component,
+	Fragment,
+ } = wp.element;
 
 // Import block components
 const {
@@ -80,7 +83,9 @@ export default class Inspector extends Component {
 					max={ 20 }
 					step={ 1 }
 				/>
-				{ ( borderWidth > 0 ) && (
+			</PanelBody>
+			<Fragment>
+			{ ( borderWidth > 0 ) && (
 				<PanelColorSettings
 					title={ __( 'Layout Column Border Color' ) }
 					initialOpen={ false }
@@ -102,7 +107,7 @@ export default class Inspector extends Component {
 					} ] }
 				>
 				</PanelColorSettings>
-			</PanelBody>
+			</Fragment>
 		</InspectorControls>
 		);
 	}

@@ -31,7 +31,8 @@ const {
 	ButtonGroup,
 	Button,
 	Tooltip,
-	Dashicon
+	Dashicon,
+	ToggleControl,
 } = wp.components;
 
 /**
@@ -56,11 +57,18 @@ export default class Inspector extends Component {
 				marginRight,
 				marginBottom,
 				marginLeft,
+				responsiveToggle,
 			},
 			isSelected,
 			className,
 			setAttributes
 		} = this.props;
+
+		let selectedRows = 1;
+
+		if ( columns ) {
+			selectedRows = parseInt( columns.toString().split('-') );
+		}
 
 		return (
 		<InspectorControls key="inspector">
@@ -68,6 +76,26 @@ export default class Inspector extends Component {
 				{ layout &&
 					// Show the column settings once a layout is selected
 					<PanelBody>
+						<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
+							{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
+								<Tooltip text={ name }>
+									<Button
+										key={ key }
+										className="ab-layout-selector-button"
+										isSmall
+										onClick={ () => {
+											setAttributes( {
+												layout: key,
+											} );
+											this.setState( { 'selectLayout' : false } );
+										} }
+									>
+										{ icon }
+									</Button>
+								</Tooltip>
+							) ) }
+						</ButtonGroup>
+
 						{/* <RangeControl
 							label={ __( 'Layout Columns', 'atomic-blocks' ) }
 							value={ columns }
@@ -82,6 +110,11 @@ export default class Inspector extends Component {
 							min={ 0 }
 							max={ 5 }
 							step={ 1 }
+						/>
+						<ToggleControl
+							label={ __( 'Responsive Columns', 'atomic-blocks' ) }
+							checked={ responsiveToggle }
+							onChange={ () => this.props.setAttributes( { responsiveToggle: ! responsiveToggle } ) }
 						/>
 					</PanelBody>
 				}

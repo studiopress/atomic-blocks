@@ -63,6 +63,10 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 		layoutClass: {
 			type: 'string',
 		},
+		responsiveToggle: {
+			type: 'boolean',
+			default: true,
+		},
 		...marginAttributes,
 	},
 
