@@ -12,21 +12,21 @@ The new Gutenberg editor is here, and with it comes the new block editor.
 
 We have built these content blocks so you can simply drag and drop them into your editor, configure to your wishes and you are done!
 
-= Blocks List =
+= LSX Blocks currently includes the following blocks: =
 
-1. Accordion Block
-2. Author Profile Block
-3. Banner Block
-4. Button Blocks
-5. Card Block
-6. Container Block
-7. CTA Block
-8. Drop Cap Block
-9. Notice Block
-10. Post Carousel Block
-11. Post Grid Block
-12. Sharing Block
-13. Spacer Block
+* Post Grid Block - [Block Demo](https://lsx.lsdev.biz/blocks/post-grid-block/)
+* Post Carousel Block - [Block Demo](https://lsx.lsdev.biz/blocks/post-carousel-block/)
+* Container Block - [Block Demo](https://lsx.lsdev.biz/blocks/container-block/)
+* Inline Notice Block - [Block Demo](https://lsx.lsdev.biz/blocks/notice-block/)
+* Accordion Block - [Block Demo](https://lsx.lsdev.biz/blocks/accordion-block/)
+* Share Icons Block - [Block Demo](https://lsx.lsdev.biz/blocks/sharing-icons-block/)
+* Call-To-Action Block - [Block Demo](https://lsx.lsdev.biz/blocks/call-to-action-block/)
+* Customizable Button Block - [Block Demo](https://lsx.lsdev.biz/blocks/button-block/)
+* Spacer & Divider Block - [Block Demo](https://lsx.lsdev.biz/blocks/divider-block/)
+* Author Profile Block - [Block Demo](https://lsx.lsdev.biz/blocks/author-profile-block/)
+* Drop Cap Block - [Block Demo](https://lsx.lsdev.biz/blocks/drop-cap-block/)
+* Card Block - [Block Demo](https://lsx.lsdev.biz/blocks/card-block/)
+* Hero Image (Banner) - [Block Demo](https://lsx.lsdev.biz/blocks/hero-image-block/)
 
 = It's free, and always will be. =
 
@@ -76,7 +76,6 @@ Yes you can! Join in on our [GitHub repository](https://github.com/lightspeeddev
 = Credit =
 
 The LSX Blocks plugin was developed with the use of Atomic Blocks https://atomicblocks.com
-
 
 == Screenshots ==
 
