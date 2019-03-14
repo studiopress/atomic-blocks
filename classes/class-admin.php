@@ -79,8 +79,8 @@ class Admin {
 		<p>
 		<div class="prfx-row-content">
 			<label for="disable-title-checkbox">
-				<input type="checkbox" name="lsx_disable_title" id="disable-title-checkbox" value="yes" <?php if ( isset ( $prfx_stored_meta['lsx_disable_title'] ) ) checked( $prfx_stored_meta['lsx_disable_title'][0], 'yes' ); ?> />
-				<?php _e( 'Hide the title', 'lsx-blocks' )?>
+				<input type="checkbox" name="lsx_disable_title" id="disable-title-checkbox" value="yes" <?php if ( isset( $prfx_stored_meta['lsx_disable_title'] ) ) checked( $prfx_stored_meta['lsx_disable_title'][0], 'yes' ); ?> />
+				<?php esc_html_e( 'Hide the title', 'lsx-blocks' ); ?>
 			</label>
 
 		</div>
@@ -97,15 +97,15 @@ class Admin {
 		// Checks save status - overcome autosave, etc.
 		$is_autosave = wp_is_post_autosave( $post_id );
 		$is_revision = wp_is_post_revision( $post_id );
-		$is_valid_nonce = ( isset( $_POST[ 'lsx_blocks_disable_title_nonce' ] ) && wp_verify_nonce( $_POST[ 'lsx_blocks_disable_title_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+		$is_valid_nonce = ( isset( $_POST['lsx_blocks_disable_title_nonce'] ) && wp_verify_nonce( $_POST['lsx_blocks_disable_title_nonce'], basename( __FILE__ ) ) ) ? 'true' : 'false';
 
 		// Exits script depending on save status
-		if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+		if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
 			return;
 		}
 
 		// Checks for input and saves - save checked as yes and unchecked at no
-		if( isset( $_POST[ 'lsx_disable_title' ] ) ) {
+		if ( isset( $_POST['lsx_disable_title'] ) ) {
 			update_post_meta( $post_id, 'lsx_disable_title', 'yes' );
 		} else {
 			update_post_meta( $post_id, 'lsx_disable_title', 'no' );

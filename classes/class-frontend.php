@@ -35,8 +35,8 @@ class Frontend {
 	private function __construct() {
 		add_action( 'body_class', array( $this, 'banner_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
-		add_filter( 'lsx_page_banner_disable', array( $this, 'disable_lsx_page_title' ));
-		add_filter( 'lsx_global_header_disable', array( $this, 'disable_lsx_page_title' ));
+		add_filter( 'lsx_page_banner_disable', array( $this, 'disable_lsx_page_title' ) );
+		add_filter( 'lsx_global_header_disable', array( $this, 'disable_lsx_page_title' ) );
 	}
 
 	/**
