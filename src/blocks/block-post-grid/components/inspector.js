@@ -168,7 +168,6 @@ export default class Inspector extends Component {
 
 		// Section title tags
 		const sectionTitleTags = [
-			{ value: 'h1', label: __( 'H1', 'atomic-blocks' ) },
 			{ value: 'h2', label: __( 'H2', 'atomic-blocks' ) },
 			{ value: 'h3', label: __( 'H3', 'atomic-blocks' ) },
 			{ value: 'h4', label: __( 'H4', 'atomic-blocks' ) },
