@@ -57,7 +57,7 @@
 		text-decoration: none;
 	}
 
-	header h2 {
+	header .ab-block-post-grid-title {
 		margin-top: 0;
 		margin-bottom: 15px;
 		font-size: 28px;
@@ -65,12 +65,10 @@
 
 		a {
 			color: $black;
-			box-shadow: none;
-			transition: .3s ease;
 			text-decoration: none;
 
 			&:hover {
-				box-shadow: inset 0 -2px 0;
+				text-decoration: underline;
 				color: inherit;
 			}
 		}
@@ -97,14 +95,12 @@
 	}
 
 	.ab-block-post-grid-author a {
-		box-shadow: none;
 		color: inherit;
 		text-decoration: none;
 
 		&:hover {
 			color: inherit;
-			box-shadow: 0 -1px 0 inset;
-			color: inherit;
+			text-decoration: underline;
 		}
 	}
 
@@ -131,7 +127,7 @@
 		text-decoration: none;
 
 		&:hover {
-			box-shadow: 0 -2px 0 inset;
+			text-decoration: underline;
 		}
 	}
 

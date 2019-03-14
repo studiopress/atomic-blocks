@@ -6,29 +6,21 @@
 const { __ } = wp.i18n;
 const {
 	Component,
-	Fragment,
 } = wp.element;
 
 // Import block components
 const {
   InspectorControls,
-  ColorPalette,
-  PanelColorSettings,
-  MediaUpload,
 } = wp.editor;
 
 // Import Inspector components
 const {
 	PanelBody,
-	Placeholder,
 	QueryControls,
 	RangeControl,
 	SelectControl,
-	Spinner,
 	TextControl,
 	ToggleControl,
-	Toolbar,
-	withAPIData,
 } = wp.components;
 
 const MAX_POSTS_COLUMNS = 4;

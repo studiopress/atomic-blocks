@@ -7,7 +7,6 @@ import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
 import moment from 'moment';
 import classnames from 'classnames';
-import { stringify } from 'querystringify';
 import Inspector from './inspector';
 
 const { Component, Fragment } = wp.element;
@@ -16,28 +15,17 @@ const { __ } = wp.i18n;
 
 const { decodeEntities } = wp.htmlEntities;
 
-const { apiFetch } = wp;
-
 const {
-	registerStore,
 	withSelect,
 } = wp.data;
 
 const {
-	PanelBody,
 	Placeholder,
-	QueryControls,
-	RangeControl,
-	SelectControl,
 	Spinner,
-	TextControl,
-	ToggleControl,
 	Toolbar,
-	withAPIData,
 } = wp.components;
 
 const {
-	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
 } = wp.editor;
@@ -46,7 +34,6 @@ class LatestPostsBlock extends Component {
 	render() {
 		const {
 			attributes,
-			categoriesList,
 			setAttributes,
 			latestPosts
 		} = this.props;
@@ -58,18 +45,12 @@ class LatestPostsBlock extends Component {
 			displayPostImage,
 			displayPostLink,
 			displayPostTitle,
-			excludeSticky,
 			align,
 			postLayout,
 			columns,
-			order,
-			orderBy,
-			categories,
 			postsToShow,
-			width,
 			imageCrop,
 			readMoreText,
-			offset,
 			excerptLength,
 			postType,
 			sectionTag,
@@ -175,7 +156,7 @@ class LatestPostsBlock extends Component {
 								id={ 'post-' + post.id }
 								className={ classnames(
 									'post-' + post.id,
-									post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
+									post.featured_image_src && displayPostImage ? 'has-post-thumbnail' : null
 								) }
 							>
 								{
