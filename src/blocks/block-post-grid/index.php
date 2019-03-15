@@ -80,10 +80,9 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 				// Output the featured image
 				$list_items_markup .= sprintf(
-					'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark" %2$s alt="%3$s">%4$s</a></div>',
+					'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark" %2$s>%3$s</a></div>',
 					esc_url( get_permalink( $post_id ) ),
 					esc_attr( $alt_schema ),
-					esc_attr( $alt ),
 					wp_get_attachment_image( $post_thumb_id, $post_thumb_size )
 				);
 			}
