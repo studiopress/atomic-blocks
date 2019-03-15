@@ -249,14 +249,13 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 	// Output the post markup
 	$block_content = sprintf(
-		'<%5$s class="%1$s">%4$s<div class="%2$s">%3$s</div></%4$s>',
+		'<%1$s class="%2$s">%3$s<div class="%4$s">%5$s</div></%1$s>',
+		$section_tag,
 		esc_attr( $class ),
-		esc_attr( $grid_class ),
-		$list_items_markup,
 		$section_title,
-		$section_tag
+		esc_attr( $grid_class ),
+		$list_items_markup
 	);
-
 	return $block_content;
 }
 
