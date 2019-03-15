@@ -228,7 +228,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	}
 
 	// Post grid section title
-	if ( ! empty( $attributes['sectionTitle'] ) ) {
+	if ( isset( $attributes['displaySectionTitle'] ) && $attributes['displaySectionTitle'] && ! empty( $attributes['sectionTitle'] ) ) {
 		if ( isset( $attributes['sectionTitleTag'] ) ) {
 			$section_title_tag = $attributes['sectionTitleTag'];
 		} else {
