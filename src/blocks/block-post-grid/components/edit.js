@@ -45,6 +45,7 @@ class LatestPostsBlock extends Component {
 			displayPostImage,
 			displayPostLink,
 			displayPostTitle,
+			displaySectionTitle,
 			align,
 			postLayout,
 			columns,
@@ -138,7 +139,7 @@ class LatestPostsBlock extends Component {
 						'ab-block-post-grid',
 					) }
 				>
-					{ sectionTitle &&
+					{ displaySectionTitle && sectionTitle &&
 						<SectionTitleTag class="ab-post-grid-section-title">{ sectionTitle }</SectionTitleTag>
 					}
 
