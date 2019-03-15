@@ -755,6 +755,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                                     <a
                                         href={ buttonUrl }
                                         target={ buttonTarget ? '_blank' : '_self' }
+                                        rel="noopener noreferrer"
                                     >
                                         <img
                                             className="lsx-card-avatar"
@@ -834,6 +835,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                                         data-off-txt-hover={ textDefaultColour }
                                         onMouseEnter="this.style.backgroundColor=this.getAttribute('data-on-bg-hover');this.style.color=this.getAttribute('data-on-txt-hover');"
                                         onMouseLeave="this.style.backgroundColor=this.getAttribute('data-off-bg-hover');this.style.color=this.getAttribute('data-off-txt-hover');"
+                                        rel="noopener noreferrer"
                                     >
                                         <RichText.Content
                                             value={ buttonText }
