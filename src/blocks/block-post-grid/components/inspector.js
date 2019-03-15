@@ -32,72 +32,7 @@ export default class Inspector extends Component {
 
     constructor( props ) {
 		super( ...arguments );
-
-		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
-		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
-		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
-		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
-		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
-		this.toggleDisplayPostTitle = this.toggleDisplayPostTitle.bind( this );
-		this.toggleDisplaySectionTitle = this.toggleDisplaySectionTitle.bind( this );
-        this.toggleExcludeSticky = this.toggleExcludeSticky.bind( this );
 	}
-
-	toggleDisplayPostDate() {
-		const { displayPostDate } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostDate: ! displayPostDate } );
-	}
-
-	toggleDisplayPostExcerpt() {
-		const { displayPostExcerpt } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
-	}
-
-	toggleDisplayPostAuthor() {
-		const { displayPostAuthor } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostAuthor: ! displayPostAuthor } );
-	}
-
-	toggleDisplayPostImage() {
-		const { displayPostImage } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostImage: ! displayPostImage } );
-	}
-
-	toggleDisplayPostLink() {
-		const { displayPostLink } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostLink: ! displayPostLink } );
-	}
-
-	toggleDisplayPostTitle() {
-		const { displayPostTitle } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostTitle: ! displayPostTitle } );
-	}
-
-	toggleDisplaySectionTitle() {
-		const { displaySectionTitle } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displaySectionTitle: ! displaySectionTitle } );
-	}
-
-	toggleExcludeSticky() {
-		const { excludeSticky } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { excludeSticky: ! excludeSticky } );
-    }
 
 	render() {
 
@@ -110,29 +45,8 @@ export default class Inspector extends Component {
         } = this.props;
 
 		const {
-			displayPostDate,
-			displayPostExcerpt,
-			displayPostAuthor,
-			displayPostImage,
-			displayPostLink,
-			displayPostTitle,
-			displaySectionTitle,
-			excludeSticky,
-			postLayout,
-			columns,
 			order,
 			orderBy,
-			categories,
-			postsToShow,
-			imageCrop,
-			readMoreText,
-			offset,
-            excerptLength,
-			postType,
-			sectionTag,
-			sectionTitle,
-			sectionTitleTag,
-			postTitleTag,
 		} = attributes;
 
 		// Thumbnail options
@@ -171,7 +85,7 @@ export default class Inspector extends Component {
         const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
         // Check the post type
-		const isPost = postType === 'post';
+		const isPost = attributes.postType === 'post';
 
 		return (
             <InspectorControls>
@@ -182,14 +96,14 @@ export default class Inspector extends Component {
                     <SelectControl
                         label={ __( 'Content Type', 'atomic-blocks' ) }
                         options={ postTypeOptions }
-                        value={ postType }
+                        value={ attributes.postType }
                         onChange={ ( value ) => this.props.setAttributes( { postType: value } ) }
                     />
                     <QueryControls
                         { ...{ order, orderBy } }
-                        numberOfItems={ postsToShow }
+                        numberOfItems={ attributes.postsToShow }
                         categoriesList={ categoriesList }
-                        selectedCategoryId={ categories }
+                        selectedCategoryId={ attributes.categories }
                         onOrderChange={ ( value ) => setAttributes( { order: value } ) }
                         onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
                         onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
@@ -197,15 +111,15 @@ export default class Inspector extends Component {
                     />
                     <RangeControl
                         label={ __( 'Number of items to offset', 'atomic-blocks' ) }
-                        value={ offset }
+                        value={ attributes.offset }
                         onChange={ ( value ) => setAttributes( { offset: value } ) }
                         min={ 0 }
                         max={ 20 }
                     />
-                    { postLayout === 'grid' &&
+                    { attributes.postLayout === 'grid' &&
                         <RangeControl
                             label={ __( 'Columns', 'atomic-blocks' ) }
-                            value={ columns }
+                            value={ attributes.columns }
                             onChange={ ( value ) => setAttributes( { columns: value } ) }
                             min={ 2 }
                             max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
@@ -214,8 +128,8 @@ export default class Inspector extends Component {
                     { isPost &&
                         <ToggleControl
                             label={ __( 'Exclude Sticky Posts', 'atomic-blocks' ) }
-                            checked={ excludeSticky }
-                            onChange={ this.toggleExcludeSticky }
+                            checked={ attributes.excludeSticky }
+							onChange={ () => this.props.setAttributes( { excludeSticky: ! attributes.excludeSticky } ) }
                         />
                     }
                 </PanelBody>
@@ -225,58 +139,58 @@ export default class Inspector extends Component {
                 >
 					<ToggleControl
 						label={ __( 'Display Section Title', 'atomic-blocks' ) }
-						checked={ displaySectionTitle }
-						onChange={ this.toggleDisplaySectionTitle }
+						checked={ attributes.displaySectionTitle }
+						onChange={ () => this.props.setAttributes( { displaySectionTitle: ! attributes.displaySectionTitle } ) }
 					/>
-					{ displaySectionTitle &&
+					{ attributes.displaySectionTitle &&
 						<TextControl
 							label={ __( 'Section Title', 'atomic-blocks' ) }
 							type="text"
-							value={ sectionTitle }
+							value={ attributes.sectionTitle }
 							onChange={ ( value ) => this.props.setAttributes( { sectionTitle: value } ) }
 						/>
 					}
                     <ToggleControl
                         label={ __( 'Display Featured Image', 'atomic-blocks' ) }
-                        checked={ displayPostImage }
-                        onChange={ this.toggleDisplayPostImage }
+                        checked={ attributes.displayPostImage }
+						onChange={ () => this.props.setAttributes( { displayPostImage: ! attributes.displayPostImage } ) }
                     />
-                    { displayPostImage &&
+                    { attributes.displayPostImage &&
                         <SelectControl
                             label={ __( 'Featured Image Style', 'atomic-blocks' ) }
                             options={ imageCropOptions }
-                            value={ imageCrop }
+                            value={ attributes.imageCrop }
                             onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
                         />
                     }
                     <ToggleControl
                         label={ __( 'Display Title', 'atomic-blocks' ) }
-                        checked={ displayPostTitle }
-                        onChange={ this.toggleDisplayPostTitle }
+                        checked={ attributes.displayPostTitle }
+						onChange={ () => this.props.setAttributes( { displayPostTitle: ! attributes.displayPostTitle } ) }
                     />
                     { isPost &&
                         <ToggleControl
                             label={ __( 'Display Author', 'atomic-blocks' ) }
-                            checked={ displayPostAuthor }
-                            onChange={ this.toggleDisplayPostAuthor }
+                            checked={ attributes.displayPostAuthor }
+							onChange={ () => this.props.setAttributes( { displayPostAuthor: ! attributes.displayPostAuthor } ) }
                         />
                     }
                     { isPost &&
                         <ToggleControl
                             label={ __( 'Display Date', 'atomic-blocks' ) }
-                            checked={ displayPostDate }
-                            onChange={ this.toggleDisplayPostDate }
+                            checked={ attributes.displayPostDate }
+							onChange={ () => this.props.setAttributes( { displayPostDate: ! attributes.displayPostDate } ) }
                         />
                     }
                     <ToggleControl
                         label={ __( 'Display Excerpt', 'atomic-blocks' ) }
-                        checked={ displayPostExcerpt }
-                        onChange={ this.toggleDisplayPostExcerpt }
+                        checked={ attributes.displayPostExcerpt }
+						onChange={ () => this.props.setAttributes( { displayPostExcerpt: ! attributes.displayPostExcerpt } ) }
                     />
-                    { displayPostExcerpt &&
+                    { attributes.displayPostExcerpt &&
                         <RangeControl
                             label={ __( 'Excerpt Length', 'atomic-blocks' ) }
-                            value={ excerptLength }
+                            value={ attributes.excerptLength }
                             onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
                             min={ 0 }
                             max={ 150 }
@@ -284,14 +198,14 @@ export default class Inspector extends Component {
                     }
                     <ToggleControl
                         label={ __( 'Display Continue Reading Link', 'atomic-blocks' ) }
-                        checked={ displayPostLink }
-                        onChange={ this.toggleDisplayPostLink }
+                        checked={ attributes.displayPostLink }
+						onChange={ () => this.props.setAttributes( { displayPostLink: ! attributes.displayPostLink } ) }
                     />
-                    { displayPostLink &&
+                    { attributes.displayPostLink &&
                         <TextControl
                             label={ __( 'Customize Continue Reading Text', 'atomic-blocks' ) }
                             type="text"
-                            value={ readMoreText }
+                            value={ attributes.readMoreText }
                             onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
                         />
                     }
@@ -304,24 +218,24 @@ export default class Inspector extends Component {
 					<SelectControl
 						label={ __( 'Post Grid Section Tag', 'atomic-blocks' ) }
 						options={ sectionTags }
-						value={ sectionTag }
+						value={ attributes.sectionTag }
 						onChange={ ( value ) => this.props.setAttributes( { sectionTag: value } ) }
 						help={ __( 'Change the post grid section tag to match your content hierarchy.', 'atomic-blocks' ) }
 					/>
-					{ sectionTitle &&
+					{ attributes.sectionTitle &&
 						<SelectControl
 							label={ __( 'Section Title Heading Tag', 'atomic-blocks' ) }
 							options={ sectionTitleTags }
-							value={ sectionTitleTag }
+							value={ attributes.sectionTitleTag }
 							onChange={ ( value ) => this.props.setAttributes( { sectionTitleTag: value } ) }
 							help={ __( 'Change the post/page section title tag to match your content hierarchy.', 'atomic-blocks' ) }
 						/>
                     }
-					{ displayPostTitle &&
+					{ attributes.displayPostTitle &&
                         <SelectControl
                             label={ __( 'Post Title Heading Tag', 'atomic-blocks' ) }
                             options={ sectionTitleTags }
-                            value={ postTitleTag }
+                            value={ attributes.postTitleTag }
 							onChange={ ( value ) => this.props.setAttributes( { postTitleTag: value } ) }
 							help={ __( 'Change the post/page title tag to match your content hierarchy.', 'atomic-blocks' ) }
                         />

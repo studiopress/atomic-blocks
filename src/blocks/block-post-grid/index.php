@@ -309,6 +309,7 @@ function atomic_blocks_register_block_core_latest_posts() {
 			),
 			'postTitleTag' => array(
 				'type' => 'string',
+				'default' => 'h3',
 			),
 			'excludeSticky' => array(
 				'type' => 'boolean',
@@ -367,6 +368,7 @@ function atomic_blocks_register_block_core_latest_posts() {
 			),
 			'sectionTitleTag' => array(
 				'type' => 'string',
+				'default' => 'h2',
 			),
 		),
 		'render_callback' => 'atomic_blocks_render_block_core_latest_posts',
