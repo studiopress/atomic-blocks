@@ -71,18 +71,10 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				// Get the alt text
 				$alt = get_post_meta( $post_thumb_id, '_wp_attachment_image_alt', true );
 
-				// Hide if there is no alt text
-				if ( empty( $alt ) ) {
-					$alt_schema = "aria-hidden=true tabindex=-1";
-				} else {
-					$alt_schema = '';
-				}
-
 				// Output the featured image
 				$list_items_markup .= sprintf(
-					'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark" %2$s>%3$s</a></div>',
+					'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark" aria-hidden="true" tabindex="-1">%2$s</a></div>',
 					esc_url( get_permalink( $post_id ) ),
-					esc_attr( $alt_schema ),
 					wp_get_attachment_image( $post_thumb_id, $post_thumb_size )
 				);
 			}
