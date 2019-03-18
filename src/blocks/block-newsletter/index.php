@@ -30,15 +30,18 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 
 	wp_enqueue_script( 'atomic-blocks-newsletter-functions' );
 
-	$email_input_label     = ! empty( $attributes['emailInputLabel'] ) ? $attributes['emailInputLabel'] : esc_html__( 'Your Email Address', 'atomic-blocks' );
-	$button_bg_color       = ! empty( $attributes['buttonBackgroundColor'] ) ? $attributes['buttonBackgroundColor'] : null;
-	$button_text_color     = ! empty( $attributes['buttonTextColor'] ) ? $attributes['buttonTextColor'] : null;
-	$button_class          = ! empty( $attributes['buttonClass'] ) ? $attributes['buttonClass'] : 'ab-button';
-	$button_class         .= ! empty( $attributes['buttonSize'] ) ? ' ' . $attributes['buttonSize'] : ' ab-button-size-medium';
-	$button_text           = ! empty( $attributes['buttonText'] ) ? $attributes['buttonText'] : __( 'Subscribe', 'atomic-blocks' );
+	$defaults = atomic_blocks_newsletter_block_attributes();
+
+	$email_input_label     = ! empty( $attributes['emailInputLabel'] ) ? $attributes['emailInputLabel'] : $defaults['emailInputLabel']['default'];
+	$button_bg_color       = ! empty( $attributes['buttonBackgroundColor'] ) ? $attributes['buttonBackgroundColor'] : $defaults['buttonBackgroundColor']['default'];
+	$button_text_color     = ! empty( $attributes['buttonTextColor'] ) ? $attributes['buttonTextColor'] : $defaults['buttonTextColor']['default'];
+	$button_class          = ! empty( $attributes['buttonClass'] ) ? $attributes['buttonClass'] : $defaults['buttonClass']['default'];
+	$button_class         .= ! empty( $attributes['buttonSize'] ) ? ' ' . $attributes['buttonSize'] : ' ' . $defaults['buttonSize']['default'];
+	$button_text           = ! empty( $attributes['buttonText'] ) ? $attributes['buttonText'] : $defaults['buttonText']['default'];
 	$button_styles         = 'style="background-color: ' . $button_bg_color . '; color: ' . $button_text_color . '"';
-	$mailing_list_provider = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : 'mailchimp';
+	$mailing_list_provider = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : $defaults['mailingListProvider']['default'];
 	$mailing_list          = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
+	$success_message       = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
 	// @todo instance in the ID
 	$form = '
@@ -48,6 +51,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 			<button class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" ' . $button_styles . '>' . esc_html( $button_text ) . '</button>
 			<input type="hidden" name="atomic-blocks-newsletter-mailing-list-provider" value="' . esc_attr( $mailing_list_provider ) . '" />
 			<input type="hidden" name="atomic-blocks-newsletter-mailing-list" value="' . esc_attr( $mailing_list ) . '" />
+			<input type="hidden" name="atomic-blocks-newsletter-success-message" value="' . esc_attr( $success_message ) . '" />
 			' . wp_nonce_field( 'atomic-blocks-newsletter-form-nonce', 'atomic-blocks-newsletter-form-nonce', true, false ) . '
 		</form>
 	';
@@ -61,29 +65,52 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
  */
 function atomic_blocks_newsletter_block_attributes() {
 	return [
-		'buttonClass'           => [
+		'buttonAlignment'       => [
 			'type'    => 'string',
-			'default' => 'ab-button',
-		],
-		'buttonText'            => [
-			'type'    => 'string',
-			'default' => esc_html__( 'Subscribe', 'atomic-blocks' ),
-		],
-		'buttonTextProcessing'  => [
-			'type'    => 'string',
-			'default' => esc_html__( 'Please wait...', 'atomic-blocks' ),
+			'default' => 'left',
 		],
 		'buttonBackgroundColor' => [
 			'type'    => 'string',
 			'default' => '#3373dc',
 		],
+		'buttonClass'           => [
+			'type'    => 'string',
+			'default' => 'ab-button',
+		],
+		'buttonShape'           => [
+			'type'    => 'string',
+			'default' => 'ab-button-shape-rounded',
+		],
 		'buttonSize'            => [
 			'type'    => 'string',
 			'default' => 'ab-button-size-medium',
 		],
+		'buttonText'            => [
+			'type'    => 'string',
+			'default' => esc_html__( 'Subscribe', 'atomic-blocks' ),
+		],
 		'buttonTextColor'       => [
 			'type'    => 'string',
 			'default' => '#fff',
+		],
+		'buttonTextProcessing'  => [
+			'type'    => 'string',
+			'default' => esc_html__( 'Please wait...', 'atomic-blocks' ),
+		],
+		'emailInputLabel'       => [
+			'type'    => 'string',
+			'default' => esc_html__( 'Your Email Address', 'atomic-blocks' ),
+		],
+		'mailingList'           => [
+			'type' => 'string',
+		],
+		'mailingListProvider'   => [
+			'type'    => 'string',
+			'default' => 'mailchimp',
+		],
+		'successMessage'        => [
+			'type'    => 'string',
+			'default' => esc_html__( 'Thanks for subscribing.', 'atomic-blocks' ),
 		],
 	];
 }

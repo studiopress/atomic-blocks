@@ -29,50 +29,7 @@ registerBlockType(
 			__( 'Mailchimp', 'atomic-blocks' ),
 			__( 'Subscribe', 'atomic-blocks' ),
 		],
-		attributes: {
-			buttonAlignment: {
-				type: 'string',
-				default: 'left',
-			},
-			buttonClass: {
-				type: 'string',
-				default: 'ab-button'
-			},
-			buttonText: {
-				type: 'string',
-				default: __( 'Subscribe', 'atomic-blocks' )
-			},
-			buttonBackgroundColor: {
-				type: 'string',
-				default: '#3373dc'
-			},
-			buttonShape: {
-				type: 'string',
-				default: 'ab-button-shape-rounded',
-			},
-			buttonSize: {
-				type: 'string',
-				default: 'ab-button-size-medium'
-			},
-			buttonTextColor: {
-				type: 'string',
-				default: '#fff',
-			},
-			emailInputLabel: {
-				type: 'string',
-				default: __( 'Your Email Address', 'atomic-blocks' ),
-			},
-			mailingList: {
-				type: 'string',
-			},
-			mailingListProvider: {
-				type: 'string',
-				default: 'mailchimp',
-			}
-		},
 		edit: props => {
-
-			console.log(props);
 
 			const {
 				attributes,
@@ -94,14 +51,15 @@ registerBlockType(
 				paddingLeft: attributes.paddingLeft ? attributes.paddingLeft + 'px' : undefined,
 			};
 
-
-
 			return [
 				<Inspector { ...{ setAttributes, ...props } }/>,
 				! apiKeyDefined && (
-					<div className="atomic-blocks-newsletter-notice">
-						{ __( 'You must define your newsletter provider API keys to use this block.', 'atomic-blocks' ) }
-					</div>
+					<Fragment>
+						<div className="atomic-blocks-newsletter-notice">
+							{ __( 'You must define your newsletter provider API keys to use this block.', 'atomic-blocks' ) }
+							<p><a href={ atomic_blocks_newsletter_block_vars.plugin_settings_page_url }>{ __( 'Configure your settings', 'atomic-blocks' ) }</a></p>
+						</div>
+					</Fragment>
 				),
 				apiKeyDefined && isSelected && (
 					<RichText

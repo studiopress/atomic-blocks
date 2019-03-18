@@ -21,6 +21,8 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var list = button.parent().find( "[name='atomic-blocks-newsletter-mailing-list']" ).val();
 
+			var successMessage = button.parent().find( "[name='atomic-blocks-newsletter-success-message']" ).val();
+
 			if ( ! email ) {
 				button.text( atomic_blocks_newsletter_vars.button_text_default ).prop( 'disabled', false );
 				return;
@@ -38,6 +40,7 @@ var AtomicBlocksNewsletterSubmission = {
 					atomic_blocks_newsletter_mailing_list_provider: provider,
 					atomic_blocks_newsletter_mailing_list: list,
 					atomic_blocks_newsletter_form_nonce: $( '#atomic-blocks-newsletter-form-nonce' ).val(),
+					atomic_blocks_newsletter_success_message: successMessage,
 				},
 				type: 'post',
 				url: atomic_blocks_newsletter_vars.ajaxurl,
