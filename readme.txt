@@ -37,9 +37,9 @@ We’re firm believers in open source - that’s why we’re releasing the LSX B
 Here are the system requirements for LSX Blocks:
 
 * A publicly accessible WordPress site.
-* PHP version 7.0 or above. 
+* PHP version 7.0 or above.
 * The latest version of WordPress. If your version of WordPress is out of date, you’ll see a prompt to automatically upgrade with a single click, or can upgrade manually if you really want to.
-* The [LSX theme](https://www.lsdev.biz/product/lsx-wordpress-theme/) activated and installed on your site. 
+* The [LSX theme](https://www.lsdev.biz/product/lsx-wordpress-theme/) activated and installed on your site.
 
 = Installation =
 
@@ -62,9 +62,9 @@ For help setting up your site or training on using blocks, feel free to [contact
 
 = Will the LSX Blocks plugin work with my theme? =
 
-Not unless you are using the [LSX Theme](https://www.lsdev.biz/product/lsx-wordpress-theme/)! 
+Not unless you are using the [LSX Theme](https://www.lsdev.biz/product/lsx-wordpress-theme/)!
 
-LSX Blocks was built for the LSX Theme, so this is a requirement in order for the blocks to function correctly. 
+LSX Blocks was built for the LSX Theme, so this is a requirement in order for the blocks to function correctly.
 
 = Where can I report bugs or contribute to the project? =
 
@@ -79,19 +79,19 @@ The LSX Blocks plugin was developed with the use of Atomic Blocks https://atomic
 
 == Screenshots ==
 
-1. Accordion Block
-2. Author Profile Block
-3. Banner Block
-4. Button Blocks
-5. Card Block
-6. Container Block
-7. CTA Block
-8. Drop Cap Block
-9. Notice Block
-10. Post Carousel Block
-11. Post Grid Block
-12. Sharing Block
-13. Spacer Block
+1. Blocks
+2. Accordion Block
+3. Author Profile Block
+4. Banner Block
+5. Button Blocks
+6. Card Block
+7. Container Block
+8. CTA Block
+9. Drop Cap Block
+10. Notice Block
+11. Post Carousel Block
+12. Post Grid Block
+13. Sharing Block
 
 == Changelog ==
 
