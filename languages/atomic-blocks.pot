@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.5.0\n"
+"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.5.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-02-13T19:33:59+00:00\n"
-"PO-Revision-Date: 2019-02-13T19:33:59+00:00\n"
+"POT-Creation-Date: 2019-03-18T20:32:32+00:00\n"
+"PO-Revision-Date: 2019-03-18T20:32:32+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: atomic-blocks\n"
 
@@ -581,7 +581,7 @@ msgstr ""
 msgid "Share via Email"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.php:70
+#: src/blocks/block-post-grid/index.php:98
 msgid "Untitled"
 msgstr ""
 
@@ -607,7 +607,6 @@ msgstr ""
 #: src/blocks/block-sharing/index.js:48
 #: src/blocks/block-author-profile/index.js:263
 #: src/blocks/block-container/index.js:187
-#: src/blocks/block-post-grid/index.js:38
 #: src/blocks/block-notice/index.js:137
 #: src/blocks/block-button/index.js:117
 #: src/blocks/block-testimonial/index.js:171
@@ -644,12 +643,13 @@ msgid "Call To Action Text"
 msgstr ""
 
 #: src/blocks/block-cta/index.js:247
-#: src/blocks/block-pricing-table-inner/components/button/edit.js:77
+#: src/blocks/block-pricing-table-inner/components/button/edit.js:83
 #: src/blocks/block-button/index.js:66
 msgid "Button text..."
 msgstr ""
 
 #: src/blocks/block-cta/index.js:278
+#: src/blocks/block-pricing-table-inner/components/button/edit.js:116
 #: src/blocks/block-button/index.js:99
 msgid "Apply"
 msgstr ""
@@ -818,6 +818,7 @@ msgid "profile"
 msgstr ""
 
 #: src/blocks/block-author-profile/components/inspector.js:42
+#: src/blocks/block-post-grid/components/inspector.js:55
 #: src/utils/inspector/button.js:35
 msgid "Square"
 msgstr ""
@@ -940,23 +941,197 @@ msgid "container"
 msgstr ""
 
 #: src/blocks/block-container/index.js:186
+#: src/blocks/block-post-grid/components/inspector.js:68
 msgid "section"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.js:31
-msgid "AB Post Grid"
+#: src/blocks/block-post-grid/index.js:27
+msgid "AB Post and Page Grid"
+msgstr ""
+
+#: src/blocks/block-post-grid/index.js:28
+msgid "Add a grid or list of customizable posts or pages."
 msgstr ""
 
 #: src/blocks/block-post-grid/index.js:32
-msgid "Add a grid or list of customizable posts to your page."
-msgstr ""
-
-#: src/blocks/block-post-grid/index.js:36
 msgid "post"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.js:37
+#: src/blocks/block-post-grid/index.js:33
+msgid "page"
+msgstr ""
+
+#: src/blocks/block-post-grid/index.js:34
 msgid "grid"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:57
+msgid "Atomic Blocks Post and Page Grid"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:61
+msgid "No posts found."
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:77
+msgid "Grid View"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:83
+msgid "List View"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:146
+#: src/blocks/block-post-grid/components/edit.js:158
+msgid "(Untitled)"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:54
+msgid "Landscape"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:60
+msgid "Post"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:61
+msgid "Page"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:66
+msgid "div"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:67
+msgid "header"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:69
+msgid "article"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:70
+msgid "main"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:71
+msgid "aside"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:72
+msgid "footer"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:77
+msgid "H2"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:78
+msgid "H3"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:79
+msgid "H4"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:80
+msgid "H5"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:81
+msgid "H6"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:93
+msgid "Post and Page Grid Settings"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:97
+msgid "Content Type"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:113
+msgid "Number of items to offset"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:121
+msgid "Columns"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:130
+msgid "Post and Page Grid Content"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:134
+msgid "Display Section Title"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:140
+msgid "Section Title"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:147
+msgid "Display Featured Image"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:153
+msgid "Featured Image Style"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:160
+msgid "Display Title"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:166
+msgid "Display Author"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:173
+msgid "Display Date"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:179
+msgid "Display Excerpt"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:185
+msgid "Excerpt Length"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:193
+msgid "Display Continue Reading Link"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:199
+msgid "Customize Continue Reading Text"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:207
+msgid "Post and Page Grid Markup"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:212
+msgid "Post Grid Section Tag"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:216
+msgid "Change the post grid section tag to match your content hierarchy."
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:220
+msgid "Section Title Heading Tag"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:224
+msgid "Change the post/page section title tag to match your content hierarchy."
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:229
+msgid "Post Title Heading Tag"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:233
+msgid "Change the post/page title tag to match your content hierarchy."
 msgstr ""
 
 #: src/blocks/block-pricing-table-inner/index.js:157
