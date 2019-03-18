@@ -1,6 +1,8 @@
 <?php
 /**
  * Newsletter functions.
+ *
+ * @package AtomicBlocks
  */
 
 namespace AtomicBlocks\Newsletter;
@@ -16,7 +18,7 @@ add_action( 'wp_ajax_nopriv_atomic_blocks_newsletter_submission', __NAMESPACE__ 
  */
 function form_submission_listener() {
 
-	if ( empty( $_POST['atomic-blocks-newsletter-form-nonce'] ) ) {
+	if ( empty( $_POST['atomic_blocks_newsletter_form_nonce'] ) ) {
 		return;
 	}
 
@@ -24,18 +26,41 @@ function form_submission_listener() {
 		return;
 	}
 
-	if ( ! wp_verify_nonce( $_POST['atomic-blocks-newsletter-form-nonce']. 'atomic-blocks-newsletter-form-nonce' ) ) {
+	if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_form_nonce'] ) ), 'atomic-blocks-newsletter-form-nonce' ) ) {
 		send_processing_response( __( 'Nonce verification failed. Please try again.', 'atomic-blocks' ) );
 	}
 
-	if ( empty( $_POST['atomic-blocks-newsletter-mailing-list-provider'] ) || empty( $_POST['atomic-blocks-newsletter-mailing-list'] ) ) {
+	if ( empty( $_POST['atomic_blocks_newsletter_mailing_list_provider'] ) || empty( $_POST['atomic_blocks_newsletter_mailing_list'] ) ) {
 		send_processing_response( __( 'Invalid mailing provider configuration.', 'atomic-blocks' ) );
 	}
-	// send to process_submission
 
-	// return response with send_processing_response
+	if ( empty( $_POST['atomic_blocks_newsletter_email'] ) ) {
+		send_processing_response( __( 'You must provide an email address.', 'atomic-blocks' ) );
+	}
+
+	$email    = sanitize_email( wp_unslash( $_POST['atomic_blocks_newsletter_email'] ) );
+	$provider = sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_mailing_list_provider'] ) );
+	$list     = sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_mailing_list'] ) );
+
+	if ( ! is_email( $email ) ) {
+		send_processing_response( __( 'Please provide a valid email address.', 'atomic-blocks' ) );
+	}
+
+	$response = process_submission( $email, $provider, $list );
+
+	if ( is_wp_error( $response ) ) {
+		send_processing_response( $response->get_error_message() );
+	}
+
+	// @todo make message configurable
+	send_processing_response( __( 'Thanks for subscribing.', 'atomic-blocks' ) );
 }
 
+/**
+ * Sends the appropriate response based on the request type.
+ *
+ * @param string $message The message indicating success or failure.
+ */
 function send_processing_response( $message ) {
 	if ( wp_doing_ajax() ) {
 		wp_send_json_success( [ 'message' => esc_html( $message ) ] );
@@ -88,6 +113,7 @@ function process_submission( $email, $provider, $list_id ) {
 				return new \WP_Error( 'invalid_api_key', $errors['invalid_api_key'] );
 			}
 
+			// @todo check that list is valid.
 			try {
 				$chimp = new Mailchimp( $api_key );
 				return $chimp->add_email_to_list( $email, $list_id );
@@ -101,7 +127,12 @@ function process_submission( $email, $provider, $list_id ) {
 	}
 }
 
-
+/**
+ * Returns a list of supported mailing list providers.
+ *
+ * @throws \Mailchimp_API_Error_Exception If an invalid API key is saved in the plugin settings.
+ * @return array
+ */
 function mailing_list_providers() {
 
 	$mailchimp_api_key = get_option( 'atomic_blocks_mailchimp_api_key' );
@@ -112,8 +143,8 @@ function mailing_list_providers() {
 		$chimp = new Mailchimp( $mailchimp_api_key );
 		$lists = $chimp->get_lists();
 		if ( ! empty( $lists ) ) {
-			foreach( $lists as $key => $list ) {
-				$mailchimp_lists[$key] = [
+			foreach ( $lists as $key => $list ) {
+				$mailchimp_lists[ $key ] = [
 					'id'   => $list['id'],
 					'name' => $list['name'],
 				];
@@ -127,15 +158,32 @@ function mailing_list_providers() {
 			'lists'           => $mailchimp_lists,
 			'api_key_defined' => ! empty( get_option( 'atomic_blocks_mailchimp_api_key' ) ),
 		],
-		'test'      => [
-			'label' => 'Test',
-			'lists' => [],
-		]
 	];
 }
 
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\frontend_assets' );
+/**
+ * Registers the frontend assets for the newsletter block.
+ */
 function frontend_assets() {
+	wp_register_script(
+		'atomic-blocks-newsletter-functions',
+		plugins_url( '/dist/assets/js/newsletter-block-functions.js', atomic_blocks_main_plugin_file() ),
+		[ 'jquery' ],
+		'1.0',
+		true
+	);
 
+	wp_localize_script(
+		'atomic-blocks-newsletter-functions',
+		'atomic_blocks_newsletter_vars',
+		[
+			'ajaxurl'                => esc_url( admin_url( 'admin-ajax.php' ) ),
+			'button_text_default'    => esc_html( atomic_blocks_newsletter_block_attributes()['buttonText']['default'] ),
+			'button_text_processing' => esc_html( atomic_blocks_newsletter_block_attributes()['buttonTextProcessing']['default'] ),
+			'invalid_configuration'  => esc_html__( 'Invalid configuration. Site owner: Please configure your newsletter provider settings.', 'atomic-blocks' ),
+		]
+	);
 }
 
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\admin_assets' );

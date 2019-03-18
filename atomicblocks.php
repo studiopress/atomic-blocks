@@ -112,3 +112,12 @@ function atomic_blocks_image_sizes() {
 	add_image_size( 'ab-block-post-grid-square', 600, 600, true );
 }
 add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
+
+/**
+ * Returns the full path and filename of the main Atomic Blocks plugin file.
+ *
+ * @return string
+ */
+function atomic_blocks_main_plugin_file() {
+	return __FILE__;
+}
