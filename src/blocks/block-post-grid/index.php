@@ -159,18 +159,18 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 					if( empty( $excerpt ) && isset( $attributes['excerptLength'] ) ) {
 						$excerpt = apply_filters( 'the_excerpt',
-						wp_trim_words(
-							preg_replace(
-								array(
-									"/\<figcaption>.*\<\/figcaption>/",
-									"/\[caption.*\[\/caption\]/",
+							wp_trim_words(
+								preg_replace(
+									array(
+										"/\<figcaption>.*\<\/figcaption>/",
+										"/\[caption.*\[\/caption\]/",
+									),
+									'',
+									get_the_content()
 								),
-								'',
-								get_the_content()
-							),
-							55
-						)
-					);
+								55
+							)
+						);
 					}
 
 					if ( ! $excerpt ) {
