@@ -48,7 +48,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 			<button class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" ' . $button_styles . '>' . esc_html( $button_text ) . '</button>
 			<input type="hidden" name="atomic-blocks-newsletter-mailing-list-provider" value="' . esc_attr( $mailing_list_provider ) . '" />
 			<input type="hidden" name="atomic-blocks-newsletter-mailing-list" value="' . esc_attr( $mailing_list ) . '" />
-			' . wp_nonce_field( 'atomic-blocks-newsletter-form-nonce', 'atomic-blocks-newsletter-form-nonce' ) . '
+			' . wp_nonce_field( 'atomic-blocks-newsletter-form-nonce', 'atomic-blocks-newsletter-form-nonce', true, false ) . '
 		</form>
 	';
 	return $form;
