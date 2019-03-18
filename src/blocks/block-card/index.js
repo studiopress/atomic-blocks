@@ -720,9 +720,7 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                     cardBackgroundColor: attributes.cardBackgroundColor,
                     cardTextColor: attributes.cardTextColor,
                     cardLinkColor: attributes.cardLinkColor,
-
                     buttonHoverColor: attributes.buttonHoverColor,
-
                 };
             },
 
@@ -845,5 +843,6 @@ registerBlockType( 'lsx-blocks/lsx-card-box', {
                 );
             },
         }
+        // V3
     ]
 } );
