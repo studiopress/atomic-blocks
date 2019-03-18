@@ -125,13 +125,6 @@ export default class Inspector extends Component {
                             max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
                         />
                     }
-                    { isPost &&
-                        <ToggleControl
-                            label={ __( 'Exclude Sticky Posts', 'atomic-blocks' ) }
-                            checked={ attributes.excludeSticky }
-							onChange={ () => this.props.setAttributes( { excludeSticky: ! attributes.excludeSticky } ) }
-                        />
-                    }
                 </PanelBody>
                 <PanelBody
                     title={ __( 'Post and Page Grid Content', 'atomic-blocks' ) }

@@ -198,9 +198,6 @@ export default withSelect( ( select, props ) => {
 		categories,
 	} = props.attributes;
 
-	// Exclude the sticky posts
-	const excludeStickyPosts = props.attributes.excludeSticky ? false : undefined;
-
 	const { getEntityRecords } = select( 'core', 'atomic-blocks' );
 
 	const latestPostsQuery = pickBy( {
@@ -209,7 +206,6 @@ export default withSelect( ( select, props ) => {
 		orderby: props.attributes.orderBy,
 		per_page: props.attributes.postsToShow,
 		offset: props.attributes.offset,
-		sticky: excludeStickyPosts,
 	}, ( value ) => ! isUndefined( value ) );
 
 	const categoriesListQuery = {
