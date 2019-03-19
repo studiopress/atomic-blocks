@@ -65,7 +65,10 @@ function atomic_blocks_loader() {
 		require_once $atomic_blocks_src_dir . 'blocks/block-newsletter/index.php';
 	}
 
-	// @todo if php ver not met, load script to unregisterBlockType( 'atomic-blocks/newsletter' );
+	/**
+	 * Compatibility functionality.
+	 */
+	require_once $atomic_blocks_includes_dir . 'compat.php';
 }
 add_action( 'plugins_loaded', 'atomic_blocks_loader' );
 
