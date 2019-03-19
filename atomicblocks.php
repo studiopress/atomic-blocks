@@ -57,9 +57,8 @@ function atomic_blocks_loader() {
 			require_once $atomic_blocks_includes_dir . 'libraries/drewm/mailchimp-api/MailChimp.php';
 		}
 
-		require_once $atomic_blocks_includes_dir . 'exceptions/Newsletter_InvalidArgumentException.php';
-		require_once $atomic_blocks_includes_dir . 'exceptions/API_Error_Exception.php';
-		require_once $atomic_blocks_includes_dir . 'exceptions/Mailchimp_API_Error_Exception.php';
+		require_once $atomic_blocks_includes_dir . 'exceptions/class-api-error-exception.php';
+		require_once $atomic_blocks_includes_dir . 'exceptions/class-mailchimp-api-error-exception.php';
 		require_once $atomic_blocks_includes_dir . 'interfaces/newsletter-provider-interface.php';
 		require_once $atomic_blocks_includes_dir . 'classes/class-mailchimp.php';
 		require_once $atomic_blocks_includes_dir . 'newsletter/newsletter-functions.php';

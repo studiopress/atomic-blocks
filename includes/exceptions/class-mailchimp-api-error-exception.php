@@ -8,5 +8,12 @@
  * @package AtomicBlocks\Exception
  */
 
-// @todo prefix or namespace this
+namespace AtomicBlocks\Exception;
+
+/**
+ * Class Mailchimp_API_Error_Exception
+ * Used when Mailchimp API errors occur.
+ *
+ * @package AtomicBlocks\Exception
+ */
 class Mailchimp_API_Error_Exception extends API_Error_Exception {}

@@ -5,7 +5,9 @@
  * @package AtomicBlocks
  */
 
-interface Newsletter_Provider_Interface {
+namespace AtomicBlocks\Newsletter;
+
+interface Provider_Interface {
 
 	/**
 	 * Retrieves the mailing list from the provider API.
