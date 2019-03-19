@@ -47,24 +47,15 @@ export default class Edit extends Component {
 
 		// Setup the attributes
 		const {
-			attributes: {
-				columns,
-				columnsGap,
-				align,
-				layoutClass,
-				layout,
-			},
 			attributes,
 			isSelected,
-			edicolumn,
-			className,
 			setAttributes
 		} = this.props;
 
 		let selectedRows = 1;
 
-		if ( columns ) {
-			selectedRows = parseInt( columns.toString().split('-') );
+		if ( attributes.columns ) {
+			selectedRows = parseInt( attributes.columns.toString().split('-') );
 		}
 
 		const columnOptions = [
@@ -104,7 +95,7 @@ export default class Edit extends Component {
 		];
 
 		// Show the layout placeholder
-		if ( ! layout && this.state.selectLayout ) {
+		if ( ! attributes.layout && this.state.selectLayout ) {
 			return [
 				<Fragment>
 					{ isSelected && (
@@ -115,11 +106,11 @@ export default class Edit extends Component {
 					<Placeholder
 						key="placeholder"
 						icon="welcome-widgets-menus"
-						label={ columns ? __( 'Column Layout', 'atomic-blocks' ) : __( 'Column Number', 'atomic-blocks' ) }
-						instructions={ columns ? sprintf( __( 'Select a layout for this column.', 'atomic-blocks' ) ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
+						label={ attributes.columns ? __( 'Column Layout', 'atomic-blocks' ) : __( 'Column Number', 'atomic-blocks' ) }
+						instructions={ attributes.columns ? sprintf( __( 'Select a layout for this column.', 'atomic-blocks' ) ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
 						className={ 'ab-layout-selector-placeholder' }
 					>
-						{ ! columns ?
+						{ ! attributes.columns ?
 							<ButtonGroup aria-label={ __( 'Select Row Columns', 'atomic-blocks' ) } className="ab-layout-selector-group">
 								{ map( columnOptions, ( { name, key, icon, columns } ) => (
 									<Tooltip text={ name }>
@@ -191,7 +182,7 @@ export default class Edit extends Component {
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<BlockAlignmentToolbar
-					value={ align }
+					value={ attributes.align }
 					onChange={ align => setAttributes( { align } ) }
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
@@ -205,11 +196,11 @@ export default class Edit extends Component {
 				<div
 					className={ classnames(
 						'ab-layout-column-wrap-admin',
-						'ab-block-layout-column-gap-' + columnsGap
+						'ab-block-layout-column-gap-' + attributes.columnsGap
 					) }
 				>
 					<InnerBlocks
-						template={ getLayoutTemplate( columns ) }
+						template={ getLayoutTemplate( attributes.columns ) }
 						templateLock="all"
 						allowedBlocks={ ALLOWED_BLOCKS }
 					/>
