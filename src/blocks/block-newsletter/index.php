@@ -43,7 +43,6 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$mailing_list          = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
 	$success_message       = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
-	// @todo instance in the ID
 	$form = '
 		<form method="post">
 			<label for="atomic-blocks-newsletter-email-address">' . esc_html( $email_input_label ) . '</label>

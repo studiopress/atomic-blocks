@@ -7,6 +7,8 @@
 
 namespace AtomicBlocks\Newsletter;
 
+use AtomicBlocks\Exception\Mailchimp_API_Error_Exception;
+
 //add_action( 'init', __NAMESPACE__ . '\form_submission_listener' );
 add_action( 'wp_ajax_atomic_blocks_newsletter_submission', __NAMESPACE__ . '\form_submission_listener' );
 add_action( 'wp_ajax_nopriv_atomic_blocks_newsletter_submission', __NAMESPACE__ . '\form_submission_listener' );
@@ -54,7 +56,6 @@ function form_submission_listener() {
 		send_processing_response( $response->get_error_message() );
 	}
 
-	// @todo make message configurable
 	send_processing_response( $success_message );
 }
 
@@ -115,11 +116,10 @@ function process_submission( $email, $provider, $list_id ) {
 				return new \WP_Error( 'invalid_api_key', $errors['invalid_api_key'] );
 			}
 
-			// @todo check that list is valid.
 			try {
 				$chimp = new Mailchimp( $api_key );
 				return $chimp->add_email_to_list( $email, $list_id );
-			} catch ( \Mailchimp_API_Error_Exception $exception ) {
+			} catch ( Mailchimp_API_Error_Exception $exception ) {
 				return new \WP_Error( $exception->getCode(), $exception->getMessage() );
 			}
 			break;
@@ -132,7 +132,7 @@ function process_submission( $email, $provider, $list_id ) {
 /**
  * Returns a list of supported mailing list providers.
  *
- * @throws \Mailchimp_API_Error_Exception If an invalid API key is saved in the plugin settings.
+ * @throws Mailchimp_API_Error_Exception If an invalid API key is saved in the plugin settings.
  * @return array
  */
 function mailing_list_providers() {
@@ -142,15 +142,19 @@ function mailing_list_providers() {
 	$mailchimp_lists = [];
 
 	if ( ! empty( $mailchimp_api_key ) ) {
-		$chimp = new Mailchimp( $mailchimp_api_key );
-		$lists = $chimp->get_lists();
-		if ( ! empty( $lists ) ) {
-			foreach ( $lists as $key => $list ) {
-				$mailchimp_lists[ $key ] = [
-					'id'   => $list['id'],
-					'name' => $list['name'],
-				];
+		try {
+			$chimp = new Mailchimp( $mailchimp_api_key );
+			$lists = $chimp->get_lists();
+			if ( ! empty( $lists ) ) {
+				foreach ( $lists as $key => $list ) {
+					$mailchimp_lists[ $key ] = [
+						'id'   => $list['id'],
+						'name' => $list['name'],
+					];
+				}
 			}
+		} catch ( Mailchimp_API_Error_Exception $exception ) {
+			// Do nothing and return an empty array for mailing lists.
 		}
 	}
 

@@ -119,8 +119,10 @@ final class Mailchimp implements Provider_Interface {
 		$lists = get_transient( 'atomic_blocks_mailchimp_lists' );
 
 		if ( empty( $lists ) ) {
-			// @todo error checking. also need to return an empty array if no lists exist.
-			$lists = $this->mailchimp->get( 'lists' )['lists'];
+			$response = (array) $this->mailchimp->get( 'lists' );
+			if ( ! empty( $response['lists'] ) ) {
+				$lists = $response['lists'];
+			}
 			set_transient( 'atomic_blocks_mailchimp_lists', $lists, MINUTE_IN_SECONDS * 15 );
 		}
 
