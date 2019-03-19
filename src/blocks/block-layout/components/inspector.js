@@ -6,9 +6,7 @@
 import icons from './icons';
 import map from 'lodash/map';
 import layoutColumns from './layout-columns';
-import Padding from './../../../utils/inspector/padding';
 import MarginSettings from './../../../utils/components/margin/margin';
-import marginAttributes from '../../../utils/components/margin/attributes';
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -24,14 +22,11 @@ const {
 
 // Import Inspector components
 const {
-	Toolbar,
 	PanelBody,
-	PanelRow,
 	RangeControl,
 	ButtonGroup,
 	Button,
 	Tooltip,
-	Dashicon,
 	ToggleControl,
 } = wp.components;
 

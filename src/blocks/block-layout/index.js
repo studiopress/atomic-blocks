@@ -3,37 +3,15 @@
  */
 
 // Import block dependencies and components
-import classnames from 'classnames';
-import Inspector from './components/inspector';
 import Edit from './components/edit';
 import Save from './components/save';
 import marginAttributes from '../../utils/components/margin/margin';
 
-
 // Internationalization
 const { __ } = wp.i18n;
 
-// Extend component
-const { Component } = wp.element;
-
 // Register block
 const { registerBlockType } = wp.blocks;
-
-// Register editor components
-const {
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	MediaUpload,
-	InnerBlocks,
-} = wp.editor;
-
-// Register components
-const {
-	Button,
-	SelectControl,
-} = wp.components;
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-layout', {

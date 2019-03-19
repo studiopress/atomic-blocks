@@ -9,13 +9,10 @@ import layoutColumns from './layout-columns';
 import map from 'lodash/map';
 
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
 const { Component, Fragment } = wp.element;
 
 // Register editor components
 const {
-	RichText,
-	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
 	InnerBlocks,
@@ -26,8 +23,6 @@ const {
 	ButtonGroup,
 	Tooltip,
 	Button,
-	IconButton,
-	Dashicon,
 } = wp.components;
 
 // Set allowed blocks and media

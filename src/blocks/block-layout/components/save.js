@@ -18,9 +18,7 @@ export default class Save extends Component {
 
 		// Setup the attributes
 		const {
-			columns,
 			columnsGap,
-			align,
 			layoutClass,
 		} = this.props.attributes;
 

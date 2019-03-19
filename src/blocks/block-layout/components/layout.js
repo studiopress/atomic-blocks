@@ -23,7 +23,6 @@ export default class Layout extends Component {
 		const {
 			attributes: {
 				columns,
-				columnsGap,
 				align,
 				layout,
 			}
