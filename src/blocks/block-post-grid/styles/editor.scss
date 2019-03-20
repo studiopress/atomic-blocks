@@ -3,12 +3,21 @@
  */
 
  .ab-block-post-grid {
-     h2 a {
+	.ab-block-post-grid-title a {
          text-decoration: none;
-     }
+    }
  }
 
-div[data-type="atomic-blocks/ab-post-grid"] .editor-block-list__block-edit:before {
-    
-}
+ .atomic-blocks-hide-query .components-base-control:nth-of-type(3) {
+     display: none;
+ }
 
+ .ab-block-post-grid-markup-settings {
+	 .components-base-control__help {
+		 margin-top: 8px;
+	 }
+ }
+
+ .block-editor__container .editor-block-list__block .ab-block-post-grid a {
+	 color: inherit;
+ }

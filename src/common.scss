@@ -146,13 +146,10 @@ $lightgray: #626e81;
 
 .ab-text-link {
   color: inherit;
-  box-shadow: 0 -1px 0 inset;
   text-decoration: none;
-  transition: .3s ease;
 
   &:hover {
     color: inherit;
-    box-shadow: 0 -2px 0 inset;
-    color: $accent;
+    text-decoration: underline;
   }
 }
