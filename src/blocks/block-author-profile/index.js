@@ -176,7 +176,7 @@ class ABAuthorProfileBlock extends Component {
 			// Show the block markup in the editor
 			<ProfileBox { ...this.props }>
 				<AvatarColumn { ...this.props }>
-					<div class="ab-profile-image-square">
+					<div className="ab-profile-image-square">
 						<MediaUpload
 							buttonProps={ {
 								className: 'change-image'
@@ -193,7 +193,7 @@ class ABAuthorProfileBlock extends Component {
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
 									{ ! profileImgID ? icons.upload : <img
-										class="profile-avatar"
+										className="profile-avatar"
 										src={ profileImgURL }
 										alt="avatar"
 									/>  }
@@ -280,9 +280,9 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 
 				{ profileImgURL && (
 					<AvatarColumn { ...props }>
-						<div class="ab-profile-image-square">
+						<div className="ab-profile-image-square">
 							<img
-								class="ab-profile-avatar"
+								className="ab-profile-avatar"
 								src={ profileImgURL }
 								alt="avatar"
 							/>

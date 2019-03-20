@@ -170,11 +170,11 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 				className={ wrapperClassName ? wrapperClassName : undefined }
 				style={ wrapperStyles }
 			>
-				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				<div itemProp="offers" itemScope itemType="http://schema.org/Offer">
 					{ currency && showCurrency && (
 						<RichText.Content
 							tagName="span"
-							itemprop="priceCurrency"
+							itemProp="priceCurrency"
 							placeholder={ __( '$', 'atomic-blocks' ) }
 							value={ currency }
 							className="ab-pricing-table-currency"
@@ -183,7 +183,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 					) }
 					<RichText.Content
 						tagName="div"
-						itemprop="price"
+						itemProp="price"
 						value={ price }
 						className={ className ? className : undefined }
 						style={ styles }

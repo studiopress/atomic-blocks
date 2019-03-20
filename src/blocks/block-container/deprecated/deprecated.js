@@ -87,9 +87,9 @@ export const Container_1_4_23_save = props => {
 
 	return (
 		<Container_1_4_23 { ...props }>
-            <div class="ab-container-inside">
+            <div className="ab-container-inside">
                 { containerImgURL && !! containerImgURL.length && (
-                    <div class="ab-container-image-wrap">
+                    <div className="ab-container-image-wrap">
                         <img
                             className={ classnames(
                                 'ab-container-image',
@@ -105,7 +105,7 @@ export const Container_1_4_23_save = props => {
                 ) }
 
                 <div
-                    class="ab-container-content"
+                    className="ab-container-content"
                     style={ {
                         maxWidth: `${containerMaxWidth}px`,
                     } }

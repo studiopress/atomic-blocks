@@ -100,9 +100,9 @@ class ABTestimonialBlock extends Component {
 					onChange={ ( value ) => setAttributes( { testimonialContent: value } ) }
 				/>
 
-				<div class="ab-testimonial-info">
-					<div class="ab-testimonial-avatar-wrap">
-						<div class="ab-testimonial-image-wrap">
+				<div className="ab-testimonial-info">
+					<div className="ab-testimonial-avatar-wrap">
+						<div className="ab-testimonial-image-wrap">
 							<MediaUpload
 								buttonProps={ {
 									className: 'change-image'
@@ -119,7 +119,7 @@ class ABTestimonialBlock extends Component {
 								render={ ( { open } ) => (
 									<Button onClick={ open }>
 										{ ! testimonialImgID ? icons.upload : <img
-											class="ab-testimonial-avatar"
+											className="ab-testimonial-avatar"
 											src={ testimonialImgURL }
 											alt="avatar"
 										/>  }
@@ -248,12 +248,12 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 					value={ testimonialContent }
 				/>
 
-				<div class="ab-testimonial-info">
+				<div className="ab-testimonial-info">
 					{ testimonialImgURL && (
-						<div class="ab-testimonial-avatar-wrap">
-							<div class="ab-testimonial-image-wrap">
+						<div className="ab-testimonial-avatar-wrap">
+							<div className="ab-testimonial-image-wrap">
 								<img
-									class="ab-testimonial-avatar"
+									className="ab-testimonial-avatar"
 									src={ testimonialImgURL }
 									alt="avatar"
 								/>

@@ -23,8 +23,8 @@ export default class AvatarColumn extends Component {
 
 	render() {
 		return (
-			<div class="ab-profile-column ab-profile-avatar-wrap">
-				<div class="ab-profile-image-wrap">
+			<div className="ab-profile-column ab-profile-avatar-wrap">
+				<div className="ab-profile-image-wrap">
 					{ this.props.children }
 				</div>
 			</div>

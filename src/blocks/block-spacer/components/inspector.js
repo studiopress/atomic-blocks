@@ -4,7 +4,10 @@
 
 // Setup the block
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const {
+	Component,
+	Fragment,
+} = wp.element;
 
 // Import block components
 const {
@@ -37,13 +40,22 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = this.props.attributes;
+		const {
+			attributes: {
+				spacerHeight,
+				spacerDivider,
+				spacerDividerStyle,
+				spacerDividerColor,
+				spacerDividerHeight
+			},
+			setAttributes
+		} = this.props;
 
 		// Button size values
 		const spacerStyleOptions = [
-			{ value: 'ab-divider-solid', label: __( 'Solid' ) },
-			{ value: 'ab-divider-dashed', label: __( 'Dashed' ) },
-			{ value: 'ab-divider-dotted', label: __( 'Dotted' ) },
+			{ value: 'ab-divider-solid', label: __( 'Solid', 'atomic-blocks' ) },
+			{ value: 'ab-divider-dashed', label: __( 'Dashed', 'atomic-blocks' ) },
+			{ value: 'ab-divider-dotted', label: __( 'Dotted', 'atomic-blocks' ) },
 		];
 
 		// Divider color
@@ -64,7 +76,7 @@ export default class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Spacer Height' ) }
+					label={ __( 'Spacer Height', 'atomic-blocks' ) }
 					value={ spacerHeight || '' }
 					onChange={ ( value ) => this.props.setAttributes( { spacerHeight: value } ) }
 					min={ 50 }
@@ -72,45 +84,45 @@ export default class Inspector extends Component {
 				/>
 
 				<ToggleControl
-					label={ __( 'Add Divider' ) }
+					label={ __( 'Add Divider', 'atomic-blocks' ) }
 					checked={ spacerDivider }
 					onChange={ () => this.props.setAttributes( { spacerDivider: ! spacerDivider } ) }
 				/>
+			</PanelBody>
+			{ spacerDivider ?
+				<Fragment>
+					<PanelBody>
+						<SelectControl
+							label={ __( 'Divider Style', 'atomic-blocks' ) }
+							value={ spacerDividerStyle }
+							options={ spacerStyleOptions.map( ({ value, label }) => ( {
+								value: value,
+								label: label,
+							} ) ) }
+							onChange={ ( value ) => { this.props.setAttributes( { spacerDividerStyle: value } ) } }
+						/>
 
-				{ spacerDivider ?
-				<PanelBody>
-					<SelectControl
-						label={ __( 'Divider Style' ) }
-						value={ spacerDividerStyle }
-						options={ spacerStyleOptions.map( ({ value, label }) => ( {
-							value: value,
-							label: label,
-						} ) ) }
-						onChange={ ( value ) => { this.props.setAttributes( { spacerDividerStyle: value } ) } }
-					/>
-
-					<RangeControl
-						label={ __( 'Divider Height' ) }
-						value={ spacerDividerHeight || '' }
-						onChange={ ( value ) => this.props.setAttributes( { spacerDividerHeight: value } ) }
-						min={ 1 }
-						max={ 5 }
-					/>
-
+						<RangeControl
+							label={ __( 'Divider Height', 'atomic-blocks' ) }
+							value={ spacerDividerHeight || '' }
+							onChange={ ( value ) => this.props.setAttributes( { spacerDividerHeight: value } ) }
+							min={ 1 }
+							max={ 5 }
+						/>
+					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Divider Color' ) }
+						title={ __( 'Divider Color', 'atomic-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [ {
 							colors: dividerColor,
 							value: spacerDividerColor,
 							onChange: onChangeDividerColor,
-							label: __( 'Divider Color' )
+							label: __( 'Divider Color', 'atomic-blocks' )
 						} ] }
 					>
 					</PanelColorSettings>
-				</PanelBody>
+				</Fragment>
 				: null }
-			</PanelBody>
 		</InspectorControls>
 		);
 	}

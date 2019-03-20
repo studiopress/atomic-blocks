@@ -20,8 +20,6 @@ const {
 // Register alignments
 const validAlignments = [ 'center', 'wide' ];
 
-export const name = 'core/latest-posts';
-
 // Register the block
 registerBlockType( 'atomic-blocks/ab-post-grid', {
 	title: __( 'AB Post and Page Grid', 'atomic-blocks' ),

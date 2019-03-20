@@ -95,7 +95,7 @@ class ABAccordionBlock extends Component {
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
 				/>
 
-				<div class="ab-accordion-text">
+				<div className="ab-accordion-text">
 					<InnerBlocks />
 				</div>
 			</Accordion>
@@ -129,12 +129,12 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 		return (
 			<Accordion { ...props }>
 				<details open={accordionOpen}>
-					<summary class="ab-accordion-title">
+					<summary className="ab-accordion-title">
 						<RichText.Content
 							value={ accordionTitle }
 						/>
 					</summary>
-					<div class="ab-accordion-text">
+					<div className="ab-accordion-text">
 						<InnerBlocks.Content />
 					</div>
 				</details>
@@ -168,13 +168,13 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 			return (
 				<Accordion { ...props }>
 					<details open={ props.attributes.accordionOpen }>
-						<summary class="ab-accordion-title">
+						<summary className="ab-accordion-title">
 							<RichText.Content
 								value={ props.attributes.accordionTitle }
 							/>
 						</summary>
 						<RichText.Content
-							class="ab-accordion-text"
+							className="ab-accordion-text"
 							tagName="p"
 							value={ props.attributes.accordionText }
 						/>
