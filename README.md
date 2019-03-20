@@ -30,7 +30,7 @@ We've created a beautiful little WordPress theme to help you get started with th
 * [Download the Atomic Blocks Theme](https://atomicblocks.com/?utm_source=WP.org%20AB%20Page&utm_campaign=wporg_ab_page)
 * [View the theme help file](https://atomicblocks.com/theme-help-file/?utm_source=WP.org%20AB%20Theme%20Help%20File%20Link&utm_campaign=wporg_ab_theme_help_link)
 
-In addition to the Atomic Block Theme, we’ve built Revolution Pro with the StudioPress team. This theme is built from the ground up with blocks—Gutenberg core and Atomic. Using this Theme and the Genesis One-Click Demo Install you can have a new block-based site up and running in minutes.
+In addition to the Atomic Block Theme, we’ve built Revolution Pro with the StudioPress team. This theme is built from the ground up with blocks -- Gutenberg core and Atomic. Using this Theme and the Genesis One-Click Demo Install you can have a new block-based site up and running in minutes.
 
 * [Revolution Pro Theme Demo](https://demo.studiopress.com/revolution/)
 * [Purchase the Revolution Theme](https://my.studiopress.com/themes/revolution/)
@@ -72,7 +72,7 @@ It can also be installed manually.
 
 **Can Atomic Blocks be used with any theme?**
 
-Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomic Blocks](https://atomicblocks.com/?utm_source=WP.org%20AB%20Page&utm_campaign=wporg_ab_page) theme for the best presentation. The Atomic Blocks theme has beautiful styles built in specifically for these blocks.
+Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomic Blocks](https://atomicblocks.com) theme or one of the Gutenberg-ready StudioPress themes such as [Revolution](https://my.studiopress.com/themes/revolution/) for the best presentation. Both of these themes have beautiful styles built in specifically for Atomic Blocks.
 
 [Get the Atomic Blocks theme](https://atomicblocks.com/?utm_source=WP.org%20AB%20Theme%20Link&utm_campaign=wporg_ab_theme_link)
 
@@ -82,11 +82,18 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**1.5.4**
+* Fix bug with author profile links.
+* Improve mobile styles.
+* Remove unused CPTs.
+* Remove plugin-defined color palettes in favor of theme palettes.
+* Fix color setting bug in spacer block.
+
 **1.5.3**
 * Fix bug with undefined dim ratio in CTA.
 
 **1.5.2**
-* Fix bug with undefined dim ratio in Container.
+* Fix bug with undefined dim ratio.
 
 **1.5.1**
 * Fix bug with lodash scoping.
