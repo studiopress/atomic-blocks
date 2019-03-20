@@ -20,12 +20,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function atomic_blocks_block_assets() {
 
+	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
+
 	// Load the compiled styles
 	wp_register_style(
 		'atomic-blocks-style-css',
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
 		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.style.build.css' )
+	);
+
+	// Load the FontAwesome icon library
+	wp_enqueue_style(
+		'atomic-blocks-fontawesome',
+		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
 }
 add_action( 'init', 'atomic_blocks_block_assets' );
