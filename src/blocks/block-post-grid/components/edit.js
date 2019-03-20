@@ -117,7 +117,7 @@ class LatestPostsBlock extends Component {
 					) }
 				>
 					{ attributes.displaySectionTitle && attributes.sectionTitle &&
-						<SectionTitleTag class="ab-post-grid-section-title">{ attributes.sectionTitle }</SectionTitleTag>
+						<SectionTitleTag className="ab-post-grid-section-title">{ attributes.sectionTitle }</SectionTitleTag>
 					}
 
 					<div
@@ -139,7 +139,7 @@ class LatestPostsBlock extends Component {
 							>
 								{
 									attributes.displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-										<div class="ab-block-post-grid-image">
+										<div className="ab-block-post-grid-image">
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<img
 													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
@@ -152,16 +152,16 @@ class LatestPostsBlock extends Component {
 									)
 								}
 
-								<div class="ab-block-post-grid-text">
-									<header class="ab-block-post-grid-header">
+								<div className="ab-block-post-grid-text">
+									<header className="ab-block-post-grid-header">
 										{ attributes.displayPostTitle &&
-											<PostTag class="ab-block-post-grid-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></PostTag>
+											<PostTag className="ab-block-post-grid-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }</a></PostTag>
 										}
 
 										{ isPost &&
-											<div class="ab-block-post-grid-byline">
+											<div className="ab-block-post-grid-byline">
 												{ attributes.displayPostAuthor && post.author_info.display_name &&
-													<div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+													<div className="ab-block-post-grid-author"><a className="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
 												}
 
 												{ attributes.displayPostDate && post.date_gmt &&
@@ -173,13 +173,13 @@ class LatestPostsBlock extends Component {
 										}
 									</header>
 
-									<div class="ab-block-post-grid-excerpt">
+									<div className="ab-block-post-grid-excerpt">
 										{ attributes.displayPostExcerpt && post.excerpt &&
 											<div dangerouslySetInnerHTML={ { __html: truncate( post.excerpt.rendered, attributes.excerptLength ) } } />
 										}
 
 										{ attributes.displayPostLink &&
-											<p><a class="ab-block-post-grid-more-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ attributes.readMoreText }</a></p>
+											<p><a className="ab-block-post-grid-more-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ attributes.readMoreText }</a></p>
 										}
 									</div>
 								</div>
