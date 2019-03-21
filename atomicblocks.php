@@ -12,7 +12,6 @@
  * @package ATOMIC BLOCKS
  */
 
-
 /**
  * Exit if accessed directly
  */
@@ -61,7 +60,7 @@ add_action( 'init', 'atomic_blocks_init' );
  * Add a check for our plugin before redirecting
  */
 function atomic_blocks_activate() {
-    add_option( 'atomic_blocks_do_activation_redirect', true );
+	add_option( 'atomic_blocks_do_activation_redirect', true );
 }
 register_activation_hook( __FILE__, 'atomic_blocks_activate' );
 
@@ -70,12 +69,14 @@ register_activation_hook( __FILE__, 'atomic_blocks_activate' );
  * Redirect to the Atomic Blocks Getting Started page on single plugin activation
  */
 function atomic_blocks_redirect() {
-    if ( get_option( 'atomic_blocks_do_activation_redirect', false ) ) {
-        delete_option( 'atomic_blocks_do_activation_redirect' );
-        if( !isset( $_GET['activate-multi'] ) ) {
-            wp_redirect( "admin.php?page=atomic-blocks" );
-        }
-    }
+	if ( get_option( 'atomic_blocks_do_activation_redirect', false ) ) {
+		delete_option( 'atomic_blocks_do_activation_redirect' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only used to do a redirect. False positive.
+		if ( ! isset( $_GET['activate-multi'] ) ) {
+			wp_safe_redirect( 'admin.php?page=atomic-blocks' );
+			exit;
+		}
+	}
 }
 add_action( 'admin_init', 'atomic_blocks_redirect' );
 
@@ -84,7 +85,7 @@ add_action( 'admin_init', 'atomic_blocks_redirect' );
  * Add image sizes
  */
 function atomic_blocks_image_sizes() {
-	// Post Grid Block
+	// Post Grid Block.
 	add_image_size( 'ab-block-post-grid-landscape', 600, 400, true );
 	add_image_size( 'ab-block-post-grid-square', 600, 600, true );
 }
