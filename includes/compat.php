@@ -5,7 +5,7 @@
  * Handles things like PHP version requirements
  * not met, unregistering blocks, etc.
  *
- * This function should remain PHP 5.2 compatible.
+ * This file should remain PHP 5.2 compatible.
  *
  * @package AtomicBlocks\Compatibility
  */
