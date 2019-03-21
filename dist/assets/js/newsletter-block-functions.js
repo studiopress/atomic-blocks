@@ -15,13 +15,13 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var form = $( this ).parents( 'form' );
 
-			var email = button.parent().find( "[name='atomic-blocks-newsletter-email-address']" ).val();
+			var email = button.parent().find( "[name='ab-newsletter-email-address']" ).val();
 
-			var provider = button.parent().find( "[name='atomic-blocks-newsletter-mailing-list-provider']" ).val();
+			var provider = button.parent().find( "[name='ab-newsletter-mailing-list-provider']" ).val();
 
-			var list = button.parent().find( "[name='atomic-blocks-newsletter-mailing-list']" ).val();
+			var list = button.parent().find( "[name='ab-newsletter-mailing-list']" ).val();
 
-			var successMessage = button.parent().find( "[name='atomic-blocks-newsletter-success-message']" ).val();
+			var successMessage = button.parent().find( "[name='ab-newsletter-success-message']" ).val();
 
 			if ( ! email ) {
 				button.text( atomic_blocks_newsletter_vars.button_text_default ).prop( 'disabled', false );
@@ -29,7 +29,7 @@ var AtomicBlocksNewsletterSubmission = {
 			}
 
 			if ( ! provider || ! list ) {
-				form.html( '<p class="atomic-blocks-newsletter-submission-message">' + atomic_blocks_newsletter_vars.invalid_configuration + '</p>' );
+				form.html( '<p class="ab-newsletter-submission-message">' + atomic_blocks_newsletter_vars.invalid_configuration + '</p>' );
 				return;
 			}
 
@@ -39,16 +39,16 @@ var AtomicBlocksNewsletterSubmission = {
 					atomic_blocks_newsletter_email: email,
 					atomic_blocks_newsletter_mailing_list_provider: provider,
 					atomic_blocks_newsletter_mailing_list: list,
-					atomic_blocks_newsletter_form_nonce: $( '#atomic-blocks-newsletter-form-nonce' ).val(),
+					atomic_blocks_newsletter_form_nonce: $( '#ab-newsletter-form-nonce' ).val(),
 					atomic_blocks_newsletter_success_message: successMessage,
 				},
 				type: 'post',
 				url: atomic_blocks_newsletter_vars.ajaxurl,
 				success: function( response ) {
-					form.html( '<p class="atomic-blocks-newsletter-submission-message">' + response.data.message + '</p>' );
+					form.html( '<p class="ab-newsletter-submission-message">' + response.data.message + '</p>' );
 				},
 				failure: function( response ) {
-					form.html( '<p class="atomic-blocks-newsletter-submission-message">' + response.data.message + '</p>' );
+					form.html( '<p class="ab-newsletter-submission-message">' + response.data.message + '</p>' );
 				}
 
 			} );

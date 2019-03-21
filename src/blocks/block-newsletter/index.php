@@ -46,13 +46,13 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$form = '
 		<div class="ab-block-newsletter">
 			<form method="post">
-				<label for="atomic-blocks-newsletter-email-address">' . esc_html( $email_input_label ) . '</label>
-				<input type="text" name="atomic-blocks-newsletter-email-address" />
+				<label for="ab-newsletter-email-address">' . esc_html( $email_input_label ) . '</label>
+				<input type="text" name="ab-newsletter-email-address" />
 				<button class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" ' . $button_styles . '>' . esc_html( $button_text ) . '</button>
-				<input type="hidden" name="atomic-blocks-newsletter-mailing-list-provider" value="' . esc_attr( $mailing_list_provider ) . '" />
-				<input type="hidden" name="atomic-blocks-newsletter-mailing-list" value="' . esc_attr( $mailing_list ) . '" />
-				<input type="hidden" name="atomic-blocks-newsletter-success-message" value="' . esc_attr( $success_message ) . '" />
-				' . wp_nonce_field( 'atomic-blocks-newsletter-form-nonce', 'atomic-blocks-newsletter-form-nonce', true, false ) . '
+				<input type="hidden" name="ab-newsletter-mailing-list-provider" value="' . esc_attr( $mailing_list_provider ) . '" />
+				<input type="hidden" name="ab-newsletter-mailing-list" value="' . esc_attr( $mailing_list ) . '" />
+				<input type="hidden" name="ab-newsletter-success-message" value="' . esc_attr( $success_message ) . '" />
+				' . wp_nonce_field( 'ab-newsletter-form-nonce', 'ab-newsletter-form-nonce', true, false ) . '
 			</form>
 		</div>
 	';

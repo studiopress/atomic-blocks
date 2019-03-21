@@ -59,7 +59,7 @@ registerBlockType(
 				<NewsletterContainer>
 					{ ! apiKeyDefined && (
 						<Fragment>
-							<div className="atomic-blocks-newsletter-notice">
+							<div className="ab-newsletter-notice">
 								{ __( 'You must define your newsletter provider API keys to use this block.', 'atomic-blocks' ) }
 								<p><a href={ atomic_blocks_newsletter_block_vars.plugin_settings_page_url }>{ __( 'Configure your settings', 'atomic-blocks' ) }</a></p>
 							</div>
@@ -78,7 +78,7 @@ registerBlockType(
 					{ apiKeyDefined && (
 						<Fragment>
 							<TextControl
-								name="atomic-blocks-newsletter-email-address"
+								name="ab-newsletter-email-address"
 								label={ ! isSelected && ( attributes.emailInputLabel ) }
 							/>
 
