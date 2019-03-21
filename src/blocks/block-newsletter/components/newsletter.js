@@ -19,11 +19,18 @@ export default class NewsletterContainer extends Component {
 
 	render() {
 
+		const {
+			attributes
+		} = this.props;
+
 		return (
 			<div
-				// style={ {
-				// 	textAlign: this.props.attributes.buttonAlignment,
-				// } }
+				style={ {
+					paddingTop: attributes.paddingTop ? attributes.paddingTop : undefined,
+					paddingRight: attributes.paddingRight ? attributes.paddingRight : undefined,
+					paddingBottom: attributes.paddingBottom ? attributes.paddingBottom : undefined,
+					paddingLeft: attributes.paddingLeft ? attributes.paddingLeft : undefined,
+				} }
 				className={ classnames(
 					this.props.className,
 					'ab-block-newsletter'

@@ -48,15 +48,11 @@ registerBlockType(
 
 			const editStyles = {
 				backgroundColor: attributes.backgroundColor,
-				paddingTop: attributes.paddingTop ? attributes.paddingTop + 'px' : undefined,
-				paddingRight: attributes.paddingRight ? attributes.paddingRight + 'px' : undefined,
-				paddingBottom: attributes.paddingBottom ? attributes.paddingBottom + 'px' : undefined,
-				paddingLeft: attributes.paddingLeft ? attributes.paddingLeft + 'px' : undefined,
 			};
 
 			return [
 				<Inspector { ...{ setAttributes, ...props } }/>,
-				<NewsletterContainer>
+				<NewsletterContainer { ...props }>
 					{ ! apiKeyDefined && (
 						<Fragment>
 							<div className="ab-newsletter-notice">

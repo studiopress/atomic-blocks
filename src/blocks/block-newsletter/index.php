@@ -41,10 +41,38 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$button_styles         = 'style="background-color: ' . $button_bg_color . '; color: ' . $button_text_color . '"';
 	$mailing_list_provider = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : $defaults['mailingListProvider']['default'];
 	$mailing_list          = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
+	$padding_top       	   = ! empty( $attributes['paddingTop'] ) ? $attributes['paddingTop'] : $defaults['paddingTop']['default'];
+	$padding_right         = ! empty( $attributes['paddingRight'] ) ? $attributes['paddingRight'] : $defaults['paddingRight']['default'];
+	$padding_bottom        = ! empty( $attributes['paddingBottom'] ) ? $attributes['paddingBottom'] : $defaults['paddingBottom']['default'];
+	$padding_left          = ! empty( $attributes['paddingLeft'] ) ? $attributes['paddingLeft'] : $defaults['paddingLeft']['default'];
 	$success_message       = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
+	$padding_styles = "";
+
+	if( ! empty( $padding_top ) && $padding_top > 0 ) {
+		$padding_styles .= 'padding-top:' . $padding_top . 'px;';
+	}
+
+	if( ! empty( $padding_right ) && $padding_right > 0 ) {
+		$padding_styles .= 'padding-right:' . $padding_right . 'px;';
+	}
+
+	if( ! empty( $padding_bottom ) && $padding_bottom > 0 ) {
+		$padding_styles .= 'padding-bottom:' . $padding_bottom . 'px;';
+	}
+
+	if( ! empty( $padding_left ) && $padding_left > 0 ) {
+		$padding_styles .= 'padding-left:' . $padding_left . 'px;';
+	}
+
+	if( ! empty( $padding_styles ) ) {
+		$wrapper_styles = 'style=" ' . $padding_styles . ' " ';
+	} else {
+		$wrapper_styles = null;
+	}
+
 	$form = '
-		<div class="ab-block-newsletter">
+		<div class="ab-block-newsletter" ' . $wrapper_styles . '>
 			<form method="post">
 				<label for="ab-newsletter-email-address">' . esc_html( $email_input_label ) . '</label>
 				<input type="text" name="ab-newsletter-email-address" />
@@ -112,6 +140,22 @@ function atomic_blocks_newsletter_block_attributes() {
 		'successMessage'        => [
 			'type'    => 'string',
 			'default' => esc_html__( 'Thanks for subscribing.', 'atomic-blocks' ),
+		],
+		'paddingTop'   => [
+			'type'    => 'number',
+			'default' => '0',
+		],
+		'paddingRight'   => [
+			'type'    => 'number',
+			'default' => '0',
+		],
+		'paddingBottom'   => [
+			'type'    => 'number',
+			'default' => '0',
+		],
+		'paddingLeft'   => [
+			'type'    => 'number',
+			'default' => '0',
 		],
 	];
 }
