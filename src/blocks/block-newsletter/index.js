@@ -66,20 +66,18 @@ registerBlockType(
 						</Fragment>
 					) }
 					{ apiKeyDefined && (
-						<RichText
-							tagName="span"
-							className="ab-block-newsletter-label"
-							keepPlaceholderOnFocus
-							formattingControls={ [] }
-							value={ attributes.emailInputLabel }
-							onChange={ ( value ) => setAttributes( { emailInputLabel: value } ) }
-						/>
-					) }
-					{ apiKeyDefined && (
 						<Fragment>
+							<RichText
+								tagName="span"
+								className="ab-block-newsletter-label"
+								keepPlaceholderOnFocus
+								formattingControls={ [] }
+								value={ attributes.emailInputLabel }
+								onChange={ ( value ) => setAttributes( { emailInputLabel: value } ) }
+							/>
+
 							<TextControl
 								name="ab-newsletter-email-address"
-								label={ ! isSelected && ( attributes.emailInputLabel ) }
 							/>
 
 							<div
