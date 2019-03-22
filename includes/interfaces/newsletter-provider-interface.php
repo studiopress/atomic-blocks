@@ -20,9 +20,9 @@ interface Provider_Interface {
 	 * Adds an email address to the specified list.
 	 *
 	 * @param string $email The email address.
-	 * @param string $list_id The mailing list ID.
+	 * @param array  $args Additional arguments.
 	 *
 	 * @return bool True if the email was added, false if not.
 	 */
-	public function add_email_to_list( $email, $list_id );
+	public function subscribe( $email, array $args );
 }

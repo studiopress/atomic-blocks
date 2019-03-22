@@ -50,7 +50,7 @@ function form_submission_listener() {
 		send_processing_response( __( 'Please provide a valid email address.', 'atomic-blocks' ) );
 	}
 
-	$response = process_submission( $email, $provider, $list );
+	$response = process_submission( $email, $provider, [ 'list_id' => $list ] );
 
 	if ( is_wp_error( $response ) ) {
 		send_processing_response( $response->get_error_message() );
@@ -78,15 +78,15 @@ function send_processing_response( $message ) {
  *
  * @param string $email The email address.
  * @param string $provider The newsletter provider.
- * @param string $list_id The mailing list ID.
+ * @param array  $args Additional arguments.
  *
  * @return bool|\WP_Error If any error occurs.
  */
-function process_submission( $email, $provider, $list_id ) {
+function process_submission( $email, $provider, array $args ) {
 
 	$provider = sanitize_text_field( trim( (string) $provider ) );
 	$email    = sanitize_email( trim( (string) $email ) );
-	$list_id  = sanitize_text_field( trim( (string) $list_id ) );
+	$list_id  = ! empty( $args['list_id'] ) ? sanitize_text_field( trim( (string) $args['list_id'] ) ) : false;
 
 	$errors = [
 		'invalid_provider' => esc_html__( 'Invalid newsletter provider.', 'atomic-blocks' ),
@@ -118,7 +118,12 @@ function process_submission( $email, $provider, $list_id ) {
 
 			try {
 				$chimp = new Mailchimp( $api_key );
-				return $chimp->add_email_to_list( $email, $list_id );
+				return $chimp->subscribe(
+					$email,
+					[
+						'list_id' => $list_id,
+					]
+				);
 			} catch ( Mailchimp_API_Error_Exception $exception ) {
 				return new \WP_Error( $exception->getCode(), $exception->getMessage() );
 			}
@@ -153,6 +158,7 @@ function mailing_list_providers() {
 					];
 				}
 			}
+		// phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
 		} catch ( Mailchimp_API_Error_Exception $exception ) {
 			// Do nothing and return an empty array for mailing lists.
 		}
