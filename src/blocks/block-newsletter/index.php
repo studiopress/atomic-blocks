@@ -42,6 +42,8 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$button_styles         = 'style="background-color: ' . $button_bg_color . '; color: ' . $button_text_color . '"';
 	$mailing_list_provider = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : $defaults['mailingListProvider']['default'];
 	$mailing_list          = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
+	$newsletter_title      = ! empty( $attributes['newsletterTitle'] ) ? $attributes['newsletterTitle'] : null;
+	$newsletter_text       = ! empty( $attributes['newsletterText'] ) ? $attributes['newsletterText'] : null;
 	$padding			   = ! empty( $attributes['padding'] ) ? $attributes['padding'] : $defaults['padding']['default'];
 	$success_message       = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
@@ -66,8 +68,17 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 		$wrapper_styles = null;
 	}
 
-	$form = '
-		<div class="ab-block-newsletter" ' . $wrapper_styles . '>
+	echo( '<div class="ab-block-newsletter" ' . $wrapper_styles . '>' );
+
+		if ( $newsletter_title ) {
+			echo '<h2 class="ab-newsletter-title">' . esc_html( $newsletter_title ) . '</h2>';
+		}
+
+		if ( $newsletter_text ) {
+			echo '<div class="ab-newsletter-text">' . esc_html( $newsletter_text ) . '</div>';
+		}
+
+		$form = '
 			<form method="post">
 				<label for="ab-newsletter-email-address">' . esc_html( $email_input_label ) . '</label>
 				<input type="text" name="ab-newsletter-email-address" />
@@ -77,9 +88,10 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 				<input type="hidden" name="ab-newsletter-success-message" value="' . esc_attr( $success_message ) . '" />
 				' . wp_nonce_field( 'ab-newsletter-form-nonce', 'ab-newsletter-form-nonce', true, false ) . '
 			</form>
-		</div>
-	';
-	return $form;
+		';
+		return $form;
+
+	echo( '</div>' );
 }
 
 /**
@@ -142,6 +154,18 @@ function atomic_blocks_newsletter_block_attributes() {
 		'padding'   => [
 			'type'    => 'number',
 			'default' => 0,
+		],
+		'newsletterTitle'  => [
+			'type' => 'string',
+		],
+		'newsletterTitleToggle'  => [
+			'type' => 'boolean',
+		],
+		'newsletterText' => [
+			'type' => 'string',
+		],
+		'newsletterTextToggle' => [
+			'type' => 'boolean',
 		],
 	];
 }

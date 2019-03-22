@@ -53,6 +53,29 @@ registerBlockType(
 			return [
 				<Inspector { ...{ setAttributes, ...props } }/>,
 				<NewsletterContainer { ...props }>
+					{ attributes.newsletterTitleToggle && (
+						<RichText
+							placeholder={ __( 'Add a title', 'atomic-blocks' ) }
+							tagName="h2"
+							className="ab-newsletter-title"
+							keepPlaceholderOnFocus
+							formattingControls={ [] }
+							value={ attributes.newsletterTitle }
+							onChange={ ( value ) => setAttributes( { newsletterTitle: value } ) }
+						/>
+					) }
+					{ attributes.newsletterTextToggle && (
+						<RichText
+							placeholder={ __( 'Add some text to describe your form', 'atomic-blocks' ) }
+							tagName="div"
+							className="ab-newsletter-text"
+							multiline="p"
+							keepPlaceholderOnFocus
+							formattingControls={ [] }
+							value={ attributes.newsletterText }
+							onChange={ ( value ) => setAttributes( { newsletterText: value } ) }
+						/>
+					) }
 					{ ! apiKeyDefined && (
 						<Fragment>
 							<div className="ab-newsletter-notice">

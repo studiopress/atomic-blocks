@@ -6,7 +6,7 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 // @todo ContrastChecker
 const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, SelectControl, TextControl } = wp.components;
+const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
 // Import padding component
 import Padding from './../../../utils/inspector/padding';
@@ -56,6 +56,18 @@ export default class Inspector extends Component {
 						value={ attributes.successMessage }
 						onChange={ ( value ) => setAttributes( { successMessage: value } ) }
 					/>
+
+					<ToggleControl
+                        label={ __( 'Display Newsletter Title', 'atomic-blocks' ) }
+                        checked={ attributes.newsletterTitleToggle }
+						onChange={ () => this.props.setAttributes( { newsletterTitleToggle: ! attributes.newsletterTitleToggle } ) }
+                    />
+
+					<ToggleControl
+                        label={ __( 'Display Newsletter Text', 'atomic-blocks' ) }
+                        checked={ attributes.newsletterTextToggle }
+						onChange={ () => this.props.setAttributes( { newsletterTextToggle: ! attributes.newsletterTextToggle } ) }
+                    />
 				</PanelBody>
 
 				<PanelBody
