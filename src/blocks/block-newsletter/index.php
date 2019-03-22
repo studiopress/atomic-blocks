@@ -68,17 +68,21 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 		$wrapper_styles = null;
 	}
 
-	echo( '<div class="ab-block-newsletter" ' . $wrapper_styles . '>' );
+		$form = "";
+
+		$form .= '<div class="ab-block-newsletter" ' . $wrapper_styles . '>';
 
 		if ( $newsletter_title ) {
-			echo '<h2 class="ab-newsletter-title">' . esc_html( $newsletter_title ) . '</h2>';
+			$form .= '<h2 class="ab-newsletter-title">' . esc_html( $newsletter_title ) . '</h2>';
 		}
 
 		if ( $newsletter_text ) {
-			echo '<div class="ab-newsletter-text">' . esc_html( $newsletter_text ) . '</div>';
+			$allowed = array( 'p' => array() );
+			$text = '<div class="ab-newsletter-text">' . $newsletter_text . '</div>';
+			$form .= wp_kses( $text, $allowed );
 		}
 
-		$form = '
+		$form .= '
 			<form method="post">
 				<label for="ab-newsletter-email-address">' . esc_html( $email_input_label ) . '</label>
 				<input type="text" name="ab-newsletter-email-address" />
@@ -89,6 +93,9 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 				' . wp_nonce_field( 'ab-newsletter-form-nonce', 'ab-newsletter-form-nonce', true, false ) . '
 			</form>
 		';
+
+		$form .= '</div>';
+
 		return $form;
 
 	echo( '</div>' );
