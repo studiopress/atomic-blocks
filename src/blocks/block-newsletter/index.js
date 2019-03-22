@@ -17,6 +17,9 @@ const { TextControl } = wp.components;
  */
 import Inspector from './components/inspector';
 import CustomButton from './../block-button/components/button';
+import NewsletterContainer from './components/newsletter';
+import './styles/style.scss';
+import './styles/editor.scss';
 
 registerBlockType(
 	'atomic-blocks/newsletter',
@@ -45,78 +48,75 @@ registerBlockType(
 
 			const editStyles = {
 				backgroundColor: attributes.backgroundColor,
-				paddingTop: attributes.paddingTop ? attributes.paddingTop + 'px' : undefined,
-				paddingRight: attributes.paddingRight ? attributes.paddingRight + 'px' : undefined,
-				paddingBottom: attributes.paddingBottom ? attributes.paddingBottom + 'px' : undefined,
-				paddingLeft: attributes.paddingLeft ? attributes.paddingLeft + 'px' : undefined,
 			};
 
 			return [
 				<Inspector { ...{ setAttributes, ...props } }/>,
-				! apiKeyDefined && (
-					<Fragment>
-						<div className="atomic-blocks-newsletter-notice">
-							{ __( 'You must define your newsletter provider API keys to use this block.', 'atomic-blocks' ) }
-							<p><a href={ atomic_blocks_newsletter_block_vars.plugin_settings_page_url }>{ __( 'Configure your settings', 'atomic-blocks' ) }</a></p>
-						</div>
-					</Fragment>
-				),
-				apiKeyDefined && isSelected && (
-					<RichText
-						tagName="span"
-						keepPlaceholderOnFocus
-						formattingControls={ [] }
-						value={ attributes.emailInputLabel }
-						onChange={ ( value ) => setAttributes( { emailInputLabel: value } ) }
-					/>
-				),
-				apiKeyDefined && (
-					<Fragment>
-						<TextControl
-							name="atomic-blocks-newsletter-email-address"
-							label={ ! isSelected && ( attributes.emailInputLabel ) }
-						/>
+				<NewsletterContainer { ...props }>
+					{ ! apiKeyDefined && (
+						<Fragment>
+							<div className="ab-newsletter-notice">
+								{ __( 'You must define your newsletter provider API keys to use this block.', 'atomic-blocks' ) }
+								<p><a href={ atomic_blocks_newsletter_block_vars.plugin_settings_page_url }>{ __( 'Configure your settings', 'atomic-blocks' ) }</a></p>
+							</div>
+						</Fragment>
+					) }
+					{ apiKeyDefined && (
+						<Fragment>
+							<RichText
+								tagName="span"
+								className="ab-block-newsletter-label"
+								keepPlaceholderOnFocus
+								formattingControls={ [] }
+								value={ attributes.emailInputLabel }
+								onChange={ ( value ) => setAttributes( { emailInputLabel: value } ) }
+							/>
 
-						<div
-							className={ editClassName ? editClassName : undefined }
-							style={ editStyles }
-						>
-							<CustomButton { ...props }>
-								<RichText
-									tagName="span"
-									placeholder={ __( 'Button text...', 'atomic-blocks' ) }
-									keepPlaceholderOnFocus
-									value={ attributes.buttonText }
-									formattingControls={ [] }
-									className={ classnames(
-										'ab-button',
-										attributes.buttonClass,
-										attributes.buttonShape,
-										attributes.buttonSize,
-									) }
-									style={ {
-										color: attributes.buttonTextColor,
-										backgroundColor: attributes.buttonBackgroundColor,
-									} }
-									onChange={ (value) => setAttributes( { buttonText: value } ) }
-								/>
-							</CustomButton>
-							{ isSelected && (
-								<form
-									key="form-link"
-									className={ `blocks-button__inline-link ab-button-${attributes.buttonAlignment}`}
-									onSubmit={ event => event.preventDefault() }
-									style={ {
-										textAlign: attributes.buttonAlignment,
-									} }
-								>
-								</form>
-							) }
-						</div>
+							<TextControl
+								name="ab-newsletter-email-address"
+							/>
+
+							<div
+								className={ editClassName ? editClassName : undefined }
+								style={ editStyles }
+							>
+								<CustomButton { ...props }>
+									<RichText
+										tagName="span"
+										placeholder={ __( 'Button text...', 'atomic-blocks' ) }
+										keepPlaceholderOnFocus
+										value={ attributes.buttonText }
+										formattingControls={ [] }
+										className={ classnames(
+											'ab-button',
+											attributes.buttonClass,
+											attributes.buttonShape,
+											attributes.buttonSize,
+										) }
+										style={ {
+											color: attributes.buttonTextColor,
+											backgroundColor: attributes.buttonBackgroundColor,
+										} }
+										onChange={ (value) => setAttributes( { buttonText: value } ) }
+									/>
+								</CustomButton>
+								{ isSelected && (
+									<form
+										key="form-link"
+										className={ `blocks-button__inline-link ab-button-${attributes.buttonAlignment}`}
+										onSubmit={ event => event.preventDefault() }
+										style={ {
+											textAlign: attributes.buttonAlignment,
+										} }
+									>
+									</form>
+								) }
+							</div>
 
 
-					</Fragment>
-				)
+						</Fragment>
+					) }
+				</NewsletterContainer>
 			];
 		},
 		save: () => {

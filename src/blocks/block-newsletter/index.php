@@ -33,6 +33,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$defaults = atomic_blocks_newsletter_block_attributes();
 
 	$email_input_label     = ! empty( $attributes['emailInputLabel'] ) ? $attributes['emailInputLabel'] : $defaults['emailInputLabel']['default'];
+	$form_background_color = ! empty( $attributes['formBackgroundColor'] ) ? $attributes['formBackgroundColor'] : null;
 	$button_bg_color       = ! empty( $attributes['buttonBackgroundColor'] ) ? $attributes['buttonBackgroundColor'] : $defaults['buttonBackgroundColor']['default'];
 	$button_text_color     = ! empty( $attributes['buttonTextColor'] ) ? $attributes['buttonTextColor'] : $defaults['buttonTextColor']['default'];
 	$button_class          = ! empty( $attributes['buttonClass'] ) ? $attributes['buttonClass'] : $defaults['buttonClass']['default'];
@@ -41,18 +42,42 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$button_styles         = 'style="background-color: ' . $button_bg_color . '; color: ' . $button_text_color . '"';
 	$mailing_list_provider = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : $defaults['mailingListProvider']['default'];
 	$mailing_list          = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
+	$padding			   = ! empty( $attributes['padding'] ) ? $attributes['padding'] : $defaults['padding']['default'];
 	$success_message       = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
+	/* Padding styles. */
+	$padding_styles = "";
+
+	if( ! empty( $padding ) && $padding > 0 ) {
+		$padding_styles .= 'padding:' . $padding . 'px;';
+	}
+
+	/* Background styles. */
+	$background_styles = "";
+
+	if( ! empty( $form_background_color ) ) {
+		$background_styles .= 'background-color:' . $form_background_color . '';
+	}
+
+	/* Newsletter wrapper styles. */
+	if( ! empty( $padding_styles || $background_styles ) ) {
+		$wrapper_styles = 'style=" ' . $padding_styles . $background_styles .' " ';
+	} else {
+		$wrapper_styles = null;
+	}
+
 	$form = '
-		<form method="post">
-			<label for="atomic-blocks-newsletter-email-address">' . esc_html( $email_input_label ) . '</label>
-			<input type="text" name="atomic-blocks-newsletter-email-address" />
-			<button class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" ' . $button_styles . '>' . esc_html( $button_text ) . '</button>
-			<input type="hidden" name="atomic-blocks-newsletter-mailing-list-provider" value="' . esc_attr( $mailing_list_provider ) . '" />
-			<input type="hidden" name="atomic-blocks-newsletter-mailing-list" value="' . esc_attr( $mailing_list ) . '" />
-			<input type="hidden" name="atomic-blocks-newsletter-success-message" value="' . esc_attr( $success_message ) . '" />
-			' . wp_nonce_field( 'atomic-blocks-newsletter-form-nonce', 'atomic-blocks-newsletter-form-nonce', true, false ) . '
-		</form>
+		<div class="ab-block-newsletter" ' . $wrapper_styles . '>
+			<form method="post">
+				<label for="ab-newsletter-email-address">' . esc_html( $email_input_label ) . '</label>
+				<input type="text" name="ab-newsletter-email-address" />
+				<button class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" ' . $button_styles . '>' . esc_html( $button_text ) . '</button>
+				<input type="hidden" name="ab-newsletter-mailing-list-provider" value="' . esc_attr( $mailing_list_provider ) . '" />
+				<input type="hidden" name="ab-newsletter-mailing-list" value="' . esc_attr( $mailing_list ) . '" />
+				<input type="hidden" name="ab-newsletter-success-message" value="' . esc_attr( $success_message ) . '" />
+				' . wp_nonce_field( 'ab-newsletter-form-nonce', 'ab-newsletter-form-nonce', true, false ) . '
+			</form>
+		</div>
 	';
 	return $form;
 }
@@ -71,6 +96,9 @@ function atomic_blocks_newsletter_block_attributes() {
 		'buttonBackgroundColor' => [
 			'type'    => 'string',
 			'default' => '#3373dc',
+		],
+		'formBackgroundColor' => [
+			'type'    => 'string',
 		],
 		'buttonClass'           => [
 			'type'    => 'string',
@@ -110,6 +138,10 @@ function atomic_blocks_newsletter_block_attributes() {
 		'successMessage'        => [
 			'type'    => 'string',
 			'default' => esc_html__( 'Thanks for subscribing.', 'atomic-blocks' ),
+		],
+		'padding'   => [
+			'type'    => 'number',
+			'default' => 0,
 		],
 	];
 }

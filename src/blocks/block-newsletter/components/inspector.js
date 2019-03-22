@@ -8,6 +8,12 @@ const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.editor;
 const { PanelBody, SelectControl, TextControl } = wp.components;
 
+// Import padding component
+import Padding from './../../../utils/inspector/padding';
+
+// Import background color component
+import BackgroundColor from './../../../utils/inspector/background-color';
+
 export default class Inspector extends Component {
 
 	render() {
@@ -50,8 +56,27 @@ export default class Inspector extends Component {
 						value={ attributes.successMessage }
 						onChange={ ( value ) => setAttributes( { successMessage: value } ) }
 					/>
-
 				</PanelBody>
+
+				<PanelBody
+					title={ __( 'Padding Settings', 'atomic-blocks' ) }
+					initialOpen={ false }
+				>
+					<Padding
+						// Enable padding on all sides
+						paddingEnable={ true }
+						padding={ attributes.padding }
+						paddingMin="0"
+						paddingMax="100"
+						onChangePadding={ padding => setAttributes( { padding } ) }
+					/>
+				</PanelBody>
+
+				<BackgroundColor
+					panelTitle={ __( 'Background Color Settings', 'atomic-blocks' ) }
+					backgroundColor={ attributes.formBackgroundColor }
+					onChangeBackgroundColor={ formBackgroundColor => setAttributes( { formBackgroundColor } ) }
+				/>
 
 				<PanelColorSettings
 					title={ __( 'Button Color Settings', 'atomic-blocks' ) }
@@ -70,7 +95,6 @@ export default class Inspector extends Component {
 					] }
 				>
 				</PanelColorSettings>
-
 			</InspectorControls>
 
 		)

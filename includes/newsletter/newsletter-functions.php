@@ -28,7 +28,7 @@ function form_submission_listener() {
 		return;
 	}
 
-	if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_form_nonce'] ) ), 'atomic-blocks-newsletter-form-nonce' ) ) {
+	if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_form_nonce'] ) ), 'ab-newsletter-form-nonce' ) ) {
 		send_processing_response( __( 'Nonce verification failed. Please try again.', 'atomic-blocks' ) );
 	}
 
