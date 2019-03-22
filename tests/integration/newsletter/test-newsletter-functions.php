@@ -29,7 +29,7 @@ class Newsletter_Functions extends \WP_UnitTestCase {
 	 * @covers ::process_submission
 	 */
 	public function test_process_submission_with_invalid_email() {
-		$response = process_submission( 'moo', 'mailchimp', false );
+		$response = process_submission( 'moo', 'mailchimp', [] );
 		$this->assertWPError( $response );
 		$this->assertSame( $response->get_error_code(), 'invalid_email' );
 	}
@@ -40,7 +40,7 @@ class Newsletter_Functions extends \WP_UnitTestCase {
 	 * @covers ::process_submission
 	 */
 	public function test_process_submission_with_invalid_provider() {
-		$response = process_submission( 'test@example.com', false, false );
+		$response = process_submission( 'test@example.com', false, [] );
 		$this->assertWPError( $response );
 		$this->assertSame( $response->get_error_code(), 'invalid_provider' );
 	}
@@ -51,7 +51,7 @@ class Newsletter_Functions extends \WP_UnitTestCase {
 	 * @covers ::process_submission
 	 */
 	public function test_process_submission_with_invalid_list_id() {
-		$response = process_submission( 'test@example.com', 'mailchimp', false );
+		$response = process_submission( 'test@example.com', 'mailchimp', [] );
 		$this->assertWPError( $response );
 		$this->assertSame( $response->get_error_code(), 'invalid_list_id' );
 	}

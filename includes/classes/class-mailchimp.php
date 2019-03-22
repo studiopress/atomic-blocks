@@ -54,15 +54,18 @@ final class Mailchimp implements Provider_Interface {
 	 * Adds an email address to the specified list.
 	 *
 	 * @param string $email The email address.
-	 * @param string $list_id The Mailchimp list ID.
+	 * @param array  $args {
+	 *      Additional arguments.
+	 *      @type string $list_id The Mailchimp list ID.
+	 * }
 	 *
 	 * @throws Mailchimp_API_Error_Exception If an invalid list ID is provided.
 	 * @return bool
 	 */
-	public function add_email_to_list( $email, $list_id ) {
+	public function subscribe( $email, array $args = array() ) {
 
 		$email   = sanitize_email( trim( $email ) );
-		$list_id = sanitize_text_field( $list_id );
+		$list_id = ! empty( $args['list_id'] ) ? sanitize_text_field( $args['list_id'] ) : false;
 
 		if ( empty( $email ) || ! is_email( $email ) ) {
 			throw new Mailchimp_API_Error_Exception(
@@ -75,7 +78,7 @@ final class Mailchimp implements Provider_Interface {
 
 		if ( empty( $list_id ) || ! in_array( $list_id, $list_ids, true ) ) {
 			throw new Mailchimp_API_Error_Exception(
-				/* translators: %s The PHP method name. Will be AtomicBlocks\Newsletter\Mailchimp\add_email_to_list. */
+				/* translators: %s The PHP method name. Will be AtomicBlocks\Newsletter\Mailchimp\subscribe. */
 				sprintf( esc_html__( 'An invalid Mailchimp list ID was provided in %s', 'atomic-blocks' ), __METHOD__ )
 			);
 		}
