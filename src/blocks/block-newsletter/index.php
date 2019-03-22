@@ -44,43 +44,41 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$mailing_list          = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
 	$newsletter_title      = ! empty( $attributes['newsletterTitle'] ) ? $attributes['newsletterTitle'] : null;
 	$newsletter_text       = ! empty( $attributes['newsletterText'] ) ? $attributes['newsletterText'] : null;
-	$padding			   = ! empty( $attributes['padding'] ) ? $attributes['padding'] : $defaults['padding']['default'];
+	$padding               = ! empty( $attributes['padding'] ) ? $attributes['padding'] : $defaults['padding']['default'];
 	$success_message       = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
 	/* Padding styles. */
-	$padding_styles = "";
+	$padding_styles = '';
 
-	if( ! empty( $padding ) && $padding > 0 ) {
+	if ( ! empty( $padding ) && $padding > 0 ) {
 		$padding_styles .= 'padding:' . $padding . 'px;';
 	}
 
 	/* Background styles. */
-	$background_styles = "";
+	$background_styles = '';
 
-	if( ! empty( $form_background_color ) ) {
+	if ( ! empty( $form_background_color ) ) {
 		$background_styles .= 'background-color:' . $form_background_color . '';
 	}
 
 	/* Newsletter wrapper styles. */
-	if( ! empty( $padding_styles || $background_styles ) ) {
-		$wrapper_styles = 'style=" ' . $padding_styles . $background_styles .' " ';
+	if ( ! empty( $padding_styles || $background_styles ) ) {
+		$wrapper_styles = 'style=" ' . $padding_styles . $background_styles . ' " ';
 	} else {
 		$wrapper_styles = null;
 	}
 
-		$form = "";
+		$form = '<div class="ab-block-newsletter" ' . $wrapper_styles . '>';
 
-		$form .= '<div class="ab-block-newsletter" ' . $wrapper_styles . '>';
+	if ( $newsletter_title ) {
+		$form .= '<h2 class="ab-newsletter-title">' . esc_html( $newsletter_title ) . '</h2>';
+	}
 
-		if ( $newsletter_title ) {
-			$form .= '<h2 class="ab-newsletter-title">' . esc_html( $newsletter_title ) . '</h2>';
-		}
-
-		if ( $newsletter_text ) {
-			$allowed = array( 'p' => array() );
-			$text = '<div class="ab-newsletter-text">' . $newsletter_text . '</div>';
-			$form .= wp_kses( $text, $allowed );
-		}
+	if ( $newsletter_text ) {
+		$allowed = array( 'p' => array() );
+		$text    = '<div class="ab-newsletter-text">' . $newsletter_text . '</div>';
+		$form   .= wp_kses( $text, $allowed );
+	}
 
 		$form .= '
 			<form method="post">
@@ -97,8 +95,6 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 		$form .= '</div>';
 
 		return $form;
-
-	echo( '</div>' );
 }
 
 /**
@@ -116,8 +112,8 @@ function atomic_blocks_newsletter_block_attributes() {
 			'type'    => 'string',
 			'default' => '#3373dc',
 		],
-		'formBackgroundColor' => [
-			'type'    => 'string',
+		'formBackgroundColor'   => [
+			'type' => 'string',
 		],
 		'buttonClass'           => [
 			'type'    => 'string',
@@ -158,20 +154,20 @@ function atomic_blocks_newsletter_block_attributes() {
 			'type'    => 'string',
 			'default' => esc_html__( 'Thanks for subscribing.', 'atomic-blocks' ),
 		],
-		'padding'   => [
+		'padding'               => [
 			'type'    => 'number',
 			'default' => 0,
 		],
-		'newsletterTitle'  => [
+		'newsletterTitle'       => [
 			'type' => 'string',
 		],
-		'newsletterTitleToggle'  => [
+		'newsletterTitleToggle' => [
 			'type' => 'boolean',
 		],
-		'newsletterText' => [
+		'newsletterText'        => [
 			'type' => 'string',
 		],
-		'newsletterTextToggle' => [
+		'newsletterTextToggle'  => [
 			'type' => 'boolean',
 		],
 	];
