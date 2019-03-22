@@ -4,7 +4,13 @@ const { RangeControl } = wp.components;
 
 export default function Padding( props ) {
     const {
-        // Padding top props
+		// Padding props
+		padding,
+		paddingMin,
+        paddingMax,
+		paddingEnable,
+		onChangePadding = () => {},
+		// Padding top props
         paddingTop,
         paddingTopMin,
         paddingTopMax,
@@ -44,6 +50,15 @@ export default function Padding( props ) {
 
     return (
         <Fragment>
+			{ paddingEnable && (
+                <RangeControl
+                    label={ __( 'Padding', 'atomic-blocks' ) }
+                    value={ padding }
+                    min={ paddingMin }
+                    max={ paddingMax }
+                    onChange={ onChangePadding }
+                />
+            ) }
             { paddingEnableTop && (
                 <RangeControl
                     label={ __( 'Padding Top', 'atomic-blocks' ) }

@@ -26,10 +26,8 @@ export default class NewsletterContainer extends Component {
 		return (
 			<div
 				style={ {
-					paddingTop: attributes.paddingTop ? attributes.paddingTop : undefined,
-					paddingRight: attributes.paddingRight ? attributes.paddingRight : undefined,
-					paddingBottom: attributes.paddingBottom ? attributes.paddingBottom : undefined,
-					paddingLeft: attributes.paddingLeft ? attributes.paddingLeft : undefined,
+					backgroundColor: attributes.formBackgroundColor ? attributes.formBackgroundColor : undefined,
+					padding: attributes.padding ? attributes.padding : undefined,
 				} }
 				className={ classnames(
 					this.props.className,

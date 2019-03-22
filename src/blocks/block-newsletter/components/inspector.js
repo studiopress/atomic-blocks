@@ -11,6 +11,9 @@ const { PanelBody, SelectControl, TextControl } = wp.components;
 // Import padding component
 import Padding from './../../../utils/inspector/padding';
 
+// Import background color component
+import BackgroundColor from './../../../utils/inspector/background-color';
+
 export default class Inspector extends Component {
 
 	render() {
@@ -53,8 +56,27 @@ export default class Inspector extends Component {
 						value={ attributes.successMessage }
 						onChange={ ( value ) => setAttributes( { successMessage: value } ) }
 					/>
-
 				</PanelBody>
+
+				<PanelBody
+					title={ __( 'Padding Settings', 'atomic-blocks' ) }
+					initialOpen={ false }
+				>
+					<Padding
+						// Enable padding on all sides
+						paddingEnable={ true }
+						padding={ attributes.padding }
+						paddingMin="0"
+						paddingMax="100"
+						onChangePadding={ padding => setAttributes( { padding } ) }
+					/>
+				</PanelBody>
+
+				<BackgroundColor
+					panelTitle={ __( 'Background Color Settings', 'atomic-blocks' ) }
+					backgroundColor={ attributes.formBackgroundColor }
+					onChangeBackgroundColor={ formBackgroundColor => setAttributes( { formBackgroundColor } ) }
+				/>
 
 				<PanelColorSettings
 					title={ __( 'Button Color Settings', 'atomic-blocks' ) }
@@ -73,39 +95,6 @@ export default class Inspector extends Component {
 					] }
 				>
 				</PanelColorSettings>
-
-				<PanelBody
-					title={ __( 'Padding Settings', 'atomic-blocks' ) }
-					initialOpen={ false }
-				>
-					<Padding
-						// Top padding
-						paddingEnableTop={ true }
-						paddingTop={ attributes.paddingTop }
-						paddingTopMin="0"
-						paddingTopMax="100"
-						onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
-						// Right padding
-						paddingEnableRight={ true }
-						paddingRight={ attributes.paddingRight }
-						paddingRightMin="0"
-						paddingRightMax="100"
-						onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
-						// Bottom padding
-						paddingEnableBottom={ true }
-						paddingBottom={ attributes.paddingBottom }
-						paddingBottomMin="0"
-						paddingBottomMax="100"
-						onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
-						// Left padding
-						paddingEnableLeft={ true }
-						paddingLeft={ attributes.paddingLeft }
-						paddingLeftMin="0"
-						paddingLeftMax="100"
-						onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
-					/>
-				</PanelBody>
-
 			</InspectorControls>
 
 		)
