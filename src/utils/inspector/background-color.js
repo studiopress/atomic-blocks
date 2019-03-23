@@ -10,32 +10,45 @@ const { Fragment } = wp.element;
 
 export default function BackgroundColor( props ) {
     const {
+		title,
+		initialOpen,
+		// Background color props
 		backgroundColor,
-		panelTitle,
-        onChangeBackgroundColor = () => {},
+		onChangeBackgroundColor = () => {},
+		fallbackBackgroundColor,
+		backgroundTitle,
+		// Text color props
+		textColor,
+		onChangeTextColor = () => {},
+		fallbackTextColor,
+		colorTitle,
 	} = props;
 
     return (
         <Fragment>
 			<PanelColorSettings
-				title={ panelTitle }
-				initialOpen={ false }
+				title={ title }
+				initialOpen={ initialOpen }
 				colorSettings={ [
 					{
 						value: backgroundColor,
 						onChange: onChangeBackgroundColor,
-						label: panelTitle,
+						label: backgroundTitle,
 					},
+					{
+						value: textColor,
+						onChange: onChangeTextColor,
+						label: colorTitle,
+					}
 				] }
 			>
 				<ContrastChecker
-					// @todo ContrastChecker
-					// { ...{
-					// 	textColor: textColor.color,
-					// 	backgroundColor: backgroundColor.color,
-					// 	fallbackTextColor,
-					// 	fallbackBackgroundColor,
-					// } }
+					{ ...{
+						textColor: textColor,
+						backgroundColor: backgroundColor,
+						fallbackTextColor,
+						fallbackBackgroundColor,
+					} }
 				/>
 			</PanelColorSettings>
         </Fragment>

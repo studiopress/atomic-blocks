@@ -174,5 +174,17 @@ function atomic_blocks_newsletter_block_attributes() {
 		'newsletterTextToggle' => [
 			'type' => 'boolean',
 		],
+		'customBackgroundColor' => [
+			'type' => 'string',
+		],
+		'backgroundColor' => [
+			'type' => 'string',
+		],
+		'textColor' => [
+			'type' => 'string',
+		],
+		'customTextColor' => [
+			'type' => 'string',
+		],
 	];
 }

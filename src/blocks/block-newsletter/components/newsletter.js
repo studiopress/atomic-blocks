@@ -5,6 +5,10 @@
 // Setup the block
 const { Component } = wp.element;
 
+const {
+	getColorClassName,
+} = wp.editor;
+
 // Import block dependencies and components
 import classnames from 'classnames';
 
@@ -23,16 +27,26 @@ export default class NewsletterContainer extends Component {
 			attributes
 		} = this.props;
 
+		// Retreive the getColorClassName
+		const backgroundColorClass = getColorClassName( 'background-color', attributes.backgroundColor );
+		const textColorClass = getColorClassName( 'color', attributes.textColor );
+
 		return (
 			<div
 				style={ {
-					backgroundColor: attributes.formBackgroundColor ? attributes.formBackgroundColor : undefined,
+					backgroundColor: backgroundColorClass ? undefined : attributes.customBackgroundColor,
 					padding: attributes.padding ? attributes.padding : undefined,
+					color: textColorClass ? undefined : attributes.customTextColor,
 				} }
-				className={ classnames(
+				className={ classnames( [
 					this.props.className,
-					'ab-block-newsletter'
-				) }
+				], {
+					'ab-block-newsletter': true,
+					'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
+					[ backgroundColorClass ]: backgroundColorClass,
+					[ textColorClass ]: textColorClass,
+				} )
+				}
 			>
 				{ this.props.children }
 			</div>

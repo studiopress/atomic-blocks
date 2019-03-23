@@ -4,23 +4,52 @@
 
 const { __ } = wp.i18n;
 const { Component } = wp.element;
+const { compose } = wp.compose;
 // @todo ContrastChecker
-const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
+const {
+	InspectorControls,
+	PanelColorSettings,
+	withColors,
+	ContrastChecker
+} = wp.editor;
 
-// Import padding component
+const { PanelBody,
+	SelectControl,
+	TextControl,
+	ToggleControl,
+	withFallbackStyles
+} = wp.components;
+
+/* Import padding component. */
 import Padding from './../../../utils/inspector/padding';
 
-// Import background color component
+/* Import color component. */
 import BackgroundColor from './../../../utils/inspector/background-color';
 
-export default class Inspector extends Component {
+/* Apply fallback styles. */
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+	const { backgroundColor, textColor } = ownProps.attributes;
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	return {
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+	};
+} );
+
+class Inspector extends Component {
 
 	render() {
 
 		const {
 			attributes,
 			setAttributes,
+			backgroundColor,
+			setBackgroundColor,
+			fallbackBackgroundColor,
+			textColor,
+			fallbackTextColor,
+			setTextColor,
 		} = this.props;
 
 		let mailingListProviders = {
@@ -84,31 +113,53 @@ export default class Inspector extends Component {
 					/>
 				</PanelBody>
 
-				<BackgroundColor
-					panelTitle={ __( 'Background Color Settings', 'atomic-blocks' ) }
-					backgroundColor={ attributes.formBackgroundColor }
-					onChangeBackgroundColor={ formBackgroundColor => setAttributes( { formBackgroundColor } ) }
-				/>
-
-				<PanelColorSettings
-					title={ __( 'Button Color Settings', 'atomic-blocks' ) }
+				<PanelBody
+					title={ __( 'Color Settings', 'atomic-blocks' ) }
 					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: attributes.buttonBackgroundColor,
-							onChange: ( value ) => { setAttributes( { buttonBackgroundColor: value } ) },
-							label: __( 'Background Color', 'atomic-blocks' )
-						},
-						{
-							value: attributes.buttonTextColor,
-							onChange: ( value ) => { setAttributes( { buttonTextColor: value } ) },
-							label: __( 'Text Color', 'atomic-blocks' )
-						},
-					] }
 				>
-				</PanelColorSettings>
+					<BackgroundColor
+						/* Block background color settings. */
+						title={ __( 'Block Background Color', 'atomic-blocks' ) }
+						initialOpen={ false }
+						/* Background color. */
+						backgroundTitle={ __( 'Background Color', 'atomic-blocks' ) }
+						backgroundColor={ backgroundColor.color }
+						fallbackBackgroundColor={ fallbackBackgroundColor }
+						onChangeBackgroundColor={ setBackgroundColor }
+						/* Text color. */
+						colorTitle={ __( 'Text Color', 'atomic-blocks' ) }
+						textColor={ textColor.color }
+						fallbackTextColor={ fallbackTextColor }
+						onChangeTextColor={ setTextColor }
+					>
+					</BackgroundColor>
+
+					<BackgroundColor
+						/* Button color settings. */
+						title={ __( 'Button Color', 'atomic-blocks' ) }
+						initialOpen={ false }
+						/* Button background color. */
+						backgroundTitle={ __( 'Button Background Color', 'atomic-blocks' ) }
+						backgroundColor={ attributes.buttonBackgroundColor }
+						fallbackBackgroundColor={ fallbackBackgroundColor }
+						onChangeBackgroundColor={ buttonBackgroundColor => setAttributes( { buttonBackgroundColor } ) }
+						/* Text color. */
+						colorTitle={ __( 'Button Text Color', 'atomic-blocks' ) }
+						textColor={ attributes.buttonTextColor }
+						fallbackTextColor={ fallbackTextColor }
+						onChangeTextColor={ buttonTextColor => setAttributes( { buttonTextColor } ) }
+					>
+					</BackgroundColor>
+				</PanelBody>
 			</InspectorControls>
 
 		)
 	}
 }
+
+export default compose( [
+	applyFallbackStyles,
+	withColors( 'backgroundColor', {
+		textColor: 'color',
+	} ),
+] )( Inspector );
