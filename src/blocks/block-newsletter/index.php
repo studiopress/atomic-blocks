@@ -38,6 +38,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$button_text_color     = ! empty( $attributes['buttonTextColor'] ) ? $attributes['buttonTextColor'] : $defaults['buttonTextColor']['default'];
 	$button_class          = ! empty( $attributes['buttonClass'] ) ? $attributes['buttonClass'] : $defaults['buttonClass']['default'];
 	$button_class         .= ! empty( $attributes['buttonSize'] ) ? ' ' . $attributes['buttonSize'] : ' ' . $defaults['buttonSize']['default'];
+	$button_class         .= ! empty( $attributes['buttonShape'] ) ? ' ' . $attributes['buttonShape'] : ' ' . $defaults['buttonShape']['default'];
 	$button_text           = ! empty( $attributes['buttonText'] ) ? $attributes['buttonText'] : $defaults['buttonText']['default'];
 	$button_styles         = 'style="background-color: ' . $button_bg_color . '; color: ' . $button_text_color . '"';
 	$mailing_list_provider = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : $defaults['mailingListProvider']['default'];
@@ -98,7 +99,18 @@ function atomic_blocks_newsletter_block_attributes() {
 		],
 		'buttonBackgroundColor' => [
 			'type'    => 'string',
-			'default' => '#3373dc',
+			'default' => '#32373c',
+		],
+		'customButtonBackgroundColor' => [
+			'type'    => 'string',
+		],
+		'buttonSize' => [
+			'type' => 'string',
+			'default' => 'ab-button-size-medium',
+		],
+		'buttonShape' => [
+			'type' => 'string',
+			'default' => 'ab-button-shape-rounded',
 		],
 		'formBackgroundColor'   => [
 			'type' => 'string',
@@ -123,6 +135,9 @@ function atomic_blocks_newsletter_block_attributes() {
 			'type'    => 'string',
 			'default' => '#fff',
 		],
+		'customButtonTextColor'       => [
+			'type'    => 'string',
+		],
 		'buttonTextProcessing'  => [
 			'type'    => 'string',
 			'default' => esc_html__( 'Please wait...', 'atomic-blocks' ),
@@ -146,10 +161,10 @@ function atomic_blocks_newsletter_block_attributes() {
 			'type'    => 'number',
 			'default' => 0,
 		],
-		'customBackgroundColor' => [
+		'backgroundColor' => [
 			'type' => 'string',
 		],
-		'backgroundColor' => [
+		'customBackgroundColor' => [
 			'type' => 'string',
 		],
 		'textColor' => [

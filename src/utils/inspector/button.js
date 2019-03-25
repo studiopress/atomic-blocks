@@ -10,14 +10,19 @@ const {
 
 export default function ButtonSettings( props ) {
     const {
+		enableButtonBackgroundColor,
         buttonBackgroundColor,
-        onChangeButtonColor = () => {},
+		onChangeButtonColor = () => {},
+		enableButtonTextColor,
         buttonTextColor,
-        onChangeButtonTextColor = () => {},
+		onChangeButtonTextColor = () => {},
+		enableButtonSize,
         buttonSize,
-        onChangeButtonSize = () => {},
+		onChangeButtonSize = () => {},
+		enableButtonShape,
         buttonShape,
-        onChangeButtonShape = () => {},
+		onChangeButtonShape = () => {},
+		enableButtonTarget,
         buttonTarget,
         onChangeButtonTarget = () => {},
     } = props;
@@ -51,55 +56,61 @@ export default function ButtonSettings( props ) {
 
     return (
         <Fragment>
-            <ToggleControl
-                label={ __( 'Open link in new window', 'atomic-blocks' ) }
-                checked={ buttonTarget }
-                onChange={ onChangeButtonTarget }
-            />
-
-            <SelectControl
-                selected={ buttonSize }
-                label={ __( 'Button Size', 'atomic-blocks' ) }
-                value={ buttonSize }
-                options={ buttonSizeOptions.map( ({ value, label }) => ( {
-                    value: value,
-                    label: label,
-                } ) ) }
-                onChange={ onChangeButtonSize }
-            />
-
-            <SelectControl
-                label={ __( 'Button Shape', 'atomic-blocks' ) }
-                value={ buttonShape }
-                options={ buttonShapeOptions.map( ({ value, label }) => ( {
-                    value: value,
-                    label: label,
-                } ) ) }
-                onChange={ onChangeButtonShape }
-            />
-
-            <PanelColorSettings
-                title={ __( 'Button Color', 'atomic-blocks' ) }
-                initialOpen={ false }
-                colorSettings={ [ {
-                    value: buttonBackgroundColor,
-                    onChange: onChangeButtonColor,
-                    label: __( 'Button Color', 'atomic-blocks' ),
-                    colors: buttonColors,
-                } ] }
-            >
-            </PanelColorSettings>
-
-            <PanelColorSettings
-                title={ __( 'Button Text Color', 'atomic-blocks' ) }
-                initialOpen={ false }
-                colorSettings={ [ {
-                    value: buttonTextColor,
-                    onChange: onChangeButtonTextColor,
-                    label: __( 'Button Text Color', 'atomic-blocks' ),
-                } ] }
-            >
-            </PanelColorSettings>
+			{ enableButtonTarget != false && (
+				<ToggleControl
+					label={ __( 'Open link in new window', 'atomic-blocks' ) }
+					checked={ buttonTarget }
+					onChange={ onChangeButtonTarget }
+				/>
+			) }
+			{ enableButtonSize != false && (
+				<SelectControl
+					selected={ buttonSize }
+					label={ __( 'Button Size', 'atomic-blocks' ) }
+					value={ buttonSize }
+					options={ buttonSizeOptions.map( ({ value, label }) => ( {
+						value: value,
+						label: label,
+					} ) ) }
+					onChange={ onChangeButtonSize }
+				/>
+			) }
+			{ enableButtonShape != false && (
+				<SelectControl
+					label={ __( 'Button Shape', 'atomic-blocks' ) }
+					value={ buttonShape }
+					options={ buttonShapeOptions.map( ({ value, label }) => ( {
+						value: value,
+						label: label,
+					} ) ) }
+					onChange={ onChangeButtonShape }
+				/>
+			) }
+			{ enableButtonBackgroundColor != false && (
+				<PanelColorSettings
+					title={ __( 'Button Color', 'atomic-blocks' ) }
+					initialOpen={ false }
+					colorSettings={ [ {
+						value: buttonBackgroundColor,
+						onChange: onChangeButtonColor,
+						label: __( 'Button Color', 'atomic-blocks' ),
+						colors: buttonColors,
+					} ] }
+				>
+				</PanelColorSettings>
+			) }
+			{ enableButtonTextColor != false && (
+				<PanelColorSettings
+					title={ __( 'Button Text Color', 'atomic-blocks' ) }
+					initialOpen={ false }
+					colorSettings={ [ {
+						value: buttonTextColor,
+						onChange: onChangeButtonTextColor,
+						label: __( 'Button Text Color', 'atomic-blocks' ),
+					} ] }
+				>
+				</PanelColorSettings>
+			) }
         </Fragment>
     );
 }

@@ -2,16 +2,16 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import * as colorClassSlug from './../../components/color-class';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { BlockControls, RichText, withColors, getColorClassName } = wp.editor;
+const { RichText } = wp.editor;
 const { Fragment, Component } = wp.element;
 const { TextControl } = wp.components;
-const { compose } = wp.compose;
 
 /**
  * Internal dependencies
@@ -45,8 +45,8 @@ class Edit extends Component {
 		};
 
 		// Retreive the getColorClassName
-		const buttonBackgroundColorClass = getColorClassName( 'background-color', attributes.buttonBackgroundColor );
-		const buttonTextColorClass = getColorClassName( 'color', attributes.buttonTextColor );
+		const getButtonBackgroundClass = colorClassSlug.getColorClass( attributes.buttonBackgroundColor );
+		const getButtonTextClass = colorClassSlug.getColorClass( attributes.buttonTextColor );
 
 		return [
 			<Inspector { ...{ setAttributes, ...this.props } }/>,
@@ -78,14 +78,7 @@ class Edit extends Component {
 							className={ editClassName ? editClassName : undefined }
 							style={ editStyles }
 						>
-							<CustomButton { ...this.props }
-								className={ classnames( {
-										'has-background': attributes.buttonBackgroundColor || attributes.customBackgroundColor,
-										[ buttonBackgroundColorClass ]: buttonBackgroundColorClass,
-										[ buttonTextColorClass ]: buttonTextColorClass,
-									} )
-								}
-							>
+							<CustomButton { ...this.props }>
 								<RichText
 									tagName="span"
 									placeholder={ __( 'Button text...', 'atomic-blocks' ) }
@@ -97,10 +90,16 @@ class Edit extends Component {
 										attributes.buttonClass,
 										attributes.buttonShape,
 										attributes.buttonSize,
+										{
+											'has-background': attributes.buttonBackgroundColor || attributes.customButtonBackgroundColor,
+											[ getButtonBackgroundClass ]: getButtonBackgroundClass,
+											'has-text-color': attributes.buttonTextColor || attributes.customButtonTextColor,
+											[ getButtonTextClass ]: getButtonTextClass,
+										}
 									) }
 									style={ {
-										backgroundColor: buttonBackgroundColorClass ? undefined : attributes.buttonBackgroundColor,
-										color: buttonTextColorClass ? undefined : attributes.buttonTextColor,
+										backgroundColor: attributes.buttonBackgroundColor,
+										color: attributes.buttonTextColor,
 									} }
 									onChange={ (value) => this.props.setAttributes( { buttonText: value } ) }
 								/>
@@ -117,8 +116,6 @@ class Edit extends Component {
 								</form>
 							) }
 						</div>
-
-
 					</Fragment>
 				) }
 			</NewsletterContainer>
@@ -144,7 +141,3 @@ registerBlockType(
 	},
 
 );
-
-export default compose( [
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-] )( Edit );

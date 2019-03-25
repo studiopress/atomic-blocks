@@ -25,14 +25,18 @@ import Padding from './../../../utils/inspector/padding';
 /* Import color component. */
 import BackgroundColor from './../../../utils/inspector/background-color';
 
+/* Import button settings. */
+import ButtonSettings from './../../../utils/inspector/button';
+
 /* Apply fallback styles. */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, textColor } = ownProps.attributes;
+	const { backgroundColor, textColor, buttonBackgroundColor } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackButtonBackgroundColor: buttonBackgroundColor || ! computedStyles ? undefined : computedStyles.buttonBackgroundColor,
 	};
 } );
 
@@ -101,6 +105,38 @@ class Inspector extends Component {
 				</PanelBody>
 
 				<PanelBody
+					title={ __( 'Button Settings', 'atomic-blocks' ) }
+					initialOpen={ false }
+				>
+					<ButtonSettings
+						enableButtonTarget={ false }
+						buttonSize={ attributes.buttonSize }
+						onChangeButtonSize={ buttonSize => setAttributes( { buttonSize } ) }
+						buttonShape={ attributes.buttonShape }
+						onChangeButtonShape={ buttonShape => setAttributes( { buttonShape } ) }
+						enableButtonBackgroundColor={ false }
+						enableButtonTextColor={ false }
+					/>
+
+					<BackgroundColor
+						/* Button color settings. */
+						title={ __( 'Button Color', 'atomic-blocks' ) }
+						initialOpen={ false }
+						/* Button background color. */
+						backgroundTitle={ __( 'Button Background Color', 'atomic-blocks' ) }
+						backgroundColor={ attributes.buttonBackgroundColor }
+						fallbackBackgroundColor={ fallbackBackgroundColor }
+						onChangeBackgroundColor={ buttonBackgroundColor => setAttributes( { buttonBackgroundColor } ) }
+						/* Text color. */
+						colorTitle={ __( 'Button Text Color', 'atomic-blocks' ) }
+						textColor={ attributes.buttonTextColor }
+						fallbackTextColor={ fallbackTextColor }
+						onChangeTextColor={ buttonTextColor => setAttributes( { buttonTextColor } ) }
+					>
+					</BackgroundColor>
+				</PanelBody>
+
+				<PanelBody
 					title={ __( 'Color Settings', 'atomic-blocks' ) }
 					initialOpen={ false }
 				>
@@ -120,23 +156,6 @@ class Inspector extends Component {
 						onChangeTextColor={ setTextColor }
 					>
 					</BackgroundColor>
-
-					<BackgroundColor
-						/* Button color settings. */
-						title={ __( 'Button Color', 'atomic-blocks' ) }
-						initialOpen={ false }
-						/* Button background color. */
-						backgroundTitle={ __( 'Button Background Color', 'atomic-blocks' ) }
-						backgroundColor={ attributes.buttonBackgroundColor }
-						fallbackBackgroundColor={ fallbackBackgroundColor }
-						onChangeBackgroundColor={ buttonBackgroundColor => setAttributes( { buttonBackgroundColor } ) }
-						/* Text color. */
-						colorTitle={ __( 'Button Text Color', 'atomic-blocks' ) }
-						textColor={ attributes.buttonTextColor }
-						fallbackTextColor={ fallbackTextColor }
-						onChangeTextColor={ buttonTextColor => setAttributes( { buttonTextColor } ) }
-					>
-					</BackgroundColor>
 				</PanelBody>
 			</InspectorControls>
 		)
@@ -145,7 +164,8 @@ class Inspector extends Component {
 
 export default compose( [
 	applyFallbackStyles,
-	withColors( 'backgroundColor', {
-		textColor: 'color',
-	} ),
+	withColors( 'backgroundColor',
+		{ textColor: 'color' },
+		{ buttonBackgroundColor: 'color' },
+	),
 ] )( Inspector );
