@@ -9,7 +9,7 @@ import * as colorClassSlug from './../../components/color-class';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const { getColorClassName, RichText } = wp.editor;
 const { Fragment, Component } = wp.element;
 const { TextControl } = wp.components;
 
@@ -44,9 +44,10 @@ class Edit extends Component {
 			backgroundColor: attributes.backgroundColor,
 		};
 
-		// Retreive the getColorClassName
-		const getButtonBackgroundClass = colorClassSlug.getColorClass( attributes.buttonBackgroundColor );
-		const getButtonTextClass = colorClassSlug.getColorClass( attributes.buttonTextColor );
+		// const getButtonBackgroundClass = colorClassSlug.getColorClass( attributes.buttonBackgroundColor );
+		// const getButtonTextClass = colorClassSlug.getColorClass( attributes.buttonTextColor );
+		const getButtonTextClass       = getColorClassName( 'color', attributes.buttonTextColor );
+		const getButtonBackgroundClass = getColorClassName( 'background-color', attributes.buttonBackgroundColor );
 
 		return [
 			<Inspector { ...{ setAttributes, ...this.props } }/>,
@@ -90,11 +91,11 @@ class Edit extends Component {
 										attributes.buttonClass,
 										attributes.buttonShape,
 										attributes.buttonSize,
+										getButtonBackgroundClass,
+										getButtonTextClass,
 										{
 											'has-background': attributes.buttonBackgroundColor || attributes.buttonBackgroundColorCustom,
-											[ getButtonBackgroundClass ]: getButtonBackgroundClass,
 											'has-text-color': attributes.buttonTextColor || attributes.buttonTextColorCustom,
-											[ getButtonTextClass ]: getButtonTextClass,
 										}
 									) }
 									style={ {
