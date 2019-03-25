@@ -158,10 +158,9 @@ class Inspector extends Component {
 
 export default compose( [
 	applyFallbackStyles,
-	withColors( 'backgroundColor', {
-		textColor: 'color',
-		buttonBackgroundColor: 'background-color',
-		buttonTextColor: 'color',
-	},
+	withColors( 'backgroundColor',
+	{ textColor: 'color' },
+	{ buttonBackgroundColor: 'background-color' },
+	{ buttonTextColor: 'color' },
 	),
 ] )( Inspector );
