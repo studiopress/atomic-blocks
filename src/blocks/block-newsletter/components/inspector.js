@@ -8,9 +8,7 @@ const { compose } = wp.compose;
 // @todo ContrastChecker
 const {
 	InspectorControls,
-	PanelColorSettings,
 	withColors,
-	ContrastChecker
 } = wp.editor;
 
 const { PanelBody,
@@ -90,6 +88,23 @@ class Inspector extends Component {
 					/>
 				</PanelBody>
 
+				<BackgroundColor
+					/* Block background color settings. */
+					title={ __( 'Block Color Settings', 'atomic-blocks' ) }
+					initialOpen={ false }
+					/* Background color. */
+					backgroundTitle={ __( 'Newsletter Background Color', 'atomic-blocks' ) }
+					backgroundColor={ backgroundColor.color }
+					fallbackBackgroundColor={ fallbackBackgroundColor }
+					onChangeBackgroundColor={ setBackgroundColor }
+					/* Text color. */
+					colorTitle={ __( 'Newsletter Text Color', 'atomic-blocks' ) }
+					textColor={ textColor.color }
+					fallbackTextColor={ fallbackTextColor }
+					onChangeTextColor={ setTextColor }
+				>
+				</BackgroundColor>
+
 				<PanelBody
 					title={ __( 'Padding Settings', 'atomic-blocks' ) }
 					initialOpen={ false }
@@ -107,6 +122,7 @@ class Inspector extends Component {
 				<PanelBody
 					title={ __( 'Button Settings', 'atomic-blocks' ) }
 					initialOpen={ false }
+					className={ "ab-nested-panel" }
 				>
 					<ButtonSettings
 						enableButtonTarget={ false }
@@ -132,28 +148,6 @@ class Inspector extends Component {
 						textColor={ attributes.buttonTextColor }
 						fallbackTextColor={ fallbackTextColor }
 						onChangeTextColor={ buttonTextColor => setAttributes( { buttonTextColor } ) }
-					>
-					</BackgroundColor>
-				</PanelBody>
-
-				<PanelBody
-					title={ __( 'Color Settings', 'atomic-blocks' ) }
-					initialOpen={ false }
-				>
-					<BackgroundColor
-						/* Block background color settings. */
-						title={ __( 'Block Background Color', 'atomic-blocks' ) }
-						initialOpen={ false }
-						/* Background color. */
-						backgroundTitle={ __( 'Background Color', 'atomic-blocks' ) }
-						backgroundColor={ backgroundColor.color }
-						fallbackBackgroundColor={ fallbackBackgroundColor }
-						onChangeBackgroundColor={ setBackgroundColor }
-						/* Text color. */
-						colorTitle={ __( 'Text Color', 'atomic-blocks' ) }
-						textColor={ textColor.color }
-						fallbackTextColor={ fallbackTextColor }
-						onChangeTextColor={ setTextColor }
 					>
 					</BackgroundColor>
 				</PanelBody>

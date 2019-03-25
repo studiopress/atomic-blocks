@@ -12,6 +12,7 @@ export default function BackgroundColor( props ) {
     const {
 		title,
 		initialOpen,
+		panelClass,
 		// Background color props
 		backgroundColor,
 		onChangeBackgroundColor = () => {},
@@ -27,6 +28,7 @@ export default function BackgroundColor( props ) {
     return (
         <Fragment>
 			<PanelColorSettings
+				className={ panelClass }
 				title={ title }
 				initialOpen={ initialOpen }
 				colorSettings={ [

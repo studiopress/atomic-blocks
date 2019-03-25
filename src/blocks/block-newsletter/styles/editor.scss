@@ -8,3 +8,10 @@
 		line-height: 1.3;
 	}
 }
+
+.ab-nested-panel {
+	&.components-panel__body h2.components-panel__body-title > .components-panel__body-toggle {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+}

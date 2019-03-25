@@ -33,7 +33,10 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$defaults = atomic_blocks_newsletter_block_attributes();
 
 	$email_input_label     = ! empty( $attributes['emailInputLabel'] ) ? $attributes['emailInputLabel'] : $defaults['emailInputLabel']['default'];
-	$form_background_color = ! empty( $attributes['formBackgroundColor'] ) ? $attributes['formBackgroundColor'] : null;
+	$form_background_color = ! empty( $attributes['backgroundColor'] ) ? $attributes['backgroundColor'] : null;
+	$form_background_color_custom = ! empty( $attributes['customBackgroundColor'] ) ? $attributes['customBackgroundColor'] : null;
+	$form_text_color = ! empty( $attributes['textColor'] ) ? $attributes['textColor'] : null;
+	$form_text_color_custom = ! empty( $attributes['customTextColor'] ) ? $attributes['customTextColor'] : null;
 	$button_bg_color       = ! empty( $attributes['buttonBackgroundColor'] ) ? $attributes['buttonBackgroundColor'] : $defaults['buttonBackgroundColor']['default'];
 	$button_text_color     = ! empty( $attributes['buttonTextColor'] ) ? $attributes['buttonTextColor'] : $defaults['buttonTextColor']['default'];
 	$button_class          = ! empty( $attributes['buttonClass'] ) ? $attributes['buttonClass'] : $defaults['buttonClass']['default'];
@@ -56,18 +59,36 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	/* Background styles. */
 	$background_styles = '';
 
-	if ( ! empty( $form_background_color ) ) {
-		$background_styles .= 'background-color:' . $form_background_color . '';
+	if ( ! empty( $form_background_color_custom ) ) {
+		$background_styles .= 'background-color:' . $form_background_color_custom . ';';
+	}
+
+	/* Text styles. */
+	$text_styles = '';
+
+	if ( ! empty( $form_text_color_custom ) ) {
+		$text_styles .= 'color:' . $form_text_color_custom . ';';
 	}
 
 	/* Newsletter wrapper styles. */
-	if ( ! empty( $padding_styles || $background_styles ) ) {
-		$wrapper_styles = 'style=" ' . $padding_styles . $background_styles . ' " ';
+	if ( ! empty( $padding_styles || $background_styles || $text_styles ) ) {
+		$wrapper_styles = 'style="' . $padding_styles . $background_styles . $text_styles . '"';
 	} else {
 		$wrapper_styles = null;
 	}
 
-	$form = '<div class="ab-block-newsletter" ' . $wrapper_styles . '>';
+	/* Background styles. */
+	$wrapper_class = '';
+
+	if ( ! empty( $form_background_color ) ) {
+		$wrapper_class .= ' has-background ' . 'has-' . $form_background_color . '-background-color';
+	}
+
+	if ( ! empty( $form_text_color ) ) {
+		$wrapper_class .= ' has-text-color has-' . $form_text_color . '-color';
+	}
+
+	$form = '<div class="ab-block-newsletter ' . $wrapper_class . '" ' . $wrapper_styles . ' >';
 
 		$form .= '
 			<form method="post">
@@ -111,9 +132,6 @@ function atomic_blocks_newsletter_block_attributes() {
 		'buttonShape' => [
 			'type' => 'string',
 			'default' => 'ab-button-shape-rounded',
-		],
-		'formBackgroundColor'   => [
-			'type' => 'string',
 		],
 		'buttonClass'           => [
 			'type'    => 'string',
