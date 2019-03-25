@@ -32,28 +32,28 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 
 	$defaults = atomic_blocks_newsletter_block_attributes();
 
-	$email_input_label     = ! empty( $attributes['emailInputLabel'] ) ? $attributes['emailInputLabel'] : $defaults['emailInputLabel']['default'];
-	$form_background_color = ! empty( $attributes['backgroundColor'] ) ? $attributes['backgroundColor'] : null;
-	$form_background_color_custom = ! empty( $attributes['customBackgroundColor'] ) ? $attributes['customBackgroundColor'] : null;
-	$form_text_color = ! empty( $attributes['textColor'] ) ? $attributes['textColor'] : null;
-	$form_text_color_custom = ! empty( $attributes['customTextColor'] ) ? $attributes['customTextColor'] : null;
-	$button_bg_color       = ! empty( $attributes['buttonBackgroundColor'] ) ? $attributes['buttonBackgroundColor'] : $defaults['buttonBackgroundColor']['default'];
-	$button_text_color     = ! empty( $attributes['buttonTextColor'] ) ? $attributes['buttonTextColor'] : $defaults['buttonTextColor']['default'];
-	$button_class          = ! empty( $attributes['buttonClass'] ) ? $attributes['buttonClass'] : $defaults['buttonClass']['default'];
-	$button_class         .= ! empty( $attributes['buttonSize'] ) ? ' ' . $attributes['buttonSize'] : ' ' . $defaults['buttonSize']['default'];
-	$button_class         .= ! empty( $attributes['buttonShape'] ) ? ' ' . $attributes['buttonShape'] : ' ' . $defaults['buttonShape']['default'];
-	$button_text           = ! empty( $attributes['buttonText'] ) ? $attributes['buttonText'] : $defaults['buttonText']['default'];
-	$button_styles         = 'style="background-color: ' . $button_bg_color . '; color: ' . $button_text_color . '"';
-	$mailing_list_provider = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : $defaults['mailingListProvider']['default'];
-	$mailing_list          = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
-	$padding               = ! empty( $attributes['padding'] ) ? $attributes['padding'] : $defaults['padding']['default'];
-	$success_message       = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
+	$email_input_label            = ! empty( $attributes['emailInputLabel'] ) ? $attributes['emailInputLabel'] : $defaults['emailInputLabel']['default'];
+	$form_background_color        = ! empty( $attributes['backgroundColor'] ) ? $attributes['backgroundColor'] : null;
+	$form_background_color_custom = ! empty( $attributes['containerBackgroundColorCustom'] ) ? $attributes['containerBackgroundColorCustom'] : null;
+	$form_text_color              = ! empty( $attributes['textColor'] ) ? $attributes['textColor'] : null;
+	$form_text_color_custom       = ! empty( $attributes['containerTextColorCustom'] ) ? $attributes['containerTextColorCustom'] : null;
+	$button_bg_color              = ! empty( $attributes['buttonBackgroundColor'] ) ? $attributes['buttonBackgroundColor'] : $defaults['buttonBackgroundColor']['default'];
+	$button_text_color            = ! empty( $attributes['buttonTextColor'] ) ? $attributes['buttonTextColor'] : $defaults['buttonTextColor']['default'];
+	$button_class                 = ! empty( $attributes['buttonClass'] ) ? $attributes['buttonClass'] : $defaults['buttonClass']['default'];
+	$button_class                .= ! empty( $attributes['buttonSize'] ) ? ' ' . $attributes['buttonSize'] : ' ' . $defaults['buttonSize']['default'];
+	$button_class                .= ! empty( $attributes['buttonShape'] ) ? ' ' . $attributes['buttonShape'] : ' ' . $defaults['buttonShape']['default'];
+	$button_text                  = ! empty( $attributes['buttonText'] ) ? $attributes['buttonText'] : $defaults['buttonText']['default'];
+	$button_styles                = 'style="background-color: ' . $button_bg_color . '; color: ' . $button_text_color . '"';
+	$mailing_list_provider        = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : $defaults['mailingListProvider']['default'];
+	$mailing_list                 = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
+	$container_padding            = ! empty( $attributes['containerPadding'] ) ? $attributes['containerPadding'] : $defaults['containerPadding']['default'];
+	$success_message              = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
 	/* Padding styles. */
-	$padding_styles = '';
+	$container_padding_styles = '';
 
-	if ( ! empty( $padding ) && $padding > 0 ) {
-		$padding_styles .= 'padding:' . $padding . 'px;';
+	if ( ! empty( $container_padding ) && $container_padding > 0 ) {
+		$container_padding_styles .= 'padding:' . $container_padding . 'px;';
 	}
 
 	/* Background styles. */
@@ -71,8 +71,8 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	}
 
 	/* Newsletter wrapper styles. */
-	if ( ! empty( $padding_styles || $background_styles || $text_styles ) ) {
-		$wrapper_styles = 'style="' . $padding_styles . $background_styles . $text_styles . '"';
+	if ( ! empty( $container_padding_styles || $background_styles || $text_styles ) ) {
+		$wrapper_styles = 'style="' . $container_padding_styles . $background_styles . $text_styles . '"';
 	} else {
 		$wrapper_styles = null;
 	}
@@ -114,81 +114,73 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
  */
 function atomic_blocks_newsletter_block_attributes() {
 	return [
-		'buttonAlignment'       => [
+		'buttonAlignment'                => [
 			'type'    => 'string',
 			'default' => 'left',
 		],
-		'buttonBackgroundColor' => [
+		'buttonBackgroundColor'          => [
 			'type'    => 'string',
 			'default' => '#32373c',
 		],
-		'customButtonBackgroundColor' => [
-			'type'    => 'string',
-		],
-		'buttonSize' => [
+		'buttonBackgroundColorCustom'    => [
 			'type' => 'string',
-			'default' => 'ab-button-size-medium',
 		],
-		'buttonShape' => [
-			'type' => 'string',
-			'default' => 'ab-button-shape-rounded',
-		],
-		'buttonClass'           => [
+		'buttonClass'                    => [
 			'type'    => 'string',
 			'default' => 'ab-button',
 		],
-		'buttonShape'           => [
+		'buttonShape'                    => [
 			'type'    => 'string',
 			'default' => 'ab-button-shape-rounded',
 		],
-		'buttonSize'            => [
+		'buttonSize'                     => [
 			'type'    => 'string',
 			'default' => 'ab-button-size-medium',
 		],
-		'buttonText'            => [
+		'buttonText'                     => [
 			'type'    => 'string',
 			'default' => esc_html__( 'Subscribe', 'atomic-blocks' ),
 		],
-		'buttonTextColor'       => [
+		'buttonTextColor'                => [
 			'type'    => 'string',
 			'default' => '#fff',
 		],
-		'customButtonTextColor'       => [
-			'type'    => 'string',
+		'buttonTextColorCustom'          => [
+			'type' => 'string',
 		],
-		'buttonTextProcessing'  => [
+		'buttonTextProcessing'           => [
 			'type'    => 'string',
 			'default' => esc_html__( 'Please wait...', 'atomic-blocks' ),
 		],
-		'emailInputLabel'       => [
+		'emailInputLabel'                => [
 			'type'    => 'string',
 			'default' => esc_html__( 'Your Email Address', 'atomic-blocks' ),
 		],
-		'mailingList'           => [
+		'mailingList'                    => [
 			'type' => 'string',
 		],
-		'mailingListProvider'   => [
+		'mailingListProvider'            => [
 			'type'    => 'string',
 			'default' => 'mailchimp',
 		],
-		'successMessage'        => [
+		'successMessage'                 => [
 			'type'    => 'string',
 			'default' => esc_html__( 'Thanks for subscribing.', 'atomic-blocks' ),
 		],
-		'padding'               => [
+		'containerPadding'               => [
 			'type'    => 'number',
 			'default' => 0,
 		],
-		'backgroundColor' => [
+		'backgroundColor'                => [
 			'type' => 'string',
 		],
-		'customBackgroundColor' => [
+		'containerBackgroundColorCustom' => [
 			'type' => 'string',
 		],
-		'textColor' => [
+		'textColor'                      => [
 			'type' => 'string',
 		],
-		'customTextColor' => [
+		'containerTextColorCustom'       => [
 			'type' => 'string',
 		],
 	];

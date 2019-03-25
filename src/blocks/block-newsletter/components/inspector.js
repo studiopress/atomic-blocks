@@ -2,10 +2,13 @@
  * Newsletter block inspector.
  */
 
+/**
+ * WordPress dependencies.
+ */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose } = wp.compose;
-// @todo ContrastChecker
+
 const {
 	InspectorControls,
 	withColors,
@@ -17,13 +20,11 @@ const { PanelBody,
 	withFallbackStyles
 } = wp.components;
 
-/* Import padding component. */
+/**
+ * Internal dependencies.
+ */
 import Padding from './../../../utils/inspector/padding';
-
-/* Import color component. */
 import BackgroundColor from './../../../utils/inspector/background-color';
-
-/* Import button settings. */
 import ButtonSettings from './../../../utils/inspector/button';
 
 /* Apply fallback styles. */
@@ -114,10 +115,10 @@ class Inspector extends Component {
 					<Padding
 						// Enable padding on all sides
 						paddingEnable={ true }
-						padding={ attributes.padding }
+						padding={ attributes.containerPadding }
 						paddingMin="0"
 						paddingMax="100"
-						onChangePadding={ padding => setAttributes( { padding } ) }
+						onChangePadding={ containerPadding => setAttributes( { containerPadding } ) }
 					/>
 				</PanelBody>
 
@@ -160,9 +161,10 @@ class Inspector extends Component {
 
 export default compose( [
 	applyFallbackStyles,
-	withColors( 'backgroundColor',
-	{ textColor: 'color' },
-	{ buttonBackgroundColor: 'background-color' },
-	{ buttonTextColor: 'color' },
+	withColors(
+		'backgroundColor',
+		{ textColor: 'color' },
+		{ buttonBackgroundColor: 'background-color' },
+		{ buttonTextColor: 'color' },
 	),
 ] )( Inspector );
