@@ -51,6 +51,8 @@ class Inspector extends Component {
 			textColor,
 			fallbackTextColor,
 			setTextColor,
+			buttonBackgroundColor,
+			buttonTextColor,
 		} = this.props;
 
 		let mailingListProviders = {
@@ -140,12 +142,12 @@ class Inspector extends Component {
 						initialOpen={ false }
 						/* Button background color. */
 						backgroundTitle={ __( 'Button Background Color', 'atomic-blocks' ) }
-						backgroundColor={ attributes.buttonBackgroundColor }
+						backgroundColor={ buttonBackgroundColor.color }
 						fallbackBackgroundColor={ fallbackBackgroundColor }
 						onChangeBackgroundColor={ buttonBackgroundColor => setAttributes( { buttonBackgroundColor } ) }
 						/* Text color. */
 						colorTitle={ __( 'Button Text Color', 'atomic-blocks' ) }
-						textColor={ attributes.buttonTextColor }
+						textColor={ buttonTextColor.color }
 						fallbackTextColor={ fallbackTextColor }
 						onChangeTextColor={ buttonTextColor => setAttributes( { buttonTextColor } ) }
 					>
