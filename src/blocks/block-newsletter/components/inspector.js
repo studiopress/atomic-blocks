@@ -16,7 +16,6 @@ const {
 const { PanelBody,
 	SelectControl,
 	TextControl,
-	ToggleControl,
 	withFallbackStyles
 } = wp.components;
 
@@ -85,18 +84,6 @@ class Inspector extends Component {
 						value={ attributes.successMessage }
 						onChange={ ( value ) => setAttributes( { successMessage: value } ) }
 					/>
-
-					<ToggleControl
-                        label={ __( 'Display Newsletter Title', 'atomic-blocks' ) }
-                        checked={ attributes.newsletterTitleToggle }
-						onChange={ () => this.props.setAttributes( { newsletterTitleToggle: ! attributes.newsletterTitleToggle } ) }
-                    />
-
-					<ToggleControl
-                        label={ __( 'Display Newsletter Text', 'atomic-blocks' ) }
-                        checked={ attributes.newsletterTextToggle }
-						onChange={ () => this.props.setAttributes( { newsletterTextToggle: ! attributes.newsletterTextToggle } ) }
-                    />
 				</PanelBody>
 
 				<PanelBody
@@ -152,7 +139,6 @@ class Inspector extends Component {
 					</BackgroundColor>
 				</PanelBody>
 			</InspectorControls>
-
 		)
 	}
 }
