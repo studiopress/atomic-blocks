@@ -34,9 +34,9 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 
 	$email_input_label            = ! empty( $attributes['emailInputLabel'] ) ? $attributes['emailInputLabel'] : $defaults['emailInputLabel']['default'];
 	$form_background_color        = ! empty( $attributes['backgroundColor'] ) ? $attributes['backgroundColor'] : null;
-	$form_background_color_custom = ! empty( $attributes['containerBackgroundColorCustom'] ) ? $attributes['containerBackgroundColorCustom'] : null;
+	$form_background_color_custom = ! empty( $attributes['customBackgroundColor'] ) ? $attributes['customBackgroundColor'] : null;
 	$form_text_color              = ! empty( $attributes['textColor'] ) ? $attributes['textColor'] : null;
-	$form_text_color_custom       = ! empty( $attributes['containerTextColorCustom'] ) ? $attributes['containerTextColorCustom'] : null;
+	$form_text_color_custom       = ! empty( $attributes['customTextColor'] ) ? $attributes['customTextColor'] : null;
 
 
 	$button_bg_color              = ! empty( $attributes['buttonBackgroundColor'] ) ? $attributes['buttonBackgroundColor'] : $defaults['buttonBackgroundColor']['default'];
@@ -129,7 +129,7 @@ function atomic_blocks_newsletter_block_attributes() {
 			'type'    => 'string',
 			'default' => '#32373c',
 		],
-		'buttonBackgroundColorCustom'    => [
+		'customButtonBackgroundColor'    => [
 			'type' => 'string',
 		],
 		'buttonClass'                    => [
@@ -152,7 +152,7 @@ function atomic_blocks_newsletter_block_attributes() {
 			'type'    => 'string',
 			'default' => '#fff',
 		],
-		'buttonTextColorCustom'          => [
+		'customButtonTextColor'          => [
 			'type' => 'string',
 		],
 		'buttonTextProcessing'           => [
@@ -181,13 +181,13 @@ function atomic_blocks_newsletter_block_attributes() {
 		'backgroundColor'                => [
 			'type' => 'string',
 		],
-		'containerBackgroundColorCustom' => [
+		'customBackgroundColor' => [
 			'type' => 'string',
 		],
 		'textColor'                      => [
 			'type' => 'string',
 		],
-		'containerTextColorCustom'       => [
+		'customTextColor'       => [
 			'type' => 'string',
 		],
 	];

@@ -34,15 +34,15 @@ export default class NewsletterContainer extends Component {
 		return (
 			<div
 				style={ {
-					backgroundColor: backgroundColorClass ? undefined : attributes.containerBackgroundColorCustom,
+					backgroundColor: backgroundColorClass ? undefined : attributes.customBackgroundColor,
 					padding: attributes.containerPadding ? attributes.containerPadding : undefined,
-					color: textColorClass ? undefined : attributes.containerTextColorCustom,
+					color: textColorClass ? undefined : attributes.customTextColor,
 				} }
 				className={ classnames( [
 					this.props.className,
 				], {
 					'ab-block-newsletter': true,
-					'has-background': attributes.backgroundColor || attributes.containerBackgroundColorCustom,
+					'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
 					[ backgroundColorClass ]: backgroundColorClass,
 					[ textColorClass ]: textColorClass,
 				} )

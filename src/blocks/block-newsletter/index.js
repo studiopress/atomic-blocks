@@ -94,8 +94,8 @@ class Edit extends Component {
 										getButtonBackgroundClass,
 										getButtonTextClass,
 										{
-											'has-background': attributes.buttonBackgroundColor || attributes.buttonBackgroundColorCustom,
-											'has-text-color': attributes.buttonTextColor || attributes.buttonTextColorCustom,
+											'has-background': attributes.buttonBackgroundColor || attributes.customButtonBackgroundColor,
+											'has-text-color': attributes.buttonTextColor || attributes.customButtonTextColor,
 										}
 									) }
 									style={ {
