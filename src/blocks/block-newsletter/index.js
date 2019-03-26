@@ -44,8 +44,6 @@ class Edit extends Component {
 			backgroundColor: attributes.backgroundColor,
 		};
 
-		// const getButtonBackgroundClass = colorClassSlug.getColorClass( attributes.buttonBackgroundColor );
-		// const getButtonTextClass = colorClassSlug.getColorClass( attributes.buttonTextColor );
 		const getButtonTextClass       = getColorClassName( 'color', attributes.buttonTextColor );
 		const getButtonBackgroundClass = getColorClassName( 'background-color', attributes.buttonBackgroundColor );
 
@@ -99,8 +97,8 @@ class Edit extends Component {
 										}
 									) }
 									style={ {
-										backgroundColor: attributes.buttonBackgroundColor,
-										color: attributes.buttonTextColor,
+										backgroundColor: getButtonBackgroundClass ? undefined : attributes.customButtonBackgroundColor,
+										color: getButtonTextClass ? undefined : attributes.customButtonTextColor,
 									} }
 									onChange={ (value) => this.props.setAttributes( { buttonText: value } ) }
 								/>
