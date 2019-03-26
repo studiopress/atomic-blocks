@@ -24,7 +24,9 @@ export default class NewsletterContainer extends Component {
 	render() {
 
 		const {
-			attributes
+			attributes,
+			backgroundColor,
+			textColor,
 		} = this.props;
 
 		// Retreive the getColorClassName
@@ -34,9 +36,9 @@ export default class NewsletterContainer extends Component {
 		return (
 			<div
 				style={ {
-					backgroundColor: backgroundColorClass ? undefined : attributes.customBackgroundColor,
+					backgroundColor: backgroundColor.color,
 					padding: attributes.containerPadding ? attributes.containerPadding : undefined,
-					color: textColorClass ? undefined : attributes.customTextColor,
+					color: textColor.color,
 				} }
 				className={ classnames( [
 					this.props.className,
