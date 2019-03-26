@@ -56,35 +56,31 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$container_padding            = ! empty( $attributes['containerPadding'] ) ? $attributes['containerPadding'] : $defaults['containerPadding']['default'];
 	$success_message              = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
-	/* Padding styles. */
-	$container_padding_styles = '';
+	$wrapper_styles = '';
 
+	/* Padding styles. */
 	if ( ! empty( $container_padding ) && $container_padding > 0 ) {
-		$container_padding_styles .= 'padding:' . $container_padding . 'px;';
+		$wrapper_styles .= 'padding:' . $container_padding . 'px;';
 	}
 
 	/* Background styles. */
-	$background_styles = '';
-
 	if ( ! empty( $form_background_color_custom ) ) {
-		$background_styles .= 'background-color:' . $form_background_color_custom . ';';
+		$wrapper_styles .= 'background-color:' . $form_background_color_custom . ';';
 	}
 
 	/* Text styles. */
-	$text_styles = '';
-
 	if ( ! empty( $form_text_color_custom ) ) {
-		$text_styles .= 'color:' . $form_text_color_custom . ';';
+		$wrapper_styles .= 'color:' . $form_text_color_custom . ';';
 	}
 
 	/* Newsletter wrapper styles. */
-	if ( ! empty( $container_padding_styles || $background_styles || $text_styles ) ) {
-		$wrapper_styles = 'style="' . $container_padding_styles . $background_styles . $text_styles . '"';
+	if ( ! empty( $wrapper_styles ) ) {
+		$wrapper_style = 'style="' . $wrapper_styles . '"';
 	} else {
-		$wrapper_styles = null;
+		$wrapper_style = null;
 	}
 
-	/* Background classes. */
+	/* Wrapper color classes. */
 	$wrapper_class = '';
 
 	if ( ! empty( $form_background_color ) ) {
@@ -95,7 +91,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 		$wrapper_class .= ' has-text-color has-' . $form_text_color . '-color';
 	}
 
-	/* Button styles custom. */
+	/* Button styles. */
 	$button_styles_custom = '';
 
 	if ( ! empty( $button_bg_color_custom ) ) {
@@ -106,14 +102,14 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 		$button_styles_custom .= 'color:' . $button_text_color_custom . ';';
 	}
 
-	/* Button styles. */
+	/* Button style output. */
 	if ( ! empty( $button_styles_custom ) ) {
 		$button_styles = 'style="' . $button_styles_custom . '"';
 	} else {
 		$button_styles = null;
 	}
 
-	$form = '<div class="ab-block-newsletter ' . $wrapper_class . '" ' . $wrapper_styles . ' >';
+	$form = '<div class="ab-block-newsletter ' . $wrapper_class . '" ' . $wrapper_style . ' >';
 
 		$form .= '
 			<form method="post">
