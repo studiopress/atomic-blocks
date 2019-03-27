@@ -318,7 +318,7 @@ class LSXBannerBlock extends Component {
 						className="lsx-banner-title"
 						style={ {
 							color: bannerTextColor,
-							fontSize: 'calc(' + bannerFontSize + 'px /2)',
+							fontSize: 'calc(' + bannerFontSize + 'px /1.5)',
 						} }
 						onChange={ ( value ) => setAttributes( { bannerTitle: value } ) }
 					/>
@@ -459,7 +459,7 @@ registerBlockType( 'lsx-blocks/lsx-banner-box', {
 								className="lsx-banner-title"
 								style={ {
 									color: bannerTextColor,
-									fontSize: 'calc(' + bannerFontSize + 'px /2)',
+									fontSize: 'calc(' + bannerFontSize + 'px /1.5)',
 								} }
 								value={ bannerTitle }
 							/>
