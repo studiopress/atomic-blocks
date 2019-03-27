@@ -137,7 +137,6 @@ function process_submission( $email, $provider, array $args ) {
 /**
  * Returns a list of supported mailing list providers.
  *
- * @throws Mailchimp_API_Error_Exception If an invalid API key is saved in the plugin settings.
  * @return array
  */
 function mailing_list_providers() {
@@ -191,7 +190,6 @@ function frontend_assets() {
 		'atomic_blocks_newsletter_vars',
 		[
 			'ajaxurl'                => esc_url( admin_url( 'admin-ajax.php' ) ),
-			'button_text_default'    => esc_html( atomic_blocks_newsletter_block_attributes()['buttonText']['default'] ),
 			'button_text_processing' => esc_html( atomic_blocks_newsletter_block_attributes()['buttonTextProcessing']['default'] ),
 			'invalid_configuration'  => esc_html__( 'Invalid configuration. Site owner: Please configure your newsletter provider settings.', 'atomic-blocks' ),
 		]

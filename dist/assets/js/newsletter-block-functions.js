@@ -11,6 +11,8 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var button = $( this );
 
+			var button_text_original = button.text();
+
 			button.text( atomic_blocks_newsletter_vars.button_text_processing ).prop( 'disabled', true );
 
 			var form = $( this ).parents( 'form' );
@@ -24,7 +26,7 @@ var AtomicBlocksNewsletterSubmission = {
 			var successMessage = button.parent().find( "[name='ab-newsletter-success-message']" ).val();
 
 			if ( ! email ) {
-				button.text( atomic_blocks_newsletter_vars.button_text_default ).prop( 'disabled', false );
+				button.text( button_text_original ).prop( 'disabled', false );
 				return;
 			}
 
