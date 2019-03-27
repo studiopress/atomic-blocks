@@ -38,6 +38,8 @@ export default class NewsletterContainer extends Component {
 				style={ {
 					backgroundColor: backgroundColor.color,
 					padding: attributes.containerPadding ? attributes.containerPadding : undefined,
+					marginTop: attributes.containerMarginTop ? attributes.containerMarginTop : undefined,
+					marginBottom: attributes.containerMarginBottom ? attributes.containerMarginBottom : undefined,
 					color: textColor.color,
 				} }
 				className={ classnames( [

@@ -26,6 +26,7 @@ const { PanelBody,
  * Internal dependencies.
  */
 import Padding from './../../../utils/inspector/padding';
+import Margin from './../../../utils/inspector/margin';
 import ButtonSettings from './../../../utils/inspector/button';
 
 /* Apply fallback styles. */
@@ -111,6 +112,23 @@ class Inspector extends Component {
 						paddingMin="0"
 						paddingMax="100"
 						onChangePadding={ containerPadding => setAttributes( { containerPadding } ) }
+					/>
+
+					<Margin
+						// Enable margin top setting
+						marginEnableTop={ true }
+						marginTopLabel={ __( 'Block Margin Top', 'atomic-blocks' ) }
+						marginTop={ attributes.containerMarginTop }
+						marginTopMin="0"
+						marginTopMax="200"
+						onChangeMarginTop={ containerMarginTop => setAttributes( { containerMarginTop } ) }
+						// Enable margin bottom setting
+						marginEnableBottom={ true }
+						marginBottomLabel={ __( 'Block Margin Bottom', 'atomic-blocks' ) }
+						marginBottom={ attributes.containerMarginBottom }
+						marginBottomMin="0"
+						marginBottomMax="200"
+						onChangeMarginBottom={ containerMarginBottom => setAttributes( { containerMarginBottom } ) }
 					/>
 
 					<ButtonSettings

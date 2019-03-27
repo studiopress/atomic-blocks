@@ -54,6 +54,8 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$mailing_list_provider        = ! empty( $attributes['mailingListProvider'] ) ? $attributes['mailingListProvider'] : $defaults['mailingListProvider']['default'];
 	$mailing_list                 = ! empty( $attributes['mailingList'] ) ? $attributes['mailingList'] : null;
 	$container_padding            = ! empty( $attributes['containerPadding'] ) ? $attributes['containerPadding'] : $defaults['containerPadding']['default'];
+	$container_margin_top         = ! empty( $attributes['containerMarginTop'] ) ? $attributes['containerMarginTop'] : null;
+	$container_margin_bottom      = ! empty( $attributes['containerMarginBottom'] ) ? $attributes['containerMarginBottom'] : null;
 	$success_message              = ! empty( $attributes['successMessage'] ) ? $attributes['successMessage'] : $defaults['successMessage']['default'];
 
 	$wrapper_styles = '';
@@ -61,6 +63,15 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	/* Padding styles. */
 	if ( ! empty( $container_padding ) && $container_padding > 0 ) {
 		$wrapper_styles .= 'padding:' . $container_padding . 'px;';
+	}
+
+	/* Margin styles. */
+	if ( ! empty( $container_margin_top ) && $container_margin_top > 0 ) {
+		$wrapper_styles .= 'margin-top:' . $container_margin_top . 'px;';
+	}
+
+	if ( ! empty( $container_margin_bottom ) && $container_margin_bottom > 0 ) {
+		$wrapper_styles .= 'margin-bottom:' . $container_margin_bottom . 'px;';
 	}
 
 	/* Background styles. */
@@ -189,6 +200,14 @@ function atomic_blocks_newsletter_block_attributes() {
 			'default' => esc_html__( 'Thanks for subscribing.', 'atomic-blocks' ),
 		],
 		'containerPadding'               => [
+			'type'    => 'number',
+			'default' => 0,
+		],
+		'containerMarginTop'               => [
+			'type'    => 'number',
+			'default' => 0,
+		],
+		'containerMarginBottom'               => [
 			'type'    => 'number',
 			'default' => 0,
 		],
