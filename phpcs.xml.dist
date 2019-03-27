@@ -61,5 +61,6 @@
 	<rule ref="WordPress">
 		<exclude name="Squiz.Operators.ValidLogicalOperators.NotAllowed" />
 		<exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+		<exclude name="Generic.Strings.UnnecessaryStringConcat.Found" />
 	</rule>
 </ruleset>
