@@ -11,6 +11,12 @@
 	.ab-block-button {
 		margin-bottom: 0;
 	}
+
+	.ab-newsletter-submission-message {
+		background: #d2efda;
+		padding: 10px 15px;
+		border: solid 1px #afd2b8;
+	}
 }
 
 .ab-block-newsletter-label {
@@ -18,5 +24,18 @@
 }
 
 .ab-form-styles {
-
+	label {
+		margin-bottom: 8px;
+		width: 100%;
+		display: block;
+	}
+	input {
+		width: 100%;
+		height: auto;
+		border: solid 1px #ccc;
+		min-height: 45px;
+		margin-bottom: 15px;
+		padding: 15px;
+		font-size: 16px;
+	}
 }
