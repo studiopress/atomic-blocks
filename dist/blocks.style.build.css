@@ -2454,6 +2454,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
 
 .gutenberg-compatible-template.using-gutenberg .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image {
   background-image: none !important; }
+  @media (min-width: 600px) {
+    .gutenberg-compatible-template.using-gutenberg .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image .lsx-banner-image-wrap picture img, .gutenberg-compatible-template.using-gutenberg .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image .lsx-banner-image-wrap picture source {
+      min-height: 350px;
+      -o-object-fit: cover;
+         object-fit: cover; } }
 
 .wp-block-lsx-blocks-lsx-banner-box {
   position: relative;
@@ -2484,6 +2489,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       max-height: 80vh;
       position: relative;
       overflow: hidden; }
+      @media only screen and (min-width: 600px) {
+        .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap:empty {
+          min-height: 300px; } }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap picture {
         width: 100%;
         height: 100%; }
@@ -2534,13 +2542,17 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
         padding: 0.5rem;
         max-width: 65%;
         bottom: 4rem;
-        margin: 0 auto; } }
+        margin: 0 auto; }
+        .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-banner-logo:empty, .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-banner-title:empty, .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-block-banner-button:empty {
+          margin: 0; } }
     .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-banner-title, .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-block-button {
       max-width: 80%;
       width: 80%;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 0.5em; }
+    .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-block-button:not(:empty) {
+      margin-bottom: 2em; }
     .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header {
       margin-bottom: 0; }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header .lsx-banner-name {
@@ -2558,7 +2570,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
         .wp-block-lsx-blocks-lsx-banner-box.title-bottom .lsx-banner-content-wrap .header-headings {
           max-width: 90%; } }
 
-.lsx-banner-logo .lsx-banner-logo-img {
+@media (min-width: 600px) {
+  .lsx-banner-logo:not(:empty) {
+    padding-top: 3em; } }
+
+.lsx-banner-logo:not(:empty) .lsx-banner-logo-img {
   max-height: 95px;
   margin: 0.5em auto;
   max-width: 95px; }

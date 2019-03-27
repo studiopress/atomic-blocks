@@ -11,6 +11,16 @@
 
 	.wp-block-lsx-blocks-lsx-banner-box.lsx-has-image {
 		background-image: none !important;
+		@media (min-width:600px) {
+			.lsx-banner-image-wrap {
+				picture {
+					img, source {
+						min-height: 350px;
+						object-fit: cover;
+					}
+				}
+			}
+		}
 	}
 }
 .wp-block-lsx-blocks-lsx-banner-box {
@@ -48,7 +58,11 @@
 			// 	width: 100%;
 			// 	padding-bottom: calc(100vh - 40rem);
 			// }
-
+			@media only screen and (min-width: 600px) {
+				&:empty {
+					min-height: 300px;
+				}
+			}
 			picture {
 				// position: absolute;
 				// top: 0;
@@ -130,6 +144,11 @@
 				max-width: 65%;
 				bottom: 4rem;
 				margin: 0 auto;
+				.lsx-banner-logo, .lsx-banner-title, .lsx-block-banner-button {
+					&:empty {
+						margin: 0;
+					}
+				}
 			}
 			.lsx-banner-title, .lsx-block-button {
 				max-width: 80%;
@@ -137,6 +156,11 @@
 				margin-left: auto;
 				margin-right: auto;
 				margin-bottom: 0.5em;
+			}
+			.lsx-block-button {
+				&:not(:empty) {
+					margin-bottom: 2em;
+				}
 			}
 			.page-header {
 				margin-bottom: 0;
@@ -165,7 +189,10 @@
 		}
 	}
 }
-.lsx-banner-logo {
+.lsx-banner-logo:not(:empty) {
+	@media (min-width:600px) {
+		padding-top: 3em;
+	}
 	.lsx-banner-logo-img {
 		max-height: 95px;
 		margin: 0.5em auto;
