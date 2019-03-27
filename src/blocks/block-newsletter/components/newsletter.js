@@ -44,6 +44,7 @@ export default class NewsletterContainer extends Component {
 					this.props.className,
 				], {
 					'ab-block-newsletter': true,
+					'ab-form-styles': true,
 					'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
 					[ backgroundColorClass ]: backgroundColorClass,
 					[ textColorClass ]: textColorClass,

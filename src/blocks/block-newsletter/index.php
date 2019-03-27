@@ -109,7 +109,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 		$button_styles = null;
 	}
 
-	$form = '<div class="ab-block-newsletter ' . $wrapper_class . '" ' . $wrapper_style . ' >';
+	$form = '<div class="ab-block-newsletter ab-form-styles ' . $wrapper_class . '" ' . $wrapper_style . ' >';
 
 		$form .= '
 			<form method="post">
