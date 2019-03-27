@@ -141,7 +141,7 @@
 				//background: rgba(255, 255, 255, 0.83);
 				border: 0;
 				padding: 0.5rem;
-				max-width: 65%;
+				max-width: 75%;
 				bottom: 4rem;
 				margin: 0 auto;
 				.lsx-banner-logo, .lsx-banner-title, .lsx-block-banner-button {
@@ -151,8 +151,8 @@
 				}
 			}
 			.lsx-banner-title, .lsx-block-button {
-				max-width: 80%;
-				width: 80%;
+				max-width: 90%;
+				width: 90%;
 				margin-left: auto;
 				margin-right: auto;
 				margin-bottom: 0.5em;
@@ -176,6 +176,7 @@
 		}
 	}
 	&.title-bottom {
+		background-color: transparent !important;
 		.lsx-banner-content-wrap {
 			position: relative;
 			.header-headings {
