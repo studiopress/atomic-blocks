@@ -159,6 +159,8 @@ class Inspector extends Component {
 					<Padding
 						// Enable padding on all sides
 						paddingEnable={ true }
+						paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
+						paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
 						padding={ attributes.containerPadding }
 						paddingMin="0"
 						paddingMax="100"

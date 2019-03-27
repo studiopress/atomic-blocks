@@ -6,6 +6,8 @@ export default function Padding( props ) {
     const {
 		// Padding props
 		padding,
+		paddingTitle,
+		paddingHelp,
 		paddingMin,
         paddingMax,
 		paddingEnable,
@@ -52,7 +54,8 @@ export default function Padding( props ) {
         <Fragment>
 			{ paddingEnable && (
                 <RangeControl
-                    label={ __( 'Padding', 'atomic-blocks' ) }
+					label={ paddingTitle ? paddingTitle : __( 'Padding', 'atomic-blocks' ) }
+					help={ paddingHelp ? paddingHelp : null }
                     value={ padding }
                     min={ paddingMin }
                     max={ paddingMax }
