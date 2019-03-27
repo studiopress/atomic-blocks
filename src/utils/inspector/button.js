@@ -2,60 +2,60 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const {
 	SelectControl,
-    ToggleControl,
+	ToggleControl,
 } = wp.components;
 const {
 	PanelColorSettings,
 } = wp.editor;
 
 export default function ButtonSettings( props ) {
-    const {
+	const {
 		enableButtonBackgroundColor,
-        buttonBackgroundColor,
+		buttonBackgroundColor,
 		onChangeButtonColor = () => {},
 		enableButtonTextColor,
-        buttonTextColor,
+		buttonTextColor,
 		onChangeButtonTextColor = () => {},
 		enableButtonSize,
-        buttonSize,
+		buttonSize,
 		onChangeButtonSize = () => {},
 		enableButtonShape,
-        buttonShape,
+		buttonShape,
 		onChangeButtonShape = () => {},
 		enableButtonTarget,
-        buttonTarget,
-        onChangeButtonTarget = () => {},
-    } = props;
+		buttonTarget,
+		onChangeButtonTarget = () => {},
+	} = props;
 
-    // Button size values
-    const buttonSizeOptions = [
-        { value: 'ab-button-size-small', label: __( 'Small', 'atomic-blocks' ) },
-        { value: 'ab-button-size-medium', label: __( 'Medium', 'atomic-blocks' ) },
-        { value: 'ab-button-size-large', label: __( 'Large', 'atomic-blocks' ) },
-        { value: 'ab-button-size-extralarge', label: __( 'Extra Large', 'atomic-blocks' ) },
-    ];
+	// Button size values
+	const buttonSizeOptions = [
+		{ value: 'ab-button-size-small', label: __( 'Small', 'atomic-blocks' ) },
+		{ value: 'ab-button-size-medium', label: __( 'Medium', 'atomic-blocks' ) },
+		{ value: 'ab-button-size-large', label: __( 'Large', 'atomic-blocks' ) },
+		{ value: 'ab-button-size-extralarge', label: __( 'Extra Large', 'atomic-blocks' ) },
+	];
 
-    // Button shape
-    const buttonShapeOptions = [
-        { value: 'ab-button-shape-square', label: __( 'Square', 'atomic-blocks' ) },
-        { value: 'ab-button-shape-rounded', label: __( 'Rounded Square', 'atomic-blocks' ) },
-        { value: 'ab-button-shape-circular', label: __( 'Circular', 'atomic-blocks' ) },
-    ];
+	// Button shape
+	const buttonShapeOptions = [
+		{ value: 'ab-button-shape-square', label: __( 'Square', 'atomic-blocks' ) },
+		{ value: 'ab-button-shape-rounded', label: __( 'Rounded Square', 'atomic-blocks' ) },
+		{ value: 'ab-button-shape-circular', label: __( 'Circular', 'atomic-blocks' ) },
+	];
 
-    // Button colors
-    const buttonColors = [
-        { color: '#00d1b2', name: 'teal' },
-        { color: '#3373dc', name: 'royal blue' },
-        { color: '#209cef', name: 'sky blue' },
-        { color: '#22d25f', name: 'green' },
-        { color: '#ffdd57', name: 'yellow' },
-        { color: '#ff3860', name: 'pink' },
-        { color: '#7941b6', name: 'purple' },
-        { color: '#392F43', name: 'black' },
-    ];
+	// Button colors
+	const buttonColors = [
+		{ color: '#00d1b2', name: 'teal' },
+		{ color: '#3373dc', name: 'royal blue' },
+		{ color: '#209cef', name: 'sky blue' },
+		{ color: '#22d25f', name: 'green' },
+		{ color: '#ffdd57', name: 'yellow' },
+		{ color: '#ff3860', name: 'pink' },
+		{ color: '#7941b6', name: 'purple' },
+		{ color: '#392F43', name: 'black' },
+	];
 
-    return (
-        <Fragment>
+	return (
+		<Fragment>
 			{ enableButtonTarget != false && (
 				<ToggleControl
 					label={ __( 'Open link in new window', 'atomic-blocks' ) }
@@ -111,6 +111,6 @@ export default function ButtonSettings( props ) {
 				>
 				</PanelColorSettings>
 			) }
-        </Fragment>
-    );
+		</Fragment>
+	);
 }
