@@ -67,7 +67,12 @@ class Inspector extends Component {
 			'mailchimp': {
 				label: 'Mailchimp',
 				value: 'mailchimp',
-				lists: [],
+				lists: [
+					{
+						label: __( 'Select a list', 'atomic-blocks' ),
+						value: '',
+					}
+				],
 			},
 		};
 
