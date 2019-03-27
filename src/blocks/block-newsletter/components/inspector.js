@@ -78,7 +78,8 @@ class Inspector extends Component {
 			<InspectorControls>
 
 				<PanelBody
-					title={ __( 'Newsletter Settings', 'atomic-blocks' ) }
+					title={ __( 'Newsletter', 'atomic-blocks' ) }
+					initialOpen={ attributes.mailingList ? false : true }
 				>
 					<SelectControl
 						label={ __( 'Mailing List', 'atomic-blocks' ) }
@@ -97,8 +98,34 @@ class Inspector extends Component {
 					/>
 				</PanelBody>
 
+				<PanelBody
+					title={ __( 'General', 'atomic-blocks' ) }
+					initialOpen={ attributes.mailingList ? true : false }
+				>
+					<Padding
+						// Enable padding on all sides
+						paddingEnable={ true }
+						paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
+						paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
+						padding={ attributes.containerPadding }
+						paddingMin="0"
+						paddingMax="100"
+						onChangePadding={ containerPadding => setAttributes( { containerPadding } ) }
+					/>
+
+					<ButtonSettings
+						enableButtonTarget={ false }
+						buttonSize={ attributes.buttonSize }
+						onChangeButtonSize={ buttonSize => setAttributes( { buttonSize } ) }
+						buttonShape={ attributes.buttonShape }
+						onChangeButtonShape={ buttonShape => setAttributes( { buttonShape } ) }
+						enableButtonBackgroundColor={ false }
+						enableButtonTextColor={ false }
+					/>
+				</PanelBody>
+
 				<PanelColorSettings
-					title={ __( 'Block Color Settings', 'atomic-blocks' ) }
+					title={ __( 'Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [
 						{
@@ -151,38 +178,6 @@ class Inspector extends Component {
 						} }
 					/>
 				</PanelColorSettings>
-
-				<PanelBody
-					title={ __( 'Padding Settings', 'atomic-blocks' ) }
-					initialOpen={ false }
-				>
-					<Padding
-						// Enable padding on all sides
-						paddingEnable={ true }
-						paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
-						paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
-						padding={ attributes.containerPadding }
-						paddingMin="0"
-						paddingMax="100"
-						onChangePadding={ containerPadding => setAttributes( { containerPadding } ) }
-					/>
-				</PanelBody>
-
-				<PanelBody
-					title={ __( 'Button Settings', 'atomic-blocks' ) }
-					initialOpen={ false }
-					className={ "ab-nested-panel" }
-				>
-					<ButtonSettings
-						enableButtonTarget={ false }
-						buttonSize={ attributes.buttonSize }
-						onChangeButtonSize={ buttonSize => setAttributes( { buttonSize } ) }
-						buttonShape={ attributes.buttonShape }
-						onChangeButtonShape={ buttonShape => setAttributes( { buttonShape } ) }
-						enableButtonBackgroundColor={ false }
-						enableButtonTextColor={ false }
-					/>
-				</PanelBody>
 			</InspectorControls>
 		)
 	}
