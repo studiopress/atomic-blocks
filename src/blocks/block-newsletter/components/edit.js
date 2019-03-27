@@ -5,12 +5,12 @@ import classnames from 'classnames';
 import Inspector from './inspector';
 import NewsletterContainer from './newsletter';
 import CustomButton from './../../block-button/components/button';
-const { compose } = wp.compose;
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { compose } = wp.compose;
 const {
 	getColorClassName,
 	RichText,
