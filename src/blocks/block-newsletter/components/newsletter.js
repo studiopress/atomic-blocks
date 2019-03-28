@@ -2,18 +2,19 @@
  * Newsletter Wrapper
  */
 
-// Setup the block
+/**
+ * WordPress dependencies
+ */
 const { Component } = wp.element;
+const { getColorClassName } = wp.editor;
 
-const {
-	getColorClassName,
-} = wp.editor;
-
-// Import block dependencies and components
+/**
+ * External dependencies
+ */
 import classnames from 'classnames';
 
 /**
- * Create a Button wrapper Component
+ * Newsletter Container class
  */
 export default class NewsletterContainer extends Component {
 

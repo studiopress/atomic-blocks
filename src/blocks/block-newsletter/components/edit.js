@@ -2,6 +2,10 @@
  * External dependencies
  */
 import classnames from 'classnames';
+
+/**
+ * Internal dependencies
+ */
 import Inspector from './inspector';
 import NewsletterContainer from './newsletter';
 import CustomButton from './../../block-button/components/button';
