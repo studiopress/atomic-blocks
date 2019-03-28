@@ -29,7 +29,6 @@ export default class NewsletterContainer extends Component {
 			textColor,
 		} = this.props;
 
-		// Retreive the getColorClassName
 		const backgroundColorClass = getColorClassName( 'background-color', attributes.backgroundColor );
 		const textColorClass = getColorClassName( 'color', attributes.textColor );
 
