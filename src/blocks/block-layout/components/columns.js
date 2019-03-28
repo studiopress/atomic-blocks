@@ -9,9 +9,9 @@ const { Component } = wp.element;
 import classnames from 'classnames';
 
 /**
- * Create a Layout wrapper Component
+ * Create a Columns wrapper Component
  */
-export default class Layout extends Component {
+export default class Columns extends Component {
 
 	constructor( props ) {
 		super( ...arguments );

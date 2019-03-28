@@ -1,10 +1,10 @@
 /**
- * BLOCK: Atomic Blocks Layout InnerBlocks
+ * BLOCK: Atomic Blocks Columns InnerBlocks
  */
 
 // Import block dependencies and components
 import classnames from 'classnames';
-import Inspector from './components/inspector';
+import Edit from './components/edit';
 
 // Import CSS
 import './styles/style.scss';
@@ -12,101 +12,10 @@ import './styles/editor.scss';
 
 // Internationalization
 const { __ } = wp.i18n;
-
-// Extend component
-const { Component } = wp.element;
-
-// Register block
 const { registerBlockType } = wp.blocks;
-
-// Register editor components
 const {
 	InnerBlocks,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
 } = wp.editor;
-
-const {
-	Fragment,
-} = wp.element;
-
-const ALLOWED_BLOCKS = [
-	'atomic-blocks/ab-layout-column-description',
-	'atomic-blocks/ab-layout-column-price',
-	'atomic-blocks/ab-layout-column-subtitle',
-	'atomic-blocks/ab-layout-column-title',
-	'atomic-blocks/ab-layout-column-button',
-	'core/paragraph',
-	'core/image',
-];
-
-class ABLayoutColumnBlock extends Component {
-
-	render() {
-
-		// Setup the attributes
-		const { attributes: {
-			borderWidth,
-			borderColor,
-			borderRadius,
-			backgroundColor,
-			padding,
-			alignment
-		},
-			isSelected,
-			className,
-			setAttributes
-		} = this.props;
-
-		const styles = {
-			borderWidth: borderWidth ? borderWidth : null,
-			borderStyle: borderWidth > 0 ? 'solid' : null,
-			borderColor: borderColor ? borderColor : null,
-			borderRadius: borderRadius ? borderRadius : null,
-			backgroundColor: backgroundColor ? backgroundColor : null,
-			padding: padding ? padding + '%' : null,
-		};
-
-		return [
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ alignment }
-					onChange={ ( nextAlign ) => {
-						setAttributes( { alignment: nextAlign } );
-					} }
-				/>
-			</BlockControls>,
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
-			<Fragment>
-				<div
-					className={ classnames(
-						alignment ? 'ab-block-layout-column-' + alignment : 'ab-block-layout-column-center',
-						'ab-block-layout-column',
-					) }
-					itemScope
-					itemType="http://schema.org/Product"
-				>
-					<div
-						className="ab-block-layout-column-inside"
-						style={ styles }
-					>
-						<InnerBlocks
-							template={[
-
-							]}
-							templateLock={ false }
-							allowedBlocks={ ALLOWED_BLOCKS }
-							templateInsertUpdatesSelection={ false }
-						/>
-					</div>
-				</div>
-			</Fragment>
-		];
-	}
-}
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-layout-column', {
@@ -121,18 +30,16 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 		__( 'row', 'atomic-blocks' ),
 	],
 	attributes: {
-		borderWidth: {
-			type: 'number',
-			default: 2,
-		},
-		borderColor: {
+		backgroundColor: {
 			type: 'string',
 		},
-		borderRadius: {
-			type: 'number',
-			default: 0,
+		customBackgroundColor: {
+			type: 'string',
 		},
-		backgroundColor: {
+		textColor: {
+			type: 'string',
+		},
+		customTextColor: {
 			type: 'string',
 		},
 		alignment: {
@@ -144,41 +51,33 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 	},
 
 	// Render the block components
-	edit: ABLayoutColumnBlock,
+	edit: props => {
+		return <Edit { ...props } />;
+	},
 
 	// Save the attributes and markup
 	save: function( props ) {
 
-		// Setup the attributes
-		const {
-			borderWidth,
-			borderColor,
-			borderRadius,
-			backgroundColor,
-			alignment,
-			padding,
-		} = props.attributes;
-
-		const styles = {
-			borderWidth: borderWidth ? borderWidth : null,
-			borderStyle: borderWidth > 0 ? 'solid' : null,
-			borderColor: borderColor ? borderColor : null,
-			borderRadius: borderRadius ? borderRadius : null,
-			backgroundColor: backgroundColor ? backgroundColor : null,
-			padding: padding ? padding + '%' : null,
-		};
+		const backgroundColorClass = 'has-' + props.attributes.backgroundColor + '-background-color';
+		const textColorClass = 'has-' + props.attributes.textColor + '-color';
 
 		// Save the block markup for the front end
 		return (
 			<div
 				className={ classnames(
-					alignment ? 'ab-block-layout-column-' + alignment : 'ab-block-layout-column-center',
+					props.attributes.alignment ? 'ab-block-layout-column-' + props.attributes.alignment : 'ab-block-layout-column-center',
 					'ab-block-layout-column',
+					backgroundColorClass,
+					textColorClass,
 				) }
 			>
 				<div
 					className="ab-block-layout-column-inside"
-					style={ styles }
+					style={ {
+						backgroundColor: props.attributes.backgroundColor ? null : props.attributes.customBackgroundColor,
+						color: props.attributes.textColor ? null : props.attributes.customTextColor,
+						padding: props.attributes.padding ? props.attributes.padding + '%' : null,
+					} }
 				>
 					<InnerBlocks.Content />
 				</div>

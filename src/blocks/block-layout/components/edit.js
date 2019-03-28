@@ -1,7 +1,7 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import Inspector from './inspector';
-import Layout from './layout';
+import Columns from './columns';
 import memoize from 'memize';
 import _times from 'lodash/times';
 import icons from './icons';
@@ -192,7 +192,7 @@ export default class Edit extends Component {
 				{ ...{ setAttributes, ...this.props } }
 			/>,
 			// Show the block markup in the editor
-			<Layout { ...this.props }>
+			<Columns { ...this.props }>
 				<div
 					className={ classnames(
 						'ab-layout-column-wrap-admin',
@@ -205,7 +205,7 @@ export default class Edit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 					/>
 				</div>
-			</Layout>
+			</Columns>
 		];
 	}
 }

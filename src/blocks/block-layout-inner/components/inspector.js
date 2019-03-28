@@ -1,38 +1,36 @@
 /**
- * Inspector Controls
+ * WordPress dependencies.
  */
-
-// Setup the block
 const { __ } = wp.i18n;
-const {
-	Component,
-	Fragment,
- } = wp.element;
-
-// Import block components
+const { Component } = wp.element;
+const { compose } = wp.compose;
 const {
 	InspectorControls,
-	BlockDescription,
-	ColorPalette,
 	PanelColorSettings,
+	withColors,
+	ContrastChecker,
 } = wp.editor;
-
-// Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
-	FormToggle,
 	RangeControl,
-	SelectControl,
-	ToggleControl,
+	withFallbackStyles,
 } = wp.components;
 
+/* Apply fallback styles. */
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+	const { backgroundColor, textColor } = ownProps.attributes;
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	return {
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+	};
+} );
+
 /**
- * Create an Inspector Controls wrapper Component
+ * Create an Inspector Controls wrapper Component.
  */
-export default class Inspector extends Component {
+class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -40,75 +38,61 @@ export default class Inspector extends Component {
 
 	render() {
 
-		// Setup the attributes
-		const { attributes: {
-			borderWidth,
-			borderColor,
-			borderRadius,
+		const {
 			backgroundColor,
-			padding
-		},
-			isSelected,
-			className,
-			setAttributes
+			setBackgroundColor,
+			fallbackBackgroundColor,
+			textColor,
+			fallbackTextColor,
+			setTextColor,
 		} = this.props;
-
-		const onChangeBorderColor = value => setAttributes( { borderColor: value } );
-		const onChangeBackgroundColor = value => setAttributes( { backgroundColor: value } );
 
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Layout Column Padding' ) }
-					value={ padding }
+					label={ __( 'Layout Column Padding', 'atomic-blocks' ) }
+					value={ attributes.padding }
 					onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
 					min={ 0 }
 					max={ 20 }
 					step={ 1 }
 				/>
-				<RangeControl
-					label={ __( 'Layout Column Border' ) }
-					value={ borderWidth }
-					onChange={ ( value ) => this.props.setAttributes( { borderWidth: value } ) }
-					min={ 0 }
-					max={ 10 }
-					step={ 1 }
-				/>
-				<RangeControl
-					label={ __( 'Layout Column Border Radius' ) }
-					value={ borderRadius }
-					onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
-					min={ 0 }
-					max={ 20 }
-					step={ 1 }
-				/>
 			</PanelBody>
-			<Fragment>
-			{ ( borderWidth > 0 ) && (
-				<PanelColorSettings
-					title={ __( 'Layout Column Border Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: borderColor,
-						onChange: onChangeBorderColor,
-						label: __( 'Border Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-				) }
-				<PanelColorSettings
-					title={ __( 'Layout Column Background Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: backgroundColor,
-						onChange: onChangeBackgroundColor,
-						label: __( 'Background Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
-			</Fragment>
+			<PanelColorSettings
+				title={ __( 'Layout Column Background Color', 'atomic-blocks' ) }
+				initialOpen={ false }
+				colorSettings={ [
+					{
+						value: backgroundColor.color,
+						onChange: setBackgroundColor,
+						label: __( 'Background Color', 'atomic-blocks' ),
+					},
+					{
+						value: textColor.color,
+						onChange: setTextColor,
+						label: __( 'Text Color', 'atomic-blocks' ),
+					}
+			 	] }
+			>
+				<ContrastChecker
+					{ ...{
+						textColor: textColor.color,
+						backgroundColor: backgroundColor.color,
+						fallbackTextColor,
+						fallbackBackgroundColor,
+					} }
+				/>
+			</PanelColorSettings>
 		</InspectorControls>
 		);
 	}
 }
+
+export default compose( [
+	applyFallbackStyles,
+	withColors(
+		'backgroundColor',
+		{ textColor: 'color' },
+	),
+] )( Inspector );
