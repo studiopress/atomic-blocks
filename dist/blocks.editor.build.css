@@ -1481,8 +1481,7 @@
   background-image: none !important; }
 
 .wp-block-lsx-blocks-lsx-banner-box {
-  position: relative;
-  margin-bottom: 5rem; }
+  position: relative; }
   .wp-block-lsx-blocks-lsx-banner-box:not(.lsx-has-image) {
     padding-bottom: 1em; }
   @media only screen and (max-width: 766px) {
@@ -1507,6 +1506,9 @@
         width: 100%;
         height: 100%; }
         .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap picture img {
+          min-height: 300px;
+          -o-object-fit: cover;
+             object-fit: cover;
           width: 100%;
           height: 100%; }
   .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image .lsx-banner-column {

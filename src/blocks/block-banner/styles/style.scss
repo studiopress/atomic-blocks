@@ -1,10 +1,10 @@
 .gutenberg-compatible-template.using-gutenberg {
-	@media (min-width:768px) {
+	@media (min-width:1024px) {
 		&.has-block-banner {
 			.breadcrumbs-container {
 				position: relative;
 				margin-bottom: -50px;
-				z-index: 5;
+				z-index: 99;
 			}
 		}
 	}
@@ -41,9 +41,9 @@
 	}
 	.lsx-banner-column {
 		position: relative;
-		@media only screen and (max-width: 600px) {
-			margin-bottom: 4rem;
-		}
+		// @media only screen and (max-width: 600px) {
+		// 	margin-bottom: 4rem;
+		// }
 		@media only screen and (max-width: 600px) {
 			height: 100% !important;
 			min-height: initial !important;
@@ -73,7 +73,7 @@
 					width: 100%;
 					@media (max-width:600px) {
 						object-fit: cover;
-						//min-height: 300px;
+						min-height: 400px;
 					}
 				}
 			}
@@ -128,19 +128,20 @@
 		z-index: 4;
 		padding-left: 50px;
 		padding-right: 50px;
-		@media only screen and (min-width: 600px) {
-			position: absolute;
-			//bottom: 20%;
-		}
+		position: absolute;
+		// @media only screen and (min-width: 600px) {
+		// 	position: absolute;
+		// 	//bottom: 20%;
+		// }
 		.header-headings {
 			//text-align: center;
-			@media only screen and (max-width: 600px) {
-				background: transparent !important;
-			}
+			// @media only screen and (max-width: 600px) {
+			// 	background: transparent !important;
+			// }
+			padding: 0.5rem;
 			@media only screen and (min-width: 600px) {
 				//background: rgba(255, 255, 255, 0.83);
 				border: 0;
-				padding: 0.5rem;
 				max-width: 75%;
 				bottom: 4rem;
 				margin: 0 auto;
@@ -157,6 +158,11 @@
 				margin-right: auto;
 				margin-bottom: 0.5em;
 			}
+			@media (max-width:766px) {
+				.lsx-banner-title {
+					font-size: 1.5em !important;
+				}
+			}
 			.lsx-block-button {
 				&:not(:empty) {
 					margin-bottom: 2em;
@@ -166,13 +172,17 @@
 				margin-bottom: 0;
 				.lsx-banner-name {
 					margin-bottom: 0;
+					&:not(:empty) {
+						margin-top: 0.5em;
+						padding-bottom: 0.2em;
+					}
 				}
 			}
-			@media (max-width:600px) {
-				.lsx-banner-title, .lsx-banner-name {
-					text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2);
-				}
-			}
+			// @media (max-width:600px) {
+			// 	.lsx-banner-title, .lsx-banner-name {
+			// 		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2);
+			// 	}
+			// }
 		}
 	}
 	&.title-bottom {
@@ -188,6 +198,14 @@
 				}
 			}
 		}
+		@media (min-width: 600px) {
+			.lsx-banner-logo:not(:empty) {
+				padding-top: 0;
+			}
+			.header-headings .lsx-block-button:not(:empty) {
+				margin-bottom: 0;
+			}
+		}
 	}
 }
 .lsx-banner-logo:not(:empty) {
@@ -198,6 +216,11 @@
 		max-height: 95px;
 		margin: 0.5em auto;
 		max-width: 95px;
+	}
+	+ header {
+		.lsx-banner-name:not(:empty) {
+			margin-top: -5px !important;
+		}
 	}
 }
 
