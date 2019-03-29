@@ -102,6 +102,11 @@
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
+
 /**
  * Profile styles
  * Loads on front end and back end
@@ -361,6 +366,11 @@
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
+
 /**
  * Notice styles
  * Loads on front end and back end
@@ -525,6 +535,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
+
 /**
  * Drop cap styles
  * Loads on front end and back end
@@ -681,6 +696,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
+
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
 
 /**
  * Button styles
@@ -877,6 +897,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
+
 /**
  * Spacer styles
  * Loads on front end and back end
@@ -1013,6 +1038,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
+
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
 
 /**
  * Accordion styles
@@ -1169,6 +1199,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
+
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
 
 /**
  * CTA styles
@@ -1480,6 +1515,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
+
 /**
  * Sharing styles
  * Loads on front end and back end
@@ -1682,6 +1722,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
+
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
 
 /**
  * Post grid styles
@@ -1918,6 +1963,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
+
 /**
  * Container styles
  * Loads on front end and back end
@@ -2119,6 +2169,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
+
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
 
 /**
  * card styles
@@ -2446,6 +2501,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
 
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
+
 @media (min-width: 1024px) {
   .gutenberg-compatible-template.using-gutenberg.has-block-banner .breadcrumbs-container {
     position: relative;
@@ -2693,6 +2753,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
+
+.lsx-button:active {
+  left: 2px;
+  top: 2px;
+  position: relative; }
 
 /**
  * Post grid styles
