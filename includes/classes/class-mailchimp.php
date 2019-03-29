@@ -83,8 +83,10 @@ final class Mailchimp implements Provider_Interface {
 			);
 		}
 
-		$response = $this->mailchimp->post(
-			'lists/' . $list_id . '/members',
+		$request_method = sprintf( 'lists/%s/members/%s', $list_id, $this->mailchimp->subscriberHash( $email ) );
+
+		$response = $this->mailchimp->put(
+			$request_method,
 			[
 				'email_address' => $email,
 				'status'        => 'subscribed',
@@ -94,7 +96,7 @@ final class Mailchimp implements Provider_Interface {
 		if ( ! $response || $this->mailchimp->getLastError() ) {
 			throw new Mailchimp_API_Error_Exception(
 				/* translators: %s The error message returns from the Mailchimp API. */
-				sprintf( esc_html__( 'There was an error subscribing your email address. Please try again. Error: %s', 'atomic-blocks' ), $this->mailchimp->getLastError() )
+				esc_html( sprintf( __( 'There was an error subscribing your email address. Please try again. Error: %s', 'atomic-blocks' ), $this->mailchimp->getLastError() ) )
 			);
 		}
 
