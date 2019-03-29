@@ -154,10 +154,10 @@
 				margin-right: auto;
 				margin-bottom: 0.5em;
 			}
-			@media (max-width:766px) {
-				.lsx-banner-title {
+			.lsx-banner-title {
+				line-height: 1.2em;
+				@media (max-width:766px) {
 					font-size: 1.5em !important;
-					line-height: 1.2em;
 				}
 			}
 			.lsx-block-button {

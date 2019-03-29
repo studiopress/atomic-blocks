@@ -2548,10 +2548,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 0.5em; }
-      @media (max-width: 766px) {
-        .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-banner-title {
-          font-size: 1.5em !important;
-          line-height: 1.2em; } }
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-banner-title {
+        line-height: 1.2em; }
+        @media (max-width: 766px) {
+          .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-banner-title {
+            font-size: 1.5em !important; } }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-block-button:not(:empty) {
         margin-bottom: 2em; }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header {
