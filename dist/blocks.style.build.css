@@ -2489,9 +2489,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       max-height: 80vh;
       position: relative;
       overflow: hidden; }
-      @media only screen and (min-width: 600px) {
-        .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap:empty {
-          min-height: 300px; } }
+      .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap:empty {
+        min-height: 300px; }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap picture {
         width: 100%;
         height: 100%; }

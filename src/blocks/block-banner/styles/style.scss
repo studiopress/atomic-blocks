@@ -57,10 +57,8 @@
 			max-height: 80vh;
 			position: relative;
 			overflow: hidden;
-			@media only screen and (min-width: 600px) {
-				&:empty {
-					min-height: 300px;
-				}
+			&:empty {
+				min-height: 300px;
 			}
 			picture {
 				width: 100%;
