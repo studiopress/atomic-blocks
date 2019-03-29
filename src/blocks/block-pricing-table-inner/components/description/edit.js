@@ -74,7 +74,7 @@ class Edit extends Component {
 				<RichText
 					tagName="ul"
 					multiline="li"
-					itemprop="description"
+					itemProp="description"
 					placeholder={ __( 'Add a product feature', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ features }

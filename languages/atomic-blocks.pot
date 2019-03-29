@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.5.0\n"
+"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.5.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-02-13T19:33:59+00:00\n"
-"PO-Revision-Date: 2019-02-13T19:33:59+00:00\n"
+"POT-Creation-Date: 2019-03-20T19:04:33+00:00\n"
+"PO-Revision-Date: 2019-03-20T19:04:33+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: atomic-blocks\n"
 
@@ -39,228 +39,6 @@ msgstr ""
 #: dist/getting-started/getting-started.php:50
 #: dist/getting-started/getting-started.php:110
 msgid "Atomic Blocks"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:55
-#: dist/custom-post-types/pricing-tables.php:57
-#: dist/custom-post-types/pricing-tables.php:67
-msgid "Pricing Tables"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:56
-msgid "Pricing Table"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:58
-msgid "Pricing"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:59
-#: dist/custom-post-types/testimonials.php:59
-#: dist/custom-post-types/team-members.php:59
-msgid "Add New"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:60
-msgid "Add New Pricing Table"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:61
-msgid "Edit Pricing Table"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:62
-msgid "New Pricing Table"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:63
-msgid "View Pricing Table"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:64
-msgid "Search Pricing Tables"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:65
-msgid "No pricing tables found"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:66
-msgid "No pricing tables found in trash"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:99
-msgid "Pricing Tables Categories"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:100
-msgid "Pricing Table Category"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:101
-#: dist/custom-post-types/testimonials.php:101
-#: dist/custom-post-types/team-members.php:101
-msgid "Categories"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:102
-#: dist/custom-post-types/testimonials.php:102
-#: dist/custom-post-types/team-members.php:102
-msgid "Category"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:103
-#: dist/custom-post-types/testimonials.php:103
-#: dist/custom-post-types/team-members.php:103
-msgid "Search Categories"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:104
-#: dist/custom-post-types/testimonials.php:104
-#: dist/custom-post-types/team-members.php:104
-msgid "Popular Categories"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:105
-#: dist/custom-post-types/testimonials.php:105
-#: dist/custom-post-types/team-members.php:105
-msgid "All Categories"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:106
-#: dist/custom-post-types/testimonials.php:106
-#: dist/custom-post-types/team-members.php:106
-msgid "Edit Category"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:107
-#: dist/custom-post-types/testimonials.php:107
-#: dist/custom-post-types/team-members.php:107
-msgid "View Category"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:108
-#: dist/custom-post-types/testimonials.php:108
-#: dist/custom-post-types/team-members.php:108
-msgid "Update Category"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:109
-#: dist/custom-post-types/testimonials.php:109
-#: dist/custom-post-types/team-members.php:109
-msgid "Add New Category"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:110
-#: dist/custom-post-types/testimonials.php:110
-#: dist/custom-post-types/team-members.php:110
-msgid "New Category Name"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:111
-#: dist/custom-post-types/testimonials.php:111
-#: dist/custom-post-types/team-members.php:111
-msgid "Parent Category"
-msgstr ""
-
-#: dist/custom-post-types/pricing-tables.php:112
-#: dist/custom-post-types/testimonials.php:112
-#: dist/custom-post-types/team-members.php:112
-msgid "Parent Category:"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:55
-#: dist/custom-post-types/testimonials.php:57
-#: dist/custom-post-types/testimonials.php:67
-msgid "Testimonials"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:56
-#: dist/custom-post-types/testimonials.php:58
-msgid "Testimonial"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:60
-msgid "Add New Testimonial"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:61
-msgid "Edit Testimonial"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:62
-msgid "New Testimonial"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:63
-msgid "View Testimonial"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:64
-msgid "Search Testimonials"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:65
-msgid "No testimonials found"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:66
-msgid "No testimonials found in trash"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:99
-msgid "Testimonial Categories"
-msgstr ""
-
-#: dist/custom-post-types/testimonials.php:100
-msgid "Testimonial Category"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:55
-#: dist/custom-post-types/team-members.php:57
-#: dist/custom-post-types/team-members.php:58
-#: dist/custom-post-types/team-members.php:67
-msgid "Team Members"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:56
-msgid "Team Member"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:60
-msgid "Add New Team Member"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:61
-msgid "Edit Team Member"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:62
-msgid "New Team Member"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:63
-msgid "View Team Member"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:64
-msgid "Search Team Members"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:65
-msgid "No team members found"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:66
-msgid "No team members found in trash"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:99
-msgid "Team Member Categories"
-msgstr ""
-
-#: dist/custom-post-types/team-members.php:100
-msgid "Team Member Category"
 msgstr ""
 
 #: dist/getting-started/getting-started.php:109
@@ -607,12 +385,45 @@ msgstr ""
 #: src/blocks/block-sharing/index.js:48
 #: src/blocks/block-author-profile/index.js:263
 #: src/blocks/block-container/index.js:187
-#: src/blocks/block-post-grid/index.js:38
+#: src/blocks/block-post-grid/index.js:36
 #: src/blocks/block-notice/index.js:137
 #: src/blocks/block-button/index.js:117
 #: src/blocks/block-testimonial/index.js:171
 #: src/blocks/block-drop-cap/index.js:87
 msgid "atomic"
+msgstr ""
+
+#: src/blocks/block-spacer/components/inspector.js:56
+msgid "Solid"
+msgstr ""
+
+#: src/blocks/block-spacer/components/inspector.js:57
+msgid "Dashed"
+msgstr ""
+
+#: src/blocks/block-spacer/components/inspector.js:58
+msgid "Dotted"
+msgstr ""
+
+#: src/blocks/block-spacer/components/inspector.js:79
+msgid "Spacer Height"
+msgstr ""
+
+#: src/blocks/block-spacer/components/inspector.js:87
+msgid "Add Divider"
+msgstr ""
+
+#: src/blocks/block-spacer/components/inspector.js:96
+msgid "Divider Style"
+msgstr ""
+
+#: src/blocks/block-spacer/components/inspector.js:106
+msgid "Divider Height"
+msgstr ""
+
+#: src/blocks/block-spacer/components/inspector.js:114
+#: src/blocks/block-spacer/components/inspector.js:120
+msgid "Divider Color"
 msgstr ""
 
 #: src/blocks/block-accordion/index.js:92
@@ -644,12 +455,13 @@ msgid "Call To Action Text"
 msgstr ""
 
 #: src/blocks/block-cta/index.js:247
-#: src/blocks/block-pricing-table-inner/components/button/edit.js:77
+#: src/blocks/block-pricing-table-inner/components/button/edit.js:83
 #: src/blocks/block-button/index.js:66
 msgid "Button text..."
 msgstr ""
 
 #: src/blocks/block-cta/index.js:278
+#: src/blocks/block-pricing-table-inner/components/button/edit.js:116
 #: src/blocks/block-button/index.js:99
 msgid "Apply"
 msgstr ""
@@ -670,100 +482,107 @@ msgstr ""
 msgid "cta"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:118
+#: src/blocks/block-cta/components/inspector.js:106
 msgid "Text Options"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:120
+#: src/blocks/block-cta/components/inspector.js:108
 msgid "Title Font Size"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:129
+#: src/blocks/block-cta/components/inspector.js:117
 msgid "Text Font Size"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:138
-#: src/blocks/block-cta/components/inspector.js:143
-#: src/blocks/block-author-profile/components/inspector.js:95
-#: src/blocks/block-author-profile/components/inspector.js:100
+#: src/blocks/block-cta/components/inspector.js:126
+#: src/blocks/block-cta/components/inspector.js:131
+#: src/blocks/block-author-profile/components/inspector.js:83
+#: src/blocks/block-author-profile/components/inspector.js:88
 #: src/blocks/block-pricing-table-inner/components/price/inspector.js:158
 #: src/blocks/block-pricing-table-inner/components/description/inspector.js:174
 #: src/blocks/block-pricing-table-inner/components/global/inspector.js:126
+#: src/blocks/block-notice/components/inspector.js:111
+#: src/blocks/block-notice/components/inspector.js:117
+#: src/blocks/block-testimonial/components/inspector.js:84
+#: src/blocks/block-testimonial/components/inspector.js:89
 msgid "Text Color"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:149
+#: src/blocks/block-cta/components/inspector.js:137
 msgid "Background Options"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:150
+#: src/blocks/block-cta/components/inspector.js:138
 msgid "Select a background image:"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:159
+#: src/blocks/block-cta/components/inspector.js:147
 msgid "Edit image"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:163
+#: src/blocks/block-cta/components/inspector.js:151
 msgid "Select Image"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:169
+#: src/blocks/block-cta/components/inspector.js:157
 msgid "Remove Image"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:173
+#: src/blocks/block-cta/components/inspector.js:161
 msgid "Remove"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:183
+#: src/blocks/block-cta/components/inspector.js:171
 msgid "Image Opacity"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:193
-#: src/blocks/block-author-profile/components/inspector.js:84
-#: src/blocks/block-author-profile/components/inspector.js:89
+#: src/blocks/block-cta/components/inspector.js:181
+#: src/blocks/block-author-profile/components/inspector.js:72
+#: src/blocks/block-author-profile/components/inspector.js:77
+#: src/blocks/block-pricing-table-inner/components/inspector.js:102
 #: src/blocks/block-pricing-table-inner/components/price/inspector.js:153
 #: src/blocks/block-pricing-table-inner/components/button/inspector.js:142
 #: src/blocks/block-pricing-table-inner/components/description/inspector.js:169
 #: src/blocks/block-pricing-table-inner/components/global/inspector.js:121
+#: src/blocks/block-testimonial/components/inspector.js:73
+#: src/blocks/block-testimonial/components/inspector.js:78
 msgid "Background Color"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:198
+#: src/blocks/block-cta/components/inspector.js:186
 msgid "Overlay Color"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:205
+#: src/blocks/block-cta/components/inspector.js:192
 msgid "Button Options"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:207
-#: src/utils/inspector/button.js:55
+#: src/blocks/block-cta/components/inspector.js:194
+#: src/utils/inspector/button.js:43
 msgid "Open link in new window"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:213
-#: src/utils/inspector/button.js:62
+#: src/blocks/block-cta/components/inspector.js:200
+#: src/utils/inspector/button.js:50
 msgid "Button Size"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:223
-#: src/utils/inspector/button.js:72
+#: src/blocks/block-cta/components/inspector.js:210
+#: src/utils/inspector/button.js:60
 msgid "Button Shape"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:233
-#: src/blocks/block-cta/components/inspector.js:238
-#: src/utils/inspector/button.js:82
-#: src/utils/inspector/button.js:87
+#: src/blocks/block-cta/components/inspector.js:220
+#: src/blocks/block-cta/components/inspector.js:225
+#: src/utils/inspector/button.js:70
+#: src/utils/inspector/button.js:75
 msgid "Button Color"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:245
-#: src/blocks/block-cta/components/inspector.js:250
-#: src/utils/inspector/button.js:94
-#: src/utils/inspector/button.js:99
+#: src/blocks/block-cta/components/inspector.js:231
+#: src/blocks/block-cta/components/inspector.js:236
+#: src/utils/inspector/button.js:81
+#: src/utils/inspector/button.js:86
 msgid "Button Text Color"
 msgstr ""
 
@@ -826,68 +645,70 @@ msgstr ""
 msgid "Round"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:67
+#: src/blocks/block-author-profile/components/inspector.js:55
+#: src/blocks/block-notice/components/inspector.js:70
+#: src/blocks/block-testimonial/components/inspector.js:56
 msgid "Font Size"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:76
+#: src/blocks/block-author-profile/components/inspector.js:64
 msgid "Avatar Shape"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:77
+#: src/blocks/block-author-profile/components/inspector.js:65
 msgid "Choose between a round or square avatar shape."
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:106
-#: src/blocks/block-author-profile/components/inspector.js:111
+#: src/blocks/block-author-profile/components/inspector.js:94
+#: src/blocks/block-author-profile/components/inspector.js:99
 msgid "Social Link Color"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:118
+#: src/blocks/block-author-profile/components/inspector.js:105
 msgid "Social Links"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:119
+#: src/blocks/block-author-profile/components/inspector.js:106
 msgid "Add links to your social media site and they will appear in the bottom of the profile box."
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:122
+#: src/blocks/block-author-profile/components/inspector.js:109
 msgid "Twitter URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:129
+#: src/blocks/block-author-profile/components/inspector.js:116
 msgid "Facebook URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:136
+#: src/blocks/block-author-profile/components/inspector.js:123
 msgid "Instagram URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:143
+#: src/blocks/block-author-profile/components/inspector.js:130
 msgid "Pinterest URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:150
+#: src/blocks/block-author-profile/components/inspector.js:137
 msgid "Google URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:157
+#: src/blocks/block-author-profile/components/inspector.js:144
 msgid "YouTube URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:164
+#: src/blocks/block-author-profile/components/inspector.js:151
 msgid "Github URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:171
+#: src/blocks/block-author-profile/components/inspector.js:158
 msgid "LinkedIn URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:178
+#: src/blocks/block-author-profile/components/inspector.js:165
 msgid "Email URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:185
+#: src/blocks/block-author-profile/components/inspector.js:172
 msgid "Website URL"
 msgstr ""
 
@@ -943,19 +764,19 @@ msgstr ""
 msgid "section"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.js:31
+#: src/blocks/block-post-grid/index.js:29
 msgid "AB Post Grid"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.js:32
+#: src/blocks/block-post-grid/index.js:30
 msgid "Add a grid or list of customizable posts to your page."
 msgstr ""
 
-#: src/blocks/block-post-grid/index.js:36
+#: src/blocks/block-post-grid/index.js:34
 msgid "post"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.js:37
+#: src/blocks/block-post-grid/index.js:35
 msgid "grid"
 msgstr ""
 
@@ -983,6 +804,30 @@ msgstr ""
 
 #: src/blocks/block-pricing-table-inner/index.js:165
 msgid "buy"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/inspector.js:60
+msgid "Pricing Column Padding"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/inspector.js:68
+msgid "Pricing Column Border"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/inspector.js:76
+msgid "Pricing Column Border Radius"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/inspector.js:86
+msgid "Pricing Column Border Color"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/inspector.js:91
+msgid "Border Color"
+msgstr ""
+
+#: src/blocks/block-pricing-table-inner/components/inspector.js:97
+msgid "Pricing Column Background Color"
 msgstr ""
 
 #: src/blocks/block-pricing-table-inner/components/title/edit.js:71
@@ -1172,6 +1017,32 @@ msgstr ""
 msgid "message"
 msgstr ""
 
+#: src/blocks/block-notice/components/inspector.js:41
+msgid "Always Show"
+msgstr ""
+
+#: src/blocks/block-notice/components/inspector.js:42
+msgid "Dismissible"
+msgstr ""
+
+#: src/blocks/block-notice/components/inspector.js:79
+msgid "Notice Display"
+msgstr ""
+
+#: src/blocks/block-notice/components/inspector.js:80
+msgid "Do you want the message to always show or dismissible?"
+msgstr ""
+
+#: src/blocks/block-notice/components/inspector.js:87
+#: src/blocks/block-notice/components/inspector.js:94
+msgid "Notice Color"
+msgstr ""
+
+#: src/blocks/block-notice/components/inspector.js:100
+#: src/blocks/block-notice/components/inspector.js:105
+msgid "Title Color"
+msgstr ""
+
 #: src/blocks/block-button/index.js:110
 msgid "AB Button"
 msgstr ""
@@ -1207,6 +1078,22 @@ msgstr ""
 #: src/blocks/block-testimonial/index.js:170
 #: src/blocks/block-drop-cap/index.js:86
 msgid "quote"
+msgstr ""
+
+#: src/blocks/block-testimonial/components/inspector.js:41
+msgid "Left Aligned"
+msgstr ""
+
+#: src/blocks/block-testimonial/components/inspector.js:42
+msgid "Right Aligned"
+msgstr ""
+
+#: src/blocks/block-testimonial/components/inspector.js:65
+msgid "Cite Alignment"
+msgstr ""
+
+#: src/blocks/block-testimonial/components/inspector.js:66
+msgid "Left or right align the cite name and title."
 msgstr ""
 
 #: src/blocks/block-drop-cap/index.js:63

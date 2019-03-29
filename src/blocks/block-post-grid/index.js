@@ -1,10 +1,9 @@
 /**
- * BLOCK: Atomic Blocks Page Grid
+ * BLOCK: Atomic Blocks Post and Page Grid
  */
 
 // Import block dependencies and components
-import classnames from 'classnames';
-import edit from './edit';
+import edit from './components/edit';
 
 // Import CSS
 import './styles/style.scss';
@@ -12,9 +11,6 @@ import './styles/editor.scss';
 
 // Components
 const { __ } = wp.i18n;
-
-// Extend component
-const { Component } = wp.element;
 
 // Register block controls
 const {
@@ -24,18 +20,16 @@ const {
 // Register alignments
 const validAlignments = [ 'center', 'wide' ];
 
-export const name = 'core/latest-posts';
-
 // Register the block
 registerBlockType( 'atomic-blocks/ab-post-grid', {
-	title: __( 'AB Post Grid', 'atomic-blocks' ),
-	description: __( 'Add a grid or list of customizable posts to your page.', 'atomic-blocks' ),
+	title: __( 'AB Post and Page Grid', 'atomic-blocks' ),
+	description: __( 'Add a grid or list of customizable posts or pages.', 'atomic-blocks' ),
 	icon: 'grid-view',
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'post', 'atomic-blocks' ),
+		__( 'page', 'atomic-blocks' ),
 		__( 'grid', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	getEditWrapperProps( attributes ) {

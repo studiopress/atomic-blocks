@@ -144,9 +144,9 @@ class ABContainerBlock extends Component {
 			/>,
 			// Show the container markup in the editor
 			<Container { ...this.props }>
-				<div class="ab-container-inside">
+				<div className="ab-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
-						<div class="ab-container-image-wrap">
+						<div className="ab-container-image-wrap">
 							<img
 								className={ classnames(
 									'ab-container-image',
@@ -162,7 +162,7 @@ class ABContainerBlock extends Component {
 					) }
 
 					<div
-						class="ab-container-content"
+						className="ab-container-content"
 						style={ {
 							maxWidth: `${containerMaxWidth}px`,
 						} }
@@ -221,9 +221,9 @@ registerBlockType( 'atomic-blocks/ab-container', {
 		// Save the block markup for the front end
 		return (
 			<Container { ...props }>
-				<div class="ab-container-inside">
+				<div className="ab-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
-						<div class="ab-container-image-wrap">
+						<div className="ab-container-image-wrap">
 							<img
 								className={ classnames(
 									'ab-container-image',
@@ -239,7 +239,7 @@ registerBlockType( 'atomic-blocks/ab-container', {
 					) }
 
 					<div
-						class="ab-container-content"
+						className="ab-container-content"
 						style={ {
 							maxWidth: `${containerMaxWidth}px`,
 						} }

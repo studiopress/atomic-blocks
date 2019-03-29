@@ -95,11 +95,11 @@ class Edit extends Component {
 					className={ editClassWrapperName ? editClassWrapperName : undefined }
 					style={ editWrapStyles }
 				>
-					<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+					<div itemProp="offers" itemScope itemType="http://schema.org/Offer">
 						{ showCurrency && (
 							<RichText
 								tagName="span"
-								itemprop="priceCurrency"
+								itemProp="priceCurrency"
 								placeholder={ __( '$', 'atomic-blocks' ) }
 								keepPlaceholderOnFocus
 								value={ currency }
@@ -110,7 +110,7 @@ class Edit extends Component {
 						) }
 						<RichText
 							tagName="div"
-							itemprop="price"
+							itemProp="price"
 							placeholder={ __( '49', 'atomic-blocks' ) }
 							keepPlaceholderOnFocus
 							value={ price }

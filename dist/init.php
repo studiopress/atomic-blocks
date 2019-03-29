@@ -4,7 +4,7 @@
  *
  * Enqueue CSS/JS of all the blocks.
  *
- * @since 	1.0.0
+ * @since   1.0.0
  * @package Atomic Blocks
  */
 
@@ -20,9 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function atomic_blocks_block_assets() {
 
+	// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison -- Could be true or 'true'.
 	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
 
-	// Load the compiled styles
+	// Load the compiled styles.
 	wp_register_style(
 		'atomic-blocks-style-css',
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
@@ -30,7 +31,7 @@ function atomic_blocks_block_assets() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.style.build.css' )
 	);
 
-	// Load the FontAwesome icon library
+	// Load the FontAwesome icon library.
 	wp_enqueue_style(
 		'atomic-blocks-fontawesome',
 		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
@@ -48,15 +49,19 @@ add_action( 'init', 'atomic_blocks_block_assets' );
  */
 function atomic_blocks_editor_assets() {
 
-	// Load the compiled blocks into the editor
+	// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison -- Could be true or 'true'.
+	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
+
+	// Load the compiled blocks into the editor.
 	wp_enqueue_script(
 		'atomic-blocks-block-js',
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ),
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' , 'wp-components' , 'wp-editor' ),
-		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.build.js' )
+		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor' ),
+		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.build.js' ),
+		false
 	);
 
-	// Load the compiled styles into the editor
+	// Load the compiled styles into the editor.
 	wp_enqueue_style(
 		'atomic-blocks-block-editor-css',
 		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ),
@@ -64,12 +69,20 @@ function atomic_blocks_editor_assets() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.editor.build.css' )
 	);
 
-	// Pass in REST URL
+	// Load the FontAwesome icon library.
+	wp_enqueue_style(
+		'atomic-blocks-fontawesome',
+		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
+	);
+
+	// Pass in REST URL.
 	wp_localize_script(
 		'atomic-blocks-block-js',
 		'atomic_globals',
 		array(
-			'rest_url' => esc_url( rest_url() )
+			'rest_url' => esc_url( rest_url() ),
 		)
 	);
 }
@@ -82,26 +95,33 @@ add_action( 'enqueue_block_editor_assets', 'atomic_blocks_editor_assets' );
  * @since 1.0.0
  */
 function atomic_blocks_frontend_assets() {
-	// Load the dismissable notice js
+	// Load the dismissible notice js.
 	wp_enqueue_script(
 		'atomic-blocks-dismiss-js',
 		plugins_url( '/dist/assets/js/dismiss.js', dirname( __FILE__ ) ),
 		array( 'jquery' ),
-		filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/dismiss.js' )
+		filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/dismiss.js' ),
+		true
 	);
 }
 add_action( 'wp_enqueue_scripts', 'atomic_blocks_frontend_assets' );
 
-
-// Add custom block category
-add_filter( 'block_categories', function( $categories, $post ) {
+add_filter( 'block_categories', 'atomic_blocks_add_custom_block_category' );
+/**
+ * Adds the Atomic Blocks block category.
+ *
+ * @param array $categories Existing block categories.
+ *
+ * @return array Updated block categories.
+ */
+function atomic_blocks_add_custom_block_category( $categories ) {
 	return array_merge(
 		$categories,
 		array(
 			array(
-				'slug' => 'atomic-blocks',
+				'slug'  => 'atomic-blocks',
 				'title' => __( 'Atomic Blocks', 'atomic-blocks' ),
 			),
 		)
 	);
-}, 10, 2 );
+}

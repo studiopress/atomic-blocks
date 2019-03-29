@@ -38,19 +38,8 @@ export default class Inspector extends Component {
 
 		// Cite Alignment Options
 		const citeAlignOptions = [
-			{ value: 'left-aligned', label: __( 'Left Aligned' ) },
-			{ value: 'right-aligned', label: __( 'Right Aligned' ) },
-		];
-
-		const backgroundColors = [
-			{ color: '#00d1b2', name: 'teal' },
-			{ color: '#3373dc', name: 'royal blue' },
-			{ color: '#209cef', name: 'sky blue' },
-			{ color: '#22d25f', name: 'green' },
-			{ color: '#ffdd57', name: 'yellow' },
-			{ color: '#ff3860', name: 'pink' },
-			{ color: '#7941b6', name: 'purple' },
-			{ color: '#392F43', name: 'black' },
+			{ value: 'left-aligned', label: __( 'Left Aligned', 'atomic-blocks' ) },
+			{ value: 'right-aligned', label: __( 'Right Aligned', 'atomic-blocks' ) },
 		];
 
 		// Setup the attributes
@@ -64,7 +53,7 @@ export default class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Font Size' ) }
+					label={ __( 'Font Size', 'atomic-blocks' ) }
 					value={ testimonialFontSize }
 					onChange={ ( value ) => this.props.setAttributes( { testimonialFontSize: value } ) }
 					min={ 14 }
@@ -73,37 +62,34 @@ export default class Inspector extends Component {
 				/>
 
 				<SelectControl
-					label={ __( 'Cite Alignment' ) }
-					description={ __( 'Left or right align the cite name and title.' ) }
+					label={ __( 'Cite Alignment', 'atomic-blocks' ) }
+					description={ __( 'Left or right align the cite name and title.', 'atomic-blocks' ) }
 					options={ citeAlignOptions }
 					value={ testimonialCiteAlign }
 					onChange={ ( value ) => this.props.setAttributes( { testimonialCiteAlign: value } ) }
 				/>
-
-				<PanelColorSettings
-					title={ __( 'Background Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: testimonialBackgroundColor,
-						colors: backgroundColors,
-						onChange: onChangeBackgroundColor,
-						label: __( 'Background Color' ),
-
-					} ] }
-				>
-				</PanelColorSettings>
-
-				<PanelColorSettings
-					title={ __( 'Text Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: testimonialTextColor,
-						onChange: onChangeTextColor,
-						label: __( 'Text Color' ),
-					} ] }
-				>
-				</PanelColorSettings>
 			</PanelBody>
+			<PanelColorSettings
+				title={ __( 'Background Color', 'atomic-blocks' ) }
+				initialOpen={ false }
+				colorSettings={ [ {
+					value: testimonialBackgroundColor,
+					onChange: onChangeBackgroundColor,
+					label: __( 'Background Color', 'atomic-blocks' ),
+				} ] }
+			>
+			</PanelColorSettings>
+
+			<PanelColorSettings
+				title={ __( 'Text Color', 'atomic-blocks' ) }
+				initialOpen={ false }
+				colorSettings={ [ {
+					value: testimonialTextColor,
+					onChange: onChangeTextColor,
+					label: __( 'Text Color', 'atomic-blocks' ),
+				} ] }
+			>
+			</PanelColorSettings>
 		</InspectorControls>
 		);
 	}

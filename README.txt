@@ -1,10 +1,10 @@
 === Atomic Blocks - Gutenberg Blocks Collection ===
-Contributors: atomicblocks, mindctrl, arrayhq
+Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress
 Donate link: https://atomicblocks.com
-Tags: gutenberg, blocks, page builder, gutenberg blocks, editor, atomicblocks, builder, wordpress 5.0, options
+Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
 Tested up to: 5.1
-Stable tag: 1.5.3
+Stable tag: 1.5.5
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,12 +13,15 @@ A collection of beautiful, customizable Gutenberg blocks for the new block edito
 
 == Description ==
 
-Atomic Blocks is a collection of content blocks for the new [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link) block editor. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building blocks give you more control to quickly create and launch any kind of site you want!
+Atomic Blocks is a collection of content blocks for the new [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link) block editor. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building with blocks gives you more control to quickly create and launch any kind of site you want!
 
-Along with the content blocks you'll find in Atomic Blocks, we're also publishing helpful articles and tutorials to help you get started with Gutenberg. Visit the [Atomic Blocks blog](https://atomicblocks.com/blog/) to learn more today!
+Adding the customizable Atomic Block plugin adds a collection of beautiful, site-building blocks to help you customize page layouts, increase engagement, and get results for your business.
+
+Along with the content blocks you'll find in Atomic Blocks, we're also publishing helpful articles and tutorials to help you get started with Gutenberg.
 
 ## Atomic Blocks currently includes the following blocks:
 
+* Pricing Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/pricing-table-block/)
 * Post Grid Block - [Block Demo](https://atomicblocks.com/blocks/post-grid-block/)
 * Container Block - [Block Demo](https://atomicblocks.com/blocks/container-block/)
 * Testimonial Block - [Block Demo](https://atomicblocks.com/blocks/testimonial-block/)
@@ -31,14 +34,6 @@ Along with the content blocks you'll find in Atomic Blocks, we're also publishin
 * Author Profile Block - [Block Demo](https://atomicblocks.com/blocks/author-profile-block/)
 * Drop Cap Block - [Block Demo](https://atomicblocks.com/blocks/drop-cap-block/)
 
-### Atomic Blocks Help File
-
-We've created a handy help file that you can [check out here](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file). The help file covers how to setup the plugin and get started with the blocks.
-
-The help file is also available in the plugin once activated. Click the Atomic Blocks admin menu item to visit the Getting Started page.
-
-[View the plugin help file](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file)
-
 ### Atomic Blocks WordPress Theme
 
 We've created a beautiful little WordPress theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor. The theme integrates seamlessly with the blocks you'll find in the plugin!
@@ -46,6 +41,19 @@ We've created a beautiful little WordPress theme to help you get started with th
 * [Atomic Blocks Theme Demo](https://preview.arraythemes.com/atomicblocks/?utm_source=WP.org%20AB%20Theme%20Demo%20Link&utm_campaign=wporg_ab_theme_demo_link)
 * [Download the Atomic Blocks Theme](https://atomicblocks.com/?utm_source=WP.org%20AB%20Page&utm_campaign=wporg_ab_page)
 * [View the theme help file](https://atomicblocks.com/theme-help-file/?utm_source=WP.org%20AB%20Theme%20Help%20File%20Link&utm_campaign=wporg_ab_theme_help_link)
+
+In addition to the Atomic Block Theme, we’ve built Revolution Pro with the StudioPress team. This theme is built from the ground up with blocks—Gutenberg core and Atomic. Using this Theme and the Genesis One-Click Theme Install you can have a new block-based site up and running in minutes.
+
+* [Revolution Pro Theme Demo](https://demo.studiopress.com/revolution/)
+* [Purchase the Revolution Theme](https://my.studiopress.com/themes/revolution/)
+
+### Atomic Blocks Help File
+
+We've created a handy help file that you can [check out here](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file). The help file covers how to setup the plugin and get started with the blocks.
+
+The help file is also available in the plugin once activated. Click the Atomic Blocks admin menu item to visit the Getting Started page.
+
+[View the plugin help file](https://atomicblocks.com/plugin-help-file/?utm_source=WP.org%20AB%20Help%20File&utm_campaign=wporg_ab_help_file)
 
 ### Follow Along:
 
@@ -58,7 +66,7 @@ We've created a beautiful little WordPress theme to help you get started with th
 
 This plugin can be installed directly from your site.
 
-1. Log in and navigate to _Plugins &rarr; Add New_.
+1. Log in and navigate to _Plugins &rarr; Add New.
 2. Type "Atomic Blocks" into the Search and hit Enter.
 3. Locate the Atomic Blocks plugin in the list of search results and click **Install Now**.
 4. Once installed, click the Activate link.
@@ -76,30 +84,45 @@ It can also be installed manually.
 
 = Can Atomic Blocks be used with any theme? =
 
-Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomic Blocks](https://atomicblocks.com) theme for the best presentation. The Atomic Blocks theme has beautiful styles built in specifically for these blocks.
+Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomic Blocks](https://atomicblocks.com) theme or one of the Gutenberg-ready StudioPress themes such as [Revolution](https://my.studiopress.com/themes/revolution/) for the best presentation. Both of these themes have beautiful styles built in specifically for Atomic Blocks.
 
 [Get the Atomic Blocks theme](https://atomicblocks.com/?utm_source=WP.org%20AB%20Theme%20Link&utm_campaign=wporg_ab_theme_link)
 
-= Do I need Gutenberg to use Atomic Blocks? =
+= Do I need the new block editor to use Atomic Blocks? =
 
-Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) to use Atomic Blocks. Eventually, Gutenberg (the block editor) will be merged into WordPress and you won't need the plugin.
+Yes, you will need to have WordPress 5.0 or later installed to take advantage of Atomic Blocks.
 
 == Screenshots ==
 
-1. The Atomic Blocks Getting Started page.
-2. How to find the Atomic Blocks for use.
-3. The Notice block with settings.
-4. The Testimonial block with settings.
-5. The Author Profile block with settings.
-6. The Drop Cap block with settings.
+1. Pricing Table Block
+2. Post and Page Grid Block
+3. Call-To-Action Block
+4. Testimonial Block
+5. Text Notice Block
+6. Sharing Icons Block
+7. Author Profile Block
+8. Accordion Block
+9. Customizable Button Block
+10. Drop Cap Block
+11. Spacer and Divider Block
 
 == Changelog ==
+
+= 1.5.5 =
+* Add several features to Post/Page Grid block.
+
+= 1.5.4 =
+* Fix bug with author profile links.
+* Improve mobile styles.
+* Remove unused CPTs.
+* Remove plugin-defined color palettes in favor of theme palettes.
+* Fix color setting bug in spacer block.
 
 = 1.5.3 =
 * Fix bug with undefined dim ratio in CTA.
 
 = 1.5.2 =
-* Fix bug with undefined dim ratio in Container.
+* Fix bug with undefined dim ratio.
 
 = 1.5.1 =
 * Fix bug with lodash scoping.

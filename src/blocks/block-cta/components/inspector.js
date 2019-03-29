@@ -77,18 +77,6 @@ export default class Inspector extends Component {
 			{ value: 'ab-button-shape-circular', label: __( 'Circular' ) },
 		];
 
-		// Button colors
-		const buttonColors = [
-			{ color: '#392F43', name: 'black' },
-			{ color: '#3373dc', name: 'royal blue' },
-			{ color: '#2DBAA3', name: 'teal' },
-			{ color: '#209cef', name: 'sky blue' },
-			{ color: '#2BAD59', name: 'green' },
-			{ color: '#ff3860', name: 'pink' },
-			{ color: '#7941b6', name: 'purple' },
-			{ color: '#F7812B', name: 'orange' },
-		];
-
 		// Change the image
 		const onSelectImage = img => {
 			setAttributes( {
@@ -196,7 +184,6 @@ export default class Inspector extends Component {
 						value: ctaBackgroundColor,
 						onChange: onChangeBackgroundColor,
 						label: __( 'Overlay Color', 'atomic-blocks' ),
-						colors: buttonColors,
 					} ] }
 				>
 				</PanelColorSettings>
@@ -236,7 +223,6 @@ export default class Inspector extends Component {
 						value: buttonBackgroundColor,
 						onChange: onChangeButtonColor,
 						label: __( 'Button Color', 'atomic-blocks' ),
-						colors: buttonColors,
 					} ] }
 				>
 				</PanelColorSettings>

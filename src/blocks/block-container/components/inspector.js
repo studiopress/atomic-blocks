@@ -70,7 +70,7 @@ export default class Inspector extends Component {
 					value={ containerPaddingTop }
 					onChange={ ( value ) => this.props.setAttributes( { containerPaddingTop: value } ) }
 					min={ 0 }
-					max={ 20 }
+					max={ 30 }
 					step={ .5 }
 				/>
 
@@ -79,7 +79,7 @@ export default class Inspector extends Component {
 					value={ containerPaddingBottom }
 					onChange={ ( value ) => this.props.setAttributes( { containerPaddingBottom: value } ) }
 					min={ 0 }
-					max={ 20 }
+					max={ 30 }
 					step={ .5 }
 				/>
 
@@ -88,7 +88,7 @@ export default class Inspector extends Component {
 					value={ containerPaddingLeft }
 					onChange={ ( value ) => this.props.setAttributes( { containerPaddingLeft: value } ) }
 					min={ 0 }
-					max={ 20 }
+					max={ 30 }
 					step={ .5 }
 				/>
 
@@ -97,7 +97,7 @@ export default class Inspector extends Component {
 					value={ containerPaddingRight }
 					onChange={ ( value ) => this.props.setAttributes( { containerPaddingRight: value } ) }
 					min={ 0 }
-					max={ 20 }
+					max={ 30 }
 					step={ .5 }
 				/>
 
@@ -106,7 +106,7 @@ export default class Inspector extends Component {
 					value={ containerMarginTop }
 					onChange={ ( value ) => this.props.setAttributes( { containerMarginTop: value } ) }
 					min={ 0 }
-					max={ 20 }
+					max={ 30 }
 					step={ 1 }
 				/>
 
@@ -115,7 +115,7 @@ export default class Inspector extends Component {
 					value={ containerMarginBottom }
 					onChange={ ( value ) => this.props.setAttributes( { containerMarginBottom: value } ) }
 					min={ 0 }
-					max={ 20 }
+					max={ 30 }
 					step={ .5 }
 				/>
 

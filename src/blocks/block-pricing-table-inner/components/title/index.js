@@ -122,7 +122,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 		return (
 			<RichText.Content
 				tagName="div"
-				itemprop="name"
+				itemProp="name"
 				value={ title }
 				style={ styles }
 				className={ className ? className : undefined }

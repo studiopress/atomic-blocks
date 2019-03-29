@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .ab-block-post-grid {
+.ab-block-post-grid {
 	margin: 0 0 1.2em 0;
 	position: relative;
 
@@ -36,6 +36,10 @@
 		}
 	}
 
+	.ab-post-grid-section-title {
+		text-align: left;
+	}
+
 	.ab-block-post-grid-image {
 		margin-bottom: 1.2em;
 
@@ -49,7 +53,11 @@
 		text-align: left;
 	}
 
-	h2 {
+	a {
+		text-decoration: none;
+	}
+
+	header .ab-block-post-grid-title {
 		margin-top: 0;
 		margin-bottom: 15px;
 		font-size: 28px;
@@ -57,25 +65,22 @@
 
 		a {
 			color: $black;
-			box-shadow: none;
-			transition: .3s ease;
+			text-decoration: none;
 
 			&:hover {
-				box-shadow: inset 0 -2px 0 $accent;
-				color: $accent;
+				text-decoration: underline;
+				color: inherit;
 			}
 		}
 	}
 
 	.ab-block-post-grid-byline {
-		text-transform: uppercase;
-		font-size: 13px;
-		letter-spacing: 1px;
+		font-size: 14px;
 		color: $lightgray;
 		margin-bottom: 15px;
 	}
 
-	.ab-block-post-grid-author, 
+	.ab-block-post-grid-author,
 	.ab-block-post-grid-date {
 		display: inline-block;
 
@@ -88,38 +93,34 @@
 	}
 
 	.ab-block-post-grid-author a {
-		box-shadow: none;
+		color: inherit;
+		text-decoration: none;
 
 		&:hover {
 			color: inherit;
-			box-shadow: 0 -1px 0 inset;
-			color: $accent;
+			text-decoration: underline;
 		}
 	}
 
 	.ab-block-post-grid-text p {
 		margin: 0 0 15px 0;
-		line-height: 1.5;
-		font-size: 18px;
-
-		@media only screen and (max-width: 600px) {
-			font-size: 16px;
-		}
+		font-size: inherit;
 
 		&:last-of-type {
 			margin-bottom: 0;
 		}
 	}
 
-	.ab-block-post-grid-link {
+	.ab-block-post-grid-more-link {
 		display: inline-block;
 		box-shadow: none;
 		transition: .3s ease;
 		font-weight: bold;
 		color: $black;
+		text-decoration: none;
 
 		&:hover {
-			box-shadow: 0 -2px 0 inset;
+			text-decoration: underline;
 		}
 	}
 
@@ -133,6 +134,10 @@
 			grid-template-columns: 30% 1fr;
 			grid-template-rows: 1fr;
 			grid-gap: 0 2em;
+
+			&:before {
+				display: none;
+			}
 
 			&:not(:last-child) {
 				margin-bottom: 5%;
@@ -148,6 +153,10 @@
 			@media only screen and (max-width: 600px) {
 				grid-template-columns: 1fr;
 			}
+		}
+
+		article:not(.has-post-thumbnail) {
+			grid-template-columns: 1fr;
 		}
 
 		.ab-block-post-grid-image {
@@ -168,4 +177,13 @@
 			grid-column: span 2;
 		}
 	}
+}
+
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
 }
