@@ -8,6 +8,11 @@
 			}
 		}
 	}
+	&.has-block-banner {
+		.breadcrumbs-container {
+			z-index: 99;
+		}
+	}
 
 	.wp-block-lsx-blocks-lsx-banner-box.lsx-has-image {
 		background-image: none !important;
@@ -52,28 +57,19 @@
 			max-height: 80vh;
 			position: relative;
 			overflow: hidden;
-			// &:before {
-			// 	content: '';
-			// 	display: block;
-			// 	width: 100%;
-			// 	padding-bottom: calc(100vh - 40rem);
-			// }
 			@media only screen and (min-width: 600px) {
 				&:empty {
 					min-height: 300px;
 				}
 			}
 			picture {
-				// position: absolute;
-				// top: 0;
-				// left: 0;
 				width: 100%;
 				height: 100%;
 				img {
 					width: 100%;
 					@media (max-width:600px) {
 						object-fit: cover;
-						min-height: 400px;
+						min-height: 440px;
 					}
 				}
 			}
@@ -161,6 +157,7 @@
 			@media (max-width:766px) {
 				.lsx-banner-title {
 					font-size: 1.5em !important;
+					line-height: 1.2em;
 				}
 			}
 			.lsx-block-button {
@@ -175,6 +172,7 @@
 					&:not(:empty) {
 						margin-top: 0.5em;
 						padding-bottom: 0.2em;
+						line-height: 1em;
 					}
 				}
 			}

@@ -2452,6 +2452,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     margin-bottom: -50px;
     z-index: 99; } }
 
+.gutenberg-compatible-template.using-gutenberg.has-block-banner .breadcrumbs-container {
+  z-index: 99; }
+
 .gutenberg-compatible-template.using-gutenberg .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image {
   background-image: none !important; }
   @media (min-width: 600px) {
@@ -2498,7 +2501,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
             .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap picture img {
               -o-object-fit: cover;
                  object-fit: cover;
-              min-height: 400px; } }
+              min-height: 440px; } }
   .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image .lsx-banner-column {
     min-height: 100%; }
   .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image.lsx-container-bottom img {
@@ -2547,7 +2550,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
         margin-bottom: 0.5em; }
       @media (max-width: 766px) {
         .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-banner-title {
-          font-size: 1.5em !important; } }
+          font-size: 1.5em !important;
+          line-height: 1.2em; } }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-block-button:not(:empty) {
         margin-bottom: 2em; }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header {
@@ -2556,7 +2560,8 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
           margin-bottom: 0; }
           .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header .lsx-banner-name:not(:empty) {
             margin-top: 0.5em;
-            padding-bottom: 0.2em; }
+            padding-bottom: 0.2em;
+            line-height: 1em; }
   .wp-block-lsx-blocks-lsx-banner-box.title-bottom {
     background-color: transparent !important; }
     .wp-block-lsx-blocks-lsx-banner-box.title-bottom .lsx-banner-content-wrap {
