@@ -45,6 +45,7 @@ class Inspector extends Component {
 			textColor,
 			fallbackTextColor,
 			setTextColor,
+			attributes,
 		} = this.props;
 
 		return (
