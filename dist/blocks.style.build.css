@@ -2243,8 +2243,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     font-weight: bold;
     line-height: 1.2;
     margin: 0;
-    text-align: center;
-    margin-top: 1em; }
+    text-align: center; }
   .lsx-block-card .lsx-card-title {
     text-align: center;
     opacity: .8;
@@ -2255,7 +2254,12 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
     .lsx-block-card .lsx-card-image-square .lsx-card-avatar[src$=".svg"] {
       max-width: 90px;
       padding-top: 30px; }
+  .lsx-block-card .lsx-block-card.lsx-card-columns:empty, .lsx-block-card .lsx-card-text:empty,
+  .lsx-block-card .lsx-card-text p:empty {
+    margin: 0;
+    padding: 0; }
   .lsx-block-card .lsx-card-text:empty,
+  .lsx-block-card .lsx-card-text p:empty,
   .lsx-block-card .lsx-card-title:empty,
   .lsx-block-card .lsx-card-name:empty {
     display: none; }
@@ -2519,7 +2523,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
   background-image: none !important; }
   @media (min-width: 600px) {
     .gutenberg-compatible-template.using-gutenberg .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image .lsx-banner-image-wrap picture img, .gutenberg-compatible-template.using-gutenberg .wp-block-lsx-blocks-lsx-banner-box.lsx-has-image .lsx-banner-image-wrap picture source {
-      min-height: 350px;
+      min-height: 250px;
       -o-object-fit: cover;
          object-fit: cover; } }
 
@@ -2550,7 +2554,7 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       position: relative;
       overflow: hidden; }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap:empty {
-        min-height: 300px; }
+        min-height: 250px; }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-column .lsx-banner-image-wrap picture {
         width: 100%;
         height: 100%; }

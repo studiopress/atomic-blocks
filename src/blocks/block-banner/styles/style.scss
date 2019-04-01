@@ -20,7 +20,7 @@
 			.lsx-banner-image-wrap {
 				picture {
 					img, source {
-						min-height: 350px;
+						min-height: 250px;
 						object-fit: cover;
 					}
 				}
@@ -58,7 +58,7 @@
 			position: relative;
 			overflow: hidden;
 			&:empty {
-				min-height: 300px;
+				min-height: 250px;
 			}
 			picture {
 				width: 100%;

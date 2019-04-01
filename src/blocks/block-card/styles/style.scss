@@ -77,7 +77,7 @@
 		line-height: 1.2;
 		margin: 0;
 		text-align: center;
-		margin-top: 1em;
+		//margin-top: 1em;
 	}
 
 	.lsx-card-title {
@@ -103,7 +103,14 @@
 		}
 	}
 
+	.lsx-block-card.lsx-card-columns:empty, .lsx-card-text:empty,
+	.lsx-card-text p:empty {
+		margin: 0;
+		padding: 0;
+	}
+
 	.lsx-card-text:empty,
+	.lsx-card-text p:empty,
 	.lsx-card-title:empty,
 	.lsx-card-name:empty {
 		display: none;
