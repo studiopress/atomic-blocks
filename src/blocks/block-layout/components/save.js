@@ -15,14 +15,14 @@ export default class Save extends Component {
 	render() {
 
 		const {
-			columnsGap,
-			layoutClass,
-		} = this.props.attributes;
+			attributes,
+		} = this.props;
 
 		const className = classnames( [
 			'ab-layout-column-wrap',
-			'ab-block-layout-column-gap-' + columnsGap,
-			layoutClass,
+			'ab-block-layout-column-gap-' + attributes.columnsGap,
+			attributes.layoutClass,
+			attributes.responsiveToggle ? 'ab-is-responsive-column' : null,
 		])
 
 		return (

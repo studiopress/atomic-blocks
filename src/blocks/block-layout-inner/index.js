@@ -3,8 +3,8 @@
  */
 
 // Import block dependencies and components
-import classnames from 'classnames';
 import Edit from './components/edit';
+import Save from './components/save';
 
 // Import CSS
 import './styles/style.scss';
@@ -13,9 +13,6 @@ import './styles/editor.scss';
 // Internationalization
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const {
-	InnerBlocks,
-} = wp.editor;
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-layout-column', {
@@ -56,48 +53,8 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 		return <Edit { ...props } />;
 	},
 
-	// Save the attributes and markup
-	save: function( props ) {
-
-		let backgroundColorClass;
-
-		if (props.attributes.customBackgroundColor) {
-			backgroundColorClass = 'has-custom-background-color';
-		} else {
-			backgroundColorClass = props.attributes.backgroundColor ? 'has-' + props.attributes.backgroundColor + '-background-color' : null;
-		}
-
-		let textColorClass;
-
-		if (props.attributes.customTextColor) {
-			textColorClass = 'has-custom-text-color';
-		} else {
-			textColorClass = props.attributes.textColor ? 'has-' + props.attributes.textColor + '-color' : null;
-		}
-
-		// Save the block markup for the front end
-		return (
-			<div
-				className={ classnames(
-					props.attributes.alignment ? 'ab-block-layout-column-' + props.attributes.alignment : 'ab-block-layout-column-center',
-					'ab-block-layout-column',
-				) }
-			>
-				<div
-					className={ classnames(
-						'ab-block-layout-column-inside',
-						backgroundColorClass,
-						textColorClass,
-					) }
-					style={ {
-						backgroundColor: props.attributes.backgroundColor ? null : props.attributes.customBackgroundColor,
-						color: props.attributes.textColor ? null : props.attributes.customTextColor,
-						padding: props.attributes.padding && props.attributes.padding > 1 ? props.attributes.padding + 'px' : null,
-					} }
-				>
-					<InnerBlocks.Content />
-				</div>
-			</div>
-		);
+	// Save the block markup
+	save: props => {
+		return <Save { ...props } />;
 	},
 } );

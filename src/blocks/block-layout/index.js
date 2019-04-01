@@ -56,8 +56,12 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 	},
 
 	// Render the Edit component
-	edit: Edit,
+	edit: props => {
+		return <Edit { ...props } />;
+	},
 
 	// Render the Save component
-	save: Save,
+	save: props => {
+		return <Save { ...props } />;
+	},
 } );

@@ -196,7 +196,8 @@ export default class Edit extends Component {
 				<div
 					className={ classnames(
 						'ab-layout-column-wrap-admin',
-						'ab-block-layout-column-gap-' + attributes.columnsGap
+						'ab-block-layout-column-gap-' + attributes.columnsGap,
+						attributes.responsiveToggle ? 'ab-is-responsive-column' : null,
 					) }
 				>
 					<InnerBlocks
