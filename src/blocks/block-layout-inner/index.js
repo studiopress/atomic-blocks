@@ -47,6 +47,7 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 		},
 		padding: {
 			type: 'number',
+			default: 0,
 		},
 	},
 
@@ -58,8 +59,21 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 	// Save the attributes and markup
 	save: function( props ) {
 
-		const backgroundColorClass = 'has-' + props.attributes.backgroundColor + '-background-color';
-		const textColorClass = 'has-' + props.attributes.textColor + '-color';
+		let backgroundColorClass;
+
+		if (props.attributes.customBackgroundColor) {
+			backgroundColorClass = 'has-custom-background-color';
+		} else {
+			backgroundColorClass = props.attributes.backgroundColor ? 'has-' + props.attributes.backgroundColor + '-background-color' : null;
+		}
+
+		let textColorClass;
+
+		if (props.attributes.customTextColor) {
+			textColorClass = 'has-custom-text-color';
+		} else {
+			textColorClass = props.attributes.textColor ? 'has-' + props.attributes.textColor + '-color' : null;
+		}
 
 		// Save the block markup for the front end
 		return (
@@ -67,16 +81,18 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 				className={ classnames(
 					props.attributes.alignment ? 'ab-block-layout-column-' + props.attributes.alignment : 'ab-block-layout-column-center',
 					'ab-block-layout-column',
-					backgroundColorClass,
-					textColorClass,
 				) }
 			>
 				<div
-					className="ab-block-layout-column-inside"
+					className={ classnames(
+						'ab-block-layout-column-inside',
+						backgroundColorClass,
+						textColorClass,
+					) }
 					style={ {
 						backgroundColor: props.attributes.backgroundColor ? null : props.attributes.customBackgroundColor,
 						color: props.attributes.textColor ? null : props.attributes.customTextColor,
-						padding: props.attributes.padding ? props.attributes.padding + '%' : null,
+						padding: props.attributes.padding && props.attributes.padding > 1 ? props.attributes.padding + 'px' : null,
 					} }
 				>
 					<InnerBlocks.Content />

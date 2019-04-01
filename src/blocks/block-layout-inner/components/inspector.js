@@ -61,7 +61,7 @@ class Inspector extends Component {
 				/>
 			</PanelBody>
 			<PanelColorSettings
-				title={ __( 'Layout Column Background Color', 'atomic-blocks' ) }
+				title={ __( 'Color', 'atomic-blocks' ) }
 				initialOpen={ false }
 				colorSettings={ [
 					{

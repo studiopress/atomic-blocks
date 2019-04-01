@@ -46,23 +46,32 @@ class Edit extends Component {
 
 	render() {
 		const {
-			attributes: {
-				padding,
-				alignment,
-			},
 			attributes,
 			setAttributes,
 			backgroundColor,
 			textColor,
 		} = this.props;
 
-		const getTextColorClass       = getColorClassName( 'color', attributes.textColor );
-		const getBackgroundColorClass = getColorClassName( 'background-color', attributes.backgroundColor );
+		let backgroundColorClass;
+
+		if (attributes.customBackgroundColor) {
+			backgroundColorClass = 'has-custom-background-color';
+		} else {
+			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
+		}
+
+		let textColorClass;
+
+		if (attributes.customTextColor) {
+			textColorClass = 'has-custom-text-color';
+		} else {
+			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
+		}
 
 		return [
 			<BlockControls key="controls">
 				<AlignmentToolbar
-					value={ alignment }
+					value={ attributes.alignment }
 					onChange={ ( nextAlign ) => {
 						setAttributes( { alignment: nextAlign } );
 					} }
@@ -72,20 +81,20 @@ class Edit extends Component {
 			<Fragment>
 				<div
 					className={ classnames(
-						alignment ? 'ab-block-layout-column-' + alignment : 'ab-block-layout-column-center',
+						attributes.alignment ? 'ab-block-layout-column-' + attributes.alignment : 'ab-block-layout-column-center',
 						'ab-block-layout-column',
 					) }
 				>
 					<div
 						className={ classnames(
 							'ab-block-layout-column-inside',
-							getTextColorClass,
-							getBackgroundColorClass,
+							backgroundColorClass,
+							textColorClass,
 						) }
 						style={ {
 							backgroundColor: backgroundColor.color,
 							color: textColor.color,
-							padding: padding ? padding + '%' : null,
+							padding: attributes.padding ? attributes.padding + '%' : null,
 						} }
 					>
 						<InnerBlocks
