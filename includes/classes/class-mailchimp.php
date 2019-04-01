@@ -93,10 +93,11 @@ final class Mailchimp implements Provider_Interface {
 			]
 		);
 
-		if ( ! $response || $this->mailchimp->getLastError() ) {
+		if ( ! $response || ( ! empty( $response['status'] ) && is_numeric( $response['status'] && 200 !== $response['status'] ) ) || $this->mailchimp->getLastError() ) {
 			throw new Mailchimp_API_Error_Exception(
 				/* translators: %s The error message returns from the Mailchimp API. */
-				esc_html( sprintf( __( 'There was an error subscribing your email address. Please try again. Error: %s', 'atomic-blocks' ), $this->mailchimp->getLastError() ) )
+				esc_html( sprintf( __( 'There was an error subscribing your email address. Please try again. Error: %s', 'atomic-blocks' ), $this->mailchimp->getLastError() ) ),
+				$response['status']
 			);
 		}
 
