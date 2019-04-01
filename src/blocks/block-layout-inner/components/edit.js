@@ -81,7 +81,6 @@ class Edit extends Component {
 			<Fragment>
 				<div
 					className={ classnames(
-						attributes.alignment ? 'ab-block-layout-column-' + attributes.alignment : 'ab-block-layout-column-center',
 						'ab-block-layout-column',
 					) }
 				>

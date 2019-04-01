@@ -36,7 +36,6 @@ export default class Save extends Component {
 		return (
 			<div
 				className={ classnames(
-					attributes.alignment ? 'ab-block-layout-column-' + attributes.alignment : 'ab-block-layout-column-center',
 					'ab-block-layout-column',
 				) }
 			>
