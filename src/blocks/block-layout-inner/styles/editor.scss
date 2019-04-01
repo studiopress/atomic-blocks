@@ -202,3 +202,11 @@ div[data-type="atomic-blocks/ab-layout-column-price"] .editor-block-list__block-
     	margin-right: 5px;
 	}
 }
+
+.ab-column-select-panel {
+	.components-button.is-small {
+		height: auto;
+		padding: 8px;
+		margin: 0 5px 5px 0;
+	}
+}

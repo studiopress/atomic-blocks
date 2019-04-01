@@ -22,8 +22,8 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 	category: 'atomic-blocks',
 	parent: [ 'atomic-blocks/ab-layout' ],
 	keywords: [
-		__( 'layout', 'atomic-blocks' ),
 		__( 'column', 'atomic-blocks' ),
+		__( 'layout', 'atomic-blocks' ),
 		__( 'row', 'atomic-blocks' ),
 	],
 	attributes: {
@@ -39,7 +39,7 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 		customTextColor: {
 			type: 'string',
 		},
-		alignment: {
+		textAlign: {
 			type: 'string',
 		},
 		padding: {

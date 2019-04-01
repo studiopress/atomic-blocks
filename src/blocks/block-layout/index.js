@@ -38,9 +38,6 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 		align: {
 			type: 'string',
 		},
-		layoutClass: {
-			type: 'string',
-		},
 		responsiveToggle: {
 			type: 'boolean',
 			default: true,

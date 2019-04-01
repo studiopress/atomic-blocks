@@ -52,11 +52,12 @@ class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Layout Column Padding', 'atomic-blocks' ) }
+					label={ __( 'Column Padding', 'atomic-blocks' ) }
+					help={ __( 'Adjust the padding on the inside of the column.', 'atomic-blocks' ) }
 					value={ attributes.padding }
 					onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
 					min={ 0 }
-					max={ 20 }
+					max={ 100 }
 					step={ 1 }
 				/>
 			</PanelBody>

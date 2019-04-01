@@ -46,7 +46,6 @@ export default class Inspector extends Component {
 			attributes: {
 				columns,
 				columnsGap,
-				layoutClass,
 				layout,
 				marginTop,
 				marginRight,
@@ -54,8 +53,6 @@ export default class Inspector extends Component {
 				marginLeft,
 				responsiveToggle,
 			},
-			isSelected,
-			className,
 			setAttributes
 		} = this.props;
 
@@ -70,48 +67,50 @@ export default class Inspector extends Component {
 			<Fragment>
 				{ layout &&
 					// Show the column settings once a layout is selected
-					<PanelBody>
-						<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
-							{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
-								<Tooltip text={ name }>
-									<Button
-										key={ key }
-										className="ab-layout-selector-button"
-										isSmall
-										onClick={ () => {
-											setAttributes( {
-												layout: key,
-											} );
-											this.setState( { 'selectLayout' : false } );
-										} }
-									>
-										{ icon }
-									</Button>
-								</Tooltip>
-							) ) }
-						</ButtonGroup>
+					<Fragment>
+						<PanelBody
+							className="ab-column-select-panel"
+						>
+							<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
+							<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
+								{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
+									<Tooltip text={ name }>
+										<Button
+											key={ key }
+											className="ab-layout-selector-button"
+											isSmall
+											onClick={ () => {
+												setAttributes( {
+													layout: key,
+												} );
+												this.setState( { 'selectLayout' : false } );
+											} }
+										>
+											{ icon }
+										</Button>
+									</Tooltip>
+								) ) }
+							</ButtonGroup>
+						</PanelBody>
 
-						{/* <RangeControl
-							label={ __( 'Layout Columns', 'atomic-blocks' ) }
-							value={ columns }
-							onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
-							min={ 1 }
-							max={ 6 }
-						/> */}
-						<RangeControl
-							label={ __( 'Layout Columns Gap', 'atomic-blocks' ) }
-							value={ columnsGap }
-							onChange={ ( value ) => this.props.setAttributes( { columnsGap: value } ) }
-							min={ 0 }
-							max={ 5 }
-							step={ 1 }
-						/>
-						<ToggleControl
-							label={ __( 'Responsive Columns', 'atomic-blocks' ) }
-							checked={ responsiveToggle }
-							onChange={ () => this.props.setAttributes( { responsiveToggle: ! responsiveToggle } ) }
-						/>
-					</PanelBody>
+						<PanelBody>
+							<RangeControl
+								label={ __( 'Column Gap', 'atomic-blocks' ) }
+								help={ __( 'Adjust the spacing between columns.', 'atomic-blocks' ) }
+								value={ columnsGap }
+								onChange={ ( value ) => this.props.setAttributes( { columnsGap: value } ) }
+								min={ 0 }
+								max={ 5 }
+								step={ 1 }
+							/>
+							<ToggleControl
+								label={ __( 'Responsive Columns', 'atomic-blocks' ) }
+								help={ __( 'Columns will be adjusted to fit on tablets and mobile devices.', 'atomic-blocks' ) }
+								checked={ responsiveToggle }
+								onChange={ () => this.props.setAttributes( { responsiveToggle: ! responsiveToggle } ) }
+							/>
+						</PanelBody>
+					</Fragment>
 				}
 				<PanelBody
 					title={ __( 'Margin Settings', 'atomic-blocks' ) }

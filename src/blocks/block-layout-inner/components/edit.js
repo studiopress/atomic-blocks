@@ -71,9 +71,9 @@ class Edit extends Component {
 		return [
 			<BlockControls key="controls">
 				<AlignmentToolbar
-					value={ attributes.alignment }
-					onChange={ ( nextAlign ) => {
-						setAttributes( { alignment: nextAlign } );
+					value={ attributes.textAlign }
+					onChange={ ( value ) => {
+						setAttributes( { textAlign: value } );
 					} }
 				/>
 			</BlockControls>,
@@ -94,7 +94,8 @@ class Edit extends Component {
 						style={ {
 							backgroundColor: backgroundColor.color,
 							color: textColor.color,
-							padding: attributes.padding ? attributes.padding + '%' : null,
+							padding: attributes.padding ? attributes.padding + 'px' : null,
+							textAlign: attributes.textAlign ? attributes.textAlign : null,
 						} }
 					>
 						<InnerBlocks
