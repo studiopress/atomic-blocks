@@ -57,8 +57,23 @@ class Edit extends Component {
 
 		const apiKeyDefined = atomic_blocks_newsletter_block_vars.mailingListProviders.mailchimp.api_key_defined;
 
-		const getButtonTextClass       = getColorClassName( 'color', attributes.buttonTextColor );
-		const getButtonBackgroundClass = getColorClassName( 'background-color', attributes.buttonBackgroundColor );
+		/* Setup button background color class */
+		let buttonBackgroundColorClass;
+
+		if (attributes.customButtonBackgroundColor) {
+			buttonBackgroundColorClass = 'has-custom-background-color';
+		} else {
+			buttonBackgroundColorClass = attributes.buttonBackgroundColor ? 'has-' + attributes.buttonBackgroundColor + '-background-color' : null;
+		}
+
+		/* Setup button text color class */
+		let buttonTextColorClass;
+
+		if (attributes.customButtonTextColor) {
+			buttonTextColorClass = 'has-custom-text-color';
+		} else {
+			buttonTextColorClass = attributes.buttonTextColor ? 'has-' + attributes.buttonTextColor + '-color' : null;
+		}
 
 		return [
 			<Inspector { ...{ setAttributes, ...this.props } }/>,
@@ -103,8 +118,8 @@ class Edit extends Component {
 										attributes.buttonClass,
 										attributes.buttonShape,
 										attributes.buttonSize,
-										getButtonBackgroundClass,
-										getButtonTextClass,
+										buttonBackgroundColorClass,
+										buttonTextColorClass,
 										{
 											'has-background': attributes.buttonBackgroundColor || attributes.customButtonBackgroundColor,
 											'has-text-color': attributes.buttonTextColor || attributes.customButtonTextColor,

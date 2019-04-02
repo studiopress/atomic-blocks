@@ -30,8 +30,23 @@ export default class NewsletterContainer extends Component {
 			textColor,
 		} = this.props;
 
-		const backgroundColorClass = getColorClassName( 'background-color', attributes.backgroundColor );
-		const textColorClass = getColorClassName( 'color', attributes.textColor );
+		/* Setup button background color class */
+		let backgroundColorClass;
+
+		if (attributes.customBackgroundColor) {
+			backgroundColorClass = 'has-custom-background-color';
+		} else {
+			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
+		}
+
+		/* Setup button text color class */
+		let textColorClass;
+
+		if (attributes.customTextColor) {
+			textColorClass = 'has-custom-text-color';
+		} else {
+			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
+		}
 
 		return (
 			<div

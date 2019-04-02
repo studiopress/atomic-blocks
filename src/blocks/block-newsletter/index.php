@@ -81,8 +81,16 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 		$wrapper_class .= ' has-background ' . 'has-' . $attributes['backgroundColor'] . '-background-color';
 	}
 
+	if ( ! empty( $attributes['customBackgroundColor'] ) ) {
+		$wrapper_class .= ' has-custom-background-color';
+	}
+
 	if ( ! empty( $attributes['textColor'] ) ) {
 		$wrapper_class .= ' has-text-color has-' . $attributes['textColor'] . '-color';
+	}
+
+	if ( ! empty( $attributes['customTextColor'] ) ) {
+		$wrapper_class .= ' has-custom-text-color';
 	}
 
 	/* Button styles. */
@@ -132,7 +140,6 @@ function atomic_blocks_newsletter_block_attributes() {
 		],
 		'buttonBackgroundColor'       => [
 			'type'    => 'string',
-			'default' => '#32373c',
 		],
 		'customButtonBackgroundColor' => [
 			'type' => 'string',
@@ -155,7 +162,6 @@ function atomic_blocks_newsletter_block_attributes() {
 		],
 		'buttonTextColor'             => [
 			'type'    => 'string',
-			'default' => '#fff',
 		],
 		'customButtonTextColor'       => [
 			'type' => 'string',
