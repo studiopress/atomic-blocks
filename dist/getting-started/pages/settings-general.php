@@ -18,13 +18,13 @@ $atomic_blocks_mailchimp_api_key = get_option( 'atomic_blocks_mailchimp_api_key'
 			<td>
 				<input type="text" id="atomic-blocks-settings[mailchimp-api-key]" name="atomic-blocks-settings[mailchimp-api-key]" size="40" value="<?php echo esc_attr( $atomic_blocks_mailchimp_api_key ); ?>" />
 				<?php
-					$mailchimp_link = sprintf(
-						'<p><a href="%1$s" target="_blank">%2$s</a></p>',
-						esc_url( 'https://mailchimp.com/help/about-api-keys/' ),
-						__( 'Find your Mailchimp API key.', 'atomic-blocks' )
+					$atomic_blocks_mailchimp_api_key_link = sprintf(
+						'<p><a href="%1$s" target="_blank" rel="noreferrer noopener">%2$s</a></p>',
+						'https://mailchimp.com/help/about-api-keys/',
+						esc_html__( 'Find your Mailchimp API key.', 'atomic-blocks' )
 					);
-					echo $mailchimp_link;
-				?>
+					echo wp_kses_post( $atomic_blocks_mailchimp_api_key_link );
+					?>
 			</td>
 		</tr>
 	</tbody>
