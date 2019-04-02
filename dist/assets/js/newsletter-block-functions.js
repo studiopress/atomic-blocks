@@ -25,6 +25,8 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var successMessage = button.parent().find( "[name='ab-newsletter-success-message']" ).val();
 
+			var errorMessageContainer = button.parents( '.ab-block-newsletter' ).find( '.ab-block-newsletter-errors' );
+
 			if ( ! email ) {
 				button.text( button_text_original ).prop( 'disabled', false );
 				return;
@@ -47,13 +49,25 @@ var AtomicBlocksNewsletterSubmission = {
 				type: 'post',
 				url: atomic_blocks_newsletter_vars.ajaxurl,
 				success: function( response ) {
-					form.html( '<p class="ab-newsletter-submission-message">' + response.data.message + '</p>' );
+					if ( response.success ) {
+						form.html( '<p class="ab-newsletter-submission-message">' + response.data.message + '</p>' );
+					}
+
+					if ( ! response.success ) {
+						errorMessageContainer.html( '<p>' + response.data.message + '</p>' ).fadeIn();
+						button.text( button_text_original ).prop( 'disabled', false );
+					}
+
 				},
 				failure: function( response ) {
-					form.html( '<p class="ab-newsletter-submission-message">' + response.data.message + '</p>' );
+					errorMessageContainer.html( '<p>' + response.data.message + '</p>' ).fadeIn();
 				}
 
 			} );
+		} );
+
+		$( '.ab-newsletter-email-address-input' ).on( 'keyup', function( event ) {
+			$( '.ab-block-newsletter-errors' ).html('').fadeOut();
 		} );
 	}
 }
