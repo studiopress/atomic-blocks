@@ -6,7 +6,7 @@
 import icons from './icons';
 import map from 'lodash/map';
 import layoutColumns from './layout-columns';
-import MarginSettings from './../../../utils/components/margin/margin';
+import MarginSettings from './../../../utils/components/margin';
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -48,11 +48,10 @@ export default class Inspector extends Component {
 				columnsGap,
 				layout,
 				marginTop,
-				marginRight,
 				marginBottom,
-				marginLeft,
 				responsiveToggle,
 			},
+			attributes,
 			setAttributes
 		} = this.props;
 
@@ -119,28 +118,16 @@ export default class Inspector extends Component {
 					<MarginSettings
 						// Top margin
 						marginEnableTop={ true }
-						marginTop={ marginTop }
+						marginTop={ attributes.marginTop }
 						marginTopMin="0"
 						marginTopMax="100"
 						onChangemarginTop={ marginTop => setAttributes( { marginTop } ) }
-						// Right margin
-						marginEnableRight={ false }
-						marginRight={ marginRight }
-						marginRightMin="0"
-						marginRightMax="100"
-						onChangemarginRight={ marginRight => setAttributes( { marginRight } ) }
 						// Bottom margin
 						marginEnableBottom={ true }
-						marginBottom={ marginBottom }
+						marginBottom={ attributes.marginBottom }
 						marginBottomMin="0"
 						marginBottomMax="100"
 						onChangemarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
-						// Left margin
-						marginEnableLeft={ false }
-						marginLeft={ marginLeft }
-						marginLeftMin="0"
-						marginLeftMax="100"
-						onChangemarginLeft={ marginLeft => setAttributes( { marginLeft } ) }
 					/>
 				</PanelBody>
 			</Fragment>

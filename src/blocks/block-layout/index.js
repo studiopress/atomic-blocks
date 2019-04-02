@@ -5,7 +5,6 @@
 // Import block dependencies and components
 import Edit from './components/edit';
 import Save from './components/save';
-import marginAttributes from '../../utils/components/margin/margin';
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -42,7 +41,12 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 			type: 'boolean',
 			default: true,
 		},
-		...marginAttributes,
+		marginTop: {
+			type: 'number',
+		},
+		marginBottom: {
+			type: 'number',
+		},
 	},
 
 	// Add alignment to block wrapper
