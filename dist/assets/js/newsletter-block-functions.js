@@ -9,11 +9,13 @@ var AtomicBlocksNewsletterSubmission = {
 
 			event.preventDefault();
 
+			wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_processing );
+
 			var button = $( this );
 
 			var button_text_original = button.text();
 
-			button.text( atomic_blocks_newsletter_vars.button_text_processing ).prop( 'disabled', true );
+			button.text( atomic_blocks_newsletter_vars.l10n.button_text_processing ).prop( 'disabled', true );
 
 			var form = $( this ).parents( 'form' );
 
@@ -29,11 +31,12 @@ var AtomicBlocksNewsletterSubmission = {
 
 			if ( ! email ) {
 				button.text( button_text_original ).prop( 'disabled', false );
+				wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_failed );
 				return;
 			}
 
 			if ( ! provider || ! list ) {
-				form.html( '<p class="ab-newsletter-submission-message">' + atomic_blocks_newsletter_vars.invalid_configuration + '</p>' );
+				form.html( '<p class="ab-newsletter-submission-message">' + atomic_blocks_newsletter_vars.l10n.invalid_configuration + '</p>' );
 				return;
 			}
 
@@ -51,11 +54,13 @@ var AtomicBlocksNewsletterSubmission = {
 				success: function( response ) {
 					if ( response.success ) {
 						form.html( '<p class="ab-newsletter-submission-message">' + response.data.message + '</p>' );
+						wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_succeeded );
 					}
 
 					if ( ! response.success ) {
 						errorMessageContainer.html( '<p>' + response.data.message + '</p>' ).fadeIn();
 						button.text( button_text_original ).prop( 'disabled', false );
+						wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_failed );
 					}
 
 				},

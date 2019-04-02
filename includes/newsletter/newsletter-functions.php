@@ -185,7 +185,7 @@ function frontend_assets() {
 	wp_register_script(
 		'atomic-blocks-newsletter-functions',
 		plugins_url( '/dist/assets/js/newsletter-block-functions.js', atomic_blocks_main_plugin_file() ),
-		[ 'jquery' ],
+		[ 'jquery', 'wp-a11y' ],
 		'1.0',
 		true
 	);
@@ -194,9 +194,16 @@ function frontend_assets() {
 		'atomic-blocks-newsletter-functions',
 		'atomic_blocks_newsletter_vars',
 		[
-			'ajaxurl'                => esc_url( admin_url( 'admin-ajax.php' ) ),
-			'button_text_processing' => esc_html( atomic_blocks_newsletter_block_attributes()['buttonTextProcessing']['default'] ),
-			'invalid_configuration'  => esc_html__( 'Invalid configuration. Site owner: Please configure your newsletter provider settings.', 'atomic-blocks' ),
+			'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
+			'l10n'    => [
+				'button_text_processing' => esc_html( atomic_blocks_newsletter_block_attributes()['buttonTextProcessing']['default'] ),
+				'invalid_configuration'  => esc_html__( 'Invalid configuration. Site owner: Please configure your newsletter provider settings.', 'atomic-blocks' ),
+				'a11y'                   => [
+					'submission_processing' => esc_html__( 'The submission is being processed.', 'atomic-blocks' ),
+					'submission_succeeded'  => esc_html__( 'The submission successfully succeeded.', 'atomic-blocks' ),
+					'submission_failed'     => esc_html__( 'The submission failed.', 'atomic-blocks' ),
+				],
+			],
 		]
 	);
 }
