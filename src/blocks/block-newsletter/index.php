@@ -122,6 +122,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 				<input type="hidden" name="ab-newsletter-success-message" value="' . esc_attr( $attributes['successMessage'] ) . '" />
 				' . wp_nonce_field( 'ab-newsletter-form-nonce', 'ab-newsletter-form-nonce', true, false ) . '
 			</form>
+			<div class="ab-block-newsletter-errors" style="display: none;"></div>
 		</div>';
 
 	return $form;

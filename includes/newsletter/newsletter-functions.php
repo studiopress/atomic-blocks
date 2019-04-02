@@ -53,7 +53,7 @@ function form_submission_listener() {
 	$response = process_submission( $email, $provider, [ 'list_id' => $list ] );
 
 	if ( is_wp_error( $response ) ) {
-		send_processing_response( $response->get_error_message() );
+		send_processing_response( $response->get_error_message(), false );
 	}
 
 	send_processing_response( $success_message );
@@ -63,10 +63,15 @@ function form_submission_listener() {
  * Sends the appropriate response based on the request type.
  *
  * @param string $message The message indicating success or failure.
+ * @param bool   $success Whether or not the response should communicate success or failure.
  */
-function send_processing_response( $message ) {
-	if ( wp_doing_ajax() ) {
+function send_processing_response( $message, $success = true ) {
+	if ( $success && wp_doing_ajax() ) {
 		wp_send_json_success( [ 'message' => esc_html( $message ) ] );
+	}
+
+	if ( ! $success && wp_doing_ajax() ) {
+		wp_send_json_error( [ 'message' => esc_html( $message ) ] );
 	}
 
 	wp_die( esc_html( $message ) );
