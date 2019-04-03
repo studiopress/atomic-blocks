@@ -106,12 +106,12 @@ class Inspector extends Component {
         // Check the post type
 		const isPost = attributes.postType === 'post';
 
-		const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
-		console.log( getSettings.image );
+		// const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
+		// console.log( getSettings );
 
 		const imageSizeOptions = this.getImageSizeOptions();
 
-		//console.log(imageSizeOptions);
+		console.log(imageSizeOptions);
 
 		return (
             <InspectorControls>
@@ -119,12 +119,12 @@ class Inspector extends Component {
                     title={ __( 'Post and Page Grid Settings', 'atomic-blocks' ) }
                     className={ isPost ? null : 'atomic-blocks-hide-query' }
                 >
-					<SelectControl
+					{/* <SelectControl
 						label={ __( 'Image Size' ) }
 						value={ attributes.imageSizeUrl }
 						options={ imageSizeOptions }
 						onChange={ ( value ) => this.props.setAttributes( { imageUrl: value } ) }
-					/>
+					/> */}
 
                     <SelectControl
                         label={ __( 'Content Type', 'atomic-blocks' ) }
@@ -280,7 +280,7 @@ export default compose( [
 		const { imageSizes } = getEditorSettings();
 
 		return {
-			image: id ? getMedia( id ) : null,
+			image: 8187 ? getMedia( 8187 ) : null,
 			imageSizes,
 		};
 	} ),
