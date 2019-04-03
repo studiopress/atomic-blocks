@@ -1,0 +1,214 @@
+<?php
+/**
+ * Newsletter block registration and rendering functions.
+ *
+ * @package AtomicBlocks
+ */
+
+add_action( 'init', 'atomic_blocks_register_newsletter_block' );
+/**
+ * Registers the newsletter block.
+ */
+function atomic_blocks_register_newsletter_block() {
+
+	register_block_type(
+		'atomic-blocks/newsletter',
+		[
+			'attributes'      => atomic_blocks_newsletter_block_attributes(),
+			'render_callback' => 'atomic_blocks_render_newsletter_block',
+		]
+	);
+}
+
+/**
+ * Renders the newsletter block.
+ *
+ * @param array $attributes The block attributes.
+ * @return string The block HTML.
+ */
+function atomic_blocks_render_newsletter_block( $attributes ) {
+
+	wp_enqueue_script( 'atomic-blocks-newsletter-functions' );
+
+	$defaults = [];
+	foreach ( atomic_blocks_newsletter_block_attributes() as $key => $values ) {
+		$defaults[ $key ] = isset( $values['default'] ) ? $values['default'] : null;
+	}
+
+	$attributes = wp_parse_args( $attributes, $defaults );
+
+	$button_bg_color_class   = ! empty( $attributes['buttonBackgroundColor'] ) ? 'has-' . $attributes['buttonBackgroundColor'] . '-background-color' : null;
+	$button_text_color_class = ! empty( $attributes['buttonTextColor'] ) ? 'has-' . $attributes['buttonTextColor'] . '-color' : null;
+	$button_class            = $attributes['buttonClass'] . ' ' . $attributes['buttonSize'] . ' ' . $attributes['buttonShape'] . ' ' . $button_bg_color_class . ' ' . $button_text_color_class;
+
+	$wrapper_styles = '';
+
+	/* Padding styles. */
+	if ( ! empty( $attributes['containerPadding'] ) && $attributes['containerPadding'] > 0 ) {
+		$wrapper_styles .= 'padding:' . $attributes['containerPadding'] . 'px;';
+	}
+
+	/* Margin styles. */
+	if ( ! empty( $attributes['containerMarginTop'] ) && $attributes['containerMarginTop'] > 0 ) {
+		$wrapper_styles .= 'margin-top:' . $attributes['containerMarginTop'] . 'px;';
+	}
+
+	if ( ! empty( $attributes['containerMarginBottom'] ) && $attributes['containerMarginBottom'] > 0 ) {
+		$wrapper_styles .= 'margin-bottom:' . $attributes['containerMarginBottom'] . 'px;';
+	}
+
+	/* Background styles. */
+	if ( ! empty( $attributes['customBackgroundColor'] ) ) {
+		$wrapper_styles .= 'background-color:' . $attributes['customBackgroundColor'] . ';';
+	}
+
+	/* Text styles. */
+	if ( ! empty( $attributes['customTextColor'] ) ) {
+		$wrapper_styles .= 'color:' . $attributes['customTextColor'] . ';';
+	}
+
+	/* Newsletter wrapper styles. */
+	if ( ! empty( $wrapper_styles ) ) {
+		$wrapper_style = $wrapper_styles;
+	} else {
+		$wrapper_style = null;
+	}
+
+	/* Wrapper color classes. */
+	$wrapper_class = '';
+
+	if ( ! empty( $attributes['backgroundColor'] ) ) {
+		$wrapper_class .= ' has-background ' . 'has-' . $attributes['backgroundColor'] . '-background-color';
+	}
+
+	if ( ! empty( $attributes['customBackgroundColor'] ) ) {
+		$wrapper_class .= ' ab-has-custom-background-color';
+	}
+
+	if ( ! empty( $attributes['textColor'] ) ) {
+		$wrapper_class .= ' has-text-color has-' . $attributes['textColor'] . '-color';
+	}
+
+	if ( ! empty( $attributes['customTextColor'] ) ) {
+		$wrapper_class .= ' ab-has-custom-text-color';
+	}
+
+	/* Button styles. */
+	$button_styles_custom = '';
+
+	if ( ! empty( $attributes['customButtonBackgroundColor'] ) ) {
+		$button_styles_custom .= 'background-color:' . $attributes['customButtonBackgroundColor'] . ';';
+	}
+
+	if ( ! empty( $attributes['customButtonTextColor'] ) ) {
+		$button_styles_custom .= 'color:' . $attributes['customButtonTextColor'] . ';';
+	}
+
+	/* Button style output. */
+	if ( ! empty( $button_styles_custom ) ) {
+		$button_styles = $button_styles_custom;
+	} else {
+		$button_styles = null;
+	}
+
+	$form = '
+		<div class="ab-block-newsletter ab-form-styles ' . esc_attr( $wrapper_class ) . '" style="' . safecss_filter_attr( $wrapper_style ) . '" >
+			<form method="post">
+				<label for="ab-newsletter-email-address" class="ab-newsletter-email-address-label">' . esc_html( $attributes['emailInputLabel'] ) . '</label>
+				<input type="text" name="ab-newsletter-email-address" class="ab-newsletter-email-address-input" />
+				<button class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" style="' . safecss_filter_attr( $button_styles ) . '">' . esc_html( $attributes['buttonText'] ) . '</button>
+				<input type="hidden" name="ab-newsletter-mailing-list-provider" value="' . esc_attr( $attributes['mailingListProvider'] ) . '" />
+				<input type="hidden" name="ab-newsletter-mailing-list" value="' . esc_attr( $attributes['mailingList'] ) . '" />
+				<input type="hidden" name="ab-newsletter-success-message" value="' . esc_attr( $attributes['successMessage'] ) . '" />
+				' . wp_nonce_field( 'ab-newsletter-form-nonce', 'ab-newsletter-form-nonce', true, false ) . '
+			</form>
+			<div class="ab-block-newsletter-errors" style="display: none;"></div>
+		</div>';
+
+	return $form;
+}
+
+/**
+ * Returns the newsletter block attributes.
+ *
+ * @return array
+ */
+function atomic_blocks_newsletter_block_attributes() {
+	return [
+		'buttonAlignment'             => [
+			'type'    => 'string',
+			'default' => 'left',
+		],
+		'buttonBackgroundColor'       => [
+			'type'    => 'string',
+		],
+		'customButtonBackgroundColor' => [
+			'type' => 'string',
+		],
+		'buttonClass'                 => [
+			'type'    => 'string',
+			'default' => 'ab-button',
+		],
+		'buttonShape'                 => [
+			'type'    => 'string',
+			'default' => 'ab-button-shape-rounded',
+		],
+		'buttonSize'                  => [
+			'type'    => 'string',
+			'default' => 'ab-button-size-medium',
+		],
+		'buttonText'                  => [
+			'type'    => 'string',
+			'default' => esc_html__( 'Subscribe', 'atomic-blocks' ),
+		],
+		'buttonTextColor'             => [
+			'type'    => 'string',
+		],
+		'customButtonTextColor'       => [
+			'type' => 'string',
+		],
+		'buttonTextProcessing'        => [
+			'type'    => 'string',
+			'default' => esc_html__( 'Please wait...', 'atomic-blocks' ),
+		],
+		'emailInputLabel'             => [
+			'type'    => 'string',
+			'default' => esc_html__( 'Your Email Address', 'atomic-blocks' ),
+		],
+		'mailingList'                 => [
+			'type' => 'string',
+		],
+		'mailingListProvider'         => [
+			'type'    => 'string',
+			'default' => 'mailchimp',
+		],
+		'successMessage'              => [
+			'type'    => 'string',
+			'default' => esc_html__( 'Thanks for subscribing.', 'atomic-blocks' ),
+		],
+		'containerPadding'            => [
+			'type'    => 'number',
+			'default' => 0,
+		],
+		'containerMarginTop'          => [
+			'type'    => 'number',
+			'default' => 0,
+		],
+		'containerMarginBottom'       => [
+			'type'    => 'number',
+			'default' => 0,
+		],
+		'backgroundColor'             => [
+			'type' => 'string',
+		],
+		'customBackgroundColor'       => [
+			'type' => 'string',
+		],
+		'textColor'                   => [
+			'type' => 'string',
+		],
+		'customTextColor'             => [
+			'type' => 'string',
+		],
+	];
+}

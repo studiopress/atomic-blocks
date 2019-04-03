@@ -19,11 +19,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
 /**
  * Initialize the blocks
  */
 function atomic_blocks_loader() {
+
+	$atomic_blocks_includes_dir = plugin_dir_path( __FILE__ ) . 'includes/';
+	$atomic_blocks_src_dir      = plugin_dir_path( __FILE__ ) . 'src/';
+	$atomic_blocks_dist_dir     = plugin_dir_path( __FILE__ ) . 'dist/';
+
 	/**
 	 * Load the blocks functionality
 	 */
@@ -43,6 +47,27 @@ function atomic_blocks_loader() {
 	 * Load Post Grid PHP
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-post-grid/index.php';
+
+	/**
+	 * Load the newsletter block and related dependencies.
+	 */
+	if ( PHP_VERSION_ID >= 50600 ) {
+		if ( ! class_exists( '\DrewM\MailChimp\MailChimp' ) ) {
+			require_once $atomic_blocks_includes_dir . 'libraries/drewm/mailchimp-api/MailChimp.php';
+		}
+
+		require_once $atomic_blocks_includes_dir . 'exceptions/class-api-error-exception.php';
+		require_once $atomic_blocks_includes_dir . 'exceptions/class-mailchimp-api-error-exception.php';
+		require_once $atomic_blocks_includes_dir . 'interfaces/newsletter-provider-interface.php';
+		require_once $atomic_blocks_includes_dir . 'classes/class-mailchimp.php';
+		require_once $atomic_blocks_includes_dir . 'newsletter/newsletter-functions.php';
+		require_once $atomic_blocks_src_dir . 'blocks/block-newsletter/index.php';
+	}
+
+	/**
+	 * Compatibility functionality.
+	 */
+	require_once $atomic_blocks_includes_dir . 'compat.php';
 }
 add_action( 'plugins_loaded', 'atomic_blocks_loader' );
 
@@ -90,3 +115,12 @@ function atomic_blocks_image_sizes() {
 	add_image_size( 'ab-block-post-grid-square', 600, 600, true );
 }
 add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
+
+/**
+ * Returns the full path and filename of the main Atomic Blocks plugin file.
+ *
+ * @return string
+ */
+function atomic_blocks_main_plugin_file() {
+	return __FILE__;
+}
