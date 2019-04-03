@@ -82,6 +82,9 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**1.6.0**
+* Add the Newsletter block.
+
 **1.5.5**
 * Add several features to Post/Page Grid block.
 

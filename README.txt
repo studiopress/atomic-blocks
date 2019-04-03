@@ -3,8 +3,8 @@ Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
-Tested up to: 5.1
-Stable tag: 1.5.5
+Tested up to: 5.1.1
+Stable tag: 1.6.0
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,9 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 11. Spacer and Divider Block
 
 == Changelog ==
+
+= 1.6.0 =
+* Add the Newsletter block.
 
 = 1.5.5 =
 * Add several features to Post/Page Grid block.
