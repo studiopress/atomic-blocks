@@ -7,6 +7,7 @@ import icons from './icons';
 import map from 'lodash/map';
 import layoutColumns from './layout-columns';
 import MarginSettings from './../../../utils/components/margin';
+import Padding from './../../../utils/components/padding';
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -126,6 +127,17 @@ export default class Inspector extends Component {
 						marginBottomMin="0"
 						marginBottomMax="200"
 						onChangeMarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
+					/>
+
+					<Padding
+						// Enable padding on all sides
+						paddingEnable={ true }
+						paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
+						paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
+						padding={ attributes.containerPadding }
+						paddingMin="0"
+						paddingMax="100"
+						onChangePadding={ containerPadding => setAttributes( { containerPadding } ) }
 					/>
 				</PanelBody>
 			</Fragment>

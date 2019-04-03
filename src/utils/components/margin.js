@@ -2,7 +2,7 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { RangeControl } = wp.components;
 
-export default function MarginSettings( props ) {
+export default function Margin( props ) {
 	const {
 		// Margin top props
 		marginTop,
