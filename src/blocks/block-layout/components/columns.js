@@ -19,26 +19,23 @@ export default class Columns extends Component {
 
 	render() {
 
-		// Setup the attributes
-		const {
-			attributes: {
-				columns,
-				align,
-				layout,
-			}
-		} = this.props;
+		const { attributes } = this.props;
 
 		const className = classnames( [
 			this.props.className,
-			'ab-layout-columns-' + columns,
-			layout,
+			'ab-layout-columns-' + attributes.columns,
+			attributes.layout,
 		], {
-			[ 'align' + align ]: align,
+			[ 'align' + attributes.align ]: attributes.align,
 		} )
 
 		return (
 			<div
 				className={ className ? className : undefined }
+				style={ {
+					marginTop: attributes.marginTop ? attributes.marginTop : null,
+					marginBottom: attributes.marginBottom ? attributes.marginBottom : null,
+				} }
 			>
 				{ this.props.children }
 			</div>

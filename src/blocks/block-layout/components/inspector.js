@@ -47,8 +47,6 @@ export default class Inspector extends Component {
 				columns,
 				columnsGap,
 				layout,
-				marginTop,
-				marginBottom,
 				responsiveToggle,
 			},
 			attributes,
@@ -120,14 +118,14 @@ export default class Inspector extends Component {
 						marginEnableTop={ true }
 						marginTop={ attributes.marginTop }
 						marginTopMin="0"
-						marginTopMax="100"
-						onChangemarginTop={ marginTop => setAttributes( { marginTop } ) }
+						marginTopMax="200"
+						onChangeMarginTop={ marginTop => setAttributes( { marginTop } ) }
 						// Bottom margin
 						marginEnableBottom={ true }
 						marginBottom={ attributes.marginBottom }
 						marginBottomMin="0"
-						marginBottomMax="100"
-						onChangemarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
+						marginBottomMax="200"
+						onChangeMarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
 					/>
 				</PanelBody>
 			</Fragment>
