@@ -34,7 +34,7 @@ export default class NewsletterContainer extends Component {
 		let backgroundColorClass;
 
 		if (attributes.customBackgroundColor) {
-			backgroundColorClass = 'has-custom-background-color';
+			backgroundColorClass = 'ab-has-custom-background-color';
 		} else {
 			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
 		}
@@ -43,7 +43,7 @@ export default class NewsletterContainer extends Component {
 		let textColorClass;
 
 		if (attributes.customTextColor) {
-			textColorClass = 'has-custom-text-color';
+			textColorClass = 'ab-has-custom-text-color';
 		} else {
 			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
 		}

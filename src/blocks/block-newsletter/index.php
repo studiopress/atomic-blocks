@@ -82,7 +82,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	}
 
 	if ( ! empty( $attributes['customBackgroundColor'] ) ) {
-		$wrapper_class .= ' has-custom-background-color';
+		$wrapper_class .= ' ab-has-custom-background-color';
 	}
 
 	if ( ! empty( $attributes['textColor'] ) ) {
@@ -90,7 +90,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	}
 
 	if ( ! empty( $attributes['customTextColor'] ) ) {
-		$wrapper_class .= ' has-custom-text-color';
+		$wrapper_class .= ' ab-has-custom-text-color';
 	}
 
 	/* Button styles. */

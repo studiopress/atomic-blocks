@@ -61,7 +61,7 @@ class Edit extends Component {
 		let buttonBackgroundColorClass;
 
 		if (attributes.customButtonBackgroundColor) {
-			buttonBackgroundColorClass = 'has-custom-background-color';
+			buttonBackgroundColorClass = 'ab-has-custom-background-color';
 		} else {
 			buttonBackgroundColorClass = attributes.buttonBackgroundColor ? 'has-' + attributes.buttonBackgroundColor + '-background-color' : null;
 		}
@@ -70,7 +70,7 @@ class Edit extends Component {
 		let buttonTextColorClass;
 
 		if (attributes.customButtonTextColor) {
-			buttonTextColorClass = 'has-custom-text-color';
+			buttonTextColorClass = 'ab-has-custom-text-color';
 		} else {
 			buttonTextColorClass = attributes.buttonTextColor ? 'has-' + attributes.buttonTextColor + '-color' : null;
 		}
