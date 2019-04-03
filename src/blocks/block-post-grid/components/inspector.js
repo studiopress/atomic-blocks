@@ -2,11 +2,15 @@
  * Inspector Controls
  */
 
+import compact from 'lodash/compact';
+import map from 'lodash/map';
+import get from 'lodash/get';
+
 // Setup the block
 const { __ } = wp.i18n;
-const {
-	Component,
-} = wp.element;
+const { Component } = wp.element;
+const { compose } = wp.compose;
+const { withSelect } = wp.data;
 
 // Import block components
 const {
@@ -28,10 +32,25 @@ const MAX_POSTS_COLUMNS = 4;
 /**
  * Create an Inspector Controls wrapper Component
  */
-export default class Inspector extends Component {
+class Inspector extends Component {
 
     constructor( props ) {
 		super( ...arguments );
+	}
+
+	getImageSizeOptions() {
+		const { imageSizes, image } = this.props;
+
+		return compact( map( imageSizes, ( { name, slug } ) => {
+			const sizeUrl = get( image, [ 'media_details', 'sizes', slug, 'source_url' ] );
+			if ( ! sizeUrl ) {
+				return null;
+			}
+			return {
+				value: sizeUrl,
+				label: name,
+			};
+		} ) );
 	}
 
 	render() {
@@ -87,12 +106,26 @@ export default class Inspector extends Component {
         // Check the post type
 		const isPost = attributes.postType === 'post';
 
+		const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
+		console.log( getSettings.image );
+
+		const imageSizeOptions = this.getImageSizeOptions();
+
+		//console.log(imageSizeOptions);
+
 		return (
             <InspectorControls>
                 <PanelBody
                     title={ __( 'Post and Page Grid Settings', 'atomic-blocks' ) }
                     className={ isPost ? null : 'atomic-blocks-hide-query' }
                 >
+					<SelectControl
+						label={ __( 'Image Size' ) }
+						value={ attributes.imageSizeUrl }
+						options={ imageSizeOptions }
+						onChange={ ( value ) => this.props.setAttributes( { imageUrl: value } ) }
+					/>
+
                     <SelectControl
                         label={ __( 'Content Type', 'atomic-blocks' ) }
                         options={ postTypeOptions }
@@ -238,3 +271,18 @@ export default class Inspector extends Component {
 		);
 	}
 }
+
+export default compose( [
+	withSelect( ( select, props ) => {
+		const { getMedia } = select( 'core' );
+		const { getEditorSettings } = select( 'core/editor' );
+		const { id } = props.attributes;
+		const { imageSizes } = getEditorSettings();
+
+		return {
+			image: id ? getMedia( id ) : null,
+			imageSizes,
+		};
+	} ),
+] )( Inspector );
+
