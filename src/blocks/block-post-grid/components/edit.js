@@ -8,6 +8,12 @@ import moment from 'moment';
 import classnames from 'classnames';
 import Inspector from './inspector';
 
+import compact from 'lodash/compact';
+import map from 'lodash/map';
+import get from 'lodash/get';
+
+const { compose } = wp.compose;
+
 const { Component, Fragment } = wp.element;
 
 const { __ } = wp.i18n;
@@ -30,12 +36,34 @@ const {
 } = wp.editor;
 
 class LatestPostsBlock extends Component {
+
+	getImageSizeOptions() {
+		const { imageSizes, image } = this.props;
+
+		return compact( map( imageSizes, ( { name, slug } ) => {
+			const sizeUrl = get( image, [ 'media_details', 'sizes', slug, 'source_url' ] );
+			if ( ! sizeUrl ) {
+				return null;
+			}
+			return {
+				value: sizeUrl,
+				label: name,
+			};
+		} ) );
+	}
+
 	render() {
 		const {
 			attributes,
 			setAttributes,
 			latestPosts
 		} = this.props;
+
+		// const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
+		// console.log( getSettings );
+
+		// const imageSizeOptions = this.getImageSizeOptions();
+		// console.log(imageSizeOptions);
 
 		// Check the image orientation
 		const isLandscape = attributes.imageCrop === 'landscape';
@@ -137,6 +165,8 @@ class LatestPostsBlock extends Component {
 									post.featured_image_src && attributes.displayPostImage ? 'has-post-thumbnail' : null
 								) }
 							>
+							{/* { console.log(post) } */}
+							{ console.log( this.getImageSizeOptions() ) }
 								{
 									attributes.displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
 										<div className="ab-block-post-grid-image">
@@ -192,31 +222,44 @@ class LatestPostsBlock extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
-	const {
-		order,
-		categories,
-	} = props.attributes;
+export default compose( [
+	withSelect( ( select, props ) => {
+		// Latest Posts
+		const {
+			order,
+			categories,
+		} = props.attributes;
 
-	const { getEntityRecords } = select( 'core', 'atomic-blocks' );
+		const { getEntityRecords } = select( 'core', 'atomic-blocks' );
 
-	const latestPostsQuery = pickBy( {
-		categories,
-		order,
-		orderby: props.attributes.orderBy,
-		per_page: props.attributes.postsToShow,
-		offset: props.attributes.offset,
-	}, ( value ) => ! isUndefined( value ) );
+		const latestPostsQuery = pickBy( {
+			categories,
+			order,
+			orderby: props.attributes.orderBy,
+			per_page: props.attributes.postsToShow,
+			offset: props.attributes.offset,
+		}, ( value ) => ! isUndefined( value ) );
 
-	const categoriesListQuery = {
-		per_page: 100,
-	};
+		const categoriesListQuery = {
+			per_page: 100,
+		};
 
-	return {
-		latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
-		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
-	};
-} )( LatestPostsBlock );
+		// Media
+		const { getMedia } = select( 'core' );
+		const { getEditorSettings } = select( 'core/editor' );
+		const { id } = props.attributes;
+		const { imageSizes } = getEditorSettings();
+
+		return {
+			// Latest posts
+			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
+			categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
+			// Media
+			image: 8187 ? getMedia( 8187 ) : null,
+			imageSizes,
+		};
+	} ),
+] )( LatestPostsBlock );
 
 // Truncate excerpt
 function truncate(str, no_words) {
