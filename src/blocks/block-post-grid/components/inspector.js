@@ -6,6 +6,9 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 
+import compact from 'lodash/compact';
+import map from 'lodash/map';
+
 // Import block components
 const {
   InspectorControls,
@@ -30,6 +33,18 @@ export default class Inspector extends Component {
 
     constructor( props ) {
 		super( ...arguments );
+	}
+
+	/* Get the available image sizes */
+	imageSizeSelect() {
+		const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
+
+		return compact( map( getSettings.imageSizes, ( { name, slug } ) => {
+			return {
+				value: slug,
+				label: name,
+			};
+		} ) );
 	}
 
 	render() {
@@ -85,18 +100,21 @@ export default class Inspector extends Component {
         // Check the post type
 		const isPost = attributes.postType === 'post';
 
+		// Get the image size options
+		const imageSizeOptions = this.imageSizeSelect();
+
 		return (
             <InspectorControls>
                 <PanelBody
                     title={ __( 'Post and Page Grid Settings', 'atomic-blocks' ) }
                     className={ isPost ? null : 'atomic-blocks-hide-query' }
                 >
-					{/* <SelectControl
+					<SelectControl
 						label={ __( 'Image Size' ) }
-						value={ attributes.imageSizeUrl }
+						value={ attributes.imageSize }
 						options={ imageSizeOptions }
-						onChange={ ( value ) => this.props.setAttributes( { imageUrl: value } ) }
-					/> */}
+						onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
+					/>
 
                     <SelectControl
                         label={ __( 'Content Type', 'atomic-blocks' ) }

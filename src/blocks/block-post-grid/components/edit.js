@@ -37,26 +37,37 @@ const {
 
 class LatestPostsBlock extends Component {
 
-	getImageSizeOptions() {
-		const { imageSizes, image } = this.props;
+	// need two functions to do this. one function should return the label and slug
+	// for use in the inspector, the other should use the slug to grab the right
+	// image size for use in the editor.
 
-		return compact( map( imageSizes, ( { name, slug } ) => {
-			const sizeUrl = get( image, [ 'media_details', 'sizes', slug, 'source_url' ] );
-			if ( ! sizeUrl ) {
-				return null;
-			}
-			return {
-				value: sizeUrl,
-				label: name,
-			};
-		} ) );
+	// need to figure out how to pass the featured image into this.
+
+	// getImageSizeOptions() {
+	// 	const { imageSizes, image } = this.props;
+
+	// 	return compact( map( imageSizes, ( { name, slug } ) => {
+	// 		const sizeUrl = get( image, [ 'media_details', 'sizes', slug, 'source_url' ] );
+	// 		if ( ! sizeUrl ) {
+	// 			return null;
+	// 		}
+	// 		return {
+	// 			value: sizeUrl,
+	// 			label: name,
+	// 		};
+	// 	} ) );
+	// }
+
+	getImageSize( imageID ) {
+		const getMediaz = get( wp.data.select( 'core' ).getMedia( imageID ), [ 'media_details', 'sizes', this.props.attributes.imageSize, 'source_url' ] );
+		return { getMediaz };
 	}
 
 	render() {
 		const {
 			attributes,
 			setAttributes,
-			latestPosts
+			latestPosts,
 		} = this.props;
 
 		// const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
@@ -64,6 +75,16 @@ class LatestPostsBlock extends Component {
 
 		// const imageSizeOptions = this.getImageSizeOptions();
 		// console.log(imageSizeOptions);
+
+		// const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
+		// console.log( getSettings );
+
+		// const getMediaz = wp.data.select( 'core' ).getMedia( 8187 );
+		// console.log(getMediaz);
+
+		//console.log(this.getImageSize(8187));
+
+		//console.log(this.getImageSizeOptions());
 
 		// Check the image orientation
 		const isLandscape = attributes.imageCrop === 'landscape';
@@ -73,6 +94,8 @@ class LatestPostsBlock extends Component {
 
 		// Check the post type
 		const isPost = attributes.postType === 'post';
+
+		//const featuredImageSize = getImageSize(this.state.blockSetting);
 
 		if ( ! hasPosts ) {
 			return (
@@ -165,8 +188,15 @@ class LatestPostsBlock extends Component {
 									post.featured_image_src && attributes.displayPostImage ? 'has-post-thumbnail' : null
 								) }
 							>
-							{/* { console.log(post) } */}
-							{ console.log( this.getImageSizeOptions() ) }
+							{/* { console.log(post.featured_media) } */}
+
+							{/* { this.getImageSize( post.featured_media ) } */}
+
+							{/* { console.log( this.getImageSizeOptions() ) } */}
+
+							{ console.log(this.getImageSize(8201)) }
+
+							{/* { console.log( post.featured_media ) } */}
 								{
 									attributes.displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
 										<div className="ab-block-post-grid-image">
@@ -255,7 +285,7 @@ export default compose( [
 			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
 			categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 			// Media
-			image: 8187 ? getMedia( 8187 ) : null,
+			image: 8201 ? getMedia( 8201 ) : null,
 			imageSizes,
 		};
 	} ),

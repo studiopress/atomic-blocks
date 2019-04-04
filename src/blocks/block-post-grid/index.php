@@ -385,6 +385,9 @@ function atomic_blocks_register_block_core_latest_posts() {
 					'type'    => 'string',
 					'default' => 'h2',
 				),
+				'imageSize'     => array(
+					'type'    => 'string',
+				),
 				'url'                 => array(
 					'type'    => 'string',
 					'source' => 'attribute',
