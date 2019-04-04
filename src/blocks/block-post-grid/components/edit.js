@@ -12,8 +12,6 @@ import compact from 'lodash/compact';
 import map from 'lodash/map';
 import get from 'lodash/get';
 
-import GridImageSize from './image';
-
 const { compose } = wp.compose;
 
 const { Component, Fragment } = wp.element;
@@ -39,35 +37,19 @@ const {
 
 class LatestPostsBlock extends Component {
 
-	// need two functions to do this. one function should return the label and slug
-	// for use in the inspector, the other should use the slug to grab the right
-	// image size for use in the editor.
+	/* Retrieve the path to the image based on the slug selected in the inspector */
+	getImageSize() {
+		const getSizeURL = get(
+			/* getMedia accepts an image id and returns an object with all the image data */
+			wp.data.select( 'core' ).getMedia( 8201 ), [
+				'media_details',
+				'sizes',
+				this.props.attributes.imageSize,
+				'source_url'
+			]
+		);
 
-	// need to figure out how to pass the featured image into this.
-
-	// getImageSizeOptions() {
-	// 	const { imageSizes, image } = this.props;
-
-	// 	return compact( map( imageSizes, ( { name, slug } ) => {
-	// 		const sizeUrl = get( image, [ 'media_details', 'sizes', slug, 'source_url' ] );
-	// 		if ( ! sizeUrl ) {
-	// 			return null;
-	// 		}
-	// 		return {
-	// 			value: sizeUrl,
-	// 			label: name,
-	// 		};
-	// 	} ) );
-	// }
-
-	// try making this into a <ImageSize> component and passing in the featured image id
-
-	getImageSize( imageID ) {
-		const getSizeURL = get( wp.data.select( 'core' ).getMedia( imageID ), [ 'media_details', 'sizes', this.props.attributes.imageSize, 'source_url' ] );
-
-		return {
-			value: getSizeURL
-		};
+		return { value: getSizeURL };
 	}
 
 	render() {
@@ -75,6 +57,7 @@ class LatestPostsBlock extends Component {
 			attributes,
 			setAttributes,
 			latestPosts,
+			id,
 		} = this.props;
 
 		// Check the image orientation
@@ -135,7 +118,7 @@ class LatestPostsBlock extends Component {
 		// Get the post title tag
 		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3"
 
-		const imageSize = this.getImageSize(8201);
+		const imageSize = this.getImageSize();
 
 		return (
 			<Fragment>
@@ -180,19 +163,13 @@ class LatestPostsBlock extends Component {
 								) }
 							>
 
-							{/* { console.log(post.featured_media) } */}
+								{ /* Outputs image size path based on image size slug via inspector */
+									console.log( this.getImageSize().value )
+								}
 
-							{/* { this.getImageSize( post.featured_media ) } */}
-
-							{/* { console.log( this.getImageSizeOptions() ) } */}
-
-							{/* { console.log(this.getImageSize(8201)) } */}
-
-							{ console.log( imageSize.value ) }
-
-							{/* { console.log( post.featured_media ) } */}
-
-							{/* { console.log( get( wp.data.select( 'core' ).getMedia( post.featured_media ), [ 'media_details', 'sizes', this.props.attributes.imageSize, 'source_url' ] ) ) } */}
+								{ /* Outputs featured image id */
+									console.log( post.featured_media.toString() )
+								}
 
 								{
 									attributes.displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
@@ -200,6 +177,8 @@ class LatestPostsBlock extends Component {
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<img
 													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+													// Output the dynamic image
+													// src={ this.getImageSize().value }
 													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
 												/>
 											</a>
@@ -275,20 +254,20 @@ export default compose( [
 			per_page: 100,
 		};
 
-		// Media
+		// Image sizes
 		const { getMedia } = select( 'core' );
 		const { getEditorSettings } = select( 'core/editor' );
 		const { id } = props.attributes;
-		const { imageSizes } = getEditorSettings();
 
 		return {
 			// Latest posts
 			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
 			categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
-			// Media
+
+			// Image sizes
 			// Hardcoding a image id in here for testing
+			// Ideally we pass post.featured_media.toString() to this
 			image: 8201 ? getMedia( 8201 ) : null,
-			imageSizes,
 		};
 	} ),
 ] )( LatestPostsBlock );
