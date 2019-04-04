@@ -12,6 +12,8 @@ import compact from 'lodash/compact';
 import map from 'lodash/map';
 import get from 'lodash/get';
 
+import GridImageSize from './image';
+
 const { compose } = wp.compose;
 
 const { Component, Fragment } = wp.element;
@@ -58,9 +60,14 @@ class LatestPostsBlock extends Component {
 	// 	} ) );
 	// }
 
+	// try making this into a <ImageSize> component and passing in the featured image id
+
 	getImageSize( imageID ) {
-		const getMediaz = get( wp.data.select( 'core' ).getMedia( imageID ), [ 'media_details', 'sizes', this.props.attributes.imageSize, 'source_url' ] );
-		return { getMediaz };
+		const getSizeURL = get( wp.data.select( 'core' ).getMedia( imageID ), [ 'media_details', 'sizes', this.props.attributes.imageSize, 'source_url' ] );
+
+		return {
+			value: getSizeURL
+		};
 	}
 
 	render() {
@@ -70,22 +77,6 @@ class LatestPostsBlock extends Component {
 			latestPosts,
 		} = this.props;
 
-		// const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
-		// console.log( getSettings );
-
-		// const imageSizeOptions = this.getImageSizeOptions();
-		// console.log(imageSizeOptions);
-
-		// const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
-		// console.log( getSettings );
-
-		// const getMediaz = wp.data.select( 'core' ).getMedia( 8187 );
-		// console.log(getMediaz);
-
-		//console.log(this.getImageSize(8187));
-
-		//console.log(this.getImageSizeOptions());
-
 		// Check the image orientation
 		const isLandscape = attributes.imageCrop === 'landscape';
 
@@ -94,8 +85,6 @@ class LatestPostsBlock extends Component {
 
 		// Check the post type
 		const isPost = attributes.postType === 'post';
-
-		//const featuredImageSize = getImageSize(this.state.blockSetting);
 
 		if ( ! hasPosts ) {
 			return (
@@ -146,6 +135,8 @@ class LatestPostsBlock extends Component {
 		// Get the post title tag
 		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3"
 
+		const imageSize = this.getImageSize(8201);
+
 		return (
 			<Fragment>
 				<Inspector
@@ -188,15 +179,21 @@ class LatestPostsBlock extends Component {
 									post.featured_image_src && attributes.displayPostImage ? 'has-post-thumbnail' : null
 								) }
 							>
+
 							{/* { console.log(post.featured_media) } */}
 
 							{/* { this.getImageSize( post.featured_media ) } */}
 
 							{/* { console.log( this.getImageSizeOptions() ) } */}
 
-							{ console.log(this.getImageSize(8201)) }
+							{/* { console.log(this.getImageSize(8201)) } */}
+
+							{ console.log( imageSize.value ) }
 
 							{/* { console.log( post.featured_media ) } */}
+
+							{/* { console.log( get( wp.data.select( 'core' ).getMedia( post.featured_media ), [ 'media_details', 'sizes', this.props.attributes.imageSize, 'source_url' ] ) ) } */}
+
 								{
 									attributes.displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
 										<div className="ab-block-post-grid-image">
@@ -211,6 +208,10 @@ class LatestPostsBlock extends Component {
 										null
 									)
 								}
+
+								{/* { <GridImageSize
+									url={ imageSize.value }
+								></GridImageSize> } */}
 
 								<div className="ab-block-post-grid-text">
 									<header className="ab-block-post-grid-header">
@@ -285,6 +286,7 @@ export default compose( [
 			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
 			categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 			// Media
+			// Hardcoding a image id in here for testing
 			image: 8201 ? getMedia( 8201 ) : null,
 			imageSizes,
 		};
