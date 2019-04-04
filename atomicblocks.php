@@ -44,11 +44,6 @@ function atomic_blocks_loader() {
 	 * Load Post Grid PHP
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-post-grid/index.php';
-
-	/**
-	 * Load Layout PHP
-	 */
-	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-layout-inner/index.php';
 }
 add_action( 'plugins_loaded', 'atomic_blocks_loader' );
 
