@@ -60,10 +60,14 @@ export default class Inspector extends Component {
 					// Show the column settings once a layout is selected
 					<Fragment>
 						<PanelBody
+							title={ __( 'General', 'atomic-blocks' ) }
+							initialOpen={ true }
 							className="ab-column-select-panel"
 						>
 							<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
-							<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
+							<ButtonGroup
+								aria-label={ __( 'Column Layout', 'atomic-blocks' ) }
+							>
 								{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
 									<Tooltip text={ name }>
 										<Button
@@ -82,9 +86,10 @@ export default class Inspector extends Component {
 									</Tooltip>
 								) ) }
 							</ButtonGroup>
-						</PanelBody>
+							<p><i>{ __( 'Change the layout of your columns.', 'atomic-blocks' ) }</i></p>
 
-						<PanelBody>
+							<hr />
+
 							<RangeControl
 								label={ __( 'Column Gap', 'atomic-blocks' ) }
 								help={ __( 'Adjust the spacing between columns.', 'atomic-blocks' ) }
@@ -94,6 +99,9 @@ export default class Inspector extends Component {
 								max={ 10 }
 								step={ 1 }
 							/>
+
+							<hr />
+
 							<ToggleControl
 								label={ __( 'Responsive Columns', 'atomic-blocks' ) }
 								help={ __( 'Columns will be adjusted to fit on tablets and mobile devices.', 'atomic-blocks' ) }
@@ -121,6 +129,8 @@ export default class Inspector extends Component {
 						marginBottomMax="200"
 						onChangeMarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
 					/>
+
+					<hr />
 
 					<Padding
 						// Padding Top

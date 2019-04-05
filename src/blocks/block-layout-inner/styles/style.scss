@@ -15,7 +15,7 @@
 
 [data-type="atomic-blocks/ab-layout-column"],
 .ab-block-layout-column {
-	display: inline-block;
+	display: block;
 	vertical-align: top;
 	min-width: 0;
 
@@ -33,9 +33,8 @@
 }
 
 .ab-block-layout-column-inside {
-	display: inline-block;
+	display: block;
 	width: 100%;
-	border-color: #272c30;
 }
 
 /* Grid gap classes */
