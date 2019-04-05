@@ -2,7 +2,9 @@
  * Inspector Controls
  */
 
- // Import icons
+ /**
+ * External dependencies.
+ */
 import map from 'lodash/map';
 import layoutColumns from './layout-columns';
 import Margin from './../../../utils/components/margin';
@@ -115,49 +117,86 @@ export default class Inspector extends Component {
 					title={ __( 'Margin and Padding', 'atomic-blocks' ) }
 					initialOpen={ false }
 				>
-					<Margin
-						// Top margin
-						marginEnableTop={ true }
-						marginTop={ attributes.marginTop }
-						marginTopMin="0"
-						marginTopMax="200"
-						onChangeMarginTop={ marginTop => setAttributes( { marginTop } ) }
-						// Bottom margin
-						marginEnableBottom={ true }
-						marginBottom={ attributes.marginBottom }
-						marginBottomMin="0"
-						marginBottomMax="200"
-						onChangeMarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
+					<ToggleControl
+						label={ __( 'Sync Margin', 'atomic-blocks' ) }
+						help={ __( 'Top and bottom margins will have the same value.', 'atomic-blocks' ) }
+						checked={ attributes.marginSync }
+						onChange={ () => this.props.setAttributes( { marginSync: ! attributes.marginSync } ) }
 					/>
+
+					{ ! attributes.marginSync ?
+						<Margin
+							// Top margin
+							marginEnableTop={ true }
+							marginTop={ attributes.marginTop }
+							marginTopMin="0"
+							marginTopMax="200"
+							onChangeMarginTop={ marginTop => setAttributes( { marginTop } ) }
+							// Bottom margin
+							marginEnableBottom={ true }
+							marginBottom={ attributes.marginBottom }
+							marginBottomMin="0"
+							marginBottomMax="200"
+							onChangeMarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
+						/>
+					:
+						<Margin
+							// Vertical margin
+							marginEnableVertical={ true }
+							marginVerticalLabel={ __( 'Margin Top/Bottom', 'atomic-blocks' ) }
+							marginVertical={ attributes.margin }
+							marginVerticalMin="0"
+							marginVerticalMax="200"
+							onChangeMarginVertical={ margin => setAttributes( { margin } ) }
+						/>
+					}
 
 					<hr />
 
-					<Padding
-						// Padding Top
-						paddingEnableTop={ true }
-						paddingTop={ attributes.paddingTop }
-						paddingTopMin="0"
-						paddingTopMax="100"
-						onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
-						// Padding Right
-						paddingEnableRight={ true }
-						paddingRight={ attributes.paddingRight }
-						paddingRightMin="0"
-						paddingRightMax="100"
-						onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
-						// Padding Bottom
-						paddingEnableBottom={ true }
-						paddingBottom={ attributes.paddingBottom }
-						paddingBottomMin="0"
-						paddingBottomMax="100"
-						onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
-						// Padding Left
-						paddingEnableLeft={ true }
-						paddingLeft={ attributes.paddingLeft }
-						paddingLeftMin="0"
-						paddingLeftMax="100"
-						onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
+					<ToggleControl
+						label={ __( 'Sync Padding', 'atomic-blocks' ) }
+						help={ __( 'Padding on all sides will have the same value.', 'atomic-blocks' ) }
+						checked={ attributes.paddingSync }
+						onChange={ () => this.props.setAttributes( { paddingSync: ! attributes.paddingSync } ) }
 					/>
+
+					{ ! attributes.paddingSync ?
+						<Padding
+							// Padding Top
+							paddingEnableTop={ true }
+							paddingTop={ attributes.paddingTop }
+							paddingTopMin="0"
+							paddingTopMax="200"
+							onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
+							// Padding Right
+							paddingEnableRight={ true }
+							paddingRight={ attributes.paddingRight }
+							paddingRightMin="0"
+							paddingRightMax="200"
+							onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
+							// Padding Bottom
+							paddingEnableBottom={ true }
+							paddingBottom={ attributes.paddingBottom }
+							paddingBottomMin="0"
+							paddingBottomMax="200"
+							onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
+							// Padding Left
+							paddingEnableLeft={ true }
+							paddingLeft={ attributes.paddingLeft }
+							paddingLeftMin="0"
+							paddingLeftMax="200"
+							onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
+						/>
+					:
+						<Padding
+							// Padding
+							paddingEnable={ true }
+							padding={ attributes.padding }
+							paddingMin="0"
+							paddingMax="200"
+							onChangePadding={ padding => setAttributes( { padding } ) }
+						/>
+					}
 				</PanelBody>
 			</Fragment>
 		</InspectorControls>

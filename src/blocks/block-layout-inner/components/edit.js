@@ -55,7 +55,7 @@ class Edit extends Component {
 		let backgroundColorClass;
 
 		if (attributes.customBackgroundColor) {
-			backgroundColorClass = 'has-custom-background-color';
+			backgroundColorClass = 'ab-has-custom-background-color';
 		} else {
 			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
 		}
@@ -63,7 +63,7 @@ class Edit extends Component {
 		let textColorClass;
 
 		if (attributes.customTextColor) {
-			textColorClass = 'has-custom-text-color';
+			textColorClass = 'ab-has-custom-text-color';
 		} else {
 			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
 		}
@@ -94,8 +94,13 @@ class Edit extends Component {
 						style={ {
 							backgroundColor: backgroundColor.color,
 							color: textColor.color,
-							padding: attributes.padding ? attributes.padding + 'px' : null,
 							textAlign: attributes.textAlign ? attributes.textAlign : null,
+							marginTop: attributes.marginTop > 0 ? attributes.marginTop : null,
+							marginBottom: attributes.marginBottom > 0 ? attributes.marginBottom : null,
+							paddingTop: attributes.paddingTop > 0 ? attributes.paddingTop : null,
+							paddingRight: attributes.paddingRight > 0 ? attributes.paddingRight : null,
+							paddingBottom: attributes.paddingBottom > 0 ? attributes.paddingBottom : null,
+							paddingLeft: attributes.paddingLeft > 0 ? attributes.paddingLeft : null,
 						} }
 					>
 						<InnerBlocks

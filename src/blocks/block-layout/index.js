@@ -41,11 +41,27 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 			type: 'boolean',
 			default: true,
 		},
+		marginSync: {
+			type: 'boolean',
+			default: false,
+		},
+		margin: {
+			type: 'number',
+			default: 0,
+		},
 		marginTop: {
 			type: 'number',
 			default: 0,
 		},
 		marginBottom: {
+			type: 'number',
+			default: 0,
+		},
+		paddingSync: {
+			type: 'boolean',
+			default: false,
+		},
+		padding: {
 			type: 'number',
 			default: 0,
 		},

@@ -1,4 +1,10 @@
 /**
+ * External dependencies.
+ */
+import Margin from './../../../utils/components/margin';
+import Padding from './../../../utils/components/padding';
+
+/**
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
@@ -12,7 +18,6 @@ const {
 } = wp.editor;
 const {
 	PanelBody,
-	RangeControl,
 	withFallbackStyles,
 } = wp.components;
 
@@ -46,21 +51,60 @@ class Inspector extends Component {
 			fallbackTextColor,
 			setTextColor,
 			attributes,
+			setAttributes,
 		} = this.props;
 
 		return (
 		<InspectorControls key="inspector">
-			<PanelBody>
-				<RangeControl
-					label={ __( 'Column Padding', 'atomic-blocks' ) }
-					help={ __( 'Adjust the padding on the inside of the column.', 'atomic-blocks' ) }
-					value={ attributes.padding }
-					onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
-					min={ 0 }
-					max={ 100 }
-					step={ 1 }
+			<PanelBody
+					title={ __( 'Margin and Padding', 'atomic-blocks' ) }
+					initialOpen={ false }
+				>
+				<Margin
+					// Top margin
+					marginEnableTop={ true }
+					marginTop={ attributes.marginTop }
+					marginTopMin="0"
+					marginTopMax="200"
+					onChangeMarginTop={ marginTop => setAttributes( { marginTop } ) }
+					// Bottom margin
+					marginEnableBottom={ true }
+					marginBottom={ attributes.marginBottom }
+					marginBottomMin="0"
+					marginBottomMax="200"
+					onChangeMarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
+				/>
+
+				<hr />
+
+				<Padding
+					// Padding Top
+					paddingEnableTop={ true }
+					paddingTop={ attributes.paddingTop }
+					paddingTopMin="0"
+					paddingTopMax="100"
+					onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
+					// Padding Right
+					paddingEnableRight={ true }
+					paddingRight={ attributes.paddingRight }
+					paddingRightMin="0"
+					paddingRightMax="100"
+					onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
+					// Padding Bottom
+					paddingEnableBottom={ true }
+					paddingBottom={ attributes.paddingBottom }
+					paddingBottomMin="0"
+					paddingBottomMax="100"
+					onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
+					// Padding Left
+					paddingEnableLeft={ true }
+					paddingLeft={ attributes.paddingLeft }
+					paddingLeftMin="0"
+					paddingLeftMax="100"
+					onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
 				/>
 			</PanelBody>
+
 			<PanelColorSettings
 				title={ __( 'Color', 'atomic-blocks' ) }
 				initialOpen={ false }

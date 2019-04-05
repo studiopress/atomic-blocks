@@ -42,7 +42,27 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 		textAlign: {
 			type: 'string',
 		},
-		padding: {
+		marginTop: {
+			type: 'number',
+			default: 0,
+		},
+		marginBottom: {
+			type: 'number',
+			default: 0,
+		},
+		paddingTop: {
+			type: 'number',
+			default: 0,
+		},
+		paddingRight: {
+			type: 'number',
+			default: 0,
+		},
+		paddingBottom: {
+			type: 'number',
+			default: 0,
+		},
+		paddingLeft: {
 			type: 'number',
 			default: 0,
 		},
