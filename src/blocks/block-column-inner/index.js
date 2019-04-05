@@ -1,26 +1,30 @@
 /**
- * BLOCK: Atomic Blocks Columns InnerBlocks
+ * BLOCK: Atomic Blocks Advanced Columns InnerBlocks.
  */
 
-// Import block dependencies and components
+/**
+ * Components and dependencies.
+ */
 import Edit from './components/edit';
 import Save from './components/save';
-
-// Import CSS
 import './styles/style.scss';
 import './styles/editor.scss';
 
-// Internationalization
+/**
+ * WordPress dependencies.
+ */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
-// Register the block
-registerBlockType( 'atomic-blocks/ab-layout-column', {
-	title: __( 'AB Layout Column', 'atomic-blocks' ),
-	description: __( 'Add a layout column.', 'atomic-blocks' ),
+/**
+ * Register advanced columns block.
+ */
+registerBlockType( 'atomic-blocks/ab-column', {
+	title: __( 'AB Advanced Column', 'atomic-blocks' ),
+	description: __( 'Add a pre-defined column layout.', 'atomic-blocks' ),
 	icon: 'welcome-widgets-menus',
 	category: 'atomic-blocks',
-	parent: [ 'atomic-blocks/ab-layout' ],
+	parent: [ 'atomic-blocks/ab-columns' ],
 	keywords: [
 		__( 'column', 'atomic-blocks' ),
 		__( 'layout', 'atomic-blocks' ),
@@ -68,12 +72,12 @@ registerBlockType( 'atomic-blocks/ab-layout-column', {
 		},
 	},
 
-	// Render the block components
+	/* Render the block components. */
 	edit: props => {
 		return <Edit { ...props } />;
 	},
 
-	// Save the block markup
+	/* Save the block markup. */
 	save: props => {
 		return <Save { ...props } />;
 	},

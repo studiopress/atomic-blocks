@@ -1,26 +1,30 @@
 /**
- * BLOCK: Atomic Blocks Layout
+ * BLOCK: Atomic Blocks Advanced Columns.
  */
 
-// Import block dependencies and components
+/**
+ * Components and dependencies.
+ */
 import Edit from './components/edit';
 import Save from './components/save';
 
-// Internationalization
+/**
+ * WordPress dependencies.
+ */
 const { __ } = wp.i18n;
-
-// Register block
 const { registerBlockType } = wp.blocks;
 
-// Register the block
-registerBlockType( 'atomic-blocks/ab-layout', {
-	title: __( 'AB Layout', 'atomic-blocks' ),
-	description: __( 'Add a pre-defined layout.', 'atomic-blocks' ),
+/**
+ * Register advanced columns block InnerBlocks.
+ */
+registerBlockType( 'atomic-blocks/ab-columns', {
+	title: __( 'AB Advanced Columns', 'atomic-blocks' ),
+	description: __( 'Add a pre-defined column layout.', 'atomic-blocks' ),
 	icon: 'welcome-widgets-menus',
 	category: 'atomic-blocks',
 	keywords: [
-		__( 'layout', 'atomic-blocks' ),
 		__( 'column', 'atomic-blocks' ),
+		__( 'layout', 'atomic-blocks' ),
 		__( 'row', 'atomic-blocks' ),
 	],
 	attributes: {
@@ -83,19 +87,19 @@ registerBlockType( 'atomic-blocks/ab-layout', {
 		},
 	},
 
-	// Add alignment to block wrapper
+	/* Add alignment to block wrapper. */
 	getEditWrapperProps( { align } ) {
 		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {
 			return { 'data-align': align };
 		}
 	},
 
-	// Render the Edit component
+	/* Render the block components. */
 	edit: props => {
 		return <Edit { ...props } />;
 	},
 
-	// Render the Save component
+	/* Save the block markup. */
 	save: props => {
 		return <Save { ...props } />;
 	},

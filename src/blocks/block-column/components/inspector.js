@@ -10,19 +10,15 @@ import layoutColumns from './layout-columns';
 import Margin from './../../../utils/components/margin';
 import Padding from './../../../utils/components/padding';
 
-// Setup the block
+/**
+ * WordPress dependencies.
+ */
 const { __ } = wp.i18n;
 const {
 	Component,
 	Fragment,
 } = wp.element;
-
-// Import block components
-const {
-	InspectorControls,
-} = wp.editor;
-
-// Import Inspector components
+const { InspectorControls } = wp.editor;
 const {
 	PanelBody,
 	RangeControl,
@@ -43,7 +39,6 @@ export default class Inspector extends Component {
 
 	render() {
 
-		// Setup the attributes
 		const {
 			attributes,
 			setAttributes
@@ -59,7 +54,7 @@ export default class Inspector extends Component {
 		<InspectorControls key="inspector">
 			<Fragment>
 				{ attributes.layout &&
-					// Show the column settings once a layout is selected
+					/* Show the column settings once a layout is selected. */
 					<Fragment>
 						<PanelBody
 							title={ __( 'General', 'atomic-blocks' ) }
@@ -126,13 +121,13 @@ export default class Inspector extends Component {
 
 					{ ! attributes.marginSync ?
 						<Margin
-							// Top margin
+							/* Margin top. */
 							marginEnableTop={ true }
 							marginTop={ attributes.marginTop }
 							marginTopMin="0"
 							marginTopMax="200"
 							onChangeMarginTop={ marginTop => setAttributes( { marginTop } ) }
-							// Bottom margin
+							/* Margin bottom. */
 							marginEnableBottom={ true }
 							marginBottom={ attributes.marginBottom }
 							marginBottomMin="0"
@@ -141,7 +136,7 @@ export default class Inspector extends Component {
 						/>
 					:
 						<Margin
-							// Vertical margin
+							/* Margin top/bottom. */
 							marginEnableVertical={ true }
 							marginVerticalLabel={ __( 'Margin Top/Bottom', 'atomic-blocks' ) }
 							marginVertical={ attributes.margin }
@@ -162,25 +157,25 @@ export default class Inspector extends Component {
 
 					{ ! attributes.paddingSync ?
 						<Padding
-							// Padding Top
+							/* Padding top. */
 							paddingEnableTop={ true }
 							paddingTop={ attributes.paddingTop }
 							paddingTopMin="0"
 							paddingTopMax="200"
 							onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
-							// Padding Right
+							/* Padding right. */
 							paddingEnableRight={ true }
 							paddingRight={ attributes.paddingRight }
 							paddingRightMin="0"
 							paddingRightMax="200"
 							onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
-							// Padding Bottom
+							/* Padding bottom. */
 							paddingEnableBottom={ true }
 							paddingBottom={ attributes.paddingBottom }
 							paddingBottomMin="0"
 							paddingBottomMax="200"
 							onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
-							// Padding Left
+							/* Padding left. */
 							paddingEnableLeft={ true }
 							paddingLeft={ attributes.paddingLeft }
 							paddingLeftMin="0"
@@ -189,7 +184,7 @@ export default class Inspector extends Component {
 						/>
 					:
 						<Padding
-							// Padding
+							/* Padding. */
 							paddingEnable={ true }
 							padding={ attributes.padding }
 							paddingMin="0"

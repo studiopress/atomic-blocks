@@ -52,6 +52,7 @@ class Edit extends Component {
 			textColor,
 		} = this.props;
 
+		/* Setup the background color class. */
 		let backgroundColorClass;
 
 		if (attributes.customBackgroundColor) {
@@ -60,6 +61,7 @@ class Edit extends Component {
 			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
 		}
 
+		/* Setup the text color class. */
 		let textColorClass;
 
 		if (attributes.customTextColor) {

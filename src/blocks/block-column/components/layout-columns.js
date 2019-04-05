@@ -1,11 +1,13 @@
-/* Column layouts available for each column option */
+/**
+ * Column layouts available for each column option.
+ */
 
 import icons from './icons';
 
 const { __ } = wp.i18n;
 
 const layoutColumns = {
-	// 1 column layout
+	/* 1 column layout. */
 	1 : [
 		{
 			name: __( '1 Column', 'atomic-blocks' ),
@@ -14,7 +16,7 @@ const layoutColumns = {
 			icon: icons.oneEqual
 		},
 	],
-	// 2 column layouts
+	/* 2 column layouts. */
 	2 : [
 		{
 			name: __( '2 Columns - 50/50', 'atomic-blocks' ),
@@ -35,7 +37,7 @@ const layoutColumns = {
 			icon: icons.twoRightWide
 		},
 	],
-	// 3 column layouts
+	/* 3 column layouts. */
 	3 : [
 		{
 			name: __( '3 Columns - 33/33/33', 'atomic-blocks' ),
@@ -62,7 +64,7 @@ const layoutColumns = {
 			icon: icons.threeWideRight,
 		},
 	],
-	// 4 column layouts
+	/* 4 column layouts. */
 	4 : [
 		{
 			name: __( '4 Columns - 25/25/25/25', 'atomic-blocks' ),
@@ -83,7 +85,7 @@ const layoutColumns = {
 			icon: icons.fourRight,
 		},
 	],
-	// 5 column layout
+	/* 5 column layouts. */
 	5 : [
 		{
 			name: __( '5 Columns', 'atomic-blocks' ),
@@ -92,7 +94,7 @@ const layoutColumns = {
 			icon: icons.fiveEqual
 		},
 	],
-	// 6 column layout
+	/* 6 column layouts. */
 	6 : [
 		{
 			name: __( '6 Columns', 'atomic-blocks' ),

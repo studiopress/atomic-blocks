@@ -15,7 +15,7 @@ export default class Save extends Component {
 
 		const { attributes } = this.props;
 
-		/* Setup the background color class */
+		/* Setup the background color class. */
 		let backgroundColorClass;
 
 		if (attributes.customBackgroundColor) {
@@ -24,7 +24,7 @@ export default class Save extends Component {
 			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
 		}
 
-		/* Setup the text color class */
+		/* Setup the text color class. */
 		let textColorClass;
 
 		if (attributes.customTextColor) {

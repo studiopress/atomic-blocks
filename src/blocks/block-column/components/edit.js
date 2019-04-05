@@ -1,23 +1,25 @@
-// Import block dependencies and components
+/**
+ * External dependencies.
+ */
 import classnames from 'classnames';
-import Inspector from './inspector';
 import Columns from './columns';
-import memoize from 'memize';
-import _times from 'lodash/times';
 import icons from './icons';
+import Inspector from './inspector';
 import layoutColumns from './layout-columns';
+import memoize from 'memize';
 import map from 'lodash/map';
+import _times from 'lodash/times';
 
+/**
+ * WordPress dependencies.
+ */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-
-// Register editor components
 const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InnerBlocks,
 } = wp.editor;
-
 const {
 	Placeholder,
 	ButtonGroup,
@@ -25,12 +27,12 @@ const {
 	Button,
 } = wp.components;
 
-// Set allowed blocks and media
-const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-layout-column' ];
+/* Set allowed blocks and media. */
+const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-column' ];
 
-// Get the layout template
+/* Get the column template. */
 const getLayoutTemplate = memoize( ( columns ) => {
-	return _times( columns, () => [ 'atomic-blocks/ab-layout-column' ] );
+	return _times( columns, () => [ 'atomic-blocks/ab-column' ] );
 } );
 
 export default class Edit extends Component {
@@ -45,7 +47,6 @@ export default class Edit extends Component {
 
 	render() {
 
-		// Setup the attributes
 		const {
 			attributes,
 			isSelected,
@@ -94,7 +95,7 @@ export default class Edit extends Component {
 			},
 		];
 
-		// Show the layout placeholder
+		/* Show the layout placeholder. */
 		if ( ! attributes.layout && this.state.selectLayout ) {
 			return [
 				<Fragment>
@@ -179,7 +180,6 @@ export default class Edit extends Component {
 		}
 
 		return [
-			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<BlockAlignmentToolbar
 					value={ attributes.align }
@@ -187,11 +187,9 @@ export default class Edit extends Component {
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
-			// Show the block controls on focus
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,
-			// Show the block markup in the editor
 			<Columns { ...this.props }>
 				<div
 					className={ classnames(

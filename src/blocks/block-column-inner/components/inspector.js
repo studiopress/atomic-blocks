@@ -78,25 +78,25 @@ class Inspector extends Component {
 				<hr />
 
 				<Padding
-					// Padding Top
+					/* Padding top. */
 					paddingEnableTop={ true }
 					paddingTop={ attributes.paddingTop }
 					paddingTopMin="0"
 					paddingTopMax="100"
 					onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
-					// Padding Right
+					/* Padding right. */
 					paddingEnableRight={ true }
 					paddingRight={ attributes.paddingRight }
 					paddingRightMin="0"
 					paddingRightMax="100"
 					onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
-					// Padding Bottom
+					/* Padding bottom. */
 					paddingEnableBottom={ true }
 					paddingBottom={ attributes.paddingBottom }
 					paddingBottomMin="0"
 					paddingBottomMax="100"
 					onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
-					// Padding Left
+					/* Padding left. */
 					paddingEnableLeft={ true }
 					paddingLeft={ attributes.paddingLeft }
 					paddingLeftMin="0"

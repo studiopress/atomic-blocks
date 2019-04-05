@@ -2,7 +2,7 @@
  * Editor styles for the admin
  */
 
-.edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-layout-column"] {
+.edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-column"] {
     margin-left: 0;
     margin-right: 0;
 }
@@ -154,7 +154,7 @@
 	margin-right: auto;
 }
 
-[data-type="atomic-blocks/ab-layout"] {
+[data-type="atomic-blocks/ab-columns"] {
 	.components-placeholder {
 		padding: 30px;
 	}

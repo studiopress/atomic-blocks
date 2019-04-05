@@ -1,15 +1,19 @@
 /**
- * Layout column Wrapper
+ * Column wrapper component.
  */
 
-// Setup the block
+/**
+ * WordPress dependencies.
+ */
 const { Component } = wp.element;
 
-// Import block dependencies and components
+/**
+ * Components and dependencies.
+ */
 import classnames from 'classnames';
 
 /**
- * Create a Columns wrapper Component
+ * Create a Columns wrapper Component.
  */
 export default class Columns extends Component {
 
@@ -21,6 +25,7 @@ export default class Columns extends Component {
 
 		const { attributes } = this.props;
 
+		/* Setup the wrapper classes. */
 		const className = classnames( [
 			this.props.className,
 			'ab-layout-columns-' + attributes.columns,
@@ -29,7 +34,7 @@ export default class Columns extends Component {
 			[ 'align' + attributes.align ]: attributes.align,
 		} )
 
-		/* Setup the margin styles */
+		/* Setup the margin styles. */
 		let marginValue;
 
 		if ( attributes.marginSync ) {
@@ -44,7 +49,7 @@ export default class Columns extends Component {
 			}
 		}
 
-		/* Setup the padding styles */
+		/* Setup the padding styles. */
 		let paddingValue;
 
 		if ( attributes.paddingSync ) {

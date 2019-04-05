@@ -14,9 +14,7 @@ export default class Save extends Component {
 
 	render() {
 
-		const {
-			attributes,
-		} = this.props;
+		const { attributes } = this.props;
 
 		const className = classnames( [
 			'ab-layout-column-wrap',
