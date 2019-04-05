@@ -7,6 +7,7 @@
  */
 import Edit from './components/edit';
 import Save from './components/save';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies.
@@ -20,7 +21,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType( 'atomic-blocks/ab-columns', {
 	title: __( 'AB Advanced Columns', 'atomic-blocks' ),
 	description: __( 'Add a pre-defined column layout.', 'atomic-blocks' ),
-	icon: 'welcome-widgets-menus',
+	icon: icons.blockIcon,
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'column', 'atomic-blocks' ),

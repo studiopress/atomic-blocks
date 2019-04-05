@@ -121,4 +121,12 @@ icons.sixEqual = <svg viewBox="0 0 60 30" height="26" xmlns="http://www.w3.org/2
 	<rect x="51.650" y="0" width="7" height="30" fill="#6d6a6f" />
 </svg>;
 
+/* Block icon. */
+icons.blockIcon = <svg viewBox="0 0 60 34" height="34" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd"
+	clipRule="evenodd" strokeLinejoin="round" strokeMiterlimit="1.414">
+	<rect x="38" y="0" width="12" height="34" fill="#6d6a6f" />
+	<rect x="22" y="0" width="12" height="34" fill="#6d6a6f" />
+	<rect x="6" y="0" width="12" height="34" fill="#6d6a6f" />
+</svg>;
+
 export default icons;
