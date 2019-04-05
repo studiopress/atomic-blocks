@@ -1,4 +1,4 @@
-// Layouts available for each column option
+/* Column layouts available for each column option */
 
 import icons from './icons';
 

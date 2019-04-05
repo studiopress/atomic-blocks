@@ -3,10 +3,9 @@
  */
 
  // Import icons
-import icons from './icons';
 import map from 'lodash/map';
 import layoutColumns from './layout-columns';
-import MarginSettings from './../../../utils/components/margin';
+import Margin from './../../../utils/components/margin';
 import Padding from './../../../utils/components/padding';
 
 // Setup the block
@@ -44,26 +43,20 @@ export default class Inspector extends Component {
 
 		// Setup the attributes
 		const {
-			attributes: {
-				columns,
-				columnsGap,
-				layout,
-				responsiveToggle,
-			},
 			attributes,
 			setAttributes
 		} = this.props;
 
 		let selectedRows = 1;
 
-		if ( columns ) {
-			selectedRows = parseInt( columns.toString().split('-') );
+		if ( attributes.columns ) {
+			selectedRows = parseInt( attributes.columns.toString().split('-') );
 		}
 
 		return (
 		<InspectorControls key="inspector">
 			<Fragment>
-				{ layout &&
+				{ attributes.layout &&
 					// Show the column settings once a layout is selected
 					<Fragment>
 						<PanelBody
@@ -95,26 +88,26 @@ export default class Inspector extends Component {
 							<RangeControl
 								label={ __( 'Column Gap', 'atomic-blocks' ) }
 								help={ __( 'Adjust the spacing between columns.', 'atomic-blocks' ) }
-								value={ columnsGap }
+								value={ attributes.columnsGap }
 								onChange={ ( value ) => this.props.setAttributes( { columnsGap: value } ) }
 								min={ 0 }
-								max={ 5 }
+								max={ 10 }
 								step={ 1 }
 							/>
 							<ToggleControl
 								label={ __( 'Responsive Columns', 'atomic-blocks' ) }
 								help={ __( 'Columns will be adjusted to fit on tablets and mobile devices.', 'atomic-blocks' ) }
-								checked={ responsiveToggle }
-								onChange={ () => this.props.setAttributes( { responsiveToggle: ! responsiveToggle } ) }
+								checked={ attributes.responsiveToggle }
+								onChange={ () => this.props.setAttributes( { responsiveToggle: ! attributes.responsiveToggle } ) }
 							/>
 						</PanelBody>
 					</Fragment>
 				}
 				<PanelBody
-					title={ __( 'Margin Settings', 'atomic-blocks' ) }
+					title={ __( 'Margin and Padding', 'atomic-blocks' ) }
 					initialOpen={ false }
 				>
-					<MarginSettings
+					<Margin
 						// Top margin
 						marginEnableTop={ true }
 						marginTop={ attributes.marginTop }
@@ -130,14 +123,30 @@ export default class Inspector extends Component {
 					/>
 
 					<Padding
-						// Enable padding on all sides
-						paddingEnable={ true }
-						paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
-						paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
-						padding={ attributes.containerPadding }
-						paddingMin="0"
-						paddingMax="100"
-						onChangePadding={ containerPadding => setAttributes( { containerPadding } ) }
+						// Padding Top
+						paddingEnableTop={ true }
+						paddingTop={ attributes.paddingTop }
+						paddingTopMin="0"
+						paddingTopMax="100"
+						onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
+						// Padding Right
+						paddingEnableRight={ true }
+						paddingRight={ attributes.paddingRight }
+						paddingRightMin="0"
+						paddingRightMax="100"
+						onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
+						// Padding Bottom
+						paddingEnableBottom={ true }
+						paddingBottom={ attributes.paddingBottom }
+						paddingBottomMin="0"
+						paddingBottomMax="100"
+						onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
+						// Padding Left
+						paddingEnableLeft={ true }
+						paddingLeft={ attributes.paddingLeft }
+						paddingLeftMin="0"
+						paddingLeftMax="100"
+						onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
 					/>
 				</PanelBody>
 			</Fragment>
