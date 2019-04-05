@@ -6,7 +6,7 @@
  * External dependencies.
  */
 import map from 'lodash/map';
-import layoutColumns from './layout-columns';
+import columnLayouts from './column-layouts';
 import Margin from './../../../utils/components/margin';
 import Padding from './../../../utils/components/padding';
 
@@ -65,7 +65,7 @@ export default class Inspector extends Component {
 							<ButtonGroup
 								aria-label={ __( 'Column Layout', 'atomic-blocks' ) }
 							>
-								{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
+								{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
 									<Tooltip text={ name }>
 										<Button
 											key={ key }

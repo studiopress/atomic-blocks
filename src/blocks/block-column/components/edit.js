@@ -2,10 +2,10 @@
  * External dependencies.
  */
 import classnames from 'classnames';
-import Columns from './columns';
+import Columns from './column-wrap';
 import icons from './icons';
 import Inspector from './inspector';
-import layoutColumns from './layout-columns';
+import columnLayouts from './column-layouts';
 import memoize from 'memize';
 import map from 'lodash/map';
 import _times from 'lodash/times';
@@ -141,7 +141,7 @@ export default class Edit extends Component {
 								<ButtonGroup
 									aria-label={ __( 'Select Column Layout', 'atomic-blocks' ) } className="ab-layout-selector-group"
 									>
-									{ map( layoutColumns[ selectedRows ], ( { name, key, icon, col } ) => (
+									{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
 										<Tooltip text={ name }>
 											<div className="ab-layout-selector">
 												<Button

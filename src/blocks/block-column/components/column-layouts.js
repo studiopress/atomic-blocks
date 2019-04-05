@@ -6,7 +6,7 @@ import icons from './icons';
 
 const { __ } = wp.i18n;
 
-const layoutColumns = {
+const columnLayouts = {
 	/* 1 column layout. */
 	1 : [
 		{
@@ -105,4 +105,4 @@ const layoutColumns = {
 	],
 }
 
-export default layoutColumns
+export default columnLayouts

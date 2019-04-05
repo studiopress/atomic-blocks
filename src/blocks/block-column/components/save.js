@@ -2,7 +2,7 @@
  * External dependencies.
  */
 import classnames from 'classnames';
-import Columns from './columns';
+import Columns from './column-wrap';
 
 /**
  * WordPress dependencies.
