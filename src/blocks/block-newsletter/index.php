@@ -77,6 +77,10 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	/* Wrapper color classes. */
 	$wrapper_class = '';
 
+	if ( isset( $attributes['className'] ) ) {
+		$wrapper_class .= $attributes['className'];
+	}
+
 	if ( ! empty( $attributes['backgroundColor'] ) ) {
 		$wrapper_class .= ' has-background ' . 'has-' . $attributes['backgroundColor'] . '-background-color';
 	}
