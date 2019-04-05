@@ -36,6 +36,7 @@ export default class Save extends Component {
 		return (
 			<div
 				className={ classnames(
+					this.props.className,
 					'ab-block-layout-column',
 				) }
 			>

@@ -81,6 +81,7 @@ class Edit extends Component {
 			<Fragment>
 				<div
 					className={ classnames(
+						this.props.className,
 						'ab-block-layout-column',
 					) }
 				>
