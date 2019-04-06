@@ -13,7 +13,7 @@
     grid-gap: 0 2em;
 }
 
-[data-type="atomic-blocks/ab-columns"],
+[data-type="atomic-blocks/ab-column"],
 .ab-block-layout-column {
 	display: block;
 	vertical-align: top;
@@ -32,7 +32,7 @@
 	}
 }
 
-.ab-block-layout-column-inside {
+.ab-block-layout-column {
 	display: block;
 	width: 100%;
 }

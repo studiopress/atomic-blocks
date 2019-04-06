@@ -19,6 +19,7 @@ const {
 const {
 	PanelBody,
 	withFallbackStyles,
+	ToggleControl,
 } = wp.components;
 
 /* Apply fallback styles. */
@@ -60,49 +61,85 @@ class Inspector extends Component {
 					title={ __( 'Margin and Padding', 'atomic-blocks' ) }
 					initialOpen={ false }
 				>
-				<Margin
-					// Top margin
-					marginEnableTop={ true }
-					marginTop={ attributes.marginTop }
-					marginTopMin="0"
-					marginTopMax="200"
-					onChangeMarginTop={ marginTop => setAttributes( { marginTop } ) }
-					// Bottom margin
-					marginEnableBottom={ true }
-					marginBottom={ attributes.marginBottom }
-					marginBottomMin="0"
-					marginBottomMax="200"
-					onChangeMarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
+				<ToggleControl
+					label={ __( 'Sync Margin', 'atomic-blocks' ) }
+					help={ __( 'Top and bottom margins will have the same value.', 'atomic-blocks' ) }
+					checked={ attributes.marginSync }
+					onChange={ () => this.props.setAttributes( { marginSync: ! attributes.marginSync } ) }
 				/>
+				{ ! attributes.marginSync ?
+					<Margin
+						/* Margin top. */
+						marginEnableTop={ true }
+						marginTop={ attributes.marginTop }
+						marginTopMin="0"
+						marginTopMax="200"
+						onChangeMarginTop={ marginTop => setAttributes( { marginTop } ) }
+						/* Margin bottom. */
+						marginEnableBottom={ true }
+						marginBottom={ attributes.marginBottom }
+						marginBottomMin="0"
+						marginBottomMax="200"
+						onChangeMarginBottom={ marginBottom => setAttributes( { marginBottom } ) }
+					/>
+				:
+					<Margin
+						/* Margin top/bottom. */
+						marginEnableVertical={ true }
+						marginVerticalLabel={ __( 'Margin Top/Bottom', 'atomic-blocks' ) }
+						marginVertical={ attributes.margin }
+						marginVerticalMin="0"
+						marginVerticalMax="200"
+						onChangeMarginVertical={ margin => setAttributes( { margin } ) }
+					/>
+				}
 
 				<hr />
 
-				<Padding
-					/* Padding top. */
-					paddingEnableTop={ true }
-					paddingTop={ attributes.paddingTop }
-					paddingTopMin="0"
-					paddingTopMax="100"
-					onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
-					/* Padding right. */
-					paddingEnableRight={ true }
-					paddingRight={ attributes.paddingRight }
-					paddingRightMin="0"
-					paddingRightMax="100"
-					onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
-					/* Padding bottom. */
-					paddingEnableBottom={ true }
-					paddingBottom={ attributes.paddingBottom }
-					paddingBottomMin="0"
-					paddingBottomMax="100"
-					onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
-					/* Padding left. */
-					paddingEnableLeft={ true }
-					paddingLeft={ attributes.paddingLeft }
-					paddingLeftMin="0"
-					paddingLeftMax="100"
-					onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
+				<ToggleControl
+					label={ __( 'Sync Padding', 'atomic-blocks' ) }
+					help={ __( 'Padding on all sides will have the same value.', 'atomic-blocks' ) }
+					checked={ attributes.paddingSync }
+					onChange={ () => this.props.setAttributes( { paddingSync: ! attributes.paddingSync } ) }
 				/>
+
+				{ ! attributes.paddingSync ?
+					<Padding
+						/* Padding top. */
+						paddingEnableTop={ true }
+						paddingTop={ attributes.paddingTop }
+						paddingTopMin="0"
+						paddingTopMax="200"
+						onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
+						/* Padding right. */
+						paddingEnableRight={ true }
+						paddingRight={ attributes.paddingRight }
+						paddingRightMin="0"
+						paddingRightMax="200"
+						onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
+						/* Padding bottom. */
+						paddingEnableBottom={ true }
+						paddingBottom={ attributes.paddingBottom }
+						paddingBottomMin="0"
+						paddingBottomMax="200"
+						onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
+						/* Padding left. */
+						paddingEnableLeft={ true }
+						paddingLeft={ attributes.paddingLeft }
+						paddingLeftMin="0"
+						paddingLeftMax="200"
+						onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
+					/>
+				:
+					<Padding
+						/* Padding. */
+						paddingEnable={ true }
+						padding={ attributes.padding }
+						paddingMin="0"
+						paddingMax="200"
+						onChangePadding={ padding => setAttributes( { padding } ) }
+					/>
+				}
 			</PanelBody>
 
 			<PanelColorSettings

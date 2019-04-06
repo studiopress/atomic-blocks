@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Inspector from './inspector';
+import Column from './column';
 
 /**
  * WordPress dependencies
@@ -52,24 +53,6 @@ class Edit extends Component {
 			textColor,
 		} = this.props;
 
-		/* Setup the background color class. */
-		let backgroundColorClass;
-
-		if (attributes.customBackgroundColor) {
-			backgroundColorClass = 'ab-has-custom-background-color';
-		} else {
-			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
-		}
-
-		/* Setup the text color class. */
-		let textColorClass;
-
-		if (attributes.customTextColor) {
-			textColorClass = 'ab-has-custom-text-color';
-		} else {
-			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
-		}
-
 		return [
 			<BlockControls key="controls">
 				<AlignmentToolbar
@@ -81,36 +64,12 @@ class Edit extends Component {
 			</BlockControls>,
 			<Inspector { ...{ setAttributes, ...this.props } }/>,
 			<Fragment>
-				<div
-					className={ classnames(
-						this.props.className,
-						'ab-block-layout-column',
-					) }
-				>
-					<div
-						className={ classnames(
-							'ab-block-layout-column-inside',
-							backgroundColorClass,
-							textColorClass,
-						) }
-						style={ {
-							backgroundColor: backgroundColor.color,
-							color: textColor.color,
-							textAlign: attributes.textAlign ? attributes.textAlign : null,
-							marginTop: attributes.marginTop > 0 ? attributes.marginTop : null,
-							marginBottom: attributes.marginBottom > 0 ? attributes.marginBottom : null,
-							paddingTop: attributes.paddingTop > 0 ? attributes.paddingTop : null,
-							paddingRight: attributes.paddingRight > 0 ? attributes.paddingRight : null,
-							paddingBottom: attributes.paddingBottom > 0 ? attributes.paddingBottom : null,
-							paddingLeft: attributes.paddingLeft > 0 ? attributes.paddingLeft : null,
-						} }
-					>
-						<InnerBlocks
-							templateLock={ false }
-							templateInsertUpdatesSelection={ false }
-						/>
-					</div>
-				</div>
+				<Column { ...this.props }>
+					<InnerBlocks
+						templateLock={ false }
+						templateInsertUpdatesSelection={ false }
+					/>
+				</Column>
 			</Fragment>
 		];
 	}

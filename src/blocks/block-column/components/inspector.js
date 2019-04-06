@@ -20,7 +20,6 @@ const {
 } = wp.element;
 const {
 	InspectorControls,
-	withColors,
 	PanelColorSettings,
 	ContrastChecker,
 } = wp.editor;
