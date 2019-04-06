@@ -1,5 +1,5 @@
 /**
- * Inspector Controls
+ * Inspector Controls.
  */
 
  /**
@@ -18,7 +18,12 @@ const {
 	Component,
 	Fragment,
 } = wp.element;
-const { InspectorControls } = wp.editor;
+const {
+	InspectorControls,
+	withColors,
+	PanelColorSettings,
+	ContrastChecker,
+} = wp.editor;
 const {
 	PanelBody,
 	RangeControl,
@@ -41,7 +46,11 @@ export default class Inspector extends Component {
 
 		const {
 			attributes,
-			setAttributes
+			setAttributes,
+			backgroundColor,
+			setBackgroundColor,
+			textColor,
+			setTextColor,
 		} = this.props;
 
 		let selectedRows = 1;
@@ -118,7 +127,6 @@ export default class Inspector extends Component {
 						checked={ attributes.marginSync }
 						onChange={ () => this.props.setAttributes( { marginSync: ! attributes.marginSync } ) }
 					/>
-
 					{ ! attributes.marginSync ?
 						<Margin
 							/* Margin top. */
@@ -193,6 +201,30 @@ export default class Inspector extends Component {
 						/>
 					}
 				</PanelBody>
+
+				<PanelColorSettings
+					title={ __( 'Color', 'atomic-blocks' ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: backgroundColor.color,
+							onChange: setBackgroundColor,
+							label: __( 'Background Color', 'atomic-blocks' ),
+						},
+						{
+							value: textColor.color,
+							onChange: setTextColor,
+							label: __( 'Text Color', 'atomic-blocks' ),
+						}
+					] }
+				>
+					<ContrastChecker
+						{ ...{
+							textColor: textColor.color,
+							backgroundColor: backgroundColor.color,
+						} }
+					/>
+				</PanelColorSettings>
 			</Fragment>
 		</InspectorControls>
 		);

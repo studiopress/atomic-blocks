@@ -86,6 +86,18 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 			type: 'number',
 			default: 0,
 		},
+		textColor: {
+			type: 'string',
+		},
+		customTextColor: {
+			type: 'string',
+		},
+		backgroundColor: {
+			type: 'string',
+		},
+		customBackgroundColor: {
+			type: 'string',
+		},
 	},
 
 	/* Add alignment to block wrapper. */

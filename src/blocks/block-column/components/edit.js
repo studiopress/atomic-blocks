@@ -15,10 +15,12 @@ import _times from 'lodash/times';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
+const { compose } = wp.compose;
 const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InnerBlocks,
+	withColors,
 } = wp.editor;
 const {
 	Placeholder,
@@ -35,7 +37,7 @@ const getLayoutTemplate = memoize( ( columns ) => {
 	return _times( columns, () => [ 'atomic-blocks/ab-column' ] );
 } );
 
-export default class Edit extends Component {
+class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -50,7 +52,9 @@ export default class Edit extends Component {
 		const {
 			attributes,
 			isSelected,
-			setAttributes
+			setAttributes,
+			backgroundColor,
+			textColor,
 		} = this.props;
 
 		let selectedRows = 1;
@@ -99,11 +103,6 @@ export default class Edit extends Component {
 		if ( ! attributes.layout && this.state.selectLayout ) {
 			return [
 				<Fragment>
-					{ isSelected && (
-						<Inspector
-							{ ...this.props }
-						/>
-					) }
 					<Placeholder
 						key="placeholder"
 						icon="welcome-widgets-menus"
@@ -187,9 +186,7 @@ export default class Edit extends Component {
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
+			<Inspector { ...this.props }/>,
 			<Columns { ...this.props }>
 				<div
 					className={ classnames(
@@ -208,3 +205,10 @@ export default class Edit extends Component {
 		];
 	}
 }
+
+export default compose( [
+	withColors(
+		'backgroundColor',
+		{ textColor: 'color' },
+	),
+] )( Edit );

@@ -23,7 +23,9 @@ export default class Columns extends Component {
 
 	render() {
 
-		const { attributes } = this.props;
+		const {
+			attributes,
+		} = this.props;
 
 		/* Setup the wrapper classes. */
 		const className = classnames( [
@@ -65,10 +67,18 @@ export default class Columns extends Component {
 			}
 		}
 
+		const colorStyles = {
+			// backgroundColor: backgroundColor.color,
+			// color: textColor.color,
+			//backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+		}
+
+		//console.log( this.props.backgroundColor );
+
 		return (
 			<div
 				className={ className ? className : undefined }
-				style={ Object.assign( marginValue, paddingValue ) }
+				style={ Object.assign( marginValue, paddingValue, colorStyles ) }
 			>
 				{ this.props.children }
 			</div>
