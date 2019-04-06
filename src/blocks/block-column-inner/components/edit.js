@@ -41,6 +41,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 } );
 
 class Edit extends Component {
+
 	constructor() {
 		super( ...arguments );
 	}
@@ -62,15 +63,13 @@ class Edit extends Component {
 					} }
 				/>
 			</BlockControls>,
-			<Inspector { ...{ setAttributes, ...this.props } }/>,
-			<Fragment>
-				<Column { ...this.props }>
-					<InnerBlocks
-						templateLock={ false }
-						templateInsertUpdatesSelection={ false }
-					/>
-				</Column>
-			</Fragment>
+			<Inspector { ...this.props }/>,
+			<Column { ...this.props }>
+				<InnerBlocks
+					templateLock={ false }
+					templateInsertUpdatesSelection={ false }
+				/>
+			</Column>
 		];
 	}
 }
