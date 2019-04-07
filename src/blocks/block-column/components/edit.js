@@ -112,7 +112,10 @@ class Edit extends Component {
 					className={ 'ab-layout-selector-placeholder' }
 				>
 					{ ! attributes.columns ?
-						<ButtonGroup aria-label={ __( 'Select Row Columns', 'atomic-blocks' ) } className="ab-layout-selector-group">
+						<ButtonGroup
+							aria-label={ __( 'Select Row Columns', 'atomic-blocks' ) }
+							className="ab-layout-selector-group"
+						>
 							{ map( columnOptions, ( { name, key, icon, columns } ) => (
 								<Tooltip text={ name } key={ key }>
 									<div className="ab-layout-selector">
@@ -139,9 +142,10 @@ class Edit extends Component {
 					:
 						<Fragment>
 							<ButtonGroup
-								aria-label={ __( 'Select Column Layout', 'atomic-blocks' ) } className="ab-layout-selector-group"
-								>
-								{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
+								aria-label={ __( 'Select Column Layout', 'atomic-blocks' ) }
+								className="ab-layout-selector-group"
+							>
+								{ map( columnLayouts[ selectedRows ], ( { name, key, icon } ) => (
 									<Tooltip text={ name } key={ key }>
 										<div className="ab-layout-selector">
 											<Button
@@ -187,7 +191,13 @@ class Edit extends Component {
 				/>
 			</BlockControls>,
 			<Inspector { ...this.props } key="inspector"/>,
-			<Columns { ...this.props } key="columns">
+			<Columns
+				{ ...this.props }
+				/* Pass through the live color value to the Columns component */
+				backgroundColorValue={ this.props.backgroundColor.color }
+				textColorValue={ this.props.textColor.color }
+				key="columns"
+			>
 				<div
 					className={ classnames(
 						'ab-layout-column-wrap-admin',

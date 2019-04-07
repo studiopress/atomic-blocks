@@ -65,9 +65,7 @@ export default class Inspector extends Component {
 						className="ab-column-select-panel"
 					>
 						<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
-						<ButtonGroup
-							aria-label={ __( 'Column Layout', 'atomic-blocks' ) }
-						>
+						<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
 							{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
 								<Tooltip text={ name } key={ key }>
 									<Button

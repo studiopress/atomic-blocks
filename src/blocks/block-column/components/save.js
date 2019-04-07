@@ -23,7 +23,12 @@ export default class Save extends Component {
 		])
 
 		return (
-			<Columns { ...this.props }>
+			<Columns
+				{ ...this.props }
+				/* Pass through the color attributes to the Columns component */
+				backgroundColorValue={ attributes.backgroundColor ? null : attributes.customBackgroundColor }
+				textColorValue={ attributes.textColor ? null : attributes.customTextColor }
+			>
 				<div
 					className={ className ? className : undefined }
 				>

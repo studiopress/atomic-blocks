@@ -27,11 +27,31 @@ export default class Columns extends Component {
 			attributes,
 		} = this.props;
 
+		/* Setup the background color class. */
+		let backgroundColorClass;
+
+		if (attributes.customBackgroundColor) {
+			backgroundColorClass = 'ab-has-custom-background-color';
+		} else {
+			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
+		}
+
+		/* Setup the text color class. */
+		let textColorClass;
+
+		if (attributes.customTextColor) {
+			textColorClass = 'ab-has-custom-text-color';
+		} else {
+			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
+		}
+
 		/* Setup the wrapper classes. */
 		const className = classnames( [
 			this.props.className,
 			'ab-layout-columns-' + attributes.columns,
 			attributes.layout,
+			backgroundColorClass,
+			textColorClass,
 		], {
 			[ 'align' + attributes.align ]: attributes.align,
 		} )
@@ -67,18 +87,16 @@ export default class Columns extends Component {
 			}
 		}
 
-		const colorStyles = {
-			// backgroundColor: backgroundColor.color,
-			// color: textColor.color,
-			//backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+		/* Misc styles. */
+		const styles = {
+			backgroundColor: this.props.backgroundColorValue ? this.props.backgroundColorValue : null,
+			color: this.props.textColorValue ? this.props.textColorValue : null,
 		}
-
-		//console.log( this.props.backgroundColor );
 
 		return (
 			<div
 				className={ className ? className : undefined }
-				style={ Object.assign( marginValue, paddingValue, colorStyles ) }
+				style={ Object.assign( marginValue, paddingValue, styles ) }
 			>
 				{ this.props.children }
 			</div>
