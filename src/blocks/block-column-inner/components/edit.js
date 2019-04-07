@@ -47,6 +47,7 @@ class Edit extends Component {
 	}
 
 	render() {
+
 		const {
 			attributes,
 			setAttributes,
@@ -64,7 +65,10 @@ class Edit extends Component {
 				/>
 			</BlockControls>,
 			<Inspector { ...this.props }/>,
-			<Column { ...this.props }>
+			<Column
+				bgcolor={ this.props.backgroundColor.color }
+				{ ...this.props }
+			>
 				<InnerBlocks
 					templateLock={ false }
 					templateInsertUpdatesSelection={ false }

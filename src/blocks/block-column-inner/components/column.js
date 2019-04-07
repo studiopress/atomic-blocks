@@ -21,10 +21,6 @@ export default class Column extends Component {
 		super( ...arguments );
 	}
 
-	getBackgroundColor() {
-		return this.props.backgroundColor.color;
-	}
-
 	render() {
 
 		const {
@@ -89,7 +85,7 @@ export default class Column extends Component {
 			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
 		}
 
-		console.log( this.getBackgroundColor() );
+		console.log( this.props.bgcolor );
 
 		return (
 			<div
@@ -104,7 +100,7 @@ export default class Column extends Component {
 						textColorClass,
 					) }
 					// style={ Object.assign( marginStyle, paddingStyle, styles ) }
-					//style={{ backgroundColor: this.backgroundColor.color }}
+					style={{ backgroundColor: this.props.bgcolor }}
 				>
 					{ this.props.children }
 				</div>
