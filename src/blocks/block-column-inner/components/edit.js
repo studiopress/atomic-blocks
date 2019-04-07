@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import Inspector from './inspector';
@@ -14,31 +9,13 @@ import Column from './column';
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
+const { Component } = wp.element;
 const {
 	AlignmentToolbar,
 	BlockControls,
 	InnerBlocks,
-	getColorClassName,
 	withColors,
 } = wp.editor;
-const {
-	Component,
-	Fragment,
-} = wp.element;
-const {
-	withFallbackStyles
-} = wp.components;
-
-/* Apply fallback styles. */
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, textColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-	};
-} );
 
 class Edit extends Component {
 
@@ -51,8 +28,6 @@ class Edit extends Component {
 		const {
 			attributes,
 			setAttributes,
-			backgroundColor,
-			textColor,
 		} = this.props;
 
 		return [
@@ -64,10 +39,13 @@ class Edit extends Component {
 					} }
 				/>
 			</BlockControls>,
-			<Inspector { ...this.props }/>,
+			<Inspector { ...this.props } key="inspector"/>,
 			<Column
-				bgcolor={ this.props.backgroundColor.color }
+				/* Pass through the live color value to the Column component */
+				backgroundColorValue={ this.props.backgroundColor.color }
+				textColorValue={ this.props.textColor.color }
 				{ ...this.props }
+				key="column"
 			>
 				<InnerBlocks
 					templateLock={ false }
@@ -79,7 +57,6 @@ class Edit extends Component {
 }
 
 export default compose( [
-	applyFallbackStyles,
 	withColors(
 		'backgroundColor',
 		{ textColor: 'color' },

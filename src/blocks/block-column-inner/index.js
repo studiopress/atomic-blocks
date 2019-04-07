@@ -3,7 +3,7 @@
  */
 
 /**
- * Components and dependencies.
+ * Internal dependencies.
  */
 import Edit from './components/edit';
 import Save from './components/save';
@@ -88,7 +88,7 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		},
 	},
 
-	/* Render the block components. */
+	/* Render the block in the editor. */
 	edit: props => {
 		return <Edit { ...props } />;
 	},

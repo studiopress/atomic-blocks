@@ -1,5 +1,5 @@
 /**
- * External dependencies.
+ * Internal dependencies.
  */
 import Column from './column';
 
@@ -13,17 +13,14 @@ export default class Save extends Component {
 
 	render() {
 
-		const {
-			attributes,
-		} = this.props;
-
-		// need to pass through the color attribute here so that the save function gets that instead
-		// of the live backgroundColor.color value.
+		const { attributes } = this.props;
 
 		return (
 			<Column
 				{ ...this.props }
-				bgcolor={ attributes.customBackgroundColor }
+				/* Pass through the color attributes to the Column component */
+				backgroundColorValue={ attributes.backgroundColor ? null : attributes.customBackgroundColor }
+				textColorValue={ attributes.textColor ? null : attributes.customTextColor }
 			>
 				<InnerBlocks.Content />
 			</Column>

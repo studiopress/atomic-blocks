@@ -8,7 +8,7 @@
 const { Component } = wp.element;
 
 /**
- * Components and dependencies.
+ * External dependencies.
  */
 import classnames from 'classnames';
 
@@ -62,8 +62,8 @@ export default class Column extends Component {
 
 		/* Misc styles. */
 		const styles = {
-			backgroundColor: attributes.backgroundColor ? null : attributes.customBackgroundColor,
-			color: attributes.textColor ? null : attributes.customTextColor,
+			backgroundColor: this.props.backgroundColorValue ? this.props.backgroundColorValue : null,
+			color: this.props.textColorValue ? this.props.textColorValue : null,
 			textAlign: attributes.textAlign ? attributes.textAlign : null,
 		}
 
@@ -85,8 +85,6 @@ export default class Column extends Component {
 			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
 		}
 
-		console.log( this.props.bgcolor );
-
 		return (
 			<div
 				className={ classnames(
@@ -99,8 +97,7 @@ export default class Column extends Component {
 						backgroundColorClass,
 						textColorClass,
 					) }
-					// style={ Object.assign( marginStyle, paddingStyle, styles ) }
-					style={{ backgroundColor: this.props.bgcolor }}
+					style={ Object.assign( marginStyle, paddingStyle, styles ) }
 				>
 					{ this.props.children }
 				</div>

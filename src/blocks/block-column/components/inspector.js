@@ -14,10 +14,7 @@ import Padding from './../../../utils/components/padding';
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const {
-	Component,
-	Fragment,
-} = wp.element;
+const { Component } = wp.element;
 const {
 	InspectorControls,
 	PanelColorSettings,
@@ -59,62 +56,59 @@ export default class Inspector extends Component {
 		}
 
 		return (
-		<InspectorControls key="inspector">
-			<Fragment>
+			<InspectorControls key="inspector">
 				{ attributes.layout &&
 					/* Show the column settings once a layout is selected. */
-					<Fragment>
-						<PanelBody
-							title={ __( 'General', 'atomic-blocks' ) }
-							initialOpen={ true }
-							className="ab-column-select-panel"
+					<PanelBody
+						title={ __( 'General', 'atomic-blocks' ) }
+						initialOpen={ true }
+						className="ab-column-select-panel"
+					>
+						<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
+						<ButtonGroup
+							aria-label={ __( 'Column Layout', 'atomic-blocks' ) }
 						>
-							<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
-							<ButtonGroup
-								aria-label={ __( 'Column Layout', 'atomic-blocks' ) }
-							>
-								{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
-									<Tooltip text={ name }>
-										<Button
-											key={ key }
-											className="ab-layout-selector-button"
-											isSmall
-											onClick={ () => {
-												setAttributes( {
-													layout: key,
-												} );
-												this.setState( { 'selectLayout' : false } );
-											} }
-										>
-											{ icon }
-										</Button>
-									</Tooltip>
-								) ) }
-							</ButtonGroup>
-							<p><i>{ __( 'Change the layout of your columns.', 'atomic-blocks' ) }</i></p>
+							{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
+								<Tooltip text={ name } key={ key }>
+									<Button
+										key={ key }
+										className="ab-layout-selector-button"
+										isSmall
+										onClick={ () => {
+											setAttributes( {
+												layout: key,
+											} );
+											this.setState( { 'selectLayout' : false } );
+										} }
+									>
+										{ icon }
+									</Button>
+								</Tooltip>
+							) ) }
+						</ButtonGroup>
+						<p><i>{ __( 'Change the layout of your columns.', 'atomic-blocks' ) }</i></p>
 
-							<hr />
+						<hr />
 
-							<RangeControl
-								label={ __( 'Column Gap', 'atomic-blocks' ) }
-								help={ __( 'Adjust the spacing between columns.', 'atomic-blocks' ) }
-								value={ attributes.columnsGap }
-								onChange={ ( value ) => this.props.setAttributes( { columnsGap: value } ) }
-								min={ 0 }
-								max={ 10 }
-								step={ 1 }
-							/>
+						<RangeControl
+							label={ __( 'Column Gap', 'atomic-blocks' ) }
+							help={ __( 'Adjust the spacing between columns.', 'atomic-blocks' ) }
+							value={ attributes.columnsGap }
+							onChange={ ( value ) => this.props.setAttributes( { columnsGap: value } ) }
+							min={ 0 }
+							max={ 10 }
+							step={ 1 }
+						/>
 
-							<hr />
+						<hr />
 
-							<ToggleControl
-								label={ __( 'Responsive Columns', 'atomic-blocks' ) }
-								help={ __( 'Columns will be adjusted to fit on tablets and mobile devices.', 'atomic-blocks' ) }
-								checked={ attributes.responsiveToggle }
-								onChange={ () => this.props.setAttributes( { responsiveToggle: ! attributes.responsiveToggle } ) }
-							/>
-						</PanelBody>
-					</Fragment>
+						<ToggleControl
+							label={ __( 'Responsive Columns', 'atomic-blocks' ) }
+							help={ __( 'Columns will be adjusted to fit on tablets and mobile devices.', 'atomic-blocks' ) }
+							checked={ attributes.responsiveToggle }
+							onChange={ () => this.props.setAttributes( { responsiveToggle: ! attributes.responsiveToggle } ) }
+						/>
+					</PanelBody>
 				}
 				<PanelBody
 					title={ __( 'Margin and Padding', 'atomic-blocks' ) }
@@ -224,8 +218,7 @@ export default class Inspector extends Component {
 						} }
 					/>
 				</PanelColorSettings>
-			</Fragment>
-		</InspectorControls>
+			</InspectorControls>
 		);
 	}
 }

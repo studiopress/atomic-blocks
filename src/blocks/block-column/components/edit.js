@@ -51,7 +51,6 @@ class Edit extends Component {
 
 		const {
 			attributes,
-			isSelected,
 			setAttributes,
 			backgroundColor,
 			textColor,
@@ -66,34 +65,37 @@ class Edit extends Component {
 		const columnOptions = [
 			{
 				name: __( '1 Column', 'atomic-blocks' ),
-				key: 'one-equal',
+				key: 'one-column',
 				columns: 1,
 				icon: icons.oneEqual,
 			},
 			{
 				name: __( '2 Columns', 'atomic-blocks' ),
+				key: 'two-column',
 				columns: 2,
 				icon: icons.twoEqual
 			},
 			{
 				name: __( '3 Columns', 'atomic-blocks' ),
+				key: 'three-column',
 				columns: 3,
 				icon:icons.threeEqual
 			},
 			{
 				name: __( '4 Columns', 'atomic-blocks' ),
+				key: 'four-column',
 				columns: 4,
 				icon: icons.fourEqual
 			},
 			{
 				name: __( '5 Columns', 'atomic-blocks' ),
-				key: 'five-equal',
+				key: 'five-column',
 				columns: 5,
 				icon: icons.fiveEqual,
 			},
 			{
 				name: __( '6 Columns', 'atomic-blocks' ),
-				key: 'six-equal',
+				key: 'six-column',
 				columns: 6,
 				icon: icons.sixEqual,
 			},
@@ -102,31 +104,55 @@ class Edit extends Component {
 		/* Show the layout placeholder. */
 		if ( ! attributes.layout && this.state.selectLayout ) {
 			return [
-				<Fragment>
-					<Placeholder
-						key="placeholder"
-						icon="welcome-widgets-menus"
-						label={ attributes.columns ? __( 'Column Layout', 'atomic-blocks' ) : __( 'Column Number', 'atomic-blocks' ) }
-						instructions={ attributes.columns ? sprintf( __( 'Select a layout for this column.', 'atomic-blocks' ) ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
-						className={ 'ab-layout-selector-placeholder' }
-					>
-						{ ! attributes.columns ?
-							<ButtonGroup aria-label={ __( 'Select Row Columns', 'atomic-blocks' ) } className="ab-layout-selector-group">
-								{ map( columnOptions, ( { name, key, icon, columns } ) => (
-									<Tooltip text={ name }>
+				<Placeholder
+					key="placeholder"
+					icon="welcome-widgets-menus"
+					label={ attributes.columns ? __( 'Column Layout', 'atomic-blocks' ) : __( 'Column Number', 'atomic-blocks' ) }
+					instructions={ attributes.columns ? sprintf( __( 'Select a layout for this column.', 'atomic-blocks' ) ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
+					className={ 'ab-layout-selector-placeholder' }
+				>
+					{ ! attributes.columns ?
+						<ButtonGroup aria-label={ __( 'Select Row Columns', 'atomic-blocks' ) } className="ab-layout-selector-group">
+							{ map( columnOptions, ( { name, key, icon, columns } ) => (
+								<Tooltip text={ name } key={ key }>
+									<div className="ab-layout-selector">
+										<Button
+											className="ab-layout-selector-button"
+											isSmall
+											onClick={ () => {
+												setAttributes( {
+													columns: columns,
+													layout: columns === 1 || columns === 5 || columns === 6 ? key : null,
+												} );
+
+												{ columns === 1 &&
+													this.setState( { 'selectLayout' : false } );
+												}
+											} }
+										>
+											{ icon }
+										</Button>
+									</div>
+								</Tooltip>
+							) ) }
+						</ButtonGroup>
+					:
+						<Fragment>
+							<ButtonGroup
+								aria-label={ __( 'Select Column Layout', 'atomic-blocks' ) } className="ab-layout-selector-group"
+								>
+								{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
+									<Tooltip text={ name } key={ key }>
 										<div className="ab-layout-selector">
 											<Button
+												key={ key }
 												className="ab-layout-selector-button"
 												isSmall
 												onClick={ () => {
 													setAttributes( {
-														columns: columns,
-														layout: columns === 1 || columns === 5 || columns === 6 ? key : null,
+														layout: key,
 													} );
-
-													{ columns === 1 &&
-														this.setState( { 'selectLayout' : false } );
-													}
+													this.setState( { 'selectLayout' : false } );
 												} }
 											>
 												{ icon }
@@ -134,47 +160,21 @@ class Edit extends Component {
 										</div>
 									</Tooltip>
 								) ) }
+								<Button
+									className="ab-layout-selector-button-back"
+									onClick={ () => {
+										setAttributes( {
+											columns: null,
+										} );
+										this.setState( { 'selectLayout' : true } );
+									} }
+								>
+									{ __( 'Return to Column Selection', 'atomic-blocks' ) }
+								</Button>
 							</ButtonGroup>
-						:
-							<Fragment>
-								<ButtonGroup
-									aria-label={ __( 'Select Column Layout', 'atomic-blocks' ) } className="ab-layout-selector-group"
-									>
-									{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
-										<Tooltip text={ name }>
-											<div className="ab-layout-selector">
-												<Button
-													key={ key }
-													className="ab-layout-selector-button"
-													isSmall
-													onClick={ () => {
-														setAttributes( {
-															layout: key,
-														} );
-														this.setState( { 'selectLayout' : false } );
-													} }
-												>
-													{ icon }
-												</Button>
-											</div>
-										</Tooltip>
-									) ) }
-									<Button
-										className="ab-layout-selector-button-back"
-										onClick={ () => {
-											setAttributes( {
-												columns: null,
-											} );
-											this.setState( { 'selectLayout' : true } );
-										} }
-									>
-										{ __( 'Return to Column Selection', 'atomic-blocks' ) }
-									</Button>
-								</ButtonGroup>
-							</Fragment>
-						}
-					</Placeholder>
-				</Fragment>
+						</Fragment>
+					}
+				</Placeholder>
 			];
 		}
 
@@ -186,8 +186,8 @@ class Edit extends Component {
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
-			<Inspector { ...this.props }/>,
-			<Columns { ...this.props }>
+			<Inspector { ...this.props } key="inspector"/>,
+			<Columns { ...this.props } key="columns">
 				<div
 					className={ classnames(
 						'ab-layout-column-wrap-admin',

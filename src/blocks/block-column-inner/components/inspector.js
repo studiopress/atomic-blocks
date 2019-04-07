@@ -1,5 +1,5 @@
 /**
- * External dependencies.
+ * Internal dependencies.
  */
 import Margin from './../../../utils/components/margin';
 import Padding from './../../../utils/components/padding';
@@ -18,20 +18,8 @@ const {
 } = wp.editor;
 const {
 	PanelBody,
-	withFallbackStyles,
 	ToggleControl,
 } = wp.components;
-
-/* Apply fallback styles. */
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, textColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-	};
-} );
 
 /**
  * Create an Inspector Controls wrapper Component.
@@ -47,9 +35,7 @@ class Inspector extends Component {
 		const {
 			backgroundColor,
 			setBackgroundColor,
-			fallbackBackgroundColor,
 			textColor,
-			fallbackTextColor,
 			setTextColor,
 			attributes,
 			setAttributes,
@@ -162,8 +148,6 @@ class Inspector extends Component {
 					{ ...{
 						textColor: textColor.color,
 						backgroundColor: backgroundColor.color,
-						fallbackTextColor,
-						fallbackBackgroundColor,
 					} }
 				/>
 			</PanelColorSettings>
@@ -173,7 +157,6 @@ class Inspector extends Component {
 }
 
 export default compose( [
-	applyFallbackStyles,
 	withColors(
 		'backgroundColor',
 		{ textColor: 'color' },
