@@ -1,5 +1,5 @@
 === Atomic Blocks - Gutenberg Blocks Collection ===
-Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress
+Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbath
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
