@@ -82,25 +82,27 @@ add_action( 'init', 'atomic_blocks_init' );
 
 
 /**
- * Add a check for our plugin before redirecting
+ * Adds a redirect option during plugin activation on non-multisite installs.
+ *
+ * @param bool $network_wide Whether or not the plugin is being network activated.
  */
-function atomic_blocks_activate() {
-	add_option( 'atomic_blocks_do_activation_redirect', true );
+function atomic_blocks_activate( $network_wide = false ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only used to do a redirect. False positive.
+	if ( ! $network_wide && ! isset( $_GET['activate-multi'] ) ) {
+		add_option( 'atomic_blocks_do_activation_redirect', true );
+	}
 }
 register_activation_hook( __FILE__, 'atomic_blocks_activate' );
 
 
 /**
- * Redirect to the Atomic Blocks Getting Started page on single plugin activation
+ * Redirect to the Atomic Blocks Getting Started page on single plugin activation.
  */
 function atomic_blocks_redirect() {
 	if ( get_option( 'atomic_blocks_do_activation_redirect', false ) ) {
 		delete_option( 'atomic_blocks_do_activation_redirect' );
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only used to do a redirect. False positive.
-		if ( ! isset( $_GET['activate-multi'] ) ) {
-			wp_safe_redirect( 'admin.php?page=atomic-blocks' );
-			exit;
-		}
+		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=atomic-blocks' ) ) );
+		exit;
 	}
 }
 add_action( 'admin_init', 'atomic_blocks_redirect' );
