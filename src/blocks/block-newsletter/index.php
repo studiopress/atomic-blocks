@@ -144,7 +144,7 @@ function atomic_blocks_newsletter_block_attributes() {
 			'default' => 'left',
 		],
 		'buttonBackgroundColor'       => [
-			'type'    => 'string',
+			'type' => 'string',
 		],
 		'customButtonBackgroundColor' => [
 			'type' => 'string',
@@ -166,7 +166,7 @@ function atomic_blocks_newsletter_block_attributes() {
 			'default' => esc_html__( 'Subscribe', 'atomic-blocks' ),
 		],
 		'buttonTextColor'             => [
-			'type'    => 'string',
+			'type' => 'string',
 		],
 		'customButtonTextColor'       => [
 			'type' => 'string',

@@ -19,9 +19,7 @@ jobs:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: |
-            composer install --prefer-dist --no-suggest --optimize-autoloader
-            composer phpunit
+          command: composer phpunit
 
   php-71:
     docker:
@@ -40,9 +38,7 @@ jobs:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: |
-            composer install --prefer-dist --no-suggest --optimize-autoloader
-            composer phpunit
+          command: composer phpunit
 
   php-72:
     docker:
@@ -61,9 +57,7 @@ jobs:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: |
-            composer install --prefer-dist --no-suggest --optimize-autoloader
-            composer phpunit
+          command: composer phpunit
 
   php-73:
     docker:
@@ -82,9 +76,7 @@ jobs:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: |
-            composer install --prefer-dist --no-suggest --optimize-autoloader
-            composer phpunit
+          command: composer phpunit
 
   coding-standards:
     docker:
@@ -103,9 +95,7 @@ jobs:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: |
-            composer install --prefer-dist --no-suggest --optimize-autoloader
-            composer phpcs
+          command: composer phpcs
 
 commands:
   prepare-environment:
@@ -124,6 +114,9 @@ commands:
       - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run: sed -i 's/localhost/127.0.0.1/g' wordpress-develop/wp-tests-config.php
       - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
+      - run:
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          command: composer install --prefer-dist --no-suggest --optimize-autoloader
 
 workflows:
   version: 2
