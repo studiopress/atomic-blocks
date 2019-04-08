@@ -87,7 +87,7 @@ registerBlockType( 'atomic-blocks/ab-column', {
 			type: 'number',
 			default: 0,
 		},
-		verticalAlignment: {
+		columnVerticalAlignment: {
 			type: 'string',
 		},
 	},
@@ -102,3 +102,22 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		return <Save { ...props } />;
 	},
 } );
+
+/* Add the vertical column alignment class to the block wrapper. */
+const withClientIdClassName = wp.compose.createHigherOrderComponent( ( BlockListBlock ) => {
+    return ( props ) => {
+		const blockName = props.block.name;
+
+		if( props.attributes.columnVerticalAlignment && blockName === 'atomic-blocks/ab-column' ) {
+            return <BlockListBlock { ...props } className={ "ab-is-vertically-aligned-" + props.attributes.columnVerticalAlignment } />;
+        } else {
+            return <BlockListBlock { ...props } />
+        }
+	};
+}, 'withClientIdClassName' );
+
+wp.hooks.addFilter(
+	'editor.BlockListBlock',
+	'atomic-blocks/add-vertical-align-class',
+	withClientIdClassName
+);

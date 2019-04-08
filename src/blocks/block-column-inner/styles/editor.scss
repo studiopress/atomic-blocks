@@ -154,7 +154,7 @@
 	margin-right: auto;
 }
 
-.ab-block-layout-column {
+[data-type="atomic-blocks/ab-column"] {
 	&.ab-is-vertically-aligned-top {
 		align-self: flex-start;
 	}

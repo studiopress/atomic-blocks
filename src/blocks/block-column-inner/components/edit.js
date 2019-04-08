@@ -36,20 +36,20 @@ class Edit extends Component {
 			{
 				icon: 'arrow-up-alt2',
 				title: __( 'Vertical Align Top', 'atomic-blocks' ),
-				isActive: attributes.verticalAlignment === 'top',
-				onClick: () => setAttributes( { verticalAlignment: 'top' } ),
+				isActive: attributes.columnVerticalAlignment === 'top',
+				onClick: () => setAttributes( { columnVerticalAlignment: 'top' } ),
 			},
 			{
 				icon: 'minus',
 				title: __( 'Vertical Align Middle', 'atomic-blocks' ),
-				isActive: attributes.verticalAlignment === 'center',
-				onClick: () => setAttributes( { verticalAlignment: 'center' } ),
+				isActive: attributes.columnVerticalAlignment === 'center',
+				onClick: () => setAttributes( { columnVerticalAlignment: 'center' } ),
 			},
 			{
 				icon: 'arrow-down-alt2',
 				title: __( 'Vertical Align Bottom', 'atomic-blocks' ),
-				isActive: attributes.verticalAlignment === 'bottom',
-				onClick: () => setAttributes( { verticalAlignment: 'bottom' } ),
+				isActive: attributes.columnVerticalAlignment === 'bottom',
+				onClick: () => setAttributes( { columnVerticalAlignment: 'bottom' } ),
 			},
 		];
 
@@ -86,19 +86,3 @@ export default compose( [
 		{ textColor: 'color' },
 	),
 ] )( Edit );
-
-// function abCustomClassName( className, name, attributes ) {
-// 	if ( 'atomic-blocks/ab-columns' === name ) {
-// 		return classnames(
-// 			className,
-// 			attributes.verticalAlignment ? 'ab-is-vertically-aligned-' + attributes.verticalAlignment : null
-// 		);
-// 	}
-// 	return className;
-// }
-
-// wp.hooks.addFilter(
-// 	"blocks.getBlockDefaultClassName",
-// 	"atomicblocks/ab-column-block-class-name",
-// 	abCustomClassName
-// );

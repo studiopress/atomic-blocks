@@ -89,7 +89,7 @@ export default class Column extends Component {
 			<div
 				className={ classnames(
 					'ab-block-layout-column',
-					attributes.verticalAlignment ? 'ab-is-vertically-aligned-' + attributes.verticalAlignment : null
+					attributes.columnVerticalAlignment ? 'ab-is-vertically-aligned-' + attributes.columnVerticalAlignment : null
 				) }
 			>
 				<div
