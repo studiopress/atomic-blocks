@@ -163,6 +163,7 @@ export default class Inspector extends Component {
 
 				<TextControl
 					label={ __( 'Email URL', 'atomic-blocks' ) }
+					help={ __( 'Supports a URL or an email link. Email links must be prefixed with "mailto:". Example: mailto:test@example.com', 'atomic-blocks' ) }
 					type="url"
 					value={ email }
 					onChange={ ( value ) => this.props.setAttributes( { email: value } ) }
