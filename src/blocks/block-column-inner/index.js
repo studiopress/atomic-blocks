@@ -102,7 +102,3 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		return <Save { ...props } />;
 	},
 } );
-
-
-
-
