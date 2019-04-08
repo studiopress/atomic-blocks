@@ -106,7 +106,7 @@ class Edit extends Component {
 			return [
 				<Placeholder
 					key="placeholder"
-					icon="welcome-widgets-menus"
+					icon="editor-table"
 					label={ attributes.columns ? __( 'Column Layout', 'atomic-blocks' ) : __( 'Column Number', 'atomic-blocks' ) }
 					instructions={ attributes.columns ? sprintf( __( 'Select a layout for this column.', 'atomic-blocks' ) ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
 					className={ 'ab-layout-selector-placeholder' }

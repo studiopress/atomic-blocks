@@ -9,6 +9,7 @@ import Edit from './components/edit';
 import Save from './components/save';
 import './styles/style.scss';
 import './styles/editor.scss';
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies.
@@ -22,7 +23,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType( 'atomic-blocks/ab-column', {
 	title: __( 'AB Advanced Column', 'atomic-blocks' ),
 	description: __( 'Add a pre-defined column layout.', 'atomic-blocks' ),
-	icon: 'welcome-widgets-menus',
+	icon: 'editor-table',
 	category: 'atomic-blocks',
 	parent: [ 'atomic-blocks/ab-columns' ],
 	keywords: [
@@ -86,6 +87,9 @@ registerBlockType( 'atomic-blocks/ab-column', {
 			type: 'number',
 			default: 0,
 		},
+		verticalAlignment: {
+			type: 'string',
+		},
 	},
 
 	/* Render the block in the editor. */
@@ -98,3 +102,7 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		return <Save { ...props } />;
 	},
 } );
+
+
+
+

@@ -7,7 +7,6 @@
  */
 import Edit from './components/edit';
 import Save from './components/save';
-import icons from './components/icons';
 
 /**
  * WordPress dependencies.
@@ -21,7 +20,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType( 'atomic-blocks/ab-columns', {
 	title: __( 'AB Advanced Columns', 'atomic-blocks' ),
 	description: __( 'Add a pre-defined column layout.', 'atomic-blocks' ),
-	icon: icons.blockIcon,
+	icon: 'editor-table',
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'column', 'atomic-blocks' ),
@@ -103,7 +102,10 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 	/* Add alignment to block wrapper. */
 	getEditWrapperProps( { align } ) {
 		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {
-			return { 'data-align': align };
+			return {
+				'data-align': align,
+				'class': 'customclassss'
+			};
 		}
 	},
 

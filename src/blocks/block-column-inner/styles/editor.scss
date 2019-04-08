@@ -154,6 +154,20 @@
 	margin-right: auto;
 }
 
+.ab-block-layout-column {
+	&.ab-is-vertically-aligned-top {
+		align-self: flex-start;
+	}
+
+	&.ab-is-vertically-aligned-center {
+		align-self: center;
+	}
+
+	&.ab-is-vertically-aligned-bottom {
+		align-self: flex-end;
+	}
+}
+
 [data-type="atomic-blocks/ab-columns"] {
 	.components-placeholder {
 		padding: 30px;
