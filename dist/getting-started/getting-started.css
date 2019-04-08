@@ -964,6 +964,10 @@
 	width: 100%;
 }
 
+.ab-block-split-left .notice {
+	display: none;
+}
+
 .ab-gutenberg-notice {
 	background: #f1f0ff;
 	border-radius: 5px;
