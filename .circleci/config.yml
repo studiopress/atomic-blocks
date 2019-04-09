@@ -103,7 +103,6 @@ commands:
       - run: cp wordpress-develop/wp-tests-config-sample.php wordpress-develop/wp-tests-config.php
       - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run: sed -i 's/localhost/127.0.0.1/g' wordpress-develop/wp-tests-config.php
-      - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
       - checkout:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
