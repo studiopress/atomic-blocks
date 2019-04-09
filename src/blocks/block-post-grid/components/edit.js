@@ -7,6 +7,7 @@ import pickBy from 'lodash/pickBy';
 import moment from 'moment';
 import classnames from 'classnames';
 import Inspector from './inspector';
+import PostGridImage from './image';
 
 import compact from 'lodash/compact';
 import map from 'lodash/map';
@@ -38,14 +39,14 @@ const {
 class LatestPostsBlock extends Component {
 
 	/* Retrieve the path to the image based on the slug selected in the inspector */
-	getImageSize() {
+	getImageSize( featID ) {
 		const getSizeURL = get(
 			/* getMedia accepts an image id and returns an object with all the image data */
 			wp.data.select( 'core' ).getMedia( 8201 ), [
 				'media_details',
 				'sizes',
-				this.props.attributes.imageSize,
-				'source_url'
+				this.props.attributes.imageSize, // Get the image slug from the inspector
+				'source_url' // Return the url of the image size
 			]
 		);
 
@@ -57,7 +58,7 @@ class LatestPostsBlock extends Component {
 			attributes,
 			setAttributes,
 			latestPosts,
-			id,
+			image,
 		} = this.props;
 
 		// Check the image orientation
@@ -118,7 +119,7 @@ class LatestPostsBlock extends Component {
 		// Get the post title tag
 		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3"
 
-		const imageSize = this.getImageSize();
+		//const imageSize = this.getImageSize().value;
 
 		return (
 			<Fragment>
@@ -162,24 +163,18 @@ class LatestPostsBlock extends Component {
 									post.featured_image_src && attributes.displayPostImage ? 'has-post-thumbnail' : null
 								) }
 							>
-
-								{ /* Outputs image size path based on image size slug via inspector */
-									console.log( this.getImageSize().value )
-								}
-
-								{ /* Outputs featured image id */
-									console.log( post.featured_media.toString() )
-								}
-
 								{
-									attributes.displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
+									attributes.displayPostImage && post.featured_media ? (
 										<div className="ab-block-post-grid-image">
 											<a href={ post.link } target="_blank" rel="bookmark">
-												<img
-													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-													// Output the dynamic image
-													// src={ this.getImageSize().value }
-													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
+												<PostGridImage
+													//imgSrc={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+													imgAlt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
+													imgClass={ `wp-image-${post.featured_media.toString()}` }
+													imgID={ post.featured_media.toString() }
+													imgSize={ attributes.imageSize }
+													imgSizeLandscape={ post.featured_image_src }
+													imgSizeSquare={ post.featured_image_src_square }
 												/>
 											</a>
 										</div>
@@ -267,7 +262,8 @@ export default compose( [
 			// Image sizes
 			// Hardcoding a image id in here for testing
 			// Ideally we pass post.featured_media.toString() to this
-			image: 8201 ? getMedia( 8201 ) : null,
+			//image: id ? getMedia( id ) : null,
+			//image: 8187 ? getMedia( 8187 ) : null,
 		};
 	} ),
 ] )( LatestPostsBlock );

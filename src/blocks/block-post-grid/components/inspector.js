@@ -38,6 +38,7 @@ export default class Inspector extends Component {
 	/* Get the available image sizes */
 	imageSizeSelect() {
 		const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
+		const imageSizes = getSettings.imageSizes;
 
 		return compact( map( getSettings.imageSizes, ( { name, slug } ) => {
 			return {
@@ -100,8 +101,25 @@ export default class Inspector extends Component {
         // Check the post type
 		const isPost = attributes.postType === 'post';
 
+		// Add instruction text to the select
+		const abImageSizeSelect = {
+			value: '',
+			label: __( 'Select image size' ),
+		};
+
+		// Add the landscape image size to the select
+		const abImageSizeLandscape = {
+			value: 'ab-post-grid-image-landscape',
+			label: __( 'AB Grid Landscape' ),
+		};
+
 		// Get the image size options
 		const imageSizeOptions = this.imageSizeSelect();
+
+		// Combine the objects
+		const summary = { ...abImageSizeLandscape, ...imageSizeOptions};
+
+		console.log(imageSizeOptions);
 
 		return (
             <InspectorControls>
