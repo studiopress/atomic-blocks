@@ -156,3 +156,11 @@ $lightgray: #626e81;
     color: $accent;
   }
 }
+
+.lsx-button {
+	&:active {
+		left: 2px;
+		top: 2px;
+		position: relative;
+	}
+}
