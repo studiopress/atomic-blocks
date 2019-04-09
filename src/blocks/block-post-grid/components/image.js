@@ -15,13 +15,13 @@ export default function PostGridImage( props ) {
 	} = props;
 
 	const getSizeURL = get(
-		/* getMedia accepts an image id and returns an object with all the image data */
+		/* getMedia accepts an image id and returns an object with all the image data. */
 		wp.data.select( 'core' ).getMedia( imgID ), [
 			'media_details',
 			'sizes',
-			imgSize, // Get the image slug from the inspector
-			'source_url' // Return the url of the image size
-		]
+			imgSize, /* Get the image slug from the inspector. */
+			'source_url' /* Return the url of the image size. */
+		],
 	);
 
     return (

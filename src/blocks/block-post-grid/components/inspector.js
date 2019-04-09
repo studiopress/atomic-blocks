@@ -4,7 +4,7 @@
 
 // Setup the block
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 import compact from 'lodash/compact';
 import map from 'lodash/map';
@@ -38,7 +38,6 @@ export default class Inspector extends Component {
 	/* Get the available image sizes */
 	imageSizeSelect() {
 		const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
-		const imageSizes = getSettings.imageSizes;
 
 		return compact( map( getSettings.imageSizes, ( { name, slug } ) => {
 			return {
@@ -113,13 +112,19 @@ export default class Inspector extends Component {
 			label: __( 'AB Grid Landscape' ),
 		};
 
+		// Add the square image size to the select
+		const abImageSizeSquare = {
+			value: 'ab-post-grid-image-square',
+			label: __( 'AB Grid Square' ),
+		};
+
 		// Get the image size options
 		const imageSizeOptions = this.imageSizeSelect();
 
 		// Combine the objects
-		const summary = { ...abImageSizeLandscape, ...imageSizeOptions};
+		const imageSizeCombine = { ...abImageSizeSelect, ...abImageSizeLandscape, ...abImageSizeSquare, ...imageSizeOptions};
 
-		console.log(imageSizeOptions);
+		//console.log(imageSizeCombine);
 
 		return (
             <InspectorControls>
@@ -190,12 +195,14 @@ export default class Inspector extends Component {
 						onChange={ () => this.props.setAttributes( { displayPostImage: ! attributes.displayPostImage } ) }
                     />
                     { attributes.displayPostImage &&
-                        <SelectControl
-                            label={ __( 'Featured Image Style', 'atomic-blocks' ) }
-                            options={ imageCropOptions }
-                            value={ attributes.imageCrop }
-                            onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
-                        />
+                        <Fragment>
+							<SelectControl
+								label={ __( 'Featured Image Style', 'atomic-blocks' ) }
+								options={ imageCropOptions }
+								value={ attributes.imageCrop }
+								onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
+							/>
+						</Fragment>
                     }
                     <ToggleControl
                         label={ __( 'Display Title', 'atomic-blocks' ) }
