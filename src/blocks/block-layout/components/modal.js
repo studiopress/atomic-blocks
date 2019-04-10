@@ -22,48 +22,7 @@ const onSelect = ( tabName ) => {
 	console.log( 'Selecting tab', tabName );
 };
 
-const MyTabPanel = () => (
-	<TabPanel className="my-tab-panel"
-		activeClass="active-tab"
-		onSelect={ onSelect }
-		tabs={ [
-			{
-				name: 'tab1',
-				title: 'Layouts',
-				className: 'tab-one',
-			},
-			{
-				name: 'tab2',
-				title: 'Sections',
-				className: 'tab-two',
-			},
-			{
-				name: 'tab3',
-				title: 'Favorites',
-				className: 'tab-three',
-			},
-		] }>
-		{
-			( tab ) => {
-				let tabContent;
-				if ( tab.name ) {
-					if ( 'tab1' === tab.name ) {
-						tabContent = __( 'Tab one content' );
-					} else if ( 'tab2' === tab.name ) {
-						tabContent = __( 'Tab two content' );
-					} else if ( 'tab3' === tab.name ) {
-						tabContent = __( 'Tab three content' );
-					} else {
-						tabContent = __( 'Tab three content' );
-					}
-				}
-				return <div>{ tabContent }</div>;
-			}
-		}
-	</TabPanel>
-);
-
-class CustomComponent extends Component {
+class LayoutModal extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -75,58 +34,65 @@ class CustomComponent extends Component {
 	render() {
 		return (
 			<Fragment>
+				{ /* Launch the layout modal window */ }
 				<Button
 					isPrimary
 					isLarge
-					className=""
-					onClick={ () => this.setState( { modalOpen: true } ) }>{ __( 'Layout Library', 'atomic-blocks' ) }</Button>
+					className="ab-layout-modal-button"
+					onClick={ () => this.setState( {
+						modalOpen: true
+						} ) }
+				>
+					{ __( 'Layout Library', 'atomic-blocks' ) }
+				</Button>
 					{ this.state.modalOpen ?
 						<Modal
 							className="ab-layout-modal"
 							title={ __( 'Layout Selector', 'atomic-blocks' ) }
 							onRequestClose={ () => this.setState( { modalOpen: false } ) }
 						>
-							<TabPanel className="my-tab-panel"
-								activeClass="active-tab"
+							<TabPanel
+								className="ab-layout-modal-panel"
+								activeClass="ab-layout-modal-active-tab"
 								onSelect={ onSelect }
 								tabs={ [
 									{
-										name: 'tab1',
-										title: 'Layouts',
-										className: 'tab-one',
+										name: 'ab-layout-tab-layouts',
+										title: __( 'Layouts', 'atomic-blocks' ),
+										className: 'ab-layout-tab-layouts',
 									},
 									{
-										name: 'tab2',
-										title: 'Sections',
-										className: 'tab-two',
+										name: 'ab-layout-tab-sections',
+										title: __( 'Sections', 'atomic-blocks' ),
+										className: 'ab-layout-tab-sections',
 									},
 									{
-										name: 'tab3',
-										title: 'Favorites',
-										className: 'tab-three',
+										name: 'ab-layout-tab-favorites',
+										title: __( 'Favorites', 'atomic-blocks' ),
+										className: 'ab-layout-tab-favorites',
 									},
 									{
-										name: 'tab4',
-										title: 'Reusable Blocks',
-										className: 'tab-four',
+										name: 'ab-layout-tab-reusable',
+										title: __( 'Reusable Blocks', 'atomic-blocks' ),
+										className: 'ab-layout-tab-reusable',
 									},
 								] }>
 								{
 									( tab ) => {
 										let tabContent;
 										if ( tab.name ) {
-											if ( 'tab1' === tab.name ) {
+											if ( 'ab-layout-tab-layouts' === tab.name ) {
 												return [
 													<LayoutLibrary
 														clientId={ this.props.clientId }
 													/>
 												]
-											} else if ( 'tab2' === tab.name ) {
+											} else if ( 'ab-layout-tab-sections' === tab.name ) {
 												//updateSetting();
 												tabContent = __( 'Add layout sections here' );
-											} else if ( 'tab3' === tab.name ) {
+											} else if ( 'ab-layout-tab-favorites' === tab.name ) {
 												tabContent = __( 'Add layout and section favorites here' );
-											} else if ( 'tab4' === tab.name ) {
+											} else if ( 'ab-layout-tab-reusable' === tab.name ) {
 												tabContent = __( 'Add access to reusable blocks here' );
 											} else {
 												tabContent = __( 'Default tab content' );
@@ -142,4 +108,4 @@ class CustomComponent extends Component {
 		);
 	}
 }
-export default CustomComponent;
+export default LayoutModal;

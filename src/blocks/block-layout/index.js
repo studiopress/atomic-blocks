@@ -23,7 +23,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType( 'atomic-blocks/ab-layouts', {
 	title: __( 'AB Layouts', 'atomic-blocks' ),
 	description: __( 'Add a pre-defined section or layout.', 'atomic-blocks' ),
-	icon: 'welcome-widgets-menus',
+	icon: 'layout',
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'layout', 'atomic-blocks' ),
@@ -31,29 +31,12 @@ registerBlockType( 'atomic-blocks/ab-layouts', {
 		__( 'row', 'atomic-blocks' ),
 	],
 	attributes: {
-		columns: {
-			type: 'number',
-		},
 		uniqueID: {
 			type: 'string',
 			default: '',
 		},
-		layout: {
-			type: 'string',
-		},
-		columnsGap: {
-			type: 'number',
-			default: 2,
-		},
 		align: {
 			type: 'string',
-		},
-		layoutClass: {
-			type: 'string',
-		},
-		responsiveToggle: {
-			type: 'boolean',
-			default: true,
 		},
 	},
 

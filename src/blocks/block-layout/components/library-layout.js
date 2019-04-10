@@ -49,8 +49,8 @@ class LayoutLibrary extends Component {
 	}
 
 	/* Insert the block layout. */
-	onInsertContent( blockcode ) {
-		this.props.import( blockcode );
+	onInsertContent( blockLayout ) {
+		this.props.import( blockLayout );
 	}
 
 	/* Capitalize category labels in drop down. */
@@ -159,8 +159,15 @@ class LayoutLibrary extends Component {
 }
 
 export default compose(
+	/**
+	 * Use rawHandler to parse html layouts to blocks
+	 * See https://git.io/fjqGc for details
+	 */
 	withSelect( ( select, { clientId } ) => {
-		const { getBlock, canUserUseUnfilteredHTML } = select( 'core/editor' );
+		const {
+			getBlock,
+			canUserUseUnfilteredHTML
+		} = select( 'core/editor' );
 		const block = getBlock( clientId );
 		return {
 			block,
@@ -168,10 +175,10 @@ export default compose(
 		};
 	} ),
 	withDispatch( ( dispatch, { block, canUserUseUnfilteredHTML } ) => ( {
-		import: ( blockcode ) => dispatch( 'core/editor' ).replaceBlocks(
+		import: ( blockLayout ) => dispatch( 'core/editor' ).replaceBlocks(
 			block.clientId,
 			rawHandler( {
-				HTML: blockcode,
+				HTML: blockLayout,
 				mode: 'BLOCKS',
 				canUserUseUnfilteredHTML,
 			} ),

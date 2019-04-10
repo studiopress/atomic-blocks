@@ -1,21 +1,25 @@
-// Import block dependencies and components
+/**
+ * Edit component.
+ */
+
+ /**
+ * Import dependencies.
+ */
 import classnames from 'classnames';
 import Inspector from './inspector';
 import _times from 'lodash/times';
 import LayoutModal from './modal';
 
+/**
+ * WordPress dependencies.
+ */
 const { __ } = wp.i18n;
+const { Placeholder } = wp.components;
 const { Component, Fragment } = wp.element;
-
-// Register editor components
 const {
 	BlockControls,
 	BlockAlignmentToolbar,
 } = wp.editor;
-
-const {
-	Placeholder,
-} = wp.components;
 
 export default class Edit extends Component {
 
@@ -37,7 +41,6 @@ export default class Edit extends Component {
 
 	render() {
 
-		// Setup the attributes
 		const {
 			attributes,
 			isSelected,
@@ -45,7 +48,7 @@ export default class Edit extends Component {
 			clientId,
 		} = this.props;
 
-		// Show the layout placeholder
+		/* Placeholder with layout modal */
 		return [
 			<BlockControls key="controls">
 				<BlockAlignmentToolbar
@@ -60,14 +63,12 @@ export default class Edit extends Component {
 			<Fragment>
 				<Placeholder
 					key="placeholder"
-					icon="welcome-widgets-menus"
-					label={ __( 'Column Layout', 'atomic-blocks' ) }
+					label={ __( 'Layout Selector', 'atomic-blocks' ) }
+					icon="layout"
 					instructions={ __( 'Select a layout, bro.', 'atomic-blocks' ) }
 					className={ 'ab-layout-selector-placeholder' }
 				>
-					<LayoutModal
-						clientId={ clientId }
-					/>
+					<LayoutModal clientId={ clientId } />
 				</Placeholder>
 			</Fragment>
 		];
