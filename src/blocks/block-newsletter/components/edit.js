@@ -14,7 +14,10 @@ import CustomButton from './../../block-button/components/button';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { compose } = wp.compose;
+const {
+	compose,
+	withInstanceId
+} = wp.compose;
 const {
 	getColorClassName,
 	RichText,
@@ -44,6 +47,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 class Edit extends Component {
 	constructor() {
 		super( ...arguments );
+		this.props.setAttributes( { instanceId: this.props.instanceId } );
 	}
 
 	render() {
@@ -159,4 +163,4 @@ export default compose( [
 		{ buttonBackgroundColor: 'background-color' },
 		{ buttonTextColor: 'color' },
 	),
-] )( Edit );
+] )( withInstanceId( Edit ) );

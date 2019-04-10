@@ -118,8 +118,8 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 	$form = '
 		<div class="ab-block-newsletter ab-form-styles ' . esc_attr( $wrapper_class ) . '" style="' . safecss_filter_attr( $wrapper_style ) . '" >
 			<form method="post">
-				<label for="ab-newsletter-email-address" class="ab-newsletter-email-address-label">' . esc_html( $attributes['emailInputLabel'] ) . '</label>
-				<input type="email" name="ab-newsletter-email-address" class="ab-newsletter-email-address-input" />
+				<label for="ab-newsletter-email-address-' . esc_attr( $attributes['instanceId'] ) . '" class="ab-newsletter-email-address-label">' . esc_html( $attributes['emailInputLabel'] ) . '</label>
+				<input type="email" id="ab-newsletter-email-address-' . esc_attr( $attributes['instanceId'] ) . '" name="ab-newsletter-email-address" class="ab-newsletter-email-address-input" />
 				<button class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" style="' . safecss_filter_attr( $button_styles ) . '">' . esc_html( $attributes['buttonText'] ) . '</button>
 				<input type="hidden" name="ab-newsletter-mailing-list-provider" value="' . esc_attr( $attributes['mailingListProvider'] ) . '" />
 				<input type="hidden" name="ab-newsletter-mailing-list" value="' . esc_attr( $attributes['mailingList'] ) . '" />
@@ -213,6 +213,10 @@ function atomic_blocks_newsletter_block_attributes() {
 		],
 		'customTextColor'             => [
 			'type' => 'string',
+		],
+		'instanceId'                  => [
+			'type'    => 'number',
+			'default' => 1,
 		],
 	];
 }
