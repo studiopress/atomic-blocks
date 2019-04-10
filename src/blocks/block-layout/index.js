@@ -3,7 +3,7 @@
  */
 
 /**
- * Components and dependencies.
+ * Import dependencies.
  */
 import Edit from './components/edit';
 import Save from './components/save';

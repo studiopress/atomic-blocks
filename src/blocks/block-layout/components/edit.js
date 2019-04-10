@@ -5,9 +5,8 @@
  /**
  * Import dependencies.
  */
-import classnames from 'classnames';
-import Inspector from './inspector';
 import _times from 'lodash/times';
+import Inspector from './inspector';
 import LayoutModal from './modal';
 
 /**
@@ -43,30 +42,27 @@ export default class Edit extends Component {
 
 		const {
 			attributes,
-			isSelected,
 			setAttributes,
 			clientId,
 		} = this.props;
 
 		/* Placeholder with layout modal */
 		return [
-			<BlockControls key="controls">
-				<BlockAlignmentToolbar
-					value={ attributes.align }
-					onChange={ align => setAttributes( { align } ) }
-					controls={ [ 'center', 'wide', 'full' ] }
-				/>
-			</BlockControls>,
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
 			<Fragment>
+				<BlockControls key="controls">
+					<BlockAlignmentToolbar
+						value={ attributes.align }
+						onChange={ align => setAttributes( { align } ) }
+						controls={ [ 'center', 'wide', 'full' ] }
+					/>
+				</BlockControls>
+				<Inspector { ...{ setAttributes, ...this.props } } />
 				<Placeholder
 					key="placeholder"
 					label={ __( 'Layout Selector', 'atomic-blocks' ) }
-					icon="layout"
 					instructions={ __( 'Select a layout, bro.', 'atomic-blocks' ) }
 					className={ 'ab-layout-selector-placeholder' }
+					icon="layout"
 				>
 					<LayoutModal clientId={ clientId } />
 				</Placeholder>
