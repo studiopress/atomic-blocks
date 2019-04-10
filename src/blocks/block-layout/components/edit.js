@@ -1,13 +1,8 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import Inspector from './inspector';
-import Layout from './layout';
-import memoize from 'memize';
 import _times from 'lodash/times';
-import icons from './icons';
-import layoutColumns from './layout-columns';
 import LayoutModal from './modal';
-import map from 'lodash/map';
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -16,14 +11,10 @@ const { Component, Fragment } = wp.element;
 const {
 	BlockControls,
 	BlockAlignmentToolbar,
-	InnerBlocks,
 } = wp.editor;
 
 const {
 	Placeholder,
-	ButtonGroup,
-	Tooltip,
-	Button,
 } = wp.components;
 
 export default class Edit extends Component {
@@ -56,7 +47,6 @@ export default class Edit extends Component {
 
 		// Show the layout placeholder
 		return [
-			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<BlockAlignmentToolbar
 					value={ attributes.align }
@@ -64,7 +54,6 @@ export default class Edit extends Component {
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
-			// Show the block controls on focus
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,

@@ -1,15 +1,19 @@
 /**
- * Layout column Wrapper
+ * Layout column Wrapper.
  */
 
-// Setup the block
-const { Component } = wp.element;
-
-// Import block dependencies and components
+/**
+ * Internal dependencies.
+ */
 import classnames from 'classnames';
 
 /**
- * Create a Layout wrapper Component
+ * WordPress dependencies.
+ */
+const { Component } = wp.element;
+
+/**
+ * Create a Layout wrapper Component.
  */
 export default class Layout extends Component {
 
@@ -19,7 +23,6 @@ export default class Layout extends Component {
 
 	render() {
 
-		// Setup the attributes
 		const {
 			attributes: {
 				columns,

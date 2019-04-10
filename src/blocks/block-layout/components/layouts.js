@@ -1,3 +1,7 @@
+/**
+ * Layouts
+ */
+
 const { __ } = wp.i18n;
 const layoutArray = [
 	{
@@ -40,24 +44,5 @@ const layoutArray = [
 		keywords: [ 'pizza' ],
 		image: 'https://arraythemes.com/wp-content/uploads/edd/2016/04/baseline-home-1.jpg',
 	}
-
-	// {
-	// 	key: 'hero',
-	// 	content: \"Layout One Inserted\",
-	// 	name: __( 'Awesome Layout' ),
-	// 	background: 'light',
-	// 	category: [ 'header', 'call-to-action' ],
-	// 	keywords: [ 'coffee' ],
-	// 	image: 'pathtoimage.jpg',
-	// },
-	// {
-	// 	key: 'featured',
-	// 	content: \"Layout Two Inserted\",
-	// 	name: __( 'Even Awesomer Layout' ),
-	// 	background: 'light',
-	// 	category: [ 'features' ],
-	// 	keywords: [ 'pizza'],
-	// 	image: 'pathtoimage.jpg',
-	// },
 ];
 export default layoutArray;

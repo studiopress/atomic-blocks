@@ -2,20 +2,24 @@
  * BLOCK: Atomic Blocks Layout
  */
 
-// Import block dependencies and components
+/**
+ * Components and dependencies.
+ */
 import Edit from './components/edit';
 import Save from './components/save';
 import './styles/style.scss';
 import './styles/editor.scss';
 //import marginAttributes from '../../utils/components/margin/margin';
 
-// Internationalization
+/**
+ * WordPress dependencies.
+ */
 const { __ } = wp.i18n;
-
-// Register block
 const { registerBlockType } = wp.blocks;
 
-// Register the block
+/**
+ * Register the Layout block
+ */
 registerBlockType( 'atomic-blocks/ab-layouts', {
 	title: __( 'AB Layouts', 'atomic-blocks' ),
 	description: __( 'Add a pre-defined section or layout.', 'atomic-blocks' ),
