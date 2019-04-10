@@ -26,3 +26,4 @@ import './blocks/block-pricing-table-inner/components/button/index.js';
 
 
 import './blocks/block-newsletter/index';
+import './blocks/block-layout/index';
