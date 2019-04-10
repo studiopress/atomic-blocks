@@ -9,8 +9,6 @@ import classnames from 'classnames';
 import Inspector from './inspector';
 import PostGridImage from './image';
 
-import compact from 'lodash/compact';
-import map from 'lodash/map';
 import get from 'lodash/get';
 
 const { compose } = wp.compose;
