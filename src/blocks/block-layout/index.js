@@ -6,7 +6,6 @@
  * Import dependencies.
  */
 import Edit from './components/edit';
-import Save from './components/save';
 import './styles/style.scss';
 import './styles/editor.scss';
 //import marginAttributes from '../../utils/components/margin/margin';
@@ -53,7 +52,7 @@ registerBlockType( 'atomic-blocks/ab-layouts', {
 	},
 
 	/* Save the block markup. */
-	save: props => {
-		return <Save { ...props } />;
-	},
+	save: () => {
+		return null;
+	}
 } );
