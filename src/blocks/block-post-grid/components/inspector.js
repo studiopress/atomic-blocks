@@ -122,9 +122,8 @@ export default class Inspector extends Component {
 		const imageSizeOptions = this.imageSizeSelect();
 
 		// Combine the objects
-		const imageSizeCombine = { ...abImageSizeSelect, ...abImageSizeLandscape, ...abImageSizeSquare, ...imageSizeOptions};
-
-		//console.log(imageSizeCombine);
+		imageSizeOptions.push( abImageSizeSquare, abImageSizeLandscape );
+		imageSizeOptions.unshift( abImageSizeSelect );
 
 		return (
             <InspectorControls>
