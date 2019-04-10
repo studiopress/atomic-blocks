@@ -102,10 +102,7 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 	/* Add alignment to block wrapper. */
 	getEditWrapperProps( { align } ) {
 		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {
-			return {
-				'data-align': align,
-				'class': 'customclassss'
-			};
+			return { 'data-align': align };
 		}
 	},
 
