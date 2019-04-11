@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.5.5\n"
+"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.6.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-04-03T17:44:02+00:00\n"
-"PO-Revision-Date: 2019-04-03T17:44:02+00:00\n"
+"POT-Creation-Date: 2019-04-11T21:05:36+00:00\n"
+"PO-Revision-Date: 2019-04-11T21:05:36+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: atomic-blocks\n"
 
@@ -419,20 +419,20 @@ msgstr ""
 msgid "The submission failed."
 msgstr ""
 
-#: src/blocks/block-newsletter/index.php:162
+#: src/blocks/block-newsletter/index.php:166
 #: src/blocks/block-newsletter/index.js:23
 msgid "Subscribe"
 msgstr ""
 
-#: src/blocks/block-newsletter/index.php:172
+#: src/blocks/block-newsletter/index.php:176
 msgid "Please wait..."
 msgstr ""
 
-#: src/blocks/block-newsletter/index.php:176
+#: src/blocks/block-newsletter/index.php:180
 msgid "Your Email Address"
 msgstr ""
 
-#: src/blocks/block-newsletter/index.php:187
+#: src/blocks/block-newsletter/index.php:191
 msgid "Thanks for subscribing."
 msgstr ""
 
@@ -491,15 +491,15 @@ msgstr ""
 msgid "Newsletter"
 msgstr ""
 
-#: src/blocks/block-newsletter/components/edit.js:84
+#: src/blocks/block-newsletter/components/edit.js:88
 msgid "You must define your newsletter provider API keys to use this block."
 msgstr ""
 
-#: src/blocks/block-newsletter/components/edit.js:85
+#: src/blocks/block-newsletter/components/edit.js:89
 msgid "Configure your settings"
 msgstr ""
 
-#: src/blocks/block-newsletter/components/edit.js:112
+#: src/blocks/block-newsletter/components/edit.js:116
 #: src/blocks/block-cta/index.js:247
 #: src/blocks/block-pricing-table-inner/components/button/edit.js:83
 #: src/blocks/block-button/index.js:66
@@ -902,7 +902,11 @@ msgstr ""
 msgid "Email URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:172
+#: src/blocks/block-author-profile/components/inspector.js:166
+msgid "Supports a URL or an email link. Email links must be prefixed with \"mailto:\". Example: mailto:test@example.com"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:173
 msgid "Website URL"
 msgstr ""
 

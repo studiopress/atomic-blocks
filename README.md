@@ -82,6 +82,15 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**1.6.1**
+* Newsletter: Add instance ID to input field.
+* Newsletter: Change input type to email.
+* Newsletter: Change how nonce is handled and remove id attribute.
+* Author Profile: Add a description below the Email URL field.
+* Post Grid: Fix excerpt length.
+* Accordion: Fix link styles.
+* Fix redirect bug on multisite installs.
+
 **1.6.0**
 * Add the Newsletter block.
 
