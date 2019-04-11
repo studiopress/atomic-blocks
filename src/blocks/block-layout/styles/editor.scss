@@ -117,3 +117,15 @@
 		fill: #f9569b;
 	}
 }
+
+.ab-layout-selector-placeholder {
+	.components-placeholder__instructions {
+		margin-bottom: 1.4em;
+	}
+
+	button.ab-layout-modal-button {
+		font-size: 16px;
+		height: auto;
+		padding: 6px 18px;
+	}
+}

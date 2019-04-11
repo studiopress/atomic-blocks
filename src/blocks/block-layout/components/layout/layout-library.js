@@ -8,8 +8,9 @@
  * Dependencies.
  */
 import map from 'lodash/map';
-import layoutArray from './layouts';
-//import LazyLoad from 'react-lazy-load';
+import LazyLoad from 'react-lazy-load';
+import layoutArray from './layout-array';
+import sectionArray from './layout-section-array';
 
 /**
  * WordPress dependencies.
@@ -17,6 +18,7 @@ import layoutArray from './layouts';
 const { __ } = wp.i18n;
 const { applyFilters } = wp.hooks;
 const { compose } = wp.compose;
+const { rawHandler } = wp.blocks;
 const {
 	withSelect,
 	withDispatch
@@ -28,15 +30,10 @@ const {
 const {
 	Button,
 	ButtonGroup,
-	Tooltip,
 	TextControl,
 	SelectControl,
 	Dashicon,
 } = wp.components;
-const {
-	rawHandler,
-	createBlock,
-} = wp.blocks;
 
 class LayoutLibrary extends Component {
 	constructor() {
@@ -46,6 +43,20 @@ class LayoutLibrary extends Component {
 			category: 'all',
 			search: null,
 		};
+	}
+
+	/* Conditionally load the layout array based on the tab */
+	getLayoutArray() {
+		let component;
+		switch ( this.props.currentTab ) {
+			case 'ab-layout-tab-layouts' :
+				component = layoutArray;
+				break;
+			case 'ab-layout-tab-sections' :
+				component = sectionArray;
+				break;
+		}
+		return component;
 	}
 
 	/* Insert the block layout. */
@@ -60,12 +71,12 @@ class LayoutLibrary extends Component {
 
 	render() {
 		/* Grab the layout array. */
-		const blockLayout = applyFilters( 'ab.layout_array', layoutArray );
+		const blockLayout = applyFilters( 'ab.layout_array', this.getLayoutArray() ? this.getLayoutArray() : layoutArray );
 
 		/* Set a default category. */
 		const cats = [ 'all' ];
 
-		/* Create a category array. */
+		/* Show the filtered layout category. */
 		for ( let i = 0; i < blockLayout.length; i++ ) {
 			for ( let c = 0; c < blockLayout[ i ].category.length; c++ ) {
 				if ( ! cats.includes( blockLayout[ i ].category[ c ] ) ) {
@@ -81,7 +92,7 @@ class LayoutLibrary extends Component {
 
 		return (
 			<Fragment>
-				{ /* Category filter and search header */ }
+				{ /* Category filter and search header. */ }
 				<div className="ab-layout-modal-header">
 					<SelectControl
 						label={ __( 'Category', 'atomic-blocks' ) }
@@ -90,6 +101,7 @@ class LayoutLibrary extends Component {
 						onChange={ value => this.setState( { category: value } ) }
 					/>
 					<TextControl
+					label={ __( 'Category', 'atomic-blocks' ) }
 						type="text"
 						value={ this.state.search }
 						placeholder={ __( 'Search', 'atomic-blocks' ) }
@@ -113,10 +125,12 @@ class LayoutLibrary extends Component {
 											isSmall
 											onClick={ () => { this.onInsertContent( content ) } }
 										>
-											<img
-												src={ image }
-												alt={ name }
-											/>
+											<LazyLoad>
+												<img
+													src={ image }
+													alt={ name }
+												/>
+											</LazyLoad>
 										</Button>
 
 										<div class="ab-layout-design-info">
@@ -127,18 +141,7 @@ class LayoutLibrary extends Component {
 												className="ab-layout-favorite-button"
 												isSmall
 												onClick={ () => {
-												// Get the ID from layouts.js and add to global favorite setting
-
-												// this.setState(previousState => ({
-												// 	myArray: [...previousState.myArray, 'new value']
-												// }));
-
-												//or
-
-												// var newArray = this.state.arr.slice();
-												// newArray.push("new value");
-												// this.setState({arr:newArray})
-												alert( id )
+													alert( 'Oh, hello. This is not done yet.' )
 												} }
 											>
 												<Dashicon

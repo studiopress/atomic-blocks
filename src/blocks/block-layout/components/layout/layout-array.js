@@ -11,7 +11,7 @@ const layoutArray = [
 		name: __( 'Post/Page Grid' ),
 		category: [ 'header' ],
 		keywords: [ 'coffee' ],
-		image: 'https://arraythemes.com/wp-content/uploads/edd/2018/04/array-ab-theme.jpg',
+		image: 'https://d1c0hjomoutdrw.cloudfront.net/items/3n1F2i2s3V2F1n1E3b0k/ab-layout-1.jpg',
 		favorite: true,
 	},
 	{
@@ -22,7 +22,7 @@ const layoutArray = [
 		background: 'light',
 		category: [ 'call-to-action' ],
 		keywords: [ 'pizza' ],
-		image: 'https://arraythemes.com/wp-content/uploads/edd/2017/06/meteor-desktop.jpg',
+		image: 'https://d1c0hjomoutdrw.cloudfront.net/items/1l0w2Q2U2i3E1G3u1H1C/ab-layout-2.jpg',
 		favorite: false,
 	},
 	{
@@ -32,7 +32,7 @@ const layoutArray = [
 		name: __( 'Post/Page Grid' ),
 		category: [ 'header' ],
 		keywords: [ 'coffee' ],
-		image: 'https://arraythemes.com/wp-content/uploads/edd/2017/03/atomic-home.jpg',
+		image: 'https://d1c0hjomoutdrw.cloudfront.net/items/1V2S263O2E2H1N092b1I/ab-layout-3.jpg',
 	},
 	{
 		id: 4,

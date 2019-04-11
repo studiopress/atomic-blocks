@@ -7,7 +7,7 @@
  */
 import _times from 'lodash/times';
 import Inspector from './inspector';
-import LayoutModal from './modal';
+import LayoutModal from './layout/layout-modal';
 
 /**
  * WordPress dependencies.
@@ -60,7 +60,7 @@ export default class Edit extends Component {
 				<Placeholder
 					key="placeholder"
 					label={ __( 'Layout Selector', 'atomic-blocks' ) }
-					instructions={ __( 'Select a layout, bro.', 'atomic-blocks' ) }
+					instructions={ __( 'Launch the layout library to browse pre-designed sections.', 'atomic-blocks' ) }
 					className={ 'ab-layout-selector-placeholder' }
 					icon="layout"
 				>

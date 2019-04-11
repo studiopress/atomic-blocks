@@ -2,7 +2,7 @@
  * Layout modal window with tab panel.
  */
 
-import LayoutLibrary from './library-layout';
+import LayoutLibrary from './layout-library';
 
 /**
  * WordPress dependencies.
@@ -18,20 +18,18 @@ const {
 	TabPanel,
 } = wp.components;
 
-const onSelect = ( tabName ) => {
-	console.log( 'Selecting tab', tabName );
-};
-
 class LayoutModal extends Component {
 	constructor() {
 		super( ...arguments );
 
 		this.state = {
 			modalOpen: false,
-			sectionTab: false,
+			currentTab: 'ab-layout-tab-layouts',
 		};
 	}
+
 	render() {
+		//console.log(this.state.currentTab);
 		return (
 			<Fragment>
 				{ /* Launch the layout modal window */ }
@@ -41,7 +39,7 @@ class LayoutModal extends Component {
 					className="ab-layout-modal-button"
 					onClick={ () => this.setState( {
 						modalOpen: true
-						} ) }
+					} ) }
 				>
 					{ __( 'Layout Library', 'atomic-blocks' ) }
 				</Button>
@@ -54,7 +52,9 @@ class LayoutModal extends Component {
 							<TabPanel
 								className="ab-layout-modal-panel"
 								activeClass="ab-layout-modal-active-tab"
-								onSelect={ onSelect }
+								onSelect={ ( tabName ) => this.setState( {
+									currentTab: tabName
+								} ) }
 								tabs={ [
 									{
 										name: 'ab-layout-tab-layouts',
@@ -85,11 +85,19 @@ class LayoutModal extends Component {
 												return [
 													<LayoutLibrary
 														clientId={ this.props.clientId }
+														currentTab={ this.state.currentTab }
+														content={ 'layout' }
+														blockLayout={ 'blockLayout' }
 													/>
 												]
 											} else if ( 'ab-layout-tab-sections' === tab.name ) {
-												//updateSetting();
-												tabContent = __( 'Add layout sections here' );
+												return [
+													<LayoutLibrary
+														clientId={ this.props.clientId }
+														currentTab={ this.state.currentTab }
+														content={ 'section' }
+													/>
+												]
 											} else if ( 'ab-layout-tab-favorites' === tab.name ) {
 												tabContent = __( 'Add layout and section favorites here' );
 											} else if ( 'ab-layout-tab-reusable' === tab.name ) {
