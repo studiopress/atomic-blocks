@@ -124,7 +124,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 				<input type="hidden" name="ab-newsletter-mailing-list-provider" value="' . esc_attr( $attributes['mailingListProvider'] ) . '" />
 				<input type="hidden" name="ab-newsletter-mailing-list" value="' . esc_attr( $attributes['mailingList'] ) . '" />
 				<input type="hidden" name="ab-newsletter-success-message" value="' . esc_attr( $attributes['successMessage'] ) . '" />
-				<input type="hidden" name="ab-newsletter-form-nonce" value="' . wp_create_nonce( 'ab-newsletter-form-nonce' ) .'" />
+				<input type="hidden" name="ab-newsletter-form-nonce" value="' . wp_create_nonce( 'ab-newsletter-form-nonce' ) . '" />
 			</form>
 			<div class="ab-block-newsletter-errors" style="display: none;"></div>
 		</div>';
