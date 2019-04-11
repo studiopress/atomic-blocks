@@ -12,7 +12,7 @@
 			&::-webkit-details-marker {
 				display: none
 			}
-			&:after {
+			&:before {
 				content: "+";
 				color: #418AD0;
 				float: left;
@@ -23,7 +23,7 @@
 		}
 		&[open] {
 			summary {
-				&:after {
+				&:before {
 					content: "-";
 					font-size: 2em;
 					margin: -17px 10px 0 0;
