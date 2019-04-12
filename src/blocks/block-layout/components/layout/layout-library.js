@@ -11,6 +11,7 @@ import map from 'lodash/map';
 import LazyLoad from 'react-lazy-load';
 import layoutArray from './layout-array';
 import sectionArray from './layout-section-array';
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies.
@@ -33,6 +34,7 @@ const {
 	TextControl,
 	SelectControl,
 	Dashicon,
+	Tooltip,
 } = wp.components;
 
 class LayoutLibrary extends Component {
@@ -42,6 +44,8 @@ class LayoutLibrary extends Component {
 		this.state = {
 			category: 'all',
 			search: null,
+			activeView: 'grid',
+			layoutCount: '',
 		};
 	}
 
@@ -69,9 +73,14 @@ class LayoutLibrary extends Component {
 		return string.charAt( 0 ).toUpperCase() + string.slice( 1 );
 	}
 
+	/* Insert the block layout. */
+	countLayouts( layoutInt ) {
+		this.setState( { layoutCount: layoutInt } );
+	}
+
 	render() {
 		/* Grab the layout array. */
-		const blockLayout = applyFilters( 'ab.layout_array', this.getLayoutArray() ? this.getLayoutArray() : layoutArray );
+		const blockLayout = applyFilters( 'ab.layout_array', this.getLayoutArray() ? this.getLayoutArray() : sectionArray );
 
 		/* Set a default category. */
 		const cats = [ 'all' ];
@@ -90,6 +99,14 @@ class LayoutLibrary extends Component {
 			return { value: item, label: this.capitalizeFirstLetter( item ) }
 		} );
 
+		/* Expand each layout full width. */
+		const onZoom = () => {
+			const imageZoom = document.querySelector('.ab-layout-zoom-button');
+			imageZoom.parentNode.classList.toggle('ab-layout-zoom-layout');
+		};
+
+		console.log(this.state.layoutCount);
+
 		return (
 			<Fragment>
 				{ /* Category filter and search header. */ }
@@ -101,7 +118,6 @@ class LayoutLibrary extends Component {
 						onChange={ value => this.setState( { category: value } ) }
 					/>
 					<TextControl
-					label={ __( 'Category', 'atomic-blocks' ) }
 						type="text"
 						value={ this.state.search }
 						placeholder={ __( 'Search', 'atomic-blocks' ) }
@@ -109,15 +125,77 @@ class LayoutLibrary extends Component {
 					/>
 				</div>
 
+				<div className={ 'ab-layout-view' }>
+					{ <div className={ 'ab-layout-view-left' }><p>{ __( 'Showing: ', 'atomic-blocks' ) + blockLayout.length }</p></div> }
+
+					{ /* Grid width view */ }
+					<div className={ 'ab-layout-view-right' }>
+						<Tooltip text={ __( 'Grid View', 'atomic-blocks' ) }>
+							<Button
+								key={ 'buttonGridView' }
+								className={ classnames(
+									this.state.activeView === 'grid' ? 'is-primary' : null,
+									'ab-layout-grid-view-button'
+								) }
+								isSmall
+								onClick={ () => this.setState( {
+									activeView: 'grid'
+								} ) }
+							>
+								<Dashicon
+									icon={ 'screenoptions' }
+									className={ 'ab-layout-icon-grid' }
+								/>
+							</Button>
+						</Tooltip>
+
+						{ /* Full width layout view */ }
+						<Tooltip text={ __( 'Full Width View', 'atomic-blocks' ) }>
+							<Button
+								key={ 'buttonGridView' }
+								className={ classnames(
+									this.state.activeView === 'full' ? 'is-primary' : null,
+									'ab-layout-full-view-button'
+								) }
+								isSmall
+								onClick={ () => this.setState( {
+									activeView: 'full'
+								} ) }
+							>
+								<Dashicon
+									icon={ 'tablet' }
+									className={ 'ab-layout-icon-tablet' }
+								/>
+							</Button>
+						</Tooltip>
+					</div>
+				</div>
+
 				<ButtonGroup
-					className={ "ab-layout-choices" }
+					className={ classnames(
+						'ab-layout-choices',
+						this.state.activeView === 'full' ? 'ab-layout-view-full' : null,
+					) }
 					aria-label={ __( 'Layout Options', 'atomic-blocks' ) }
 				>
 					{ map( blockLayout, ( { name, key, id, image, content, category, keywords, favorite } ) => {
 						if ( ( 'all' === this.state.category || category.includes( this.state.category ) ) && ( ! this.state.search || ( keywords && keywords.some( x => x.toLowerCase().includes( this.state.search.toLowerCase() ) ) ) ) ) {
 							return (
 								<div className="ab-layout-design">
-									<div class="ab-layout-design-item">
+									{ /* Zoom button */ }
+									<Button
+										key={ 'buttonZoom' }
+										className="ab-layout-zoom-button"
+										isSmall
+										onClick={ onZoom }
+									>
+										<Dashicon
+											icon={ 'editor-expand' }
+											className={ 'ab-layout-icon-expand' }
+										/>
+									</Button>
+
+									<div className="ab-layout-design-item">
 										{ /* Insert the selected layout */ }
 										<Button
 											key={ key }
@@ -133,20 +211,20 @@ class LayoutLibrary extends Component {
 											</LazyLoad>
 										</Button>
 
-										<div class="ab-layout-design-info">
+										<div className="ab-layout-design-info">
 											<div className="ab-layout-design-title">{ name }</div>
 											{ /* Favorite button */ }
 											<Button
-												key={ key }
+												key={ 'buttonFavorite' }
 												className="ab-layout-favorite-button"
 												isSmall
 												onClick={ () => {
-													alert( 'Oh, hello. This is not done yet.' )
+													// alert( 'Oh, hello. This is not done yet.' )
 												} }
 											>
 												<Dashicon
 													icon={ 'heart' }
-													className={ 'ab-layout-favorite' }
+													className={ 'ab-layout-icon-favorite' }
 												/>
 											</Button>
 										</div>

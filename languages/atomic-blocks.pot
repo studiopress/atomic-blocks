@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.5.5\n"
+"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-04-03T17:44:02+00:00\n"
-"PO-Revision-Date: 2019-04-03T17:44:02+00:00\n"
+"POT-Creation-Date: 2019-04-12T01:56:49+00:00\n"
+"PO-Revision-Date: 2019-04-12T01:56:49+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: atomic-blocks\n"
 
@@ -419,20 +419,20 @@ msgstr ""
 msgid "The submission failed."
 msgstr ""
 
-#: src/blocks/block-newsletter/index.php:162
+#: src/blocks/block-newsletter/index.php:166
 #: src/blocks/block-newsletter/index.js:23
 msgid "Subscribe"
 msgstr ""
 
-#: src/blocks/block-newsletter/index.php:172
+#: src/blocks/block-newsletter/index.php:176
 msgid "Please wait..."
 msgstr ""
 
-#: src/blocks/block-newsletter/index.php:176
+#: src/blocks/block-newsletter/index.php:180
 msgid "Your Email Address"
 msgstr ""
 
-#: src/blocks/block-newsletter/index.php:187
+#: src/blocks/block-newsletter/index.php:191
 msgid "Thanks for subscribing."
 msgstr ""
 
@@ -472,6 +472,68 @@ msgstr ""
 
 #: src/blocks/block-post-grid/index.php:100
 msgid "Untitled"
+msgstr ""
+
+#: src/blocks/block-layout/index.js:23
+msgid "AB Layouts"
+msgstr ""
+
+#: src/blocks/block-layout/index.js:24
+msgid "Add a pre-defined section or layout to posts and pages."
+msgstr ""
+
+#: src/blocks/block-layout/index.js:28
+msgid "layout"
+msgstr ""
+
+#: src/blocks/block-layout/index.js:29
+msgid "column"
+msgstr ""
+
+#: src/blocks/block-layout/index.js:30
+msgid "row"
+msgstr ""
+
+#: src/blocks/block-layout/components/edit.js:62
+#: src/blocks/block-layout/components/layout/layout-modal.js:49
+msgid "Layout Selector"
+msgstr ""
+
+#: src/blocks/block-layout/components/edit.js:63
+msgid "Launch the layout library to browse pre-designed sections."
+msgstr ""
+
+#: src/blocks/block-layout/components/layout/layout-library.js:98
+#: src/blocks/block-layout/components/layout/layout-library.js:104
+msgid "Category"
+msgstr ""
+
+#: src/blocks/block-layout/components/layout/layout-library.js:107
+msgid "Search"
+msgstr ""
+
+#: src/blocks/block-layout/components/layout/layout-library.js:114
+msgid "Layout Options"
+msgstr ""
+
+#: src/blocks/block-layout/components/layout/layout-modal.js:44
+msgid "Layout Library"
+msgstr ""
+
+#: src/blocks/block-layout/components/layout/layout-modal.js:61
+msgid "Layouts"
+msgstr ""
+
+#: src/blocks/block-layout/components/layout/layout-modal.js:66
+msgid "Sections"
+msgstr ""
+
+#: src/blocks/block-layout/components/layout/layout-modal.js:71
+msgid "Favorites"
+msgstr ""
+
+#: src/blocks/block-layout/components/layout/layout-modal.js:76
+msgid "Reusable Blocks"
 msgstr ""
 
 #: src/blocks/block-newsletter/index.js:17
@@ -902,7 +964,11 @@ msgstr ""
 msgid "Email URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:172
+#: src/blocks/block-author-profile/components/inspector.js:166
+msgid "Supports a URL or an email link. Email links must be prefixed with \"mailto:\". Example: mailto:test@example.com"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:173
 msgid "Website URL"
 msgstr ""
 

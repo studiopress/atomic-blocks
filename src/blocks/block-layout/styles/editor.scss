@@ -48,7 +48,7 @@
 	.ab-layout-modal-header {
 		background: #f2f2f2;
 		padding: 12px 20px;
-		margin-bottom: 20px;
+		margin-bottom: 15px;
 	}
 
 	.ab-layout-choices {
@@ -58,13 +58,43 @@
 		grid-gap: 0 2em;
 	}
 
+	.ab-layout-view-full {
+		grid-template-columns: 1fr;
+	}
+
+	.ab-layout-view {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+		grid-gap: 0 2em;
+		margin-bottom: 15px;
+	}
+
+	.ab-layout-view-left {
+		p {
+			margin: 0;
+			line-height: 2.2em;
+		}
+	}
+
+	.ab-layout-view-right {
+		text-align: right;
+
+		button {
+			margin-left: 5px;
+			height: auto;
+			padding: 5px;
+		}
+	}
+
 	.ab-layout-design {
 		text-align: center;
 		margin-bottom: 40px;
+		position: relative;
 
 		img {
 			max-width: 100%;
-			border-radius: 5px;
+			display: block;
 		}
 
 		.ab-layout-insert-button {
@@ -76,6 +106,8 @@
 			border: solid 1px #ccc;
 			border-bottom: none;
 			padding: 0;
+			z-index: 5;
+			position: relative;
 
 			&:hover {
 				border: solid 1px #0085ba;
@@ -92,7 +124,7 @@
 		padding: 12px;
 
 		button {
-			position: absolute;
+
 			right: 12px;
 			top: 8px;
 		}
@@ -106,6 +138,7 @@
 		background: none;
 		border: none;
 		box-shadow: none;
+		display: none;
 	}
 
 	.ab-layout-favorite-button:hover {
@@ -113,8 +146,33 @@
 		box-shadow: none;
 	}
 
-	.ab-layout-favorite:hover {
+	.ab-layout-icon-favorite:hover {
 		fill: #f9569b;
+	}
+
+	.ab-layout-zoom-button {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		background: #fff;
+		border-radius: 5px !important;
+		transition: .2s ease;
+		z-index: 10;
+		border-radius: 5px;
+		padding: 5px;
+		height: auto;
+		opacity: 0;
+		display: none;
+	}
+
+	.ab-layout-design:hover {
+		.ab-layout-zoom-button {
+			opacity: 1;
+		}
+	}
+
+	.ab-layout-zoom-layout {
+		grid-column: 1 / -1;
 	}
 }
 

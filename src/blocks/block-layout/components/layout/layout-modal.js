@@ -24,7 +24,7 @@ class LayoutModal extends Component {
 
 		this.state = {
 			modalOpen: false,
-			currentTab: 'ab-layout-tab-layouts',
+			currentTab: 'ab-layout-tab-sections',
 		};
 	}
 
@@ -57,14 +57,14 @@ class LayoutModal extends Component {
 								} ) }
 								tabs={ [
 									{
-										name: 'ab-layout-tab-layouts',
-										title: __( 'Layouts', 'atomic-blocks' ),
-										className: 'ab-layout-tab-layouts',
-									},
-									{
 										name: 'ab-layout-tab-sections',
 										title: __( 'Sections', 'atomic-blocks' ),
 										className: 'ab-layout-tab-sections',
+									},
+									{
+										name: 'ab-layout-tab-layouts',
+										title: __( 'Layouts', 'atomic-blocks' ),
+										className: 'ab-layout-tab-layouts',
 									},
 									{
 										name: 'ab-layout-tab-favorites',
@@ -81,21 +81,21 @@ class LayoutModal extends Component {
 									( tab ) => {
 										let tabContent;
 										if ( tab.name ) {
-											if ( 'ab-layout-tab-layouts' === tab.name ) {
+											if ( 'ab-layout-tab-sections' === tab.name ) {
+												return [
+													<LayoutLibrary
+														clientId={ this.props.clientId }
+														currentTab={ this.state.currentTab }
+														content={ 'section' }
+													/>
+												]
+											} else if ( 'ab-layout-tab-layouts' === tab.name ) {
 												return [
 													<LayoutLibrary
 														clientId={ this.props.clientId }
 														currentTab={ this.state.currentTab }
 														content={ 'layout' }
 														blockLayout={ 'blockLayout' }
-													/>
-												]
-											} else if ( 'ab-layout-tab-sections' === tab.name ) {
-												return [
-													<LayoutLibrary
-														clientId={ this.props.clientId }
-														currentTab={ this.state.currentTab }
-														content={ 'section' }
 													/>
 												]
 											} else if ( 'ab-layout-tab-favorites' === tab.name ) {
