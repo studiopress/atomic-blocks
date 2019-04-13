@@ -71,11 +71,6 @@ class LayoutModal extends Component {
 										title: __( 'Favorites', 'atomic-blocks' ),
 										className: 'ab-layout-tab-favorites',
 									},
-									{
-										name: 'ab-layout-tab-reusable',
-										title: __( 'Reusable Blocks', 'atomic-blocks' ),
-										className: 'ab-layout-tab-reusable',
-									},
 								] }>
 								{
 									( tab ) => {
@@ -99,11 +94,9 @@ class LayoutModal extends Component {
 													/>
 												]
 											} else if ( 'ab-layout-tab-favorites' === tab.name ) {
-												tabContent = __( 'Add layout and section favorites here' );
-											} else if ( 'ab-layout-tab-reusable' === tab.name ) {
-												tabContent = __( 'Add access to reusable blocks here' );
+												tabContent = __( 'Add layout and section favorites here', 'atomic-blocks' );
 											} else {
-												tabContent = __( 'Default tab content' );
+												tabContent = __( 'Default tab content', 'atomic-blocks' );
 											}
 										}
 										return <div>{ tabContent }</div>;

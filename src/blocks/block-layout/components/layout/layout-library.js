@@ -105,14 +105,12 @@ class LayoutLibrary extends Component {
 			imageZoom.parentNode.classList.toggle('ab-layout-zoom-layout');
 		};
 
-		console.log(this.state.layoutCount);
-
 		return (
 			<Fragment>
 				{ /* Category filter and search header. */ }
 				<div className="ab-layout-modal-header">
 					<SelectControl
-						label={ __( 'Category', 'atomic-blocks' ) }
+						label={ __( 'Layout Categories', 'atomic-blocks' ) }
 						value={ this.state.category }
 						options={ catOptions }
 						onChange={ value => this.setState( { category: value } ) }
@@ -120,7 +118,7 @@ class LayoutLibrary extends Component {
 					<TextControl
 						type="text"
 						value={ this.state.search }
-						placeholder={ __( 'Search', 'atomic-blocks' ) }
+						placeholder={ __( 'Search Layouts', 'atomic-blocks' ) }
 						onChange={ value => this.setState( { search: value } ) }
 					/>
 				</div>
@@ -182,51 +180,53 @@ class LayoutLibrary extends Component {
 						if ( ( 'all' === this.state.category || category.includes( this.state.category ) ) && ( ! this.state.search || ( keywords && keywords.some( x => x.toLowerCase().includes( this.state.search.toLowerCase() ) ) ) ) ) {
 							return (
 								<div className="ab-layout-design">
-									{ /* Zoom button */ }
-									<Button
-										key={ 'buttonZoom' }
-										className="ab-layout-zoom-button"
-										isSmall
-										onClick={ onZoom }
-									>
-										<Dashicon
-											icon={ 'editor-expand' }
-											className={ 'ab-layout-icon-expand' }
-										/>
-									</Button>
-
-									<div className="ab-layout-design-item">
-										{ /* Insert the selected layout */ }
+									<div className="ab-layout-design-inside">
+										{ /* Zoom button */ }
 										<Button
-											key={ key }
-											className="ab-layout-insert-button"
+											key={ 'buttonZoom' }
+											className="ab-layout-zoom-button"
 											isSmall
-											onClick={ () => { this.onInsertContent( content ) } }
+											onClick={ onZoom }
 										>
-											<LazyLoad>
-												<img
-													src={ image }
-													alt={ name }
-												/>
-											</LazyLoad>
+											<Dashicon
+												icon={ 'editor-expand' }
+												className={ 'ab-layout-icon-expand' }
+											/>
 										</Button>
 
-										<div className="ab-layout-design-info">
-											<div className="ab-layout-design-title">{ name }</div>
-											{ /* Favorite button */ }
+										<div className="ab-layout-design-item">
+											{ /* Insert the selected layout */ }
 											<Button
-												key={ 'buttonFavorite' }
-												className="ab-layout-favorite-button"
+												key={ key }
+												className="ab-layout-insert-button"
 												isSmall
-												onClick={ () => {
-													// alert( 'Oh, hello. This is not done yet.' )
-												} }
+												onClick={ () => { this.onInsertContent( content ) } }
 											>
-												<Dashicon
-													icon={ 'heart' }
-													className={ 'ab-layout-icon-favorite' }
-												/>
+												<LazyLoad>
+													<img
+														src={ image }
+														alt={ name }
+													/>
+												</LazyLoad>
 											</Button>
+
+											<div className="ab-layout-design-info">
+												<div className="ab-layout-design-title">{ name }</div>
+												{ /* Favorite button */ }
+												<Button
+													key={ 'buttonFavorite' }
+													className="ab-layout-favorite-button"
+													isSmall
+													onClick={ () => {
+														// alert( 'Oh, hello. This is not done yet.' )
+													} }
+												>
+													<Dashicon
+														icon={ 'heart' }
+														className={ 'ab-layout-icon-favorite' }
+													/>
+												</Button>
+											</div>
 										</div>
 									</div>
 								</div>
