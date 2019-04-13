@@ -160,9 +160,9 @@
 		padding: 12px;
 
 		button {
-
-			right: 12px;
-			top: 8px;
+			&:active {
+				vertical-align: middle !important;
+			}
 		}
 	}
 

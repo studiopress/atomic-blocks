@@ -29,7 +29,6 @@ class LayoutModal extends Component {
 	}
 
 	render() {
-		//console.log(this.state.currentTab);
 		return (
 			<Fragment>
 				{ /* Launch the layout modal window */ }

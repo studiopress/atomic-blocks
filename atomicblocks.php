@@ -65,6 +65,16 @@ function atomic_blocks_loader() {
 	}
 
 	/**
+	 * Favorite Meta.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'includes/layout/favorite-setting.php';
+
+	/**
+	 * Favorite Meta API Endpoints.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'includes/layout/favorite-meta-endpoint.php';
+
+	/**
 	 * Compatibility functionality.
 	 */
 	require_once $atomic_blocks_includes_dir . 'compat.php';

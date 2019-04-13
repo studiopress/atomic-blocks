@@ -11,7 +11,9 @@ import map from 'lodash/map';
 import LazyLoad from 'react-lazy-load';
 import layoutArray from './layout-array';
 import sectionArray from './layout-section-array';
+import favoriteButton from './favorite-button';
 import classnames from 'classnames';
+import FavoriteButton from './favorite-button';
 
 /**
  * WordPress dependencies.
@@ -105,6 +107,8 @@ class LayoutLibrary extends Component {
 			imageZoom.parentNode.classList.toggle('ab-layout-zoom-layout');
 		};
 
+		console.log( blockLayout );
+
 		return (
 			<Fragment>
 				{ /* Category filter and search header. */ }
@@ -176,7 +180,7 @@ class LayoutLibrary extends Component {
 					) }
 					aria-label={ __( 'Layout Options', 'atomic-blocks' ) }
 				>
-					{ map( blockLayout, ( { name, key, id, image, content, category, keywords, favorite } ) => {
+					{ map( blockLayout, ( { name, key, id, image, content, category, keywords } ) => {
 						if ( ( 'all' === this.state.category || category.includes( this.state.category ) ) && ( ! this.state.search || ( keywords && keywords.some( x => x.toLowerCase().includes( this.state.search.toLowerCase() ) ) ) ) ) {
 							return (
 								<div className="ab-layout-design">
@@ -226,6 +230,10 @@ class LayoutLibrary extends Component {
 														className={ 'ab-layout-icon-favorite' }
 													/>
 												</Button>
+
+												<FavoriteButton
+													layoutId={ id }
+												/>
 											</div>
 										</div>
 									</div>

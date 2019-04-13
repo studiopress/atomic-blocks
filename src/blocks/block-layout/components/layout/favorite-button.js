@@ -8,10 +8,7 @@ const {
 	Component,
 	Fragment
 } = wp.element;
-const { InspectorControls } = wp.editor;
 const {
-	PanelBody,
-	PanelRow,
 	TextControl,
 	Button,
 	Spinner
@@ -19,7 +16,7 @@ const {
 
 /* Retrieve the setting value from the setting endpoint.  */
 function getSetting() {
-	return apiFetch( { path: "/abtestsetting/v1/block-setting" } )
+	return apiFetch( { path: "/favoritemeta/v1/block-setting" } )
 		.then( blockSetting => blockSetting )
 		.catch( error => console.error( error ) );
 }
@@ -27,7 +24,7 @@ function getSetting() {
 /* Set the setting when the update is triggered. */
 function setSetting( setting ) {
 	return apiFetch( {
-		path: "/abtestsetting/v1/block-setting",
+		path: "/favoritemeta/v1/block-setting",
 		method: "POST",
 		body: setting
 	} )
@@ -35,24 +32,61 @@ function setSetting( setting ) {
 	.catch( error => console.error( error ) );
 }
 
-export default class Edit extends Component {
+export default class FavoriteButton extends Component {
+
+	constructor() {
+		super( ...arguments );
+
+		// this.state = {
+		// 	blockSetting: '',
+		// 	isLoading: true,
+		// 	isSaving: false,
+		// 	isEditing: false
+		// };
+	}
+
 	state = {
-		blockSetting: '',
+		blockSetting: [],
 		isLoading: true,
 		isSaving: false,
-		isEditing: false
+		isEditing: false,
+		layoutArray: [],
+		layoutArrayAdd: [],
 	};
+
+	// mergeArray() {
+	// 	// const oldList = this.state.blockSetting;
+	// 	// const newList = this.state.layoutArray;
+	// 	// const mergedList = oldList.push( newList );
+
+	// 	console.log( mergedList );
+
+	// 	this.setState({ priceLog: this.state.pricelog.concat(this.props.price)});
+	// };
 
 	/* Update the global setting. */
 	updateSetting = async () => {
 		this.setState( { isSaving: true } );
-		const blockSetting = await setSetting( this.state.blockSetting );
+		//const blockSetting = await setSetting( this.state.blockSetting.concat( [ this.state.layoutArrayAdd ] ) );
+
+		const blockSetting = await setSetting( [...this.state.blockSetting, ...[this.props.layoutArrayAdd] ] );
+
+		this.setState(prevState => ( {
+			layoutArray: [...prevState.layoutArray, [ this.props.layoutId ]]
+		} ) )
+
 		this.setState( {
-			blockSetting,
+			// layoutArray: [...this.state.layoutArray, {"value": } ],
+
+			// layoutArrayAdd: [ this.state.blockSetting.concat( [ this.props.layoutId ] ) ],
+			// layoutArrayAdd: [...this.state.myArray, ...[this.props.layoutId] ],
+			//blockSetting,
 			isLoading: false,
 			isSaving: false,
 			isEditing: false,
 		} );
+		//console.log(this.state.blockSetting);
+		console.log(this.state.layoutArray);
 	};
 
 	/* Wait for the data to be available and setup the setting. */
@@ -75,79 +109,30 @@ export default class Edit extends Component {
 
 		return (
 			<Fragment>
-				<InspectorControls>
-					<PanelBody
-						title={ __( 'Block Setting', 'atomic-blocks') }
-						initialOpen={ true }
-					>
-						<PanelRow>
-							{ this.state.isEditing || this.state.blockSetting === "" ? (
-								<p>
-									<TextControl
-										label={ __( 'Global setting', 'atomic-blocks' ) }
-										value={ this.state.blockSetting }
-										onChange={ blockSetting => {
-											if ( !this.state.isSaving ) {
-												this.setState({
-													blockSetting,
-													isEditing: true,
-												});
-											}
-										} }
-									/>
-									{ /* Save or update the setting */ }
-									<Button
-										isPrimary
-										disabled={ this.state.isSaving }
-										onClick={ () => {
-											this.updateSetting();
-										} }
-										>
-										{ __( 'Save Setting', 'atomic-blocks' ) }
-									</Button>{ " " }
-									{ this.state.blockSetting !== "" && (
-										<Button
-											isDefault
-											disabled={ this.state.isSaving }
-											onClick={ async () => {
-												this.setState( { isEditing: false } );
-												const blockSetting = await getSetting();
-												this.setState( { blockSetting } );
-											} }
-										>
-											{ __( 'Cancel', 'atomic-blocks' ) }
-										</Button>
-									) }
-								</p>
-							) : (
-							<Fragment>
-								<p>{ __( 'Global Setting Saved', 'atomic-blocks' ) }</p>
-									<Button
-										isDefault
-										onClick={ () =>
-											this.setState( {
-												isEditing: true
-											} )
-										}
-									>
-										{ __( 'Edit', 'atomic-blocks' ) }
-									</Button>
-							</Fragment>
-						) }
-						</PanelRow>
-					</PanelBody>
-				</InspectorControls>
+				<TextControl
+					label={ __( 'Global setting', 'atomic-blocks' ) }
+					value={ this.props.layoutId }
+					onChange={ blockSetting => {
+						if ( !this.state.isSaving ) {
+							this.setState({
+								blockSetting,
+								isEditing: true,
+							});
+						}
+					} }
+				/>
 
-				<div className={ className }>
-					{ this.state.blockSetting === "" ? (
-						<p>{ __( 'Please enter a block settings value in the block settings', 'atomic-blocks' ) }</p>
-					) : (
-						<p>
-							{ __( 'Global Setting: ', 'atomic-blocks' ) }
-							{ this.state.blockSetting }
-						</p>
-					) }
-				</div>
+				<Button
+					isPrimary
+					disabled={ this.state.isSaving }
+					onClick={ () => {
+						this.updateSetting();
+					} }
+					>
+					{ __( 'Save Setting', 'atomic-blocks' ) }
+				</Button>
+
+				{ this.state.blockSetting }
 			</Fragment>
 		);
 	}
