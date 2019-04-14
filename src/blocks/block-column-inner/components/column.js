@@ -25,8 +25,6 @@ export default class Column extends Component {
 
 		const {
 			attributes,
-			backgroundColor,
-			textColor,
 		} = this.props;
 
 		/* Setup the margin styles. */

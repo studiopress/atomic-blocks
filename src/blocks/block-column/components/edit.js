@@ -52,8 +52,6 @@ class Edit extends Component {
 		const {
 			attributes,
 			setAttributes,
-			backgroundColor,
-			textColor,
 		} = this.props;
 
 		let selectedRows = 1;

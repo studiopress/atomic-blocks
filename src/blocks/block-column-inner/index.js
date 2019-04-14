@@ -9,7 +9,6 @@ import Edit from './components/edit';
 import Save from './components/save';
 import './styles/style.scss';
 import './styles/editor.scss';
-import classnames from 'classnames';
 
 /**
  * WordPress dependencies.
