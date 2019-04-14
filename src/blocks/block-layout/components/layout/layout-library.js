@@ -87,7 +87,7 @@ class LayoutLibrary extends Component {
 		/* Set a default category. */
 		const cats = [ 'all' ];
 
-		/* Show the filtered layout category. */
+		/* Build a category array. */
 		for ( let i = 0; i < blockLayout.length; i++ ) {
 			for ( let c = 0; c < blockLayout[ i ].category.length; c++ ) {
 				if ( ! cats.includes( blockLayout[ i ].category[ c ] ) ) {
@@ -106,8 +106,6 @@ class LayoutLibrary extends Component {
 			const imageZoom = document.querySelector('.ab-layout-zoom-button');
 			imageZoom.parentNode.classList.toggle('ab-layout-zoom-layout');
 		};
-
-		console.log( blockLayout );
 
 		return (
 			<Fragment>

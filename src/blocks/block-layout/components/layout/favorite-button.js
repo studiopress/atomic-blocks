@@ -36,13 +36,6 @@ export default class FavoriteButton extends Component {
 
 	constructor() {
 		super( ...arguments );
-
-		// this.state = {
-		// 	blockSetting: '',
-		// 	isLoading: true,
-		// 	isSaving: false,
-		// 	isEditing: false
-		// };
 	}
 
 	state = {
@@ -50,19 +43,9 @@ export default class FavoriteButton extends Component {
 		isLoading: true,
 		isSaving: false,
 		isEditing: false,
-		layoutArray: [],
-		layoutArrayAdd: [],
+		layoutArray: [1,2,3],
+		layoutID: this.props.layoutId,
 	};
-
-	// mergeArray() {
-	// 	// const oldList = this.state.blockSetting;
-	// 	// const newList = this.state.layoutArray;
-	// 	// const mergedList = oldList.push( newList );
-
-	// 	console.log( mergedList );
-
-	// 	this.setState({ priceLog: this.state.pricelog.concat(this.props.price)});
-	// };
 
 	/* Update the global setting. */
 	updateSetting = async () => {
@@ -72,7 +55,7 @@ export default class FavoriteButton extends Component {
 		const blockSetting = await setSetting( [...this.state.blockSetting, ...[this.props.layoutArrayAdd] ] );
 
 		this.setState(prevState => ( {
-			layoutArray: [...prevState.layoutArray, [ this.props.layoutId ]]
+			layoutArray: prevState.layoutArray.concat(this.state.layoutID),
 		} ) )
 
 		this.setState( {
@@ -86,7 +69,9 @@ export default class FavoriteButton extends Component {
 			isEditing: false,
 		} );
 		//console.log(this.state.blockSetting);
-		console.log(this.state.layoutArray);
+		console.log( 'layoutArray: ' + this.state.layoutArray);
+		console.log( 'layoutArrayAdd: ' + this.state.layoutArrayAdd);
+		console.log( 'layoutArrayMerged: ' + this.state.layoutArrayMerged);
 	};
 
 	/* Wait for the data to be available and setup the setting. */
@@ -109,19 +94,6 @@ export default class FavoriteButton extends Component {
 
 		return (
 			<Fragment>
-				<TextControl
-					label={ __( 'Global setting', 'atomic-blocks' ) }
-					value={ this.props.layoutId }
-					onChange={ blockSetting => {
-						if ( !this.state.isSaving ) {
-							this.setState({
-								blockSetting,
-								isEditing: true,
-							});
-						}
-					} }
-				/>
-
 				<Button
 					isPrimary
 					disabled={ this.state.isSaving }
@@ -129,10 +101,10 @@ export default class FavoriteButton extends Component {
 						this.updateSetting();
 					} }
 					>
-					{ __( 'Save Setting', 'atomic-blocks' ) }
+					{ __( 'Add to Favorites', 'atomic-blocks' ) }
 				</Button>
 
-				{ this.state.blockSetting }
+				{ 'Favorite IDs: ' + this.state.layoutArray }
 			</Fragment>
 		);
 	}
