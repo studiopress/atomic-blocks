@@ -27,6 +27,7 @@ const {
 	Button,
 	Tooltip,
 	ToggleControl,
+	SelectControl,
 } = wp.components;
 
 /**
@@ -54,6 +55,17 @@ export default class Inspector extends Component {
 		if ( attributes.columns ) {
 			selectedRows = parseInt( attributes.columns.toString().split('-') );
 		}
+
+		// Column wrapper tag
+		const columnTags = [
+			{ value: 'div', label: __( 'div', 'atomic-blocks' ) },
+			{ value: 'header', label: __( 'header', 'atomic-blocks' ) },
+			{ value: 'section', label: __( 'section', 'atomic-blocks' ) },
+			{ value: 'article', label: __( 'article', 'atomic-blocks' ) },
+			{ value: 'main', label: __( 'main', 'atomic-blocks' ) },
+			{ value: 'aside', label: __( 'aside', 'atomic-blocks' ) },
+			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) },
+        ];
 
 		return (
 			<InspectorControls key="inspector">
@@ -96,6 +108,16 @@ export default class Inspector extends Component {
 							min={ 0 }
 							max={ 10 }
 							step={ 1 }
+						/>
+
+						<hr />
+
+						<SelectControl
+							label={ __( 'Column Wrapper Tag', 'atomic-blocks' ) }
+							options={ columnTags }
+							value={ attributes.columnTag }
+							onChange={ ( value ) => this.props.setAttributes( { columnTag: value } ) }
+							help={ __( 'Change the column wrapper tag to match your content hierarchy.', 'atomic-blocks' ) }
 						/>
 
 						<hr />

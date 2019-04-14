@@ -216,4 +216,7 @@
 		padding: 8px;
 		margin: 0 5px 5px 0;
 	}
+	.components-base-control__field + .components-base-control__help {
+		margin-top: 8px;
+	}
 }
