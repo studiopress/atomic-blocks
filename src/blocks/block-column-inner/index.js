@@ -50,6 +50,10 @@ registerBlockType( 'atomic-blocks/ab-column', {
 			type: 'boolean',
 			default: false,
 		},
+		marginUnit: {
+			type: 'string',
+			default: 'px',
+		},
 		margin: {
 			type: 'number',
 			default: 0,
@@ -65,6 +69,10 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		paddingSync: {
 			type: 'boolean',
 			default: false,
+		},
+		paddingUnit: {
+			type: 'string',
+			default: 'px',
 		},
 		padding: {
 			type: 'number',

@@ -61,6 +61,10 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 			type: 'number',
 			default: 0,
 		},
+		marginUnit: {
+			type: 'string',
+			default: 'px',
+		},
 		paddingSync: {
 			type: 'boolean',
 			default: false,
@@ -85,6 +89,10 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 			type: 'number',
 			default: 0,
 		},
+		paddingUnit: {
+			type: 'string',
+			default: 'px',
+		},
 		textColor: {
 			type: 'string',
 		},
@@ -100,6 +108,9 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 		columnTag: {
 			type: 'string',
 			default: 'div',
+		},
+		columnMaxWidth: {
+			type: 'number',
 		},
 	},
 

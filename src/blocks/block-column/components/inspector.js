@@ -56,7 +56,7 @@ export default class Inspector extends Component {
 			selectedRows = parseInt( attributes.columns.toString().split('-') );
 		}
 
-		// Column wrapper tag
+		/* Column wrapper tag */
 		const columnTags = [
 			{ value: 'div', label: __( 'div', 'atomic-blocks' ) },
 			{ value: 'header', label: __( 'header', 'atomic-blocks' ) },
@@ -65,6 +65,13 @@ export default class Inspector extends Component {
 			{ value: 'main', label: __( 'main', 'atomic-blocks' ) },
 			{ value: 'aside', label: __( 'aside', 'atomic-blocks' ) },
 			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) },
+		];
+
+		/* Margin Units */
+		const cssUnits = [
+			{ value: 'px', label: __( 'Pixel (px)', 'atomic-blocks' ) },
+			{ value: '%', label: __( 'Percent (%)', 'atomic-blocks' ) },
+			{ value: 'em', label: __( 'Em (em)', 'atomic-blocks' ) },
         ];
 
 		return (
@@ -114,10 +121,22 @@ export default class Inspector extends Component {
 
 						<SelectControl
 							label={ __( 'Column Wrapper Tag', 'atomic-blocks' ) }
+							help={ __( 'Change the column wrapper tag to match your content hierarchy.', 'atomic-blocks' ) }
 							options={ columnTags }
 							value={ attributes.columnTag }
 							onChange={ ( value ) => this.props.setAttributes( { columnTag: value } ) }
-							help={ __( 'Change the column wrapper tag to match your content hierarchy.', 'atomic-blocks' ) }
+						/>
+
+						<hr />
+
+						<RangeControl
+							label={ __( 'Column Inner Max Width (px)' ) }
+							help={ __( 'Adjust the width of the content inside the container wrapper.', 'atomic-blocks' ) }
+							value={ attributes.columnMaxWidth }
+							onChange={ ( value ) => this.props.setAttributes( { columnMaxWidth: value } ) }
+							min={ 0 }
+							max={ 1600 }
+							step={ 1 }
 						/>
 
 						<hr />
@@ -134,6 +153,13 @@ export default class Inspector extends Component {
 					title={ __( 'Margin and Padding', 'atomic-blocks' ) }
 					initialOpen={ false }
 				>
+					<SelectControl
+						label={ __( 'Margin Unit', 'atomic-blocks' ) }
+						help={ __( 'Choose between pixel, percent, or em units.', 'atomic-blocks' ) }
+						options={ cssUnits }
+						value={ attributes.marginUnit }
+						onChange={ ( value ) => this.props.setAttributes( { marginUnit: value } ) }
+					/>
 					<ToggleControl
 						label={ __( 'Sync Margin', 'atomic-blocks' ) }
 						help={ __( 'Top and bottom margins will have the same value.', 'atomic-blocks' ) }
@@ -168,6 +194,14 @@ export default class Inspector extends Component {
 					}
 
 					<hr />
+
+					<SelectControl
+						label={ __( 'Padding Unit', 'atomic-blocks' ) }
+						help={ __( 'Choose between pixel, percent, or em units.', 'atomic-blocks' ) }
+						options={ cssUnits }
+						value={ attributes.paddingUnit }
+						onChange={ ( value ) => this.props.setAttributes( { paddingUnit: value } ) }
+					/>
 
 					<ToggleControl
 						label={ __( 'Sync Padding', 'atomic-blocks' ) }
