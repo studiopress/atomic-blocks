@@ -1546,55 +1546,55 @@ msgstr ""
 msgid "drop cap"
 msgstr ""
 
-#: src/utils/inspector/margin.js:55
+#: src/utils/components/margin.js:55
 msgid "Margin Top"
 msgstr ""
 
-#: src/utils/inspector/margin.js:64
+#: src/utils/components/margin.js:64
 msgid "Margin Right"
 msgstr ""
 
-#: src/utils/inspector/margin.js:73
+#: src/utils/components/margin.js:73
 msgid "Margin Bottom"
 msgstr ""
 
-#: src/utils/inspector/margin.js:82
+#: src/utils/components/margin.js:82
 msgid "Margin Left"
 msgstr ""
 
-#: src/utils/inspector/margin.js:91
+#: src/utils/components/margin.js:91
 msgid "Margin Vertical"
 msgstr ""
 
-#: src/utils/inspector/margin.js:100
+#: src/utils/components/margin.js:100
 msgid "Margin Horizontal"
 msgstr ""
 
-#: src/utils/inspector/padding.js:57
+#: src/utils/components/padding.js:57
 msgid "Padding"
 msgstr ""
 
-#: src/utils/inspector/padding.js:67
+#: src/utils/components/padding.js:67
 msgid "Padding Top"
 msgstr ""
 
-#: src/utils/inspector/padding.js:76
+#: src/utils/components/padding.js:76
 msgid "Padding Right"
 msgstr ""
 
-#: src/utils/inspector/padding.js:85
+#: src/utils/components/padding.js:85
 msgid "Padding Bottom"
 msgstr ""
 
-#: src/utils/inspector/padding.js:94
+#: src/utils/components/padding.js:94
 msgid "Padding Left"
 msgstr ""
 
-#: src/utils/inspector/padding.js:103
+#: src/utils/components/padding.js:103
 msgid "Padding Vertical"
 msgstr ""
 
-#: src/utils/inspector/padding.js:112
+#: src/utils/components/padding.js:112
 msgid "Padding Horizontal"
 msgstr ""
 

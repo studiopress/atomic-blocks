@@ -25,8 +25,8 @@ const { PanelBody,
 /**
  * Internal dependencies.
  */
-import Padding from './../../../utils/inspector/padding';
-import Margin from './../../../utils/inspector/margin';
+import Padding from './../../../utils/components/padding';
+import Margin from './../../../utils/components/margin';
 import ButtonSettings from './../../../utils/inspector/button';
 
 /* Apply fallback styles. */
