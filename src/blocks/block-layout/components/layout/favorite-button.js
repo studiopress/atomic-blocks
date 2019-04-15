@@ -57,8 +57,8 @@ export default class FavoriteButton extends Component {
 		// } ) )
 
 		this.setState(prevState => ( {
-			layoutArray: prevState.layoutArray.concat(this.state.layoutID),
-			//blockSetting,
+			//layoutArray: prevState.layoutArray.concat(this.state.layoutID),
+			blockSetting,
 			isLoading: false,
 			isSaving: false,
 			isEditing: false,
@@ -70,7 +70,7 @@ export default class FavoriteButton extends Component {
 	async componentDidMount() {
 		const blockSetting = await getSetting();
 		this.setState( {
-			layoutArray: this.state.layoutArray,
+			//layoutArray: this.state.layoutArray,
 			blockSetting,
 			isLoading: false
 		} );
@@ -97,7 +97,7 @@ export default class FavoriteButton extends Component {
 					{ __( 'Add to Favorites', 'atomic-blocks' ) }
 				</Button>
 
-				{ 'Favorite IDs: ' + this.state.layoutArray }
+				{ 'Favorite IDs: ' + this.state.blockSetting }
 			</Fragment>
 		);
 	}
