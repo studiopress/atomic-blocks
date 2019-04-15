@@ -51,33 +51,26 @@ export default class FavoriteButton extends Component {
 	updateSetting = async () => {
 		this.setState( { isSaving: true } );
 		//const blockSetting = await setSetting( this.state.blockSetting.concat( [ this.state.layoutArrayAdd ] ) );
-
-		const blockSetting = await setSetting( [...this.state.blockSetting, ...[this.props.layoutArrayAdd] ] );
+		//const blockSetting = await setSetting( [...this.state.blockSetting, ...[this.props.layoutArrayAdd] ] );
+		// this.setState(prevState => ( {
+		// 	layoutArray: prevState.layoutArray.concat(this.state.layoutID),
+		// } ) )
 
 		this.setState(prevState => ( {
 			layoutArray: prevState.layoutArray.concat(this.state.layoutID),
-		} ) )
-
-		this.setState( {
-			// layoutArray: [...this.state.layoutArray, {"value": } ],
-
-			// layoutArrayAdd: [ this.state.blockSetting.concat( [ this.props.layoutId ] ) ],
-			// layoutArrayAdd: [...this.state.myArray, ...[this.props.layoutId] ],
 			//blockSetting,
 			isLoading: false,
 			isSaving: false,
 			isEditing: false,
-		} );
-		//console.log(this.state.blockSetting);
+		} ) );
 		console.log( 'layoutArray: ' + this.state.layoutArray);
-		console.log( 'layoutArrayAdd: ' + this.state.layoutArrayAdd);
-		console.log( 'layoutArrayMerged: ' + this.state.layoutArrayMerged);
 	};
 
 	/* Wait for the data to be available and setup the setting. */
 	async componentDidMount() {
 		const blockSetting = await getSetting();
 		this.setState( {
+			layoutArray: this.state.layoutArray,
 			blockSetting,
 			isLoading: false
 		} );
