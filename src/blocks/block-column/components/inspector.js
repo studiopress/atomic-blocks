@@ -67,7 +67,7 @@ export default class Inspector extends Component {
 			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) },
 		];
 
-		/* Margin Units */
+		/* CSS Units */
 		const cssUnits = [
 			{ value: 'px', label: __( 'Pixel (px)', 'atomic-blocks' ) },
 			{ value: '%', label: __( 'Percent (%)', 'atomic-blocks' ) },
