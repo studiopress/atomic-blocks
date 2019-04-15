@@ -202,6 +202,7 @@ class Edit extends Component {
 						'ab-block-layout-column-gap-' + attributes.columnsGap,
 						attributes.responsiveToggle ? 'ab-is-responsive-column' : null,
 					) }
+					style={ { maxWidth: attributes.columnMaxWidth ? attributes.columnMaxWidth : null } }
 				>
 					<InnerBlocks
 						template={ getLayoutTemplate( attributes.columns ) }

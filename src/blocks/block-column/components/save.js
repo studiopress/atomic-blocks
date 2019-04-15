@@ -31,6 +31,7 @@ export default class Save extends Component {
 			>
 				<div
 					className={ className ? className : undefined }
+					style={ { maxWidth: attributes.columnMaxWidth ? attributes.columnMaxWidth : null } }
 				>
 					<InnerBlocks.Content />
 				</div>

@@ -32,13 +32,13 @@ export default class Column extends Component {
 
 		if ( attributes.marginSync ) {
 			marginStyle = {
-				marginTop: attributes.margin > 0 ? attributes.margin : null,
-				marginBottom: attributes.margin > 0 ? attributes.margin : null
+				marginTop: attributes.margin > 0 ? attributes.margin + attributes.marginUnit : null,
+				marginBottom: attributes.margin > 0 ? attributes.margin + attributes.marginUnit : null
 			}
 		} else {
 			marginStyle = {
-				marginTop: attributes.marginTop > 0 ? attributes.marginTop : null,
-				marginBottom: attributes.marginBottom > 0 ? attributes.marginBottom : null,
+				marginTop: attributes.marginTop > 0 ? attributes.marginTop + attributes.marginUnit : null,
+				marginBottom: attributes.marginBottom > 0 ? attributes.marginBottom + attributes.marginUnit : null,
 			}
 		}
 
@@ -47,14 +47,14 @@ export default class Column extends Component {
 
 		if ( attributes.paddingSync ) {
 			paddingStyle = {
-				padding: attributes.padding > 0 ? attributes.padding : null,
+				padding: attributes.padding > 0 ? attributes.padding + attributes.paddingUnit: null,
 			}
 		} else {
 			paddingStyle = {
-				paddingTop: attributes.paddingTop > 0 ? attributes.paddingTop : null,
-				paddingRight: attributes.paddingRight > 0 ? attributes.paddingRight : null,
-				paddingBottom: attributes.paddingBottom > 0 ? attributes.paddingBottom : null,
-				paddingLeft: attributes.paddingLeft > 0 ? attributes.paddingLeft : null,
+				paddingTop: attributes.paddingTop > 0 ? attributes.paddingTop + attributes.paddingUnit : null,
+				paddingRight: attributes.paddingRight > 0 ? attributes.paddingRight + attributes.paddingUnit : null,
+				paddingBottom: attributes.paddingBottom > 0 ? attributes.paddingBottom + attributes.paddingUnit : null,
+				paddingLeft: attributes.paddingLeft > 0 ? attributes.paddingLeft + attributes.paddingUnit : null,
 			}
 		}
 

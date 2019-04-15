@@ -51,6 +51,12 @@
 	width: 100%;
 }
 
+.ab-column-has-max-width {
+	display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
 /* Grid gap classes */
 
 .ab-block-layout-column-gap-0 {
