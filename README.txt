@@ -1,10 +1,10 @@
 === Atomic Blocks - Gutenberg Blocks Collection ===
-Contributors: atomicblocks, mindctrl, arrayhq, wpengine
+Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbath
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
-Tested up to: 5.1
-Stable tag: 1.5.4
+Tested up to: 5.1.1
+Stable tag: 1.6.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -108,11 +108,27 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 == Changelog ==
 
+= 1.6.1 =
+* Newsletter: Add instance ID to input field.
+* Newsletter: Change input type to email.
+* Newsletter: Change how nonce is handled and remove id attribute.
+* Author Profile: Add a description below the Email URL field.
+* Post Grid: Fix excerpt length.
+* Accordion: Fix link styles.
+* Fix redirect bug on multisite installs.
+
+= 1.6.0 =
+* Add the Newsletter block.
+
+= 1.5.5 =
+* Add several features to Post/Page Grid block.
+
 = 1.5.4 =
 * Fix bug with author profile links.
 * Improve mobile styles.
 * Remove unused CPTs.
 * Remove plugin-defined color palettes in favor of theme palettes.
+* Fix color setting bug in spacer block.
 
 = 1.5.3 =
 * Fix bug with undefined dim ratio in CTA.

@@ -86,7 +86,7 @@ class ABNoticeBlock extends Component {
 			/>,
 			// Show the block markup in the editor
 			<NoticeBox { ...this.props }>
-				{	// Check if the notice is dismissable and output the button
+				{	// Check if the notice is dismissible and output the button
 					noticeDismiss && (
 					<DismissButton { ...this.props }>
 						{ icons.dismiss }

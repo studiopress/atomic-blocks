@@ -82,11 +82,27 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**1.6.1**
+* Newsletter: Add instance ID to input field.
+* Newsletter: Change input type to email.
+* Newsletter: Change how nonce is handled and remove id attribute.
+* Author Profile: Add a description below the Email URL field.
+* Post Grid: Fix excerpt length.
+* Accordion: Fix link styles.
+* Fix redirect bug on multisite installs.
+
+**1.6.0**
+* Add the Newsletter block.
+
+**1.5.5**
+* Add several features to Post/Page Grid block.
+
 **1.5.4**
 * Fix bug with author profile links.
 * Improve mobile styles.
 * Remove unused CPTs.
 * Remove plugin-defined color palettes in favor of theme palettes.
+* Fix color setting bug in spacer block.
 
 **1.5.3**
 * Fix bug with undefined dim ratio in CTA.
