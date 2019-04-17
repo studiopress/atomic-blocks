@@ -39,7 +39,7 @@ Here are the system requirements for LSX Blocks:
 * A publicly accessible WordPress site.
 * PHP version 7.0 or above.
 * The latest version of WordPress. If your version of WordPress is out of date, you’ll see a prompt to automatically upgrade with a single click, or can upgrade manually if you really want to.
-* The [LSX theme](https://www.lsdev.biz/product/lsx-wordpress-theme/) activated and installed on your site.
+* The [LSX theme](https://www.lsx.lsdev.biz) activated and installed on your site.
 
 = Installation =
 
@@ -55,14 +55,14 @@ LSX Blocks require no additional setup, adding them to your pages and posts work
 == Frequently Asked Questions ==
 
 = Where can I find LSX Blocks plugin documentation and user guides? =
-For more information on setting up and configuring the Blocks plugin please refer to our [documentation](https://www.lsdev.biz/documentation/lsx/blocks/)
+For more information on setting up and configuring the Blocks plugin please refer to our [documentation](https://www.lsx.lsdev.biz/documentation/)
 
 = Where can I get support or talk to other users =
 For help setting up your site or training on using blocks, feel free to [contact us for a quote.](https://www.lsdev.biz/contact-us/)
 
 = Will the LSX Blocks plugin work with my theme? =
 
-Not unless you are using the [LSX Theme](https://www.lsdev.biz/product/lsx-wordpress-theme/)!
+Not unless you are using the [LSX Theme](https://www.lsx.lsdev.biz)!
 
 LSX Blocks was built for the LSX Theme, so this is a requirement in order for the blocks to function correctly.
 
