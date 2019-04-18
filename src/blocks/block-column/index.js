@@ -105,10 +105,6 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 		customBackgroundColor: {
 			type: 'string',
 		},
-		columnTag: {
-			type: 'string',
-			default: 'div',
-		},
 		columnMaxWidth: {
 			type: 'number',
 		},

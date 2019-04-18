@@ -94,15 +94,13 @@ export default class Columns extends Component {
 			color: this.props.textColorValue ? this.props.textColorValue : null,
 		}
 
-		const ColumnTag = attributes.columnTag ? attributes.columnTag : "div"
-
 		return (
-			<ColumnTag
+			<div
 				className={ className ? className : undefined }
 				style={ Object.assign( marginValue, paddingValue, styles ) }
 			>
 				{ this.props.children }
-			</ColumnTag>
+			</div>
 		);
 	}
 }
