@@ -108,6 +108,10 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 		columnMaxWidth: {
 			type: 'number',
 		},
+		centerColumns: {
+			type: 'boolean',
+			default: true,
+		},
 	},
 
 	/* Add alignment to block wrapper. */

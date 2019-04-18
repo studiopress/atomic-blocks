@@ -52,7 +52,7 @@ export default class Columns extends Component {
 			attributes.layout,
 			backgroundColorClass,
 			textColorClass,
-			attributes.columnMaxWidth ? 'ab-column-has-max-width' : null,
+			attributes.columnMaxWidth && attributes.centerColumns ? 'ab-columns-center' : null,
 		], {
 			[ 'align' + attributes.align ]: attributes.align,
 		} )
@@ -92,6 +92,7 @@ export default class Columns extends Component {
 		const styles = {
 			backgroundColor: this.props.backgroundColorValue ? this.props.backgroundColorValue : null,
 			color: this.props.textColorValue ? this.props.textColorValue : null,
+			maxWidth: attributes.columnMaxWidth ? attributes.columnMaxWidth : null
 		}
 
 		return (

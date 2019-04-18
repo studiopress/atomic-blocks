@@ -118,6 +118,15 @@ export default class Inspector extends Component {
 							step={ 1 }
 						/>
 
+						{ attributes.columnMaxWidth > 0 &&
+							<ToggleControl
+								label={ __( 'Center Columns In Container', 'atomic-blocks' ) }
+								//help={ __( 'C', 'atomic-blocks' ) }
+								checked={ attributes.centerColumns }
+								onChange={ () => this.props.setAttributes( { centerColumns: ! attributes.centerColumns } ) }
+							/>
+						}
+
 						<hr />
 
 						<ToggleControl
