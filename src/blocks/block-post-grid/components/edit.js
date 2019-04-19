@@ -166,6 +166,7 @@ class LatestPostsBlock extends Component {
 										<div className="ab-block-post-grid-image">
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<PostGridImage
+													{ ...this.props }
 													//imgSrc={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
 													imgAlt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
 													imgClass={ `wp-image-${post.featured_media.toString()}` }
