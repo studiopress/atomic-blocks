@@ -109,15 +109,13 @@ class LatestPostsBlock extends Component {
 		];
 
 		// Get the section tag
-		const SectionTag = attributes.sectionTag ? attributes.sectionTag : "section"
+		const SectionTag = attributes.sectionTag ? attributes.sectionTag : "section";
 
 		// Get the section title tag
-		const SectionTitleTag = attributes.sectionTitleTag ? attributes.sectionTitleTag : "h2"
+		const SectionTitleTag = attributes.sectionTitleTag ? attributes.sectionTitleTag : "h2";
 
 		// Get the post title tag
-		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3"
-
-		//const imageSize = this.getImageSize().value;
+		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3";
 
 		return (
 			<Fragment>
@@ -181,10 +179,6 @@ class LatestPostsBlock extends Component {
 										null
 									)
 								}
-
-								{/* { <GridImageSize
-									url={ imageSize.value }
-								></GridImageSize> } */}
 
 								<div className="ab-block-post-grid-text">
 									<header className="ab-block-post-grid-header">
