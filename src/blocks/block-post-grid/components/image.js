@@ -6,7 +6,7 @@ import get from 'lodash/get';
 
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { Spinner, Placeholder } = wp.components;
+const { Spinner, Placeholder, Dashicon } = wp.components;
 
 export default class PostGridImage extends Component {
 
@@ -14,23 +14,33 @@ export default class PostGridImage extends Component {
 		super( ...arguments );
 
 		this.state = {
-			imageSize: ""
+			imageUrl: '',
+			imageStatus: 'loading',
 		}
 	}
 
 	/* Get the image size value when changed in the inspector. */
 	componentDidUpdate( prevProps ) {
-		const imageSize = this.getImageSize();
+		const imageUrl = this.getImageSize();
+		/* If the image size is changed, set the new image size. */
 		if ( this.props.imgSize !== prevProps.imgSize ) {
-			this.setState({ imageSize });
+			this.setState({
+				imageUrl,
+			});
 		}
 	}
 
 	/* Get the image size value on load. */
 	componentDidMount() {
 		const unsubscribe = wp.data.subscribe(() => {
-			const imageSize = this.getImageSize();
-			this.setState({ imageSize });
+			const imageUrl = this.getImageSize();
+
+			if ( imageUrl ) {
+				this.setState({
+					imageUrl,
+					imageStatus: 'loaded',
+				});
+			}
 		});
 	}
 
@@ -53,18 +63,27 @@ export default class PostGridImage extends Component {
 
 		return (
 			<Fragment>
-				{ ! this.state.imageSize ?
-					<Placeholder
-						label={ __( 'Loading Post Grid Image', 'atomic-blocks' ) }
-					>
-						<Spinner />
-					</Placeholder>
-				:
+				{ this.state.imageUrl ?
 					<img
-						src={ this.state.imageSize ? this.state.imageSize : this.props.imgSizeLandscape }
+						src={ this.state.imageUrl ? this.state.imageUrl : this.props.imgSizeLandscape }
 						alt={ this.props.imgAlt }
 						className={ this.props.imgClass }
 					/>
+				:
+					<Fragment>
+						<Placeholder
+							className={ 'ab-post-grid-no-image-placeholder' }
+						>
+							<Dashicon icon={ 'warning' } />
+							<div class="components-placeholder__label">{ __( 'There is no image available for the selected image size.', 'atomic-blocks' ) }</div>
+						</Placeholder>
+						<Placeholder
+							className={ 'ab-post-grid-image-placeholder' }
+							label={ __( 'Loading Post Grid Image', 'atomic-blocks' ) }
+						>
+							<Spinner />
+						</Placeholder>
+					</Fragment>
 				}
 			</Fragment>
 		);
