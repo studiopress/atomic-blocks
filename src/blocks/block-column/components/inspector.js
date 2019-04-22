@@ -72,6 +72,18 @@ export default class Inspector extends Component {
 						initialOpen={ true }
 						className="ab-column-select-panel"
 					>
+						<RangeControl
+							label={ __( 'Column Count', 'atomic-blocks' ) }
+							help={ __( "Note: Changing the column count after you've added content to the column can cause loss of content.", 'atomic-blocks' ) }
+							value={ attributes.columns }
+							onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
+							min={ 1 }
+							max={ 6 }
+							step={ 1 }
+						/>
+
+						<hr />
+
 						<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
 						<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
 							{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (

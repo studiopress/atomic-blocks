@@ -104,7 +104,7 @@
 /* Grid column classes */
 
 .ab-layout-columns-2 .ab-layout-column-wrap {
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 600px) {
