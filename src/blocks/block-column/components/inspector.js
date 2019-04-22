@@ -14,7 +14,7 @@ import Padding from './../../../utils/components/padding';
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const {
 	InspectorControls,
 	PanelColorSettings,
@@ -84,29 +84,32 @@ export default class Inspector extends Component {
 
 						<hr />
 
-						<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
-						<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
-							{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
-								<Tooltip text={ name } key={ key }>
-									<Button
-										key={ key }
-										className="ab-layout-selector-button"
-										isSmall
-										onClick={ () => {
-											setAttributes( {
-												layout: key,
-											} );
-											this.setState( { 'selectLayout' : false } );
-										} }
-									>
-										{ icon }
-									</Button>
-								</Tooltip>
-							) ) }
-						</ButtonGroup>
-						<p><i>{ __( 'Change the layout of your columns.', 'atomic-blocks' ) }</i></p>
-
-						<hr />
+						{ ( attributes.columns == 2 || attributes.columns == 3 || attributes.columns == 4 ) &&
+							<Fragment>
+								<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
+								<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
+									{ map( columnLayouts[ selectedRows ], ( { name, key, icon, col } ) => (
+										<Tooltip text={ name } key={ key }>
+											<Button
+												key={ key }
+												className="ab-layout-selector-button"
+												isSmall
+												onClick={ () => {
+													setAttributes( {
+														layout: key,
+													} );
+													this.setState( { 'selectLayout' : false } );
+												} }
+											>
+												{ icon }
+											</Button>
+										</Tooltip>
+									) ) }
+								</ButtonGroup>
+								<p><i>{ __( 'Change the layout of your columns.', 'atomic-blocks' ) }</i></p>
+								<hr />
+							</Fragment>
+						}
 
 						<RangeControl
 							label={ __( 'Column Gap', 'atomic-blocks' ) }
