@@ -92,7 +92,6 @@ export default class Columns extends Component {
 		const styles = {
 			backgroundColor: this.props.backgroundColorValue ? this.props.backgroundColorValue : null,
 			color: this.props.textColorValue ? this.props.textColorValue : null,
-			maxWidth: attributes.columnMaxWidth ? attributes.columnMaxWidth : null
 		}
 
 		return (

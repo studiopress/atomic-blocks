@@ -2,9 +2,13 @@
  * Editor styles for the admin
  */
 
+[data-type="atomic-blocks/ab-columns"] {
+	display: inline;
+}
+
 .edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-column"] {
     margin-left: 0;
-    margin-right: 0;
+	margin-right: 0;
 }
 
 .ab-layout-column-wrap-admin > .editor-inner-blocks > .editor-block-list__layout {
@@ -219,4 +223,8 @@
 	.components-base-control__field + .components-base-control__help {
 		margin-top: 8px;
 	}
+}
+
+.ab-columns-center .ab-layout-column-wrap-admin {
+	margin: 0 auto;
 }
