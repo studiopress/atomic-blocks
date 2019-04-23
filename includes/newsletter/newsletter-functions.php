@@ -9,9 +9,9 @@ namespace AtomicBlocks\Newsletter;
 
 use AtomicBlocks\Exception\Mailchimp_API_Error_Exception;
 
-//add_action( 'init', __NAMESPACE__ . '\form_submission_listener' );
-add_action( 'wp_ajax_atomic_blocks_newsletter_submission', __NAMESPACE__ . '\form_submission_listener' );
-add_action( 'wp_ajax_nopriv_atomic_blocks_newsletter_submission', __NAMESPACE__ . '\form_submission_listener' );
+add_action( 'init', __NAMESPACE__ . '\form_submission_listener' );
+//add_action( 'wp_ajax_atomic_blocks_newsletter_submission', __NAMESPACE__ . '\form_submission_listener' );
+//add_action( 'wp_ajax_nopriv_atomic_blocks_newsletter_submission', __NAMESPACE__ . '\form_submission_listener' );
 /**
  * Listens for newsletter form submissions and
  * initiates the processing phase.
@@ -20,31 +20,31 @@ add_action( 'wp_ajax_nopriv_atomic_blocks_newsletter_submission', __NAMESPACE__ 
  */
 function form_submission_listener() {
 
-	if ( empty( $_POST['atomic_blocks_newsletter_form_nonce'] ) ) {
+	if ( empty( $_POST['ab-newsletter-form-nonce'] ) ) {
 		return;
 	}
 
-	if ( wp_doing_ajax() && doing_action( 'init' ) ) {
-		return;
-	}
+//	if ( wp_doing_ajax() && doing_action( 'init' ) ) {
+//		return;
+//	}
 
-	if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_form_nonce'] ) ), 'ab-newsletter-form-nonce' ) ) {
+	if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ab-newsletter-form-nonce'] ) ), 'ab-newsletter-form-nonce' ) ) {
 		send_processing_response( __( 'Nonce verification failed. Please try again.', 'atomic-blocks' ) );
 	}
 
-	if ( empty( $_POST['atomic_blocks_newsletter_mailing_list_provider'] ) || empty( $_POST['atomic_blocks_newsletter_mailing_list'] ) ) {
+	if ( empty( $_POST['ab-newsletter-mailing-list-provider'] ) || empty( $_POST['ab-newsletter-mailing-list'] ) ) {
 		send_processing_response( __( 'Invalid mailing provider configuration.', 'atomic-blocks' ) );
 	}
 
-	if ( empty( $_POST['atomic_blocks_newsletter_email'] ) ) {
+	if ( empty( $_POST['ab-newsletter-email-address'] ) ) {
 		send_processing_response( __( 'You must provide an email address.', 'atomic-blocks' ) );
 	}
 
-	$email              = sanitize_email( wp_unslash( $_POST['atomic_blocks_newsletter_email'] ) );
-	$provider           = sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_mailing_list_provider'] ) );
-	$list               = sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_mailing_list'] ) );
+	$email              = sanitize_email( wp_unslash( $_POST['ab-newsletter-email-address'] ) );
+	$provider           = sanitize_text_field( wp_unslash( $_POST['ab-newsletter-mailing-list-provider'] ) );
+	$list               = sanitize_text_field( wp_unslash( $_POST['ab-newsletter-mailing-list'] ) );
 	$default_attributes = atomic_blocks_newsletter_block_attributes();
-	$success_message    = ! empty( $_POST['atomic_blocks_newsletter_success_message'] ) ? sanitize_text_field( wp_unslash( $_POST['atomic_blocks_newsletter_success_message'] ) ) : $default_attributes['successMessage']['default'];
+	$success_message    = ! empty( $_POST['ab-newsletter-success-message'] ) ? sanitize_text_field( wp_unslash( $_POST['ab-newsletter-success-message'] ) ) : $default_attributes['successMessage']['default'];
 
 	if ( ! is_email( $email ) ) {
 		send_processing_response( __( 'Please provide a valid email address.', 'atomic-blocks' ) );
