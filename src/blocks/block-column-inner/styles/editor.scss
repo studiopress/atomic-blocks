@@ -228,3 +228,9 @@
 .ab-columns-center .ab-layout-column-wrap-admin {
 	margin: 0 auto;
 }
+
+.ab-block-layout-column .wp-block-image,
+.ab-block-layout-column .wp-block-image .components-resizable-box__container {
+	max-width: 100% !important;
+	display: block;
+}
