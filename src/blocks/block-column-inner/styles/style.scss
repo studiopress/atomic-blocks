@@ -197,6 +197,7 @@
 
 		@media only screen and (max-width: 600px) {
 			grid-template-columns: 1fr;
+			overflow-x: scroll;
 		}
 	}
 }
@@ -211,6 +212,7 @@
 
 		@media only screen and (max-width: 600px) {
 			grid-template-columns: 1fr;
+			overflow-x: scroll;
 		}
 	}
 }
