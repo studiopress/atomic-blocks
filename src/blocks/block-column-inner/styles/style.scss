@@ -187,9 +187,14 @@
 	grid-template-columns: 1fr 1fr 1fr 2fr;
 }
 
+.ab-layout-columns-4,
+.ab-layout-columns-5,
+.ab-layout-columns-6 {
+	overflow-x: scroll;
+}
+
 .ab-layout-columns-5 .ab-layout-column-wrap {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	overflow-x: scroll;
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 800px) {
@@ -204,7 +209,6 @@
 
 .ab-layout-columns-6 .ab-layout-column-wrap {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-	overflow-x: scroll;
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 800px) {
