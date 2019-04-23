@@ -150,6 +150,12 @@
 	}
 }
 
+.block-editor .ab-layout-columns-4,
+.block-editor .ab-layout-columns-5,
+.block-editor .ab-layout-columns-6 {
+	overflow-x: visible;
+}
+
 /* Alignment styles */
 
 .ab-block-layout-column .editor-block-list__block[data-align=full],

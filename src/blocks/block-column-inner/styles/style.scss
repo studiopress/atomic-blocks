@@ -187,12 +187,6 @@
 	grid-template-columns: 1fr 1fr 1fr 2fr;
 }
 
-.ab-layout-columns-4,
-.ab-layout-columns-5,
-.ab-layout-columns-6 {
-	overflow-x: auto;
-}
-
 .ab-layout-columns-5 .ab-layout-column-wrap {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
@@ -219,6 +213,12 @@
 			grid-template-columns: 1fr;
 		}
 	}
+}
+
+.ab-layout-columns-4,
+.ab-layout-columns-5,
+.ab-layout-columns-6 {
+	overflow-x: auto;
 }
 
 /* Column selector CSS */
