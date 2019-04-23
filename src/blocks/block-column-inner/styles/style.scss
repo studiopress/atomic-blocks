@@ -189,6 +189,7 @@
 
 .ab-layout-columns-5 .ab-layout-column-wrap {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	overflow-x: scroll;
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 800px) {
@@ -197,13 +198,13 @@
 
 		@media only screen and (max-width: 600px) {
 			grid-template-columns: 1fr;
-			overflow-x: scroll;
 		}
 	}
 }
 
 .ab-layout-columns-6 .ab-layout-column-wrap {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	overflow-x: scroll;
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 800px) {
@@ -212,7 +213,6 @@
 
 		@media only screen and (max-width: 600px) {
 			grid-template-columns: 1fr;
-			overflow-x: scroll;
 		}
 	}
 }
