@@ -29,4 +29,13 @@
 		min-height: 45px;
 		margin-bottom: 15px;
 	}
+	.ab-newsletter-submit {
+		 background: #32373b;
+		 transition: .3s ease;
+
+		 &:hover {
+			background: #32373b;
+			box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
+		 }
+	}
 }
