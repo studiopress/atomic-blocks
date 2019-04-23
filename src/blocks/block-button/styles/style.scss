@@ -40,32 +40,39 @@
 	}
 }
 
-.ab-button-shape-square {
+.ab-button-shape-square,
+input[type="submit"].ab-button-shape-square {
 	border-radius: 0;
 }
 
-.ab-button-shape-rounded {
+.ab-button-shape-rounded,
+input[type="submit"].ab-button-shape-rounded {
 	border-radius: 5px;
 }
 
-.ab-button-shape-circular {
+.ab-button-shape-circular,
+input[type="submit"].ab-button-shape-circular {
 	border-radius: 100px;
 }
 
-.ab-button-size-small {
+.ab-button-size-small,
+input[type="submit"].ab-button-size-small {
 	font-size: 14px;
 }
 
-.ab-button-size-medium {
+.ab-button-size-medium,
+input[type="submit"].ab-button-size-medium {
 	font-size: 20px;
 }
 
-.ab-button-size-large {
+.ab-button-size-large,
+input[type="submit"].ab-button-size-large {
 	font-size: 26px;
 	padding: .8em 1.2em;
 }
 
-.ab-button-size-extralarge {
+.ab-button-size-extralarge,
+input[type="submit"].ab-button-size-extralarge {
 	font-size: 34px;
 	padding: .8em 1.2em;
 }
