@@ -6,6 +6,10 @@
 	display: inline;
 }
 
+.editor-styles-wrapper [data-type="atomic-blocks/ab-columns"] .wp-block {
+	max-width: 100%;
+}
+
 .edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-column"] {
     margin-left: 0;
 	margin-right: 0;
