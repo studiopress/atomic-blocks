@@ -68,18 +68,51 @@
 	grid-gap: 0 10em;
 }
 
-/* Grid column classes */
+/* Grid column classes. */
 
-.ab-layout-columns-2 .editor-block-list__layout {
-    grid-template-columns: 1fr 1fr;
+/* IE 11 support - Rows and column location must be explicitly defined. */
 
-    @media only screen and (max-width: 600px) {
-        grid-template-columns: 1fr;
-    }
+.ab-layout-column-wrap-admin .editor-block-list__layout [data-type="atomic-blocks/ab-column"]:nth-child(1) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 1;
+	grid-area: col1;
 }
 
-.three-widecenter .editor-block-list__layout {
-	grid-template-columns: 1fr 2fr 1fr !important;
+.ab-layout-column-wrap-admin .editor-block-list__layout [data-type="atomic-blocks/ab-column"]:nth-child(2) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 2;
+	grid-area: col2;
+}
+
+.ab-layout-column-wrap-admin .editor-block-list__layout [data-type="atomic-blocks/ab-column"]:nth-child(3) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 3;
+	grid-area: col3;
+}
+
+.ab-layout-column-wrap-admin .editor-block-list__layout [data-type="atomic-blocks/ab-column"]:nth-child(4) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 4;
+	grid-area: col4;
+}
+
+.ab-layout-column-wrap-admin .editor-block-list__layout [data-type="atomic-blocks/ab-column"]:nth-child(5) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 5;
+	grid-area: col5;
+}
+
+.ab-layout-column-wrap-admin .editor-block-list__layout [data-type="atomic-blocks/ab-column"]:nth-child(6) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 6;
+	grid-area: col6;
+}
+
+/* Two column grid. */
+
+.ab-layout-columns-2 .editor-block-list__layout {
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "col1 col2";
 }
 
 .ab-2-col-wideleft .editor-block-list__layout {
@@ -90,12 +123,11 @@
 	grid-template-columns: 1fr 2fr;
 }
 
+/* Three column grid. */
+
 .ab-layout-columns-3 .editor-block-list__layout {
 	grid-template-columns: 1fr 1fr 1fr;
-
-	@media only screen and (max-width: 600px) {
-		grid-template-columns: 1fr;
-	}
+	grid-template-areas: "col1 col2 col3";
 }
 
 .ab-3-col-widecenter .editor-block-list__layout {
@@ -110,16 +142,11 @@
 	grid-template-columns: 1fr 1fr 2fr;
 }
 
+/* Four column grid. */
+
 .ab-layout-columns-4 .editor-block-list__layout {
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-
-	@media only screen and (max-width: 800px) {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	@media only screen and (max-width: 600px) {
-		grid-template-columns: 1fr;
-	}
+	grid-template-areas: "col1 col2 col3 col4";
 }
 
 .ab-4-col-wideleft .editor-block-list__layout {
@@ -130,28 +157,16 @@
 	grid-template-columns: 1fr 1fr 1fr 2fr;
 }
 
+/* Five column grid. */
+
 .ab-layout-columns-5 .editor-block-list__layout {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
-	@media only screen and (max-width: 800px) {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	@media only screen and (max-width: 600px) {
-		grid-template-columns: 1fr;
-	}
+	grid-template-areas: "col1 col2 col3 col4 col5";
 }
 
 .ab-layout-columns-6 .editor-block-list__layout {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-
-	@media only screen and (max-width: 800px) {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	@media only screen and (max-width: 600px) {
-		grid-template-columns: 1fr;
-	}
+	grid-template-areas: "col1 col2 col3 col4 col5 col6";
 }
 
 .block-editor .ab-layout-columns-4,
