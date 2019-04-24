@@ -129,7 +129,7 @@ export default class Inspector extends Component {
 							value={ attributes.columnMaxWidth }
 							onChange={ ( value ) => this.props.setAttributes( { columnMaxWidth: value } ) }
 							min={ 0 }
-							max={ 1600 }
+							max={ 2000 }
 							step={ 1 }
 						/>
 
