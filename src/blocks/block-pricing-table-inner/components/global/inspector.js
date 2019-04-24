@@ -5,7 +5,7 @@
  */
 
  // Import Inspector settings
-import Padding from './../../../../utils/inspector/padding';
+import Padding from './../../../../utils/components/padding';
 
 // Import block dependencies and components
 const { __ } = wp.i18n;
