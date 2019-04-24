@@ -107,6 +107,12 @@
 	grid-area: col1;
 }
 
+.ab-block-layout-column:nth-child(1) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 1;
+	grid-area: col1;
+}
+
 .ab-block-layout-column:nth-child(2) {
 	-ms-grid-row: 1;
 	-ms-grid-column: 2;
@@ -135,6 +141,13 @@
 	-ms-grid-row: 1;
 	-ms-grid-column: 6;
 	grid-area: col6;
+}
+
+/* One column grid. */
+
+.ab-layout-columns-1 .ab-layout-column-wrap {
+	grid-template-columns: 1fr;
+	grid-template-areas: "col1";
 }
 
 /* Two column grid. */
