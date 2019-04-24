@@ -120,7 +120,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 			<form method="post">
 				<label for="ab-newsletter-email-address-' . esc_attr( $attributes['instanceId'] ) . '" class="ab-newsletter-email-address-label">' . esc_html( $attributes['emailInputLabel'] ) . '</label>
 				<input type="email" id="ab-newsletter-email-address-' . esc_attr( $attributes['instanceId'] ) . '" name="ab-newsletter-email-address" class="ab-newsletter-email-address-input" />
-				<button class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" style="' . safecss_filter_attr( $button_styles ) . '">' . esc_html( $attributes['buttonText'] ) . '</button>
+				<input class="' . esc_attr( $button_class ) . ' ab-newsletter-submit" type="submit" style="' . safecss_filter_attr( $button_styles ) . '"  value="' . esc_attr( $attributes['buttonText'] ) . '"/>
 				<input type="hidden" name="ab-newsletter-mailing-list-provider" value="' . esc_attr( $attributes['mailingListProvider'] ) . '" />
 				<input type="hidden" name="ab-newsletter-mailing-list" value="' . esc_attr( $attributes['mailingList'] ) . '" />
 				<input type="hidden" name="ab-newsletter-success-message" value="' . esc_attr( $attributes['successMessage'] ) . '" />

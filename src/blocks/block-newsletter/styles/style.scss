@@ -23,7 +23,7 @@
 		width: 100%;
 		display: block;
 	}
-	input {
+	input:not(.ab-newsletter-submit) {
 		width: 100%;
 		height: auto;
 		min-height: 45px;
