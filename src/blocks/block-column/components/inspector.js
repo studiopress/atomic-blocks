@@ -95,7 +95,7 @@ export default class Inspector extends Component {
 										<Tooltip text={ name } key={ key }>
 											<Button
 												key={ key }
-												className="ab-layout-selector-button"
+												className="ab-column-selector-button"
 												isSmall
 												onClick={ () => {
 													setAttributes( {

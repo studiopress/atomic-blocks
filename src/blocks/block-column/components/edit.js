@@ -107,18 +107,18 @@ class Edit extends Component {
 					icon="editor-table"
 					label={ attributes.columns ? __( 'Column Layout', 'atomic-blocks' ) : __( 'Column Number', 'atomic-blocks' ) }
 					instructions={ attributes.columns ? sprintf( __( 'Select a layout for this column.', 'atomic-blocks' ) ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
-					className={ 'ab-layout-selector-placeholder' }
+					className={ 'ab-column-selector-placeholder' }
 				>
 					{ ! attributes.columns ?
 						<ButtonGroup
 							aria-label={ __( 'Select Row Columns', 'atomic-blocks' ) }
-							className="ab-layout-selector-group"
+							className="ab-column-selector-group"
 						>
 							{ map( columnOptions, ( { name, key, icon, columns } ) => (
 								<Tooltip text={ name } key={ key }>
-									<div className="ab-layout-selector">
+									<div className="ab-column-selector">
 										<Button
-											className="ab-layout-selector-button"
+											className="ab-column-selector-button"
 											isSmall
 											onClick={ () => {
 												setAttributes( {
@@ -141,14 +141,14 @@ class Edit extends Component {
 						<Fragment>
 							<ButtonGroup
 								aria-label={ __( 'Select Column Layout', 'atomic-blocks' ) }
-								className="ab-layout-selector-group"
+								className="ab-column-selector-group"
 							>
 								{ map( columnLayouts[ selectedRows ], ( { name, key, icon } ) => (
 									<Tooltip text={ name } key={ key }>
-										<div className="ab-layout-selector">
+										<div className="ab-column-selector">
 											<Button
 												key={ key }
-												className="ab-layout-selector-button"
+												className="ab-column-selector-button"
 												isSmall
 												onClick={ () => {
 													setAttributes( {
@@ -163,7 +163,7 @@ class Edit extends Component {
 									</Tooltip>
 								) ) }
 								<Button
-									className="ab-layout-selector-button-back"
+									className="ab-column-selector-button-back"
 									onClick={ () => {
 										setAttributes( {
 											columns: null,
