@@ -108,6 +108,13 @@
 	grid-area: col6;
 }
 
+/* One column grid. */
+
+.ab-layout-columns-1 .editor-block-list__layout {
+	grid-template-columns: 1fr;
+	grid-template-areas: "col1";
+}
+
 /* Two column grid. */
 
 .ab-layout-columns-2 .editor-block-list__layout {
