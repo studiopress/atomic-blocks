@@ -2903,6 +2903,11 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
         -o-transition: all 300ms ease-in-out;
         transition: all 300ms ease-in-out;
         width: 4rem; }
+  .lsx-block-post-carousel .slick-dots > li > button, .lsx-block-post-carousel .lsx-blog-customizer-posts-slider .slick-dots > li > button, .lsx-block-post-carousel .lsx-blog-customizer-terms-slider .slick-dots > li > button {
+    border-color: #4a4a4a; }
+  .lsx-block-post-carousel .slick-dots > li.slick-active > button, .lsx-block-post-carousel .lsx-blog-customizer-posts-slider .slick-dots > li.slick-active > button, .lsx-block-post-carousel .lsx-blog-customizer-terms-slider .slick-dots > li.slick-active > button {
+    background-color: #4a4a4a;
+    border-color: #4a4a4a; }
   .lsx-block-post-carousel .slick-arrow.slick-prev {
     left: -4rem; }
   .lsx-block-post-carousel .slick-arrow.slick-next {
