@@ -8,7 +8,8 @@ Along with the content blocks you'll find in Atomic Blocks, we're also publishin
 
 ## Atomic Blocks currently includes the following blocks:
 
-* Pricing Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/pricing-table-block/)
+* Advanced Columns Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/advanced-columns-block/)
+* Newsletter Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/newsletter-block/)
 * Pricing Table Block - [Block Demo](https://atomicblocks.com/blocks/pricing-table-block/)
 * Post Grid Block - [Block Demo](https://atomicblocks.com/blocks/post-grid-block/)
 * Container Block - [Block Demo](https://atomicblocks.com/blocks/container-block/)
@@ -81,6 +82,10 @@ Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomi
 Yes, you will need to have WordPress 5.0 or later installed to take advantage of Atomic Blocks.
 
 ## Changelog
+
+**1.7.0**
+* Add the Advanced Columns block.
+* Newsletter: Change button to input and adjust styles.
 
 **1.6.1**
 * Newsletter: Add instance ID to input field.
