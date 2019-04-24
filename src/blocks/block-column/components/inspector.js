@@ -76,7 +76,10 @@ export default class Inspector extends Component {
 							label={ __( 'Column Count', 'atomic-blocks' ) }
 							help={ __( "Note: Changing the column count after you've added content to the column can cause loss of content.", 'atomic-blocks' ) }
 							value={ attributes.columns }
-							onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
+							onChange={ ( value ) => this.props.setAttributes( {
+								columns: value,
+								layout: 'ab-' + value + '-col-equal',
+							} ) }
 							min={ 1 }
 							max={ 6 }
 							step={ 1 }
