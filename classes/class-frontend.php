@@ -175,6 +175,41 @@ class Frontend {
 				}
 				//die();
 			}
+
+			if ( has_block( 'lsx-blocks/lsx-banner-box' ) ) {
+				$div_matches = array();
+				preg_match_all('/<source (.*?)>/s', $content, $div_matches);
+				if ( ! empty( $div_matches ) && ! empty( $div_matches[1] ) ) {
+					foreach ( $div_matches[1] as $counter => $image_match ) {
+						//Get the iamge URL
+						$current_image_url = false;
+						$image_urls = array();
+						preg_match_all( '@data-srcset="([^"]+)"@' , $image_match, $image_urls );
+						if ( ! empty( $image_urls ) && isset( $image_urls[1] ) && ! empty( $image_urls[1] ) && isset( $image_urls[1][0] ) ) {
+							$current_image_url = $image_urls[1][0];
+						}
+						if ( false !== $current_image_url ) {
+							$mobile_image = $current_image_url;								
+							if ( strpos( $mobile_image, 'resize=1200' ) !== false ) {
+								$mobile_image = str_replace( '.jpg', '-1024x640.jpg', $mobile_image );
+								$mobile_image = str_replace( '.png', '-1024x640.png', $mobile_image );
+								$mobile_image = str_replace( '.jpeg', '-1024x640.jpeg', $mobile_image );
+							} else if ( strpos( $mobile_image, 'resize=768' ) !== false ) {
+								$mobile_image = str_replace( '.jpg', '-600x600.jpg', $mobile_image );
+								$mobile_image = str_replace( '.png', '-600x600.png', $mobile_image );
+								$mobile_image = str_replace( '.jpeg', '-600x600.jpeg', $mobile_image );	
+							}
+
+							$new_image_match = str_replace( $current_image_url, $mobile_image, $image_match );
+							if ( strpos( $mobile_image, 'resize=768' ) !== false ) {
+								$new_image_match = str_replace( 'media="(min-width: 30rem)"', 'media="(max-width: 400px)"', $new_image_match );
+							}
+
+							$content = str_replace( $image_match, $new_image_match, $content );
+						}
+					}
+				}
+			}			
 		}
 		return $content;
 	}
