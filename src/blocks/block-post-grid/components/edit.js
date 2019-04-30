@@ -9,8 +9,6 @@ import classnames from 'classnames';
 import Inspector from './inspector';
 import PostGridImage from './image';
 
-import get from 'lodash/get';
-
 const { compose } = wp.compose;
 
 const { Component, Fragment } = wp.element;
@@ -35,21 +33,6 @@ const {
 } = wp.editor;
 
 class LatestPostsBlock extends Component {
-
-	/* Retrieve the path to the image based on the slug selected in the inspector */
-	getImageSize( featID ) {
-		const getSizeURL = get(
-			/* getMedia accepts an image id and returns an object with all the image data */
-			wp.data.select( 'core' ).getMedia( 8201 ), [
-				'media_details',
-				'sizes',
-				this.props.attributes.imageSize, // Get the image slug from the inspector
-				'source_url' // Return the url of the image size
-			]
-		);
-
-		return { value: getSizeURL };
-	}
 
 	render() {
 		const {
@@ -242,21 +225,10 @@ export default compose( [
 			per_page: 100,
 		};
 
-		// Image sizes
-		const { getMedia } = select( 'core' );
-		const { getEditorSettings } = select( 'core/editor' );
-		const { id } = props.attributes;
-
 		return {
 			// Latest posts
 			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
 			categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
-
-			// Image sizes
-			// Hardcoding a image id in here for testing
-			// Ideally we pass post.featured_media.toString() to this
-			//image: id ? getMedia( id ) : null,
-			//image: 8187 ? getMedia( 8187 ) : null,
 		};
 	} ),
 ] )( LatestPostsBlock );
