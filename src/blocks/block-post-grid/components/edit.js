@@ -39,7 +39,6 @@ class LatestPostsBlock extends Component {
 			attributes,
 			setAttributes,
 			latestPosts,
-			image,
 		} = this.props;
 
 		// Check the image orientation
@@ -144,20 +143,17 @@ class LatestPostsBlock extends Component {
 							>
 								{
 									attributes.displayPostImage && post.featured_media ? (
-										<div className="ab-block-post-grid-image">
-											<a href={ post.link } target="_blank" rel="bookmark">
-												<PostGridImage
-													{ ...this.props }
-													//imgSrc={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-													imgAlt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
-													imgClass={ `wp-image-${post.featured_media.toString()}` }
-													imgID={ post.featured_media.toString() }
-													imgSize={ attributes.imageSize }
-													imgSizeLandscape={ post.featured_image_src }
-													imgSizeSquare={ post.featured_image_src_square }
-												/>
-											</a>
-										</div>
+										<PostGridImage
+											{ ...this.props }
+											//imgSrc={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+											imgAlt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
+											imgClass={ `wp-image-${post.featured_media.toString()}` }
+											imgID={ post.featured_media.toString() }
+											imgSize={ attributes.imageSize }
+											imgSizeLandscape={ post.featured_image_src }
+											imgSizeSquare={ post.featured_image_src_square }
+											imgLink={ post.link }
+										/>
 									) : (
 										null
 									)

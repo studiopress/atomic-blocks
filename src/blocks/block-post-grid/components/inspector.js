@@ -102,7 +102,7 @@ export default class Inspector extends Component {
 
 		// Add instruction text to the select
 		const abImageSizeSelect = {
-			value: '',
+			value: 'selectimage',
 			label: __( 'Select image size' ),
 		};
 
