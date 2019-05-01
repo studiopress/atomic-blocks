@@ -13,8 +13,20 @@
 		grid-template-rows: 1fr;
 		grid-gap: 0 2em;
 
+		@media all and (-ms-high-contrast:none) {
+			display: block;
+		}
+
 		article {
 			margin-bottom: 2.5em;
+
+			@media all and (-ms-high-contrast:none) {
+				padding-left: 10px;
+				padding-right: 10px;
+				display: inline-block;
+				vertical-align: top;
+				width: 48%;
+			}
 		}
 	}
 
