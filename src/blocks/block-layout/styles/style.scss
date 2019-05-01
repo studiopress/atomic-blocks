@@ -282,3 +282,17 @@ span.ab-layout-column-term {
 		border-radius: 5px;
 	}
 }
+
+/**
+ * Layout style modifications
+ * This probably belongs in a theme!
+ */
+
+ .ab-layout-team-1 {
+	.ab-profile-column {
+		flex: 100%;
+	}
+	.ab-social-links {
+		padding-top: 25px;
+	}
+ }
