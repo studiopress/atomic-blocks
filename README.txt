@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
 Tested up to: 5.1.1
-Stable tag: 1.7.0
+Stable tag: 1.7.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -109,6 +109,9 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 11. Spacer and Divider Block
 
 == Changelog ==
+
+= 1.7.1 =
+* Post Grid: Improve IE11 support on the grid.
 
 = 1.7.0 =
 * Add the Advanced Columns block.
