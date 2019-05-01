@@ -19,6 +19,8 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var form = $( this ).parents( 'form' );
 
+			var nonce = button.parent().find( "[name='ab-newsletter-form-nonce']" ).val();
+
 			var email = button.parent().find( "[name='ab-newsletter-email-address']" ).val();
 
 			var provider = button.parent().find( "[name='ab-newsletter-mailing-list-provider']" ).val();
@@ -46,7 +48,7 @@ var AtomicBlocksNewsletterSubmission = {
 					atomic_blocks_newsletter_email: email,
 					atomic_blocks_newsletter_mailing_list_provider: provider,
 					atomic_blocks_newsletter_mailing_list: list,
-					atomic_blocks_newsletter_form_nonce: $( '#ab-newsletter-form-nonce' ).val(),
+					atomic_blocks_newsletter_form_nonce: nonce,
 					atomic_blocks_newsletter_success_message: successMessage,
 				},
 				type: 'post',

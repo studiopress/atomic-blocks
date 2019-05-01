@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.6.0\n"
+"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.6.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-04-12T01:56:49+00:00\n"
-"PO-Revision-Date: 2019-04-12T01:56:49+00:00\n"
+"POT-Creation-Date: 2019-04-24T18:22:11+00:00\n"
+"PO-Revision-Date: 2019-04-24T18:22:11+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: atomic-blocks\n"
 
@@ -474,68 +474,6 @@ msgstr ""
 msgid "Untitled"
 msgstr ""
 
-#: src/blocks/block-layout/index.js:23
-msgid "AB Layouts"
-msgstr ""
-
-#: src/blocks/block-layout/index.js:24
-msgid "Add a pre-defined section or layout to posts and pages."
-msgstr ""
-
-#: src/blocks/block-layout/index.js:28
-msgid "layout"
-msgstr ""
-
-#: src/blocks/block-layout/index.js:29
-msgid "column"
-msgstr ""
-
-#: src/blocks/block-layout/index.js:30
-msgid "row"
-msgstr ""
-
-#: src/blocks/block-layout/components/edit.js:62
-#: src/blocks/block-layout/components/layout/layout-modal.js:49
-msgid "Layout Selector"
-msgstr ""
-
-#: src/blocks/block-layout/components/edit.js:63
-msgid "Launch the layout library to browse pre-designed sections."
-msgstr ""
-
-#: src/blocks/block-layout/components/layout/layout-library.js:98
-#: src/blocks/block-layout/components/layout/layout-library.js:104
-msgid "Category"
-msgstr ""
-
-#: src/blocks/block-layout/components/layout/layout-library.js:107
-msgid "Search"
-msgstr ""
-
-#: src/blocks/block-layout/components/layout/layout-library.js:114
-msgid "Layout Options"
-msgstr ""
-
-#: src/blocks/block-layout/components/layout/layout-modal.js:44
-msgid "Layout Library"
-msgstr ""
-
-#: src/blocks/block-layout/components/layout/layout-modal.js:61
-msgid "Layouts"
-msgstr ""
-
-#: src/blocks/block-layout/components/layout/layout-modal.js:66
-msgid "Sections"
-msgstr ""
-
-#: src/blocks/block-layout/components/layout/layout-modal.js:71
-msgid "Favorites"
-msgstr ""
-
-#: src/blocks/block-layout/components/layout/layout-modal.js:76
-msgid "Reusable Blocks"
-msgstr ""
-
 #: src/blocks/block-newsletter/index.js:17
 msgid "Email newsletter"
 msgstr ""
@@ -553,15 +491,15 @@ msgstr ""
 msgid "Newsletter"
 msgstr ""
 
-#: src/blocks/block-newsletter/components/edit.js:84
+#: src/blocks/block-newsletter/components/edit.js:88
 msgid "You must define your newsletter provider API keys to use this block."
 msgstr ""
 
-#: src/blocks/block-newsletter/components/edit.js:85
+#: src/blocks/block-newsletter/components/edit.js:89
 msgid "Configure your settings"
 msgstr ""
 
-#: src/blocks/block-newsletter/components/edit.js:112
+#: src/blocks/block-newsletter/components/edit.js:116
 #: src/blocks/block-cta/index.js:247
 #: src/blocks/block-pricing-table-inner/components/button/edit.js:83
 #: src/blocks/block-button/index.js:66
@@ -589,6 +527,7 @@ msgid "The message shown when people successfully subscribe."
 msgstr ""
 
 #: src/blocks/block-newsletter/components/inspector.js:108
+#: src/blocks/block-column/components/inspector.js:71
 msgid "General"
 msgstr ""
 
@@ -609,6 +548,8 @@ msgid "Block Margin Bottom"
 msgstr ""
 
 #: src/blocks/block-newsletter/components/inspector.js:151
+#: src/blocks/block-column/components/inspector.js:259
+#: src/blocks/block-column-inner/components/inspector.js:153
 msgid "Color"
 msgstr ""
 
@@ -630,6 +571,260 @@ msgstr ""
 #: src/utils/inspector/button.js:104
 #: src/utils/inspector/button.js:109
 msgid "Button Text Color"
+msgstr ""
+
+#: src/blocks/block-column/index.js:21
+msgid "AB Advanced Columns"
+msgstr ""
+
+#: src/blocks/block-column/index.js:22
+#: src/blocks/block-column-inner/index.js:24
+msgid "Add a pre-defined column layout."
+msgstr ""
+
+#: src/blocks/block-column/index.js:26
+#: src/blocks/block-column-inner/index.js:29
+msgid "column"
+msgstr ""
+
+#: src/blocks/block-column/index.js:27
+#: src/blocks/block-column-inner/index.js:30
+msgid "layout"
+msgstr ""
+
+#: src/blocks/block-column/index.js:28
+#: src/blocks/block-column-inner/index.js:31
+msgid "row"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:65
+#: src/blocks/block-column/components/column-layouts.js:13
+msgid "1 Column"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:71
+msgid "2 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:77
+msgid "3 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:83
+msgid "4 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:89
+#: src/blocks/block-column/components/column-layouts.js:91
+msgid "5 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:95
+#: src/blocks/block-column/components/column-layouts.js:100
+msgid "6 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:108
+#: src/blocks/block-column/components/inspector.js:92
+#: src/blocks/block-column/components/inspector.js:93
+msgid "Column Layout"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:108
+msgid "Column Number"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:109
+msgid "Select a layout for this column."
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:109
+msgid "Select the number of columns for this layout."
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:114
+msgid "Select Row Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:143
+msgid "Select Column Layout"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:174
+msgid "Return to Column Selection"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:61
+#: src/blocks/block-column-inner/components/inspector.js:47
+msgid "Pixel (px)"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:62
+#: src/blocks/block-column-inner/components/inspector.js:48
+msgid "Percent (%)"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:63
+#: src/blocks/block-column-inner/components/inspector.js:49
+msgid "Em (em)"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:76
+msgid "Column Count"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:77
+msgid "Note: Changing the column count after you've added content to the column can cause loss of content."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:112
+msgid "Change the layout of your columns."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:118
+msgid "Column Gap"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:119
+msgid "Adjust the spacing between columns."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:131
+msgid "Adjust the width of the content inside the container wrapper."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:141
+msgid "Center Columns In Container"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:142
+msgid "Center the columns in the container when max-width is used."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:151
+msgid "Responsive Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:152
+msgid "Columns will be adjusted to fit on tablets and mobile devices."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:159
+#: src/blocks/block-column-inner/components/inspector.js:55
+msgid "Margin and Padding"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:163
+#: src/blocks/block-column-inner/components/inspector.js:59
+msgid "Margin Unit"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:164
+#: src/blocks/block-column/components/inspector.js:206
+#: src/blocks/block-column-inner/components/inspector.js:60
+#: src/blocks/block-column-inner/components/inspector.js:102
+msgid "Choose between pixel, percent, or em units."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:170
+#: src/blocks/block-column-inner/components/inspector.js:66
+msgid "Sync Margin"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:171
+#: src/blocks/block-column-inner/components/inspector.js:67
+msgid "Top and bottom margins will have the same value."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:194
+#: src/blocks/block-column-inner/components/inspector.js:90
+msgid "Margin Top/Bottom"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:205
+#: src/blocks/block-column-inner/components/inspector.js:101
+msgid "Padding Unit"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:213
+#: src/blocks/block-column-inner/components/inspector.js:108
+msgid "Sync Padding"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:214
+#: src/blocks/block-column-inner/components/inspector.js:109
+msgid "Padding on all sides will have the same value."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:265
+#: src/blocks/block-cta/components/inspector.js:181
+#: src/blocks/block-author-profile/components/inspector.js:72
+#: src/blocks/block-author-profile/components/inspector.js:77
+#: src/blocks/block-pricing-table-inner/components/inspector.js:102
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:153
+#: src/blocks/block-pricing-table-inner/components/button/inspector.js:142
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:169
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:121
+#: src/blocks/block-column-inner/components/inspector.js:159
+#: src/blocks/block-testimonial/components/inspector.js:73
+#: src/blocks/block-testimonial/components/inspector.js:78
+msgid "Background Color"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:270
+#: src/blocks/block-cta/components/inspector.js:126
+#: src/blocks/block-cta/components/inspector.js:131
+#: src/blocks/block-author-profile/components/inspector.js:83
+#: src/blocks/block-author-profile/components/inspector.js:88
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:158
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:174
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:126
+#: src/blocks/block-column-inner/components/inspector.js:164
+#: src/blocks/block-notice/components/inspector.js:111
+#: src/blocks/block-notice/components/inspector.js:117
+#: src/blocks/block-testimonial/components/inspector.js:84
+#: src/blocks/block-testimonial/components/inspector.js:89
+msgid "Text Color"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:22
+msgid "2 Columns - 50/50"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:28
+msgid "2 Columns - 75/25"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:34
+msgid "2 Columns - 25/75"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:43
+msgid "3 Columns - 33/33/33"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:49
+msgid "3 Columns - 25/50/25"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:55
+msgid "3 Columns - 50/25/25"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:61
+msgid "3 Columns - 25/25/50"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:70
+msgid "4 Columns - 25/25/25/25"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:76
+msgid "4 Columns - 40/20/20/20"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:82
+msgid "4 Columns - 20/20/20/40"
 msgstr ""
 
 #: src/blocks/block-spacer/index.js:90
@@ -756,20 +951,6 @@ msgstr ""
 msgid "Text Font Size"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:126
-#: src/blocks/block-cta/components/inspector.js:131
-#: src/blocks/block-author-profile/components/inspector.js:83
-#: src/blocks/block-author-profile/components/inspector.js:88
-#: src/blocks/block-pricing-table-inner/components/price/inspector.js:158
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:174
-#: src/blocks/block-pricing-table-inner/components/global/inspector.js:126
-#: src/blocks/block-notice/components/inspector.js:111
-#: src/blocks/block-notice/components/inspector.js:117
-#: src/blocks/block-testimonial/components/inspector.js:84
-#: src/blocks/block-testimonial/components/inspector.js:89
-msgid "Text Color"
-msgstr ""
-
 #: src/blocks/block-cta/components/inspector.js:137
 msgid "Background Options"
 msgstr ""
@@ -796,19 +977,6 @@ msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:171
 msgid "Image Opacity"
-msgstr ""
-
-#: src/blocks/block-cta/components/inspector.js:181
-#: src/blocks/block-author-profile/components/inspector.js:72
-#: src/blocks/block-author-profile/components/inspector.js:77
-#: src/blocks/block-pricing-table-inner/components/inspector.js:102
-#: src/blocks/block-pricing-table-inner/components/price/inspector.js:153
-#: src/blocks/block-pricing-table-inner/components/button/inspector.js:142
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:169
-#: src/blocks/block-pricing-table-inner/components/global/inspector.js:121
-#: src/blocks/block-testimonial/components/inspector.js:73
-#: src/blocks/block-testimonial/components/inspector.js:78
-msgid "Background Color"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:186
@@ -1407,6 +1575,22 @@ msgstr ""
 msgid "Adds a product subtitle component with schema markup."
 msgstr ""
 
+#: src/blocks/block-column-inner/index.js:23
+msgid "AB Advanced Column"
+msgstr ""
+
+#: src/blocks/block-column-inner/components/edit.js:38
+msgid "Vertical Align Top"
+msgstr ""
+
+#: src/blocks/block-column-inner/components/edit.js:44
+msgid "Vertical Align Middle"
+msgstr ""
+
+#: src/blocks/block-column-inner/components/edit.js:50
+msgid "Vertical Align Bottom"
+msgstr ""
+
 #: src/blocks/block-pricing-table/index.js:97
 msgid "AB Pricing"
 msgstr ""
@@ -1546,54 +1730,67 @@ msgstr ""
 msgid "drop cap"
 msgstr ""
 
+#: src/utils/inspector/margin.js:55
 #: src/utils/components/margin.js:55
 msgid "Margin Top"
 msgstr ""
 
+#: src/utils/inspector/margin.js:64
 #: src/utils/components/margin.js:64
 msgid "Margin Right"
 msgstr ""
 
+#: src/utils/inspector/margin.js:73
 #: src/utils/components/margin.js:73
 msgid "Margin Bottom"
 msgstr ""
 
+#: src/utils/inspector/margin.js:82
 #: src/utils/components/margin.js:82
 msgid "Margin Left"
 msgstr ""
 
+#: src/utils/inspector/margin.js:91
 #: src/utils/components/margin.js:91
 msgid "Margin Vertical"
 msgstr ""
 
+#: src/utils/inspector/margin.js:100
 #: src/utils/components/margin.js:100
 msgid "Margin Horizontal"
 msgstr ""
 
+#: src/utils/inspector/padding.js:57
 #: src/utils/components/padding.js:57
 msgid "Padding"
 msgstr ""
 
+#: src/utils/inspector/padding.js:67
 #: src/utils/components/padding.js:67
 msgid "Padding Top"
 msgstr ""
 
+#: src/utils/inspector/padding.js:76
 #: src/utils/components/padding.js:76
 msgid "Padding Right"
 msgstr ""
 
+#: src/utils/inspector/padding.js:85
 #: src/utils/components/padding.js:85
 msgid "Padding Bottom"
 msgstr ""
 
+#: src/utils/inspector/padding.js:94
 #: src/utils/components/padding.js:94
 msgid "Padding Left"
 msgstr ""
 
+#: src/utils/inspector/padding.js:103
 #: src/utils/components/padding.js:103
 msgid "Padding Vertical"
 msgstr ""
 
+#: src/utils/inspector/padding.js:112
 #: src/utils/components/padding.js:112
 msgid "Padding Horizontal"
 msgstr ""
