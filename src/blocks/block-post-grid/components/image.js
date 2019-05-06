@@ -109,7 +109,10 @@ export default class PostGridImage extends Component {
 								className={ 'ab-post-grid-no-image-placeholder' }
 							>
 								<Dashicon icon={ 'info' } />
-								<div class="components-placeholder__label">{ __( 'There is no image generated for the selected image size, so a fallback image size is being used. Learn more.', 'atomic-blocks' ) }</div>
+								<div className="components-placeholder__label">
+									{ __( 'There is no image generated for the selected image size, so a fallback image size is being used.', 'atomic-blocks' ) }
+								</div>
+								<div className="ab-post-grid-image-help"><a target="_blank" href="https://github.com/studiopress/atomic-blocks/wiki/Post-Grid-Block#featured-image-sizes">{ __( 'Learn more ', 'atomic-blocks' ) }<span>&rarr;</span></a></div>
 							</Placeholder>
 						</Fragment>
 					}
