@@ -131,13 +131,6 @@ export default class Inspector extends Component {
                     title={ __( 'Post and Page Grid Settings', 'atomic-blocks' ) }
                     className={ isPost ? null : 'atomic-blocks-hide-query' }
                 >
-					<SelectControl
-						label={ __( 'Image Size' ) }
-						value={ attributes.imageSize }
-						options={ imageSizeOptions }
-						onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
-					/>
-
                     <SelectControl
                         label={ __( 'Content Type', 'atomic-blocks' ) }
                         options={ postTypeOptions }
@@ -193,6 +186,14 @@ export default class Inspector extends Component {
                         checked={ attributes.displayPostImage }
 						onChange={ () => this.props.setAttributes( { displayPostImage: ! attributes.displayPostImage } ) }
                     />
+					{ attributes.displayPostImage &&
+						<SelectControl
+							label={ __( 'Image Size' ) }
+							value={ attributes.imageSize }
+							options={ imageSizeOptions }
+							onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
+						/>
+					}
                     { attributes.displayPostImage &&
                         <Fragment>
 							<SelectControl
