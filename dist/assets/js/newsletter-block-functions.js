@@ -13,9 +13,9 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var button = $( this );
 
-			var button_text_original = button.text();
+			var button_text_original = button.val();
 
-			button.text( atomic_blocks_newsletter_vars.l10n.button_text_processing ).prop( 'disabled', true );
+			button.val( atomic_blocks_newsletter_vars.l10n.button_text_processing ).prop( 'disabled', true );
 
 			var form = $( this ).parents( 'form' );
 
@@ -31,9 +31,13 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var errorMessageContainer = button.parents( '.ab-block-newsletter' ).find( '.ab-block-newsletter-errors' );
 
+			var ampEndpoint = button.parent().find( "[name='ab-newsletter-amp-endpoint-request']" ).val();
+
 			if ( ! email ) {
-				button.text( button_text_original ).prop( 'disabled', false );
-				wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_failed );
+				setTimeout( function() {
+					button.val( button_text_original ).prop( 'disabled', false );
+					wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_failed );
+				}, 400 );
 				return;
 			}
 
@@ -45,11 +49,12 @@ var AtomicBlocksNewsletterSubmission = {
 			$.ajax( {
 				data: {
 					action: 'atomic_blocks_newsletter_submission',
-					atomic_blocks_newsletter_email: email,
-					atomic_blocks_newsletter_mailing_list_provider: provider,
-					atomic_blocks_newsletter_mailing_list: list,
-					atomic_blocks_newsletter_form_nonce: nonce,
-					atomic_blocks_newsletter_success_message: successMessage,
+					'ab-newsletter-email-address': email,
+					'ab-newsletter-mailing-list-provider': provider,
+					'ab-newsletter-mailing-list': list,
+					'ab-newsletter-form-nonce': nonce,
+					'ab-newsletter-success-message': successMessage,
+					'ab-newsletter-amp-endpoint-request': ampEndpoint,
 				},
 				type: 'post',
 				url: atomic_blocks_newsletter_vars.ajaxurl,
@@ -61,7 +66,7 @@ var AtomicBlocksNewsletterSubmission = {
 
 					if ( ! response.success ) {
 						errorMessageContainer.html( '<p>' + response.data.message + '</p>' ).fadeIn();
-						button.text( button_text_original ).prop( 'disabled', false );
+						button.val( button_text_original ).prop( 'disabled', false );
 						wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_failed );
 					}
 
