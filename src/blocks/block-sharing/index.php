@@ -263,18 +263,20 @@ function atomic_blocks_render_sharing( $attributes ) {
 	}
 
 	if ( isset( $attributes['email'] ) && $attributes['email'] ) {
-		$share_url .= sprintf(
-			'<li>
-				<a
-					href="%1$s"
-					class="ab-share-email"
-					title="%2$s">
-					<i class="fas fa-envelope"></i> <span class="ab-social-text">%2$s</span>
-				</a>
-			</li>',
-			esc_url( $email_url ),
-			esc_html__( 'Share via Email', 'atomic-blocks' )
-		);
+		if ( ! $is_amp_endpoint ) {
+			$share_url .= sprintf(
+				'<li>
+					<a
+						href="%1$s"
+						class="ab-share-email"
+						title="%2$s">
+						<i class="fas fa-envelope"></i> <span class="ab-social-text">%2$s</span>
+					</a>
+				</li>',
+				esc_url( $email_url ),
+				esc_html__( 'Share via Email', 'atomic-blocks' )
+			);
+		}
 	}
 
 	$block_content = sprintf(
