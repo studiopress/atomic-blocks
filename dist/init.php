@@ -95,6 +95,11 @@ add_action( 'enqueue_block_editor_assets', 'atomic_blocks_editor_assets' );
  * @since 1.0.0
  */
 function atomic_blocks_frontend_assets() {
+
+	if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+		return;
+	}
+
 	// Load the dismissible notice js.
 	wp_enqueue_script(
 		'atomic-blocks-dismiss-js',
