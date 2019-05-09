@@ -38,7 +38,7 @@ class Frontend {
 		add_filter( 'lsx_page_banner_disable', array( $this, 'disable_lsx_page_title' ) );
 		add_filter( 'lsx_global_header_disable', array( $this, 'disable_lsx_page_title' ) );
 		add_filter( 'the_content', array( $this, 'mobile_srcset_tag' ), 10, 1 );
-		add_filter( 'wp_get_attachment_image_attributes', array( $this, 'wp_get_attachment_image_attributes' ), 10, 3 );		
+		add_filter( 'wp_get_attachment_image_attributes', array( $this, 'wp_get_attachment_image_attributes' ), 10, 3 );
 	}
 
 	/**
@@ -189,15 +189,15 @@ class Frontend {
 							$current_image_url = $image_urls[1][0];
 						}
 						if ( false !== $current_image_url ) {
-							$mobile_image = $current_image_url;								
-							if ( strpos( $mobile_image, 'resize=1200' ) !== false ) {
+							$mobile_image = $current_image_url;
+							if ( strpos( $mobile_image, 'resize=768' ) !== false ) {
 								$mobile_image = str_replace( '.jpg', '-1024x640.jpg', $mobile_image );
 								$mobile_image = str_replace( '.png', '-1024x640.png', $mobile_image );
 								$mobile_image = str_replace( '.jpeg', '-1024x640.jpeg', $mobile_image );
-							} else if ( strpos( $mobile_image, 'resize=768' ) !== false ) {
+							} else if ( strpos( $mobile_image, 'resize=600' ) !== false ) {
 								$mobile_image = str_replace( '.jpg', '-300x300.jpg', $mobile_image );
 								$mobile_image = str_replace( '.png', '-300x300.png', $mobile_image );
-								$mobile_image = str_replace( '.jpeg', '-300x300.jpeg', $mobile_image );	
+								$mobile_image = str_replace( '.jpeg', '-300x300.jpeg', $mobile_image );
 							}
 
 							$new_image_match = str_replace( $current_image_url, $mobile_image, $image_match );
@@ -209,7 +209,7 @@ class Frontend {
 						}
 					}
 				}
-			}			
+			}
 		}
 		return $content;
 	}
@@ -230,5 +230,5 @@ class Frontend {
 			$attr['sizes'] = '(max-width: 400px) 50vw, 10vw';
 		}
 		return $attr;
-	}	
+	}
 }
