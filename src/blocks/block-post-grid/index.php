@@ -385,18 +385,18 @@ function atomic_blocks_register_block_core_latest_posts() {
 					'type'    => 'string',
 					'default' => 'h2',
 				),
-				'imageSize'     => array(
+				'imageSize'           => array(
 					'type'    => 'string',
-					'default' => 'full'
+					'default' => 'full',
 				),
 				'url'                 => array(
-					'type'    => 'string',
-					'source' => 'attribute',
-					'selector' => 'img',
+					'type'      => 'string',
+					'source'    => 'attribute',
+					'selector'  => 'img',
 					'attribute' => 'src',
 				),
-				'id'                 => array(
-					'type'    => 'number',
+				'id'                  => array(
+					'type' => 'number',
 				),
 			),
 			'render_callback' => 'atomic_blocks_render_block_core_latest_posts',
