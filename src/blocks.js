@@ -23,3 +23,12 @@ import './blocks/block-pricing-table-inner/components/description/index.js';
 import './blocks/block-pricing-table-inner/components/title/index.js';
 import './blocks/block-pricing-table-inner/components/subtitle/index.js';
 import './blocks/block-pricing-table-inner/components/button/index.js';
+
+import './blocks/block-newsletter/index';
+
+/**
+ * Advanced Column
+ */
+import './blocks/block-column/index.js';
+import './blocks/block-column-inner/index.js';
+

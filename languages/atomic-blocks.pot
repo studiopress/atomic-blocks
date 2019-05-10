@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the Atomic Blocks - Gutenberg Blocks Collection plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.5.4\n"
+"Project-Id-Version: Atomic Blocks - Gutenberg Blocks Collection 1.6.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/atomic-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-03-20T19:04:33+00:00\n"
-"PO-Revision-Date: 2019-03-20T19:04:33+00:00\n"
+"POT-Creation-Date: 2019-04-24T18:22:11+00:00\n"
+"PO-Revision-Date: 2019-04-24T18:22:11+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: atomic-blocks\n"
 
@@ -34,333 +34,797 @@ msgstr ""
 msgid "http://arraythemes.com"
 msgstr ""
 
-#: dist/init.php:103
-#: dist/getting-started/getting-started.php:49
-#: dist/getting-started/getting-started.php:50
-#: dist/getting-started/getting-started.php:110
+#: dist/init.php:123
+#: dist/getting-started/getting-started.php:51
+#: dist/getting-started/getting-started.php:52
+#: dist/getting-started/getting-started.php:132
 msgid "Atomic Blocks"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:109
-#: dist/getting-started/getting-started.php:333
-msgid "Visit Atomic Blocks"
-msgstr ""
-
-#: dist/getting-started/getting-started.php:110
-msgid "Getting started with"
-msgstr ""
-
-#: dist/getting-started/getting-started.php:114
+#: dist/getting-started/getting-started.php:61
+#: dist/getting-started/getting-started.php:62
+#: dist/getting-started/getting-started.php:136
 msgid "Getting Started"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:115
+#: dist/getting-started/getting-started.php:71
+msgid "Atomic Blocks Settings"
+msgstr ""
+
+#: dist/getting-started/getting-started.php:72
+msgid "Settings"
+msgstr ""
+
+#: dist/getting-started/getting-started.php:131
+#: dist/getting-started/getting-started.php:365
+msgid "Visit Atomic Blocks"
+msgstr ""
+
+#: dist/getting-started/getting-started.php:132
+msgid "Getting started with"
+msgstr ""
+
+#: dist/getting-started/getting-started.php:137
 msgid "Plugin Help File"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:117
+#: dist/getting-started/getting-started.php:139
 msgid "Theme Help File"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:128
+#: dist/getting-started/getting-started.php:150
 msgid "Welcome to the future of site building with Gutenberg and Atomic Blocks!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:129
+#: dist/getting-started/getting-started.php:151
 msgid "The Atomic Blocks collection is now ready to use in your posts and pages. Simply search for \"atomic\" or \"ab\" in the block inserter to display the Atomic Blocks collection. Check out the help file link above for detailed instructions!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:134
+#: dist/getting-started/getting-started.php:156
 msgid "Atomic Blocks Theme"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:141
+#: dist/getting-started/getting-started.php:163
 msgid "Available Atomic Blocks"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:142
+#: dist/getting-started/getting-started.php:164
 msgid "The following blocks are available in Atomic Blocks. More blocks are on the way so stay tuned!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:148
+#: dist/getting-started/getting-started.php:170
 msgid "Post Grid Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:149
-#: dist/getting-started/getting-started.php:165
+#: dist/getting-started/getting-started.php:171
+#: dist/getting-started/getting-started.php:187
 msgid "Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:156
+#: dist/getting-started/getting-started.php:178
 msgid "Container Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:157
+#: dist/getting-started/getting-started.php:179
 msgid "Wrap several blocks into a section and add padding, margins, background colors and images."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:162
+#: dist/getting-started/getting-started.php:184
 msgid "Call To Action Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:164
+#: dist/getting-started/getting-started.php:186
 msgid "Call-To-Action Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:170
+#: dist/getting-started/getting-started.php:192
 msgid "Testimonials Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:172
+#: dist/getting-started/getting-started.php:194
 msgid "Testimonial Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:173
+#: dist/getting-started/getting-started.php:195
 msgid "Add a customer or client testimonial to your site with an avatar, text, citation and more."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:178
+#: dist/getting-started/getting-started.php:200
 msgid "Inline Notices Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:180
+#: dist/getting-started/getting-started.php:202
 msgid "Inline Notice Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:181
+#: dist/getting-started/getting-started.php:203
 msgid "Add a colorful notice or message to your site with text, a title and a dismiss icon."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:186
-#: dist/getting-started/getting-started.php:188
+#: dist/getting-started/getting-started.php:208
+#: dist/getting-started/getting-started.php:210
 msgid "Sharing Icons Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:189
+#: dist/getting-started/getting-started.php:211
 msgid "Add social sharing icons to your page with size, shape, color and style options."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:194
-#: dist/getting-started/getting-started.php:196
+#: dist/getting-started/getting-started.php:216
+#: dist/getting-started/getting-started.php:218
 msgid "Author Profile Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:197
+#: dist/getting-started/getting-started.php:219
 msgid "Add a user profile box to your site with a title, bio info, an avatar and social media links."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:202
+#: dist/getting-started/getting-started.php:224
 msgid "Accordion Toggle"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:204
+#: dist/getting-started/getting-started.php:226
 msgid "Accordion Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:205
+#: dist/getting-started/getting-started.php:227
 msgid "Add an accordion text toggle with a title and descriptive text. Includes font size and toggle options."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:210
+#: dist/getting-started/getting-started.php:232
 msgid "Customizable Button Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:212
+#: dist/getting-started/getting-started.php:234
 msgid "Customizable Button"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:213
+#: dist/getting-started/getting-started.php:235
 msgid "Add a fancy stylized button to your post or page with size, shape, target, and color options."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:218
-#: dist/getting-started/getting-started.php:220
+#: dist/getting-started/getting-started.php:240
+#: dist/getting-started/getting-started.php:242
 msgid "Drop Cap Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:221
+#: dist/getting-started/getting-started.php:243
 msgid "Add a stylized drop cap to the beginning of your paragraph. Choose from three different styles."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:226
+#: dist/getting-started/getting-started.php:248
 msgid "Spacer and Divider Block"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:228
+#: dist/getting-started/getting-started.php:250
 msgid "Spacer & Divider"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:229
+#: dist/getting-started/getting-started.php:251
 msgid "Add an adjustable spacer between your blocks with an optional divider with styling options."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:249
-#: dist/getting-started/getting-started.php:272
+#: dist/getting-started/getting-started.php:271
+#: dist/getting-started/getting-started.php:294
 msgid "This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:288
+#: dist/getting-started/getting-started.php:310
 msgid "Quick Start Checklist"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:293
+#: dist/getting-started/getting-started.php:320
 msgid "1. Install the Gutenberg plugin."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:294
+#: dist/getting-started/getting-started.php:321
 msgid "Gutenberg adds the new block-based editor to WordPress. You will need this to work with the Atomic Blocks plugin."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:297
+#: dist/getting-started/getting-started.php:324
 msgid "Install Gutenberg now"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:300
-#: dist/getting-started/getting-started.php:302
-#: dist/getting-started/getting-started.php:314
-#: dist/getting-started/getting-started.php:316
+#: dist/getting-started/getting-started.php:327
+#: dist/getting-started/getting-started.php:329
+#: dist/getting-started/getting-started.php:346
+#: dist/getting-started/getting-started.php:348
 msgid "Plugin activated!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:307
+#: dist/getting-started/getting-started.php:339
 msgid "2. Install the Atomic Blocks plugin."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:308
+#: dist/getting-started/getting-started.php:340
 msgid "Atomic Blocks adds several handy content blocks to the Gutenberg block editor."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:311
+#: dist/getting-started/getting-started.php:343
 msgid "Install Atomic Blocks now"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:328
+#: dist/getting-started/getting-started.php:360
 msgid "Free Theme Download"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:335
+#: dist/getting-started/getting-started.php:367
 msgid "Download our FREE Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:337
+#: dist/getting-started/getting-started.php:369
 msgid "Install Now"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:347
+#: dist/getting-started/getting-started.php:379
 msgid "Stay Updated"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:352
-#: dist/getting-started/getting-started.php:383
+#: dist/getting-started/getting-started.php:384
+#: dist/getting-started/getting-started.php:415
 msgid "Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:354
+#: dist/getting-started/getting-started.php:386
 msgid "Subscribe Now"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:363
+#: dist/getting-started/getting-started.php:395
 msgid "Free Blocks & Tutorials"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:368
-#: dist/getting-started/getting-started.php:390
+#: dist/getting-started/getting-started.php:400
+#: dist/getting-started/getting-started.php:422
 msgid "Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:369
+#: dist/getting-started/getting-started.php:401
 msgid "Visit AtomicBlocks.com"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:377
+#: dist/getting-started/getting-started.php:409
 msgid "Free Blocks and Resources"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:382
+#: dist/getting-started/getting-started.php:414
 msgid "Blocks In Your Inbox"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:384
+#: dist/getting-started/getting-started.php:416
 msgid "Subscribe Today"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:389
+#: dist/getting-started/getting-started.php:421
 msgid "Articles & Tutorials"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:391
+#: dist/getting-started/getting-started.php:423
 msgid "Visit the Blog"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:396
+#: dist/getting-started/getting-started.php:428
 msgid "Gutenberg News"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:397
+#: dist/getting-started/getting-started.php:429
 msgid "Stay up to date with the new WordPress editor. Gutenberg News curates Gutenberg articles, tutorials, videos and more free resources."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:398
+#: dist/getting-started/getting-started.php:430
 msgid "Visit Gutenberg News"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:403
+#. translators: %1$s StudioPress website URL. %2$s WP Engine website URL.
+#: dist/getting-started/getting-started.php:438
 msgid "Made by the fine folks at %1$s and %2$s."
 msgstr ""
 
-#: dist/getting-started/getting-started.php:405
+#: dist/getting-started/getting-started.php:442
 msgid "AtomicBlocks.com"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:406
+#: dist/getting-started/getting-started.php:443
 msgid "Blog"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:407
+#: dist/getting-started/getting-started.php:444
 msgid "Docs"
 msgstr ""
 
-#: dist/getting-started/getting-started.php:408
+#: dist/getting-started/getting-started.php:445
 #: src/blocks/block-author-profile/components/social.js:27
 msgid "Twitter"
 msgstr ""
 
-#: src/blocks/block-sharing/index.php:143
+#: dist/getting-started/pages/settings-general.php:15
+msgid "Mailchimp API Key"
+msgstr ""
+
+#: dist/getting-started/pages/settings-general.php:24
+msgid "Find your Mailchimp API key."
+msgstr ""
+
+#: dist/getting-started/pages/settings-main.php:15
+msgid "Settings saved."
+msgstr ""
+
+#: dist/getting-started/pages/settings-main.php:22
+msgid "Save Settings"
+msgstr ""
+
+#. translators: %s This PHP class name. Will print AtomicBlocks\Newsletter\Mailchimp
+#: includes/classes/class-mailchimp.php:40
+msgid "An API key is required to use %s."
+msgstr ""
+
+#: includes/classes/class-mailchimp.php:72
+msgid "An invalid email address was provided."
+msgstr ""
+
+#. translators: %s The PHP method name. Will be AtomicBlocks\Newsletter\Mailchimp\subscribe.
+#: includes/classes/class-mailchimp.php:82
+msgid "An invalid Mailchimp list ID was provided in %s"
+msgstr ""
+
+#. translators: %s The error message returns from the Mailchimp API.
+#: includes/classes/class-mailchimp.php:99
+msgid "There was an error subscribing your email address. Please try again. Error: %s"
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:32
+msgid "Nonce verification failed. Please try again."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:36
+msgid "Invalid mailing provider configuration."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:40
+msgid "You must provide an email address."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:50
+msgid "Please provide a valid email address."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:97
+msgid "Invalid newsletter provider."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:98
+msgid "Invalid email address."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:99
+msgid "Invalid list ID."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:100
+msgid "You must enter your email API key in the plugin settings page."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:200
+msgid "Invalid configuration. Site owner: Please configure your newsletter provider settings."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:202
+msgid "The submission is being processed."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:203
+msgid "The submission successfully succeeded."
+msgstr ""
+
+#: includes/newsletter/newsletter-functions.php:204
+msgid "The submission failed."
+msgstr ""
+
+#: src/blocks/block-newsletter/index.php:166
+#: src/blocks/block-newsletter/index.js:23
+msgid "Subscribe"
+msgstr ""
+
+#: src/blocks/block-newsletter/index.php:176
+msgid "Please wait..."
+msgstr ""
+
+#: src/blocks/block-newsletter/index.php:180
+msgid "Your Email Address"
+msgstr ""
+
+#: src/blocks/block-newsletter/index.php:191
+msgid "Thanks for subscribing."
+msgstr ""
+
+#: src/blocks/block-sharing/index.php:138
 #: src/blocks/block-sharing/index.js:99
 msgid "Share on Twitter"
 msgstr ""
 
-#: src/blocks/block-sharing/index.php:159
+#: src/blocks/block-sharing/index.php:154
 #: src/blocks/block-sharing/index.js:110
 msgid "Share on Facebook"
 msgstr ""
 
-#: src/blocks/block-sharing/index.php:175
+#: src/blocks/block-sharing/index.php:170
 #: src/blocks/block-sharing/index.js:121
 msgid "Share on Google"
 msgstr ""
 
-#: src/blocks/block-sharing/index.php:191
+#: src/blocks/block-sharing/index.php:186
 #: src/blocks/block-sharing/index.js:132
 msgid "Share on Pinterest"
 msgstr ""
 
-#: src/blocks/block-sharing/index.php:207
+#: src/blocks/block-sharing/index.php:202
 #: src/blocks/block-sharing/index.js:143
 msgid "Share on LinkedIn"
 msgstr ""
 
-#: src/blocks/block-sharing/index.php:223
+#: src/blocks/block-sharing/index.php:218
 msgid "Share on Reddit"
 msgstr ""
 
-#: src/blocks/block-sharing/index.php:238
+#: src/blocks/block-sharing/index.php:233
 #: src/blocks/block-sharing/index.js:165
 msgid "Share via Email"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.php:70
+#: src/blocks/block-post-grid/index.php:100
 msgid "Untitled"
+msgstr ""
+
+#: src/blocks/block-newsletter/index.js:17
+msgid "Email newsletter"
+msgstr ""
+
+#: src/blocks/block-newsletter/index.js:18
+msgid "Add an email newsletter sign-up form."
+msgstr ""
+
+#: src/blocks/block-newsletter/index.js:22
+msgid "Mailchimp"
+msgstr ""
+
+#: src/blocks/block-newsletter/index.js:24
+#: src/blocks/block-newsletter/components/inspector.js:87
+msgid "Newsletter"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/edit.js:88
+msgid "You must define your newsletter provider API keys to use this block."
+msgstr ""
+
+#: src/blocks/block-newsletter/components/edit.js:89
+msgid "Configure your settings"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/edit.js:116
+#: src/blocks/block-cta/index.js:247
+#: src/blocks/block-pricing-table-inner/components/button/edit.js:83
+#: src/blocks/block-button/index.js:66
+msgid "Button text..."
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:72
+msgid "Select a list"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:91
+msgid "Mailing List"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:92
+msgid "The list people will be subscribed to."
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:100
+msgid "Success Message"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:101
+msgid "The message shown when people successfully subscribe."
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:108
+#: src/blocks/block-column/components/inspector.js:71
+msgid "General"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:114
+msgid "Block Padding"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:115
+msgid "Adjust the padding applied to the inside of the block."
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:125
+msgid "Block Margin Top"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:132
+msgid "Block Margin Bottom"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:151
+#: src/blocks/block-column/components/inspector.js:259
+#: src/blocks/block-column-inner/components/inspector.js:153
+msgid "Color"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:157
+msgid "Block Background Color"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:162
+msgid "Block Text Color"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:167
+msgid "Button Background Color"
+msgstr ""
+
+#: src/blocks/block-newsletter/components/inspector.js:172
+#: src/blocks/block-cta/components/inspector.js:231
+#: src/blocks/block-cta/components/inspector.js:236
+#: src/utils/inspector/button.js:104
+#: src/utils/inspector/button.js:109
+msgid "Button Text Color"
+msgstr ""
+
+#: src/blocks/block-column/index.js:21
+msgid "AB Advanced Columns"
+msgstr ""
+
+#: src/blocks/block-column/index.js:22
+#: src/blocks/block-column-inner/index.js:24
+msgid "Add a pre-defined column layout."
+msgstr ""
+
+#: src/blocks/block-column/index.js:26
+#: src/blocks/block-column-inner/index.js:29
+msgid "column"
+msgstr ""
+
+#: src/blocks/block-column/index.js:27
+#: src/blocks/block-column-inner/index.js:30
+msgid "layout"
+msgstr ""
+
+#: src/blocks/block-column/index.js:28
+#: src/blocks/block-column-inner/index.js:31
+msgid "row"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:65
+#: src/blocks/block-column/components/column-layouts.js:13
+msgid "1 Column"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:71
+msgid "2 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:77
+msgid "3 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:83
+msgid "4 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:89
+#: src/blocks/block-column/components/column-layouts.js:91
+msgid "5 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:95
+#: src/blocks/block-column/components/column-layouts.js:100
+msgid "6 Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:108
+#: src/blocks/block-column/components/inspector.js:92
+#: src/blocks/block-column/components/inspector.js:93
+msgid "Column Layout"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:108
+msgid "Column Number"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:109
+msgid "Select a layout for this column."
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:109
+msgid "Select the number of columns for this layout."
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:114
+msgid "Select Row Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:143
+msgid "Select Column Layout"
+msgstr ""
+
+#: src/blocks/block-column/components/edit.js:174
+msgid "Return to Column Selection"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:61
+#: src/blocks/block-column-inner/components/inspector.js:47
+msgid "Pixel (px)"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:62
+#: src/blocks/block-column-inner/components/inspector.js:48
+msgid "Percent (%)"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:63
+#: src/blocks/block-column-inner/components/inspector.js:49
+msgid "Em (em)"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:76
+msgid "Column Count"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:77
+msgid "Note: Changing the column count after you've added content to the column can cause loss of content."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:112
+msgid "Change the layout of your columns."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:118
+msgid "Column Gap"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:119
+msgid "Adjust the spacing between columns."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:131
+msgid "Adjust the width of the content inside the container wrapper."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:141
+msgid "Center Columns In Container"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:142
+msgid "Center the columns in the container when max-width is used."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:151
+msgid "Responsive Columns"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:152
+msgid "Columns will be adjusted to fit on tablets and mobile devices."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:159
+#: src/blocks/block-column-inner/components/inspector.js:55
+msgid "Margin and Padding"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:163
+#: src/blocks/block-column-inner/components/inspector.js:59
+msgid "Margin Unit"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:164
+#: src/blocks/block-column/components/inspector.js:206
+#: src/blocks/block-column-inner/components/inspector.js:60
+#: src/blocks/block-column-inner/components/inspector.js:102
+msgid "Choose between pixel, percent, or em units."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:170
+#: src/blocks/block-column-inner/components/inspector.js:66
+msgid "Sync Margin"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:171
+#: src/blocks/block-column-inner/components/inspector.js:67
+msgid "Top and bottom margins will have the same value."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:194
+#: src/blocks/block-column-inner/components/inspector.js:90
+msgid "Margin Top/Bottom"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:205
+#: src/blocks/block-column-inner/components/inspector.js:101
+msgid "Padding Unit"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:213
+#: src/blocks/block-column-inner/components/inspector.js:108
+msgid "Sync Padding"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:214
+#: src/blocks/block-column-inner/components/inspector.js:109
+msgid "Padding on all sides will have the same value."
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:265
+#: src/blocks/block-cta/components/inspector.js:181
+#: src/blocks/block-author-profile/components/inspector.js:72
+#: src/blocks/block-author-profile/components/inspector.js:77
+#: src/blocks/block-pricing-table-inner/components/inspector.js:102
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:153
+#: src/blocks/block-pricing-table-inner/components/button/inspector.js:142
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:169
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:121
+#: src/blocks/block-column-inner/components/inspector.js:159
+#: src/blocks/block-testimonial/components/inspector.js:73
+#: src/blocks/block-testimonial/components/inspector.js:78
+msgid "Background Color"
+msgstr ""
+
+#: src/blocks/block-column/components/inspector.js:270
+#: src/blocks/block-cta/components/inspector.js:126
+#: src/blocks/block-cta/components/inspector.js:131
+#: src/blocks/block-author-profile/components/inspector.js:83
+#: src/blocks/block-author-profile/components/inspector.js:88
+#: src/blocks/block-pricing-table-inner/components/price/inspector.js:158
+#: src/blocks/block-pricing-table-inner/components/description/inspector.js:174
+#: src/blocks/block-pricing-table-inner/components/global/inspector.js:126
+#: src/blocks/block-column-inner/components/inspector.js:164
+#: src/blocks/block-notice/components/inspector.js:111
+#: src/blocks/block-notice/components/inspector.js:117
+#: src/blocks/block-testimonial/components/inspector.js:84
+#: src/blocks/block-testimonial/components/inspector.js:89
+msgid "Text Color"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:22
+msgid "2 Columns - 50/50"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:28
+msgid "2 Columns - 75/25"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:34
+msgid "2 Columns - 25/75"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:43
+msgid "3 Columns - 33/33/33"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:49
+msgid "3 Columns - 25/50/25"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:55
+msgid "3 Columns - 50/25/25"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:61
+msgid "3 Columns - 25/25/50"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:70
+msgid "4 Columns - 25/25/25/25"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:76
+msgid "4 Columns - 40/20/20/20"
+msgstr ""
+
+#: src/blocks/block-column/components/column-layouts.js:82
+msgid "4 Columns - 20/20/20/40"
 msgstr ""
 
 #: src/blocks/block-spacer/index.js:90
@@ -385,7 +849,6 @@ msgstr ""
 #: src/blocks/block-sharing/index.js:48
 #: src/blocks/block-author-profile/index.js:263
 #: src/blocks/block-container/index.js:187
-#: src/blocks/block-post-grid/index.js:36
 #: src/blocks/block-notice/index.js:137
 #: src/blocks/block-button/index.js:117
 #: src/blocks/block-testimonial/index.js:171
@@ -454,12 +917,6 @@ msgstr ""
 msgid "Call To Action Text"
 msgstr ""
 
-#: src/blocks/block-cta/index.js:247
-#: src/blocks/block-pricing-table-inner/components/button/edit.js:83
-#: src/blocks/block-button/index.js:66
-msgid "Button text..."
-msgstr ""
-
 #: src/blocks/block-cta/index.js:278
 #: src/blocks/block-pricing-table-inner/components/button/edit.js:116
 #: src/blocks/block-button/index.js:99
@@ -494,20 +951,6 @@ msgstr ""
 msgid "Text Font Size"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:126
-#: src/blocks/block-cta/components/inspector.js:131
-#: src/blocks/block-author-profile/components/inspector.js:83
-#: src/blocks/block-author-profile/components/inspector.js:88
-#: src/blocks/block-pricing-table-inner/components/price/inspector.js:158
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:174
-#: src/blocks/block-pricing-table-inner/components/global/inspector.js:126
-#: src/blocks/block-notice/components/inspector.js:111
-#: src/blocks/block-notice/components/inspector.js:117
-#: src/blocks/block-testimonial/components/inspector.js:84
-#: src/blocks/block-testimonial/components/inspector.js:89
-msgid "Text Color"
-msgstr ""
-
 #: src/blocks/block-cta/components/inspector.js:137
 msgid "Background Options"
 msgstr ""
@@ -536,19 +979,6 @@ msgstr ""
 msgid "Image Opacity"
 msgstr ""
 
-#: src/blocks/block-cta/components/inspector.js:181
-#: src/blocks/block-author-profile/components/inspector.js:72
-#: src/blocks/block-author-profile/components/inspector.js:77
-#: src/blocks/block-pricing-table-inner/components/inspector.js:102
-#: src/blocks/block-pricing-table-inner/components/price/inspector.js:153
-#: src/blocks/block-pricing-table-inner/components/button/inspector.js:142
-#: src/blocks/block-pricing-table-inner/components/description/inspector.js:169
-#: src/blocks/block-pricing-table-inner/components/global/inspector.js:121
-#: src/blocks/block-testimonial/components/inspector.js:73
-#: src/blocks/block-testimonial/components/inspector.js:78
-msgid "Background Color"
-msgstr ""
-
 #: src/blocks/block-cta/components/inspector.js:186
 msgid "Overlay Color"
 msgstr ""
@@ -558,32 +988,25 @@ msgid "Button Options"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:194
-#: src/utils/inspector/button.js:43
+#: src/utils/inspector/button.js:61
 msgid "Open link in new window"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:200
-#: src/utils/inspector/button.js:50
+#: src/utils/inspector/button.js:69
 msgid "Button Size"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:210
-#: src/utils/inspector/button.js:60
+#: src/utils/inspector/button.js:80
 msgid "Button Shape"
 msgstr ""
 
 #: src/blocks/block-cta/components/inspector.js:220
 #: src/blocks/block-cta/components/inspector.js:225
-#: src/utils/inspector/button.js:70
-#: src/utils/inspector/button.js:75
+#: src/utils/inspector/button.js:91
+#: src/utils/inspector/button.js:96
 msgid "Button Color"
-msgstr ""
-
-#: src/blocks/block-cta/components/inspector.js:231
-#: src/blocks/block-cta/components/inspector.js:236
-#: src/utils/inspector/button.js:81
-#: src/utils/inspector/button.js:86
-msgid "Button Text Color"
 msgstr ""
 
 #: src/blocks/block-sharing/index.js:41
@@ -637,7 +1060,8 @@ msgid "profile"
 msgstr ""
 
 #: src/blocks/block-author-profile/components/inspector.js:42
-#: src/utils/inspector/button.js:35
+#: src/blocks/block-post-grid/components/inspector.js:55
+#: src/utils/inspector/button.js:40
 msgid "Square"
 msgstr ""
 
@@ -708,7 +1132,11 @@ msgstr ""
 msgid "Email URL"
 msgstr ""
 
-#: src/blocks/block-author-profile/components/inspector.js:172
+#: src/blocks/block-author-profile/components/inspector.js:166
+msgid "Supports a URL or an email link. Email links must be prefixed with \"mailto:\". Example: mailto:test@example.com"
+msgstr ""
+
+#: src/blocks/block-author-profile/components/inspector.js:173
 msgid "Website URL"
 msgstr ""
 
@@ -761,23 +1189,197 @@ msgid "container"
 msgstr ""
 
 #: src/blocks/block-container/index.js:186
+#: src/blocks/block-post-grid/components/inspector.js:68
 msgid "section"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.js:29
-msgid "AB Post Grid"
+#: src/blocks/block-post-grid/index.js:25
+msgid "AB Post and Page Grid"
+msgstr ""
+
+#: src/blocks/block-post-grid/index.js:26
+msgid "Add a grid or list of customizable posts or pages."
 msgstr ""
 
 #: src/blocks/block-post-grid/index.js:30
-msgid "Add a grid or list of customizable posts to your page."
-msgstr ""
-
-#: src/blocks/block-post-grid/index.js:34
 msgid "post"
 msgstr ""
 
-#: src/blocks/block-post-grid/index.js:35
+#: src/blocks/block-post-grid/index.js:31
+msgid "page"
+msgstr ""
+
+#: src/blocks/block-post-grid/index.js:32
 msgid "grid"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:57
+msgid "Atomic Blocks Post and Page Grid"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:61
+msgid "No posts found."
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:77
+msgid "Grid View"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:83
+msgid "List View"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/edit.js:146
+#: src/blocks/block-post-grid/components/edit.js:158
+msgid "(Untitled)"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:54
+msgid "Landscape"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:60
+msgid "Post"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:61
+msgid "Page"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:66
+msgid "div"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:67
+msgid "header"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:69
+msgid "article"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:70
+msgid "main"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:71
+msgid "aside"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:72
+msgid "footer"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:77
+msgid "H2"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:78
+msgid "H3"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:79
+msgid "H4"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:80
+msgid "H5"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:81
+msgid "H6"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:93
+msgid "Post and Page Grid Settings"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:97
+msgid "Content Type"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:113
+msgid "Number of items to offset"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:121
+msgid "Columns"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:130
+msgid "Post and Page Grid Content"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:134
+msgid "Display Section Title"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:140
+msgid "Section Title"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:147
+msgid "Display Featured Image"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:153
+msgid "Featured Image Style"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:160
+msgid "Display Title"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:166
+msgid "Display Author"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:173
+msgid "Display Date"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:179
+msgid "Display Excerpt"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:185
+msgid "Excerpt Length"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:193
+msgid "Display Continue Reading Link"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:199
+msgid "Customize Continue Reading Text"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:207
+msgid "Post and Page Grid Markup"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:212
+msgid "Post Grid Section Tag"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:216
+msgid "Change the post grid section tag to match your content hierarchy."
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:220
+msgid "Section Title Heading Tag"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:224
+msgid "Change the post/page section title tag to match your content hierarchy."
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:229
+msgid "Post Title Heading Tag"
+msgstr ""
+
+#: src/blocks/block-post-grid/components/inspector.js:233
+msgid "Change the post/page title tag to match your content hierarchy."
 msgstr ""
 
 #: src/blocks/block-pricing-table-inner/index.js:157
@@ -973,6 +1575,22 @@ msgstr ""
 msgid "Adds a product subtitle component with schema markup."
 msgstr ""
 
+#: src/blocks/block-column-inner/index.js:23
+msgid "AB Advanced Column"
+msgstr ""
+
+#: src/blocks/block-column-inner/components/edit.js:38
+msgid "Vertical Align Top"
+msgstr ""
+
+#: src/blocks/block-column-inner/components/edit.js:44
+msgid "Vertical Align Middle"
+msgstr ""
+
+#: src/blocks/block-column-inner/components/edit.js:50
+msgid "Vertical Align Bottom"
+msgstr ""
+
 #: src/blocks/block-pricing-table/index.js:97
 msgid "AB Pricing"
 msgstr ""
@@ -1112,50 +1730,91 @@ msgstr ""
 msgid "drop cap"
 msgstr ""
 
-#: src/utils/inspector/padding.js:49
-msgid "Padding Top"
+#: src/utils/inspector/margin.js:55
+#: src/utils/components/margin.js:55
+msgid "Margin Top"
 msgstr ""
 
-#: src/utils/inspector/padding.js:58
-msgid "Padding Right"
+#: src/utils/inspector/margin.js:64
+#: src/utils/components/margin.js:64
+msgid "Margin Right"
+msgstr ""
+
+#: src/utils/inspector/margin.js:73
+#: src/utils/components/margin.js:73
+msgid "Margin Bottom"
+msgstr ""
+
+#: src/utils/inspector/margin.js:82
+#: src/utils/components/margin.js:82
+msgid "Margin Left"
+msgstr ""
+
+#: src/utils/inspector/margin.js:91
+#: src/utils/components/margin.js:91
+msgid "Margin Vertical"
+msgstr ""
+
+#: src/utils/inspector/margin.js:100
+#: src/utils/components/margin.js:100
+msgid "Margin Horizontal"
+msgstr ""
+
+#: src/utils/inspector/padding.js:57
+#: src/utils/components/padding.js:57
+msgid "Padding"
 msgstr ""
 
 #: src/utils/inspector/padding.js:67
-msgid "Padding Bottom"
+#: src/utils/components/padding.js:67
+msgid "Padding Top"
 msgstr ""
 
 #: src/utils/inspector/padding.js:76
-msgid "Padding Left"
+#: src/utils/components/padding.js:76
+msgid "Padding Right"
 msgstr ""
 
 #: src/utils/inspector/padding.js:85
-msgid "Padding Vertical"
+#: src/utils/components/padding.js:85
+msgid "Padding Bottom"
 msgstr ""
 
 #: src/utils/inspector/padding.js:94
+#: src/utils/components/padding.js:94
+msgid "Padding Left"
+msgstr ""
+
+#: src/utils/inspector/padding.js:103
+#: src/utils/components/padding.js:103
+msgid "Padding Vertical"
+msgstr ""
+
+#: src/utils/inspector/padding.js:112
+#: src/utils/components/padding.js:112
 msgid "Padding Horizontal"
 msgstr ""
 
-#: src/utils/inspector/button.js:27
+#: src/utils/inspector/button.js:32
 msgid "Small"
 msgstr ""
 
-#: src/utils/inspector/button.js:28
+#: src/utils/inspector/button.js:33
 msgid "Medium"
 msgstr ""
 
-#: src/utils/inspector/button.js:29
+#: src/utils/inspector/button.js:34
 msgid "Large"
 msgstr ""
 
-#: src/utils/inspector/button.js:30
+#: src/utils/inspector/button.js:35
 msgid "Extra Large"
 msgstr ""
 
-#: src/utils/inspector/button.js:36
+#: src/utils/inspector/button.js:41
 msgid "Rounded Square"
 msgstr ""
 
-#: src/utils/inspector/button.js:37
+#: src/utils/inspector/button.js:42
 msgid "Circular"
 msgstr ""

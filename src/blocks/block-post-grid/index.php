@@ -179,7 +179,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 							'',
 							get_the_content()
 						),
-						55
+						$attributes['excerptLength']
 					)
 				);
 			}

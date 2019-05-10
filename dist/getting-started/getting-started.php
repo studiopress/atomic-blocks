@@ -56,6 +56,26 @@ function atomic_blocks_getting_started_menu() {
 		'dashicons-screenoptions'
 	);
 
+	add_submenu_page(
+		'atomic-blocks',
+		esc_html__( 'Getting Started', 'atomic-blocks' ),
+		esc_html__( 'Getting Started', 'atomic-blocks' ),
+		'manage_options',
+		'atomic-blocks',
+		'atomic_blocks_getting_started_page'
+	);
+
+	if ( PHP_VERSION_ID >= 50600 ) {
+		add_submenu_page(
+			'atomic-blocks',
+			esc_html__( 'Atomic Blocks Settings', 'atomic-blocks' ),
+			esc_html__( 'Settings', 'atomic-blocks' ),
+			'manage_options',
+			'atomic-blocks-plugin-settings',
+			'atomic_blocks_render_settings_page'
+		);
+	}
+
 }
 add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
 
@@ -430,4 +450,50 @@ function atomic_blocks_getting_started_page() {
 		</div><!-- .panels -->
 	</div><!-- .getting-started -->
 	<?php
+}
+
+/**
+ * Renders the plugin settings page.
+ */
+function atomic_blocks_render_settings_page() {
+
+	$pages_dir = trailingslashit( dirname( __FILE__ ) ) . 'pages/';
+
+	include $pages_dir . 'settings-main.php';
+}
+
+add_action( 'admin_init', 'atomic_blocks_save_settings' );
+/**
+ * Saves the plugin settings.
+ */
+function atomic_blocks_save_settings() {
+
+	// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Handled below.
+	if ( empty( $_POST['atomic-blocks-settings'] ) ) {
+		return;
+	}
+
+	if ( empty( $_POST['atomic-blocks-settings-save-nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['atomic-blocks-settings-save-nonce'] ) ), 'atomic-blocks-settings-save-nonce' ) ) {
+		return;
+	}
+
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Handled below.
+	$posted_settings = $_POST['atomic-blocks-settings'];
+
+	/**
+	 * Process the Mailchimp API key setting.
+	 */
+	if ( ! empty( $posted_settings['mailchimp-api-key'] ) ) {
+		update_option( 'atomic_blocks_mailchimp_api_key', sanitize_text_field( wp_unslash( $posted_settings['mailchimp-api-key'] ) ), false );
+	} else {
+		delete_option( 'atomic_blocks_mailchimp_api_key' );
+	}
+
+	$redirect = remove_query_arg( 'atomic-blocks-settings-saved', wp_get_referer() );
+	wp_safe_redirect( $redirect . '&atomic-blocks-settings-saved=true' );
+	exit;
 }
