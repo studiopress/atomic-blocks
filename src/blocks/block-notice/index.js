@@ -87,7 +87,7 @@ class ABNoticeBlock extends Component {
 			// Show the block markup in the editor
 			<NoticeBox { ...this.props }>
 				{	// Check if the notice is dismissible and output the button
-					noticeDismiss && (
+					( noticeDismiss && noticeDismiss === 'ab-dismissable' ) && (
 					<DismissButton { ...this.props }>
 						{ icons.dismiss }
 					</DismissButton>
@@ -192,7 +192,7 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 		// Save the block markup for the front end
 		return (
 			<NoticeBox { ...props }>
-				{ noticeDismiss && (
+				{ ( noticeDismiss && noticeDismiss === 'ab-dismissable' ) && (
 					<DismissButton { ...props }>
 						{ icons.dismiss }
 					</DismissButton>
