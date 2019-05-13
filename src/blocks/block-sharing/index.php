@@ -78,7 +78,12 @@ add_action( 'init', 'atomic_blocks_register_sharing' );
 /**
  * Add the pop-up share window to the footer
  */
-function atomic_blocks_social_icon_footer_script() { ?>
+function atomic_blocks_social_icon_footer_script() {
+
+	if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+		return;
+	}
+	?>
 	<script type="text/javascript">
 		function atomicBlocksShare( url, title, w, h ){
 			var left = ( window.innerWidth / 2 )-( w / 2 );
@@ -107,6 +112,8 @@ function atomic_blocks_render_sharing( $attributes ) {
 		$thumbnail = null;
 	}
 
+	$is_amp_endpoint = function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
+
 	$twitter_url = 'http://twitter.com/share?text=' . get_the_title() . '&url=' . get_the_permalink() . '';
 
 	$facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . get_the_permalink() . '&title=' . get_the_title() . '';
@@ -124,114 +131,152 @@ function atomic_blocks_render_sharing( $attributes ) {
 	$share_url = '';
 
 	if ( isset( $attributes['twitter'] ) && $attributes['twitter'] ) {
+
+		$href_format = sprintf( 'href="javascript:void(0)" onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"', esc_url( $twitter_url ), esc_html__( 'Share on Twitter', 'atomic-blocks' ) );
+
+		if ( $is_amp_endpoint ) {
+			$href_format = sprintf( 'href="%1$s"', esc_url( $twitter_url ) );
+		}
+
 		$share_url .= sprintf(
 			'<li>
-				<a
-					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
-					class="ab-share-twitter"
-					title="%2$s">
-					<i class="fab fa-twitter"></i> <span class="ab-social-text">%2$s</span>
-				</a>
-			</li>',
-			esc_url( $twitter_url ),
+			<a
+				%1$s
+				class="ab-share-twitter"
+				title="%2$s">
+				<i class="fab fa-twitter"></i> <span class="ab-social-text">%2$s</span>
+			</a>
+		</li>',
+			$href_format,
 			esc_html__( 'Share on Twitter', 'atomic-blocks' )
 		);
 	}
 
 	if ( isset( $attributes['facebook'] ) && $attributes['facebook'] ) {
+
+		$href_format = sprintf( 'href="javascript:void(0)" onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"', esc_url( $facebook_url ), esc_html__( 'Share on Facebook', 'atomic-blocks' ) );
+
+		if ( $is_amp_endpoint ) {
+			$href_format = sprintf( 'href="%1$s"', esc_url( $facebook_url ) );
+		}
+
 		$share_url .= sprintf(
 			'<li>
 				<a
-					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					%1$s
 					class="ab-share-facebook"
 					title="%2$s">
 					<i class="fab fa-facebook-f"></i> <span class="ab-social-text">%2$s</span>
 				</a>
 			</li>',
-			esc_url( $facebook_url ),
+			$href_format,
 			esc_html__( 'Share on Facebook', 'atomic-blocks' )
 		);
 	}
 
 	if ( isset( $attributes['google'] ) && $attributes['google'] ) {
+
+		$href_format = sprintf( 'href="javascript:void(0)" onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"', esc_url( $google_url ), esc_html__( 'Share on Google', 'atomic-blocks' ) );
+
+		if ( $is_amp_endpoint ) {
+			$href_format = sprintf( 'href="%1$s"', esc_url( $google_url ) );
+		}
+
 		$share_url .= sprintf(
 			'<li>
 				<a
-					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					%1$s
 					class="ab-share-google"
 					title="%2$s">
 					<i class="fab fa-google"></i> <span class="ab-social-text">%2$s</span>
 				</a>
 			</li>',
-			esc_url( $google_url ),
+			$href_format,
 			esc_html__( 'Share on Google', 'atomic-blocks' )
 		);
 	}
 
 	if ( isset( $attributes['pinterest'] ) && $attributes['pinterest'] ) {
+
+		$href_format = sprintf( 'href="javascript:void(0)" onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"', esc_url( $pinterest_url ), esc_html__( 'Share on Pinterest', 'atomic-blocks' ) );
+
+		if ( $is_amp_endpoint ) {
+			$href_format = sprintf( 'href="%1$s"', esc_url( $pinterest_url ) );
+		}
+
 		$share_url .= sprintf(
 			'<li>
 				<a
-					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					%1$s
 					class="ab-share-pinterest"
 					title="%2$s">
 					<i class="fab fa-pinterest-p"></i> <span class="ab-social-text">%2$s</span>
 				</a>
 			</li>',
-			esc_url( $pinterest_url ),
+			$href_format,
 			esc_html__( 'Share on Pinterest', 'atomic-blocks' )
 		);
 	}
 
 	if ( isset( $attributes['linkedin'] ) && $attributes['linkedin'] ) {
+
+		$href_format = sprintf( 'href="javascript:void(0)" onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"', esc_url( $linkedin_url ), esc_html__( 'Share on LinkedIn', 'atomic-blocks' ) );
+
+		if ( $is_amp_endpoint ) {
+			$href_format = sprintf( 'href="%1$s"', esc_url( $linkedin_url ) );
+		}
+
 		$share_url .= sprintf(
 			'<li>
 				<a
-					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					%1$s
 					class="ab-share-linkedin"
 					title="%2$s">
 					<i class="fab fa-linkedin-in"></i> <span class="ab-social-text">%2$s</span>
 				</a>
 			</li>',
-			esc_url( $linkedin_url ),
+			$href_format,
 			esc_html__( 'Share on LinkedIn', 'atomic-blocks' )
 		);
 	}
 
 	if ( isset( $attributes['reddit'] ) && $attributes['reddit'] ) {
+
+		$href_format = sprintf( 'href="javascript:void(0)" onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"', esc_url( $reddit_url ), esc_html__( 'Share on Reddit', 'atomic-blocks' ) );
+
+		if ( $is_amp_endpoint ) {
+			$href_format = sprintf( 'href="%1$s"', esc_url( $reddit_url ) );
+		}
+
 		$share_url .= sprintf(
 			'<li>
 				<a
-					href="javascript:void(0)"
-					onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"
+					%1$s
 					class="ab-share-reddit"
 					title="%2$s">
 					<i class="fab fa-reddit-alien"></i> <span class="ab-social-text">%2$s</span>
 				</a>
 			</li>',
-			esc_url( $reddit_url ),
+			$href_format,
 			esc_html__( 'Share on Reddit', 'atomic-blocks' )
 		);
 	}
 
 	if ( isset( $attributes['email'] ) && $attributes['email'] ) {
-		$share_url .= sprintf(
-			'<li>
-				<a
-					href="%1$s"
-					class="ab-share-email"
-					title="%2$s">
-					<i class="fas fa-envelope"></i> <span class="ab-social-text">%2$s</span>
-				</a>
-			</li>',
-			esc_url( $email_url ),
-			esc_html__( 'Share via Email', 'atomic-blocks' )
-		);
+		if ( ! $is_amp_endpoint ) {
+			$share_url .= sprintf(
+				'<li>
+					<a
+						href="%1$s"
+						class="ab-share-email"
+						title="%2$s">
+						<i class="fas fa-envelope"></i> <span class="ab-social-text">%2$s</span>
+					</a>
+				</li>',
+				esc_url( $email_url ),
+				esc_html__( 'Share via Email', 'atomic-blocks' )
+			);
+		}
 	}
 
 	$block_content = sprintf(

@@ -6,6 +6,8 @@
 import classnames from 'classnames';
 import Edit from './edit';
 
+import deprecated from './deprecated/deprecated';
+
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
@@ -175,7 +177,6 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 						<RichText.Content
 							tagName="span"
 							itemProp="priceCurrency"
-							placeholder={ __( '$', 'atomic-blocks' ) }
 							value={ currency }
 							className="ab-pricing-table-currency"
 							style={ currencyStyles }
@@ -200,4 +201,6 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-price', {
 			</div>
 		);
 	},
+
+	deprecated: deprecated,
 } );
