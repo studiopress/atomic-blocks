@@ -23,6 +23,10 @@ const {
 	ToggleControl,
 } = wp.components;
 
+const { addQueryArgs } = wp.url;
+
+const { apiFetch } = wp;
+
 const MAX_POSTS_COLUMNS = 4;
 
 /**
@@ -30,8 +34,32 @@ const MAX_POSTS_COLUMNS = 4;
  */
 export default class Inspector extends Component {
 
-    constructor( props ) {
+	constructor() {
 		super( ...arguments );
+		this.state = { categoriesList: [] }
+	}
+
+	componentDidMount() {
+		this.stillMounted = true;
+		this.fetchRequest = apiFetch( {
+			path: addQueryArgs( '/wp/v2/categories', { per_page: -1 } )
+		} ).then(
+			( categoriesList ) => {
+				if ( this.stillMounted ) {
+					this.setState( { categoriesList } );
+				}
+			}
+		).catch(
+			() => {
+				if ( this.stillMounted ) {
+					this.setState( { categoriesList: [] } );
+				}
+			}
+		);
+	}
+
+	componentWillUnmount() {
+		this.stillMounted = false;
 	}
 
 	render() {
@@ -39,7 +67,6 @@ export default class Inspector extends Component {
 		// Setup the attributes
 		const {
 			attributes,
-			categoriesList,
 			setAttributes,
 			latestPosts
         } = this.props;
@@ -48,6 +75,8 @@ export default class Inspector extends Component {
 			order,
 			orderBy,
 		} = attributes;
+
+		const { categoriesList } = this.state;
 
 		// Thumbnail options
 		const imageCropOptions = [
