@@ -200,7 +200,7 @@ registerBlockType( 'lsx-blocks/lsx-notice', {
 
 				{ noticeTitle && (
 					<div
-						class="lsx-notice-title"
+						className="lsx-notice-title"
 						style={ {
 							color: noticeTitleColor
 						} }
@@ -215,7 +215,7 @@ registerBlockType( 'lsx-blocks/lsx-notice', {
 				{ noticeContent && (
 					<RichText.Content
 						tagName="div"
-						class="lsx-notice-text"
+						className="lsx-notice-text"
 						style={ {
 							borderColor: noticeBackgroundColor
 						} }

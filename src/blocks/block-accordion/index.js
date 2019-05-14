@@ -95,7 +95,7 @@ class LSXAccordionBlock extends Component {
 					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
 				/>
 
-				<div class="lsx-accordion-text">
+				<div className="lsx-accordion-text">
 					<InnerBlocks />
 				</div>
 			</Accordion>
@@ -129,12 +129,12 @@ registerBlockType( 'lsx-blocks/lsx-accordion', {
 		return (
 			<Accordion { ...props }>
 				<details open={accordionOpen}>
-					<summary class="lsx-accordion-title" style={ { fontSize: accordionFontSize } } >
+					<summary className="lsx-accordion-title" style={ { fontSize: accordionFontSize } } >
 						<RichText.Content
 							value={ accordionTitle }
 						/>
 					</summary>
-					<div class="lsx-accordion-text">
+					<div className="lsx-accordion-text">
 						<InnerBlocks.Content />
 					</div>
 				</details>
@@ -168,13 +168,13 @@ registerBlockType( 'lsx-blocks/lsx-accordion', {
 			return (
 				<Accordion { ...props }>
 					<details open={ props.attributes.accordionOpen }>
-						<summary class="lsx-accordion-title">
+						<summary className="lsx-accordion-title">
 							<RichText.Content
 								value={ props.attributes.accordionTitle }
 							/>
 						</summary>
 						<RichText.Content
-							class="lsx-accordion-text"
+							className="lsx-accordion-text"
 							tagName="p"
 							value={ props.attributes.accordionText }
 						/>

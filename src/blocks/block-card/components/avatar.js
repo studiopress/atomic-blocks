@@ -23,8 +23,8 @@ export default class AvatarColumn extends Component {
 
 	render() {
 		return (
-			<div class="lsx-card-column lsx-card-avatar-wrap">
-				<div class="lsx-card-image-wrap">
+			<div className="lsx-card-column lsx-card-avatar-wrap">
+				<div className="lsx-card-image-wrap">
 					{ this.props.children }
 				</div>
 			</div>

@@ -26,7 +26,7 @@ export default class LogoColumn extends Component {
 		const { bannerAlignment, bannerImgURL, bannerLogoID, bannerLogoURL, bannerFontSize, bannerBackgroundColor, bgPosition, bannerTextColor, bannerTitlePosition } = this.props.attributes;
 
 		return (
-			<div class="lsx-banner-logo-wrap">
+			<div className="lsx-banner-logo-wrap">
 				{ this.props.children }
 			</div>
 		);

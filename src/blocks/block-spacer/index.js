@@ -6,7 +6,6 @@
 import classnames from 'classnames';
 import Inspector from './components/inspector';
 import Spacer from './components/spacer';
-import icons from './components/icons';
 import Resizable from 're-resizable';
 
 // Import CSS
@@ -42,29 +41,28 @@ const {
 class LSXSpacerBlock extends Component {
 
 	render() {
-
 		// Setup the attributes
 		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor }, isSelected, className, setAttributes, toggleSelection, spacerDividerWidth, spacerDividerHeight } = this.props;
 
 		return [
 			// Show the block controls on focus
-			<Inspector
+			<Inspector key="inspector"
 				{ ...this.props }
 			/>,
 			// Show the button markup in the editor
-			<Spacer { ...this.props }>
+			<Spacer key="spacer" { ...this.props }>
 				<Resizable
 					className={ classnames( className, 'lsx-spacer-handle' ) }
 					style={ {
-						color: spacerDividerColor
+						color: spacerDividerColor,
 					} }
 					size={ {
 						width: '100%',
 						height: spacerHeight,
 					} }
-					minWidth= { '100%' }
-					maxWidth= { '100%' }
-					minHeight= { '100%' }
+					minWidth={ '100%' }
+					maxWidth={ '100%' }
+					minHeight={ '100%' }
 					handleClasses={ {
 						bottomLeft: 'lsx-spacer-control__resize-handle',
 					} }
@@ -80,7 +78,7 @@ class LSXSpacerBlock extends Component {
 					} }
 				>
 				</Resizable>
-			</Spacer>
+			</Spacer>,
 		];
 	}
 }
@@ -107,15 +105,15 @@ registerBlockType( 'lsx-blocks/lsx-spacer', {
 		},
 		spacerDivider: {
 			type: 'boolean',
-			default: false
+			default: false,
 		},
 		spacerDividerStyle: {
 			type: 'string',
-			default: 'lsx-divider-solid'
+			default: 'lsx-divider-solid',
 		},
 		spacerDividerColor: {
 			type: 'string',
-			default: '#ddd'
+			default: '#ddd',
 		},
 		spacerDividerHeight: {
 			type: 'number',

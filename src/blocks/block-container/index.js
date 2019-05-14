@@ -161,9 +161,9 @@ class LSXContainerBlock extends Component {
 			/>,
 			// Show the container markup in the editor
 			<Container { ...this.props }>
-				<div class="lsx-container-inside">
+				<div className="lsx-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
-						<div class="lsx-container-image-wrap">
+						<div className="lsx-container-image-wrap">
 							<img
 								className={ classnames(
 									'lsx-container-image',
@@ -182,7 +182,7 @@ class LSXContainerBlock extends Component {
 					) }
 
 					<div
-						class="lsx-container-content"
+						className="lsx-container-content"
 						style={ {
 							maxWidth: `${containerMaxWidth}px`,
 						} }
@@ -255,9 +255,9 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 		// Save the block markup for the front end
 		return (
 			<Container { ...props }>
-				<div class="lsx-container-inside">
+				<div className="lsx-container-inside">
 					{ containerImgURL && !! containerImgURL.length && (
-						<div class="lsx-container-image-wrap">
+						<div className="lsx-container-image-wrap">
 							<img
 								className={ classnames(
 									'lsx-container-image',
@@ -275,7 +275,7 @@ registerBlockType( 'lsx-blocks/lsx-container', {
 					) }
 
 					<div
-						class="lsx-container-content"
+						className="lsx-container-content"
 						style={ {
 							maxWidth: `${containerMaxWidth}px`,
 						} }
@@ -321,9 +321,9 @@ registerBlockType( 'lsx-blocks/lsx-container', {
                 // Save the block markup for the front end
                 return (
                     <Container { ...props }>
-                        <div class="lsx-container-inside">
+                        <div className="lsx-container-inside">
                             { containerImgURL && !! containerImgURL.length && (
-                                <div class="lsx-container-image-wrap">
+                                <div className="lsx-container-image-wrap">
                                     <img
                                         className={ classnames(
                                             'lsx-container-image',
@@ -340,7 +340,7 @@ registerBlockType( 'lsx-blocks/lsx-container', {
                             ) }
 
                             <div
-                                class="lsx-container-content"
+                                className="lsx-container-content"
                                 style={ {
                                     maxWidth: `${containerMaxWidth}px`,
                                 } }

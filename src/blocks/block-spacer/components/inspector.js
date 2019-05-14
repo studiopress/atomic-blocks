@@ -107,7 +107,7 @@ export default class Inspector extends Component {
 						value={ spacerDividerWidth || '' }
 						onChange={ ( value ) => this.props.setAttributes( { spacerDividerWidth: value } ) }
 						min={ 1 }
-						max={ 60 }
+						max={ 100 }
 					/>
 
 					<PanelColorSettings

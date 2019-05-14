@@ -90,11 +90,11 @@ registerBlockType( 'lsx-blocks/lsx-sharing', {
 			/>,
 			// Show the button markup in the editor
 			<ShareLinks { ...props }>
-				<ul class="lsx-share-list">
+				<ul className="lsx-share-list">
 				{ twitter &&
 					<li>
 						<a className='lsx-share-twitter'>
-							<i class="fab fa-twitter"></i>
+							<i className="fab fa-twitter"></i>
 							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on Twitter', 'lsx-blocks' ) }
 							</span>
@@ -105,7 +105,7 @@ registerBlockType( 'lsx-blocks/lsx-sharing', {
 				{ facebook &&
 					<li>
 						<a className='lsx-share-facebook'>
-							<i class="fab fa-facebook-f"></i>
+							<i className="fab fa-facebook-f"></i>
 							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on Facebook', 'lsx-blocks' ) }
 							</span>
@@ -116,7 +116,7 @@ registerBlockType( 'lsx-blocks/lsx-sharing', {
 				{ google &&
 					<li>
 						<a className='lsx-share-google'>
-							<i class="fab fa-google"></i>
+							<i className="fab fa-google"></i>
 							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on Google', 'lsx-blocks' ) }
 							</span>
@@ -127,7 +127,7 @@ registerBlockType( 'lsx-blocks/lsx-sharing', {
 				{ pinterest &&
 					<li>
 						<a className='lsx-share-pinterest'>
-							<i class="fab fa-pinterest-p"></i>
+							<i className="fab fa-pinterest-p"></i>
 							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on Pinterest', 'lsx-blocks' ) }
 							</span>
@@ -138,7 +138,7 @@ registerBlockType( 'lsx-blocks/lsx-sharing', {
 				{ linkedin &&
 					<li>
 						<a className='lsx-share-linkedin'>
-							<i class="fab fa-linkedin"></i>
+							<i className="fab fa-linkedin"></i>
 							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on LinkedIn', 'lsx-blocks' ) }
 							</span>
@@ -149,7 +149,7 @@ registerBlockType( 'lsx-blocks/lsx-sharing', {
 				{ reddit &&
 					<li>
 						<a className='lsx-share-reddit'>
-							<i class="fab fa-reddit-alien"></i>
+							<i className="fab fa-reddit-alien"></i>
 							<span className={ 'lsx-social-text' }>
 								{ __( 'Share on reddit', 'lsx-blocks' ) }
 							</span>
@@ -160,7 +160,7 @@ registerBlockType( 'lsx-blocks/lsx-sharing', {
 				{ email &&
 					<li>
 						<a className='lsx-share-email'>
-							<i class="fas fa-envelope"></i>
+							<i className="fas fa-envelope"></i>
 							<span className={ 'lsx-social-text' }>
 								{ __( 'Share via Email', 'lsx-blocks' ) }
 							</span>

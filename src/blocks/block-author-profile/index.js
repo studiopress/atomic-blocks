@@ -171,7 +171,7 @@ class LSXAuthorProfileBlock extends Component {
 			// Show the block markup in the editor
 			<ProfileBox key="profile" { ...this.props }>
 				<AvatarColumn { ...this.props }>
-					<div class="lsx-profile-image-square">
+					<div className="lsx-profile-image-square">
 						<MediaUpload
 							buttonProps={ {
 								className: 'change-image'
@@ -188,7 +188,7 @@ class LSXAuthorProfileBlock extends Component {
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
 									{ ! profileImgID ? icons.upload : <img
-										class="profile-avatar"
+										className="profile-avatar"
 										src={ profileImgURL }
 										alt="avatar"
 									/>  }
@@ -275,9 +275,9 @@ registerBlockType( 'lsx-blocks/lsx-profile-box', {
 
 				{ profileImgURL && (
 					<AvatarColumn { ...props }>
-						<div class="lsx-profile-image-square">
+						<div className="lsx-profile-image-square">
 							<img
-								class="lsx-profile-avatar"
+								className="lsx-profile-avatar"
 								src={ profileImgURL }
 								alt="avatar"
 							/>

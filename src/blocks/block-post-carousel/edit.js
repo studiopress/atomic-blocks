@@ -260,7 +260,7 @@ class LatestPostsBlockCarousel extends Component {
                                 >
                                     {
                                         displayPostImageCarousel && post.featured_image_src !== undefined && post.featured_image_src ? (
-                                            <div class="lsx-block-post-grid-image">
+                                            <div className="lsx-block-post-grid-image">
                                                 <a href={ post.link } target="_blank" rel="bookmark">
                                                     <img
                                                         src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
@@ -273,12 +273,12 @@ class LatestPostsBlockCarousel extends Component {
                                         )
                                     }
 
-                                    <div class="lsx-block-post-grid-text">
-                                        <h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+                                    <div className="lsx-block-post-grid-text">
+                                        <h2 className="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 
-                                        <div class="lsx-block-post-grid-byline">
+                                        <div className="lsx-block-post-grid-byline">
                                             { displayPostAuthorCarousel && post.author_info.display_name &&
-                                                <div class="lsx-block-post-grid-author"><a class="lsx-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+                                                <div className="lsx-block-post-grid-author"><a className="lsx-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
                                             }
 
                                             { displayPostDateCarousel && post.date_gmt &&
@@ -288,13 +288,13 @@ class LatestPostsBlockCarousel extends Component {
                                             }
                                         </div>
 
-                                        <div class="lsx-block-post-grid-excerpt">
+                                        <div className="lsx-block-post-grid-excerpt">
                                             { displayPostExcerptCarousel && post.excerpt &&
                                                 <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
                                             }
 
                                             { displayPostLinkCarousel &&
-                                                <p><a class="lsx-block-post-grid-link lsx-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+                                                <p><a className="lsx-block-post-grid-link lsx-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
                                             }
                                         </div>
                                     </div>

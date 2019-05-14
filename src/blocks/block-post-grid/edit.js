@@ -250,7 +250,7 @@ class LatestPostsBlock extends Component {
 							>
 								{
 									displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-										<div class="lsx-block-post-grid-image">
+										<div className="lsx-block-post-grid-image">
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<img
 													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
@@ -263,12 +263,12 @@ class LatestPostsBlock extends Component {
 									)
 								}
 
-								<div class="lsx-block-post-grid-text">
-									<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+								<div className="lsx-block-post-grid-text">
+									<h2 className="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 
-									<div class="lsx-block-post-grid-byline">
+									<div className="lsx-block-post-grid-byline">
 										{ displayPostAuthor && post.author_info.display_name &&
-											<div class="lsx-block-post-grid-author"><a class="lsx-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+											<div className="lsx-block-post-grid-author"><a className="lsx-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
 										}
 
 										{ displayPostDate && post.date_gmt &&
@@ -278,13 +278,13 @@ class LatestPostsBlock extends Component {
 										}
 									</div>
 
-									<div class="lsx-block-post-grid-excerpt">
+									<div className="lsx-block-post-grid-excerpt">
 										{ displayPostExcerpt && post.excerpt &&
 											<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 										}
 
 										{ displayPostLink &&
-											<p><a class="lsx-block-post-grid-link lsx-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+											<p><a className="lsx-block-post-grid-link lsx-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
 										}
 									</div>
 								</div>
