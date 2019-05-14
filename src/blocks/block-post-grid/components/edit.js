@@ -41,9 +41,6 @@ class LatestPostsBlock extends Component {
 			latestPosts,
 		} = this.props;
 
-		// Check the image orientation
-		const isLandscape = attributes.imageCrop === 'landscape';
-
 		// Check if there are posts
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
@@ -145,7 +142,6 @@ class LatestPostsBlock extends Component {
 									attributes.displayPostImage && post.featured_media ? (
 										<PostGridImage
 											{ ...this.props }
-											//imgSrc={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
 											imgAlt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
 											imgClass={ `wp-image-${post.featured_media.toString()}` }
 											imgID={ post.featured_media.toString() }
