@@ -208,13 +208,8 @@ export default withSelect( ( select, props ) => {
 		offset: props.attributes.offset,
 	}, ( value ) => ! isUndefined( value ) );
 
-	const categoriesListQuery = {
-		per_page: 100,
-	};
-
 	return {
 		latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
-		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
 } )( LatestPostsBlock );
 
