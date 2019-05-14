@@ -8,10 +8,10 @@ const { Component } = wp.element;
 
 // Import block components
 const {
-  InspectorControls,
-  BlockDescription,
-  ColorPalette,
-  PanelColorSettings,
+	InspectorControls,
+	BlockDescription,
+	ColorPalette,
+	PanelColorSettings,
 } = wp.editor;
 
 // Import Inspector components
@@ -66,65 +66,67 @@ export default class Inspector extends Component {
 		const onChangeDividerWidth = value => setAttributes( { spacerDividerWidth: value } );
 
 		return (
-		<InspectorControls key="inspector">
-			<PanelBody>
-				<RangeControl
-					label={ __( 'Spacer Height' ) }
-					value={ spacerHeight || '' }
-					onChange={ ( value ) => this.props.setAttributes( { spacerHeight: value } ) }
-					min={ 50 }
-					max={ 600 }
-				/>
-
-				<ToggleControl
-					label={ __( 'Add Divider' ) }
-					checked={ spacerDivider }
-					onChange={ () => this.props.setAttributes( { spacerDivider: ! spacerDivider } ) }
-				/>
-
-				{ spacerDivider ?
+			<InspectorControls key="inspector">
 				<PanelBody>
-					<SelectControl
-						label={ __( 'Divider Style' ) }
-						value={ spacerDividerStyle }
-						options={ spacerStyleOptions.map( ({ value, label }) => ( {
-							value: value,
-							label: label,
-						} ) ) }
-						onChange={ ( value ) => { this.props.setAttributes( { spacerDividerStyle: value } ) } }
-					/>
-
 					<RangeControl
-						label={ __( 'Divider Height (px)' ) }
-						value={ spacerDividerHeight || '' }
-						onChange={ ( value ) => this.props.setAttributes( { spacerDividerHeight: value } ) }
-						min={ 1 }
-						max={ 5 }
+						label={ __( 'Spacer Height' ) }
+						value={ spacerHeight || '' }
+						onChange={ ( value ) => this.props.setAttributes( { spacerHeight: value } ) }
+						min={ 5 }
+						max={ 600 }
 					/>
 
-					<RangeControl
-						label={ __( 'Divider Width (%)' ) }
-						value={ spacerDividerWidth || '' }
-						onChange={ ( value ) => this.props.setAttributes( { spacerDividerWidth: value } ) }
-						min={ 1 }
-						max={ 100 }
+					<ToggleControl
+						label={ __( 'Add Divider' ) }
+						checked={ spacerDivider }
+						onChange={ () => this.props.setAttributes( { spacerDivider: ! spacerDivider } ) }
 					/>
 
-					<PanelColorSettings
-						title={ __( 'Divider Color' ) }
-						initialOpen={ false }
-						colorSettings={ [ {
-							colors: dividerColor,
-							value: spacerDividerColor,
-							onChange: onChangeDividerColor,
-							label: __( 'Divider Color' )
-						} ] }
-					>
-					</PanelColorSettings>
+					{ spacerDivider ?
+						<PanelBody>
+							<SelectControl
+								label={ __( 'Divider Style' ) }
+								value={ spacerDividerStyle }
+								options={ spacerStyleOptions.map( ( { value, label } ) => ( {
+									value: value,
+									label: label,
+								} ) ) }
+								onChange={ ( value ) => {
+									this.props.setAttributes( { spacerDividerStyle: value } )
+								} }
+							/>
+
+							<RangeControl
+								label={ __( 'Divider Height (px)' ) }
+								value={ spacerDividerHeight || '' }
+								onChange={ ( value ) => this.props.setAttributes( { spacerDividerHeight: value } ) }
+								min={ 1 }
+								max={ 5 }
+							/>
+
+							<RangeControl
+								label={ __( 'Divider Width (%)' ) }
+								value={ spacerDividerWidth || '' }
+								onChange={ ( value ) => this.props.setAttributes( { spacerDividerWidth: value } ) }
+								min={ 1 }
+								max={ 100 }
+							/>
+
+							<PanelColorSettings
+								title={ __( 'Divider Color' ) }
+								initialOpen={ false }
+								colorSettings={ [ {
+									colors: dividerColor,
+									value: spacerDividerColor,
+									onChange: onChangeDividerColor,
+									label: __( 'Divider Color' ),
+								} ] }
+							>
+							</PanelColorSettings>
+						</PanelBody>
+						: null }
 				</PanelBody>
-				: null }
-			</PanelBody>
-		</InspectorControls>
+			</InspectorControls>
 		);
 	}
 }

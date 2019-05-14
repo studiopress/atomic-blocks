@@ -2619,7 +2619,9 @@ body:not(.wp-admin) .lsx-block-notice.lsx-dismissable {
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .lsx-block-button:not(:empty) {
         margin-bottom: 2em; }
       .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header {
-        margin-bottom: 0; }
+        margin-bottom: 0;
+        max-width: 1150px;
+        width: 90%; }
         .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header .lsx-banner-name {
           margin-bottom: 0; }
           .wp-block-lsx-blocks-lsx-banner-box .lsx-banner-content-wrap .header-headings .page-header .lsx-banner-name:not(:empty) {
