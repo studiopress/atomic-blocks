@@ -201,7 +201,6 @@ class LatestPostsBlock extends Component {
 
 export default compose( [
 	withSelect( ( select, props ) => {
-		// Latest Posts
 		const {
 			order,
 			categories,
@@ -217,14 +216,8 @@ export default compose( [
 			offset: props.attributes.offset,
 		}, ( value ) => ! isUndefined( value ) );
 
-		const categoriesListQuery = {
-			per_page: 100,
-		};
-
 		return {
-			// Latest posts
 			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
-			categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 		};
 	} ),
 ] )( LatestPostsBlock );

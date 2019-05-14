@@ -13,22 +13,51 @@
 		grid-template-rows: 1fr;
 		grid-gap: 0 2em;
 
+		@media all and (-ms-high-contrast:none) {
+			display: block;
+		}
+
 		article {
 			margin-bottom: 2.5em;
 			min-width: 0;
+
+			@media all and (-ms-high-contrast:none) {
+				padding-left: 10px;
+				padding-right: 10px;
+				display: inline-block;
+				vertical-align: top;
+			}
 		}
 	}
 
 	.is-grid.columns-2 {
 		grid-template-columns: 1fr 1fr;
+
+		@media all and (-ms-high-contrast:none) {
+			article {
+				width: 48%;
+			}
+		}
 	}
 
 	.is-grid.columns-3 {
 		grid-template-columns: 1fr 1fr 1fr;
+
+		@media all and (-ms-high-contrast:none) {
+			article {
+				width: 32%;
+			}
+		}
 	}
 
 	.is-grid.columns-4 {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
+
+		@media all and (-ms-high-contrast:none) {
+			article {
+				width: 24%;
+			}
+		}
 	}
 
 	div[class*="columns"].is-grid {
@@ -136,6 +165,10 @@
 			grid-template-rows: 1fr;
 			grid-gap: 0 2em;
 
+			@media all and (-ms-high-contrast:none) {
+				display: block;
+			}
+
 			&:before {
 				display: none;
 			}
@@ -163,8 +196,28 @@
 		.ab-block-post-grid-image {
 			margin-bottom: 0;
 
+			@media all and (-ms-high-contrast:none) {
+				width: 30%;
+				display: inline-block;
+				vertical-align: top;
+			}
+
 			@media only screen and (max-width: 600px) {
 				margin-bottom: 5%;
+			}
+		}
+
+
+		@media all and (-ms-high-contrast:none) {
+			.ab-block-post-grid-text {
+				width: 65%;
+				padding-left: 5%;
+				display: inline-block;
+				vertical-align: top;
+			}
+			.post:not(.has-post-thumbnail) .ab-block-post-grid-text {
+				width: 100%;
+				padding-left: 0;
 			}
 		}
 

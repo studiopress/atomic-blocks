@@ -24,6 +24,10 @@ const {
 	ToggleControl,
 } = wp.components;
 
+const { addQueryArgs } = wp.url;
+
+const { apiFetch } = wp;
+
 const MAX_POSTS_COLUMNS = 4;
 
 /**
@@ -31,8 +35,32 @@ const MAX_POSTS_COLUMNS = 4;
  */
 export default class Inspector extends Component {
 
-    constructor( props ) {
+	constructor() {
 		super( ...arguments );
+		this.state = { categoriesList: [] }
+	}
+
+	componentDidMount() {
+		this.stillMounted = true;
+		this.fetchRequest = apiFetch( {
+			path: addQueryArgs( '/wp/v2/categories', { per_page: -1 } )
+		} ).then(
+			( categoriesList ) => {
+				if ( this.stillMounted ) {
+					this.setState( { categoriesList } );
+				}
+			}
+		).catch(
+			() => {
+				if ( this.stillMounted ) {
+					this.setState( { categoriesList: [] } );
+				}
+			}
+		);
+	}
+
+	componentWillUnmount() {
+		this.stillMounted = false;
 	}
 
 	/* Get the available image sizes */
@@ -52,23 +80,24 @@ export default class Inspector extends Component {
 		// Setup the attributes
 		const {
 			attributes,
-			categoriesList,
 			setAttributes,
 			latestPosts
-        } = this.props;
+		} = this.props;
 
 		const {
 			order,
 			orderBy,
 		} = attributes;
 
+		const { categoriesList } = this.state;
+
 		// Thumbnail options
 		const imageCropOptions = [
 			{ value: 'landscape', label: __( 'Landscape', 'atomic-blocks' ) },
 			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) },
-        ];
+		];
 
-        // Post type options
+		// Post type options
 		const postTypeOptions = [
 			{ value: 'post', label: __( 'Post', 'atomic-blocks' ) },
 			{ value: 'page', label: __( 'Page', 'atomic-blocks' ) },
@@ -83,7 +112,7 @@ export default class Inspector extends Component {
 			{ value: 'main', label: __( 'main', 'atomic-blocks' ) },
 			{ value: 'aside', label: __( 'aside', 'atomic-blocks' ) },
 			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) },
-        ];
+		];
 
 		// Section title tags
 		const sectionTitleTags = [
@@ -92,12 +121,12 @@ export default class Inspector extends Component {
 			{ value: 'h4', label: __( 'H4', 'atomic-blocks' ) },
 			{ value: 'h5', label: __( 'H5', 'atomic-blocks' ) },
 			{ value: 'h6', label: __( 'H6', 'atomic-blocks' ) },
-        ];
+		];
 
-        // Check for posts
-        const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+		// Check for posts
+		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
-        // Check the post type
+		// Check the post type
 		const isPost = attributes.postType === 'post';
 
 		// Add instruction text to the select
@@ -126,48 +155,48 @@ export default class Inspector extends Component {
 		imageSizeOptions.unshift( abImageSizeSelect );
 
 		return (
-            <InspectorControls>
-                <PanelBody
-                    title={ __( 'Post and Page Grid Settings', 'atomic-blocks' ) }
-                    className={ isPost ? null : 'atomic-blocks-hide-query' }
-                >
-                    <SelectControl
-                        label={ __( 'Content Type', 'atomic-blocks' ) }
-                        options={ postTypeOptions }
-                        value={ attributes.postType }
-                        onChange={ ( value ) => this.props.setAttributes( { postType: value } ) }
-                    />
-                    <QueryControls
-                        { ...{ order, orderBy } }
-                        numberOfItems={ attributes.postsToShow }
-                        categoriesList={ categoriesList }
-                        selectedCategoryId={ attributes.categories }
-                        onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-                        onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-                        onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-                        onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
-                    />
-                    <RangeControl
-                        label={ __( 'Number of items to offset', 'atomic-blocks' ) }
-                        value={ attributes.offset }
-                        onChange={ ( value ) => setAttributes( { offset: value } ) }
-                        min={ 0 }
-                        max={ 20 }
-                    />
-                    { attributes.postLayout === 'grid' &&
-                        <RangeControl
-                            label={ __( 'Columns', 'atomic-blocks' ) }
-                            value={ attributes.columns }
-                            onChange={ ( value ) => setAttributes( { columns: value } ) }
-                            min={ 2 }
-                            max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-                        />
-                    }
-                </PanelBody>
-                <PanelBody
-                    title={ __( 'Post and Page Grid Content', 'atomic-blocks' ) }
-                    initialOpen={ false }
-                >
+			<InspectorControls>
+				<PanelBody
+					title={ __( 'Post and Page Grid Settings', 'atomic-blocks' ) }
+					className={ isPost ? null : 'atomic-blocks-hide-query' }
+				>
+					<SelectControl
+						label={ __( 'Content Type', 'atomic-blocks' ) }
+						options={ postTypeOptions }
+						value={ attributes.postType }
+						onChange={ ( value ) => this.props.setAttributes( { postType: value } ) }
+					/>
+					<QueryControls
+						{ ...{ order, orderBy } }
+						numberOfItems={ attributes.postsToShow }
+						categoriesList={ categoriesList }
+						selectedCategoryId={ attributes.categories }
+						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+					/>
+					<RangeControl
+						label={ __( 'Number of items to offset', 'atomic-blocks' ) }
+						value={ attributes.offset }
+						onChange={ ( value ) => setAttributes( { offset: value } ) }
+						min={ 0 }
+						max={ 20 }
+					/>
+					{ attributes.postLayout === 'grid' &&
+						<RangeControl
+							label={ __( 'Columns', 'atomic-blocks' ) }
+							value={ attributes.columns }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							min={ 2 }
+							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+						/>
+					}
+				</PanelBody>
+				<PanelBody
+					title={ __( 'Post and Page Grid Content', 'atomic-blocks' ) }
+					initialOpen={ false }
+				>
 					<ToggleControl
 						label={ __( 'Display Section Title', 'atomic-blocks' ) }
 						checked={ attributes.displaySectionTitle }
@@ -181,11 +210,11 @@ export default class Inspector extends Component {
 							onChange={ ( value ) => this.props.setAttributes( { sectionTitle: value } ) }
 						/>
 					}
-                    <ToggleControl
-                        label={ __( 'Display Featured Image', 'atomic-blocks' ) }
-                        checked={ attributes.displayPostImage }
+					<ToggleControl
+						label={ __( 'Display Featured Image', 'atomic-blocks' ) }
+						checked={ attributes.displayPostImage }
 						onChange={ () => this.props.setAttributes( { displayPostImage: ! attributes.displayPostImage } ) }
-                    />
+					/>
 					{ attributes.displayPostImage &&
 						<SelectControl
 							label={ __( 'Image Size' ) }
@@ -194,8 +223,8 @@ export default class Inspector extends Component {
 							onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
 						/>
 					}
-                    { attributes.displayPostImage &&
-                        <Fragment>
+					{ attributes.displayPostImage &&
+						<Fragment>
 							<SelectControl
 								label={ __( 'Featured Image Style', 'atomic-blocks' ) }
 								options={ imageCropOptions }
@@ -203,59 +232,59 @@ export default class Inspector extends Component {
 								onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
 							/>
 						</Fragment>
-                    }
-                    <ToggleControl
-                        label={ __( 'Display Title', 'atomic-blocks' ) }
-                        checked={ attributes.displayPostTitle }
+					}
+					<ToggleControl
+						label={ __( 'Display Title', 'atomic-blocks' ) }
+						checked={ attributes.displayPostTitle }
 						onChange={ () => this.props.setAttributes( { displayPostTitle: ! attributes.displayPostTitle } ) }
-                    />
-                    { isPost &&
-                        <ToggleControl
-                            label={ __( 'Display Author', 'atomic-blocks' ) }
-                            checked={ attributes.displayPostAuthor }
+					/>
+					{ isPost &&
+						<ToggleControl
+							label={ __( 'Display Author', 'atomic-blocks' ) }
+							checked={ attributes.displayPostAuthor }
 							onChange={ () => this.props.setAttributes( { displayPostAuthor: ! attributes.displayPostAuthor } ) }
-                        />
-                    }
-                    { isPost &&
-                        <ToggleControl
-                            label={ __( 'Display Date', 'atomic-blocks' ) }
-                            checked={ attributes.displayPostDate }
+						/>
+					}
+					{ isPost &&
+						<ToggleControl
+							label={ __( 'Display Date', 'atomic-blocks' ) }
+							checked={ attributes.displayPostDate }
 							onChange={ () => this.props.setAttributes( { displayPostDate: ! attributes.displayPostDate } ) }
-                        />
-                    }
-                    <ToggleControl
-                        label={ __( 'Display Excerpt', 'atomic-blocks' ) }
-                        checked={ attributes.displayPostExcerpt }
+						/>
+					}
+					<ToggleControl
+						label={ __( 'Display Excerpt', 'atomic-blocks' ) }
+						checked={ attributes.displayPostExcerpt }
 						onChange={ () => this.props.setAttributes( { displayPostExcerpt: ! attributes.displayPostExcerpt } ) }
-                    />
-                    { attributes.displayPostExcerpt &&
-                        <RangeControl
-                            label={ __( 'Excerpt Length', 'atomic-blocks' ) }
-                            value={ attributes.excerptLength }
-                            onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-                            min={ 0 }
-                            max={ 150 }
-                        />
-                    }
-                    <ToggleControl
-                        label={ __( 'Display Continue Reading Link', 'atomic-blocks' ) }
-                        checked={ attributes.displayPostLink }
+					/>
+					{ attributes.displayPostExcerpt &&
+						<RangeControl
+							label={ __( 'Excerpt Length', 'atomic-blocks' ) }
+							value={ attributes.excerptLength }
+							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+							min={ 0 }
+							max={ 150 }
+						/>
+					}
+					<ToggleControl
+						label={ __( 'Display Continue Reading Link', 'atomic-blocks' ) }
+						checked={ attributes.displayPostLink }
 						onChange={ () => this.props.setAttributes( { displayPostLink: ! attributes.displayPostLink } ) }
-                    />
-                    { attributes.displayPostLink &&
-                        <TextControl
-                            label={ __( 'Customize Continue Reading Text', 'atomic-blocks' ) }
-                            type="text"
-                            value={ attributes.readMoreText }
-                            onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-                        />
-                    }
-                </PanelBody>
+					/>
+					{ attributes.displayPostLink &&
+						<TextControl
+							label={ __( 'Customize Continue Reading Text', 'atomic-blocks' ) }
+							type="text"
+							value={ attributes.readMoreText }
+							onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
+						/>
+					}
+				</PanelBody>
 				<PanelBody
-                    title={ __( 'Post and Page Grid Markup', 'atomic-blocks' ) }
+					title={ __( 'Post and Page Grid Markup', 'atomic-blocks' ) }
 					initialOpen={ false }
 					className="ab-block-post-grid-markup-settings"
-                >
+				>
 					<SelectControl
 						label={ __( 'Post Grid Section Tag', 'atomic-blocks' ) }
 						options={ sectionTags }
@@ -271,18 +300,18 @@ export default class Inspector extends Component {
 							onChange={ ( value ) => this.props.setAttributes( { sectionTitleTag: value } ) }
 							help={ __( 'Change the post/page section title tag to match your content hierarchy.', 'atomic-blocks' ) }
 						/>
-                    }
+					}
 					{ attributes.displayPostTitle &&
-                        <SelectControl
-                            label={ __( 'Post Title Heading Tag', 'atomic-blocks' ) }
-                            options={ sectionTitleTags }
-                            value={ attributes.postTitleTag }
+						<SelectControl
+							label={ __( 'Post Title Heading Tag', 'atomic-blocks' ) }
+							options={ sectionTitleTags }
+							value={ attributes.postTitleTag }
 							onChange={ ( value ) => this.props.setAttributes( { postTitleTag: value } ) }
 							help={ __( 'Change the post/page title tag to match your content hierarchy.', 'atomic-blocks' ) }
-                        />
+						/>
 					}
 				</PanelBody>
-            </InspectorControls>
+			</InspectorControls>
 		);
 	}
 }

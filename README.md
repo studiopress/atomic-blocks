@@ -83,6 +83,9 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**1.7.1**
+* Post Grid: Improve IE11 support on the grid.
+
 **1.7.0**
 * Add the Advanced Columns block.
 * Newsletter: Change button to input and adjust styles.
