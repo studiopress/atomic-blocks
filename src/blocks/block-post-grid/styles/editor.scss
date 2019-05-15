@@ -4,12 +4,12 @@
 
  .ab-block-post-grid {
 	.ab-block-post-grid-title a {
-         text-decoration: none;
-    }
+		 text-decoration: none;
+	}
  }
 
  .atomic-blocks-hide-query .components-base-control:nth-of-type(3) {
-     display: none;
+	 display: none;
  }
 
  .ab-block-post-grid-markup-settings {
@@ -28,6 +28,7 @@
 	 &:hover {
 		.ab-post-grid-no-image-placeholder {
 			opacity: 1;
+			z-index: 1;
 		}
 	 }
  }
@@ -50,14 +51,15 @@
 
 .ab-post-grid-no-image-icon {
 	position: absolute;
-    top: 10px;
-    background: #ffe606;
-    right: 10px;
-    padding: 6px;
+	top: 10px;
+	background: #ffe606;
+	right: 10px;
+	padding: 6px;
 	line-height: 1;
 	height: 32px;
 	transition: .2s ease;
 	border-radius: 5px;
+	z-index: 1;
 }
 
 .block-editor__container .components-placeholder__fieldset .ab-post-grid-image-help {
