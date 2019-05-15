@@ -22,12 +22,13 @@ export default class PostGridImage extends Component {
 
 	/* Get the image size value when changed in the inspector. */
 	componentDidUpdate( prevProps ) {
-		/* Get the selected image size and fallback image size. */
-		const imageUrl = this.getImageSize();
-		const fullImageUrl = this.getFullImageSize();
-
 		/* If the image size is changed, set the new image size. */
 		if ( this.props.imgSize !== prevProps.imgSize ) {
+
+			/* Get the selected image size and fallback image size. */
+			const imageUrl     = this.getImageSize();
+			const fullImageUrl = this.getFullImageSize();
+
 			this.setState({
 				imageUrl: imageUrl ? imageUrl : fullImageUrl,
 				changeSize: true,
@@ -54,7 +55,8 @@ export default class PostGridImage extends Component {
 		return (
 			get(
 				/* getMedia accepts an image id and returns an object with all the image data. */
-				wp.data.select( 'core' ).getMedia( this.props.imgID ), [
+				wp.data.select( 'core' ).getMedia( this.props.imgID ),
+				[
 					'media_details',
 					'sizes',
 					this.props.imgSize, /* Get the image slug from the inspector. */
@@ -97,7 +99,7 @@ export default class PostGridImage extends Component {
 					</a>
 
 					{	/* If we don't have the selected image size, show a warning */
-						( ! this.getImageSize() && this.state.changeSize && this.props.imgSize != 'selectimage' ) &&
+						( ! this.getImageSize() && this.state.changeSize && this.props.imgSize !== 'selectimage' ) &&
 						<Fragment>
 							<div className={ 'ab-post-grid-no-image-icon' }>
 								<Dashicon
