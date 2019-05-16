@@ -154,6 +154,15 @@ export default class Inspector extends Component {
 		imageSizeOptions.push( abImageSizeSquare, abImageSizeLandscape );
 		imageSizeOptions.unshift( abImageSizeSelect );
 
+		const imageSizeValue = () => {
+			for ( var i = 0; i < imageSizeOptions.length; i++ ) {
+				if ( imageSizeOptions[i].value === attributes.imageSize ) {
+					return attributes.imageSize;
+				}
+			}
+			return 'full';
+		};
+
 		return (
 			<InspectorControls>
 				<PanelBody
@@ -218,7 +227,7 @@ export default class Inspector extends Component {
 					{ attributes.displayPostImage &&
 						<SelectControl
 							label={ __( 'Image Size' ) }
-							value={ attributes.imageSize }
+							value={ imageSizeValue() }
 							options={ imageSizeOptions }
 							onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
 						/>
