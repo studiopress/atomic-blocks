@@ -16,42 +16,41 @@ export default class PostGridImage extends Component {
 
 		this.state = {
 			imageUrl: '',
-			changeSize: '',
+			imageLoaded: false,
 		}
 	}
 
-	/* Get the image size value when changed in the inspector. */
 	componentDidUpdate( prevProps ) {
-		/* If the image size is changed, set the new image size. */
 		if ( this.props.imgSize !== prevProps.imgSize ) {
-
-			/* Get the selected image size and fallback image size. */
-			const imageUrl     = this.getImageSize();
-			const fullImageUrl = this.getFullImageSize();
-
-			this.setState({
-				imageUrl: imageUrl ? imageUrl : fullImageUrl,
-				changeSize: true,
-			});
+			this.setImageUrl();
 		}
 	}
 
-	/* Get the image size value on load. */
 	componentDidMount() {
-		const unsubscribe = wp.data.subscribe(() => {
-			/* Get the selected image size and fallback image size. */
-			const imageUrl = this.getImageSize();
-
-			if ( imageUrl ) {
-				this.setState({
-					imageUrl
-				});
-			}
-		});
+		/**
+		 * Set the image URL on load and when state changes.
+		 */
+		wp.data.subscribe( () => {
+			this.setImageUrl();
+		} );
 	}
 
-	/* Get the image size value. */
-	getImageSize() {
+	setImageUrl() {
+		let imageUrl = this.getImageUrl();
+
+		if ( ! imageUrl ) {
+			imageUrl = this.getFullImageSize();
+		}
+
+		if ( imageUrl ) {
+			this.setState( {
+				imageUrl,
+				imageLoaded: true,
+			} );
+		}
+	}
+
+	getImageUrl() {
 		return (
 			get(
 				/* getMedia accepts an image id and returns an object with all the image data. */
@@ -99,7 +98,7 @@ export default class PostGridImage extends Component {
 					</a>
 
 					{	/* If we don't have the selected image size, show a warning */
-						( ! this.getImageSize() && this.state.changeSize && this.props.imgSize !== 'selectimage' ) &&
+						( ! this.getImageUrl() && this.state.imageLoaded && this.props.imgSize !== 'selectimage' ) &&
 						<Fragment>
 							<div className={ 'ab-post-grid-no-image-icon' }>
 								<Dashicon
