@@ -73,8 +73,9 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 					$post_thumb_size = 'ab-block-post-grid-square';
 				}
 
-				/* Get the alt text */
-				$alt = get_post_meta( $post_thumb_id, '_wp_attachment_image_alt', true );
+				if ( ! empty( $attributes['imageSize'] ) ) {
+					$post_thumb_size = $attributes['imageSize'];
+				}
 
 				/* Output the featured image */
 				$post_grid_markup .= sprintf(
@@ -384,6 +385,19 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'sectionTitleTag'     => array(
 					'type'    => 'string',
 					'default' => 'h2',
+				),
+				'imageSize'           => array(
+					'type'    => 'string',
+					'default' => 'full',
+				),
+				'url'                 => array(
+					'type'      => 'string',
+					'source'    => 'attribute',
+					'selector'  => 'img',
+					'attribute' => 'src',
+				),
+				'id'                  => array(
+					'type' => 'number',
 				),
 			),
 			'render_callback' => 'atomic_blocks_render_block_core_latest_posts',

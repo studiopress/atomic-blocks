@@ -19,6 +19,7 @@
 
 		article {
 			margin-bottom: 2.5em;
+			min-width: 0;
 
 			@media all and (-ms-high-contrast:none) {
 				padding-left: 10px;

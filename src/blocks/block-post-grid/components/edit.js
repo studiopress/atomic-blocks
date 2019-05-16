@@ -7,6 +7,9 @@ import pickBy from 'lodash/pickBy';
 import moment from 'moment';
 import classnames from 'classnames';
 import Inspector from './inspector';
+import PostGridImage from './image';
+
+const { compose } = wp.compose;
 
 const { Component, Fragment } = wp.element;
 
@@ -30,15 +33,13 @@ const {
 } = wp.editor;
 
 class LatestPostsBlock extends Component {
+
 	render() {
 		const {
 			attributes,
 			setAttributes,
-			latestPosts
+			latestPosts,
 		} = this.props;
-
-		// Check the image orientation
-		const isLandscape = attributes.imageCrop === 'landscape';
 
 		// Check if there are posts
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
@@ -87,13 +88,13 @@ class LatestPostsBlock extends Component {
 		];
 
 		// Get the section tag
-		const SectionTag = attributes.sectionTag ? attributes.sectionTag : "section"
+		const SectionTag = attributes.sectionTag ? attributes.sectionTag : "section";
 
 		// Get the section title tag
-		const SectionTitleTag = attributes.sectionTitleTag ? attributes.sectionTitleTag : "h2"
+		const SectionTitleTag = attributes.sectionTitleTag ? attributes.sectionTitleTag : "h2";
 
 		// Get the post title tag
-		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3"
+		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3";
 
 		return (
 			<Fragment>
@@ -138,15 +139,17 @@ class LatestPostsBlock extends Component {
 								) }
 							>
 								{
-									attributes.displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-										<div className="ab-block-post-grid-image">
-											<a href={ post.link } target="_blank" rel="bookmark">
-												<img
-													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
-												/>
-											</a>
-										</div>
+									attributes.displayPostImage && post.featured_media ? (
+										<PostGridImage
+											{ ...this.props }
+											imgAlt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'atomic-blocks' ) }
+											imgClass={ `wp-image-${post.featured_media.toString()}` }
+											imgID={ post.featured_media.toString() }
+											imgSize={ attributes.imageSize }
+											imgSizeLandscape={ post.featured_image_src }
+											imgSizeSquare={ post.featured_image_src_square }
+											imgLink={ post.link }
+										/>
 									) : (
 										null
 									)
@@ -192,26 +195,28 @@ class LatestPostsBlock extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
-	const {
-		order,
-		categories,
-	} = props.attributes;
+export default compose( [
+	withSelect( ( select, props ) => {
+		const {
+			order,
+			categories,
+		} = props.attributes;
 
-	const { getEntityRecords } = select( 'core', 'atomic-blocks' );
+		const { getEntityRecords } = select( 'core', 'atomic-blocks' );
 
-	const latestPostsQuery = pickBy( {
-		categories,
-		order,
-		orderby: props.attributes.orderBy,
-		per_page: props.attributes.postsToShow,
-		offset: props.attributes.offset,
-	}, ( value ) => ! isUndefined( value ) );
+		const latestPostsQuery = pickBy( {
+			categories,
+			order,
+			orderby: props.attributes.orderBy,
+			per_page: props.attributes.postsToShow,
+			offset: props.attributes.offset,
+		}, ( value ) => ! isUndefined( value ) );
 
-	return {
-		latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
-	};
-} )( LatestPostsBlock );
+		return {
+			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
+		};
+	} ),
+] )( LatestPostsBlock );
 
 // Truncate excerpt
 function truncate(str, no_words) {
