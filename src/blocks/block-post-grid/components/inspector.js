@@ -226,7 +226,7 @@ export default class Inspector extends Component {
 					/>
 					{ attributes.displayPostImage &&
 						<SelectControl
-							label={ __( 'Image Size' ) }
+							label={ __( 'Image Size', 'atomic-blocks' ) }
 							value={ imageSizeValue() }
 							options={ imageSizeOptions }
 							onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
