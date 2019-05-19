@@ -215,7 +215,7 @@ class LayoutLibrary extends Component {
 											<div className="ab-layout-design-info">
 												<div className="ab-layout-design-title">{ name }</div>
 												{ /* Favorite button */ }
-												<Button
+												{/* <Button
 													key={ 'buttonFavorite' }
 													className="ab-layout-favorite-button"
 													isSmall
@@ -227,11 +227,11 @@ class LayoutLibrary extends Component {
 														icon={ 'heart' }
 														className={ 'ab-layout-icon-favorite' }
 													/>
-												</Button>
+												</Button> */}
 
-												<FavoriteButton
+												{/* <FavoriteButton
 													layoutId={ id }
-												/>
+												/> */}
 											</div>
 										</div>
 									</div>
