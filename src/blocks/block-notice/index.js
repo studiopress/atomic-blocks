@@ -8,8 +8,6 @@ import Inspector from './components/inspector';
 import NoticeBox from './components/notice';
 import DismissButton from './components/button';
 import icons from './components/icons';
-import * as uniqueID from './../../utils/helper';
-import md5 from 'md5';
 
 // Import CSS
 import './styles/style.scss';
@@ -29,17 +27,7 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
-	BlockAlignmentToolbar,
-	MediaUpload,
 } = wp.editor;
-
-// Register components
-const {
-	Button,
-	SelectControl,
-	withFallbackStyles,
-	withState,
-} = wp.components;
 
 class ABNoticeBlock extends Component {
 
@@ -52,25 +40,11 @@ class ABNoticeBlock extends Component {
 				noticeContent,
 				noticeAlignment,
 				noticeBackgroundColor,
-				noticeTextColor,
 				noticeTitleColor,
-				noticeFontSize,
 				noticeDismiss
 			},
-			attributes,
-			isSelected,
-			editable,
-			className,
 			setAttributes
 		} = this.props;
-
-		const onSelectImage = img => {
-			setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
-				imgAlt: img.alt,
-			} );
-		};
 
 		return [
 			// Show the alignment toolbar on focus
@@ -87,7 +61,7 @@ class ABNoticeBlock extends Component {
 			// Show the block markup in the editor
 			<NoticeBox { ...this.props }>
 				{	// Check if the notice is dismissible and output the button
-					noticeDismiss && (
+					( noticeDismiss && noticeDismiss === 'ab-dismissable' ) && (
 					<DismissButton { ...this.props }>
 						{ icons.dismiss }
 					</DismissButton>
@@ -181,18 +155,15 @@ registerBlockType( 'atomic-blocks/ab-notice', {
 		const {
 			noticeTitle,
 			noticeContent,
-			noticeAlignment,
 			noticeBackgroundColor,
-			noticeTextColor,
 			noticeTitleColor,
-			noticeFontSize,
 			noticeDismiss
 		} = props.attributes;
 
 		// Save the block markup for the front end
 		return (
 			<NoticeBox { ...props }>
-				{ noticeDismiss && (
+				{ ( noticeDismiss && noticeDismiss === 'ab-dismissable' ) && (
 					<DismissButton { ...props }>
 						{ icons.dismiss }
 					</DismissButton>

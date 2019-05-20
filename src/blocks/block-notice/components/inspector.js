@@ -8,19 +8,13 @@ const { Component } = wp.element;
 
 // Import block components
 const {
-  BlockDescription,
-  ColorPalette,
   PanelColorSettings,
   InspectorControls,
 } = wp.editor;
 
 // Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
-	FormToggle,
 	RangeControl,
 	SelectControl,
 } = wp.components;
@@ -55,7 +49,7 @@ export default class Inspector extends Component {
 		];
 
 		// Setup the attributes
-		const { attributes: { noticeTitle, noticeContent, noticeAlignment, noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss } } = this.props;
+		const { attributes: { noticeBackgroundColor, noticeTextColor, noticeTitleColor, noticeFontSize, noticeDismiss } } = this.props;
 		const { setAttributes } = this.props;
 
 		// Update color values
