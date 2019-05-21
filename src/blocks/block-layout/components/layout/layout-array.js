@@ -1,7 +1,6 @@
 /**
  * Layouts
  */
-
 const { __ } = wp.i18n;
 const layoutArray = [
 	{

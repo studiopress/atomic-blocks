@@ -30,10 +30,6 @@ registerBlockType( 'atomic-blocks/ab-layouts', {
 		__( 'row', 'atomic-blocks' ),
 	],
 	attributes: {
-		uniqueID: {
-			type: 'string',
-			default: '',
-		},
 		align: {
 			type: 'string',
 		},

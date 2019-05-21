@@ -9,8 +9,7 @@
  */
 import map from 'lodash/map';
 import LazyLoad from 'react-lazy-load';
-import layoutArray from './layout-array';
-import sectionArray from './layout-section-array';
+import { atomic_blocks_sections, atomic_blocks_layouts } from './layout-functions';
 import favoriteButton from './favorite-button';
 import classnames from 'classnames';
 import FavoriteButton from './favorite-button';
@@ -56,10 +55,10 @@ class LayoutLibrary extends Component {
 		let component;
 		switch ( this.props.currentTab ) {
 			case 'ab-layout-tab-layouts' :
-				component = layoutArray;
+				component = atomic_blocks_layouts();
 				break;
 			case 'ab-layout-tab-sections' :
-				component = sectionArray;
+				component = atomic_blocks_sections();
 				break;
 		}
 		return component;
@@ -82,7 +81,7 @@ class LayoutLibrary extends Component {
 
 	render() {
 		/* Grab the layout array. */
-		const blockLayout = applyFilters( 'ab.layout_array', this.getLayoutArray() ? this.getLayoutArray() : sectionArray );
+		const blockLayout = this.getLayoutArray();
 
 		/* Set a default category. */
 		const cats = [ 'all' ];
