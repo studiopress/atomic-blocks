@@ -32,15 +32,34 @@ function atomic_blocks_block_assets() {
 	);
 
 	// Load the FontAwesome icon library.
-	wp_enqueue_style(
+	wp_register_style(
+		'atomic-blocks-fontawesome',
+		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
+	);
+
+	wp_enqueue_style( 'atomic-blocks-fontawesome' );
+}
+add_action( 'wp_enqueue_scripts', 'atomic_blocks_block_assets' );
+add_action( 'enqueue_block_editor_assets', 'atomic_blocks_block_assets' );
+
+/**
+ * Registers admin scripts.
+ */
+function atomic_blocks_register_admin_scripts() {
+
+	// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison -- Could be true or 'true'.
+	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
+
+	wp_register_style(
 		'atomic-blocks-fontawesome',
 		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
 		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
 }
-add_action( 'init', 'atomic_blocks_block_assets' );
-
+add_action( 'admin_enqueue_scripts', 'atomic_blocks_register_admin_scripts' );
 
 /**
  * Enqueue assets for backend editor
@@ -69,13 +88,14 @@ function atomic_blocks_editor_assets() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.editor.build.css' )
 	);
 
-	// Load the FontAwesome icon library.
-	wp_enqueue_style(
+	wp_register_style(
 		'atomic-blocks-fontawesome',
 		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
 		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
+
+	wp_enqueue_style( 'atomic-blocks-fontawesome' );
 
 	// Pass in REST URL.
 	wp_localize_script(
