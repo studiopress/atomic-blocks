@@ -213,24 +213,6 @@ class LayoutLibrary extends Component {
 
 											<div className="ab-layout-design-info">
 												<div className="ab-layout-design-title">{ name }</div>
-												{ /* Favorite button */ }
-												{/* <Button
-													key={ 'buttonFavorite' }
-													className="ab-layout-favorite-button"
-													isSmall
-													onClick={ () => {
-														// alert( 'Oh, hello. This is not done yet.' )
-													} }
-												>
-													<Dashicon
-														icon={ 'heart' }
-														className={ 'ab-layout-icon-favorite' }
-													/>
-												</Button> */}
-
-												{/* <FavoriteButton
-													layoutId={ id }
-												/> */}
 											</div>
 										</div>
 									</div>
