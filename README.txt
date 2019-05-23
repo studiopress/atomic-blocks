@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
 Tested up to: 5.2
-Stable tag: 1.8.0
+Stable tag: 1.8.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -109,6 +109,8 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 11. Spacer and Divider Block
 
 == Changelog ==
+= 1.8.1 =
+* Add files that were lost during transmission when releasing 1.8.0.
 
 = 1.8.0 =
 * Made all blocks compatible with the official AMP plugin. No more validation errors.
