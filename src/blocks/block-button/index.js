@@ -6,7 +6,6 @@
 import classnames from 'classnames';
 import Inspector from './components/inspector';
 import CustomButton from './components/button';
-import icons from './components/icons';
 
 // Import CSS
 import './styles/style.scss';
@@ -26,14 +25,11 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
-	BlockAlignmentToolbar,
 	URLInput,
 } = wp.editor;
 
 // Register components
 const {
-	Button,
-	withFallbackStyles,
 	IconButton,
 	Dashicon,
 } = wp.components;

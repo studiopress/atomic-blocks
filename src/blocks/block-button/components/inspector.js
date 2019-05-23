@@ -12,21 +12,11 @@ const { Component } = wp.element;
 // Import block components
 const {
   InspectorControls,
-  BlockDescription,
-  ColorPalette,
-  PanelColorSettings,
 } = wp.editor;
 
 // Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
-	FormToggle,
-	RangeControl,
-	SelectControl,
-	ToggleControl,
 } = wp.components;
 
 /**
@@ -42,9 +32,6 @@ export default class Inspector extends Component {
 
 		// Setup the attributes
 		const {
-			buttonText,
-			buttonUrl,
-			buttonAlignment,
 			buttonBackgroundColor,
 			buttonTextColor,
 			buttonSize,

@@ -42,18 +42,6 @@ export default function ButtonSettings( props ) {
 		{ value: 'ab-button-shape-circular', label: __( 'Circular', 'atomic-blocks' ) },
 	];
 
-	// Button colors
-	const buttonColors = [
-		{ color: '#00d1b2', name: 'teal' },
-		{ color: '#3373dc', name: 'royal blue' },
-		{ color: '#209cef', name: 'sky blue' },
-		{ color: '#22d25f', name: 'green' },
-		{ color: '#ffdd57', name: 'yellow' },
-		{ color: '#ff3860', name: 'pink' },
-		{ color: '#7941b6', name: 'purple' },
-		{ color: '#392F43', name: 'black' },
-	];
-
 	return (
 		<Fragment>
 			{ enableButtonTarget != false && (
@@ -94,7 +82,6 @@ export default function ButtonSettings( props ) {
 						value: buttonBackgroundColor,
 						onChange: onChangeButtonColor,
 						label: __( 'Button Color', 'atomic-blocks' ),
-						colors: buttonColors,
 					} ] }
 				>
 				</PanelColorSettings>
