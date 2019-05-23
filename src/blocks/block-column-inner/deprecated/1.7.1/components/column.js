@@ -15,7 +15,7 @@ import classnames from 'classnames';
 /**
  * Create a Columns wrapper Component.
  */
-export default class Column extends Component {
+export default class Column_1_7_1 extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -86,7 +86,6 @@ export default class Column extends Component {
 		return (
 			<div
 				className={ classnames(
-					this.props.className,
 					'ab-block-layout-column',
 					attributes.columnVerticalAlignment ? 'ab-is-vertically-aligned-' + attributes.columnVerticalAlignment : null
 				) }
