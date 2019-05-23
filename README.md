@@ -83,6 +83,17 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**1.8.0**
+* Made all blocks compatible with the official AMP plugin. No more validation errors.
+* Notice block: Improve dismissible notice support for older browsers.
+* Notice block: Fix bug that caused dismiss icon to show on non-dismissible notices under certain conditions.
+* Post & Page Grid block: Improved grid support for Internet Explorer.
+* Post & Page Grid block: Fix compatibility issue with WordPress 5.2
+* Post & Page Grid block: Add support for custom image sizes registered by themes and other plugins.
+* Post & Page Grid block: Add full width alignment option.
+* Advanced Columns block: Add support for custom CSS class on inner columns.
+* Button block: Removed custom color palette in favor of the active theme's color palette.
+
 **1.7.1**
 * Post Grid: Improve IE11 support on the grid.
 
