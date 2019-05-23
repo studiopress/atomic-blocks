@@ -3,8 +3,8 @@ Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbat
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
-Tested up to: 5.1.1
-Stable tag: 1.7.1
+Tested up to: 5.2
+Stable tag: 1.8.0
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -109,6 +109,17 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 11. Spacer and Divider Block
 
 == Changelog ==
+
+= 1.8.0 =
+* Made all blocks compatible with the official AMP plugin. No more validation errors.
+* Notice block: Improve dismissible notice support for older browsers.
+* Notice block: Fix bug that caused dismiss icon to show on non-dismissible notices under certain conditions.
+* Post & Page Grid block: Improved grid support for Internet Explorer.
+* Post & Page Grid block: Fix compatibility issue with WordPress 5.2
+* Post & Page Grid block: Add support for custom image sizes registered by themes and other plugins.
+* Post & Page Grid block: Add full width alignment option.
+* Advanced Columns block: Add support for custom CSS class on inner columns.
+* Button block: Removed custom color palette in favor of the active theme's color palette.
 
 = 1.7.1 =
 * Post Grid: Improve IE11 support on the grid.
