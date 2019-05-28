@@ -18,7 +18,6 @@ import FavoriteButton from './favorite-button';
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const { applyFilters } = wp.hooks;
 const { compose } = wp.compose;
 const { rawHandler } = wp.blocks;
 const {
