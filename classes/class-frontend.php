@@ -106,7 +106,7 @@ class Frontend {
 			if ( has_block( 'lsx-blocks/lsx-container' ) ) {
 
 				$image_matches = array();
-				preg_match_all('/<div class="lsx-container-image-wrap">(.*?)<\/div>/s', $content, $image_matches);
+				preg_match_all( '/<div class="lsx-container-image-wrap">(.*?)<\/div>/s', $content, $image_matches );
 
 				if ( ! empty( $image_matches ) && ! empty( $image_matches[1] ) ) {
 
@@ -115,7 +115,7 @@ class Frontend {
 							//Get the iamge URL
 							$current_image_url = false;
 							$image_urls = array();
-							preg_match_all( '@src="([^"]+)"@' , $image_match, $image_urls );
+							preg_match_all( '@src="([^"]+)"@', $image_match, $image_urls );
 
 							if ( ! empty( $image_urls ) && isset( $image_urls[1] ) && ! empty( $image_urls[1] ) && isset( $image_urls[1][0] ) ) {
 								$current_image_url = $image_urls[1][0];
@@ -141,7 +141,7 @@ class Frontend {
 			if ( has_block( 'lsx-blocks/lsx-post-carousel' ) ) {
 
 				$div_matches = array();
-				preg_match_all('/<div class="lsx-block-post-grid-image">(.*?)<\/div>/s', $content, $div_matches);
+				preg_match_all( '/<div class="lsx-block-post-grid-image">(.*?)<\/div>/s', $content, $div_matches );
 
 				if ( ! empty( $div_matches ) && ! empty( $div_matches[1] ) ) {
 
@@ -151,7 +151,7 @@ class Frontend {
 							//Get the iamge URL
 							$current_image_url = false;
 							$image_urls = array();
-							preg_match_all( '@src="([^"]+)"@' , $image_match, $image_urls );
+							preg_match_all( '@src="([^"]+)"@', $image_match, $image_urls );
 
 							if ( ! empty( $image_urls ) && isset( $image_urls[1] ) && ! empty( $image_urls[1] ) && isset( $image_urls[1][0] ) ) {
 								$current_image_url = $image_urls[1][0];
@@ -172,19 +172,18 @@ class Frontend {
 							}
 						}
 					}
-				}
-				//die();
+				} //die();
 			}
 
 			if ( has_block( 'lsx-blocks/lsx-banner-box' ) ) {
 				$div_matches = array();
-				preg_match_all('/<source (.*?)>/s', $content, $div_matches);
+				preg_match_all( '/<source (.*?)>/s', $content, $div_matches );
 				if ( ! empty( $div_matches ) && ! empty( $div_matches[1] ) ) {
 					foreach ( $div_matches[1] as $counter => $image_match ) {
 						//Get the iamge URL
 						$current_image_url = false;
 						$image_urls = array();
-						preg_match_all( '@data-srcset="([^"]+)"@' , $image_match, $image_urls );
+						preg_match_all( '@data-srcset="([^"]+)"@', $image_match, $image_urls );
 						if ( ! empty( $image_urls ) && isset( $image_urls[1] ) && ! empty( $image_urls[1] ) && isset( $image_urls[1][0] ) ) {
 							$current_image_url = $image_urls[1][0];
 						}
