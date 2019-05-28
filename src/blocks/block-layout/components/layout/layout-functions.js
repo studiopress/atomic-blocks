@@ -2,14 +2,16 @@
  * Layout block functions
  */
 
+/**
+ * Import section and layout data.
+ */
 import layoutArray from './layout-array';
-
 import sectionArray from './layout-section-array';
 
 const { applyFilters } = wp.hooks;
 
 /**
- * Retrieves the list of Sections.
+ * Returns the filtered list of Sections.
  *
  * @returns {array} Array of section objects.
  */
@@ -18,7 +20,7 @@ export const atomic_blocks_sections = () => {
 }
 
 /**
- * Retrieves the list of Layouts.
+ * Returns the filtered list of Layouts.
  *
  * @returns {array} Array of layout objects.
  */
