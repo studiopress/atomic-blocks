@@ -94,6 +94,14 @@ class LayoutModal extends Component {
 												]
 											} else if ( 'ab-layout-tab-favorites' === tab.name ) {
 												tabContent = __( 'Add layout and section favorites here', 'atomic-blocks' );
+												return [
+													<LayoutLibrary
+														clientId={ this.props.clientId }
+														currentTab={ this.state.currentTab }
+														content={ 'favorites' }
+														blockLayout={ 'favorites' }
+													/>
+												]
 											} else {
 												tabContent = __( 'Default tab content', 'atomic-blocks' );
 											}

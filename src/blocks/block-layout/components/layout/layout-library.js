@@ -46,18 +46,41 @@ class LayoutLibrary extends Component {
 			search: null,
 			activeView: 'grid',
 			layoutCount: '',
+			favoriteLayouts: '',
 		};
+	}
+
+	componentDidMount() {
+		/* Fetch the user's favorites and save to state for use in the Favorites tab */
+		wp.apiFetch(
+			{
+				'method': 'GET',
+				'path': '/atomicblocks/v1/layouts/favorites',
+			}
+		).then( response => {
+
+			const combined = atomic_blocks_layouts().concat( atomic_blocks_sections() );
+
+			let favorites = combined.filter( ( item ) => {
+				return response.includes( item.key );
+			} );
+
+			this.setState( { favoriteLayouts: favorites } );
+		} );
 	}
 
 	/* Conditionally load the layout array based on the tab */
 	getLayoutArray() {
-		let component;
+		let component = [];
 		switch ( this.props.currentTab ) {
 			case 'ab-layout-tab-layouts' :
 				component = atomic_blocks_layouts();
 				break;
 			case 'ab-layout-tab-sections' :
 				component = atomic_blocks_sections();
+				break;
+			case 'ab-layout-tab-favorites' :
+				component = this.state.favoriteLayouts;
 				break;
 		}
 		return component;

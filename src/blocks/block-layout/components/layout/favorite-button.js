@@ -16,20 +16,31 @@ const {
 
 /* Retrieve the setting value from the setting endpoint.  */
 function getSetting() {
-	return apiFetch( { path: "/favoritemeta/v1/block-setting" } )
-		.then( blockSetting => blockSetting )
-		.catch( error => console.error( error ) );
+	return apiFetch(
+		{
+			path: '/atomicblocks/v1/layouts/favorites'
+		}
+	).then(
+			blockSetting => blockSetting
+	).catch(
+		error => console.error( error )
+	);
 }
 
 /* Set the setting when the update is triggered. */
 function setSetting( setting ) {
-	return apiFetch( {
-		path: "/favoritemeta/v1/block-setting",
-		method: "POST",
-		body: setting
-	} )
-    .then( blockSetting => blockSetting )
-	.catch( error => console.error( error ) );
+	return apiFetch(
+		{
+			path: '/atomicblocks/v1/layouts/favorites',
+			method: 'POST',
+			body: setting,
+			_wpnonce: wpApiSettings.nonce
+		}
+	).then(
+		blockSetting => blockSetting
+	).catch(
+		error => console.error( error )
+	);
 }
 
 export default class FavoriteButton extends Component {
@@ -50,11 +61,11 @@ export default class FavoriteButton extends Component {
 	/* Update the global setting. */
 	updateSetting = async () => {
 		this.setState( { isSaving: true } );
-		//const blockSetting = await setSetting( this.state.blockSetting.concat( [ this.state.layoutArrayAdd ] ) );
-		//const blockSetting = await setSetting( [...this.state.blockSetting, ...[this.props.layoutArrayAdd] ] );
-		// this.setState(prevState => ( {
-		// 	layoutArray: prevState.layoutArray.concat(this.state.layoutID),
-		// } ) )
+		// const blockSetting = await setSetting( this.state.blockSetting.concat( [ this.state.layoutArrayAdd ] ) );
+		const blockSetting = await setSetting( [...this.state.blockSetting, ...[this.props.layoutArrayAdd] ] );
+		this.setState(prevState => ( {
+			layoutArray: prevState.layoutArray.concat(this.state.layoutID),
+		} ) )
 
 		this.setState(prevState => ( {
 			//layoutArray: prevState.layoutArray.concat(this.state.layoutID),

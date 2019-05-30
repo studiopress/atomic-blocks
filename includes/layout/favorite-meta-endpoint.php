@@ -1,60 +1,105 @@
 <?php
+/**
+ * REST API Endpoints for Sections and Layouts.
+ *
+ * @package AtomicBlocks
+ */
 
-namespace Atomic_Blocks\Layouts;
+namespace AtomicBlocks\Layouts;
 
-define( 'ATOMIC_BLOCKS_REST_NAMESPACE', 'favoritemeta/v1' );
-define( 'ATOMIC_BLOCKS_BLOCK_SETTING', 'ab_block_setting' );
+use \WP_REST_Response;
+use \WP_REST_Server;
 
-add_action( 'rest_api_init', __NAMESPACE__ . '\custom_endpoints' );
+const LAYOUT_NAMESPACE       = 'atomicblocks/v1';
+const LAYOUT_FAVORITES_ROUTE = 'layouts/favorites';
+
+add_action( 'rest_api_init', __NAMESPACE__ . '\register_layout_endpoints' );
 /**
  * Create custom endpoints for block settings
  */
-function custom_endpoints() {
+function register_layout_endpoints() {
 
-    register_rest_route(
-        ATOMIC_BLOCKS_REST_NAMESPACE,
-        'block-setting/',
-        [
-            'methods' => \WP_REST_Server::READABLE,
-            'callback' => __NAMESPACE__ . '\get_block_setting'
-        ]
-    );
+	/**
+	 * Register the GET endpoint.
+	 */
+	register_rest_route(
+		LAYOUT_NAMESPACE,
+		LAYOUT_FAVORITES_ROUTE,
+		[
+			'methods'             => WP_REST_Server::READABLE,
+			'callback'            => function () {
+				return new WP_REST_Response( get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
+			},
+			'permission_callback' => function () {
+				return current_user_can( 'edit_posts' );
+			},
+		]
+	);
 
-    register_rest_route(
-        ATOMIC_BLOCKS_REST_NAMESPACE,
-        'block-setting/',
-        [
-            'methods' => \WP_REST_Server::EDITABLE,
-            'callback' => __NAMESPACE__ . '\update_block_setting',
-            'permission_callback' => __NAMESPACE__ . '\check_permissions'
-        ]
-    );
+	/**
+	 * Register the update endpoint.
+	 */
+	register_rest_route(
+		LAYOUT_NAMESPACE,
+		LAYOUT_FAVORITES_ROUTE,
+		[
+			'methods'             => 'PATCH',
+			'callback'            => function ( $request ) {
 
-}
+				$body      = json_decode( $request->get_body(), true );
+				$new       = sanitize_key( $body['atomic_blocks_favorite_key'] );
+				$favorites = (array) get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true );
 
-function get_block_setting() {
+				if ( in_array( $new, $favorites, true ) ) {
+					return new WP_REST_Response( $favorites );
+				}
 
-    $block_setting = get_option( ATOMIC_BLOCKS_BLOCK_SETTING );
+				if ( empty( $favorites[0] ) ) {
+					$favorites = array( $new );
+				} else {
+					$favorites[] = $new;
+				}
 
-    $response = new \WP_REST_Response( $block_setting );
-    $response->set_status(200);
+				update_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', $favorites );
 
-    return $response;
-}
+				return new WP_REST_Response( get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
+			},
+			'permission_callback' => function () {
+				return current_user_can( 'edit_posts' );
+			},
+		]
+	);
 
-function update_block_setting( $request ) {
+	/**
+	 * Register the delete endpoint.
+	 */
+	register_rest_route(
+		LAYOUT_NAMESPACE,
+		LAYOUT_FAVORITES_ROUTE,
+		[
+			'methods'             => 'DELETE',
+			'callback'            => function ( $request ) {
 
-    $new_block_setting = $request->get_body();
-    update_option( ATOMIC_BLOCKS_BLOCK_SETTING, $new_block_setting );
+				$body      = json_decode( $request->get_body(), true );
+				$delete_id = sanitize_key( $body['atomic_blocks_favorite_key'] );
+				$favorites = (array) get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true );
 
-    $block_setting = get_option( ATOMIC_BLOCKS_BLOCK_SETTING );
-    $response = new \WP_REST_Response( $block_setting );
-    $response->set_status(201);
+				if ( ! in_array( $delete_id, $favorites, true ) ) {
+					return new WP_REST_Response( $favorites );
+				}
 
-    return $response;
+				$position = array_search( $delete_id, $favorites, true );
 
-}
+				unset( $favorites[ $position ] );
 
-function check_permissions() {
-    return current_user_can( 'edit_posts' );
+				update_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', $favorites );
+
+				return new WP_REST_Response( get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
+			},
+			'permission_callback' => function () {
+				return current_user_can( 'edit_posts' );
+			},
+		]
+	);
+
 }
