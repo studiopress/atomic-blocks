@@ -72,6 +72,7 @@ class LayoutLibrary extends Component {
 	/* Conditionally load the layout array based on the tab */
 	getLayoutArray() {
 		let component = [];
+
 		switch ( this.props.currentTab ) {
 			case 'ab-layout-tab-layouts' :
 				component = atomic_blocks_layouts();
@@ -83,6 +84,7 @@ class LayoutLibrary extends Component {
 				component = this.state.favoriteLayouts;
 				break;
 		}
+
 		return component;
 	}
 
@@ -199,7 +201,7 @@ class LayoutLibrary extends Component {
 					) }
 					aria-label={ __( 'Layout Options', 'atomic-blocks' ) }
 				>
-					{ map( blockLayout, ( { name, key, id, image, content, category, keywords } ) => {
+					{ map( blockLayout, ( { name, key, image, content, category, keywords } ) => {
 						if ( ( 'all' === this.state.category || category.includes( this.state.category ) ) && ( ! this.state.search || ( keywords && keywords.some( x => x.toLowerCase().includes( this.state.search.toLowerCase() ) ) ) ) ) {
 							return (
 								<div className="ab-layout-design">
@@ -251,7 +253,8 @@ class LayoutLibrary extends Component {
 												</Button> }
 
 												{ <FavoriteButton
-													layoutId={ id }
+													// layoutId={ id }
+													layoutKey = { key }
 												/> }
 											</div>
 										</div>

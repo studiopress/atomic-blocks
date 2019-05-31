@@ -83,7 +83,9 @@ class LayoutModal extends Component {
 														content={ 'section' }
 													/>
 												]
-											} else if ( 'ab-layout-tab-layouts' === tab.name ) {
+											}
+
+											if ( 'ab-layout-tab-layouts' === tab.name ) {
 												return [
 													<LayoutLibrary
 														clientId={ this.props.clientId }
@@ -92,8 +94,9 @@ class LayoutModal extends Component {
 														blockLayout={ 'blockLayout' }
 													/>
 												]
-											} else if ( 'ab-layout-tab-favorites' === tab.name ) {
-												tabContent = __( 'Add layout and section favorites here', 'atomic-blocks' );
+											}
+
+											if ( 'ab-layout-tab-favorites' === tab.name ) {
 												return [
 													<LayoutLibrary
 														clientId={ this.props.clientId }
@@ -102,9 +105,9 @@ class LayoutModal extends Component {
 														blockLayout={ 'favorites' }
 													/>
 												]
-											} else {
-												tabContent = __( 'Default tab content', 'atomic-blocks' );
 											}
+
+											tabContent = __( 'Default tab content', 'atomic-blocks' );
 										}
 										return <div>{ tabContent }</div>;
 									}

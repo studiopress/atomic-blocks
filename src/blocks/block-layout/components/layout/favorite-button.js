@@ -14,30 +14,55 @@ const {
 	Spinner
 } = wp.components;
 
-/* Retrieve the setting value from the setting endpoint.  */
-function getSetting() {
+/**
+ * Get the favorites from user meta.
+ *
+ * @returns {array} Array of favorite objects.
+ */
+function getFavorites() {
 	return apiFetch(
 		{
-			path: '/atomicblocks/v1/layouts/favorites'
+			path: '/atomicblocks/v1/layouts/favorites',
+			method: 'GET',
 		}
 	).then(
-			blockSetting => blockSetting
+			favoriteLayouts => favoriteLayouts
 	).catch(
 		error => console.error( error )
 	);
 }
 
-/* Set the setting when the update is triggered. */
-function setSetting( setting ) {
+/**
+ * Adds the specified section/layout to user meta.
+ *
+ * @param key The key of the section or layout to add.
+ * @returns {*}
+ */
+function addFavorite( key ) {
 	return apiFetch(
 		{
 			path: '/atomicblocks/v1/layouts/favorites',
-			method: 'POST',
-			body: setting,
+			method: 'PATCH',
+			body: JSON.stringify( { 'atomic_blocks_favorite_key': key } ),
 			_wpnonce: wpApiSettings.nonce
 		}
 	).then(
-		blockSetting => blockSetting
+		// favoriteLayouts => favoriteLayouts
+	).catch(
+		error => console.error( error )
+	);
+}
+
+function removeFavorite( key ) {
+	return apiFetch(
+		{
+			path: '/atomicblocks/v1/layouts/favorites',
+			method: 'DELETE',
+			body: JSON.stringify( { 'atomic_blocks_favorite_key': key } ),
+			_wpnonce: wpApiSettings.nonce
+		}
+	).then(
+		// favoriteLayouts => favoriteLayouts
 	).catch(
 		error => console.error( error )
 	);
@@ -50,39 +75,43 @@ export default class FavoriteButton extends Component {
 	}
 
 	state = {
-		blockSetting: [],
+		favoriteLayouts: [],
 		isLoading: true,
 		isSaving: false,
 		isEditing: false,
-		layoutArray: [1,2,3],
-		layoutID: this.props.layoutId,
 	};
 
 	/* Update the global setting. */
-	updateSetting = async () => {
+	updateSetting = async ( key ) => {
 		this.setState( { isSaving: true } );
-		// const blockSetting = await setSetting( this.state.blockSetting.concat( [ this.state.layoutArrayAdd ] ) );
-		const blockSetting = await setSetting( [...this.state.blockSetting, ...[this.props.layoutArrayAdd] ] );
-		this.setState(prevState => ( {
-			layoutArray: prevState.layoutArray.concat(this.state.layoutID),
-		} ) )
 
-		this.setState(prevState => ( {
-			//layoutArray: prevState.layoutArray.concat(this.state.layoutID),
-			blockSetting,
-			isLoading: false,
-			isSaving: false,
-			isEditing: false,
-		} ) );
-		console.log( 'layoutArray: ' + this.state.layoutArray);
+		let favorites = [];
+
+		if ( Object.values( this.state.favoriteLayouts ).includes( key ) ) {
+			favorites = await removeFavorite( key );
+			this.setState( {
+				favoriteLayouts: favorites,
+				isLoading: false,
+				isSaving: false,
+				isEditing: false,
+			} );
+		} else {
+			favorites = await addFavorite( key );
+			this.setState( {
+				favoriteLayouts: favorites,
+				isLoading: false,
+				isSaving: false,
+				isEditing: false,
+			} );
+		}
+
 	};
 
 	/* Wait for the data to be available and setup the setting. */
 	async componentDidMount() {
-		const blockSetting = await getSetting();
+		const favoriteLayouts = await getFavorites();
 		this.setState( {
-			//layoutArray: this.state.layoutArray,
-			blockSetting,
+			favoriteLayouts,
 			isLoading: false
 		} );
 	}
@@ -96,19 +125,23 @@ export default class FavoriteButton extends Component {
 			);
 		}
 
+		let buttonText = __( 'Add to Favorites', 'atomic-blocks' );
+
+		if ( Object.values( this.state.favoriteLayouts ).includes( this.props.layoutKey ) ) {
+			buttonText = __( 'Remove from Favorites', 'atomic-blocks' );
+		}
+
 		return (
 			<Fragment>
 				<Button
 					isPrimary
 					disabled={ this.state.isSaving }
 					onClick={ () => {
-						this.updateSetting();
+						this.updateSetting( this.props.layoutKey );
 					} }
 					>
-					{ __( 'Add to Favorites', 'atomic-blocks' ) }
+					{ buttonText }
 				</Button>
-
-				{ 'Favorite IDs: ' + this.state.blockSetting }
 			</Fragment>
 		);
 	}

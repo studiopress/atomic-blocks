@@ -28,7 +28,7 @@ function register_layout_endpoints() {
 		[
 			'methods'             => WP_REST_Server::READABLE,
 			'callback'            => function () {
-				return new WP_REST_Response( get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
+				return new WP_REST_Response( (array) get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
 			},
 			'permission_callback' => function () {
 				return current_user_can( 'edit_posts' );
@@ -60,9 +60,9 @@ function register_layout_endpoints() {
 					$favorites[] = $new;
 				}
 
-				update_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', $favorites );
+				update_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', array_values( $favorites ) );
 
-				return new WP_REST_Response( get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
+				return new WP_REST_Response( (array) get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
 			},
 			'permission_callback' => function () {
 				return current_user_can( 'edit_posts' );
@@ -92,9 +92,9 @@ function register_layout_endpoints() {
 
 				unset( $favorites[ $position ] );
 
-				update_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', $favorites );
+				update_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', array_values( $favorites ) );
 
-				return new WP_REST_Response( get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
+				return new WP_REST_Response( (array) get_user_meta( get_current_user_id(), 'atomic_blocks_favorite_layouts', true ) );
 			},
 			'permission_callback' => function () {
 				return current_user_can( 'edit_posts' );
