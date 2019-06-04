@@ -77,7 +77,7 @@ export default class Edit extends Component {
 								<Button onClick={ open }>
 									{ ! profileImgID ? icons.upload : <img
 										className={ classnames(
-											'profile-avatar',
+											'ab-profile-avatar',
 											'wp-image-' + profileImgID
 										) }
 										src={ profileImgURL }

@@ -42,6 +42,13 @@ const blockAttributes = {
 		attribute: 'src',
 		selector: 'img',
 	},
+	profileImgAlt: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'figure img',
+		attribute: 'alt',
+		default: '',
+	},
 	profileImgID: {
 		type: 'number',
 	},
