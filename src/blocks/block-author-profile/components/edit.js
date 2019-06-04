@@ -37,6 +37,7 @@ export default class Edit extends Component {
 				profileAlignment,
 				profileImgURL,
 				profileImgID,
+				profileImgAlt,
 				profileTextColor,
 			},
 			setAttributes
@@ -57,7 +58,7 @@ export default class Edit extends Component {
 			/* Show the block markup in the editor */
 			<ProfileBox { ...this.props }>
 				<AvatarColumn { ...this.props }>
-					<div className="ab-profile-image-square">
+					<figure className="ab-profile-image-square">
 						<MediaUpload
 							buttonProps={ {
 								className: 'change-image'
@@ -66,6 +67,7 @@ export default class Edit extends Component {
 								{
 									profileImgID: img.id,
 									profileImgURL: img.url,
+									profileImgAlt: img.alt,
 								}
 							) }
 							allowed={ ALLOWED_MEDIA_TYPES }
@@ -74,15 +76,18 @@ export default class Edit extends Component {
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
 									{ ! profileImgID ? icons.upload : <img
-										className="profile-avatar"
+										className={ classnames(
+											'profile-avatar',
+											'wp-image-' + profileImgID
+										) }
 										src={ profileImgURL }
-										alt="avatar"
+										alt={ profileImgAlt }
 									/>  }
 								</Button>
 							) }
 						>
 						</MediaUpload>
-					</div>
+					</figure>
 				</AvatarColumn>
 
 				<div
