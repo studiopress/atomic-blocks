@@ -43,18 +43,18 @@ export default class Edit extends Component {
 		} = this.props;
 
 		return [
-			// Show the block alignment controls on focus
+			/* Show the block alignment controls on focus */
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ profileAlignment }
 					onChange={ ( value ) => setAttributes( { profileAlignment: value } ) }
 				/>
 			</BlockControls>,
-			// Show the block controls on focus
+			/* Show the block controls on focus */
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,
-			// Show the block markup in the editor
+			/* Show the block markup in the editor */
 			<ProfileBox { ...this.props }>
 				<AvatarColumn { ...this.props }>
 					<div className="ab-profile-image-square">

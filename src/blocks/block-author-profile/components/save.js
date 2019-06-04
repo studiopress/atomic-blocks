@@ -29,7 +29,7 @@ export default class Save extends Component {
 		} = this.props.attributes;
 
 		return (
-			// Save the block markup for the front end
+			/* Save the block markup for the front end */
 			<ProfileBox { ...this.props }>
 
 				{ profileImgURL && (
