@@ -2,9 +2,9 @@
  * Internal dependencies
  */
 import classnames from 'classnames';
-import ProfileBox from './profile';
-import SocialIcons from './social';
-import AvatarColumn from './avatar';
+import ProfileBox from './../../../components/profile';
+import SocialIcons from './../../../components/social';
+import AvatarColumn from './../../../components/avatar';
 
 /**
  * WordPress dependencies
@@ -14,7 +14,7 @@ const {
 	RichText,
 } = wp.editor;
 
-export default class Save extends Component {
+export default class Save_1_7_0 extends Component {
 	constructor() {
 		super( ...arguments );
 	}
@@ -25,26 +25,22 @@ export default class Save extends Component {
 			profileTitle,
 			profileContent,
 			profileImgURL,
-			profileImgAlt,
-			profileImgID,
 			profileTextColor,
 		} = this.props.attributes;
 
 		return (
 			/* Save the block markup for the front end */
 			<ProfileBox { ...this.props }>
+
 				{ profileImgURL && (
 					<AvatarColumn { ...this.props }>
-						<figure className="ab-profile-image-square">
+						<div className="ab-profile-image-square">
 							<img
-								className={ classnames(
-									'ab-profile-avatar',
-									'wp-image-' + profileImgID
-								) }
+								className="ab-profile-avatar"
 								src={ profileImgURL }
-								alt={ profileImgAlt }
+								alt="avatar"
 							/>
-						</figure>
+						</div>
 					</AvatarColumn>
 				) }
 

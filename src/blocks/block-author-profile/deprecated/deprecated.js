@@ -1,23 +1,10 @@
 /**
- * BLOCK: Atomic Blocks Profile Box
+ * Component deprecations.
  */
 
-/**
- * Internal dependencies
- */
-import Edit from './components/edit';
-import Save from './components/save';
-import './styles/style.scss';
-import './styles/editor.scss';
-import Deprecated from './deprecated/deprecated';
+import Save_1_7_0 from './1.7.0/components/save';
 
-/**
- * WordPress dependencies
- */
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
-
-const blockAttributes = {
+export const Author_Profile_1_7_0_attributes = {
 	profileName: {
 		type: 'array',
 		source: 'children',
@@ -97,32 +84,18 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Register the block
- */
-registerBlockType( 'atomic-blocks/ab-profile-box', {
-	title: __( 'AB Profile Box', 'atomic-blocks' ),
-	description: __( 'Add a profile box with bio info and social media links.', 'atomic-blocks' ),
-	icon: 'admin-users',
-	category: 'atomic-blocks',
-	keywords: [
-		__( 'author', 'atomic-blocks' ),
-		__( 'profile', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
-	],
+export const Author_Profile_1_7_0_save = props => {
+	return (
+		<Save_1_7_0 { ...props } />
+	);
+}
 
-	/* Setup the block attributes */
-	attributes: blockAttributes,
-
-	/* Render the block in the editor. */
-	edit: props => {
-		return <Edit { ...props } />;
+const Deprecated = [
+	/* Version 1.7.0. */
+	{
+		attributes: Author_Profile_1_7_0_attributes,
+		save: Author_Profile_1_7_0_save,
 	},
+];
 
-	/* Save the block markup. */
-	save: props => {
-		return <Save { ...props } />;
-	},
-
-	deprecated: Deprecated,
-} );
+export default Deprecated;
