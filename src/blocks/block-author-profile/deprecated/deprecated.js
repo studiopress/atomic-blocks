@@ -2,9 +2,9 @@
  * Component deprecations.
  */
 
-import Save_1_7_0 from './1.7.0/components/save';
+import Save_1_8_1 from './1.8.1/components/save';
 
-export const Author_Profile_1_7_0_attributes = {
+export const Author_Profile_1_8_1_attributes = {
 	profileName: {
 		type: 'array',
 		source: 'children',
@@ -84,17 +84,17 @@ export const Author_Profile_1_7_0_attributes = {
 	},
 };
 
-export const Author_Profile_1_7_0_save = props => {
+export const Author_Profile_1_8_1_save = props => {
 	return (
-		<Save_1_7_0 { ...props } />
+		<Save_1_8_1 { ...props } />
 	);
 }
 
 const Deprecated = [
-	/* Version 1.7.0. */
+	/* Version 1.8.1. */
 	{
-		attributes: Author_Profile_1_7_0_attributes,
-		save: Author_Profile_1_7_0_save,
+		attributes: Author_Profile_1_8_1_attributes,
+		save: Author_Profile_1_8_1_save,
 	},
 ];
 
