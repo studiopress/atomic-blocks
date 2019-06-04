@@ -2,9 +2,9 @@
  * Internal dependencies
  */
 import classnames from 'classnames';
-import ProfileBox from './../../../components/profile';
-import SocialIcons from './../../../components/social';
-import AvatarColumn from './../../../components/avatar';
+import ProfileBox from '../../../components/profile';
+import SocialIcons from '../../../components/social';
+import AvatarColumn from '../../../components/avatar';
 
 /**
  * WordPress dependencies
@@ -14,7 +14,7 @@ const {
 	RichText,
 } = wp.editor;
 
-export default class Save_1_7_0 extends Component {
+export default class Save_1_8_1 extends Component {
 	constructor() {
 		super( ...arguments );
 	}
