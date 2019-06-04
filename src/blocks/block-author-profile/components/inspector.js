@@ -2,29 +2,25 @@
  * Inspector Controls
  */
 
-// Setup the block
+/* Setup the block */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 
-// Import block components
+/* Import block components */
 const {
 	InspectorControls,
-	BlockDescription,
-	ColorPalette,
   	PanelColorSettings,
 } = wp.editor;
 
-// Import Inspector components
+/* Import Inspector components */
 const {
-	Panel,
 	PanelBody,
-	PanelRow,
 	RangeControl,
 	SelectControl,
 	TextControl,
 } = wp.components;
 
-// Create an Inspector Controls wrapper Component
+/* Create an Inspector Controls wrapper Component */
 export default class Inspector extends Component {
 
 	constructor( props ) {
@@ -33,17 +29,17 @@ export default class Inspector extends Component {
 
 	render() {
 
-		// Setup the attributes
+		/* Setup the attributes */
 		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, linkedin, email, website, profileAvatarShape  } = this.props.attributes;
 		const { setAttributes } = this.props;
 
-		// Avatar shape options
+		/* Avatar shape options */
 		const profileAvatarShapeOptions = [
 			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) },
 			{ value: 'round', label: __( 'Round', 'atomic-blocks' ) },
 		];
 
-		// Update color values
+		/* Update color values */
 		const onChangeBackgroundColor = value => setAttributes( { profileBackgroundColor: value } );
 		const onChangeProfileTextColor = value => setAttributes( { profileTextColor: value } );
 		const onChangeSocialLinkColor = value => setAttributes( { profileLinkColor: value } );
