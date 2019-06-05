@@ -2,13 +2,13 @@
  * Profile Box Wrapper
  */
 
-// Setup the block
+/* Setup the block */
 const { Component } = wp.element;
 
-// Import block dependencies and components
+/* Import block dependencies and components */
 import classnames from 'classnames';
 
-// Create a profile box wrapper Component
+/* Create a profile box wrapper Component */
 export default class ProfileBox extends Component {
 
 	constructor( props ) {
@@ -17,11 +17,18 @@ export default class ProfileBox extends Component {
 
 	render() {
 
-		// Setup the attributes
-		const { profileAlignment, profileImgURL, profileFontSize, profileBackgroundColor, profileTextColor, profileAvatarShape  } = this.props.attributes;
+		/* Setup the attributes */
+		const {
+			profileAlignment,
+			profileImgURL,
+			profileFontSize,
+			profileBackgroundColor,
+			profileTextColor,
+			profileAvatarShape
+		} = this.props.attributes;
 
 		return (
-			<div 
+			<div
 			style={ {
 				backgroundColor: profileBackgroundColor,
 				color: profileTextColor,

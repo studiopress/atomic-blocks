@@ -59,7 +59,7 @@
 		}
 
 		p {
-			line-height: 1.6; 
+			line-height: 1.6;
 
 			&:last-child {
 			margin-bottom: 0;
@@ -71,7 +71,7 @@
 		font-size: 1.4em;
 		font-weight: bold;
 		line-height: 1.2;
-		margin: 0; 
+		margin: 0;
 	}
 
 	.ab-profile-title {
@@ -87,6 +87,7 @@
 		height: 100%;
 		width: 100%;
 		z-index: 5;
+		margin: 0;
 	}
 
 	.ab-profile-text:empty,
@@ -111,7 +112,7 @@
 			position: absolute;
 			left: 0;
 			z-index: 50;
-			padding: 0; 
+			padding: 0;
 			height: 100%;
 			width: 100%;
 		}
@@ -120,7 +121,7 @@
 			background: none;
 			border: none;
 			outline: none;
-			box-shadow: none; 
+			box-shadow: none;
 		}
 
 		img {
@@ -141,20 +142,20 @@
 		&:empty {
 			display: none;
 		}
-		
+
 		li {
 			display: inline-block;
 			margin: 0 8px 0 0;
 			padding: 0;
-		
+
 			a {
 				border: none;
-	
+
 				&:hover {
 					opacity: .9;
 				}
 			}
-	
+
 			i {
 				font-size: 18px;
 				background: #0393e3;
@@ -176,7 +177,7 @@
 .round .ab-profile-image-wrap {
 	border-radius: 500px;
 	overflow: hidden;
-	
+
 	&:before {
 		content: '';
 		display: inline-block;
@@ -193,7 +194,7 @@
 	.ab-profile-image-square {
 		&:hover {
 			cursor: pointer;
-			
+
 			img {
 				opacity: .7 !important;
 			}
