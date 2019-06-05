@@ -5,7 +5,7 @@ Tags: lsx, gutenberg, blocks
 Requires at least: 5.1.1
 Tested up to: 5.1.1
 Requires PHP: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv3
 
 The new Gutenberg editor is here, and with it comes the new block editor.
@@ -81,19 +81,19 @@ The LSX Blocks plugin was developed with the use of Atomic Blocks https://atomic
 
 1. Blocks
 2. Accordion Block
-3. Author Profile Block
-4. Banner Block
-5. Button Blocks
-6. Card Block
-7. Container Block
-8. CTA Block
-9. Drop Cap Block
-10. Notice Block
-11. Post Carousel Block
-12. Post Grid Block
-13. Sharing Block
+3. Banner Block
+4. Button Blocks
+5. Card Block
+6. Container Block
+7. CTA Block
+8. Post Carousel Block
+9. Post Grid Block
 
 == Changelog ==
+
+**1.1.0**
+* Removing unnecesary blocks
+* Block bug fix.
 
 **1.0.1**
 * Block bug fix.

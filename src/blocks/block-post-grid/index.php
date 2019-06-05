@@ -195,6 +195,7 @@ function lsx_blocks_register_block_core_latest_posts() {
 	}
 
 	register_block_type( 'lsx-blocks/lsx-post-grid', array(
+		'style' => 'lsx-blocks-style-css',
 		'attributes' => array(
 			'categories' => array(
 				'type' => 'string',

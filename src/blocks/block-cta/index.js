@@ -431,7 +431,7 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 	attributes: blockAttributes,
 
 	getEditWrapperProps( { ctaWidth } ) {
-		if ( 'left' === ctaWidth || 'right' === ctaWidth || 'full' === ctaWidth ) {
+		if ( 'center' === ctaWidth || 'wide' === ctaWidth || 'full' === ctaWidth ) {
 			return { 'data-align': ctaWidth };
 		}
 	},
@@ -533,6 +533,7 @@ registerBlockType( 'lsx-blocks/lsx-cta', {
 								boxShadow: '2px 2px 0 0 ' + buttonShadowColor,
 								borderColor: buttonBackgroundColor,
 							} }
+							rel="noopener noreferrer"
 							data-onhover={ buttonHoverColor }
 							data-offhover={ buttonBackgroundColor }
 							onMouseEnter="this.style.backgroundColor=this.getAttribute('data-onhover');"

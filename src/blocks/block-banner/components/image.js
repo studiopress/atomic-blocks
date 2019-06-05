@@ -14,7 +14,7 @@ const {
 	MediaUpload,
 } = wp.editor;
 
-// Create an SocialIcons wrapper Component
+// Create an ImageColumn wrapper Component
 export default class ImageColumn extends Component {
 
 	constructor( props ) {

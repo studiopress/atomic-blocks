@@ -70,11 +70,6 @@ class Setup {
 		require_once LSX_BLOCKS_PATH . 'dist/init.php';
 
 		/**
-		 * Load Social Block PHP
-		 */
-		require_once LSX_BLOCKS_PATH . 'src/blocks/block-sharing/index.php';
-
-		/**
 		 * Load Post Grid PHP
 		 */
 		require_once LSX_BLOCKS_PATH . 'src/blocks/block-post-grid/index.php';

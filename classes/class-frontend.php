@@ -189,15 +189,6 @@ class Frontend {
 						}
 						if ( false !== $current_image_url ) {
 							$mobile_image = $current_image_url;
-							if ( strpos( $mobile_image, 'resize=768' ) !== false ) {
-								$mobile_image = str_replace( '.jpg', '-1024x640.jpg', $mobile_image );
-								$mobile_image = str_replace( '.png', '-1024x640.png', $mobile_image );
-								$mobile_image = str_replace( '.jpeg', '-1024x640.jpeg', $mobile_image );
-							} else if ( strpos( $mobile_image, 'resize=600' ) !== false ) {
-								$mobile_image = str_replace( '.jpg', '-300x300.jpg', $mobile_image );
-								$mobile_image = str_replace( '.png', '-300x300.png', $mobile_image );
-								$mobile_image = str_replace( '.jpeg', '-300x300.jpeg', $mobile_image );
-							}
 
 							$new_image_match = str_replace( $current_image_url, $mobile_image, $image_match );
 							if ( strpos( $mobile_image, 'resize=768' ) !== false ) {

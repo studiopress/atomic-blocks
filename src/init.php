@@ -5,7 +5,7 @@
  * Enqueue CSS/JS of all the blocks.
  *
  * @since   1.0.0
- * @package CGB
+ * @package LSX BLOCKS
  */
 
 // Exit if accessed directly.
@@ -20,17 +20,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-function my_block_cgb_block_assets() {
+function block_lsx_block_assets() {
 	// Styles.
 	wp_enqueue_style(
 		'lsx-blocks-style-css', // Handle.
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
 		array( 'wp-blocks' ) // Dependency to include the CSS after it.
 	);
-} // End function my_block_cgb_block_assets().
+} // End function my_block_lsx_block_assets().
 
 // Hook: Frontend assets.
-add_action( 'enqueue_block_assets', 'my_block_cgb_block_assets' );
+add_action( 'enqueue_block_assets', 'block_lsx_block_assets' );
 
 /**
  * Enqueue Gutenberg block assets for backend editor.
@@ -41,7 +41,7 @@ add_action( 'enqueue_block_assets', 'my_block_cgb_block_assets' );
  *
  * @since 1.0.0
  */
-function my_block_cgb_editor_assets() {
+function block_lsx_editor_assets() {
 	// Scripts.
 	wp_enqueue_script(
 		'lsx-blocks-block-js', // Handle.
@@ -58,7 +58,7 @@ function my_block_cgb_editor_assets() {
 		array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: filemtime — Gets file modification time.
 	);
-} // End function my_block_cgb_editor_assets().
+} // End function my_block_lsx_editor_assets().
 
 // Hook: Editor assets.
-add_action( 'enqueue_block_editor_assets', 'my_block_cgb_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'block_lsx_editor_assets' );

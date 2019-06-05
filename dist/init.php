@@ -4,7 +4,7 @@
  *
  * Enqueue CSS/JS of all the blocks.
  *
- * @since 	1.0.0
+ * @since   1.0.0
  * @package LSX BLOCKS
  */
 
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function lsx_blocks_block_assets() {
 
-	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
+	$postfix = ( SCRIPT_DEBUG === true ) ? '' : '.min';
 
 	// Load the compiled styles
 	wp_register_style(
@@ -48,7 +48,7 @@ add_action( 'init', 'lsx_blocks_block_assets' );
  */
 function lsx_blocks_editor_assets() {
 
-	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
+	$postfix = ( SCRIPT_DEBUG === true ) ? '' : '.min';
 
 	// Load the FontAwesome icon library
 	wp_enqueue_style(
@@ -62,7 +62,7 @@ function lsx_blocks_editor_assets() {
 	wp_enqueue_script(
 		'lsx-blocks-block-js',
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ),
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' , 'wp-components' , 'wp-editor' ),
+		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.build.js' )
 	);
 
@@ -86,30 +86,13 @@ function lsx_blocks_editor_assets() {
 add_action( 'enqueue_block_editor_assets', 'lsx_blocks_editor_assets' );
 
 
-/**
- * Enqueue assets for frontend
- *
- * @since 1.0.0
- */
-function lsx_blocks_frontend_assets() {
-	// Load the dismissable notice js
-	wp_enqueue_script(
-		'lsx-blocks-dismiss-js',
-		plugins_url( '/dist/assets/js/dismiss.js', dirname( __FILE__ ) ),
-		array( 'jquery' ),
-		filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/dismiss.js' )
-	);
-}
-add_action( 'wp_enqueue_scripts', 'lsx_blocks_frontend_assets' );
-
-
 // Add custom block category
 add_filter( 'block_categories', function( $categories, $post ) {
 	return array_merge(
 		$categories,
 		array(
 			array(
-				'slug' => 'lsx-blocks',
+				'slug'  => 'lsx-blocks',
 				'title' => __( 'LSX Blocks', 'lsx-blocks' ),
 			),
 		)

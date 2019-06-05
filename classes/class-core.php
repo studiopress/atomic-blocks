@@ -85,7 +85,7 @@ class Core {
 	/**
 	 * Load the plugin textdomain
 	 */
-	public function lsx_blocks_init() {
+	public function load_plugin_textdomain() {
 		load_plugin_textdomain( 'lsx-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 }

@@ -14,7 +14,7 @@ const {
 	MediaUpload,
 } = wp.editor;
 
-// Create an SocialIcons wrapper Component
+// Create an LogoColumn wrapper Component
 export default class LogoColumn extends Component {
 
 	constructor( props ) {

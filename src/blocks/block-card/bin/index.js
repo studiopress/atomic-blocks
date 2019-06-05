@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import Inspector from './components/inspector';
 import CardBox from './components/card';
 import CustomButton from './components/card';
-//import SocialIcons from './components/social';
 import AvatarColumn from './components/avatar';
 import icons from './components/icons';
 

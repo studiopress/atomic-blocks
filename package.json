@@ -1,6 +1,6 @@
 {
-  "name": "multi-block-cgb-guten-block",
-  "version": "1.9.3",
+  "name": "lsx-blocks",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "cgb-scripts start",
