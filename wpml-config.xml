@@ -1,0 +1,56 @@
+<wpml-config>
+    <gutenberg-blocks>
+        <gutenberg-block type="atomic-blocks/ab-testimonial" translate="1">
+            <xpath>//div[@class="ab-testimonial-text"]</xpath>
+            <xpath>//h2[@class="ab-testimonial-name"]</xpath>
+            <xpath>//small[@class="ab-testimonial-title"]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-profile-box" translate="1">
+            <xpath>//h2[@class="ab-profile-name"]</xpath>
+            <xpath>//p[@class="ab-profile-title"]</xpath>
+            <xpath>//div[@class="ab-profile-text"]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-notice" translate="1">
+            <xpath>//div[@class="ab-notice-title"]</xpath>
+            <xpath>//div[@class="ab-notice-text"]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-drop-cap" translate="1">
+            <xpath>//div[@class="ab-drop-cap-text"]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-button" translate="1">
+            <xpath>//a[contains(@class, "ab-button")]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-accordion" translate="1">
+            <xpath>//summary[@class="ab-accordion-title"]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-cta" translate="1">
+            <xpath>//h2[contains(@class, "ab-cta-title")]</xpath>
+            <xpath>//div[contains(@class, "ab-cta-text")]</xpath>
+            <xpath>//a[contains(@class, "ab-button")]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-spacer" translate="0" />
+        <gutenberg-block type="atomic-blocks/ab-sharing" translate="0" />
+        <gutenberg-block type="atomic-blocks/newsletter" translate="0"/>
+        <gutenberg-block type="atomic-blocks/ab-columns" translate="0" />
+        <gutenberg-block type="atomic-blocks/ab-column" translate="0" />
+        <gutenberg-block type="atomic-blocks/ab-container" translate="0" />
+        <gutenberg-block type="atomic-blocks/ab-post-grid" translate="0" />
+        <gutenberg-block type="atomic-blocks/ab-pricing" translate="0" />
+        <gutenberg-block type="atomic-blocks/ab-pricing-table" translate="0"/>
+        <gutenberg-block type="atomic-blocks/ab-pricing-table-title" translate="1">
+            <xpath>//div[contains(@class, "ab-pricing-table-title")]/strong</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-pricing-table-subtitle" translate="1">
+            <xpath>//div[contains(@class, "ab-pricing-table-subtitle")]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-pricing-table-price" translate="1">
+            <xpath>//span[@class="ab-pricing-table-term"]</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-pricing-table-features" translate="1">
+            <xpath>//ul/li</xpath>
+        </gutenberg-block>
+        <gutenberg-block type="atomic-blocks/ab-pricing-table-button" translate="1">
+            <xpath>//a</xpath>
+        </gutenberg-block>
+    </gutenberg-blocks>
+</wpml-config>
