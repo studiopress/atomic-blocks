@@ -32,3 +32,4 @@ import './blocks/block-newsletter/index';
 import './blocks/block-column/index.js';
 import './blocks/block-column-inner/index.js';
 
+import './blocks/block-layout/index.js';

@@ -1,0 +1,79 @@
+<?php
+/**
+ * Layout block related functions.
+ *
+ * @package AtomicBlocks
+ */
+
+use AtomicBlocks\Layouts\Component_Registry;
+
+/**
+ * Registers layout components with the Component Registry
+ * for use in the Layouts block.
+ *
+ * @param array $data The component data.
+ *
+ * @return bool|WP_Error
+ */
+function atomic_blocks_register_layout_component( array $data ) {
+
+	$registry = Component_Registry::instance();
+
+	try {
+		$registry::add( $data );
+		return true;
+	} catch ( Exception $exception ) {
+		return new WP_Error( esc_html( $exception->getMessage() ) );
+	}
+}
+
+/**
+ * Retrieves the specified layout component.
+ *
+ * @param string $type The layout component type.
+ * @param string $key The layout component's unique key.
+ *
+ * @return mixed|WP_Error
+ */
+function atomic_blocks_get_layout_component( $type, $key ) {
+
+	if ( empty( $type ) ) {
+		return new WP_Error( esc_html__( 'You must supply a type to retrieve a layout component.', 'atomic-blocks' ) );
+	}
+
+	if ( empty( $key ) ) {
+		return new WP_Error( esc_html__( 'You must supply a key to retrieve a layout component.', 'atomic-blocks' ) );
+	}
+
+	$type = sanitize_key( $type );
+
+	$key = sanitize_key( $key );
+
+	$registry = Component_Registry::instance();
+
+	try {
+		return $registry::get( $type, $key );
+	} catch ( Exception $exception ) {
+		return new WP_Error( esc_html( $exception->getMessage() ) );
+	}
+}
+
+/**
+ * Gets the registered layouts.
+ *
+ * @return array Array of registered layouts.
+ */
+function atomic_blocks_get_layouts() {
+	$registry = Component_Registry::instance();
+	return $registry::layouts();
+}
+
+/**
+ * Gets the registered sections.
+ *
+ * @return array Array of registered sections.
+ */
+function atomic_blocks_get_sections() {
+	$registry = Component_Registry::instance();
+	return $registry::sections();
+}

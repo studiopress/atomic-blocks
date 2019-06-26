@@ -1,0 +1,109 @@
+/**
+ * Layout styles
+ * Loads on front end and back end
+ */
+
+.ab-layout-column-button .ab-block-button {
+	margin-bottom: 0;
+}
+
+.ab-layout-selector-group {
+	margin-top: 10px;
+}
+
+.ab-layout-selector {
+	display: inline-block;
+	margin: 0 5px;
+
+	button.ab-layout-selector-button {
+		padding: 15px;
+		height: auto;
+		border-radius: 5px;
+		background: #fff;
+
+		&:hover {
+			background: #fff;
+		}
+	}
+
+	button.components-button.is-button:last-child {
+		border-radius: 5px;
+	}
+}
+
+.ab-toolbar-insert-layout-button {
+	margin-right: 3px;
+}
+
+/**
+ * Layout style modifications
+ * This probably belongs in a theme!
+ */
+
+ .ab-layout-team-1 {
+	.ab-profile-column {
+		flex: 100%;
+	}
+	.ab-social-links {
+		padding-top: 25px;
+	}
+ }
+
+ .ab-layout-hero-cover {
+	 .wp-block-cover__inner-container {
+		max-width: 800px;
+	 }
+
+	 h2, h3, h4 {
+		max-width: 100%;
+	 }
+ }
+
+ .ab-white-text,
+ .wp-block-heading .ab-white-text {
+	 color: #fff;
+ }
+
+ .ab-layout-landing-2 {
+	.ab-block-profile {
+		padding: 0;
+		text-align: center;
+	}
+	.ab-block-profile .ab-profile-avatar-wrap,
+	.ab-block-profile .ab-profile-column {
+		flex: 0 0 100%;
+	}
+	.round .ab-profile-image-wrap {
+		max-width: 220px;
+		margin: 0 auto;
+	}
+	.ab-block-cta {
+		.ab-cta-content {
+			max-width: 700px;
+    		margin: 0 auto;
+		}
+
+		.ab-button {
+			font-weight: normal;
+		}
+	}
+ }
+
+ .ab-layout-landing-3 {
+	 .ab-layout-landing-3-cover {
+		 h2, h3, h4, h5, h6 {
+			 margin-left: auto;
+			 margin-right: auto;
+
+			@media only screen and (min-width: 600px) {
+				font-size: 42px;
+			}
+		 }
+	 }
+
+	 @media only screen and (min-width: 600px) {
+		.ab-block-post-grid header .ab-block-post-grid-title {
+			font-size: 24px;
+		}
+	}
+ }
