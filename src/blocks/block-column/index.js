@@ -24,7 +24,7 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'column', 'atomic-blocks' ),
-		__( 'layout', 'atomic-blocks' ),
+		__( 'grid', 'atomic-blocks' ),
 		__( 'row', 'atomic-blocks' ),
 	],
 	attributes: {

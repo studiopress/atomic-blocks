@@ -1,15 +1,16 @@
 ## Page building blocks for the new WordPress editor.
 
-Atomic Blocks is a collection of content blocks for the new [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link) block editor. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building with blocks gives you more control to quickly create and launch any kind of site you want!
+Atomic Blocks is a collection of page building blocks for the new [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link) block editor. Building pages with the block editor and Atomic Blocks gives you more control to quickly create and launch any kind of site you want!
 
-Adding the customizable Atomic Block plugin adds a collection of beautiful, site-building blocks to help you customize page layouts, increase engagement, and get results for your business.
+Installing the customizable Atomic Block plugin adds a collection of beautiful, site-building blocks to help you customize page layouts, increase engagement, and get results for your business. Atomic Blocks provides everything from customizable buttons, to beautifully-designed page sections and full-page layout designs via the Section & Layout block.
 
 Along with the content blocks you'll find in Atomic Blocks, we're also publishing helpful articles and tutorials to help you get started with Gutenberg.
 
 ## Atomic Blocks currently includes the following blocks:
 
+* Section & Layout Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/layout-block/)
 * Advanced Columns Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/advanced-columns-block/)
-* Newsletter Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/newsletter-block/)
+* Newsletter Block  – [Block Demo](https://atomicblocks.com/blocks/newsletter-block/)
 * Pricing Table Block - [Block Demo](https://atomicblocks.com/blocks/pricing-table-block/)
 * Post Grid Block - [Block Demo](https://atomicblocks.com/blocks/post-grid-block/)
 * Container Block - [Block Demo](https://atomicblocks.com/blocks/container-block/)
@@ -35,6 +36,10 @@ In addition to the Atomic Block Theme, we’ve built Revolution Pro with the Stu
 
 * [Revolution Pro Theme Demo](https://demo.studiopress.com/revolution/)
 * [Purchase the Revolution Theme](https://my.studiopress.com/themes/revolution/)
+
+## Google AMP Support
+
+The Accelerated Mobile Pages (AMP) project is a publishing format created by Google to enhance site performance for mobile website users. AMP pages are specially designed for Google search users to quickly load website pages without using any extraneous data. Atomic Blocks has support for AMP built into each block!
 
 ## Atomic Blocks Help File
 
@@ -82,6 +87,20 @@ Yes, you can use Atomic Blocks with any theme, but we recommend using our [Atomi
 Yes, you will need to have WordPress 5.0 or later installed to take advantage of Atomic Blocks.
 
 ## Changelog
+
+**2.0**
+* Add Section and Layout block.
+
+**1.8.0**
+* Made all blocks compatible with the official AMP plugin. No more validation errors.
+* Notice block: Improve dismissible notice support for older browsers.
+* Notice block: Fix bug that caused dismiss icon to show on non-dismissible notices under certain conditions.
+* Post & Page Grid block: Improved grid support for Internet Explorer.
+* Post & Page Grid block: Fix compatibility issue with WordPress 5.2
+* Post & Page Grid block: Add support for custom image sizes registered by themes and other plugins.
+* Post & Page Grid block: Add full width alignment option.
+* Advanced Columns block: Add support for custom CSS class on inner columns.
+* Button block: Removed custom color palette in favor of the active theme's color palette.
 
 **1.7.1**
 * Post Grid: Improve IE11 support on the grid.

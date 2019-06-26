@@ -11,18 +11,19 @@
  */
 
 if ( PHP_VERSION_ID < 50600 ) {
-	add_action( 'enqueue_block_editor_assets', 'atomic_blocks_unregister_newsletter_block' );
+	add_action( 'enqueue_block_editor_assets', 'atomic_blocks_unregister_incompatible_blocks' );
 }
 /**
- * Unregisters the newsletter block on sites
+ * Unregisters certain blocks on sites
  * running PHP < 5.6.
  */
-function atomic_blocks_unregister_newsletter_block() {
+function atomic_blocks_unregister_incompatible_blocks() {
 	?>
 	<script>
 		window.addEventListener( 'DOMContentLoaded', function() {
 			wp.domReady( function() {
 				wp.blocks.unregisterBlockType( 'atomic-blocks/newsletter' );
+				wp.blocks.unregisterBlockType( 'atomic-blocks/ab-layouts' );
 			} );
 		} );
 	</script>

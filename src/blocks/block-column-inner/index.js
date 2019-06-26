@@ -7,6 +7,7 @@
  */
 import Edit from './components/edit';
 import Save from './components/save';
+import deprecated from './deprecated/deprecated';
 import './styles/style.scss';
 import './styles/editor.scss';
 
@@ -108,6 +109,8 @@ registerBlockType( 'atomic-blocks/ab-column', {
 	save: props => {
 		return <Save { ...props } />;
 	},
+
+	deprecated: deprecated,
 } );
 
 /* Add the vertical column alignment class to the block wrapper. */

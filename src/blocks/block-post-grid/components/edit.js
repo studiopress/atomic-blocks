@@ -107,7 +107,7 @@ class LatestPostsBlock extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } );
 						} }
-						controls={ [ 'center', 'wide' ] }
+						controls={ [ 'center', 'wide', 'full' ] }
 					/>
 					<Toolbar controls={ layoutControls } />
 				</BlockControls>
