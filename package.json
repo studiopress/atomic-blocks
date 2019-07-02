@@ -73,15 +73,15 @@
     "babel-preset-stage-2": "^6.24.1",
     "npm-run-all": "^4.1.5"
   },
-    "scripts": {
-        "start": "node scripts/start.js",
-        "build": "npm-run-all makepot build-assets",
-        "build-assets": "node scripts/build.js",
-        "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor,dist/blocks.build.js",
-        "lint:css": "wp-scripts lint-style",
-        "lint:js": "wp-scripts lint-js",
-        "lint:pkg-json": "wp-scripts lint-pkg-json"
-    },
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "npm-run-all makepot build-assets",
+    "build-assets": "node scripts/build.js",
+    "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor,dist/blocks.build.js",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "lint:pkg-json": "wp-scripts lint-pkg-json"
+  },
   "babel": {
     "presets": [
       [
