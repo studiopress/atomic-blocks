@@ -41,7 +41,7 @@ const {
 	sortBy,
 	isEqual,
 	merge,
-	isEmpty,
+	isEmpty
 } = require( 'lodash' );
 const { relative, sep } = require( 'path' );
 const { writeFileSync } = require( 'fs' );
@@ -53,7 +53,7 @@ const { writeFileSync } = require( 'fs' );
  */
 const DEFAULT_HEADERS = {
 	'content-type': 'text/plain; charset=UTF-8',
-	'x-generator': 'babel-plugin-wp-i18n',
+	'x-generator': 'babel-plugin-wp-i18n'
 };
 
 /**
@@ -67,7 +67,7 @@ const DEFAULT_FUNCTIONS = {
 	__: [ 'msgid' ],
 	_n: [ 'msgid', 'msgid_plural' ],
 	_x: [ 'msgid', 'msgctxt' ],
-	_nx: [ 'msgid', 'msgctxt', 'msgid_plural' ],
+	_nx: [ 'msgid', 'msgctxt', 'msgid_plural' ]
 };
 
 /**
@@ -139,6 +139,7 @@ function getTranslatorComment( path, _originalNodeLine ) {
 
 		const match = commentNode.value.match( REGEXP_TRANSLATOR_COMMENT );
 		if ( match ) {
+
 			// Extract text from matched translator prefix
 			comment = match[ 1 ]
 				.split( '\n' )
@@ -148,7 +149,7 @@ function getTranslatorComment( path, _originalNodeLine ) {
 			// False return indicates to Lodash to break iteration
 			return false;
 		}
-	} );
+	});
 
 	if ( comment ) {
 		return comment;
@@ -225,7 +226,7 @@ module.exports = function() {
 					}
 
 					return memo;
-				}, {} );
+				}, {});
 
 				// Can only assign translation with usable msgid
 				if ( ! translation.msgid ) {
@@ -242,10 +243,10 @@ module.exports = function() {
 							'': {
 								'': {
 									msgid: '',
-									msgstr: [],
-								},
-							},
-						},
+									msgstr: []
+								}
+							}
+						}
 					};
 
 					for ( const key in baseData.headers ) {
@@ -277,7 +278,7 @@ module.exports = function() {
 					.split( sep )
 					.join( '/' );
 				translation.comments = {
-					reference: pathname + ':' + path.node.loc.start.line,
+					reference: pathname + ':' + path.node.loc.start.line
 				};
 
 				// If exists, also assign translator comment
@@ -300,7 +301,7 @@ module.exports = function() {
 				},
 				exit( path, state ) {
 					const { filename } = this.file.opts;
-					if ( isEmpty( strings[ filename ] ) ) {
+					if ( isEmpty( strings[ filename ]) ) {
 						delete strings[ filename ];
 						return;
 					}
@@ -312,7 +313,8 @@ module.exports = function() {
 					const translations = reduce(
 						files,
 						( memo, file ) => {
-							for ( const context in strings[ file ] ) {
+							for ( const context in strings[ file ]) {
+
 								// Within the same file, sort translations by line
 								const sortedTranslations = sortBy(
 									strings[ file ][ context ],
@@ -326,11 +328,11 @@ module.exports = function() {
 									}
 
 									// Merge references if translation already exists
-									if ( isSameTranslation( translation, memo[ msgctxt ][ msgid ] ) ) {
+									if ( isSameTranslation( translation, memo[ msgctxt ][ msgid ]) ) {
 										translation.comments.reference = uniq(
 											[
 												memo[ msgctxt ][ msgid ].comments.reference,
-												translation.comments.reference,
+												translation.comments.reference
 											]
 												.join( '\n' )
 												.split( '\n' )
@@ -338,7 +340,7 @@ module.exports = function() {
 									}
 
 									memo[ msgctxt ][ msgid ] = translation;
-								} );
+								});
 							}
 
 							return memo;
@@ -347,7 +349,7 @@ module.exports = function() {
 					);
 
 					// Merge translations from individual files into headers
-					const data = merge( {}, baseData, { translations } );
+					const data = merge({}, baseData, { translations });
 
 					// Ideally we could wait until Babel has finished parsing
 					// all files or at least asynchronously write, but the
@@ -356,9 +358,9 @@ module.exports = function() {
 					const compiled = po.compile( data );
 					writeFileSync( state.opts.output || DEFAULT_OUTPUT, compiled );
 					this.hasPendingWrite = false;
-				},
-			},
-		},
+				}
+			}
+		}
 	};
 };
 

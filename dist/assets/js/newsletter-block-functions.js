@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var $ = jQuery;
 
@@ -19,19 +19,19 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var form = $( this ).parents( 'form' );
 
-			var nonce = button.parent().find( "[name='ab-newsletter-form-nonce']" ).val();
+			var nonce = button.parent().find( '[name=\'ab-newsletter-form-nonce\']' ).val();
 
-			var email = button.parent().find( "[name='ab-newsletter-email-address']" ).val();
+			var email = button.parent().find( '[name=\'ab-newsletter-email-address\']' ).val();
 
-			var provider = button.parent().find( "[name='ab-newsletter-mailing-list-provider']" ).val();
+			var provider = button.parent().find( '[name=\'ab-newsletter-mailing-list-provider\']' ).val();
 
-			var list = button.parent().find( "[name='ab-newsletter-mailing-list']" ).val();
+			var list = button.parent().find( '[name=\'ab-newsletter-mailing-list\']' ).val();
 
-			var successMessage = button.parent().find( "[name='ab-newsletter-success-message']" ).val();
+			var successMessage = button.parent().find( '[name=\'ab-newsletter-success-message\']' ).val();
 
 			var errorMessageContainer = button.parents( '.ab-block-newsletter' ).find( '.ab-block-newsletter-errors' );
 
-			var ampEndpoint = button.parent().find( "[name='ab-newsletter-amp-endpoint-request']" ).val();
+			var ampEndpoint = button.parent().find( '[name=\'ab-newsletter-amp-endpoint-request\']' ).val();
 
 			if ( ! email ) {
 				setTimeout( function() {
@@ -46,7 +46,7 @@ var AtomicBlocksNewsletterSubmission = {
 				return;
 			}
 
-			$.ajax( {
+			$.ajax({
 				data: {
 					action: 'atomic_blocks_newsletter_submission',
 					'ab-newsletter-email-address': email,
@@ -54,7 +54,7 @@ var AtomicBlocksNewsletterSubmission = {
 					'ab-newsletter-mailing-list': list,
 					'ab-newsletter-form-nonce': nonce,
 					'ab-newsletter-success-message': successMessage,
-					'ab-newsletter-amp-endpoint-request': ampEndpoint,
+					'ab-newsletter-amp-endpoint-request': ampEndpoint
 				},
 				type: 'post',
 				url: atomic_blocks_newsletter_vars.ajaxurl,
@@ -75,15 +75,15 @@ var AtomicBlocksNewsletterSubmission = {
 					errorMessageContainer.html( '<p>' + response.data.message + '</p>' ).fadeIn();
 				}
 
-			} );
-		} );
+			});
+		});
 
 		$( '.ab-newsletter-email-address-input' ).on( 'keyup', function( event ) {
-			$( '.ab-block-newsletter-errors' ).html('').fadeOut();
-		} );
+			$( '.ab-block-newsletter-errors' ).html( '' ).fadeOut();
+		});
 	}
-}
+};
 
 $( document ).ready( function() {
 	AtomicBlocksNewsletterSubmission.init();
-} );
+});

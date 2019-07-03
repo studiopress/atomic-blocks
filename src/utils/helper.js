@@ -7,7 +7,7 @@ import md5 from 'md5';
 
 // Calculate the font size
 export function fontRatioToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
+	return ( 0 === ratio || 50 === ratio ) ?
 		null :
 		'font-size-' + ( 1 * Math.round( ratio / 1 ) );
 }
