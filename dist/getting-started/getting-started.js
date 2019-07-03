@@ -14,9 +14,9 @@ jQuery( document ).ready( function( $ ) {
 
 	// Scroll to anchor
 	$( '.anchor-nav a, .toc a' ).click( function( e ) {
+		var href = $( this ).attr( 'href' );
 		e.preventDefault();
 
-		var href = $( this ).attr( 'href' );
 		$( 'html, body' ).animate({
 			scrollTop: $( href ).offset().top
 		}, 'slow', 'swing' );

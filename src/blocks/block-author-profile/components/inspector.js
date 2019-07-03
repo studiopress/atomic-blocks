@@ -9,7 +9,7 @@ const { Component } = wp.element;
 /* Import block components */
 const {
 	InspectorControls,
-  	PanelColorSettings
+	PanelColorSettings
 } = wp.editor;
 
 /* Import Inspector components */

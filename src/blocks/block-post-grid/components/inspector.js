@@ -155,7 +155,7 @@ export default class Inspector extends Component {
 		imageSizeOptions.unshift( abImageSizeSelect );
 
 		const imageSizeValue = () => {
-			for ( var i = 0; i < imageSizeOptions.length; i++ ) {
+			for ( let i = 0; i < imageSizeOptions.length; i++ ) {
 				if ( imageSizeOptions[i].value === attributes.imageSize ) {
 					return attributes.imageSize;
 				}

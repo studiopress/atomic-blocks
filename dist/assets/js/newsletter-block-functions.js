@@ -7,15 +7,9 @@ var AtomicBlocksNewsletterSubmission = {
 	init: function() {
 		$( '.ab-newsletter-submit' ).on( 'click', function( event ) {
 
-			event.preventDefault();
-
-			wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_processing );
-
 			var button = $( this );
 
 			var button_text_original = button.val();
-
-			button.val( atomic_blocks_newsletter_vars.l10n.button_text_processing ).prop( 'disabled', true );
 
 			var form = $( this ).parents( 'form' );
 
@@ -32,6 +26,12 @@ var AtomicBlocksNewsletterSubmission = {
 			var errorMessageContainer = button.parents( '.ab-block-newsletter' ).find( '.ab-block-newsletter-errors' );
 
 			var ampEndpoint = button.parent().find( '[name=\'ab-newsletter-amp-endpoint-request\']' ).val();
+
+			event.preventDefault();
+
+			wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_processing );
+
+			button.val( atomic_blocks_newsletter_vars.l10n.button_text_processing ).prop( 'disabled', true );
 
 			if ( ! email ) {
 				setTimeout( function() {

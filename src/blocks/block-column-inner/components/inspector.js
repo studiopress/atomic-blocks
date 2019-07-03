@@ -169,7 +169,7 @@ class Inspector extends Component {
 						onChange: setTextColor,
 						label: __( 'Text Color', 'atomic-blocks' )
 					}
-			 	] }
+				] }
 			>
 				<ContrastChecker
 					{ ...{
