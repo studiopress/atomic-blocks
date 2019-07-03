@@ -11,7 +11,7 @@ const {
 	InspectorControls,
 	BlockDescription,
 	ColorPalette,
-	PanelColorSettings,
+	PanelColorSettings
 } = wp.editor;
 
 // Import Inspector components
@@ -23,7 +23,7 @@ const {
 	FormToggle,
 	RangeControl,
 	SelectControl,
-	ToggleControl,
+	ToggleControl
 } = wp.components;
 
 /**
@@ -50,8 +50,8 @@ export default class Inspector extends Component {
 			setAttributes
 		} = this.props;
 
-		const onChangeBorderColor = value => setAttributes( { borderColor: value } );
-		const onChangeBackgroundColor = value => setAttributes( { backgroundColor: value } );
+		const onChangeBorderColor = value => setAttributes({ borderColor: value });
+		const onChangeBackgroundColor = value => setAttributes({ backgroundColor: value });
 
 		return (
 		<InspectorControls key="inspector">
@@ -59,7 +59,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Pricing Column Padding', 'atomic-blocks' ) }
 					value={ padding }
-					onChange={ ( value ) => this.props.setAttributes( { padding: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ padding: value }) }
 					min={ 0 }
 					max={ 20 }
 					step={ 1 }
@@ -67,7 +67,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Pricing Column Border', 'atomic-blocks' ) }
 					value={ borderWidth }
-					onChange={ ( value ) => this.props.setAttributes( { borderWidth: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ borderWidth: value }) }
 					min={ 0 }
 					max={ 10 }
 					step={ 1 }
@@ -75,20 +75,20 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Pricing Column Border Radius', 'atomic-blocks' ) }
 					value={ borderRadius }
-					onChange={ ( value ) => this.props.setAttributes( { borderRadius: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ borderRadius: value }) }
 					min={ 0 }
 					max={ 20 }
 					step={ 1 }
 				/>
 			</PanelBody>
-			{ ( borderWidth > 0 ) && (
+			{ ( 0 < borderWidth ) && (
 				<PanelColorSettings
 					title={ __( 'Pricing Column Border Color', 'atomic-blocks' ) }
 					initialOpen={ false }
 					colorSettings={ [ {
 						value: borderColor,
 						onChange: onChangeBorderColor,
-						label: __( 'Border Color', 'atomic-blocks' ),
+						label: __( 'Border Color', 'atomic-blocks' )
 					} ] }
 				>
 				</PanelColorSettings>
@@ -99,7 +99,7 @@ export default class Inspector extends Component {
 				colorSettings={ [ {
 					value: backgroundColor,
 					onChange: onChangeBackgroundColor,
-					label: __( 'Background Color', 'atomic-blocks' ),
+					label: __( 'Background Color', 'atomic-blocks' )
 				} ] }
 			>
 			</PanelColorSettings>

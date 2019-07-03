@@ -27,13 +27,13 @@ export default class NewsletterContainer extends Component {
 		const {
 			attributes,
 			backgroundColor,
-			textColor,
+			textColor
 		} = this.props;
 
 		/* Setup button background color class */
 		let backgroundColorClass;
 
-		if (attributes.customBackgroundColor) {
+		if ( attributes.customBackgroundColor ) {
 			backgroundColorClass = 'ab-has-custom-background-color';
 		} else {
 			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
@@ -42,7 +42,7 @@ export default class NewsletterContainer extends Component {
 		/* Setup button text color class */
 		let textColorClass;
 
-		if (attributes.customTextColor) {
+		if ( attributes.customTextColor ) {
 			textColorClass = 'ab-has-custom-text-color';
 		} else {
 			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
@@ -55,17 +55,17 @@ export default class NewsletterContainer extends Component {
 					padding: attributes.containerPadding ? attributes.containerPadding : undefined,
 					marginTop: attributes.containerMarginTop ? attributes.containerMarginTop : undefined,
 					marginBottom: attributes.containerMarginBottom ? attributes.containerMarginBottom : undefined,
-					color: textColor.color,
+					color: textColor.color
 				} }
-				className={ classnames( [
-					this.props.className,
+				className={ classnames([
+					this.props.className
 				], {
 					'ab-block-newsletter': true,
 					'ab-form-styles': true,
 					'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
 					[ backgroundColorClass ]: backgroundColorClass,
-					[ textColorClass ]: textColorClass,
-				} )
+					[ textColorClass ]: textColorClass
+				})
 				}
 			>
 				{ this.props.children }

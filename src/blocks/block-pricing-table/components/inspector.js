@@ -8,7 +8,7 @@ const { Component } = wp.element;
 
 // Import block components
 const {
-	InspectorControls,
+	InspectorControls
 } = wp.editor;
 
 // Import Inspector components
@@ -17,7 +17,7 @@ const {
 	Button,
 	PanelBody,
 	PanelRow,
-	RangeControl,
+	RangeControl
 } = wp.components;
 
 /**
@@ -35,7 +35,7 @@ export default class Inspector extends Component {
 		const {
 			attributes: {
 				columns,
-				columnsGap,
+				columnsGap
 			},
 			isSelected,
 			className,
@@ -48,14 +48,14 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Pricing Columns', 'atomic-blocks' ) }
 					value={ columns }
-					onChange={ ( value ) => this.props.setAttributes( { columns: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ columns: value }) }
 					min={ 1 }
 					max={ 4 }
 				/>
 				<RangeControl
 					label={ __( 'Pricing Columns Gap', 'atomic-blocks' ) }
 					value={ columnsGap }
-					onChange={ ( value ) => this.props.setAttributes( { columnsGap: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ columnsGap: value }) }
 					min={ 0 }
 					max={ 5 }
 					step={ 1 }

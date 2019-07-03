@@ -20,7 +20,7 @@ const {
 	withFontSizes,
 	withColors,
 	ContrastChecker,
-	PanelColorSettings,
+	PanelColorSettings
 } = wp.editor;
 
 const {
@@ -28,7 +28,7 @@ const {
 	PanelBody,
 	ToggleControl,
 	TextControl,
-	RangeControl,
+	RangeControl
 } = wp.components;
 
 // Apply fallback styles
@@ -37,9 +37,9 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor
 	};
-} );
+});
 
 /**
  * Create an Inspector Controls wrapper Component
@@ -66,13 +66,13 @@ class Inspector extends Component {
 				buttonTextColor,
 				buttonSize,
 				buttonShape,
-				buttonTarget,
+				buttonTarget
 			},
 			isSelected,
 			setAttributes,
 			backgroundColor,
 			setBackgroundColor,
-			fallbackBackgroundColor,
+			fallbackBackgroundColor
 		} = this.props;
 
 		return (
@@ -81,23 +81,28 @@ class Inspector extends Component {
 				title={ __( 'Button Settings', 'atomic-blocks' ) }
 			>
 				<ButtonSettings
+
 					// Open in new window
 					buttonTarget={ buttonTarget }
 					onChangeButtonTarget={ value =>
-						setAttributes( { buttonTarget: ! buttonTarget } )
+						setAttributes({ buttonTarget: ! buttonTarget })
 					}
+
 					// Button Size
 					buttonSize={ buttonSize }
-					onChangeButtonSize={ buttonSize => setAttributes( { buttonSize } ) }
+					onChangeButtonSize={ buttonSize => setAttributes({ buttonSize }) }
+
 					// Button Shape
 					buttonShape={ buttonShape }
-					onChangeButtonShape={ buttonShape => setAttributes( { buttonShape } ) }
+					onChangeButtonShape={ buttonShape => setAttributes({ buttonShape }) }
+
 					// Button color
 					buttonBackgroundColor={ buttonBackgroundColor }
-					onChangeButtonColor={ buttonBackgroundColor => setAttributes( { buttonBackgroundColor } ) }
+					onChangeButtonColor={ buttonBackgroundColor => setAttributes({ buttonBackgroundColor }) }
+
 					// Button text color
 					buttonTextColor={ buttonTextColor }
-					onChangeButtonTextColor={ buttonTextColor => setAttributes( { buttonTextColor } ) }
+					onChangeButtonTextColor={ buttonTextColor => setAttributes({ buttonTextColor }) }
 				/>
 			</PanelBody>
 
@@ -106,30 +111,34 @@ class Inspector extends Component {
 				initialOpen={ false }
 			>
 				<Padding
+
 					// Top padding
 					paddingEnableTop={ true }
 					paddingTop={ paddingTop }
 					paddingTopMin="0"
 					paddingTopMax="100"
-					onChangePaddingTop={ paddingTop => setAttributes( { paddingTop } ) }
+					onChangePaddingTop={ paddingTop => setAttributes({ paddingTop }) }
+
 					// Right padding
 					paddingEnableRight={ true }
 					paddingRight={ paddingRight }
 					paddingRightMin="0"
 					paddingRightMax="100"
-					onChangePaddingRight={ paddingRight => setAttributes( { paddingRight } ) }
+					onChangePaddingRight={ paddingRight => setAttributes({ paddingRight }) }
+
 					// Bottom padding
 					paddingEnableBottom={ true }
 					paddingBottom={ paddingBottom }
 					paddingBottomMin="0"
 					paddingBottomMax="100"
-					onChangePaddingBottom={ paddingBottom => setAttributes( { paddingBottom } ) }
+					onChangePaddingBottom={ paddingBottom => setAttributes({ paddingBottom }) }
+
 					// Left padding
 					paddingEnableLeft={ true }
 					paddingLeft={ paddingLeft }
 					paddingLeftMin="0"
 					paddingLeftMax="100"
-					onChangePaddingLeft={ paddingLeft => setAttributes( { paddingLeft } ) }
+					onChangePaddingLeft={ paddingLeft => setAttributes({ paddingLeft }) }
 				/>
 			</PanelBody>
 			<PanelColorSettings
@@ -139,8 +148,8 @@ class Inspector extends Component {
 					{
 						value: backgroundColor.color,
 						onChange: setBackgroundColor,
-						label: __( 'Background Color', 'atomic-blocks' ),
-					},
+						label: __( 'Background Color', 'atomic-blocks' )
+					}
 				] }
 			>
 			</PanelColorSettings>
@@ -149,8 +158,8 @@ class Inspector extends Component {
 	}
 }
 
-export default compose( [
+export default compose([
 	applyFallbackStyles,
 	withFontSizes( 'fontSize' ),
-	withColors( 'backgroundColor' ),
-] )( Inspector );
+	withColors( 'backgroundColor' )
+])( Inspector );

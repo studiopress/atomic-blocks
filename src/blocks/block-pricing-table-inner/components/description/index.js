@@ -15,7 +15,7 @@ const {
 	getFontSizeClass,
 	FontSizePicker,
 	withFontSizes,
-	getColorClassName,
+	getColorClassName
 } = wp.editor;
 
 // Register the block
@@ -28,7 +28,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'features', 'atomic-blocks' ),
-		__( 'shop', 'atomic-blocks' ),
+		__( 'shop', 'atomic-blocks' )
 	],
 
 	attributes: {
@@ -36,32 +36,32 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 			type: 'string',
 			source: 'html',
 			selector: 'ol,ul',
-			multiline: 'li',
+			multiline: 'li'
 		},
 		fontSize: {
-			type: 'string',
+			type: 'string'
 		},
 		customFontSize: {
-			type: 'number',
+			type: 'number'
 		},
 		textColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customTextColor: {
-			type: 'string',
+			type: 'string'
 		},
 		backgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customBackgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		borderStyle: {
 			type: 'string',
-			default: 'ab-list-border-none',
+			default: 'ab-list-border-none'
 		},
 		borderColor: {
-			type: 'string',
+			type: 'string'
 		},
 		borderWidth: {
 			type: 'number',
@@ -69,20 +69,20 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 		},
 		paddingTop: {
 			type: 'number',
-			default: 10,
+			default: 10
 		},
 		paddingRight: {
 			type: 'number',
-			default: 20,
+			default: 20
 		},
 		paddingBottom: {
 			type: 'number',
-			default: 10,
+			default: 10
 		},
 		paddingLeft: {
 			type: 'number',
-			default: 20,
-		},
+			default: 20
+		}
 	},
 
 	// Render the block components
@@ -106,7 +106,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 			paddingTop,
 			paddingRight,
 			paddingBottom,
-			paddingLeft,
+			paddingLeft
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
@@ -117,15 +117,15 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		// Setup class names
-		const className = classnames( {
+		const className = classnames({
 			'has-background': backgroundColor || customBackgroundColor,
 			'ab-pricing-table-features': true,
 			[ fontSizeClass ]: fontSizeClass,
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,
 			[ borderStyle ]: borderStyle,
-			[ 'ab-list-border-width-' + borderWidth ]: borderWidth,
-		} );
+			[ 'ab-list-border-width-' + borderWidth ]: borderWidth
+		});
 
 		// Setup styles
 		const styles = {
@@ -136,7 +136,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
 		};
 
 		// Save the block markup for the front end
@@ -149,5 +149,5 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-features', {
 				style={ styles }
 			/>
 		);
-	},
-} );
+	}
+});

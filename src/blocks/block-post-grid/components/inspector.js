@@ -11,7 +11,7 @@ import map from 'lodash/map';
 
 // Import block components
 const {
-  InspectorControls,
+  InspectorControls
 } = wp.editor;
 
 // Import Inspector components
@@ -21,7 +21,7 @@ const {
 	RangeControl,
 	SelectControl,
 	TextControl,
-	ToggleControl,
+	ToggleControl
 } = wp.components;
 
 const { addQueryArgs } = wp.url;
@@ -37,23 +37,23 @@ export default class Inspector extends Component {
 
 	constructor() {
 		super( ...arguments );
-		this.state = { categoriesList: [] }
+		this.state = { categoriesList: [] };
 	}
 
 	componentDidMount() {
 		this.stillMounted = true;
-		this.fetchRequest = apiFetch( {
-			path: addQueryArgs( '/wp/v2/categories', { per_page: -1 } )
-		} ).then(
+		this.fetchRequest = apiFetch({
+			path: addQueryArgs( '/wp/v2/categories', { per_page: -1 })
+		}).then(
 			( categoriesList ) => {
 				if ( this.stillMounted ) {
-					this.setState( { categoriesList } );
+					this.setState({ categoriesList });
 				}
 			}
 		).catch(
 			() => {
 				if ( this.stillMounted ) {
-					this.setState( { categoriesList: [] } );
+					this.setState({ categoriesList: [] });
 				}
 			}
 		);
@@ -67,12 +67,12 @@ export default class Inspector extends Component {
 	imageSizeSelect() {
 		const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
 
-		return compact( map( getSettings.imageSizes, ( { name, slug } ) => {
+		return compact( map( getSettings.imageSizes, ({ name, slug }) => {
 			return {
 				value: slug,
-				label: name,
+				label: name
 			};
-		} ) );
+		}) );
 	}
 
 	render() {
@@ -86,7 +86,7 @@ export default class Inspector extends Component {
 
 		const {
 			order,
-			orderBy,
+			orderBy
 		} = attributes;
 
 		const { categoriesList } = this.state;
@@ -94,13 +94,13 @@ export default class Inspector extends Component {
 		// Thumbnail options
 		const imageCropOptions = [
 			{ value: 'landscape', label: __( 'Landscape', 'atomic-blocks' ) },
-			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) },
+			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) }
 		];
 
 		// Post type options
 		const postTypeOptions = [
 			{ value: 'post', label: __( 'Post', 'atomic-blocks' ) },
-			{ value: 'page', label: __( 'Page', 'atomic-blocks' ) },
+			{ value: 'page', label: __( 'Page', 'atomic-blocks' ) }
 		];
 
 		// Section title tags
@@ -111,7 +111,7 @@ export default class Inspector extends Component {
 			{ value: 'article', label: __( 'article', 'atomic-blocks' ) },
 			{ value: 'main', label: __( 'main', 'atomic-blocks' ) },
 			{ value: 'aside', label: __( 'aside', 'atomic-blocks' ) },
-			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) },
+			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) }
 		];
 
 		// Section title tags
@@ -120,31 +120,31 @@ export default class Inspector extends Component {
 			{ value: 'h3', label: __( 'H3', 'atomic-blocks' ) },
 			{ value: 'h4', label: __( 'H4', 'atomic-blocks' ) },
 			{ value: 'h5', label: __( 'H5', 'atomic-blocks' ) },
-			{ value: 'h6', label: __( 'H6', 'atomic-blocks' ) },
+			{ value: 'h6', label: __( 'H6', 'atomic-blocks' ) }
 		];
 
 		// Check for posts
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 		// Check the post type
-		const isPost = attributes.postType === 'post';
+		const isPost = 'post' === attributes.postType;
 
 		// Add instruction text to the select
 		const abImageSizeSelect = {
 			value: 'selectimage',
-			label: __( 'Select image size' ),
+			label: __( 'Select image size' )
 		};
 
 		// Add the landscape image size to the select
 		const abImageSizeLandscape = {
 			value: 'ab-post-grid-image-landscape',
-			label: __( 'AB Grid Landscape' ),
+			label: __( 'AB Grid Landscape' )
 		};
 
 		// Add the square image size to the select
 		const abImageSizeSquare = {
 			value: 'ab-post-grid-image-square',
-			label: __( 'AB Grid Square' ),
+			label: __( 'AB Grid Square' )
 		};
 
 		// Get the image size options
@@ -173,30 +173,30 @@ export default class Inspector extends Component {
 						label={ __( 'Content Type', 'atomic-blocks' ) }
 						options={ postTypeOptions }
 						value={ attributes.postType }
-						onChange={ ( value ) => this.props.setAttributes( { postType: value } ) }
+						onChange={ ( value ) => this.props.setAttributes({ postType: value }) }
 					/>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ attributes.postsToShow }
 						categoriesList={ categoriesList }
 						selectedCategoryId={ attributes.categories }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+						onOrderChange={ ( value ) => setAttributes({ order: value }) }
+						onOrderByChange={ ( value ) => setAttributes({ orderBy: value }) }
+						onCategoryChange={ ( value ) => setAttributes({ categories: '' !== value ? value : undefined }) }
+						onNumberOfItemsChange={ ( value ) => setAttributes({ postsToShow: value }) }
 					/>
 					<RangeControl
 						label={ __( 'Number of items to offset', 'atomic-blocks' ) }
 						value={ attributes.offset }
-						onChange={ ( value ) => setAttributes( { offset: value } ) }
+						onChange={ ( value ) => setAttributes({ offset: value }) }
 						min={ 0 }
 						max={ 20 }
 					/>
-					{ attributes.postLayout === 'grid' &&
+					{ 'grid' === attributes.postLayout &&
 						<RangeControl
 							label={ __( 'Columns', 'atomic-blocks' ) }
 							value={ attributes.columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							onChange={ ( value ) => setAttributes({ columns: value }) }
 							min={ 2 }
 							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 						/>
@@ -209,27 +209,27 @@ export default class Inspector extends Component {
 					<ToggleControl
 						label={ __( 'Display Section Title', 'atomic-blocks' ) }
 						checked={ attributes.displaySectionTitle }
-						onChange={ () => this.props.setAttributes( { displaySectionTitle: ! attributes.displaySectionTitle } ) }
+						onChange={ () => this.props.setAttributes({ displaySectionTitle: ! attributes.displaySectionTitle }) }
 					/>
 					{ attributes.displaySectionTitle &&
 						<TextControl
 							label={ __( 'Section Title', 'atomic-blocks' ) }
 							type="text"
 							value={ attributes.sectionTitle }
-							onChange={ ( value ) => this.props.setAttributes( { sectionTitle: value } ) }
+							onChange={ ( value ) => this.props.setAttributes({ sectionTitle: value }) }
 						/>
 					}
 					<ToggleControl
 						label={ __( 'Display Featured Image', 'atomic-blocks' ) }
 						checked={ attributes.displayPostImage }
-						onChange={ () => this.props.setAttributes( { displayPostImage: ! attributes.displayPostImage } ) }
+						onChange={ () => this.props.setAttributes({ displayPostImage: ! attributes.displayPostImage }) }
 					/>
 					{ attributes.displayPostImage &&
 						<SelectControl
 							label={ __( 'Image Size', 'atomic-blocks' ) }
 							value={ imageSizeValue() }
 							options={ imageSizeOptions }
-							onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
+							onChange={ ( value ) => this.props.setAttributes({ imageSize: value }) }
 						/>
 					}
 					{ attributes.displayPostImage &&
@@ -238,39 +238,39 @@ export default class Inspector extends Component {
 								label={ __( 'Featured Image Style', 'atomic-blocks' ) }
 								options={ imageCropOptions }
 								value={ attributes.imageCrop }
-								onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
+								onChange={ ( value ) => this.props.setAttributes({ imageCrop: value }) }
 							/>
 						</Fragment>
 					}
 					<ToggleControl
 						label={ __( 'Display Title', 'atomic-blocks' ) }
 						checked={ attributes.displayPostTitle }
-						onChange={ () => this.props.setAttributes( { displayPostTitle: ! attributes.displayPostTitle } ) }
+						onChange={ () => this.props.setAttributes({ displayPostTitle: ! attributes.displayPostTitle }) }
 					/>
 					{ isPost &&
 						<ToggleControl
 							label={ __( 'Display Author', 'atomic-blocks' ) }
 							checked={ attributes.displayPostAuthor }
-							onChange={ () => this.props.setAttributes( { displayPostAuthor: ! attributes.displayPostAuthor } ) }
+							onChange={ () => this.props.setAttributes({ displayPostAuthor: ! attributes.displayPostAuthor }) }
 						/>
 					}
 					{ isPost &&
 						<ToggleControl
 							label={ __( 'Display Date', 'atomic-blocks' ) }
 							checked={ attributes.displayPostDate }
-							onChange={ () => this.props.setAttributes( { displayPostDate: ! attributes.displayPostDate } ) }
+							onChange={ () => this.props.setAttributes({ displayPostDate: ! attributes.displayPostDate }) }
 						/>
 					}
 					<ToggleControl
 						label={ __( 'Display Excerpt', 'atomic-blocks' ) }
 						checked={ attributes.displayPostExcerpt }
-						onChange={ () => this.props.setAttributes( { displayPostExcerpt: ! attributes.displayPostExcerpt } ) }
+						onChange={ () => this.props.setAttributes({ displayPostExcerpt: ! attributes.displayPostExcerpt }) }
 					/>
 					{ attributes.displayPostExcerpt &&
 						<RangeControl
 							label={ __( 'Excerpt Length', 'atomic-blocks' ) }
 							value={ attributes.excerptLength }
-							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+							onChange={ ( value ) => setAttributes({ excerptLength: value }) }
 							min={ 0 }
 							max={ 150 }
 						/>
@@ -278,14 +278,14 @@ export default class Inspector extends Component {
 					<ToggleControl
 						label={ __( 'Display Continue Reading Link', 'atomic-blocks' ) }
 						checked={ attributes.displayPostLink }
-						onChange={ () => this.props.setAttributes( { displayPostLink: ! attributes.displayPostLink } ) }
+						onChange={ () => this.props.setAttributes({ displayPostLink: ! attributes.displayPostLink }) }
 					/>
 					{ attributes.displayPostLink &&
 						<TextControl
 							label={ __( 'Customize Continue Reading Text', 'atomic-blocks' ) }
 							type="text"
 							value={ attributes.readMoreText }
-							onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
+							onChange={ ( value ) => this.props.setAttributes({ readMoreText: value }) }
 						/>
 					}
 				</PanelBody>
@@ -298,7 +298,7 @@ export default class Inspector extends Component {
 						label={ __( 'Post Grid Section Tag', 'atomic-blocks' ) }
 						options={ sectionTags }
 						value={ attributes.sectionTag }
-						onChange={ ( value ) => this.props.setAttributes( { sectionTag: value } ) }
+						onChange={ ( value ) => this.props.setAttributes({ sectionTag: value }) }
 						help={ __( 'Change the post grid section tag to match your content hierarchy.', 'atomic-blocks' ) }
 					/>
 					{ attributes.sectionTitle &&
@@ -306,7 +306,7 @@ export default class Inspector extends Component {
 							label={ __( 'Section Title Heading Tag', 'atomic-blocks' ) }
 							options={ sectionTitleTags }
 							value={ attributes.sectionTitleTag }
-							onChange={ ( value ) => this.props.setAttributes( { sectionTitleTag: value } ) }
+							onChange={ ( value ) => this.props.setAttributes({ sectionTitleTag: value }) }
 							help={ __( 'Change the post/page section title tag to match your content hierarchy.', 'atomic-blocks' ) }
 						/>
 					}
@@ -315,7 +315,7 @@ export default class Inspector extends Component {
 							label={ __( 'Post Title Heading Tag', 'atomic-blocks' ) }
 							options={ sectionTitleTags }
 							value={ attributes.postTitleTag }
-							onChange={ ( value ) => this.props.setAttributes( { postTitleTag: value } ) }
+							onChange={ ( value ) => this.props.setAttributes({ postTitleTag: value }) }
 							help={ __( 'Change the post/page title tag to match your content hierarchy.', 'atomic-blocks' ) }
 						/>
 					}

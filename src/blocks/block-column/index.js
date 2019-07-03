@@ -25,97 +25,97 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 	keywords: [
 		__( 'column', 'atomic-blocks' ),
 		__( 'grid', 'atomic-blocks' ),
-		__( 'row', 'atomic-blocks' ),
+		__( 'row', 'atomic-blocks' )
 	],
 	attributes: {
 		columns: {
-			type: 'number',
+			type: 'number'
 		},
 		layout: {
-			type: 'string',
+			type: 'string'
 		},
 		columnsGap: {
 			type: 'number',
-			default: 2,
+			default: 2
 		},
 		align: {
-			type: 'string',
+			type: 'string'
 		},
 		responsiveToggle: {
 			type: 'boolean',
-			default: true,
+			default: true
 		},
 		marginSync: {
 			type: 'boolean',
-			default: false,
+			default: false
 		},
 		margin: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		marginTop: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		marginBottom: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		marginUnit: {
 			type: 'string',
-			default: 'px',
+			default: 'px'
 		},
 		paddingSync: {
 			type: 'boolean',
-			default: false,
+			default: false
 		},
 		padding: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingTop: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingRight: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingBottom: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingLeft: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingUnit: {
 			type: 'string',
-			default: 'px',
+			default: 'px'
 		},
 		textColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customTextColor: {
-			type: 'string',
+			type: 'string'
 		},
 		backgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customBackgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		columnMaxWidth: {
-			type: 'number',
+			type: 'number'
 		},
 		centerColumns: {
 			type: 'boolean',
-			default: true,
-		},
+			default: true
+		}
 	},
 
 	/* Add alignment to block wrapper. */
-	getEditWrapperProps( { align } ) {
+	getEditWrapperProps({ align }) {
 		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {
 			return { 'data-align': align };
 		}
@@ -129,5 +129,5 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 	/* Save the block markup. */
 	save: props => {
 		return <Save { ...props } />;
-	},
-} );
+	}
+});

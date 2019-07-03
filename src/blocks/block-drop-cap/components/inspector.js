@@ -10,7 +10,7 @@ const { Component } = wp.element;
 const {
 	InspectorControls,
 	BlockDescription,
-	ColorPalette,
+	ColorPalette
 } = wp.editor;
 
 // Import Inspector components
@@ -19,7 +19,7 @@ const {
 	Button,
 	RangeControl,
 	SelectControl,
-	PanelBody,
+	PanelBody
 } = wp.components;
 
 /**
@@ -40,7 +40,7 @@ export default class Inspector extends Component {
 		const dropCapOptions = [
 			{ value: 'ab-drop-cap-letter', label: __( 'Letter' ) },
 			{ value: 'ab-drop-cap-square', label: __( 'Square' ) },
-			{ value: 'ab-drop-cap-border', label: __( 'Border' ) },
+			{ value: 'ab-drop-cap-border', label: __( 'Border' ) }
 		];
 
 		return (
@@ -49,7 +49,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Drop Cap Size' ) }
 					value={ dropCapFontSize }
-					onChange={ ( value ) => this.props.setAttributes( { dropCapFontSize: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ dropCapFontSize: value }) }
 					min={ 1 }
 					max={ 6 }
 					step={ 1 }
@@ -60,7 +60,7 @@ export default class Inspector extends Component {
 					description={ __( 'Choose the style of the drop cap in your paragraph.' ) }
 					options={ dropCapOptions }
 					value={ dropCapStyle }
-					onChange={ ( value ) => this.props.setAttributes( { dropCapStyle: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ dropCapStyle: value }) }
 				/>
 			</PanelBody>
 		</InspectorControls>

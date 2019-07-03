@@ -11,7 +11,7 @@ import AvatarColumn from '../../../components/avatar';
  */
 const { Component } = wp.element;
 const {
-	RichText,
+	RichText
 } = wp.editor;
 
 export default class Save_1_8_1 extends Component {
@@ -25,10 +25,11 @@ export default class Save_1_8_1 extends Component {
 			profileTitle,
 			profileContent,
 			profileImgURL,
-			profileTextColor,
+			profileTextColor
 		} = this.props.attributes;
 
 		return (
+
 			/* Save the block markup for the front end */
 			<ProfileBox { ...this.props }>
 

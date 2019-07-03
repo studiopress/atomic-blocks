@@ -21,36 +21,36 @@ const blockAttributes = {
 	profileName: {
 		type: 'array',
 		source: 'children',
-		selector: '.ab-profile-name',
+		selector: '.ab-profile-name'
 	},
 	profileTitle: {
 		type: 'array',
 		source: 'children',
-		selector: '.ab-profile-title',
+		selector: '.ab-profile-title'
 	},
 	profileContent: {
 		type: 'array',
 		selector: '.ab-profile-text',
-		source: 'children',
+		source: 'children'
 	},
 	profileAlignment: {
-		type: 'string',
+		type: 'string'
 	},
 	profileImgURL: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'src',
-		selector: 'img',
+		selector: 'img'
 	},
 	profileImgAlt: {
 		type: 'string',
 		source: 'attribute',
 		selector: 'figure img',
 		attribute: 'alt',
-		default: '',
+		default: ''
 	},
 	profileImgID: {
-		type: 'number',
+		type: 'number'
 	},
 	profileBackgroundColor: {
 		type: 'string',
@@ -70,38 +70,38 @@ const blockAttributes = {
 	},
 	profileAvatarShape: {
 		type: 'string',
-		default: 'square',
+		default: 'square'
 	},
 	twitter: {
-		type: 'url',
+		type: 'url'
 	},
 	facebook: {
-		type: 'url',
+		type: 'url'
 	},
 	instagram: {
-		type: 'url',
+		type: 'url'
 	},
 	pinterest: {
-		type: 'url',
+		type: 'url'
 	},
 	google: {
-		type: 'url',
+		type: 'url'
 	},
 	youtube: {
-		type: 'url',
+		type: 'url'
 	},
 	github: {
-		type: 'url',
+		type: 'url'
 	},
 	linkedin: {
-		type: 'url',
+		type: 'url'
 	},
 	email: {
-		type: 'url',
+		type: 'url'
 	},
 	website: {
-		type: 'url',
-	},
+		type: 'url'
+	}
 };
 
 /**
@@ -115,7 +115,7 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 	keywords: [
 		__( 'author', 'atomic-blocks' ),
 		__( 'profile', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 
 	/* Setup the block attributes */
@@ -131,5 +131,5 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 		return <Save { ...props } />;
 	},
 
-	deprecated: Deprecated,
-} );
+	deprecated: Deprecated
+});

@@ -16,15 +16,16 @@ export default class Save extends Component {
 
 		const { attributes } = this.props;
 
-		const className = classnames( [
+		const className = classnames([
 			'ab-layout-column-wrap',
 			'ab-block-layout-column-gap-' + attributes.columnsGap,
-			attributes.responsiveToggle ? 'ab-is-responsive-column' : null,
-		])
+			attributes.responsiveToggle ? 'ab-is-responsive-column' : null
+		]);
 
 		return (
 			<Columns
 				{ ...this.props }
+
 				/* Pass through the color attributes to the Columns component */
 				backgroundColorValue={ attributes.backgroundColor ? null : attributes.customBackgroundColor }
 				textColorValue={ attributes.textColor ? null : attributes.customTextColor }

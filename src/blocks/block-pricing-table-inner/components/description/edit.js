@@ -10,7 +10,7 @@ const { Component, Fragment } = wp.element;
 const {
 	RichText,
 	withFontSizes,
-	withColors,
+	withColors
 } = wp.editor;
 
 class Edit extends Component {
@@ -31,7 +31,7 @@ class Edit extends Component {
 				paddingTop,
 				paddingRight,
 				paddingBottom,
-				paddingLeft,
+				paddingLeft
 			},
 			isSelected,
 			className,
@@ -39,11 +39,11 @@ class Edit extends Component {
 			fallbackFontSize,
 			fontSize,
 			backgroundColor,
-			textColor,
+			textColor
 		} = this.props;
 
 		// Setup class names
-		const editClassName = classnames( {
+		const editClassName = classnames({
 			'ab-pricing-table-features': true,
 			[ fontSize.class ]: fontSize.class,
 			'has-text-color': textColor.color,
@@ -51,8 +51,8 @@ class Edit extends Component {
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 			[ borderStyle ]: borderStyle,
-			[ 'ab-list-border-width-' + borderWidth ]: borderWidth,
-		} );
+			[ 'ab-list-border-width-' + borderWidth ]: borderWidth
+		});
 
 		// Setup styles
 		const editStyles = {
@@ -63,7 +63,7 @@ class Edit extends Component {
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
 		};
 
 		return [
@@ -78,7 +78,7 @@ class Edit extends Component {
 					placeholder={ __( 'Add a product feature', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ features }
-					onChange={ ( value ) => setAttributes( { features: value } ) }
+					onChange={ ( value ) => setAttributes({ features: value }) }
 					style={ editStyles }
 					className={ editClassName ? editClassName : undefined }
 				/>
@@ -87,7 +87,7 @@ class Edit extends Component {
 	}
 }
 
-export default compose( [
+export default compose([
 	withFontSizes( 'fontSize' ),
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-] )( Edit );
+	withColors( 'backgroundColor', { textColor: 'color' })
+])( Edit );

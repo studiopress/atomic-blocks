@@ -22,7 +22,7 @@ export default class customButton extends Component {
 		return (
 			<div
 				style={ {
-					textAlign: this.props.attributes.buttonAlignment,
+					textAlign: this.props.attributes.buttonAlignment
 				} }
 				className={ classnames(
 					this.props.className,

@@ -27,7 +27,7 @@ registerBlockType( 'atomic-blocks/ab-layouts', {
 	keywords: [
 		__( 'layout', 'atomic-blocks' ),
 		__( 'column', 'atomic-blocks' ),
-		__( 'section', 'atomic-blocks' ),
+		__( 'section', 'atomic-blocks' )
 	],
 
 	/* Render the block components. */
@@ -39,7 +39,7 @@ registerBlockType( 'atomic-blocks/ab-layouts', {
 	save: () => {
 		return null;
 	}
-} );
+});
 
 /**
  * Add a AB Layout button to the toolbar.

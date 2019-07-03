@@ -28,12 +28,12 @@ export default class Pricing extends Component {
 			}
 		} = this.props;
 
-		const className = classnames( [
+		const className = classnames([
 			this.props.className,
-			'ab-pricing-columns-' + columns,
+			'ab-pricing-columns-' + columns
 		], {
-			[ 'align' + align ]: align,
-		} )
+			[ 'align' + align ]: align
+		});
 
 		return (
 			<div

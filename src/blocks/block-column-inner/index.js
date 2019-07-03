@@ -29,75 +29,75 @@ registerBlockType( 'atomic-blocks/ab-column', {
 	keywords: [
 		__( 'column', 'atomic-blocks' ),
 		__( 'layout', 'atomic-blocks' ),
-		__( 'row', 'atomic-blocks' ),
+		__( 'row', 'atomic-blocks' )
 	],
 	attributes: {
 		backgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customBackgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		textColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customTextColor: {
-			type: 'string',
+			type: 'string'
 		},
 		textAlign: {
-			type: 'string',
+			type: 'string'
 		},
 		marginSync: {
 			type: 'boolean',
-			default: false,
+			default: false
 		},
 		marginUnit: {
 			type: 'string',
-			default: 'px',
+			default: 'px'
 		},
 		margin: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		marginTop: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		marginBottom: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingSync: {
 			type: 'boolean',
-			default: false,
+			default: false
 		},
 		paddingUnit: {
 			type: 'string',
-			default: 'px',
+			default: 'px'
 		},
 		padding: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingTop: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingRight: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingBottom: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		paddingLeft: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		columnVerticalAlignment: {
-			type: 'string',
-		},
+			type: 'string'
+		}
 	},
 
 	/* Render the block in the editor. */
@@ -110,18 +110,18 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		return <Save { ...props } />;
 	},
 
-	deprecated: deprecated,
-} );
+	deprecated: deprecated
+});
 
 /* Add the vertical column alignment class to the block wrapper. */
 const withClientIdClassName = wp.compose.createHigherOrderComponent( ( BlockListBlock ) => {
     return ( props ) => {
 		const blockName = props.block.name;
 
-		if( props.attributes.columnVerticalAlignment && blockName === 'atomic-blocks/ab-column' ) {
-            return <BlockListBlock { ...props } className={ "ab-is-vertically-aligned-" + props.attributes.columnVerticalAlignment } />;
+		if ( props.attributes.columnVerticalAlignment && 'atomic-blocks/ab-column' === blockName ) {
+            return <BlockListBlock { ...props } className={ 'ab-is-vertically-aligned-' + props.attributes.columnVerticalAlignment } />;
         } else {
-            return <BlockListBlock { ...props } />
+            return <BlockListBlock { ...props } />;
         }
 	};
 }, 'withClientIdClassName' );

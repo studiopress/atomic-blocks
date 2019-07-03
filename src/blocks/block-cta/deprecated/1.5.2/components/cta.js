@@ -18,6 +18,7 @@ export default class CallToAction_1_5_2 extends Component {
 	}
 
 	render() {
+
 		// Setup the attributes
 		const {
 			attributes: {
@@ -39,17 +40,17 @@ export default class CallToAction_1_5_2 extends Component {
 			}
 		} = this.props;
 
-		const className = classnames( [
+		const className = classnames([
 			this.props.className,
-			'ab-block-cta',
+			'ab-block-cta'
 		], {
 			[ 'ab-font-size-' + ctaTextFontSize ]: ctaTextFontSize,
-			[ 'align' + ctaWidth ]: ctaWidth,
-		} )
+			[ 'align' + ctaWidth ]: ctaWidth
+		});
 
 		const styles = {
 			backgroundColor: ctaBackgroundColor ? ctaBackgroundColor : undefined,
-			textAlign: buttonAlignment ? buttonAlignment : undefined,
+			textAlign: buttonAlignment ? buttonAlignment : undefined
 		};
 
 		return (

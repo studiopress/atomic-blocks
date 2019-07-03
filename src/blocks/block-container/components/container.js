@@ -18,6 +18,7 @@ export default class Container extends Component {
 	}
 
 	render() {
+
 		// Setup the attributes
 		const { attributes: { containerBackgroundColor, containerAlignment, containerPaddingTop, containerPaddingRight, containerPaddingBottom, containerPaddingLeft, containerMarginTop, containerMarginBottom, containerWidth, containerMaxWidth }  } = this.props;
 
@@ -29,15 +30,15 @@ export default class Container extends Component {
 			paddingBottom: containerPaddingBottom ? `${containerPaddingBottom}%` : undefined,
 			paddingTop: containerPaddingTop ? `${containerPaddingTop}%` : undefined,
 			marginTop: containerMarginTop ? `${containerMarginTop}%` : undefined,
-			marginBottom: containerMarginBottom ? `${containerMarginBottom}%` : undefined,
+			marginBottom: containerMarginBottom ? `${containerMarginBottom}%` : undefined
 		};
 
-		const className = classnames( [
+		const className = classnames([
 			this.props.className,
-			'ab-block-container',
+			'ab-block-container'
 		], {
-			[ 'align' + containerWidth ]: containerWidth,
-		} )
+			[ 'align' + containerWidth ]: containerWidth
+		});
 
 		return (
 			<div
