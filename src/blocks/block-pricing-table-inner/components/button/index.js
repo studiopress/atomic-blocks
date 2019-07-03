@@ -16,7 +16,7 @@ const {
 	getFontSizeClass,
 	FontSizePicker,
 	withFontSizes,
-	getColorClassName,
+	getColorClassName
 } = wp.editor;
 
 // Register the block
@@ -29,21 +29,21 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'subtitle', 'atomic-blocks' ),
-		__( 'shop', 'atomic-blocks' ),
+		__( 'shop', 'atomic-blocks' )
 	],
 
 	attributes: {
 		buttonText: {
-			type: 'string',
+			type: 'string'
 		},
 		buttonUrl: {
 			type: 'string',
             source: 'attribute',
             selector: 'a',
-            attribute: 'href',
+            attribute: 'href'
 		},
 		buttonAlignment: {
-			type: 'string',
+			type: 'string'
 		},
 		buttonBackgroundColor: {
 			type: 'string',
@@ -66,39 +66,39 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 			default: false
 		},
 		fontSize: {
-			type: 'string',
+			type: 'string'
 		},
 		customFontSize: {
-			type: 'number',
+			type: 'number'
 		},
 		textColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customTextColor: {
-			type: 'string',
+			type: 'string'
 		},
 		backgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customBackgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		paddingTop: {
 			type: 'number',
-			default: 10,
+			default: 10
 		},
 		paddingRight: {
 			type: 'number',
-			default: 20,
+			default: 20
 		},
 		paddingBottom: {
 			type: 'number',
-			default: 10,
+			default: 10
 		},
 		paddingLeft: {
 			type: 'number',
-			default: 20,
-		},
+			default: 20
+		}
 	},
 
 	// Render the block components
@@ -129,11 +129,11 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		// Setup class names
-		const className = classnames( {
+		const className = classnames({
 			'has-background': backgroundColor || customBackgroundColor,
 			'ab-pricing-table-button': true,
-			[ backgroundClass ]: backgroundClass,
-		} );
+			[ backgroundClass ]: backgroundClass
+		});
 
 		// Setup styles
 		const styles = {
@@ -141,7 +141,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
 		};
 
 		// Save the block markup for the front end
@@ -164,7 +164,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 							) }
 							style={ {
 								color: buttonTextColor,
-								backgroundColor: buttonBackgroundColor,
+								backgroundColor: buttonBackgroundColor
 							} }
 						>
 							<RichText.Content
@@ -175,5 +175,5 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 				</CustomButton>
 			</div>
 		);
-	},
-} );
+	}
+});

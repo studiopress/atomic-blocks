@@ -27,13 +27,13 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-	MediaUpload,
+	MediaUpload
 } = wp.editor;
 
 // Register components
 const {
 	Button,
-	SelectControl,
+	SelectControl
 } = wp.components;
 
 class ABDropCapBlock extends Component {
@@ -44,17 +44,20 @@ class ABDropCapBlock extends Component {
 		const { attributes: { dropCapContent, dropCapAlignment, dropCapBackgroundColor, dropCapTextColor, dropCapFontSize, dropCapStyle }, isSelected, className, setAttributes } = this.props;
 
 		return [
+
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ dropCapAlignment }
-					onChange={ ( value ) => this.props.setAttributes( { dropCapAlignment: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ dropCapAlignment: value }) }
 				/>
 			</BlockControls>,
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...this.props }
 			/>,
+
 			// Show the block markup in the editor
 			<DropCap { ...this.props }>
 				<RichText
@@ -68,7 +71,7 @@ class ABDropCapBlock extends Component {
 						'ab-drop-cap-text',
 						'ab-font-size-' + dropCapFontSize,
 					) }
-					onChange={ ( value ) => this.props.setAttributes( { dropCapContent: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ dropCapContent: value }) }
 				/>
 			</DropCap>
 		];
@@ -84,16 +87,16 @@ registerBlockType( 'atomic-blocks/ab-drop-cap', {
 	keywords: [
 		__( 'drop cap', 'atomic-blocks' ),
 		__( 'quote', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 	attributes: {
 		dropCapContent: {
 			type: 'array',
 			selector: '.ab-drop-cap-text',
-			source: 'children',
+			source: 'children'
 		},
 		dropCapAlignment: {
-			type: 'string',
+			type: 'string'
 		},
 		dropCapBackgroundColor: {
 			type: 'string',
@@ -105,12 +108,12 @@ registerBlockType( 'atomic-blocks/ab-drop-cap', {
 		},
 		dropCapFontSize: {
 			type: 'number',
-			default: 3,
+			default: 3
 		},
 		dropCapStyle: {
             type: 'string',
-            default: 'drop-cap-letter',
-        },
+            default: 'drop-cap-letter'
+        }
 	},
 
 	// Render the block components
@@ -134,5 +137,5 @@ registerBlockType( 'atomic-blocks/ab-drop-cap', {
 				) }
 			</DropCap>
 		);
-	},
-} );
+	}
+});

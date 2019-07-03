@@ -25,13 +25,13 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	MediaUpload,
-	InnerBlocks,
+	InnerBlocks
 } = wp.editor;
 
 // Register components
 const {
 	Button,
-	SelectControl,
+	SelectControl
 } = wp.components;
 
 // Set allowed blocks and media
@@ -39,8 +39,8 @@ const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];
 
 // Get the pricing template
 const getPricingTemplate = memoize( ( columns ) => {
-	return _times( columns, () => [ 'atomic-blocks/ab-pricing-table' ] );
-} );
+	return _times( columns, () => [ 'atomic-blocks/ab-pricing-table' ]);
+});
 
 class ABPricingBlock extends Component {
 
@@ -51,7 +51,7 @@ class ABPricingBlock extends Component {
 			attributes: {
 				columns,
 				columnsGap,
-				align,
+				align
 			},
 			attributes,
 			isSelected,
@@ -61,18 +61,21 @@ class ABPricingBlock extends Component {
 		} = this.props;
 
 		return [
+
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<BlockAlignmentToolbar
 					value={ align }
-					onChange={ align => setAttributes( { align } ) }
+					onChange={ align => setAttributes({ align }) }
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,
+
 			// Show the block markup in the editor
 			<PricingTable { ...this.props }>
 				<div
@@ -101,24 +104,24 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
-		__( 'purchase', 'atomic-blocks' ),
+		__( 'purchase', 'atomic-blocks' )
 	],
 	attributes: {
 		columns: {
 			type: 'number',
-			default: 2,
+			default: 2
 		},
 		columnsGap: {
 			type: 'number',
-			default: 2,
+			default: 2
 		},
 		align: {
-			type: 'string',
-		},
+			type: 'string'
+		}
 	},
 
 	// Add alignment to block wrapper
-	getEditWrapperProps( { align } ) {
+	getEditWrapperProps({ align }) {
 		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {
 			return { 'data-align': align };
 		}
@@ -134,14 +137,14 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 		const {
 			columns,
 			columnsGap,
-			align,
+			align
 		} = props.attributes;
 
 		// Setup the classes
-		const className = classnames( [
+		const className = classnames([
 			'ab-pricing-table-wrap',
 			'ab-block-pricing-table-gap-' + columnsGap
-		])
+		]);
 
 		// Save the block markup for the front end
 		return (
@@ -153,5 +156,5 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 				</div>
 			</PricingTable>
 		);
-	},
-} );
+	}
+});

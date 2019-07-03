@@ -30,7 +30,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	MediaUpload,
-	RichText,
+	RichText
 } = wp.editor;
 
 // Register components
@@ -39,18 +39,18 @@ const {
 	withFallbackStyles,
 	IconButton,
 	Dashicon,
-	Toolbar,
+	Toolbar
 } = wp.components;
 
 const blockAttributes = {
 	buttonText: {
-		type: 'string',
+		type: 'string'
 	},
 	buttonUrl: {
 		type: 'string',
 		source: 'attribute',
 		selector: 'a',
-		attribute: 'href',
+		attribute: 'href'
 	},
 	buttonAlignment: {
 		type: 'string',
@@ -79,25 +79,25 @@ const blockAttributes = {
 	ctaTitle: {
 		type: 'array',
 		selector: '.ab-cta-title',
-		source: 'children',
+		source: 'children'
 	},
 	titleFontSize: {
 		type: 'number',
-		default: '32',
+		default: '32'
 	},
 	ctaTextFontSize: {
-		type: 'number',
+		type: 'number'
 	},
 	ctaText: {
 		type: 'array',
 		selector: '.ab-cta-text',
-		source: 'children',
+		source: 'children'
 	},
 	ctaWidth: {
-		type: 'string',
+		type: 'string'
 	},
 	ctaBackgroundColor: {
-		type: 'string',
+		type: 'string'
 	},
 	ctaTextColor: {
 		type: 'string',
@@ -107,27 +107,27 @@ const blockAttributes = {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'src',
-		selector: 'img',
+		selector: 'img'
 	},
 	imgID: {
-		type: 'number',
+		type: 'number'
 	},
 	imgAlt: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'alt',
-		selector: 'img',
+		selector: 'img'
 	},
 	dimRatio: {
 		type: 'number',
-		default: 50,
+		default: 50
 	},
 
 	// Deprecated
 	ctaTitleFontSize: {
 		type: 'string',
 		default: '32'
-	},
+	}
 };
 
 class ABCTABlock extends Component {
@@ -156,7 +156,7 @@ class ABCTABlock extends Component {
 				imgURL,
 				imgID,
 				imgAlt,
-				dimRatio,
+				dimRatio
 			},
 			attributes,
 			isSelected,
@@ -166,32 +166,35 @@ class ABCTABlock extends Component {
 		} = this.props;
 
 		const onSelectImage = img => {
-			setAttributes( {
+			setAttributes({
 				imgID: img.id,
 				imgURL: img.url,
-				imgAlt: img.alt,
-			} );
+				imgAlt: img.alt
+			});
 		};
 
 		return [
+
 			// Show the alignment toolbar on focus
 			<BlockControls>
 				<BlockAlignmentToolbar
 					value={ ctaWidth }
-					onChange={ ctaWidth => setAttributes( { ctaWidth } ) }
+					onChange={ ctaWidth => setAttributes({ ctaWidth }) }
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 				<AlignmentToolbar
 					value={ buttonAlignment }
 					onChange={ ( value ) => {
-						setAttributes( { buttonAlignment: value } );
+						setAttributes({ buttonAlignment: value });
 					} }
 				/>
 			</BlockControls>,
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,
+
 			// Show the button markup in the editor
 			<CallToAction { ...this.props }>
 				{ imgURL && !! imgURL.length && (
@@ -201,7 +204,7 @@ class ABCTABlock extends Component {
 								'ab-cta-image',
 								dimRatioToClass( dimRatio ),
 								{
-									'has-background-dim': dimRatio !== 0,
+									'has-background-dim': 0 !== dimRatio
 								}
 							) }
 							src={ imgURL }
@@ -221,9 +224,9 @@ class ABCTABlock extends Component {
 							'ab-font-size-' + titleFontSize,
 						) }
 						style={ {
-							color: ctaTextColor,
+							color: ctaTextColor
 						} }
-						onChange={ (value) => setAttributes( { ctaTitle: value } ) }
+						onChange={ ( value ) => setAttributes({ ctaTitle: value }) }
 					/>
 					<RichText
 						tagName="div"
@@ -236,9 +239,9 @@ class ABCTABlock extends Component {
 							'ab-font-size-' + ctaTextFontSize,
 						) }
 						style={ {
-							color: ctaTextColor,
+							color: ctaTextColor
 						} }
-						onChange={ ( value ) => setAttributes( { ctaText: value } ) }
+						onChange={ ( value ) => setAttributes({ ctaText: value }) }
 					/>
 				</div>
 				<div className="ab-cta-button">
@@ -254,9 +257,9 @@ class ABCTABlock extends Component {
 						) }
 						style={ {
 							color: buttonTextColor,
-							backgroundColor: buttonBackgroundColor,
+							backgroundColor: buttonBackgroundColor
 						} }
-						onChange={ (value) => setAttributes( { buttonText: value } ) }
+						onChange={ ( value ) => setAttributes({ buttonText: value }) }
 					/>
 					{ isSelected && (
 						<form
@@ -264,14 +267,14 @@ class ABCTABlock extends Component {
 							className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
 							onSubmit={ event => event.preventDefault() }
 							style={ {
-								textAlign: buttonAlignment,
+								textAlign: buttonAlignment
 							} }
 						>
 							<Dashicon icon={ 'admin-links' } />
 							<URLInput
 								className="button-url"
 								value={ buttonUrl }
-								onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
+								onChange={ ( value ) => setAttributes({ buttonUrl: value }) }
 							/>
 							<IconButton
 								icon="editor-break"
@@ -295,12 +298,12 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 	keywords: [
 		__( 'call to action', 'atomic-blocks' ),
 		__( 'cta', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 
 	attributes: blockAttributes,
 
-	getEditWrapperProps( { ctaWidth } ) {
+	getEditWrapperProps({ ctaWidth }) {
 		if ( 'left' === ctaWidth || 'right' === ctaWidth || 'full' === ctaWidth ) {
 			return { 'data-align': ctaWidth };
 		}
@@ -333,7 +336,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			imgURL,
 			imgID,
 			imgAlt,
-			dimRatio,
+			dimRatio
 		} = props.attributes;
 
 		// Save the block markup for the front end
@@ -346,7 +349,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 								'ab-cta-image',
 								dimRatioToClass( dimRatio ),
 								{
-									'has-background-dim': dimRatio !== 0,
+									'has-background-dim': 0 !== dimRatio
 								}
 							) }
 							src={ imgURL }
@@ -364,7 +367,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 								'ab-font-size-' + titleFontSize,
 							) }
 							style={ {
-								color: ctaTextColor,
+								color: ctaTextColor
 							} }
 							value={ ctaTitle }
 						/>
@@ -377,7 +380,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 								'ab-font-size-' + ctaTitleFontSize,
 							) }
 							style={ {
-								color: ctaTextColor,
+								color: ctaTextColor
 							} }
 							value={ ctaText }
 						/>
@@ -396,7 +399,7 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 							) }
 							style={ {
 								color: buttonTextColor,
-								backgroundColor: buttonBackgroundColor,
+								backgroundColor: buttonBackgroundColor
 							} }
 						>
 							<RichText.Content
@@ -409,11 +412,11 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 		);
 	},
 
-	deprecated: deprecated,
-} );
+	deprecated: deprecated
+});
 
 function dimRatioToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
+	return ( 0 === ratio || 50 === ratio ) ?
 		null :
 		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
 }

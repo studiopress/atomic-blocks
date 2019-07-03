@@ -20,12 +20,12 @@ const {
 const { __ } = wp.i18n;
 const {
 	Component,
-	Fragment,
+	Fragment
 } = wp.element;
 const {
 	Button,
 	Dashicon,
-	Tooltip,
+	Tooltip
 } = wp.components;
 
 class LayoutLibraryItem extends Component {
@@ -44,7 +44,9 @@ class LayoutLibraryItem extends Component {
 								key={ this.props.itemKey }
 								className="ab-layout-insert-button"
 								isSmall
-								onClick={ () => { this.props.import( this.props.content ) } }
+								onClick={ () => {
+ this.props.import( this.props.content );
+} }
 							>
 								<LazyLoad>
 									<img
@@ -85,11 +87,12 @@ class LayoutLibraryItem extends Component {
 }
 
 export default compose(
+
 	/**
 	 * Use rawHandler to parse html layouts to blocks
 	 * See https://git.io/fjqGc for details
 	 */
-	withSelect( ( select, { clientId } ) => {
+	withSelect( ( select, { clientId }) => {
 		const {
 			getBlock,
 			canUserUseUnfilteredHTML
@@ -97,17 +100,17 @@ export default compose(
 		const block = getBlock( clientId );
 		return {
 			block,
-			canUserUseUnfilteredHTML: canUserUseUnfilteredHTML(),
+			canUserUseUnfilteredHTML: canUserUseUnfilteredHTML()
 		};
-	} ),
-	withDispatch( ( dispatch, { block, canUserUseUnfilteredHTML } ) => ( {
+	}),
+	withDispatch( ( dispatch, { block, canUserUseUnfilteredHTML }) => ({
 		import: ( blockLayout ) => dispatch( 'core/editor' ).replaceBlocks(
 			block.clientId,
-			rawHandler( {
+			rawHandler({
 				HTML: blockLayout,
 				mode: 'BLOCKS',
-				canUserUseUnfilteredHTML,
-			} ),
-		),
-	} ) ),
+				canUserUseUnfilteredHTML
+			}),
+		)
+	}) ),
 )( LayoutLibraryItem );
