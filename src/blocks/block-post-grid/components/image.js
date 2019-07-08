@@ -16,8 +16,8 @@ export default class PostGridImage extends Component {
 
 		this.state = {
 			imageUrl: '',
-			imageLoaded: false,
-		}
+			imageLoaded: false
+		};
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -27,12 +27,13 @@ export default class PostGridImage extends Component {
 	}
 
 	componentDidMount() {
+
 		/**
 		 * Set the image URL on load and when state changes.
 		 */
 		wp.data.subscribe( () => {
 			this.setImageUrl();
-		} );
+		});
 	}
 
 	setImageUrl() {
@@ -43,16 +44,17 @@ export default class PostGridImage extends Component {
 		}
 
 		if ( imageUrl ) {
-			this.setState( {
+			this.setState({
 				imageUrl,
-				imageLoaded: true,
-			} );
+				imageLoaded: true
+			});
 		}
 	}
 
 	getImageUrl() {
 		return (
 			get(
+
 				/* getMedia accepts an image id and returns an object with all the image data. */
 				wp.data.select( 'core' ).getMedia( this.props.imgID ),
 				[
@@ -61,6 +63,7 @@ export default class PostGridImage extends Component {
 					this.props.imgSize, /* Get the image slug from the inspector. */
 					'source_url' /* Return the url of the image size. */
 				],
+
 				/* A default image url can be passed here. */
 			)
 		);
@@ -70,6 +73,7 @@ export default class PostGridImage extends Component {
 	getFullImageSize() {
 		return (
 			get(
+
 				/* getMedia accepts an image id and returns an object with all the image data. */
 				wp.data.select( 'core' ).getMedia( this.props.imgID ), [
 					'media_details',
@@ -98,7 +102,7 @@ export default class PostGridImage extends Component {
 					</a>
 
 					{	/* If we don't have the selected image size, show a warning */
-						( ! this.getImageUrl() && this.state.imageLoaded && this.props.imgSize !== 'selectimage' ) &&
+						( ! this.getImageUrl() && this.state.imageLoaded && 'selectimage' !== this.props.imgSize ) &&
 						<Fragment>
 							<div className={ 'ab-post-grid-no-image-icon' }>
 								<Dashicon

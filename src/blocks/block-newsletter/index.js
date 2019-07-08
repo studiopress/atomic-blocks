@@ -21,7 +21,7 @@ registerBlockType(
 		keywords: [
 			__( 'Mailchimp', 'atomic-blocks' ),
 			__( 'Subscribe', 'atomic-blocks' ),
-			__( 'Newsletter', 'atomic-blocks' ),
+			__( 'Newsletter', 'atomic-blocks' )
 		],
 		edit: Edit,
 		save: () => {

@@ -18,18 +18,18 @@ const { __ } = wp.i18n;
 const { decodeEntities } = wp.htmlEntities;
 
 const {
-	withSelect,
+	withSelect
 } = wp.data;
 
 const {
 	Placeholder,
 	Spinner,
-	Toolbar,
+	Toolbar
 } = wp.components;
 
 const {
 	BlockAlignmentToolbar,
-	BlockControls,
+	BlockControls
 } = wp.editor;
 
 class LatestPostsBlock extends Component {
@@ -38,14 +38,14 @@ class LatestPostsBlock extends Component {
 		const {
 			attributes,
 			setAttributes,
-			latestPosts,
+			latestPosts
 		} = this.props;
 
 		// Check if there are posts
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 		// Check the post type
-		const isPost = attributes.postType === 'post';
+		const isPost = 'post' === attributes.postType;
 
 		if ( ! hasPosts ) {
 			return (
@@ -76,25 +76,25 @@ class LatestPostsBlock extends Component {
 			{
 				icon: 'grid-view',
 				title: __( 'Grid View', 'atomic-blocks' ),
-				onClick: () => setAttributes( { postLayout: 'grid' } ),
-				isActive: attributes.postLayout === 'grid',
+				onClick: () => setAttributes({ postLayout: 'grid' }),
+				isActive: 'grid' === attributes.postLayout
 			},
 			{
 				icon: 'list-view',
 				title: __( 'List View', 'atomic-blocks' ),
-				onClick: () => setAttributes( { postLayout: 'list' } ),
-				isActive: attributes.postLayout === 'list',
-			},
+				onClick: () => setAttributes({ postLayout: 'list' }),
+				isActive: 'list' === attributes.postLayout
+			}
 		];
 
 		// Get the section tag
-		const SectionTag = attributes.sectionTag ? attributes.sectionTag : "section";
+		const SectionTag = attributes.sectionTag ? attributes.sectionTag : 'section';
 
 		// Get the section title tag
-		const SectionTitleTag = attributes.sectionTitleTag ? attributes.sectionTitleTag : "h2";
+		const SectionTitleTag = attributes.sectionTitleTag ? attributes.sectionTitleTag : 'h2';
 
 		// Get the post title tag
-		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3";
+		const PostTag = attributes.postTitleTag ? attributes.postTitleTag : 'h3';
 
 		return (
 			<Fragment>
@@ -105,7 +105,7 @@ class LatestPostsBlock extends Component {
 					<BlockAlignmentToolbar
 						value={ attributes.align }
 						onChange={ ( value ) => {
-							setAttributes( { align: value } );
+							setAttributes({ align: value });
 						} }
 						controls={ [ 'center', 'wide', 'full' ] }
 					/>
@@ -122,12 +122,12 @@ class LatestPostsBlock extends Component {
 					}
 
 					<div
-						className={ classnames( {
-							'is-grid': attributes.postLayout === 'grid',
-							'is-list': attributes.postLayout === 'list',
-							[ `columns-${ attributes.columns }` ]: attributes.postLayout === 'grid',
-							'ab-post-grid-items' : 'ab-post-grid-items'
-						} ) }
+						className={ classnames({
+							'is-grid': 'grid' === attributes.postLayout,
+							'is-list': 'list' === attributes.postLayout,
+							[ `columns-${ attributes.columns }` ]: 'grid' === attributes.postLayout,
+							'ab-post-grid-items': 'ab-post-grid-items'
+						}) }
 					>
 						{ displayPosts.map( ( post, i ) =>
 							<article
@@ -195,30 +195,30 @@ class LatestPostsBlock extends Component {
 	}
 }
 
-export default compose( [
+export default compose([
 	withSelect( ( select, props ) => {
 		const {
 			order,
-			categories,
+			categories
 		} = props.attributes;
 
 		const { getEntityRecords } = select( 'core', 'atomic-blocks' );
 
-		const latestPostsQuery = pickBy( {
+		const latestPostsQuery = pickBy({
 			categories,
 			order,
 			orderby: props.attributes.orderBy,
 			per_page: props.attributes.postsToShow,
-			offset: props.attributes.offset,
+			offset: props.attributes.offset
 		}, ( value ) => ! isUndefined( value ) );
 
 		return {
-			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery ),
+			latestPosts: getEntityRecords( 'postType', props.attributes.postType, latestPostsQuery )
 		};
-	} ),
-] )( LatestPostsBlock );
+	})
+])( LatestPostsBlock );
 
 // Truncate excerpt
-function truncate(str, no_words) {
-	return str.split(" ").splice(0,no_words).join(" ");
+function truncate( str, no_words ) {
+	return str.split( ' ' ).splice( 0, no_words ).join( ' ' );
 }

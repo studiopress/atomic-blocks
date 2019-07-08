@@ -10,7 +10,7 @@ const { Component } = wp.element;
 const {
   InspectorControls,
   BlockDescription,
-  ColorPalette,
+  ColorPalette
 } = wp.editor;
 
 // Import Inspector components
@@ -23,7 +23,7 @@ const {
 	FormToggle,
 	RangeControl,
 	SelectControl,
-	ToggleControl,
+	ToggleControl
 } = wp.components;
 
 /**
@@ -50,34 +50,34 @@ export default class Inspector extends Component {
 			shareButtonStyle,
 			shareButtonShape,
 			shareButtonSize,
-			shareButtonColor,
+			shareButtonColor
 		} = this.props.attributes;
 
 		// Button style values
 		const buttonStyleOptions = [
 			{ value: 'ab-share-icon-text', label: __( 'Icon and Text' ) },
 			{ value: 'ab-share-icon-only', label: __( 'Icon Only' ) },
-			{ value: 'ab-share-text-only', label: __( 'Text Only' ) },
+			{ value: 'ab-share-text-only', label: __( 'Text Only' ) }
 		];
 
 		// Button shape values
 		const buttonShapeOptions = [
 			{ value: 'ab-share-shape-square', label: __( 'Square' ) },
 			{ value: 'ab-share-shape-rounded', label: __( 'Rounded Square' ) },
-			{ value: 'ab-share-shape-circular', label: __( 'Circular' ) },
+			{ value: 'ab-share-shape-circular', label: __( 'Circular' ) }
 		];
 
 		// Button size values
 		const shareButtonSizeOptions = [
 			{ value: 'ab-share-size-small', label: __( 'Small' ) },
 			{ value: 'ab-share-size-medium', label: __( 'Medium' ) },
-			{ value: 'ab-share-size-large', label: __( 'Large' ) },
+			{ value: 'ab-share-size-large', label: __( 'Large' ) }
 		];
 
 		// Button color values
 		const shareButtonColorOptions = [
 			{ value: 'ab-share-color-standard', label: __( 'Standard' ) },
-			{ value: 'ab-share-color-social', label: __( 'Social Colors' ) },
+			{ value: 'ab-share-color-social', label: __( 'Social Colors' ) }
 		];
 
 		return (
@@ -88,37 +88,37 @@ export default class Inspector extends Component {
 					<ToggleControl
 						label={ __( 'Twitter' ) }
 						checked={ !! twitter }
-						onChange={ () => this.props.setAttributes( { twitter: ! twitter } ) }
+						onChange={ () => this.props.setAttributes({ twitter: ! twitter }) }
 					/>
 					<ToggleControl
 						label={ __( 'Facebook' ) }
 						checked={ !! facebook }
-						onChange={ () => this.props.setAttributes( { facebook: ! facebook } ) }
+						onChange={ () => this.props.setAttributes({ facebook: ! facebook }) }
 					/>
 					<ToggleControl
 						label={ __( 'Google' ) }
 						checked={ !! google }
-						onChange={ () => this.props.setAttributes( { google: ! google } ) }
+						onChange={ () => this.props.setAttributes({ google: ! google }) }
 					/>
 					<ToggleControl
 						label={ __( 'Pinterest' ) }
 						checked={ !! pinterest }
-						onChange={ () => this.props.setAttributes( { pinterest: ! pinterest } ) }
+						onChange={ () => this.props.setAttributes({ pinterest: ! pinterest }) }
 					/>
 					<ToggleControl
 						label={ __( 'LinkedIn' ) }
 						checked={ !! linkedin }
-						onChange={ () => this.props.setAttributes( { linkedin: ! linkedin } ) }
+						onChange={ () => this.props.setAttributes({ linkedin: ! linkedin }) }
 					/>
 					<ToggleControl
 						label={ __( 'Reddit' ) }
 						checked={ !! reddit }
-						onChange={ () => this.props.setAttributes( { reddit: ! reddit } ) }
+						onChange={ () => this.props.setAttributes({ reddit: ! reddit }) }
 					/>
 					<ToggleControl
 						label={ __( 'Email' ) }
 						checked={ !! email }
-						onChange={ () => this.props.setAttributes( { email: ! email } ) }
+						onChange={ () => this.props.setAttributes({ email: ! email }) }
 					/>
 				</PanelBody>
 
@@ -126,41 +126,49 @@ export default class Inspector extends Component {
 					<SelectControl
 						label={ __( 'Button Style' ) }
 						value={ shareButtonStyle }
-						options={ buttonStyleOptions.map( ({ value, label }) => ( {
+						options={ buttonStyleOptions.map( ({ value, label }) => ({
 							value: value,
-							label: label,
-						} ) ) }
-						onChange={ ( value ) => { this.props.setAttributes( { shareButtonStyle: value } ) } }
+							label: label
+						}) ) }
+						onChange={ ( value ) => {
+ this.props.setAttributes({ shareButtonStyle: value });
+} }
 					/>
 
 					<SelectControl
 						label={ __( 'Button Shape' ) }
 						value={ shareButtonShape }
-						options={ buttonShapeOptions.map( ({ value, label }) => ( {
+						options={ buttonShapeOptions.map( ({ value, label }) => ({
 							value: value,
-							label: label,
-						} ) ) }
-						onChange={ ( value ) => { this.props.setAttributes( { shareButtonShape: value } ) } }
+							label: label
+						}) ) }
+						onChange={ ( value ) => {
+ this.props.setAttributes({ shareButtonShape: value });
+} }
 					/>
 
 					<SelectControl
 						label={ __( 'Button Size' ) }
 						value={ shareButtonSize }
-						options={ shareButtonSizeOptions.map( ({ value, label }) => ( {
+						options={ shareButtonSizeOptions.map( ({ value, label }) => ({
 							value: value,
-							label: label,
-						} ) ) }
-						onChange={ ( value ) => { this.props.setAttributes( { shareButtonSize: value } ) } }
+							label: label
+						}) ) }
+						onChange={ ( value ) => {
+ this.props.setAttributes({ shareButtonSize: value });
+} }
 					/>
 
 					<SelectControl
 						label={ __( 'Button Color' ) }
 						value={ shareButtonColor }
-						options={ shareButtonColorOptions.map( ({ value, label }) => ( {
+						options={ shareButtonColorOptions.map( ({ value, label }) => ({
 							value: value,
-							label: label,
-						} ) ) }
-						onChange={ ( value ) => { this.props.setAttributes( { shareButtonColor: value } ) } }
+							label: label
+						}) ) }
+						onChange={ ( value ) => {
+ this.props.setAttributes({ shareButtonColor: value });
+} }
 					/>
 				</PanelBody>
 			</InspectorControls>

@@ -22,8 +22,8 @@ export default class Spacer extends Component {
 		// Setup the attributes
 		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = this.props.attributes;
 
-		return (	
-			<div 
+		return (
+			<div
 				style={ {
 					color: spacerDividerColor
 				} }

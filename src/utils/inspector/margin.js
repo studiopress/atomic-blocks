@@ -4,6 +4,7 @@ const { RangeControl } = wp.components;
 
 export default function MarginSettings( props ) {
 	const {
+
 		// Margin top props
 		marginTop,
 		marginTopLabel,
@@ -11,6 +12,7 @@ export default function MarginSettings( props ) {
 		marginTopMax,
 		marginEnableTop,
 		onChangeMarginTop = () => {},
+
 		// Margin right props
 		marginRight,
 		marginRightLabel,
@@ -18,6 +20,7 @@ export default function MarginSettings( props ) {
 		marginRightMax,
 		marginEnableRight,
 		onChangeMarginRight = () => {},
+
 		// Margin bottom props
 		marginBottom,
 		marginBottomLabel,
@@ -25,6 +28,7 @@ export default function MarginSettings( props ) {
 		marginBottomMax,
 		marginEnableBottom,
 		onChangeMarginBottom = () => {},
+
 		// Margin left props
 		marginLeft,
 		marginLeftLabel,
@@ -32,6 +36,7 @@ export default function MarginSettings( props ) {
 		marginLeftMax,
 		marginEnableLeft,
 		onChangeMarginLeft = () => {},
+
 		// Margin vertical props
 		marginVertical,
 		marginVerticalLabel,
@@ -39,13 +44,14 @@ export default function MarginSettings( props ) {
 		marginVerticalMin,
 		marginVerticalMax,
 		onChangeMarginVertical = () => {},
+
 		// Margin horizontal props
 		marginHorizontal,
 		marginHorizontalLabel,
 		marginEnableHorizontal,
 		marginHorizontalMin,
 		marginHorizontalMax,
-		onChangeMarginHorizontal = () => {},
+		onChangeMarginHorizontal = () => {}
 	} = props;
 
 	return (

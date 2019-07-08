@@ -24,10 +24,10 @@ export default class Testimonial extends Component {
 		const { attributes: { testimonialAlignment, testimonialImgURL, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }  } = this.props;
 
 		return (
-			<div 
+			<div
 				style={ {
 					backgroundColor: testimonialBackgroundColor,
-					color: testimonialTextColor,
+					color: testimonialTextColor
 				} }
 				className={ classnames(
 					this.props.className,

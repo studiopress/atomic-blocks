@@ -9,14 +9,14 @@ const { Component } = wp.element;
 // Import block components
 const {
   PanelColorSettings,
-  InspectorControls,
+  InspectorControls
 } = wp.editor;
 
 // Import Inspector components
 const {
 	PanelBody,
 	RangeControl,
-	SelectControl,
+	SelectControl
 } = wp.components;
 
 /**
@@ -33,7 +33,7 @@ export default class Inspector extends Component {
 		// Notice dismiss options
 		const noticeDismissOptions = [
 			{ value: null, label: __( 'Always Show', 'atomic-blocks' ) },
-			{ value: 'ab-dismissable', label: __( 'Dismissible', 'atomic-blocks' ) },
+			{ value: 'ab-dismissable', label: __( 'Dismissible', 'atomic-blocks' ) }
 		];
 
 		// Notice colors
@@ -45,7 +45,7 @@ export default class Inspector extends Component {
 			{ color: '#ffdd57', name: 'yellow' },
 			{ color: '#ff3860', name: 'pink' },
 			{ color: '#7941b6', name: 'purple' },
-			{ color: '#392F43', name: 'black' },
+			{ color: '#392F43', name: 'black' }
 		];
 
 		// Setup the attributes
@@ -53,9 +53,9 @@ export default class Inspector extends Component {
 		const { setAttributes } = this.props;
 
 		// Update color values
-		const onChangeBackgroundColor = value => setAttributes( { noticeBackgroundColor: value } );
-		const onChangeTextColor = value => setAttributes( { noticeTextColor: value } );
-		const onChangeTitleColor = value => setAttributes( { noticeTitleColor: value } );
+		const onChangeBackgroundColor = value => setAttributes({ noticeBackgroundColor: value });
+		const onChangeTextColor = value => setAttributes({ noticeTextColor: value });
+		const onChangeTitleColor = value => setAttributes({ noticeTitleColor: value });
 
 		return (
 		<InspectorControls key="inspector">
@@ -63,7 +63,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Font Size', 'atomic-blocks' ) }
 					value={ noticeFontSize }
-					onChange={ ( value ) => this.props.setAttributes( { noticeFontSize: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ noticeFontSize: value }) }
 					min={ 14 }
 					max={ 24 }
 					step={ 1 }
@@ -74,7 +74,7 @@ export default class Inspector extends Component {
 					description={ __( 'Do you want the message to always show or dismissible?', 'atomic-blocks' ) }
 					options={ noticeDismissOptions }
 					value={ noticeDismiss }
-					onChange={ ( value ) => this.props.setAttributes( { noticeDismiss: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ noticeDismiss: value }) }
 				/>
 			</PanelBody>
 			<PanelColorSettings
@@ -85,7 +85,7 @@ export default class Inspector extends Component {
 					value: noticeBackgroundColor,
 					onChange: onChangeBackgroundColor,
 					colors: noticeColors,
-					label: __( 'Notice Color', 'atomic-blocks' ),
+					label: __( 'Notice Color', 'atomic-blocks' )
 				} ] }
 			>
 			</PanelColorSettings>
@@ -96,7 +96,7 @@ export default class Inspector extends Component {
 				colorSettings = { [ {
 					value: noticeTitleColor,
 					onChange: onChangeTitleColor,
-					label: __( 'Title Color', 'atomic-blocks' ),
+					label: __( 'Title Color', 'atomic-blocks' )
 				} ] }
 			>
 			</PanelColorSettings>
@@ -108,7 +108,7 @@ export default class Inspector extends Component {
 				colorSettings = { [ {
 					value: noticeTextColor,
 					onChange: onChangeTextColor,
-					label: __( 'Text Color', 'atomic-blocks' ),
+					label: __( 'Text Color', 'atomic-blocks' )
 				} ] }
 			>
 			</PanelColorSettings>

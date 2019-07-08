@@ -24,7 +24,7 @@ export default class DismissButton extends Component {
 				className="ab-notice-dismiss"
 				style={ {
 					fill: noticeTitleColor,
-					color: noticeTitleColor,
+					color: noticeTitleColor
 				} }>
 				{ this.props.children }
 			</div>

@@ -15,12 +15,12 @@ const {
 	withFontSizes,
 	withColors,
 	InnerBlocks,
-	URLInput,
+	URLInput
 } = wp.editor;
 
 const {
 	IconButton,
-	Dashicon,
+	Dashicon
 } = wp.components;
 
 class Edit extends Component {
@@ -46,18 +46,18 @@ class Edit extends Component {
 				buttonTextColor,
 				buttonSize,
 				buttonShape,
-				buttonTarget,
+				buttonTarget
 			},
 			isSelected,
 			className,
 			setAttributes,
-			backgroundColor,
+			backgroundColor
 		} = this.props;
 
 		// Setup class names
-		const editClassName = classnames( {
-			'ab-pricing-table-button': true,
-		} );
+		const editClassName = classnames({
+			'ab-pricing-table-button': true
+		});
 
 		// Setup styles
 		const editStyles = {
@@ -65,7 +65,7 @@ class Edit extends Component {
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
 		};
 
 		return [
@@ -91,9 +91,9 @@ class Edit extends Component {
 							) }
 							style={ {
 								color: buttonTextColor,
-								backgroundColor: buttonBackgroundColor,
+								backgroundColor: buttonBackgroundColor
 							} }
-							onChange={ (value) => setAttributes( { buttonText: value } ) }
+							onChange={ ( value ) => setAttributes({ buttonText: value }) }
 						/>
 					</CustomButton>
 					{ isSelected && (
@@ -102,14 +102,14 @@ class Edit extends Component {
 							className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
 							onSubmit={ event => event.preventDefault() }
 							style={ {
-								textAlign: buttonAlignment,
+								textAlign: buttonAlignment
 							} }
 						>
 							<Dashicon icon={ 'admin-links' } />
 							<URLInput
 								className="button-url"
 								value={ buttonUrl }
-								onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
+								onChange={ ( value ) => setAttributes({ buttonUrl: value }) }
 							/>
 							<IconButton
 								icon="editor-break"
@@ -124,7 +124,7 @@ class Edit extends Component {
 	}
 }
 
-export default compose( [
+export default compose([
 	withFontSizes( 'fontSize' ),
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-] )( Edit );
+	withColors( 'backgroundColor', { textColor: 'color' })
+])( Edit );

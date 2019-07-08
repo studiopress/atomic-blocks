@@ -13,13 +13,13 @@ const {
 	InspectorControls,
 	withColors,
 	ContrastChecker,
-	PanelColorSettings,
+	PanelColorSettings
 } = wp.editor;
 
 const { PanelBody,
 	SelectControl,
 	TextControl,
-	withFallbackStyles,
+	withFallbackStyles
 } = wp.components;
 
 /**
@@ -38,9 +38,9 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackButtonBackgroundColor: buttonBackgroundColor || ! computedStyles ? undefined : computedStyles.buttonBackgroundColor,
-		fallbackButtonTextColor: buttonTextColor || ! computedStyles ? undefined : computedStyles.buttonTextColor,
+		fallbackButtonTextColor: buttonTextColor || ! computedStyles ? undefined : computedStyles.buttonTextColor
 	};
-} );
+});
 
 class Inspector extends Component {
 
@@ -60,7 +60,7 @@ class Inspector extends Component {
 			buttonTextColor,
 			fallbackButtonTextColor,
 			setButtonBackgroundColor,
-			setButtonTextColor,
+			setButtonTextColor
 		} = this.props;
 
 		let mailingListProviders = {
@@ -70,14 +70,14 @@ class Inspector extends Component {
 				lists: [
 					{
 						label: __( 'Select a list', 'atomic-blocks' ),
-						value: '',
+						value: ''
 					}
-				],
-			},
+				]
+			}
 		};
 
 		atomic_blocks_newsletter_block_vars.mailingListProviders.mailchimp.lists.map( ( item ) =>
-			mailingListProviders.mailchimp.lists.push( { label: item.name, value: item.id } )
+			mailingListProviders.mailchimp.lists.push({ label: item.name, value: item.id })
 		);
 
 		return (
@@ -92,7 +92,7 @@ class Inspector extends Component {
 						help={ __( 'The list people will be subscribed to.', 'atomic-blocks' ) }
 						options={ mailingListProviders.mailchimp.lists }
 						value={ attributes.mailingList }
-						onChange={ ( value ) => setAttributes( { mailingList: value } ) }
+						onChange={ ( value ) => setAttributes({ mailingList: value }) }
 					/>
 
 					<TextControl
@@ -100,7 +100,7 @@ class Inspector extends Component {
 						label={ __( 'Success Message', 'atomic-blocks' ) }
 						help={ __( 'The message shown when people successfully subscribe.', 'atomic-blocks' ) }
 						value={ attributes.successMessage }
-						onChange={ ( value ) => setAttributes( { successMessage: value } ) }
+						onChange={ ( value ) => setAttributes({ successMessage: value }) }
 					/>
 				</PanelBody>
 
@@ -109,6 +109,7 @@ class Inspector extends Component {
 					initialOpen={ attributes.mailingList ? true : false }
 				>
 					<Padding
+
 						// Enable padding on all sides
 						paddingEnable={ true }
 						paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
@@ -116,32 +117,34 @@ class Inspector extends Component {
 						padding={ attributes.containerPadding }
 						paddingMin="0"
 						paddingMax="100"
-						onChangePadding={ containerPadding => setAttributes( { containerPadding } ) }
+						onChangePadding={ containerPadding => setAttributes({ containerPadding }) }
 					/>
 
 					<Margin
+
 						// Enable margin top setting
 						marginEnableTop={ true }
 						marginTopLabel={ __( 'Block Margin Top', 'atomic-blocks' ) }
 						marginTop={ attributes.containerMarginTop }
 						marginTopMin="0"
 						marginTopMax="200"
-						onChangeMarginTop={ containerMarginTop => setAttributes( { containerMarginTop } ) }
+						onChangeMarginTop={ containerMarginTop => setAttributes({ containerMarginTop }) }
+
 						// Enable margin bottom setting
 						marginEnableBottom={ true }
 						marginBottomLabel={ __( 'Block Margin Bottom', 'atomic-blocks' ) }
 						marginBottom={ attributes.containerMarginBottom }
 						marginBottomMin="0"
 						marginBottomMax="200"
-						onChangeMarginBottom={ containerMarginBottom => setAttributes( { containerMarginBottom } ) }
+						onChangeMarginBottom={ containerMarginBottom => setAttributes({ containerMarginBottom }) }
 					/>
 
 					<ButtonSettings
 						enableButtonTarget={ false }
 						buttonSize={ attributes.buttonSize }
-						onChangeButtonSize={ buttonSize => setAttributes( { buttonSize } ) }
+						onChangeButtonSize={ buttonSize => setAttributes({ buttonSize }) }
 						buttonShape={ attributes.buttonShape }
-						onChangeButtonShape={ buttonShape => setAttributes( { buttonShape } ) }
+						onChangeButtonShape={ buttonShape => setAttributes({ buttonShape }) }
 						enableButtonBackgroundColor={ false }
 						enableButtonTextColor={ false }
 					/>
@@ -154,22 +157,22 @@ class Inspector extends Component {
 						{
 							value: backgroundColor.color,
 							onChange: setBackgroundColor,
-							label: __( 'Block Background Color', 'atomic-blocks' ),
+							label: __( 'Block Background Color', 'atomic-blocks' )
 						},
 						{
 							value: textColor.color,
 							onChange: setTextColor,
-							label: __( 'Block Text Color', 'atomic-blocks' ),
+							label: __( 'Block Text Color', 'atomic-blocks' )
 						},
 						{
 							value: buttonBackgroundColor.color,
 							onChange: setButtonBackgroundColor,
-							label: __( 'Button Background Color', 'atomic-blocks' ),
+							label: __( 'Button Background Color', 'atomic-blocks' )
 						},
 						{
 							value: buttonTextColor.color,
 							onChange: setButtonTextColor,
-							label: __( 'Button Text Color', 'atomic-blocks' ),
+							label: __( 'Button Text Color', 'atomic-blocks' )
 						}
 					] }
 				>
@@ -179,7 +182,7 @@ class Inspector extends Component {
 							textColor: textColor.color,
 							backgroundColor: backgroundColor.color,
 							fallbackTextColor,
-							fallbackBackgroundColor,
+							fallbackBackgroundColor
 						} }
 					/>
 					{ /* Compare button background and button text color */ }
@@ -188,7 +191,7 @@ class Inspector extends Component {
 							textColor: buttonTextColor.color,
 							backgroundColor: buttonBackgroundColor.color,
 							fallbackButtonTextColor,
-							fallbackButtonBackgroundColor,
+							fallbackButtonBackgroundColor
 						} }
 					/>
 					{ /* Compare block background button background color */ }
@@ -197,21 +200,21 @@ class Inspector extends Component {
 							textColor: buttonBackgroundColor.color,
 							backgroundColor: backgroundColor.color,
 							fallbackButtonBackgroundColor,
-							fallbackBackgroundColor,
+							fallbackBackgroundColor
 						} }
 					/>
 				</PanelColorSettings>
 			</InspectorControls>
-		)
+		);
 	}
 }
 
-export default compose( [
+export default compose([
 	applyFallbackStyles,
 	withColors(
 		'backgroundColor',
 		{ textColor: 'color' },
 		{ buttonBackgroundColor: 'background-color' },
 		{ buttonTextColor: 'color' },
-	),
-] )( Inspector );
+	)
+])( Inspector );

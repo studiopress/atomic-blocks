@@ -24,13 +24,13 @@ export default class Columns extends Component {
 	render() {
 
 		const {
-			attributes,
+			attributes
 		} = this.props;
 
 		/* Setup the background color class. */
 		let backgroundColorClass;
 
-		if (attributes.customBackgroundColor) {
+		if ( attributes.customBackgroundColor ) {
 			backgroundColorClass = 'ab-has-custom-background-color';
 		} else {
 			backgroundColorClass = attributes.backgroundColor ? 'has-' + attributes.backgroundColor + '-background-color' : null;
@@ -39,37 +39,37 @@ export default class Columns extends Component {
 		/* Setup the text color class. */
 		let textColorClass;
 
-		if (attributes.customTextColor) {
+		if ( attributes.customTextColor ) {
 			textColorClass = 'ab-has-custom-text-color';
 		} else {
 			textColorClass = attributes.textColor ? 'has-' + attributes.textColor + '-color' : null;
 		}
 
 		/* Setup the wrapper classes. */
-		const className = classnames( [
+		const className = classnames([
 			this.props.className,
 			'ab-layout-columns-' + attributes.columns,
 			attributes.layout,
 			backgroundColorClass,
 			textColorClass,
-			attributes.columnMaxWidth && attributes.centerColumns ? 'ab-columns-center' : null,
+			attributes.columnMaxWidth && attributes.centerColumns ? 'ab-columns-center' : null
 		], {
-			[ 'align' + attributes.align ]: attributes.align,
-		} )
+			[ 'align' + attributes.align ]: attributes.align
+		});
 
 		/* Setup the margin styles. */
 		let marginValue;
 
 		if ( attributes.marginSync ) {
 			marginValue = {
-				marginTop: attributes.margin > 0 ? attributes.margin + attributes.marginUnit : null,
-				marginBottom: attributes.margin > 0 ? attributes.margin + attributes.marginUnit : null
-			}
+				marginTop: 0 < attributes.margin ? attributes.margin + attributes.marginUnit : null,
+				marginBottom: 0 < attributes.margin ? attributes.margin + attributes.marginUnit : null
+			};
 		} else {
 			marginValue = {
-				marginTop: attributes.marginTop > 0 ? attributes.marginTop + attributes.marginUnit : null,
-				marginBottom: attributes.marginBottom > 0 ? attributes.marginBottom + attributes.marginUnit : null,
-			}
+				marginTop: 0 < attributes.marginTop ? attributes.marginTop + attributes.marginUnit : null,
+				marginBottom: 0 < attributes.marginBottom ? attributes.marginBottom + attributes.marginUnit : null
+			};
 		}
 
 		/* Setup the padding styles. */
@@ -77,22 +77,22 @@ export default class Columns extends Component {
 
 		if ( attributes.paddingSync ) {
 			paddingValue = {
-				padding: attributes.padding > 0 ? attributes.padding + attributes.paddingUnit : null,
-			}
+				padding: 0 < attributes.padding ? attributes.padding + attributes.paddingUnit : null
+			};
 		} else {
 			paddingValue = {
-				paddingTop: attributes.paddingTop > 0 ? attributes.paddingTop + attributes.paddingUnit : null,
-				paddingRight: attributes.paddingRight > 0 ? attributes.paddingRight + attributes.paddingUnit : null,
-				paddingBottom: attributes.paddingBottom > 0 ? attributes.paddingBottom + attributes.paddingUnit : null,
-				paddingLeft: attributes.paddingLeft > 0 ? attributes.paddingLeft + attributes.paddingUnit : null,
-			}
+				paddingTop: 0 < attributes.paddingTop ? attributes.paddingTop + attributes.paddingUnit : null,
+				paddingRight: 0 < attributes.paddingRight ? attributes.paddingRight + attributes.paddingUnit : null,
+				paddingBottom: 0 < attributes.paddingBottom ? attributes.paddingBottom + attributes.paddingUnit : null,
+				paddingLeft: 0 < attributes.paddingLeft ? attributes.paddingLeft + attributes.paddingUnit : null
+			};
 		}
 
 		/* Misc styles. */
 		const styles = {
 			backgroundColor: this.props.backgroundColorValue ? this.props.backgroundColorValue : null,
-			color: this.props.textColorValue ? this.props.textColorValue : null,
-		}
+			color: this.props.textColorValue ? this.props.textColorValue : null
+		};
 
 		return (
 			<div

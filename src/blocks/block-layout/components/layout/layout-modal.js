@@ -11,12 +11,12 @@ import { LayoutsContext } from '../layouts-provider';
 const { __ } = wp.i18n;
 const {
 	Component,
-	Fragment,
+	Fragment
 } = wp.element;
 const {
 	Button,
 	Modal,
-	TabPanel,
+	TabPanel
 } = wp.components;
 
 class LayoutModal extends Component {
@@ -25,7 +25,7 @@ class LayoutModal extends Component {
 
 		this.state = {
 			modalOpen: true,
-			currentTab: 'ab-layout-tab-sections',
+			currentTab: 'ab-layout-tab-sections'
 		};
 	}
 
@@ -38,9 +38,9 @@ class LayoutModal extends Component {
 					isPrimary
 					isLarge
 					className="ab-layout-modal-button"
-					onClick={ () => this.setState( {
+					onClick={ () => this.setState({
 						modalOpen: true
-					} ) }
+					}) }
 				>
 					{ __( 'Layout Library', 'atomic-blocks' ) }
 				</Button>
@@ -51,31 +51,31 @@ class LayoutModal extends Component {
 								key={ 'layout-modal-modal-component-' + this.props.clientId }
 								className="ab-layout-modal"
 								title={ __( 'Layout Selector', 'atomic-blocks' ) }
-								onRequestClose={ () => this.setState( { modalOpen: false } ) }
+								onRequestClose={ () => this.setState({ modalOpen: false }) }
 							>
 								<TabPanel
 									key={ 'layout-modal-tabpanel-' + this.props.clientId }
 									className="ab-layout-modal-panel"
 									activeClass="ab-layout-modal-active-tab"
-									onSelect={ ( tabName ) => this.setState( {
+									onSelect={ ( tabName ) => this.setState({
 										currentTab: tabName
-									} ) }
+									}) }
 									tabs={ [
 										{
 											name: 'ab-layout-tab-sections',
 											title: __( 'Sections', 'atomic-blocks' ),
-											className: 'ab-layout-tab-sections',
+											className: 'ab-layout-tab-sections'
 										},
 										{
 											name: 'ab-layout-tab-layouts',
 											title: __( 'Layouts', 'atomic-blocks' ),
-											className: 'ab-layout-tab-layouts',
+											className: 'ab-layout-tab-layouts'
 										},
 										{
 											name: 'ab-layout-tab-favorites',
 											title: __( 'Favorites', 'atomic-blocks' ),
-											className: 'ab-layout-tab-favorites',
-										},
+											className: 'ab-layout-tab-favorites'
+										}
 									] }>
 									{
 										( tab ) => {
@@ -92,7 +92,7 @@ class LayoutModal extends Component {
 															data={ context.sections }
 															context={ context }
 														/>
-													]
+													];
 												}
 
 												if ( 'ab-layout-tab-layouts' === tab.name ) {
@@ -104,7 +104,7 @@ class LayoutModal extends Component {
 															data={ context.layouts }
 															context={ context }
 														/>
-													]
+													];
 												}
 
 												if ( 'ab-layout-tab-favorites' === tab.name ) {
@@ -116,7 +116,7 @@ class LayoutModal extends Component {
 															data={ context.favorites }
 															context={ context }
 														/>
-													]
+													];
 												}
 											}
 											return <div>{ tabContent }</div>;
@@ -125,8 +125,8 @@ class LayoutModal extends Component {
 								</TabPanel>
 							</Modal>
 						)}
-					</LayoutsContext.Consumer>
-					: null }
+					</LayoutsContext.Consumer> :
+					null }
 			</Fragment>
 		);
 	}

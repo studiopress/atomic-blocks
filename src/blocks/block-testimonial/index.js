@@ -27,13 +27,13 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-	MediaUpload,
+	MediaUpload
 } = wp.editor;
 
 // Register components
 const {
 	Button,
-	SelectControl,
+	SelectControl
 } = wp.components;
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
@@ -64,24 +64,27 @@ class ABTestimonialBlock extends Component {
 		} = this.props;
 
 		const onSelectImage = img => {
-			setAttributes( {
+			setAttributes({
 				testimonialImgID: img.id,
-				testimonialImgURL: img.url,
-			} );
+				testimonialImgURL: img.url
+			});
 		};
 
 		return [
+
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ testimonialAlignment }
-					onChange={ ( value ) => setAttributes( { testimonialAlignment: value } ) }
+					onChange={ ( value ) => setAttributes({ testimonialAlignment: value }) }
 				/>
 			</BlockControls>,
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,
+
 			// Show the block markup in the editor
 			<Testimonial { ...this.props }>
 				<RichText
@@ -95,9 +98,9 @@ class ABTestimonialBlock extends Component {
 						'ab-testimonial-text'
 					) }
 					style={ {
-						textAlign: testimonialAlignment,
+						textAlign: testimonialAlignment
 					} }
-					onChange={ ( value ) => setAttributes( { testimonialContent: value } ) }
+					onChange={ ( value ) => setAttributes({ testimonialContent: value }) }
 				/>
 
 				<div className="ab-testimonial-info">
@@ -110,13 +113,13 @@ class ABTestimonialBlock extends Component {
 								onSelect={ ( img ) => setAttributes(
 									{
 										testimonialImgID: img.id,
-										testimonialImgURL: img.url,
+										testimonialImgURL: img.url
 									}
 								) }
 								allowed={ ALLOWED_MEDIA_TYPES }
 								type="image"
 								value={ testimonialImgID }
-								render={ ( { open } ) => (
+								render={ ({ open }) => (
 									<Button onClick={ open }>
 										{ ! testimonialImgID ? icons.upload : <img
 											className="ab-testimonial-avatar"
@@ -139,7 +142,7 @@ class ABTestimonialBlock extends Component {
 						style={ {
 							color: testimonialTextColor
 						} }
-						onChange={ ( value ) => this.props.setAttributes( { testimonialName: value } ) }
+						onChange={ ( value ) => this.props.setAttributes({ testimonialName: value }) }
 					/>
 
 					<RichText
@@ -151,7 +154,7 @@ class ABTestimonialBlock extends Component {
 						style={ {
 							color: testimonialTextColor
 						} }
-						onChange={ ( value ) => this.props.setAttributes( { testimonialTitle: value } ) }
+						onChange={ ( value ) => this.props.setAttributes({ testimonialTitle: value }) }
 					/>
 				</div>
 			</Testimonial>
@@ -168,35 +171,35 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 	keywords: [
 		__( 'testimonial', 'atomic-blocks' ),
 		__( 'quote', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 	attributes: {
 		testimonialName: {
 			type: 'array',
 			selector: '.ab-testimonial-name',
-			source: 'children',
+			source: 'children'
 		},
 		testimonialTitle: {
 			type: 'array',
 			selector: '.ab-testimonial-title',
-			source: 'children',
+			source: 'children'
 		},
 		testimonialContent: {
 			type: 'array',
 			selector: '.ab-testimonial-text',
-			source: 'children',
+			source: 'children'
 		},
 		testimonialAlignment: {
-			type: 'string',
+			type: 'string'
 		},
 		testimonialImgURL: {
 			type: 'string',
 			source: 'attribute',
 			attribute: 'src',
-			selector: 'img',
+			selector: 'img'
 		},
 		testimonialImgID: {
-			type: 'number',
+			type: 'number'
 		},
 		testimonialBackgroundColor: {
 			type: 'string',
@@ -208,12 +211,12 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 		},
 		testimonialFontSize: {
 			type: 'number',
-			default: 18,
+			default: 18
 		},
 		testimonialCiteAlign: {
             type: 'string',
-            default: 'left-aligned',
-        },
+            default: 'left-aligned'
+        }
 	},
 
 	// Render the block components
@@ -243,7 +246,7 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 					tagName="div"
 					className="ab-testimonial-text"
 					style={ {
-						textAlign: testimonialAlignment,
+						textAlign: testimonialAlignment
 					} }
 					value={ testimonialContent }
 				/>
@@ -285,5 +288,5 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 				</div>
 			</Testimonial>
 		);
-	},
-} );
+	}
+});

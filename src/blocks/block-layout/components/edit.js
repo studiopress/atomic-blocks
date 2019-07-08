@@ -15,7 +15,7 @@ const { Placeholder } = wp.components;
 const { Component, Fragment } = wp.element;
 const {
 	BlockControls,
-	BlockAlignmentToolbar,
+	BlockAlignmentToolbar
 } = wp.editor;
 
 export default class Edit extends Component {
@@ -29,7 +29,7 @@ export default class Edit extends Component {
 		const {
 			attributes,
 			setAttributes,
-			clientId,
+			clientId
 		} = this.props;
 
 		/* Placeholder with layout modal */
@@ -38,7 +38,7 @@ export default class Edit extends Component {
 				<BlockControls key="controls">
 					<BlockAlignmentToolbar
 						value={ attributes.align }
-						onChange={ align => setAttributes( { align } ) }
+						onChange={ align => setAttributes({ align }) }
 						controls={ [] }
 					/>
 				</BlockControls>
