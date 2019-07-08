@@ -3,10 +3,8 @@
  */
 
 // Import block dependencies and components
-import classnames from 'classnames';
 import Inspector from './components/inspector';
 import Accordion from './components/accordion';
-import icons from './components/icons';
 import omit from 'lodash/omit';
 
 // Import CSS
@@ -30,17 +28,8 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
-	BlockAlignmentToolbar,
 	InnerBlocks
 } = wp.editor;
-
-// Register components
-const {
-	Button,
-	withFallbackStyles,
-	IconButton,
-	Dashicon
-} = wp.components;
 
 const blockAttributes = {
 	accordionTitle: {
@@ -71,7 +60,7 @@ class ABAccordionBlock extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { accordionTitle, accordionText, accordionAlignment, accordionFontSize, accordionOpen }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { accordionTitle, accordionAlignment } } = this.props;
 
 		return [
 
@@ -126,7 +115,7 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { accordionTitle, accordionText, accordionAlignment, accordionFontSize, accordionOpen } = props.attributes;
+		const { accordionTitle, accordionOpen } = props.attributes;
 
 		// Save the block markup for the front end
 		return (

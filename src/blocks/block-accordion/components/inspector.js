@@ -8,16 +8,12 @@ const { Component } = wp.element;
 
 // Import block components
 const {
-  InspectorControls,
-  BlockDescription
+  InspectorControls
 } = wp.editor;
 
 // Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
 	RangeControl,
 	ToggleControl
 } = wp.components;
@@ -34,13 +30,13 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { accordionTitle, accordionText, accordionFontSize, accordionOpen } = this.props.attributes;
+		const { accordionFontSize, accordionOpen } = this.props.attributes;
 
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
 				<RangeControl
-					label={ __( 'Font Size' ) }
+					label={ __( 'Font Size', 'atomic-blocks' ) }
 					value={ accordionFontSize }
 					onChange={ ( value ) => this.props.setAttributes({ accordionFontSize: value }) }
 					min={ 14 }
@@ -49,7 +45,7 @@ export default class Inspector extends Component {
 				/>
 
 				<ToggleControl
-					label={ __( 'Open by default' ) }
+					label={ __( 'Open by default', 'atomic-blocks' ) }
 					checked={ accordionOpen }
 					onChange={ () => this.props.setAttributes({ accordionOpen: ! accordionOpen }) }
 				/>

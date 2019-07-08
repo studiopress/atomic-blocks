@@ -20,7 +20,7 @@ export default class Accordion extends Component {
 	render() {
 
 		// Setup the attributes
-		const { accordionTitle, accordionText, accordionAlignment, accordionFontSize } = this.props.attributes;
+		const { accordionAlignment, accordionFontSize } = this.props.attributes;
 
 		return (
 			<div
