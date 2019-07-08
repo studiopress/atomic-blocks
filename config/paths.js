@@ -17,5 +17,5 @@ module.exports = {
 	pluginSrc: resolvePlugin( 'src' ), // Plugin src folder path.
 	pluginBlocksJs: resolvePlugin( 'src/blocks.js' ),
 	yarnLockFile: resolvePlugin( 'yarn.lock' ),
-	pluginDist: resolvePlugin( '.' ), // We are in ./dist folder already so the path '.' resolves to ./dist/.
+	pluginDist: resolvePlugin( '.' ) // We are in ./dist folder already so the path '.' resolves to ./dist/.
 };

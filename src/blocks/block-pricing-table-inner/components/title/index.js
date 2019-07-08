@@ -15,7 +15,7 @@ const {
 	getFontSizeClass,
 	FontSizePicker,
 	withFontSizes,
-	getColorClassName,
+	getColorClassName
 } = wp.editor;
 
 // Register the block
@@ -28,47 +28,47 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'title', 'atomic-blocks' ),
-		__( 'shop', 'atomic-blocks' ),
+		__( 'shop', 'atomic-blocks' )
 	],
 
 	attributes: {
 		title: {
-			type: 'string',
+			type: 'string'
 		},
 		fontSize: {
-			type: 'string',
+			type: 'string'
 		},
 		customFontSize: {
-			type: 'number',
+			type: 'number'
 		},
 		textColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customTextColor: {
-			type: 'string',
+			type: 'string'
 		},
 		backgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		customBackgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		paddingTop: {
 			type: 'number',
-			default: 10,
+			default: 10
 		},
 		paddingRight: {
 			type: 'number',
-			default: 20,
+			default: 20
 		},
 		paddingBottom: {
 			type: 'number',
-			default: 10,
+			default: 10
 		},
 		paddingLeft: {
 			type: 'number',
-			default: 20,
-		},
+			default: 20
+		}
 	},
 
 	// Render the block components
@@ -89,7 +89,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 			paddingTop,
 			paddingRight,
 			paddingBottom,
-			paddingLeft,
+			paddingLeft
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
@@ -107,16 +107,16 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
 		};
 
-		const className = classnames( {
+		const className = classnames({
 			'has-background': backgroundColor || customBackgroundColor,
 			'ab-pricing-table-title': true,
 			[ fontSizeClass ]: fontSizeClass,
 			[ textClass ]: textClass,
-			[ backgroundClass ]: backgroundClass,
-		} );
+			[ backgroundClass ]: backgroundClass
+		});
 
 		// Save the block markup for the front end
 		return (
@@ -128,5 +128,5 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-title', {
 				className={ className ? className : undefined }
 			/>
 		);
-	},
-} );
+	}
+});

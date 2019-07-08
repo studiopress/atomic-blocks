@@ -24,11 +24,11 @@ const {
 	InnerBlocks,
 	AlignmentToolbar,
 	BlockControls,
-	BlockAlignmentToolbar,
+	BlockAlignmentToolbar
 } = wp.editor;
 
 const {
-	Fragment,
+	Fragment
 } = wp.element;
 
 const ALLOWED_BLOCKS = [
@@ -38,7 +38,7 @@ const ALLOWED_BLOCKS = [
 	'atomic-blocks/ab-pricing-table-title',
 	'atomic-blocks/ab-pricing-table-button',
 	'core/paragraph',
-	'core/image',
+	'core/image'
 ];
 
 class ABPricingTableBlock extends Component {
@@ -61,11 +61,11 @@ class ABPricingTableBlock extends Component {
 
 		const styles = {
 			borderWidth: borderWidth ? borderWidth : null,
-			borderStyle: borderWidth > 0 ? 'solid' : null,
+			borderStyle: 0 < borderWidth ? 'solid' : null,
 			borderColor: borderColor ? borderColor : null,
 			borderRadius: borderRadius ? borderRadius : null,
 			backgroundColor: backgroundColor ? backgroundColor : null,
-			padding: padding ? padding + '%' : null,
+			padding: padding ? padding + '%' : null
 		};
 
 		return [
@@ -73,7 +73,7 @@ class ABPricingTableBlock extends Component {
 				<AlignmentToolbar
 					value={ alignment }
 					onChange={ ( nextAlign ) => {
-						setAttributes( { alignment: nextAlign } );
+						setAttributes({ alignment: nextAlign });
 					} }
 				/>
 			</BlockControls>,
@@ -95,24 +95,25 @@ class ABPricingTableBlock extends Component {
 					>
 						<InnerBlocks
 							template={[
+
 								// Add placeholder blocks
-								['atomic-blocks/ab-pricing-table-title', {
+								[ 'atomic-blocks/ab-pricing-table-title', {
 									title: '<strong>Price Title</strong>',
 									fontSize: 'medium',
 									paddingTop: 30,
 									paddingRight: 20,
 									paddingBottom: 10,
-									paddingLeft: 20,
-								}],
-								['atomic-blocks/ab-pricing-table-subtitle', {
+									paddingLeft: 20
+								} ],
+								[ 'atomic-blocks/ab-pricing-table-subtitle', {
 									subtitle: 'Price Subtitle Description',
 									customFontSize: 20,
 									paddingTop: 10,
 									paddingRight: 20,
 									paddingBottom: 10,
-									paddingLeft: 20,
-								}],
-								['atomic-blocks/ab-pricing-table-price', {
+									paddingLeft: 20
+								} ],
+								[ 'atomic-blocks/ab-pricing-table-price', {
 									price: '49',
 									currency: '$',
 									customFontSize: 60,
@@ -120,9 +121,9 @@ class ABPricingTableBlock extends Component {
 									paddingTop: 10,
 									paddingRight: 20,
 									paddingBottom: 10,
-									paddingLeft: 20,
-								}],
-								['atomic-blocks/ab-pricing-table-features', {
+									paddingLeft: 20
+								} ],
+								[ 'atomic-blocks/ab-pricing-table-features', {
 									features: '<li>Product Feature One</li><li>Product Feature Two</li><li>Product Feature Three</li>',
 									multilineTag: 'li',
 									ordered: false,
@@ -130,16 +131,16 @@ class ABPricingTableBlock extends Component {
 									paddingTop: 15,
 									paddingRight: 20,
 									paddingBottom: 15,
-									paddingLeft: 20,
-								}],
-								['atomic-blocks/ab-pricing-table-button', {
+									paddingLeft: 20
+								} ],
+								[ 'atomic-blocks/ab-pricing-table-button', {
 									buttonText: 'Buy Now',
 									buttonBackgroundColor: '#272c30',
 									paddingTop: 15,
 									paddingRight: 20,
 									paddingBottom: 35,
-									paddingLeft: 20,
-								}],
+									paddingLeft: 20
+								} ]
 							]}
 							templateLock={ false }
 							allowedBlocks={ ALLOWED_BLOCKS }
@@ -162,29 +163,29 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 	keywords: [
 		__( 'pricing', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
-		__( 'buy', 'atomic-blocks' ),
+		__( 'buy', 'atomic-blocks' )
 	],
 	attributes: {
 		borderWidth: {
 			type: 'number',
-			default: 2,
+			default: 2
 		},
 		borderColor: {
-			type: 'string',
+			type: 'string'
 		},
 		borderRadius: {
 			type: 'number',
-			default: 0,
+			default: 0
 		},
 		backgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		alignment: {
-			type: 'string',
+			type: 'string'
 		},
 		padding: {
-			type: 'number',
-		},
+			type: 'number'
+		}
 	},
 
 	// Render the block components
@@ -200,16 +201,16 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 			borderRadius,
 			backgroundColor,
 			alignment,
-			padding,
+			padding
 		} = props.attributes;
 
 		const styles = {
 			borderWidth: borderWidth ? borderWidth : null,
-			borderStyle: borderWidth > 0 ? 'solid' : null,
+			borderStyle: 0 < borderWidth ? 'solid' : null,
 			borderColor: borderColor ? borderColor : null,
 			borderRadius: borderRadius ? borderRadius : null,
 			backgroundColor: backgroundColor ? backgroundColor : null,
-			padding: padding ? padding + '%' : null,
+			padding: padding ? padding + '%' : null
 		};
 
 		// Save the block markup for the front end
@@ -230,5 +231,5 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 				</div>
 			</div>
 		);
-	},
-} );
+	}
+});

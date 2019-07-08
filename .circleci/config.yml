@@ -80,7 +80,7 @@ jobs:
           clone-wordpress-develop: false
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpcs
+          command: composer phpcs && npm run lint:js
 
 commands:
   prepare-environment:
@@ -90,7 +90,7 @@ commands:
         type: boolean
         default: true
     steps:
-      - run: apk add --no-cache git
+      - run: apk add --no-cache git nodejs npm
       - run:
           command: |
             php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -109,7 +109,7 @@ commands:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer install --prefer-dist --no-suggest --optimize-autoloader
+          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
 
 workflows:
   version: 2

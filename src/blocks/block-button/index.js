@@ -25,13 +25,13 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
-	URLInput,
+	URLInput
 } = wp.editor;
 
 // Register components
 const {
 	IconButton,
-	Dashicon,
+	Dashicon
 } = wp.components;
 
 class ABButtonBlock extends Component {
@@ -42,19 +42,22 @@ class ABButtonBlock extends Component {
 		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget }, isSelected, className, setAttributes } = this.props;
 
 		return [
+
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ buttonAlignment }
 					onChange={ ( value ) => {
-						setAttributes( { buttonAlignment: value } );
+						setAttributes({ buttonAlignment: value });
 					} }
 				/>
 			</BlockControls>,
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...this.props }
 			/>,
+
 			// Show the button markup in the editor
 			<CustomButton { ...this.props }>
 				<RichText
@@ -70,9 +73,9 @@ class ABButtonBlock extends Component {
 					) }
 					style={ {
 						color: buttonTextColor,
-						backgroundColor: buttonBackgroundColor,
+						backgroundColor: buttonBackgroundColor
 					} }
-					onChange={ (value) => setAttributes( { buttonText: value } ) }
+					onChange={ ( value ) => setAttributes({ buttonText: value }) }
 				/>
 			</CustomButton>,
 			isSelected && (
@@ -81,14 +84,14 @@ class ABButtonBlock extends Component {
 					className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
 					onSubmit={ event => event.preventDefault() }
 					style={ {
-						textAlign: buttonAlignment,
+						textAlign: buttonAlignment
 					} }
 				>
 					<Dashicon icon={ 'admin-links' } />
 					<URLInput
 						className="button-url"
 						value={ buttonUrl }
-						onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
+						onChange={ ( value ) => setAttributes({ buttonUrl: value }) }
 					/>
 					<IconButton
 						icon="editor-break"
@@ -110,20 +113,20 @@ registerBlockType( 'atomic-blocks/ab-button', {
 	keywords: [
 		__( 'button', 'atomic-blocks' ),
 		__( 'link', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 	attributes: {
 		buttonText: {
-			type: 'string',
+			type: 'string'
 		},
 		buttonUrl: {
 			type: 'string',
             source: 'attribute',
             selector: 'a',
-            attribute: 'href',
+            attribute: 'href'
 		},
 		buttonAlignment: {
-			type: 'string',
+			type: 'string'
 		},
 		buttonBackgroundColor: {
 			type: 'string',
@@ -144,7 +147,7 @@ registerBlockType( 'atomic-blocks/ab-button', {
 		buttonTarget: {
 			type: 'boolean',
 			default: false
-		},
+		}
 	},
 
 	// Render the block components
@@ -172,7 +175,7 @@ registerBlockType( 'atomic-blocks/ab-button', {
 						) }
 						style={ {
 							color: buttonTextColor,
-							backgroundColor: buttonBackgroundColor,
+							backgroundColor: buttonBackgroundColor
 						} }
 					>
 						<RichText.Content
@@ -182,5 +185,5 @@ registerBlockType( 'atomic-blocks/ab-button', {
 				) }
 			</CustomButton>
 		);
-	},
-} );
+	}
+});

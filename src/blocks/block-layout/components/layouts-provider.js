@@ -14,7 +14,7 @@ export const LayoutsContext = createContext({
 	favoriteKeys: '',
 	layouts: '',
 	sections: '',
-	all: '',
+	all: ''
 });
 
 export default class LayoutsProvider extends Component {
@@ -23,7 +23,7 @@ export default class LayoutsProvider extends Component {
 		favoriteKeys: '',
 		layouts: '',
 		sections: '',
-		all: '',
+		all: ''
 	}
 
 	/**
@@ -33,7 +33,7 @@ export default class LayoutsProvider extends Component {
 		return apiFetch(
 			{
 				path: '/atomicblocks/v1/layouts/favorites',
-				method: 'GET',
+				method: 'GET'
 			}
 		).then(
 			favorite_keys => {
@@ -51,7 +51,7 @@ export default class LayoutsProvider extends Component {
 		return apiFetch(
 			{
 				path: '/atomicblocks/v1/layouts/favorites',
-				method: 'GET',
+				method: 'GET'
 			}
 		).then(
 			favorite_keys => {
@@ -61,7 +61,7 @@ export default class LayoutsProvider extends Component {
 					if ( favorite_keys.includes( item.key ) ) {
 						favorites.push( item );
 					}
-				} );
+				});
 
 				return favorites;
 			}
@@ -81,11 +81,13 @@ export default class LayoutsProvider extends Component {
 			{
 				path: '/atomicblocks/v1/layouts/favorites',
 				method: 'PATCH',
-				body: JSON.stringify( { 'atomic_blocks_favorite_key': key } ),
+				body: JSON.stringify({ 'atomic_blocks_favorite_key': key }),
 				_wpnonce: wpApiSettings.nonce
 			}
 		).then(
-			(favorites) => { return favorites }
+			( favorites ) => {
+ return favorites;
+}
 		).catch(
 			error => console.error( error )
 		);
@@ -102,11 +104,13 @@ export default class LayoutsProvider extends Component {
 			{
 				path: '/atomicblocks/v1/layouts/favorites',
 				method: 'DELETE',
-				body: JSON.stringify( { 'atomic_blocks_favorite_key': key } ),
+				body: JSON.stringify({ 'atomic_blocks_favorite_key': key }),
 				_wpnonce: wpApiSettings.nonce
 			}
 		).then(
-			(favorites) => { return favorites }
+			( favorites ) => {
+ return favorites;
+}
 		).catch(
 			error => console.error( error )
 		);
@@ -114,7 +118,7 @@ export default class LayoutsProvider extends Component {
 
 	async componentDidMount() {
 
-		const favoriteKeys = await this.getFavoriteKeys()
+		const favoriteKeys = await this.getFavoriteKeys();
 
 		/**
 		 * Retrieve all the registered layouts, sections,
@@ -123,7 +127,7 @@ export default class LayoutsProvider extends Component {
 		wp.apiFetch(
 			{
 				'method': 'GET',
-				'path': '/atomicblocks/v1/layouts/all',
+				'path': '/atomicblocks/v1/layouts/all'
 			}
 		).then( async components => {
 			let layouts   = [];
@@ -131,7 +135,7 @@ export default class LayoutsProvider extends Component {
 			let favorites = [];
 
 			Object.values( components ).forEach( function( item ) {
-				if ( item.type === 'layout' ) {
+				if ( 'layout' === item.type ) {
 					layouts.push( item );
 				} else {
 					sections.push( item );
@@ -140,16 +144,16 @@ export default class LayoutsProvider extends Component {
 				if ( favoriteKeys.includes( item.key ) ) {
 					favorites.push( item );
 				}
-			} );
+			});
 
-			this.setState( {
+			this.setState({
 				all: components,
 				layouts: layouts,
 				sections: sections,
 				favorites: favorites,
-				favoriteKeys: favoriteKeys,
-			} );
-		} );
+				favoriteKeys: favoriteKeys
+			});
+		});
 	}
 
 	render() {
@@ -160,7 +164,7 @@ export default class LayoutsProvider extends Component {
 					layouts: this.state.layouts,
 					sections: this.state.sections,
 					all: this.state.all,
-					toggleFavorite: async ( key ) => {
+					toggleFavorite: async( key ) => {
 
 						let favoriteKeys = await this.getFavoriteKeys();
 
@@ -172,7 +176,7 @@ export default class LayoutsProvider extends Component {
 
 						let favorites = await this.getFavorites();
 
-						this.setState( { favorites: favorites, favoriteKeys: favoriteKeys } );
+						this.setState({ favorites: favorites, favoriteKeys: favoriteKeys });
 
 						return favorites;
 					}

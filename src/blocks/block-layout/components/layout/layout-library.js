@@ -18,7 +18,7 @@ import { LayoutsContext } from '../layouts-provider';
 const { __ } = wp.i18n;
 const {
 	Component,
-	Fragment,
+	Fragment
 } = wp.element;
 const {
 	Button,
@@ -26,7 +26,7 @@ const {
 	TextControl,
 	SelectControl,
 	Dashicon,
-	Tooltip,
+	Tooltip
 } = wp.components;
 
 export default class LayoutLibrary extends Component {
@@ -36,7 +36,7 @@ export default class LayoutLibrary extends Component {
 		this.state = {
 			category: 'all',
 			search: undefined,
-			activeView: 'grid',
+			activeView: 'grid'
 		};
 	}
 
@@ -60,6 +60,7 @@ export default class LayoutLibrary extends Component {
 	}
 
 	render() {
+
 		/* Grab the layout array. */
 		const blockLayout = this.getLayoutArray();
 
@@ -69,8 +70,8 @@ export default class LayoutLibrary extends Component {
 		/* Build a category array. */
 		for ( let i = 0; i < blockLayout.length; i++ ) {
 			for ( let c = 0; c < blockLayout[ i ].category.length; c++ ) {
-				if ( ! cats.includes( blockLayout[ i ].category[ c ] ) ) {
-					cats.push( blockLayout[ i ].category[ c ] );
+				if ( ! cats.includes( blockLayout[ i ].category[ c ]) ) {
+					cats.push( blockLayout[ i ].category[ c ]);
 				}
 			}
 		}
@@ -78,13 +79,13 @@ export default class LayoutLibrary extends Component {
 		/* Setup categories for select menu. */
 		const catOptions = cats.map( ( item ) => {
 			return {
-				value: item, label: item.charAt( 0 ).toUpperCase() + item.slice( 1 ) }
-		} );
+				value: item, label: item.charAt( 0 ).toUpperCase() + item.slice( 1 ) };
+		});
 
 		/* Expand each layout full width. */
 		const onZoom = () => {
-			const imageZoom = document.querySelector('.ab-layout-zoom-button');
-			imageZoom.parentNode.classList.toggle('ab-layout-zoom-layout');
+			const imageZoom = document.querySelector( '.ab-layout-zoom-button' );
+			imageZoom.parentNode.classList.toggle( 'ab-layout-zoom-layout' );
 		};
 
 		return (
@@ -96,14 +97,14 @@ export default class LayoutLibrary extends Component {
 						label={ __( 'Layout Categories', 'atomic-blocks' ) }
 						value={ this.state.category }
 						options={ catOptions }
-						onChange={ value => this.setState( { category: value } ) }
+						onChange={ value => this.setState({ category: value }) }
 					/>
 					<TextControl
 						key={ 'layout-library-search-layouts-' + this.props.clientId }
 						type="text"
 						value={ this.state.search }
 						placeholder={ __( 'Search Layouts', 'atomic-blocks' ) }
-						onChange={ value => this.setState( { search: value } ) }
+						onChange={ value => this.setState({ search: value }) }
 					/>
 				</div>
 
@@ -116,13 +117,13 @@ export default class LayoutLibrary extends Component {
 							<Button
 								key={ 'layout-library-grid-view-button-' + this.props.clientId }
 								className={ classnames(
-									this.state.activeView === 'grid' ? 'is-primary' : null,
+									'grid' === this.state.activeView ? 'is-primary' : null,
 									'ab-layout-grid-view-button'
 								) }
 								isSmall
-								onClick={ () => this.setState( {
+								onClick={ () => this.setState({
 									activeView: 'grid'
-								} ) }
+								}) }
 							>
 								<Dashicon
 									key={ 'layout-library-grid-view-dashicon-' + this.props.clientId }
@@ -137,13 +138,13 @@ export default class LayoutLibrary extends Component {
 							<Button
 								key={ 'layout-library-full-view-button-' + this.props.clientId }
 								className={ classnames(
-									this.state.activeView === 'full' ? 'is-primary' : null,
+									'full' === this.state.activeView ? 'is-primary' : null,
 									'ab-layout-full-view-button'
 								) }
 								isSmall
-								onClick={ () => this.setState( {
+								onClick={ () => this.setState({
 									activeView: 'full'
-								} ) }
+								}) }
 							>
 								<Dashicon
 									key={ 'layout-library-full-view-dashicon-' + this.props.clientId }
@@ -161,13 +162,14 @@ export default class LayoutLibrary extends Component {
 							key={ 'layout-library-context-button-group-' + this.props.clientId }
 							className={ classnames(
 								'ab-layout-choices',
-								this.state.activeView === 'full' ? 'ab-layout-view-full' : null,
+								'full' === this.state.activeView ? 'ab-layout-view-full' : null,
 							) }
 							aria-label={ __( 'Layout Options', 'atomic-blocks' ) }
 						>
-							{ map( this.props.data, ( { name, key, image, content, category, keywords } ) => {
+							{ map( this.props.data, ({ name, key, image, content, category, keywords }) => {
 								if ( ( 'all' === this.state.category || category.includes( this.state.category ) ) && ( ! this.state.search || ( keywords && keywords.some( x => x.toLowerCase().includes( this.state.search.toLowerCase() ) ) ) ) ) {
 									return (
+
 										/* Section and layout items. */
 										<LayoutLibraryItem
 											key={ 'layout-library-item-' + key }
@@ -180,7 +182,7 @@ export default class LayoutLibrary extends Component {
 										/>
 									);
 								}
-							} ) }
+							}) }
 						</ButtonGroup>
 					) }
 				</LayoutsContext.Consumer>

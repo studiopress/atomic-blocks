@@ -25,7 +25,7 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
-	BlockAlignmentToolbar,
+	BlockAlignmentToolbar
 } = wp.editor;
 
 // Register components
@@ -33,7 +33,7 @@ const {
 	Button,
 	withFallbackStyles,
 	IconButton,
-	Dashicon,
+	Dashicon
 } = wp.components;
 
 // Register the block
@@ -45,7 +45,7 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 	keywords: [
 		__( 'sharing', 'atomic-blocks' ),
 		__( 'social', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 
 	// Render the block components
@@ -71,23 +71,26 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 			shareAlignment,
 			shareButtonStyle,
 			shareButtonShape,
-			shareButtonColor,
+			shareButtonColor
 		} = props.attributes;
 
 		return [
+
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ shareAlignment }
 					onChange={ ( value ) => {
-						setAttributes( { shareAlignment: value } );
+						setAttributes({ shareAlignment: value });
 					} }
 				/>
 			</BlockControls>,
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...props }
 			/>,
+
 			// Show the button markup in the editor
 			<ShareLinks { ...props }>
 				<ul className="ab-share-list">
@@ -175,5 +178,5 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 	// Render via PHP
 	save() {
 		return null;
-	},
-} );
+	}
+});

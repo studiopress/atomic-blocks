@@ -19,7 +19,7 @@ export default class ShareLinks extends Component {
 
 	render() {
 
-		return (	
+		return (
 			<div
 				className={ classnames(
 					this.props.className,

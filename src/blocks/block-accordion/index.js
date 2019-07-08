@@ -22,7 +22,7 @@ const { Component } = wp.element;
 // Register block
 const {
 	registerBlockType,
-	createBlock,
+	createBlock
 } = wp.blocks;
 
 // Register editor components
@@ -31,7 +31,7 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-	InnerBlocks,
+	InnerBlocks
 } = wp.editor;
 
 // Register components
@@ -39,22 +39,22 @@ const {
 	Button,
 	withFallbackStyles,
 	IconButton,
-	Dashicon,
+	Dashicon
 } = wp.components;
 
 const blockAttributes = {
 	accordionTitle: {
 		type: 'array',
 		selector: '.ab-accordion-title',
-		source: 'children',
+		source: 'children'
 	},
 	accordionText: {
 		type: 'array',
 		selector: '.ab-accordion-text',
-		source: 'children',
+		source: 'children'
 	},
 	accordionAlignment: {
-		type: 'string',
+		type: 'string'
 	},
 	accordionFontSize: {
 		type: 'number',
@@ -63,7 +63,7 @@ const blockAttributes = {
 	accordionOpen: {
 		type: 'boolean',
 		default: false
-	},
+	}
 };
 
 class ABAccordionBlock extends Component {
@@ -74,17 +74,20 @@ class ABAccordionBlock extends Component {
 		const { attributes: { accordionTitle, accordionText, accordionAlignment, accordionFontSize, accordionOpen }, isSelected, className, setAttributes } = this.props;
 
 		return [
+
 			// Show the block alignment controls on focus
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ accordionAlignment }
-					onChange={ ( value ) => this.props.setAttributes( { accordionAlignment: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ accordionAlignment: value }) }
 				/>
 			</BlockControls>,
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...this.props }
 			/>,
+
 			// Show the button markup in the editor
 			<Accordion { ...this.props }>
 				<RichText
@@ -92,7 +95,7 @@ class ABAccordionBlock extends Component {
 					placeholder={ __( 'Accordion Title', 'atomic-blocks' ) }
 					value={ accordionTitle }
 					className="ab-accordion-title"
-					onChange={ ( value ) => this.props.setAttributes( { accordionTitle: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ accordionTitle: value }) }
 				/>
 
 				<div className="ab-accordion-text">
@@ -112,7 +115,7 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 	keywords: [
 		__( 'accordion', 'atomic-blocks' ),
 		__( 'list', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 	attributes: blockAttributes,
 
@@ -147,7 +150,7 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 			accordionText: {
 				type: 'array',
 				selector: '.ab-accordion-text',
-				source: 'children',
+				source: 'children'
 			},
 			...blockAttributes
 		},
@@ -157,10 +160,10 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 				omit( attributes, 'accordionText' ),
 				[
 					createBlock( 'core/paragraph', {
-						content: attributes.accordionText,
-					} ),
-					...innerBlocks,
-				],
+						content: attributes.accordionText
+					}),
+					...innerBlocks
+				]
 			];
 		},
 
@@ -181,6 +184,6 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 					</details>
 				</Accordion>
 			);
-		},
-	} ],
-} );
+		}
+	} ]
+});

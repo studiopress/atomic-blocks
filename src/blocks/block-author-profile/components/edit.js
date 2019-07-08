@@ -17,7 +17,7 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
-	MediaUpload,
+	MediaUpload
 } = wp.editor;
 const { Button } = wp.components;
 
@@ -38,23 +38,26 @@ export default class Edit extends Component {
 				profileImgURL,
 				profileImgID,
 				profileImgAlt,
-				profileTextColor,
+				profileTextColor
 			},
 			setAttributes
 		} = this.props;
 
 		return [
+
 			/* Show the block alignment controls on focus */
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ profileAlignment }
-					onChange={ ( value ) => setAttributes( { profileAlignment: value } ) }
+					onChange={ ( value ) => setAttributes({ profileAlignment: value }) }
 				/>
 			</BlockControls>,
+
 			/* Show the block controls on focus */
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,
+
 			/* Show the block markup in the editor */
 			<ProfileBox { ...this.props }>
 				<AvatarColumn { ...this.props }>
@@ -67,13 +70,13 @@ export default class Edit extends Component {
 								{
 									profileImgID: img.id,
 									profileImgURL: img.url,
-									profileImgAlt: img.alt,
+									profileImgAlt: img.alt
 								}
 							) }
 							allowed={ ALLOWED_MEDIA_TYPES }
 							type="image"
 							value={ profileImgID }
-							render={ ( { open } ) => (
+							render={ ({ open }) => (
 								<Button onClick={ open }>
 									{ ! profileImgID ? icons.upload : <img
 										className={ classnames(
@@ -104,7 +107,7 @@ export default class Edit extends Component {
 						style={ {
 							color: profileTextColor
 						} }
-						onChange={ ( value ) => setAttributes( { profileName: value } ) }
+						onChange={ ( value ) => setAttributes({ profileName: value }) }
 					/>
 
 					<RichText
@@ -116,7 +119,7 @@ export default class Edit extends Component {
 						style={ {
 							color: profileTextColor
 						} }
-						onChange={ ( value ) => setAttributes( { profileTitle: value } ) }
+						onChange={ ( value ) => setAttributes({ profileTitle: value }) }
 					/>
 
 					<RichText
@@ -127,7 +130,7 @@ export default class Edit extends Component {
 						keepPlaceholderOnFocus
 						value={ profileContent }
 						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-						onChange={ ( value ) => setAttributes( { profileContent: value } ) }
+						onChange={ ( value ) => setAttributes({ profileContent: value }) }
 					/>
 
 					<SocialIcons { ...this.props } />

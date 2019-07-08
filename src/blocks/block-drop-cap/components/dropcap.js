@@ -26,7 +26,7 @@ export default class DropCap extends Component {
 			<div
 				style={ {
 					color: dropCapTextColor,
-					textAlign: dropCapAlignment,
+					textAlign: dropCapAlignment
 				} }
 				className={ classnames(
 					this.props.className,

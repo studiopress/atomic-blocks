@@ -31,7 +31,7 @@ export default class ProfileBox extends Component {
 			<div
 			style={ {
 				backgroundColor: profileBackgroundColor,
-				color: profileTextColor,
+				color: profileTextColor
 			} }
 			className={ classnames(
 				this.props.className,

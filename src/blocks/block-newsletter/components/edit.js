@@ -40,14 +40,14 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	return {
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackButtonBackgroundColor: buttonBackgroundColor || ! computedStyles ? undefined : computedStyles.buttonBackgroundColor,
+		fallbackButtonBackgroundColor: buttonBackgroundColor || ! computedStyles ? undefined : computedStyles.buttonBackgroundColor
 	};
-} );
+});
 
 class Edit extends Component {
 	constructor() {
 		super( ...arguments );
-		this.props.setAttributes( { instanceId: this.props.instanceId } );
+		this.props.setAttributes({ instanceId: this.props.instanceId });
 	}
 
 	render() {
@@ -56,7 +56,7 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			buttonBackgroundColor,
-			buttonTextColor,
+			buttonTextColor
 		} = this.props;
 
 		const apiKeyDefined = atomic_blocks_newsletter_block_vars.mailingListProviders.mailchimp.api_key_defined;
@@ -64,7 +64,7 @@ class Edit extends Component {
 		/* Setup button background color class */
 		let buttonBackgroundColorClass;
 
-		if (attributes.customButtonBackgroundColor) {
+		if ( attributes.customButtonBackgroundColor ) {
 			buttonBackgroundColorClass = 'ab-has-custom-background-color';
 		} else {
 			buttonBackgroundColorClass = attributes.buttonBackgroundColor ? 'has-' + attributes.buttonBackgroundColor + '-background-color' : null;
@@ -73,7 +73,7 @@ class Edit extends Component {
 		/* Setup button text color class */
 		let buttonTextColorClass;
 
-		if (attributes.customButtonTextColor) {
+		if ( attributes.customButtonTextColor ) {
 			buttonTextColorClass = 'ab-has-custom-text-color';
 		} else {
 			buttonTextColorClass = attributes.buttonTextColor ? 'has-' + attributes.buttonTextColor + '-color' : null;
@@ -98,7 +98,7 @@ class Edit extends Component {
 							keepPlaceholderOnFocus
 							formattingControls={ [] }
 							value={ attributes.emailInputLabel }
-							onChange={ ( value ) => this.props.setAttributes( { emailInputLabel: value } ) }
+							onChange={ ( value ) => this.props.setAttributes({ emailInputLabel: value }) }
 						/>
 
 						<TextControl
@@ -126,14 +126,14 @@ class Edit extends Component {
 										buttonTextColorClass,
 										{
 											'has-background': attributes.buttonBackgroundColor || attributes.customButtonBackgroundColor,
-											'has-text-color': attributes.buttonTextColor || attributes.customButtonTextColor,
+											'has-text-color': attributes.buttonTextColor || attributes.customButtonTextColor
 										}
 									) }
 									style={ {
 										backgroundColor: buttonBackgroundColor.color,
-										color: buttonTextColor.color,
+										color: buttonTextColor.color
 									} }
-									onChange={ (value) => this.props.setAttributes( { buttonText: value } ) }
+									onChange={ ( value ) => this.props.setAttributes({ buttonText: value }) }
 								/>
 							</CustomButton>
 							{ isSelected && (
@@ -142,7 +142,7 @@ class Edit extends Component {
 									className={ `blocks-button__inline-link ab-button-${attributes.buttonAlignment}`}
 									onSubmit={ event => event.preventDefault() }
 									style={ {
-										textAlign: attributes.buttonAlignment,
+										textAlign: attributes.buttonAlignment
 									} }
 								>
 								</form>
@@ -155,12 +155,12 @@ class Edit extends Component {
 	}
 }
 
-export default compose( [
+export default compose([
 	applyFallbackStyles,
 	withColors(
 		'backgroundColor',
 		{ textColor: 'color' },
 		{ buttonBackgroundColor: 'background-color' },
 		{ buttonTextColor: 'color' },
-	),
-] )( withInstanceId( Edit ) );
+	)
+])( withInstanceId( Edit ) );

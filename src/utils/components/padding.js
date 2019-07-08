@@ -4,6 +4,7 @@ const { RangeControl } = wp.components;
 
 export default function Padding( props ) {
 	const {
+
 		// Padding props
 		padding,
 		paddingTitle,
@@ -12,42 +13,48 @@ export default function Padding( props ) {
 		paddingMax,
 		paddingEnable,
 		onChangePadding = () => {},
+
 		// Padding top props
 		paddingTop,
 		paddingTopMin,
 		paddingTopMax,
 		paddingEnableTop,
 		onChangePaddingTop = () => {},
+
 		// Padding right props
 		paddingRight,
 		paddingRightMin,
 		paddingRightMax,
 		paddingEnableRight,
 		onChangePaddingRight = () => {},
+
 		// Padding bottom props
 		paddingBottom,
 		paddingBottomMin,
 		paddingBottomMax,
 		paddingEnableBottom,
 		onChangePaddingBottom = () => {},
+
 		// Padding left props
 		paddingLeft,
 		paddingLeftMin,
 		paddingLeftMax,
 		paddingEnableLeft,
 		onChangePaddingLeft = () => {},
+
 		// Padding vertical props
 		paddingVertical,
 		paddingEnableVertical,
 		paddingVerticalMin,
 		paddingVerticalMax,
 		onChangePaddingVertical = () => {},
+
 		// Padding horizontal props
 		paddingHorizontal,
 		paddingEnableHorizontal,
 		paddingHorizontalMin,
 		paddingHorizontalMax,
-		onChangePaddingHorizontal = () => {},
+		onChangePaddingHorizontal = () => {}
 	} = props;
 
 	return (

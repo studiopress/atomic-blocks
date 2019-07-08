@@ -14,7 +14,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
@@ -28,7 +28,7 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-	UrlInput,
+	UrlInput
 } = wp.editor;
 
 // Register components
@@ -36,7 +36,7 @@ const {
 	Button,
 	withFallbackStyles,
 	IconButton,
-	Dashicon,
+	Dashicon
 } = wp.components;
 
 class ABSpacerBlock extends Component {
@@ -47,10 +47,12 @@ class ABSpacerBlock extends Component {
 		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor }, isSelected, className, setAttributes, toggleSelection, spacerDividerHeight } = this.props;
 
 		return [
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...this.props }
 			/>,
+
 			// Show the button markup in the editor
 			<Spacer { ...this.props }>
 				<Resizable
@@ -60,22 +62,22 @@ class ABSpacerBlock extends Component {
 					} }
 					size={ {
 						width: '100%',
-						height: spacerHeight,
+						height: spacerHeight
 					} }
 					minWidth= { '100%' }
 					maxWidth= { '100%' }
 					minHeight= { '100%' }
 					handleClasses={ {
-						bottomLeft: 'ab-spacer-control__resize-handle',
+						bottomLeft: 'ab-spacer-control__resize-handle'
 					} }
 					enable={ { top: false, right: false, bottom: true, left: false, topRight: false, bottomRight: false, bottomLeft: true, topLeft: false } }
 					onResizeStart={ () => {
 						toggleSelection( false );
 					} }
 					onResizeStop={ ( event, direction, elt, delta ) => {
-						setAttributes( {
-							spacerHeight: parseInt( spacerHeight + delta.height, 10 ),
-						} );
+						setAttributes({
+							spacerHeight: parseInt( spacerHeight + delta.height, 10 )
+						});
 						toggleSelection( true );
 					} }
 				>
@@ -94,12 +96,12 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 	keywords: [
 		__( 'spacer', 'atomic-blocks' ),
 		__( 'divider', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 	attributes: {
 		spacerHeight: {
 			type: 'number',
-			default: 30,
+			default: 30
 		},
 		spacerDivider: {
 			type: 'boolean',
@@ -115,8 +117,8 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 		},
 		spacerDividerHeight: {
 			type: 'number',
-			default: 1,
-		},
+			default: 1
+		}
 	},
 
 	// Render the block components
@@ -134,5 +136,5 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 				<hr style={ { height: spacerHeight ? spacerHeight + 'px' : undefined } }></hr>
 			</Spacer>
 		);
-	},
-} );
+	}
+});

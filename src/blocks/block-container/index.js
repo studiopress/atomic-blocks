@@ -30,7 +30,7 @@ const {
 	BlockAlignmentToolbar,
 	MediaUpload,
 	RichText,
-	InnerBlocks,
+	InnerBlocks
 } = wp.editor;
 
 // Register components
@@ -40,57 +40,57 @@ const {
 	IconButton,
 	Dashicon,
 	withState,
-	Toolbar,
+	Toolbar
 } = wp.components;
 
 const blockAttributes = {
 	containerPaddingTop: {
-		type: 'number',
+		type: 'number'
 	},
 	containerPaddingRight: {
-		type: 'number',
+		type: 'number'
 	},
 	containerPaddingBottom: {
-		type: 'number',
+		type: 'number'
 	},
 	containerPaddingLeft: {
-		type: 'number',
+		type: 'number'
 	},
 	containerMarginTop: {
-		type: 'number',
+		type: 'number'
 	},
 	containerMarginBottom: {
-		type: 'number',
+		type: 'number'
 	},
 	containerWidth: {
-		type: 'string',
+		type: 'string'
 	},
 	containerMaxWidth: {
 		type: 'number',
-		default: 1600,
+		default: 1600
 	},
 	containerBackgroundColor: {
-		type: 'string',
+		type: 'string'
 	},
 	containerImgURL: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'src',
-		selector: 'img',
+		selector: 'img'
 	},
 	containerImgID: {
-		type: 'number',
+		type: 'number'
 	},
 	containerImgAlt: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'alt',
-		selector: 'img',
+		selector: 'img'
 	},
 	containerDimRatio: {
 		type: 'number',
-		default: 50,
-	},
+		default: 50
+	}
 };
 
 class ABContainerBlock extends Component {
@@ -112,7 +112,7 @@ class ABContainerBlock extends Component {
 				containerImgURL,
 				containerImgID,
 				containerImgAlt,
-				containerDimRatio,
+				containerDimRatio
 			},
 			attributes,
 			isSelected,
@@ -122,26 +122,29 @@ class ABContainerBlock extends Component {
 		} = this.props;
 
 		const onSelectImage = img => {
-			setAttributes( {
+			setAttributes({
 				containerImgID: img.id,
 				containerImgURL: img.url,
-				containerImgAlt: img.alt,
-			} );
+				containerImgAlt: img.alt
+			});
 		};
 
 		return [
+
 			// Show the alignment toolbar on focus
 			<BlockControls>
 				<BlockAlignmentToolbar
 					value={ containerWidth }
-					onChange={ containerWidth => setAttributes( { containerWidth } ) }
+					onChange={ containerWidth => setAttributes({ containerWidth }) }
 					controls={ [ 'center', 'full' ] }
 				/>
 			</BlockControls>,
+
 			// Show the block controls on focus
 			<Inspector
 				{ ...{ setAttributes, ...this.props } }
 			/>,
+
 			// Show the container markup in the editor
 			<Container { ...this.props }>
 				<div className="ab-container-inside">
@@ -152,7 +155,7 @@ class ABContainerBlock extends Component {
 									'ab-container-image',
 									dimRatioToClass( containerDimRatio ),
 									{
-										'has-background-dim': containerDimRatio !== 0,
+										'has-background-dim': 0 !== containerDimRatio
 									}
 								) }
 								src={ containerImgURL }
@@ -164,7 +167,7 @@ class ABContainerBlock extends Component {
 					<div
 						className="ab-container-content"
 						style={ {
-							maxWidth: `${containerMaxWidth}px`,
+							maxWidth: `${containerMaxWidth}px`
 						} }
 					>
 						<InnerBlocks />
@@ -184,12 +187,12 @@ registerBlockType( 'atomic-blocks/ab-container', {
 	keywords: [
 		__( 'container', 'atomic-blocks' ),
 		__( 'section', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' ),
+		__( 'atomic', 'atomic-blocks' )
 	],
 
 	attributes: blockAttributes,
 
-	getEditWrapperProps( { containerWidth } ) {
+	getEditWrapperProps({ containerWidth }) {
 		if ( 'left' === containerWidth || 'right' === containerWidth || 'full' === containerWidth ) {
 			return { 'data-align': containerWidth };
 		}
@@ -215,7 +218,7 @@ registerBlockType( 'atomic-blocks/ab-container', {
 			containerImgURL,
 			containerImgID,
 			containerImgAlt,
-			containerDimRatio,
+			containerDimRatio
 		} = props.attributes;
 
 		// Save the block markup for the front end
@@ -229,7 +232,7 @@ registerBlockType( 'atomic-blocks/ab-container', {
 									'ab-container-image',
 									dimRatioToClass( containerDimRatio ),
 									{
-										'has-background-dim': containerDimRatio !== 0,
+										'has-background-dim': 0 !== containerDimRatio
 									}
 								) }
 								src={ containerImgURL }
@@ -241,7 +244,7 @@ registerBlockType( 'atomic-blocks/ab-container', {
 					<div
 						className="ab-container-content"
 						style={ {
-							maxWidth: `${containerMaxWidth}px`,
+							maxWidth: `${containerMaxWidth}px`
 						} }
 					>
 						<InnerBlocks.Content />
@@ -251,12 +254,12 @@ registerBlockType( 'atomic-blocks/ab-container', {
 		);
 	},
 
-	deprecated: deprecated,
+	deprecated: deprecated
 
-} );
+});
 
 function dimRatioToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
+	return ( 0 === ratio || 50 === ratio ) ?
 		null :
 		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
 }

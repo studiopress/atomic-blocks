@@ -12,7 +12,7 @@ const {
   BlockDescription,
   ColorPalette,
   PanelColorSettings,
-  MediaUpload,
+  MediaUpload
 } = wp.editor;
 
 // Import Inspector components
@@ -25,7 +25,7 @@ const {
 	RangeControl,
 	SelectControl,
 	ToggleControl,
-	IconButton,
+	IconButton
 } = wp.components;
 
 /**
@@ -44,23 +44,23 @@ export default class Inspector extends Component {
 		const { setAttributes } = this.props;
 
 		const onSelectImage = img => {
-			setAttributes( {
+			setAttributes({
 				containerImgID: img.id,
 				containerImgURL: img.url,
-				containerImgAlt: img.alt,
-			} );
+				containerImgAlt: img.alt
+			});
 		};
 
 		const onRemoveImage = () => {
 			setAttributes({
 				containerImgID: null,
 				containerImgURL: null,
-				containerImgAlt: null,
+				containerImgAlt: null
 			});
-		}
+		};
 
 		// Update color values
-		const onChangeBackgroundColor = value => setAttributes( { containerBackgroundColor: value } );
+		const onChangeBackgroundColor = value => setAttributes({ containerBackgroundColor: value });
 
 		return (
 		<InspectorControls key="inspector">
@@ -68,7 +68,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Padding Top (%)' ) }
 					value={ containerPaddingTop }
-					onChange={ ( value ) => this.props.setAttributes( { containerPaddingTop: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ containerPaddingTop: value }) }
 					min={ 0 }
 					max={ 30 }
 					step={ .5 }
@@ -77,7 +77,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Padding Bottom (%)' ) }
 					value={ containerPaddingBottom }
-					onChange={ ( value ) => this.props.setAttributes( { containerPaddingBottom: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ containerPaddingBottom: value }) }
 					min={ 0 }
 					max={ 30 }
 					step={ .5 }
@@ -86,7 +86,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Padding Left (%)' ) }
 					value={ containerPaddingLeft }
-					onChange={ ( value ) => this.props.setAttributes( { containerPaddingLeft: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ containerPaddingLeft: value }) }
 					min={ 0 }
 					max={ 30 }
 					step={ .5 }
@@ -95,7 +95,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Padding Right (%)' ) }
 					value={ containerPaddingRight }
-					onChange={ ( value ) => this.props.setAttributes( { containerPaddingRight: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ containerPaddingRight: value }) }
 					min={ 0 }
 					max={ 30 }
 					step={ .5 }
@@ -104,7 +104,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Margin Top (%)' ) }
 					value={ containerMarginTop }
-					onChange={ ( value ) => this.props.setAttributes( { containerMarginTop: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ containerMarginTop: value }) }
 					min={ 0 }
 					max={ 30 }
 					step={ 1 }
@@ -113,7 +113,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Margin Bottom (%)' ) }
 					value={ containerMarginBottom }
-					onChange={ ( value ) => this.props.setAttributes( { containerMarginBottom: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ containerMarginBottom: value }) }
 					min={ 0 }
 					max={ 30 }
 					step={ .5 }
@@ -122,7 +122,7 @@ export default class Inspector extends Component {
 				<RangeControl
 					label={ __( 'Inside Container Max Width (px)' ) }
 					value={ containerMaxWidth }
-					onChange={ ( value ) => this.props.setAttributes( { containerMaxWidth: value } ) }
+					onChange={ ( value ) => this.props.setAttributes({ containerMaxWidth: value }) }
 					min={ 500 }
 					max={ 1600 }
 					step={ 1 }
@@ -135,7 +135,7 @@ export default class Inspector extends Component {
 					onSelect={ onSelectImage }
 					type="image"
 					value={ containerImgID }
-					render={ ( { open } ) => (
+					render={ ({ open }) => (
 						<div>
 							<IconButton
 								className="ab-container-inspector-media"
@@ -165,7 +165,7 @@ export default class Inspector extends Component {
 					<RangeControl
 						label={ __( 'Image Opacity' ) }
 						value={ containerDimRatio }
-						onChange={ ( value ) => this.props.setAttributes( { containerDimRatio: value } ) }
+						onChange={ ( value ) => this.props.setAttributes({ containerDimRatio: value }) }
 						min={ 0 }
 						max={ 100 }
 						step={ 10 }
@@ -178,7 +178,7 @@ export default class Inspector extends Component {
 					colorSettings={ [ {
 						value: containerBackgroundColor,
 						label: __( 'Background Color' ),
-						onChange: onChangeBackgroundColor,
+						onChange: onChangeBackgroundColor
 					} ] }
 				>
 				</PanelColorSettings>

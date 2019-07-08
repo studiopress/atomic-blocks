@@ -19,7 +19,13 @@ Installing the customizable Atomic Block plugin adds a collection of beautiful, 
 
 Along with the content blocks you'll find in Atomic Blocks, we're also publishing helpful articles and tutorials to help you get started with Gutenberg.
 
-## Atomic Blocks currently includes the following blocks:
+### New Section and Layout Block!
+
+On top of the handy, time-saving blocks already found in Atomic Blocks, we're excited to introduce the brand new Section and Layout block! This block comes with a library of pre-designed sections and layouts to help you quickly and easily build a beautiful site with the new block editor.
+
+Using the Section and Layout modal window, you can browse designs by category, search, and even add sections and layouts to a Favorites tab for quick access later. Paired with the free [Atomic Blocks theme](https://wordpress.org/themes/atomic-blocks/), which has support for full-width, block-based page building, you have everything you need to start building your site today!
+
+### Atomic Blocks currently includes the following blocks:
 
 * Section & Layout Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/layout-block/)
 * Advanced Columns Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/advanced-columns-block/)
@@ -102,8 +108,8 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 1. Product Launch Page Layout
 2. Business Page Layout
-3. Team Section
-4. Pricing Table Block
+3. Personal Page Layout
+4. Team Section
 5. Hero Header Section
 6. Testimonial Section
 7. Pricing Table Block

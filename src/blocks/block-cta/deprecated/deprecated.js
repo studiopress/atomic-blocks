@@ -1,22 +1,22 @@
-import classnames from 'classnames'
+import classnames from 'classnames';
 
 import CallToAction_1_5_2 from './1.5.2/components/cta';
 import CallToAction_1_4_22 from './1.4.22/components/cta';
 import CallToAction_1_4_21 from './1.4.21/components/cta';
 
 const {
-	RichText,
+	RichText
 } = wp.editor;
 
 export const callToAction_1_5_2_attr = {
 	buttonText: {
-		type: 'string',
+		type: 'string'
 	},
 	buttonUrl: {
 		type: 'string',
 		source: 'attribute',
 		selector: 'a',
-		attribute: 'href',
+		attribute: 'href'
 	},
 	buttonAlignment: {
 		type: 'string',
@@ -45,25 +45,25 @@ export const callToAction_1_5_2_attr = {
 	ctaTitle: {
 		type: 'array',
 		selector: '.ab-cta-title',
-		source: 'children',
+		source: 'children'
 	},
 	titleFontSize: {
 		type: 'number',
-		default: '32',
+		default: '32'
 	},
 	ctaTextFontSize: {
-		type: 'number',
+		type: 'number'
 	},
 	ctaText: {
 		type: 'array',
 		selector: '.ab-cta-text',
-		source: 'children',
+		source: 'children'
 	},
 	ctaWidth: {
-		type: 'string',
+		type: 'string'
 	},
 	ctaBackgroundColor: {
-		type: 'string',
+		type: 'string'
 	},
 	ctaTextColor: {
 		type: 'string',
@@ -73,28 +73,28 @@ export const callToAction_1_5_2_attr = {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'src',
-		selector: 'img',
+		selector: 'img'
 	},
 	imgID: {
-		type: 'number',
+		type: 'number'
 	},
 	imgAlt: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'alt',
-		selector: 'img',
+		selector: 'img'
 	},
 	dimRatio: {
 		type: 'number',
-		default: 50,
+		default: 50
 	},
 
 	// Deprecated
 	ctaTitleFontSize: {
 		type: 'string',
 		default: '32'
-	},
-}
+	}
+};
 
 export const callToAction_1_5_2_save = props => {
 	const {
@@ -117,8 +117,8 @@ export const callToAction_1_5_2_save = props => {
         imgURL,
         imgID,
         imgAlt,
-        dimRatio,
-	} = props.attributes
+        dimRatio
+	} = props.attributes;
 
 	return (
 		<CallToAction_1_5_2 { ...props }>
@@ -129,7 +129,7 @@ export const callToAction_1_5_2_save = props => {
                             'ab-cta-image',
                             dimRatioToClass( dimRatio ),
                             {
-                                'has-background-dim': dimRatio !== 0,
+                                'has-background-dim': 0 !== dimRatio
                             }
                         ) }
                         src={ imgURL }
@@ -147,7 +147,7 @@ export const callToAction_1_5_2_save = props => {
                             'ab-font-size-' + titleFontSize,
                         ) }
                         style={ {
-                            color: ctaTextColor,
+                            color: ctaTextColor
                         } }
                         value={ ctaTitle }
                     />
@@ -160,7 +160,7 @@ export const callToAction_1_5_2_save = props => {
                             'ab-font-size-' + ctaTitleFontSize,
                         ) }
                         style={ {
-                            color: ctaTextColor,
+                            color: ctaTextColor
                         } }
                         value={ ctaText }
                     />
@@ -179,7 +179,7 @@ export const callToAction_1_5_2_save = props => {
                         ) }
                         style={ {
                             color: buttonTextColor,
-                            backgroundColor: buttonBackgroundColor,
+                            backgroundColor: buttonBackgroundColor
                         } }
                     >
                         <RichText.Content
@@ -189,20 +189,20 @@ export const callToAction_1_5_2_save = props => {
                 </div>
             ) }
         </CallToAction_1_5_2>
-	)
-}
+	);
+};
 
 // Version 1_4_22 attributes
 
 export const callToAction_1_4_22_attr = {
 	buttonText: {
-        type: 'string',
+        type: 'string'
     },
     buttonUrl: {
         type: 'string',
         source: 'attribute',
         selector: 'a',
-        attribute: 'href',
+        attribute: 'href'
     },
     buttonAlignment: {
         type: 'string',
@@ -231,26 +231,26 @@ export const callToAction_1_4_22_attr = {
     ctaTitle: {
         type: 'array',
         selector: '.ab-cta-title',
-        source: 'children',
+        source: 'children'
     },
     titleFontSize: {
         type: 'number',
-        default: '32',
+        default: '32'
     },
     ctaTextFontSize: {
-        type: 'number',
+        type: 'number'
     },
     ctaText: {
         type: 'array',
         selector: '.ab-cta-text',
-        source: 'children',
+        source: 'children'
     },
     ctaWidth: {
         type: 'string',
-        default: 'center',
+        default: 'center'
     },
     ctaBackgroundColor: {
-        type: 'string',
+        type: 'string'
     },
     ctaTextColor: {
         type: 'string',
@@ -260,28 +260,28 @@ export const callToAction_1_4_22_attr = {
         type: 'string',
         source: 'attribute',
         attribute: 'src',
-        selector: 'img',
+        selector: 'img'
     },
     imgID: {
-        type: 'number',
+        type: 'number'
     },
     imgAlt: {
         type: 'string',
         source: 'attribute',
         attribute: 'alt',
-        selector: 'img',
+        selector: 'img'
     },
     dimRatio: {
         type: 'number',
-        default: 50,
+        default: 50
     },
 
     // Deprecated
     ctaTitleFontSize: {
         type: 'string',
         default: '32'
-    },
-}
+    }
+};
 
 // Version 1_4_22 save
 
@@ -305,8 +305,8 @@ export const callToAction_1_4_22_save = props => {
         imgURL,
         imgID,
         imgAlt,
-        dimRatio,
-	} = props.attributes
+        dimRatio
+	} = props.attributes;
 
 	return (
 		<CallToAction_1_4_22 { ...props }>
@@ -317,7 +317,7 @@ export const callToAction_1_4_22_save = props => {
                             'ab-cta-image',
                             dimRatioToClass( dimRatio ),
                             {
-                                'has-background-dim': dimRatio !== 0,
+                                'has-background-dim': 0 !== dimRatio
                             }
                         ) }
                         src={ imgURL }
@@ -335,7 +335,7 @@ export const callToAction_1_4_22_save = props => {
                             'ab-font-size-' + ctaTitleFontSize,
                         ) }
                         style={ {
-                            color: ctaTextColor,
+                            color: ctaTextColor
                         } }
                         value={ ctaTitle }
                     />
@@ -348,7 +348,7 @@ export const callToAction_1_4_22_save = props => {
                             'ab-font-size-' + ctaTextFontSize,
                         ) }
                         style={ {
-                            color: ctaTextColor,
+                            color: ctaTextColor
                         } }
                         value={ ctaText }
                     />
@@ -367,7 +367,7 @@ export const callToAction_1_4_22_save = props => {
                         ) }
                         style={ {
                             color: buttonTextColor,
-                            backgroundColor: buttonBackgroundColor,
+                            backgroundColor: buttonBackgroundColor
                         } }
                     >
                         <RichText.Content
@@ -377,20 +377,20 @@ export const callToAction_1_4_22_save = props => {
                 </div>
             ) }
         </CallToAction_1_4_22>
-	)
-}
+	);
+};
 
 // Version 1_4_21 attributes
 
 export const callToAction_1_4_21_attr = {
 	buttonText: {
-        type: 'string',
+        type: 'string'
     },
     buttonUrl: {
         type: 'string',
         source: 'attribute',
         selector: 'a',
-        attribute: 'href',
+        attribute: 'href'
     },
     buttonAlignment: {
         type: 'string',
@@ -419,7 +419,7 @@ export const callToAction_1_4_21_attr = {
     ctaTitle: {
         type: 'array',
         selector: '.ab-cta-title',
-        source: 'children',
+        source: 'children'
     },
     ctaTitleFontSize: {
         type: 'string',
@@ -432,11 +432,11 @@ export const callToAction_1_4_21_attr = {
     ctaText: {
         type: 'array',
         selector: '.ab-cta-text',
-        source: 'children',
+        source: 'children'
     },
     ctaWidth: {
         type: 'string',
-        default: 'center',
+        default: 'center'
     },
     ctaBackgroundColor: {
         type: 'string',
@@ -450,22 +450,22 @@ export const callToAction_1_4_21_attr = {
         type: 'string',
         source: 'attribute',
         attribute: 'src',
-        selector: 'img',
+        selector: 'img'
     },
     imgID: {
-        type: 'number',
+        type: 'number'
     },
     imgAlt: {
         type: 'string',
         source: 'attribute',
         attribute: 'alt',
-        selector: 'img',
+        selector: 'img'
     },
     dimRatio: {
         type: 'number',
-        default: 50,
-    },
-}
+        default: 50
+    }
+};
 
 // Version 1_4_21 save
 
@@ -489,8 +489,8 @@ export const callToAction_1_4_21_save = props => {
         imgURL,
         imgID,
         imgAlt,
-        dimRatio,
-	} = props.attributes
+        dimRatio
+	} = props.attributes;
 
 	return (
 		<CallToAction_1_4_21 { ...props }>
@@ -501,7 +501,7 @@ export const callToAction_1_4_21_save = props => {
                             'ab-cta-image',
                             dimRatioToClass( dimRatio ),
                             {
-                                'has-background-dim': dimRatio !== 0,
+                                'has-background-dim': 0 !== dimRatio
                             }
                         ) }
                         src={ imgURL }
@@ -519,7 +519,7 @@ export const callToAction_1_4_21_save = props => {
                             'ab-font-size-' + ctaTitleFontSize,
                         ) }
                         style={ {
-                            color: ctaTextColor,
+                            color: ctaTextColor
                         } }
                         value={ ctaTitle }
                     />
@@ -532,7 +532,7 @@ export const callToAction_1_4_21_save = props => {
                             'ab-font-size-' + ctaTextFontSize,
                         ) }
                         style={ {
-                            color: ctaTextColor,
+                            color: ctaTextColor
                         } }
                         value={ ctaText }
                     />
@@ -550,7 +550,7 @@ export const callToAction_1_4_21_save = props => {
                         ) }
                         style={ {
                             color: buttonTextColor,
-                            backgroundColor: buttonBackgroundColor,
+                            backgroundColor: buttonBackgroundColor
                         } }
                     >
                         <RichText.Content
@@ -560,22 +560,25 @@ export const callToAction_1_4_21_save = props => {
                 </div>
             ) }
         </CallToAction_1_4_21>
-	)
-}
+	);
+};
 
 // Build deprecated list
 
 const deprecated = [
+
     // Version 1_5_2
 	{
         attributes: callToAction_1_5_2_attr,
-        save: callToAction_1_5_2_save,
+        save: callToAction_1_5_2_save
     },
+
     // Version 1_4_22
 	{
 		attributes: callToAction_1_4_22_attr,
-        save: callToAction_1_4_22_save,
+        save: callToAction_1_4_22_save
     },
+
     // Version 1_4_21
 	{
 		attributes: callToAction_1_4_21_attr,
@@ -583,17 +586,17 @@ const deprecated = [
         migrate: attributes => {
             return {
                 titleFontSize: attributes.ctaTitleFontSize,
-                ...attributes,
-            }
-        },
-	},
-]
+                ...attributes
+            };
+        }
+	}
+];
 
-export default deprecated
+export default deprecated;
 
 // Image opacity function
 function dimRatioToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
+	return ( 0 === ratio || 50 === ratio ) ?
 		null :
 		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
 }
