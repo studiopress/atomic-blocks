@@ -3,9 +3,9 @@
  */
 
 // Import block dependencies and components
-import Inspector from './components/inspector';
-import Accordion from './components/accordion';
-import omit from 'lodash/omit';
+import Edit from './components/edit';
+import Save from './components/save';
+import Deprecated from './deprecated/deprecated';
 
 // Import CSS
 import './styles/style.scss';
@@ -19,17 +19,8 @@ const { Component } = wp.element;
 
 // Register block
 const {
-	registerBlockType,
-	createBlock
+	registerBlockType
 } = wp.blocks;
-
-// Register editor components
-const {
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	InnerBlocks
-} = wp.editor;
 
 const blockAttributes = {
 	accordionTitle: {
@@ -55,46 +46,6 @@ const blockAttributes = {
 	}
 };
 
-class ABAccordionBlock extends Component {
-
-	render() {
-
-		// Setup the attributes
-		const { attributes: { accordionTitle, accordionAlignment } } = this.props;
-
-		return [
-
-			// Show the block alignment controls on focus
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ accordionAlignment }
-					onChange={ ( value ) => this.props.setAttributes({ accordionAlignment: value }) }
-				/>
-			</BlockControls>,
-
-			// Show the block controls on focus
-			<Inspector
-				{ ...this.props }
-			/>,
-
-			// Show the button markup in the editor
-			<Accordion { ...this.props }>
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Accordion Title', 'atomic-blocks' ) }
-					value={ accordionTitle }
-					className="ab-accordion-title"
-					onChange={ ( value ) => this.props.setAttributes({ accordionTitle: value }) }
-				/>
-
-				<div className="ab-accordion-text">
-					<InnerBlocks />
-				</div>
-			</Accordion>
-		];
-	}
-}
-
 // Register the block
 registerBlockType( 'atomic-blocks/ab-accordion', {
 	title: __( 'AB Accordion', 'atomic-blocks' ),
@@ -109,70 +60,14 @@ registerBlockType( 'atomic-blocks/ab-accordion', {
 	attributes: blockAttributes,
 
 	// Render the block components
-	edit: ABAccordionBlock,
-
-	// Save the attributes and markup
-	save: function( props ) {
-
-		// Setup the attributes
-		const { accordionTitle, accordionOpen } = props.attributes;
-
-		// Save the block markup for the front end
-		return (
-			<Accordion { ...props }>
-				<details open={accordionOpen}>
-					<summary className="ab-accordion-title">
-						<RichText.Content
-							value={ accordionTitle }
-						/>
-					</summary>
-					<div className="ab-accordion-text">
-						<InnerBlocks.Content />
-					</div>
-				</details>
-			</Accordion>
-		);
+	edit: props => {
+		return <Edit { ...props } />;
 	},
 
-	deprecated: [ {
-		attributes: {
-			accordionText: {
-				type: 'array',
-				selector: '.ab-accordion-text',
-				source: 'children'
-			},
-			...blockAttributes
-		},
+	// Save the attributes and markup
+	save: props => {
+		return <Save { ...props } />;
+	},
 
-		migrate( attributes, innerBlocks  ) {
-			return [
-				omit( attributes, 'accordionText' ),
-				[
-					createBlock( 'core/paragraph', {
-						content: attributes.accordionText
-					}),
-					...innerBlocks
-				]
-			];
-		},
-
-		save( props ) {
-			return (
-				<Accordion { ...props }>
-					<details open={ props.attributes.accordionOpen }>
-						<summary className="ab-accordion-title">
-							<RichText.Content
-								value={ props.attributes.accordionTitle }
-							/>
-						</summary>
-						<RichText.Content
-							className="ab-accordion-text"
-							tagName="p"
-							value={ props.attributes.accordionText }
-						/>
-					</details>
-				</Accordion>
-			);
-		}
-	} ]
+	deprecated: Deprecated
 });
