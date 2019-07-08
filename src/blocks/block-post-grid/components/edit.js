@@ -202,14 +202,15 @@ export default compose([
 			categories
 		} = props.attributes;
 
-		const { getEntityRecords } = select( 'core', 'atomic-blocks' );
+		const { getEntityRecords } = select( 'core' );
 
 		const latestPostsQuery = pickBy({
 			categories,
 			order,
 			orderby: props.attributes.orderBy,
 			per_page: props.attributes.postsToShow,
-			offset: props.attributes.offset
+			offset: props.attributes.offset,
+			exclude: [ wp.data.select( 'core/editor' ).getCurrentPostId() ]
 		}, ( value ) => ! isUndefined( value ) );
 
 		return {

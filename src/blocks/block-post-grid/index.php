@@ -9,9 +9,18 @@
 /**
  * Renders the post grid block on server.
  *
- * @param String $attributes  Pass the block attributes.
+ * @param string $attributes  Pass the block attributes.
+ * @return string HTML content for the post grid.
  */
 function atomic_blocks_render_block_core_latest_posts( $attributes ) {
+
+	/**
+	 * Global post object.
+	 * Used for excluding the current post from the grid.
+	 *
+	 * @var WP_Post
+	 */
+	global $post;
 
 	$categories = isset( $attributes['categories'] ) ? $attributes['categories'] : '';
 
@@ -26,6 +35,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			'offset'              => $attributes['offset'],
 			'post_type'           => $attributes['postType'],
 			'ignore_sticky_posts' => 1,
+			'post__not_in'        => array( $post->ID ), // Exclude the current post from the grid.
 		)
 	);
 
