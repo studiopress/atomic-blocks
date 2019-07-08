@@ -9,7 +9,7 @@ const { Component } = wp.element;
 import classnames from 'classnames';
 
 /* Create a profile box wrapper Component */
-export default class ProfileBox extends Component {
+export default class ProfileBox_2_0 extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -35,8 +35,8 @@ export default class ProfileBox extends Component {
 			} }
 			className={ classnames(
 				this.props.className,
-				'ab-align-' + profileAlignment,
-				'ab-image-shape-' + profileAvatarShape,
+				profileAlignment,
+				profileAvatarShape,
 				{ 'ab-has-avatar': profileImgURL },
 				'ab-font-size-' + profileFontSize,
 				'ab-block-profile',
