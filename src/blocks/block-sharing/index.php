@@ -288,7 +288,7 @@ function atomic_blocks_render_sharing( $attributes ) {
 		isset( $attributes['shareButtonShape'] ) ? $attributes['shareButtonShape'] : null,
 		isset( $attributes['shareButtonSize'] ) ? $attributes['shareButtonSize'] : null,
 		isset( $attributes['shareButtonColor'] ) ? $attributes['shareButtonColor'] : null,
-		isset( $attributes['shareAlignment'] ) ? $attributes['shareAlignment'] : null
+		isset( $attributes['shareAlignment'] ) ? 'ab-align-' . $attributes['shareAlignment'] : null
 	);
 
 	return $block_content;
