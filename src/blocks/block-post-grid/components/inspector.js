@@ -91,12 +91,6 @@ export default class Inspector extends Component {
 
 		const { categoriesList } = this.state;
 
-		// Thumbnail options
-		const imageCropOptions = [
-			{ value: 'landscape', label: __( 'Landscape', 'atomic-blocks' ) },
-			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) }
-		];
-
 		// Post type options
 		const postTypeOptions = [
 			{ value: 'post', label: __( 'Post', 'atomic-blocks' ) },
@@ -231,16 +225,6 @@ export default class Inspector extends Component {
 							options={ imageSizeOptions }
 							onChange={ ( value ) => this.props.setAttributes({ imageSize: value }) }
 						/>
-					}
-					{ attributes.displayPostImage &&
-						<Fragment>
-							<SelectControl
-								label={ __( 'Featured Image Style', 'atomic-blocks' ) }
-								options={ imageCropOptions }
-								value={ attributes.imageCrop }
-								onChange={ ( value ) => this.props.setAttributes({ imageCrop: value }) }
-							/>
-						</Fragment>
 					}
 					<ToggleControl
 						label={ __( 'Display Title', 'atomic-blocks' ) }

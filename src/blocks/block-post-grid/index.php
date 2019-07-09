@@ -76,12 +76,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			/* Get the featured image */
 			if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
 
-				/* Get the orientation class */
-				if ( $attributes['imageCrop'] === 'landscape' ) {
-					$post_thumb_size = 'ab-block-post-grid-landscape';
-				} else {
-					$post_thumb_size = 'ab-block-post-grid-square';
-				}
+				$post_thumb_size = 'full';
 
 				if ( ! empty( $attributes['imageSize'] ) ) {
 					$post_thumb_size = $attributes['imageSize'];
@@ -364,10 +359,6 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'orderBy'             => array(
 					'type'    => 'string',
 					'default' => 'date',
-				),
-				'imageCrop'           => array(
-					'type'    => 'string',
-					'default' => 'landscape',
 				),
 				'readMoreText'        => array(
 					'type'    => 'string',
