@@ -16,7 +16,7 @@ import './styles/editor.scss';
 const { __ } = wp.i18n;
 
 // Extend component
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 // Register block
 const { registerBlockType } = wp.blocks;
@@ -33,7 +33,8 @@ const {
 // Register components
 const {
 	Button,
-	SelectControl
+	SelectControl,
+	Dashicon
 } = wp.components;
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
@@ -69,6 +70,14 @@ class ABTestimonialBlock extends Component {
 				testimonialImgURL: img.url
 			});
 		};
+
+		const onRemoveImage = () => {
+			setAttributes({
+				testimonialImgURL: null,
+				testimonialImgID: null,
+				//imgAlt: null,
+			});
+		}
 
 		return [
 
@@ -120,13 +129,26 @@ class ABTestimonialBlock extends Component {
 								type="image"
 								value={ testimonialImgID }
 								render={ ({ open }) => (
-									<Button onClick={ open }>
-										{ ! testimonialImgID ? icons.upload : <img
-											className="ab-testimonial-avatar"
-											src={ testimonialImgURL }
-											alt="avatar"
-										/>  }
-									</Button>
+									<Fragment>
+										<Button
+											className={ testimonialImgID ? 'ab-change-image' : 'ab-add-image' }
+											onClick={ open }
+										>
+											{ ! testimonialImgID ? icons.upload : <img
+												className="ab-testimonial-avatar"
+												src={ testimonialImgURL }
+												alt="avatar"
+											/>  }
+										</Button>
+										{ testimonialImgID && (
+											<Button
+												className="ab-remove-image"
+												onClick={ onRemoveImage }
+												>
+												<Dashicon icon={ 'dismiss' } />
+											</Button>
+										) }
+									</Fragment>
 								) }
 							>
 							</MediaUpload>
