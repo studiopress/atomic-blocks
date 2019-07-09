@@ -108,10 +108,12 @@ const Deprecated = [
 
 	/* Version 2.0. */
 	{
+
 		/* Attributes for 2.0 same as 1.8.1 */
 		attributes: Author_Profile_1_8_1_attributes,
 		save: Author_Profile_2_0_save
 	},
+
 	/* Version 1.8.1. */
 	{
 		attributes: Author_Profile_1_8_1_attributes,
