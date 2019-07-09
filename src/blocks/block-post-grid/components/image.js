@@ -32,14 +32,15 @@ export default class PostGridImage extends Component {
 		/**
 		 * Set the image URL on load and when state changes.
 		 */
-		this.setState( {
+		this.setState({
 			setImageUrlSubscription: wp.data.subscribe( () => {
 				this.setImageUrl();
-			} )
-		} );
+			})
+		});
 	}
 
 	componentWillUnmount() {
+
 		/**
 		 * Cancel the image URL subscription.
 		 */
