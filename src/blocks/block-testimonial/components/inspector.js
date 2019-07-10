@@ -9,18 +9,12 @@ const { Component } = wp.element;
 // Import block components
 const {
 	InspectorControls,
-	BlockDescription,
-	ColorPalette,
 	PanelColorSettings
 } = wp.editor;
 
 // Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
-	FormToggle,
 	RangeControl,
 	SelectControl
 } = wp.components;
@@ -43,7 +37,7 @@ export default class Inspector extends Component {
 		];
 
 		// Setup the attributes
-		const { attributes: { testimonialName, testimonialTitle, testimonialContent, testimonialAlignment, testimonialImgURL, testimonialImgID, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }, setAttributes } = this.props;
 
 		// Update color values
 		const onChangeBackgroundColor = value => setAttributes({ testimonialBackgroundColor: value });

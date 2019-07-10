@@ -78,7 +78,7 @@
 	}
 }
 
-.ab-remove-image {
+.components-button.ab-remove-image {
 	color: #ec3939;
 	position: absolute;
     right: 0;
@@ -88,4 +88,16 @@
 	z-index: 60;
 	margin: 0;
 	padding: 0;
+	background: #fff;
+	border-radius: 50px;
+
+	&:active,
+	&:focus {
+		color: #ec3939;
+		background: #fff;
+	}
+}
+
+.ab-block-testimonial .ab-remove-image:not(:disabled):not([aria-disabled=true]):focus {
+	background: #fff;
 }

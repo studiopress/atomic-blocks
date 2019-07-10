@@ -3,10 +3,8 @@
  */
 
 // Import block dependencies and components
-import classnames from 'classnames';
-import Inspector from './components/inspector';
-import Testimonial from './components/testimonial';
-import icons from './components/icons';
+import Edit from './components/edit';
+import Save from './components/save';
 
 // Import CSS
 import './styles/style.scss';
@@ -15,174 +13,8 @@ import './styles/editor.scss';
 // Internationalization
 const { __ } = wp.i18n;
 
-// Extend component
-const { Component, Fragment } = wp.element;
-
 // Register block
 const { registerBlockType } = wp.blocks;
-
-// Register editor components
-const {
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	MediaUpload
-} = wp.editor;
-
-// Register components
-const {
-	Button,
-	SelectControl,
-	Dashicon
-} = wp.components;
-
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
-
-class ABTestimonialBlock extends Component {
-
-	render() {
-
-		// Setup the attributes
-		const {
-			attributes: {
-				testimonialName,
-				testimonialTitle,
-				testimonialContent,
-				testimonialAlignment,
-				testimonialImgURL,
-				testimonialImgID,
-				testimonialBackgroundColor,
-				testimonialTextColor,
-				testimonialFontSize,
-				testimonialCiteAlign
-			},
-			attributes,
-			isSelected,
-			editable,
-			className,
-			setAttributes
-		} = this.props;
-
-		const onSelectImage = img => {
-			setAttributes({
-				testimonialImgID: img.id,
-				testimonialImgURL: img.url
-			});
-		};
-
-		const onRemoveImage = () => {
-			setAttributes({
-				testimonialImgURL: null,
-				testimonialImgID: null,
-				//imgAlt: null,
-			});
-		}
-
-		return [
-
-			// Show the alignment toolbar on focus
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ testimonialAlignment }
-					onChange={ ( value ) => setAttributes({ testimonialAlignment: value }) }
-				/>
-			</BlockControls>,
-
-			// Show the block controls on focus
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
-
-			// Show the block markup in the editor
-			<Testimonial { ...this.props }>
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Add testimonial text...', 'atomic-blocks' ) }
-					keepPlaceholderOnFocus
-					value={ testimonialContent }
-					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-					className={ classnames(
-						'ab-testimonial-text'
-					) }
-					style={ {
-						textAlign: testimonialAlignment
-					} }
-					onChange={ ( value ) => setAttributes({ testimonialContent: value }) }
-				/>
-
-				<div className="ab-testimonial-info">
-					<div className="ab-testimonial-avatar-wrap">
-						<div className="ab-testimonial-image-wrap">
-							<MediaUpload
-								buttonProps={ {
-									className: 'change-image'
-								} }
-								onSelect={ ( img ) => setAttributes(
-									{
-										testimonialImgID: img.id,
-										testimonialImgURL: img.url
-									}
-								) }
-								allowed={ ALLOWED_MEDIA_TYPES }
-								type="image"
-								value={ testimonialImgID }
-								render={ ({ open }) => (
-									<Fragment>
-										<Button
-											className={ testimonialImgID ? 'ab-change-image' : 'ab-add-image' }
-											onClick={ open }
-										>
-											{ ! testimonialImgID ? icons.upload : <img
-												className="ab-testimonial-avatar"
-												src={ testimonialImgURL }
-												alt="avatar"
-											/>  }
-										</Button>
-										{ testimonialImgID && (
-											<Button
-												className="ab-remove-image"
-												onClick={ onRemoveImage }
-												>
-												<Dashicon icon={ 'dismiss' } />
-											</Button>
-										) }
-									</Fragment>
-								) }
-							>
-							</MediaUpload>
-						</div>
-					</div>
-
-					<RichText
-						tagName="h2"
-						placeholder={ __( 'Add name', 'atomic-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ testimonialName }
-						className='ab-testimonial-name'
-						style={ {
-							color: testimonialTextColor
-						} }
-						onChange={ ( value ) => this.props.setAttributes({ testimonialName: value }) }
-					/>
-
-					<RichText
-						tagName="small"
-						placeholder={ __( 'Add title', 'atomic-blocks' ) }
-						keepPlaceholderOnFocus
-						value={ testimonialTitle }
-						className='ab-testimonial-title'
-						style={ {
-							color: testimonialTextColor
-						} }
-						onChange={ ( value ) => this.props.setAttributes({ testimonialTitle: value }) }
-					/>
-				</div>
-			</Testimonial>
-		];
-	}
-}
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-testimonial', {
@@ -241,74 +73,13 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
         }
 	},
 
-	// Render the block components
-	edit: ABTestimonialBlock,
+	/* Render the block in the editor. */
+	edit: props => {
+		return <Edit { ...props } />;
+	},
 
-	// Save the attributes and markup
-	save: function( props ) {
-
-		// Setup the attributes
-		const {
-			testimonialName,
-			testimonialTitle,
-			testimonialContent,
-			testimonialAlignment,
-			testimonialImgURL,
-			testimonialImgID,
-			testimonialBackgroundColor,
-			testimonialTextColor,
-			testimonialFontSize,
-			testimonialCiteAlign
-		} = props.attributes;
-
-		// Save the block markup for the front end
-		return (
-			<Testimonial { ...props }>
-				<RichText.Content
-					tagName="div"
-					className="ab-testimonial-text"
-					style={ {
-						textAlign: testimonialAlignment
-					} }
-					value={ testimonialContent }
-				/>
-
-				<div className="ab-testimonial-info">
-					{ testimonialImgURL && (
-						<div className="ab-testimonial-avatar-wrap">
-							<div className="ab-testimonial-image-wrap">
-								<img
-									className="ab-testimonial-avatar"
-									src={ testimonialImgURL }
-									alt="avatar"
-								/>
-							</div>
-						</div>
-					) }
-
-					{ testimonialName && (
-						<RichText.Content
-							tagName="h2"
-							className="ab-testimonial-name"
-							style={ {
-								color: testimonialTextColor
-							} }
-							value={ testimonialName }
-						/>
-					) }
-
-					{ testimonialTitle && (
-						<RichText.Content
-							tagName="small"
-							className="ab-testimonial-title"
-							style={ {
-								color: testimonialTextColor
-							} }
-							value={ testimonialTitle }
-						/>
-					) }
-				</div>
-			</Testimonial>
-		);
+	/* Save the block markup. */
+	save: props => {
+		return <Save { ...props } />;
 	}
 });
