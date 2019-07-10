@@ -35,8 +35,8 @@ export default class Inspector extends Component {
 
 		/* Avatar shape options */
 		const profileAvatarShapeOptions = [
-			{ value: 'ab-image-shape-square', label: __( 'Square', 'atomic-blocks' ) },
-			{ value: 'ab-image-shape-round', label: __( 'Round', 'atomic-blocks' ) }
+			{ value: 'square', label: __( 'Square', 'atomic-blocks' ) },
+			{ value: 'round', label: __( 'Round', 'atomic-blocks' ) }
 		];
 
 		/* Update color values */
