@@ -81,5 +81,5 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 	/* Save the block markup. */
 	save: props => {
 		return <Save { ...props } />;
-	},
+	}
 });

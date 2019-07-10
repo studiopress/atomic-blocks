@@ -33,6 +33,7 @@ export default class Edit extends Component {
 	}
 
 	render() {
+
 		// Setup the attributes
 		const {
 			attributes: {
@@ -42,24 +43,17 @@ export default class Edit extends Component {
 				testimonialAlignment,
 				testimonialImgURL,
 				testimonialImgID,
-				testimonialTextColor,
+				testimonialTextColor
 			},
 			setAttributes
 		} = this.props;
 
-		const onSelectImage = img => {
-			setAttributes({
-				testimonialImgID: img.id,
-				testimonialImgURL: img.url
-			});
-		};
-
 		const onRemoveImage = () => {
 			setAttributes({
 				testimonialImgURL: null,
-				testimonialImgID: null,
+				testimonialImgID: null
 			});
-		}
+		};
 
 		return [
 
