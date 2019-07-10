@@ -70,7 +70,7 @@ const blockAttributes = {
 	},
 	profileAvatarShape: {
 		type: 'string',
-		default: 'square'
+		default: 'ab-image-shape-square'
 	},
 	twitter: {
 		type: 'url'
