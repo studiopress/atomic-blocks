@@ -7,7 +7,6 @@ const { Component } = wp.element;
 
 // Import block dependencies and components
 import classnames from 'classnames';
-import * as fontSize from './../../../utils/helper';
 
 /**
  * Create a Testimonial wrapper Component
@@ -21,13 +20,13 @@ export default class Testimonial extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { testimonialAlignment, testimonialImgURL, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }  } = this.props;
+		const { attributes: { testimonialImgURL, testimonialBackgroundColor, testimonialTextColor, testimonialFontSize, testimonialCiteAlign }  } = this.props;
 
 		return (
 			<div
 				style={ {
-					backgroundColor: testimonialBackgroundColor,
-					color: testimonialTextColor
+					backgroundColor: testimonialBackgroundColor ? testimonialBackgroundColor : '#f2f2f2',
+					color: testimonialTextColor ? testimonialTextColor : '#32373c'
 				} }
 				className={ classnames(
 					this.props.className,
