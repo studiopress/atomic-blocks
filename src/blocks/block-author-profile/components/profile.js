@@ -35,8 +35,8 @@ export default class ProfileBox extends Component {
 			} }
 			className={ classnames(
 				this.props.className,
-				profileAlignment ? 'ab-align-' + profileAlignment : null,
-				'ab-image-shape-' + profileAvatarShape,
+				profileAlignment,
+				profileAvatarShape,
 				{ 'ab-has-avatar': profileImgURL },
 				'ab-font-size-' + profileFontSize,
 				'ab-block-profile',
