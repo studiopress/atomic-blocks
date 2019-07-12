@@ -54,7 +54,7 @@ export default class Save extends Component {
 							tagName="h2"
 							className="ab-testimonial-name"
 							style={ {
-								color: testimonialTextColor
+								color: testimonialTextColor ? testimonialTextColor : '#32373c'
 							} }
 							value={ testimonialName }
 						/>
@@ -65,7 +65,7 @@ export default class Save extends Component {
 							tagName="small"
 							className="ab-testimonial-title"
 							style={ {
-								color: testimonialTextColor
+								color: testimonialTextColor ? testimonialTextColor : '#32373c'
 							} }
 							value={ testimonialTitle }
 						/>
