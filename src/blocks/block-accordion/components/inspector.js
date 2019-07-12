@@ -8,16 +8,12 @@ const { Component } = wp.element;
 
 // Import block components
 const {
-  InspectorControls,
-  BlockDescription
+  InspectorControls
 } = wp.editor;
 
 // Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
 	RangeControl,
 	ToggleControl
 } = wp.components;
@@ -33,28 +29,25 @@ export default class Inspector extends Component {
 
 	render() {
 
-		// Setup the attributes
-		const { accordionTitle, accordionText, accordionFontSize, accordionOpen } = this.props.attributes;
-
 		return (
-		<InspectorControls key="inspector">
-			<PanelBody>
-				<RangeControl
-					label={ __( 'Font Size' ) }
-					value={ accordionFontSize }
-					onChange={ ( value ) => this.props.setAttributes({ accordionFontSize: value }) }
-					min={ 14 }
-					max={ 24 }
-					step={ 1 }
-				/>
+			<InspectorControls key="inspector">
+				<PanelBody>
+					<RangeControl
+						label={ __( 'Font Size', 'atomic-blocks' ) }
+						value={ this.props.attributes.accordionFontSize }
+						onChange={ ( value ) => this.props.setAttributes({ accordionFontSize: value }) }
+						min={ 14 }
+						max={ 24 }
+						step={ 1 }
+					/>
 
-				<ToggleControl
-					label={ __( 'Open by default' ) }
-					checked={ accordionOpen }
-					onChange={ () => this.props.setAttributes({ accordionOpen: ! accordionOpen }) }
-				/>
-			</PanelBody>
-		</InspectorControls>
+					<ToggleControl
+						label={ __( 'Open by default', 'atomic-blocks' ) }
+						checked={ this.props.attributes.accordionOpen }
+						onChange={ () => this.props.setAttributes({ accordionOpen: ! this.props.attributes.accordionOpen }) }
+					/>
+				</PanelBody>
+			</InspectorControls>
 		);
 	}
 }

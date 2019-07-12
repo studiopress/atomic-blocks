@@ -2,6 +2,9 @@
  * Component deprecations.
  */
 
+/**
+ * Version 1.8.1.
+ */
 import Save_1_8_1 from './1.8.1/components/save';
 
 export const Author_Profile_1_8_1_attributes = {
