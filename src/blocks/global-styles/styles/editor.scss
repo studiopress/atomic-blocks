@@ -1,0 +1,71 @@
+#editor div[class^="wp-block-atomic-blocks-"] {
+	.ab-change-image {
+		position: absolute;
+		z-index: 50;
+		padding: 0;
+		top: 0;
+		left: 0;
+		opacity: 1 !important;
+		height: 100%;
+	}
+
+	.ab-change-image:focus {
+		background: none;
+		border: none;
+		outline: none;
+		box-shadow: none;
+	}
+
+	&:hover {
+		cursor: pointer;
+
+		img {
+			opacity: .7;
+		}
+
+		.ab-change-image {
+			opacity: 1;
+		}
+	}
+
+	.ab-add-image {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 50;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+
+		svg {
+			position: absolute;
+			top: 17px;
+			left: 19px;
+		}
+	}
+
+	.ab-remove-image {
+		color: #ec3939;
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: auto;
+		width: 20px;
+		left: auto;
+		z-index: 60;
+		margin: 0;
+		padding: 0;
+		background: #fff;
+		border-radius: 50px;
+
+		&:active,
+		&:focus {
+			color: #ec3939;
+			background: #fff;
+		}
+	}
+
+	.ab-remove-image:not(:disabled):not([aria-disabled=true]):focus {
+		background: #fff;
+	}
+}
