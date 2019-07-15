@@ -1,4 +1,4 @@
-div[class^="wp-block-atomic-blocks-"] {
+#editor div[class^="wp-block-atomic-blocks-"] {
 	.ab-change-image {
 		position: absolute;
 		z-index: 50;
@@ -50,6 +50,7 @@ div[class^="wp-block-atomic-blocks-"] {
 		right: 0;
 		top: 0;
 		height: auto;
+		width: 20px;
 		left: auto;
 		z-index: 60;
 		margin: 0;
