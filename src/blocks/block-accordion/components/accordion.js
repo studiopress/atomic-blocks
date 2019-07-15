@@ -25,7 +25,7 @@ export default class Accordion extends Component {
 					this.props.className,
 					'ab-align-' + this.props.attributes.accordionAlignment,
 					'ab-block-accordion',
-					'ab-font-size-' + this.props.attributes.accordionFontSize,
+					this.props.attributes.accordionFontSize ? 'ab-font-size-' + this.props.attributes.accordionFontSize : null,
 				) }
 			>
 				{ this.props.children }
