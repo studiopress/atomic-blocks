@@ -12,14 +12,20 @@ import icons from './icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+
+const {
+	Component,
+	Fragment
+} = wp.element;
+
 const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
 	MediaUpload
 } = wp.editor;
-const { Button } = wp.components;
+
+const { Button, Dashicon } = wp.components;
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
@@ -77,16 +83,36 @@ export default class Edit extends Component {
 							type="image"
 							value={ profileImgID }
 							render={ ({ open }) => (
-								<Button onClick={ open }>
-									{ ! profileImgID ? icons.upload : <img
-										className={ classnames(
-											'ab-profile-avatar',
-											'wp-image-' + profileImgID
-										) }
-										src={ profileImgURL }
-										alt={ profileImgAlt }
-									/>  }
-								</Button>
+								<Fragment>
+									<Button
+										onClick={ open }
+									>
+										{ ! profileImgID ? icons.upload : <img
+											className={ classnames(
+												'ab-profile-avatar',
+												'ab-change-image',
+												'wp-image-' + profileImgID
+											) }
+											src={ profileImgURL }
+											alt={ profileImgAlt }
+											/>
+										}
+									</Button>
+									{ profileImgID && (
+										<Button
+											className="ab-remove-image"
+											onClick={ () => {
+												setAttributes({
+													profileImgID: null,
+													profileImgURL: null,
+													profileImgAlt: null
+												});
+											} }
+										>
+											<Dashicon icon={ 'dismiss' } />
+										</Button>
+									) }
+								</Fragment>
 							) }
 						>
 						</MediaUpload>
