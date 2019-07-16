@@ -28,10 +28,6 @@ function atomic_blocks_register_sharing() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'google'           => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
 				'linkedin'         => array(
 					'type'    => 'boolean',
 					'default' => false,
@@ -118,8 +114,6 @@ function atomic_blocks_render_sharing( $attributes ) {
 
 	$facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . get_the_permalink() . '&title=' . get_the_title() . '';
 
-	$google_url = 'https://plus.google.com/share?url=' . get_the_permalink() . '';
-
 	$linkedin_url = 'https://www.linkedin.com/shareArticle?mini=true&url=' . get_the_permalink() . '&title=' . get_the_title() . '';
 
 	$pinterest_url = 'https://pinterest.com/pin/create/button/?&url=' . get_the_permalink() . '&description=' . get_the_title() . '&media=' . esc_url( $thumbnail ) . '';
@@ -171,28 +165,6 @@ function atomic_blocks_render_sharing( $attributes ) {
 			</li>',
 			$href_format,
 			esc_html__( 'Share on Facebook', 'atomic-blocks' )
-		);
-	}
-
-	if ( isset( $attributes['google'] ) && $attributes['google'] ) {
-
-		$href_format = sprintf( 'href="javascript:void(0)" onClick="javascript:atomicBlocksShare(\'%1$s\', \'%2$s\', \'600\', \'600\')"', esc_url( $google_url ), esc_html__( 'Share on Google', 'atomic-blocks' ) );
-
-		if ( $is_amp_endpoint ) {
-			$href_format = sprintf( 'href="%1$s"', esc_url( $google_url ) );
-		}
-
-		$share_url .= sprintf(
-			'<li>
-				<a
-					%1$s
-					class="ab-share-google"
-					title="%2$s">
-					<i class="fab fa-google"></i> <span class="ab-social-text">%2$s</span>
-				</a>
-			</li>',
-			$href_format,
-			esc_html__( 'Share on Google', 'atomic-blocks' )
 		);
 	}
 
