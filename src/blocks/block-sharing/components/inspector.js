@@ -72,11 +72,6 @@ export default class Inspector extends Component {
 						onChange={ () => this.props.setAttributes({ facebook: ! this.props.attributes.facebook }) }
 					/>
 					<ToggleControl
-						label={ __( 'Google', 'atomic-blocks' ) }
-						checked={ !! this.props.attributes.google }
-						onChange={ () => this.props.setAttributes({ google: ! this.props.attributes.google }) }
-					/>
-					<ToggleControl
 						label={ __( 'Pinterest', 'atomic-blocks' ) }
 						checked={ !! this.props.attributes.pinterest }
 						onChange={ () => this.props.setAttributes({ pinterest: ! this.props.attributes.pinterest }) }
