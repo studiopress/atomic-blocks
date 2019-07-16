@@ -174,9 +174,8 @@
 	order: 2;
 }
 
-.ab-image-shape-round .ab-profile-image-wrap {
+.round .ab-profile-image-wrap {
 	border-radius: 500px;
-	overflow: hidden;
 
 	&:before {
 		content: '';
