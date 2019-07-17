@@ -59,17 +59,6 @@ export default class Edit extends Component {
 					</li>
 				}
 
-				{ this.props.attributes.google &&
-					<li>
-						<a className='ab-share-google'>
-							<i className="fab fa-google"></i>
-							<span className={ 'ab-social-text' }>
-								{ __( 'Share on Google', 'atomic-blocks' ) }
-							</span>
-						</a>
-					</li>
-				}
-
 				{ this.props.attributes.pinterest &&
 					<li>
 						<a className='ab-share-pinterest'>
