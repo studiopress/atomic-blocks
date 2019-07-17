@@ -33,7 +33,7 @@ export default class Inspector extends Component {
 			<InspectorControls key="inspector">
 				<PanelBody>
 					<RangeControl
-						label={ __( 'Font Size', 'atomic-blocks' ) }
+						label={ __( 'Title Font Size', 'atomic-blocks' ) }
 						value={ this.props.attributes.accordionFontSize }
 						onChange={ ( value ) => this.props.setAttributes({ accordionFontSize: value }) }
 						min={ 14 }

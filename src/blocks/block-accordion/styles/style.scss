@@ -4,12 +4,12 @@
  */
 
  .ab-block-accordion {
-	 margin-bottom: 1.2em; 
+	 margin-bottom: 1.2em;
 
 	.ab-accordion-title {
 		background: #f2f2f2;
 		padding: 10px 15px;
-		
+
 		p {
 			display: inline;
 		}
@@ -27,4 +27,52 @@
 
 .ab-block-accordion + .ab-block-accordion {
 	margin-top: -.6em;
+}
+
+/* Font size styles */
+@media only screen and (min-width: 600px) {
+
+	.ab-font-size-14 .ab-accordion-title {
+		font-size: 14px;
+	}
+
+	.ab-font-size-15 .ab-accordion-title {
+		font-size: 15px;
+	}
+
+	.ab-font-size-16 .ab-accordion-title {
+		font-size: 16px;
+	}
+
+	.ab-font-size-17 .ab-accordion-title {
+		font-size: 17px;
+	}
+
+	.ab-font-size-18 .ab-accordion-title {
+		font-size: 18px;
+	}
+
+	.ab-font-size-19 .ab-accordion-title {
+		font-size: 19px;
+	}
+
+	.ab-font-size-20 .ab-accordion-title {
+		font-size: 20px;
+	}
+
+	.ab-font-size-21 .ab-accordion-title {
+		font-size: 21px;
+	}
+
+	.ab-font-size-22 .ab-accordion-title {
+		font-size: 22px;
+	}
+
+	.ab-font-size-23 .ab-accordion-title {
+		font-size: 23px;
+	}
+
+	.ab-font-size-24 .ab-accordion-title {
+		font-size: 24px;
+	}
 }
