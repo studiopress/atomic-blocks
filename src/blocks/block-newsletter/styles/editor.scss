@@ -9,13 +9,6 @@
 	}
 }
 
-.ab-nested-panel {
-	&.components-panel__body h2.components-panel__body-title > .components-panel__body-toggle {
-		padding-top: 15px;
-		padding-bottom: 15px;
-	}
-}
-
 .ab-form-styles {
 	label {
 		margin-bottom: 8px;
@@ -31,4 +24,15 @@
 		padding: 15px;
 		font-size: 16px;
 	}
+}
+
+.ab-newsletter-double-opt-in-setting-wrapper {
+	margin-bottom: 24px;
+
+	.description {
+		margin-bottom: 5px;
+	}
+}
+.ab-newsletter-double-opt-in-toggle {
+	margin-right: 5px;
 }

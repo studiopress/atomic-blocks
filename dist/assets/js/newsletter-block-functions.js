@@ -27,6 +27,8 @@ var AtomicBlocksNewsletterSubmission = {
 
 			var ampEndpoint = button.parent().find( '[name=\'ab-newsletter-amp-endpoint-request\']' ).val();
 
+			var doubleOptIn = button.parent().find( '[name=\'ab-newsletter-double-opt-in\']' ).val();
+
 			event.preventDefault();
 
 			wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_processing );
@@ -54,7 +56,8 @@ var AtomicBlocksNewsletterSubmission = {
 					'ab-newsletter-mailing-list': list,
 					'ab-newsletter-form-nonce': nonce,
 					'ab-newsletter-success-message': successMessage,
-					'ab-newsletter-amp-endpoint-request': ampEndpoint
+					'ab-newsletter-amp-endpoint-request': ampEndpoint,
+					'ab-newsletter-double-opt-in': doubleOptIn
 				},
 				type: 'post',
 				url: atomic_blocks_newsletter_vars.ajaxurl,
