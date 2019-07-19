@@ -19,6 +19,7 @@ const {
 const { PanelBody,
 	SelectControl,
 	TextControl,
+	FormToggle,
 	withFallbackStyles
 } = wp.components;
 
@@ -43,6 +44,12 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 });
 
 class Inspector extends Component {
+
+	doubleOptInChange( event ) {
+		if ( this.props.doubleOptIn ) {
+			this.props.doubleOptIn( event.target.checked );
+		}
+	}
 
 	render() {
 
@@ -102,6 +109,25 @@ class Inspector extends Component {
 						value={ attributes.successMessage }
 						onChange={ ( value ) => setAttributes({ successMessage: value }) }
 					/>
+
+					<div className="ab-newsletter-double-opt-in-setting-wrapper">
+						<FormToggle
+							id={ 'double-opt-in-toggle-' + this.props.instanceId }
+							className="ab-newsletter-double-opt-in-toggle"
+							checked={ attributes.doubleOptIn }
+							onChange={ ( event ) => setAttributes({ doubleOptIn: event.target.checked }) }
+						/>
+						<label
+							className="ab-newsletter-double-opt-in-setting-label"
+							htmlFor={ 'double-opt-in-toggle-' + this.props.instanceId }
+						>
+							{ __( 'Enable Double Opt-In', 'atomic-blocks' ) }
+						</label>
+						<p className="description">
+							{ __( 'Send contacts an opt-in confirmation email when they subscribe to your list.', 'atomic-blocks' ) }
+						</p>
+					</div>
+
 				</PanelBody>
 
 				<PanelBody
