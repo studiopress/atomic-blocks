@@ -67,6 +67,12 @@ final class Mailchimp implements Provider_Interface {
 		$email   = sanitize_email( trim( $email ) );
 		$list_id = ! empty( $args['list_id'] ) ? sanitize_text_field( $args['list_id'] ) : false;
 
+		$status         = 'subscribed';
+		$valid_statuses = [ 'subscribed', 'pending' ];
+		if ( ! empty( $args['status'] ) && in_array( $args['status'], $valid_statuses, true ) ) {
+			$status = $args['status'];
+		}
+
 		if ( empty( $email ) || ! is_email( $email ) ) {
 			throw new Mailchimp_API_Error_Exception(
 				esc_html__( 'An invalid email address was provided.', 'atomic-blocks' )
@@ -89,7 +95,7 @@ final class Mailchimp implements Provider_Interface {
 			$request_method,
 			[
 				'email_address' => $email,
-				'status'        => 'subscribed',
+				'status'        => $status,
 			]
 		);
 

@@ -41,12 +41,20 @@ function form_submission_listener() {
 	$list               = sanitize_text_field( wp_unslash( $_POST['ab-newsletter-mailing-list'] ) );
 	$default_attributes = atomic_blocks_newsletter_block_attributes();
 	$success_message    = ! empty( $_POST['ab-newsletter-success-message'] ) ? sanitize_text_field( wp_unslash( $_POST['ab-newsletter-success-message'] ) ) : $default_attributes['successMessage']['default'];
+	$subscriber_status  = ! empty( $_POST['ab-newsletter-double-opt-in'] ) ? 'pending' : 'subscribed';
 
 	if ( ! is_email( $email ) ) {
 		send_processing_response( __( 'Please provide a valid email address.', 'atomic-blocks' ) );
 	}
 
-	$response = process_submission( $email, $provider, [ 'list_id' => $list ] );
+	$response = process_submission(
+		$email,
+		$provider,
+		[
+			'list_id' => $list,
+			'status'  => $subscriber_status,
+		]
+	);
 
 	if ( is_wp_error( $response ) ) {
 		send_processing_response( $response->get_error_message(), false );
@@ -116,9 +124,10 @@ function send_processing_response( $message, $success = true ) {
  */
 function process_submission( $email, $provider, array $args ) {
 
-	$provider = sanitize_text_field( trim( (string) $provider ) );
-	$email    = sanitize_email( trim( (string) $email ) );
-	$list_id  = ! empty( $args['list_id'] ) ? sanitize_text_field( trim( (string) $args['list_id'] ) ) : false;
+	$provider       = sanitize_text_field( trim( (string) $provider ) );
+	$email          = sanitize_email( trim( (string) $email ) );
+	$list_id        = ! empty( $args['list_id'] ) ? sanitize_text_field( trim( (string) $args['list_id'] ) ) : false;
+	$args['status'] = ! empty( $args['status'] ) ? sanitize_key( $args['status'] ) : false;
 
 	$errors = [
 		'invalid_provider' => esc_html__( 'Invalid newsletter provider.', 'atomic-blocks' ),
@@ -154,6 +163,7 @@ function process_submission( $email, $provider, array $args ) {
 					$email,
 					[
 						'list_id' => $list_id,
+						'status'  => $args['status'],
 					]
 				);
 			} catch ( Mailchimp_API_Error_Exception $exception ) {

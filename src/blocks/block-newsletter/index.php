@@ -135,6 +135,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 				<input type="hidden" name="ab-newsletter-mailing-list-provider" value="' . esc_attr( $attributes['mailingListProvider'] ) . '" />
 				<input type="hidden" name="ab-newsletter-mailing-list" value="' . esc_attr( $attributes['mailingList'] ) . '" />
 				<input type="hidden" name="ab-newsletter-success-message" value="' . esc_attr( $attributes['successMessage'] ) . '" />
+				<input type="hidden" name="ab-newsletter-double-opt-in" value="' . esc_attr( $attributes['doubleOptIn'] ) . '" />
 				<input type="hidden" name="ab-newsletter-amp-endpoint-request" value="' . $amp_endpoint . '" />
 				<input type="hidden" name="ab-newsletter-form-nonce" value="' . wp_create_nonce( 'ab-newsletter-form-nonce' ) . '" />
 			</form>
@@ -229,6 +230,10 @@ function atomic_blocks_newsletter_block_attributes() {
 		'instanceId'                  => [
 			'type'    => 'number',
 			'default' => 1,
+		],
+		'doubleOptIn'                 => [
+			'type'    => 'boolean',
+			'default' => false,
 		],
 	];
 }
