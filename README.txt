@@ -3,8 +3,8 @@ Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbat
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
-Tested up to: 5.2
-Stable tag: 2.0
+Tested up to: 5.2.2
+Stable tag: 2.0.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -125,6 +125,18 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.0.1 =
+* Add double opt-in option to Newsletter block.
+* Remove Google+ from Sharing block.
+* Add button to remove image from Testimonial and Author Profile block.
+* Add prefix to alignment CSS class on Sharing and Accordion block.
+* Change duplicate layout name.
+* Remove duplicate CSS entries to increase performance.
+* Remove outdated French translation files in favor of wp.org translations.
+* Remove default font value in Accordion block so block can use theme font declarations.
+* Remove overly specific font size declaration in Accordion block.
+* Remove the currently viewed post from the posts query to avoid duplicate display in Post Grid.
+
 = 2.0 =
 * Add Section & Layout block.
 
