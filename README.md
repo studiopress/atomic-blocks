@@ -94,6 +94,18 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**2.0.1**
+* Add double opt-in option to Newsletter block.
+* Remove Google+ from Sharing block.
+* Add button to remove image from Testimonial and Author Profile block.
+* Add prefix to alignment CSS class on Sharing and Accordion block.
+* Change duplicate layout name.
+* Remove duplicate CSS entries to increase performance.
+* Remove outdated French translation files in favor of wp.org translations.
+* Remove default font value in Accordion block so block can use theme font declarations.
+* Remove overly specific font size declaration in Accordion block.
+* Remove the currently viewed post from the posts query to avoid duplicate display in Post Grid.
+
 **2.0**
 * Add Section and Layout block.
 
