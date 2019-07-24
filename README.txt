@@ -21,6 +21,8 @@ Along with the content blocks you'll find in Atomic Blocks, we're also publishin
 
 ### New Section and Layout Block!
 
+https://www.youtube.com/watch?v=iJC2AY-ClO8
+
 On top of the handy, time-saving blocks already found in Atomic Blocks, we're excited to introduce the brand new Section and Layout block! This block comes with a library of pre-designed sections and layouts to help you quickly and easily build a beautiful site with the new block editor.
 
 Using the Section and Layout modal window, you can browse designs by category, search, and even add sections and layouts to a Favorites tab for quick access later. Paired with the free [Atomic Blocks theme](https://wordpress.org/themes/atomic-blocks/), which has support for full-width, block-based page building, you have everything you need to start building your site today!
