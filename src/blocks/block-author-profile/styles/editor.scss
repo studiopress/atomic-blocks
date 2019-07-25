@@ -36,3 +36,22 @@
 	top: 5px;
 	right: 5px;
 }
+
+#editor .ab-has-avatar {
+
+	.ab-profile-image-square {
+		button {
+			top: 0;
+			left: 0;
+			height: 100%;
+		}
+
+		.ab-change-image {
+			transition: .2s ease;
+
+			&:hover {
+				opacity: .7;
+			}
+		}
+	}
+}
