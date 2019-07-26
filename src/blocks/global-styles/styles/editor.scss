@@ -5,8 +5,18 @@
 		padding: 0;
 		top: 0;
 		left: 0;
-		opacity: 1 !important;
+		opacity: 1;
 		height: 100%;
+
+		img {
+			transition: .2s ease;
+		}
+
+		&:hover {
+			img {
+				opacity: .7
+			}
+		}
 	}
 
 	.ab-change-image:focus {
@@ -14,18 +24,6 @@
 		border: none;
 		outline: none;
 		box-shadow: none;
-	}
-
-	&:hover {
-		cursor: pointer;
-
-		img {
-			opacity: .7;
-		}
-
-		.ab-change-image {
-			opacity: 1;
-		}
 	}
 
 	.ab-add-image {
