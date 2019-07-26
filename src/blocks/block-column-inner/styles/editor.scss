@@ -109,7 +109,7 @@
 
 /* One column grid. */
 
-.ab-layout-columns-1 .editor-block-list__layout {
+.ab-layout-columns-1 > .editor-block-list__layout {
 	grid-template-columns: 1fr;
 	grid-template-areas: "col1";
 }
