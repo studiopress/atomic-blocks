@@ -30,7 +30,7 @@ export default class Inspector extends Component {
 	render() {
 
 		/* Setup the attributes */
-		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, linkedin, email, website, profileAvatarShape  } = this.props.attributes;
+		const { profileName, profileTitle, profileContent, profileAlignment, profileImgURL, profileImgID, profileFontSize, profileBackgroundColor, profileTextColor, profileLinkColor, twitter, facebook, instagram, pinterest, google, youtube, github, linkedin, wordpress, email, website, profileAvatarShape  } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		/* Avatar shape options */
@@ -155,6 +155,13 @@ export default class Inspector extends Component {
 					type="url"
 					value={ linkedin }
 					onChange={ ( value ) => this.props.setAttributes({ linkedin: value }) }
+				/>
+
+				<TextControl
+					label={ __( 'WordPress URL', 'atomic-blocks' ) }
+					type="url"
+					value={ wordpress }
+					onChange={ ( value ) => this.props.setAttributes({ wordpress: value }) }
 				/>
 
 				<TextControl
