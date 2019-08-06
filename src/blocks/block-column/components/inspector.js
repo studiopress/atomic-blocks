@@ -9,6 +9,7 @@ import map from 'lodash/map';
 import columnLayouts from './column-layouts';
 import Margin from './../../../utils/components/margin';
 import Padding from './../../../utils/components/padding';
+import BackgroundImagePanel from './../../../utils/components/background-image/inspector';
 
 /**
  * WordPress dependencies.
@@ -61,7 +62,9 @@ export default class Inspector extends Component {
 			{ value: 'px', label: __( 'Pixel (px)', 'atomic-blocks' ) },
 			{ value: '%', label: __( 'Percent (%)', 'atomic-blocks' ) },
 			{ value: 'em', label: __( 'Em (em)', 'atomic-blocks' ) }
-        ];
+		];
+
+		console.log( attributes );
 
 		return (
 			<InspectorControls key="inspector">
@@ -261,6 +264,9 @@ export default class Inspector extends Component {
 						/>
 					}
 				</PanelBody>
+
+				<BackgroundImagePanel { ...this.props }>
+				</BackgroundImagePanel>
 
 				<PanelColorSettings
 					title={ __( 'Color', 'atomic-blocks' ) }
