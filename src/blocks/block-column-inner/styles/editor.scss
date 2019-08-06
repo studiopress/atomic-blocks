@@ -2,7 +2,10 @@
  * Editor styles for the admin
  */
 
-[data-type="atomic-blocks/ab-columns"] {
+.ab-layout-column-wrap-admin,
+.ab-block-layout-column-inner .block-editor-inner-blocks {
+	position: relative;
+	z-index: 1;
 }
 
 .editor-styles-wrapper [data-type="atomic-blocks/ab-columns"] .wp-block {
@@ -263,4 +266,16 @@
 .ab-block-layout-column .wp-block-image,
 .ab-block-layout-column .wp-block-image .components-resizable-box__container {
 	max-width: 100% !important;
+}
+
+.is-button.ab-inspector-icon-button {
+	display: inline-flex;
+	margin-top: 12px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 40px;
+}
+
+.ab-background-button-group {
+	margin-bottom: 25px;
 }

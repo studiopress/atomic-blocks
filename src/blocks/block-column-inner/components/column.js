@@ -8,9 +8,11 @@
 const { Component } = wp.element;
 
 /**
- * External dependencies.
+ * Internal dependencies.
  */
 import classnames from 'classnames';
+import BackgroundImageClasses from './../../../utils/components/background-image/classes';
+import BackgroundImageStyles from './../../../utils/components/background-image/styles';
 
 /**
  * Create a Columns wrapper Component.
@@ -23,9 +25,7 @@ export default class Column extends Component {
 
 	render() {
 
-		const {
-			attributes
-		} = this.props;
+		const { attributes } = this.props;
 
 		/* Setup the margin styles. */
 		let marginStyle;
@@ -62,7 +62,8 @@ export default class Column extends Component {
 		const styles = {
 			backgroundColor: this.props.backgroundColorValue ? this.props.backgroundColorValue : null,
 			color: this.props.textColorValue ? this.props.textColorValue : null,
-			textAlign: attributes.textAlign ? attributes.textAlign : null
+			textAlign: attributes.textAlign ? attributes.textAlign : null,
+			...BackgroundImageStyles( attributes )
 		};
 
 		/* Setup the background color class. */
@@ -88,7 +89,7 @@ export default class Column extends Component {
 				className={ classnames(
 					this.props.className,
 					'ab-block-layout-column',
-					attributes.columnVerticalAlignment ? 'ab-is-vertically-aligned-' + attributes.columnVerticalAlignment : null
+					attributes.columnVerticalAlignment ? 'ab-is-vertically-aligned-' + attributes.columnVerticalAlignment : null,
 				) }
 			>
 				<div
@@ -96,6 +97,7 @@ export default class Column extends Component {
 						'ab-block-layout-column-inner',
 						backgroundColorClass,
 						textColorClass,
+						...BackgroundImageClasses( attributes )
 					) }
 					style={ Object.assign( marginStyle, paddingStyle, styles ) }
 				>

@@ -11,6 +11,8 @@ const { Component } = wp.element;
  * Components and dependencies.
  */
 import classnames from 'classnames';
+import BackgroundImageClasses from './../../../utils/components/background-image/classes';
+import BackgroundImageStyles from './../../../utils/components/background-image/styles';
 
 /**
  * Create a Columns wrapper Component.
@@ -23,9 +25,7 @@ export default class Columns extends Component {
 
 	render() {
 
-		const {
-			attributes
-		} = this.props;
+		const { attributes } = this.props;
 
 		/* Setup the background color class. */
 		let backgroundColorClass;
@@ -50,6 +50,7 @@ export default class Columns extends Component {
 			this.props.className,
 			'ab-layout-columns-' + attributes.columns,
 			attributes.layout,
+			...BackgroundImageClasses( attributes ),
 			backgroundColorClass,
 			textColorClass,
 			attributes.columnMaxWidth && attributes.centerColumns ? 'ab-columns-center' : null
@@ -91,7 +92,8 @@ export default class Columns extends Component {
 		/* Misc styles. */
 		const styles = {
 			backgroundColor: this.props.backgroundColorValue ? this.props.backgroundColorValue : null,
-			color: this.props.textColorValue ? this.props.textColorValue : null
+			color: this.props.textColorValue ? this.props.textColorValue : null,
+			...BackgroundImageStyles( attributes )
 		};
 
 		return (
