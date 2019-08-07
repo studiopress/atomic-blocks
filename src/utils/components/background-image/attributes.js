@@ -2,24 +2,12 @@
  * Background Image attributes
  */
 const BackgroundAttributes = {
-	backgroundColor: {
-		type: 'string'
-	},
 	backgroundImgURL: {
 		type: 'string',
 	},
-	backgroundImgID: {
-		type: 'number'
-	},
-	backgroundImgAlt: {
-		type: 'string',
-		source: 'attribute',
-		attribute: 'alt',
-		selector: 'img'
-	},
 	backgroundDimRatio: {
 		type: 'number',
-		default: 50
+		default: 100,
 	},
 	hasParallax: {
 		type: 'boolean',

@@ -64,8 +64,6 @@ export default class Inspector extends Component {
 			{ value: 'em', label: __( 'Em (em)', 'atomic-blocks' ) }
 		];
 
-		console.log( attributes );
-
 		return (
 			<InspectorControls key="inspector">
 				{ attributes.layout &&

@@ -3,6 +3,7 @@
  */
 import Margin from './../../../utils/components/margin';
 import Padding from './../../../utils/components/padding';
+import BackgroundImagePanel from './../../../utils/components/background-image/inspector';
 
 /**
  * WordPress dependencies.
