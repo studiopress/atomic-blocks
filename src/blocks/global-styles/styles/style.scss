@@ -251,12 +251,37 @@
 
 .ab-has-background-dim-100 {
 	&:before {
-		opacity: 1;
+		opacity: 0;
 	}
 }
 
+.ab-background-auto {
+	background-size: auto;
+	background-position: center center;
+}
 
-.wp-block-cover-image.has-background-dim.has-background-dim-40:before,
-.wp-block-cover.has-background-dim.has-background-dim-40:before {
+.ab-background-cover {
+	background-size: cover;
+}
 
+.ab-background-contain {
+	background-size: contain;
+	background-position: center center;
+}
+
+.ab-background-no-repeat {
+	background-repeat: no-repeat;
+}
+
+.ab-background-repeat {
+	background-repeat: repeat;
+}
+
+.ab-background-repeat-x {
+	background-repeat: repeat-x;
+}
+
+.ab-background-repeat-y {
+	background-repeat: repeat-y;
+	background-position: center center;
 }

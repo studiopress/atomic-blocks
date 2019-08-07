@@ -52,8 +52,12 @@ export default class Columns extends Component {
 		/* Setup the wrapper classes. */
 		const className = classnames([
 			this.props.className,
+
 			attributes.backgroundDimRatio !== 100 ? 'ab-has-background-dim' : null,
 			dimRatioToClass( attributes.backgroundDimRatio ),
+			attributes.backgroundImgURL && attributes.backgroundSize && attributes.backgroundRepeat === 'no-repeat' ? 'ab-background-' + attributes.backgroundSize : null,
+			attributes.backgroundImgURL && attributes.backgroundRepeat ? 'ab-background-' + attributes.backgroundRepeat : null,
+
 			'ab-layout-columns-' + attributes.columns,
 			attributes.layout,
 			backgroundColorClass,
@@ -63,8 +67,6 @@ export default class Columns extends Component {
 			[ 'align' + attributes.align ]: attributes.align,
 			'ab-has-parallax': attributes.hasParallax,
 		});
-
-		console.log(attributes.dimRatio);
 
 		/* Setup the margin styles. */
 		let marginValue;

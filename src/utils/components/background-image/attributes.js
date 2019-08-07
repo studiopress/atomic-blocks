@@ -9,6 +9,14 @@ const BackgroundAttributes = {
 		type: 'number',
 		default: 100,
 	},
+	backgroundRepeat: {
+		type: 'string',
+		default: 'no-repeat',
+	},
+	backgroundSize: {
+		type: 'string',
+		default: 'cover'
+	},
 	hasParallax: {
 		type: 'boolean',
 		default: false,
