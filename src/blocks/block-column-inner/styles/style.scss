@@ -40,6 +40,12 @@
 	}
 }
 
+.ab-block-layout-column-inner,
+.ab-layout-column-wrap .ab-block-layout-column-inner * {
+	position: relative;
+	z-index: 1;
+}
+
 .wp-block-atomic-blocks-ab-layout.alignfull {
 	padding: 0 2em;
 

@@ -263,9 +263,6 @@ export default class Inspector extends Component {
 					}
 				</PanelBody>
 
-				<BackgroundImagePanel { ...this.props }>
-				</BackgroundImagePanel>
-
 				<PanelColorSettings
 					title={ __( 'Color', 'atomic-blocks' ) }
 					initialOpen={ false }
@@ -289,6 +286,9 @@ export default class Inspector extends Component {
 						} }
 					/>
 				</PanelColorSettings>
+
+				<BackgroundImagePanel { ...this.props }>
+				</BackgroundImagePanel>
 			</InspectorControls>
 		);
 	}

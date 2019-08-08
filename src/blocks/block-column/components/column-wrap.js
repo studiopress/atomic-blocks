@@ -11,10 +11,8 @@ const { Component } = wp.element;
  * Components and dependencies.
  */
 import classnames from 'classnames';
-import {
-	backgroundImageStyles,
-	dimRatioToClass,
-} from './../../../utils/components/background-image/shared';
+import BackgroundImageClasses from './../../../utils/components/background-image/classes';
+import BackgroundImageStyles from './../../../utils/components/background-image/styles';
 
 /**
  * Create a Columns wrapper Component.
@@ -27,9 +25,7 @@ export default class Columns extends Component {
 
 	render() {
 
-		const {
-			attributes
-		} = this.props;
+		const { attributes } = this.props;
 
 		/* Setup the background color class. */
 		let backgroundColorClass;
@@ -52,20 +48,14 @@ export default class Columns extends Component {
 		/* Setup the wrapper classes. */
 		const className = classnames([
 			this.props.className,
-
-			attributes.backgroundDimRatio !== 100 ? 'ab-has-background-dim' : null,
-			dimRatioToClass( attributes.backgroundDimRatio ),
-			attributes.backgroundImgURL && attributes.backgroundSize && attributes.backgroundRepeat === 'no-repeat' ? 'ab-background-' + attributes.backgroundSize : null,
-			attributes.backgroundImgURL && attributes.backgroundRepeat ? 'ab-background-' + attributes.backgroundRepeat : null,
-
 			'ab-layout-columns-' + attributes.columns,
 			attributes.layout,
+			...BackgroundImageClasses( attributes ),
 			backgroundColorClass,
 			textColorClass,
 			attributes.columnMaxWidth && attributes.centerColumns ? 'ab-columns-center' : null
 		], {
 			[ 'align' + attributes.align ]: attributes.align,
-			'ab-has-parallax': attributes.hasParallax,
 		});
 
 		/* Setup the margin styles. */
@@ -103,8 +93,7 @@ export default class Columns extends Component {
 		const styles = {
 			backgroundColor: this.props.backgroundColorValue ? this.props.backgroundColorValue : null,
 			color: this.props.textColorValue ? this.props.textColorValue : null,
-			backgroundImage: attributes.backgroundImgURL ? `url(${ attributes.backgroundImgURL })` : undefined,
-			backgroundPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined
+			...BackgroundImageStyles( attributes )
 		};
 
 		return (

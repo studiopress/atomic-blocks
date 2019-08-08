@@ -1,6 +1,7 @@
 /**
- * Background Image attributes
+ * Background image attributes.
  */
+
 const BackgroundAttributes = {
 	backgroundImgURL: {
 		type: 'string',

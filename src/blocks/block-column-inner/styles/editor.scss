@@ -2,7 +2,8 @@
  * Editor styles for the admin
  */
 
-.ab-layout-column-wrap-admin {
+.ab-layout-column-wrap-admin,
+.ab-block-layout-column-inner .block-editor-inner-blocks {
 	position: relative;
 	z-index: 1;
 }

@@ -1,3 +1,7 @@
+/**
+ * Background image inspector settings.
+ */
+
 const { __ } = wp.i18n;
 const {
 	Fragment,
@@ -25,17 +29,8 @@ class BackgroundImagePanel extends Component {
 	render() {
 		const {
 			attributes,
-			setAttributes,
+			setAttributes
 		} = this.props;
-
-		const {
-			focalPoint,
-			hasParallax,
-			backgroundImgURL,
-			backgroundDimRatio,
-			backgroundRepeat,
-			backgroundSize,
-		} = attributes;
 
 		const backgroundRepeatOptions = [
 			{ value: 'no-repeat', label: __( 'No Repeat', 'atomic-blocks' ) },
@@ -52,13 +47,13 @@ class BackgroundImagePanel extends Component {
 
 		let backgroundSizeHelp;
 
-		if ( backgroundSize === 'cover' ) {
+		if ( attributes.backgroundSize === 'cover' ) {
 			backgroundSizeHelp = __( 'Scales the image as large as possible without stretching the image. Cropped either vertically or horizontally so that no empty space remains.', 'atomic-blocks' );
 		}
-		if ( backgroundSize === 'contain' ) {
+		if ( attributes.backgroundSize === 'contain' ) {
 			backgroundSizeHelp = __( 'Scales the image as large as possible without cropping or stretching the image.', 'atomic-blocks' );
 		}
-		if ( backgroundSize === 'auto' ) {
+		if ( attributes.backgroundSize === 'auto' ) {
 			backgroundSizeHelp = __( 'Scales the background image in the corresponding direction such that its intrinsic proportions are maintained.', 'atomic-blocks' );
 		}
 
@@ -73,7 +68,7 @@ class BackgroundImagePanel extends Component {
 								} );
 							} }
 							type="image"
-							value={ backgroundImgURL }
+							value={ attributes.backgroundImgURL }
 							render={ ({ open }) => (
 								<div>
 									<ButtonGroup
@@ -88,7 +83,7 @@ class BackgroundImagePanel extends Component {
 											{ __( 'Select Image', 'atomic-blocks' ) }
 										</IconButton>
 
-										{ backgroundImgURL && (
+										{ attributes.backgroundImgURL && (
 											<IconButton
 												className="ab-inspector-icon-button ab-background-remove-button is-button is-default"
 												label={ __( 'Remove Image', 'atomic-blocks' ) }
@@ -105,18 +100,18 @@ class BackgroundImagePanel extends Component {
 						</MediaUpload>
 					</MediaUploadCheck>
 
-					{ backgroundImgURL && (
+					{ attributes.backgroundImgURL && (
 						<Fragment>
 							<FocalPointPicker
 								label={ __( 'Focal Point', 'atomic-blocks' ) }
-								url={ backgroundImgURL }
-								value={ focalPoint }
+								url={ attributes.backgroundImgURL }
+								value={ attributes.focalPoint }
 								onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
 							/>
 
 							<RangeControl
 								label={ __( 'Image Opacity', 'atomic-blocks' ) }
-								value={ backgroundDimRatio }
+								value={ attributes.backgroundDimRatio }
 								onChange={ ( value ) => this.props.setAttributes({
 									backgroundDimRatio: value,
 								}) }
@@ -127,31 +122,30 @@ class BackgroundImagePanel extends Component {
 
 							<ToggleControl
 								label={ __( 'Fixed Background', 'atomic-blocks' ) }
-								checked={ hasParallax }
+								checked={ attributes.hasParallax }
 								onChange={ () => {
 									setAttributes( {
-										hasParallax: ! hasParallax,
-										...( ! hasParallax ? { focalPoint: undefined } : {} ),
+										hasParallax: ! attributes.hasParallax,
+										...( ! attributes.hasParallax ? { focalPoint: undefined } : {} ),
 									} );
 								} }
 							/>
 
-							{ backgroundRepeat === 'no-repeat' && (
-								<SelectControl
-									label={ __( 'Image Display', 'atomic-blocks' ) }
-									value={ backgroundSize }
-									help={ backgroundSizeHelp }
-									options={ backgroundSizeOptions }
-									onChange={ ( value ) => this.props.setAttributes({
-										backgroundSize: value,
-									}) }
-								/>
-							) }
+							<SelectControl
+								className="ab-inspector-help-text"
+								label={ __( 'Image Display', 'atomic-blocks' ) }
+								value={ attributes.backgroundSize }
+								help={ backgroundSizeHelp }
+								options={ backgroundSizeOptions }
+								onChange={ ( value ) => this.props.setAttributes({
+									backgroundSize: value,
+								}) }
+							/>
 
-							{ backgroundSize != 'cover' && (
+							{ attributes.backgroundSize != 'cover' && (
 								<SelectControl
 									label={ __( 'Image Repeat', 'atomic-blocks' ) }
-									value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
+									value={ attributes.backgroundRepeat }
 									options={ backgroundRepeatOptions }
 									onChange={ ( value ) => this.props.setAttributes({
 										backgroundRepeat: value,

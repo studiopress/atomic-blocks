@@ -179,6 +179,9 @@ class Inspector extends Component {
 					} }
 				/>
 			</PanelColorSettings>
+
+			<BackgroundImagePanel { ...this.props }>
+			</BackgroundImagePanel>
 		</InspectorControls>
 		);
 	}
