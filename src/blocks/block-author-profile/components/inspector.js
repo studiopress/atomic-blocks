@@ -158,7 +158,7 @@ export default class Inspector extends Component {
 				/>
 
 				<TextControl
-					label={ __( 'WordPress URL', 'atomic-blocks' ) }
+					label={ __( 'WordPress Profile URL', 'atomic-blocks' ) }
 					type="url"
 					value={ wordpress }
 					onChange={ ( value ) => this.props.setAttributes({ wordpress: value }) }
