@@ -99,6 +99,9 @@ const blockAttributes = {
 	email: {
 		type: 'url'
 	},
+	wordpress: {
+		type: 'url'
+	},
 	website: {
 		type: 'url'
 	}
