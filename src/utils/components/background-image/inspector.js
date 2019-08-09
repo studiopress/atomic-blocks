@@ -47,13 +47,13 @@ class BackgroundImagePanel extends Component {
 
 		let backgroundSizeHelp;
 
-		if ( attributes.backgroundSize === 'cover' ) {
+		if ( 'cover' === attributes.backgroundSize ) {
 			backgroundSizeHelp = __( 'Scales the image as large as possible without stretching the image. Cropped either vertically or horizontally so that no empty space remains.', 'atomic-blocks' );
 		}
-		if ( attributes.backgroundSize === 'contain' ) {
+		if ( 'contain' === attributes.backgroundSize ) {
 			backgroundSizeHelp = __( 'Scales the image as large as possible without cropping or stretching the image.', 'atomic-blocks' );
 		}
-		if ( attributes.backgroundSize === 'auto' ) {
+		if ( 'auto' === attributes.backgroundSize ) {
 			backgroundSizeHelp = __( 'Scales the background image in the corresponding direction such that its intrinsic proportions are maintained.', 'atomic-blocks' );
 		}
 
@@ -63,9 +63,9 @@ class BackgroundImagePanel extends Component {
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( img ) => {
-								setAttributes( {
-									backgroundImgURL: img.url,
-								} );
+								setAttributes({
+									backgroundImgURL: img.url
+								});
 							} }
 							type="image"
 							value={ attributes.backgroundImgURL }
@@ -88,7 +88,7 @@ class BackgroundImagePanel extends Component {
 												className="ab-inspector-icon-button ab-background-remove-button is-button is-default"
 												label={ __( 'Remove Image', 'atomic-blocks' ) }
 												icon="dismiss"
-												onClick={ () => setAttributes( { backgroundImgURL: null } ) }
+												onClick={ () => setAttributes({ backgroundImgURL: null }) }
 											>
 												{ __( 'Remove', 'atomic-blocks' ) }
 											</IconButton>
@@ -106,14 +106,14 @@ class BackgroundImagePanel extends Component {
 								label={ __( 'Focal Point', 'atomic-blocks' ) }
 								url={ attributes.backgroundImgURL }
 								value={ attributes.focalPoint }
-								onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
+								onChange={ ( value ) => setAttributes({ focalPoint: value }) }
 							/>
 
 							<RangeControl
 								label={ __( 'Image Opacity', 'atomic-blocks' ) }
 								value={ attributes.backgroundDimRatio }
 								onChange={ ( value ) => this.props.setAttributes({
-									backgroundDimRatio: value,
+									backgroundDimRatio: value
 								}) }
 								min={ 0 }
 								max={ 100 }
@@ -124,10 +124,10 @@ class BackgroundImagePanel extends Component {
 								label={ __( 'Fixed Background', 'atomic-blocks' ) }
 								checked={ attributes.hasParallax }
 								onChange={ () => {
-									setAttributes( {
+									setAttributes({
 										hasParallax: ! attributes.hasParallax,
-										...( ! attributes.hasParallax ? { focalPoint: undefined } : {} ),
-									} );
+										...( ! attributes.hasParallax ? { focalPoint: undefined } : {})
+									});
 								} }
 							/>
 
@@ -138,17 +138,17 @@ class BackgroundImagePanel extends Component {
 								help={ backgroundSizeHelp }
 								options={ backgroundSizeOptions }
 								onChange={ ( value ) => this.props.setAttributes({
-									backgroundSize: value,
+									backgroundSize: value
 								}) }
 							/>
 
-							{ attributes.backgroundSize != 'cover' && (
+							{ 'cover' != attributes.backgroundSize && (
 								<SelectControl
 									label={ __( 'Image Repeat', 'atomic-blocks' ) }
 									value={ attributes.backgroundRepeat }
 									options={ backgroundRepeatOptions }
 									onChange={ ( value ) => this.props.setAttributes({
-										backgroundRepeat: value,
+										backgroundRepeat: value
 									}) }
 								/>
 							) }

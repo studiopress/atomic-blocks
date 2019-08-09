@@ -55,7 +55,7 @@ export default class Columns extends Component {
 			textColorClass,
 			attributes.columnMaxWidth && attributes.centerColumns ? 'ab-columns-center' : null
 		], {
-			[ 'align' + attributes.align ]: attributes.align,
+			[ 'align' + attributes.align ]: attributes.align
 		});
 
 		/* Setup the margin styles. */

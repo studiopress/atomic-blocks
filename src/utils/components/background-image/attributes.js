@@ -4,15 +4,15 @@
 
 const BackgroundAttributes = {
 	backgroundImgURL: {
-		type: 'string',
+		type: 'string'
 	},
 	backgroundDimRatio: {
 		type: 'number',
-		default: 100,
+		default: 100
 	},
 	backgroundRepeat: {
 		type: 'string',
-		default: 'no-repeat',
+		default: 'no-repeat'
 	},
 	backgroundSize: {
 		type: 'string',
@@ -20,10 +20,10 @@ const BackgroundAttributes = {
 	},
 	hasParallax: {
 		type: 'boolean',
-		default: false,
+		default: false
 	},
 	focalPoint: {
-		type: 'object',
+		type: 'object'
 	}
 };
 
