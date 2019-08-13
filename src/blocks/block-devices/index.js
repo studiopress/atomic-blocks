@@ -9,6 +9,7 @@ import Edit from './components/edit';
 import Save from './components/save';
 import './styles/style.scss';
 import './styles/editor.scss';
+import BackgroundAttributes from './../../utils/components/background-image/attributes';
 
 /**
  * WordPress dependencies
@@ -17,90 +18,21 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const blockAttributes = {
-	profileName: {
-		type: 'array',
-		source: 'children',
-		selector: '.ab-profile-name'
+	...BackgroundAttributes,
+	deviceType: {
+		type: 'string',
+		default: 'ab-phone-mockup'
 	},
-	profileTitle: {
-		type: 'array',
-		source: 'children',
-		selector: '.ab-profile-title'
-	},
-	profileContent: {
-		type: 'array',
-		selector: '.ab-profile-text',
-		source: 'children'
-	},
-	profileAlignment: {
+	deviceOrientation: {
 		type: 'string'
 	},
-	profileImgURL: {
-		type: 'string',
-		source: 'attribute',
-		attribute: 'src',
-		selector: 'img'
+	deviceShadow: {
+		type: 'boolean',
+		default: true
 	},
-	profileImgAlt: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'figure img',
-		attribute: 'alt',
-		default: ''
+	deviceAlignment: {
+		type: 'string'
 	},
-	profileImgID: {
-		type: 'number'
-	},
-	profileBackgroundColor: {
-		type: 'string',
-		default: '#f2f2f2'
-	},
-	profileTextColor: {
-		type: 'string',
-		default: '#32373c'
-	},
-	profileLinkColor: {
-		type: 'string',
-		default: '#392f43'
-	},
-	profileFontSize: {
-		type: 'number',
-		default: 18
-	},
-	profileAvatarShape: {
-		type: 'string',
-		default: 'square'
-	},
-	twitter: {
-		type: 'url'
-	},
-	facebook: {
-		type: 'url'
-	},
-	instagram: {
-		type: 'url'
-	},
-	pinterest: {
-		type: 'url'
-	},
-	google: {
-		type: 'url'
-	},
-	youtube: {
-		type: 'url'
-	},
-	github: {
-		type: 'url'
-	},
-	linkedin: {
-		type: 'url'
-	},
-	email: {
-		type: 'url'
-	},
-	website: {
-		type: 'url'
-	}
 };
 
 /**

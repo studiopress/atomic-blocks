@@ -1,5 +1,5 @@
 /**
- * Profile Box Wrapper
+ * Device mockup wrapper
  */
 
 /* Setup the block */
@@ -7,42 +7,35 @@ const { Component } = wp.element;
 
 /* Import block dependencies and components */
 import classnames from 'classnames';
+import BackgroundImageClasses from './../../../utils/components/background-image/classes';
+import BackgroundImageStyles from './../../../utils/components/background-image/styles';
 
 /* Create a profile box wrapper Component */
 export default class Device extends Component {
 
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
 
-		/* Setup the attributes */
-		const {
-			profileAlignment,
-			profileImgURL,
-			profileFontSize,
-			profileBackgroundColor,
-			profileTextColor,
-			profileAvatarShape
-		} = this.props.attributes;
+		const { attributes } = this.props;
+
+		const styles = { ...BackgroundImageStyles( attributes ) };
 
 		return (
 			<div
-			style={ {
-				// backgroundColor: profileBackgroundColor,
-				// color: profileTextColor
-			} }
 			className={ classnames(
 				this.props.className,
-				// profileAlignment,
-				// profileAvatarShape,
-				// { 'ab-has-avatar': profileImgURL },
-				// 'ab-font-size-' + profileFontSize,
-				// 'ab-block-profile',
 				'ab-device-mockup',
 			) }>
-				{ this.props.children }
+				<div
+					className={ classnames(
+						attributes.deviceType,
+						attributes.deviceOrientation,
+						attributes.deviceShadow === false ? 'ab-device-no-shadow' : null,
+						...BackgroundImageClasses( attributes ),
+						attributes.deviceAlignment ? 'ab-device-align-' + attributes.deviceAlignment : null
+					) }
+					style={ Object.assign( styles ) }
+					>
+				</div>
 			</div>
 		);
 	}
