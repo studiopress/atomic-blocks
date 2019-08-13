@@ -107,3 +107,32 @@
 		}
 	}
  }
+
+ .iphone, .ipad {
+	display: block;
+	color: #fff;
+	text-align: center;
+	font-family: 'SF Pro Display', Helvetica Neue, Arial, sans-serif;
+	letter-spacing: -.022em;
+	font-size: 2.5vmin;
+	text-shadow: 0 0 0.5em #000;
+	background-color: #000;
+	background-size: auto 200%, cover;
+	background-repeat: no-repeat, no-repeat;
+	border: solid #111;
+	margin-bottom: 2em;
+	position: relative;
+	box-shadow: 0 0.5em 2em 0.2em rgba(0, 0, 0, 0.33), 0 0 0 0.5px #000 inset;
+	transition: all .1s linear, line-height 0s linear;
+	background-position: 50% 100%, center;
+	transform-origin: bottom center;
+	&:hover {
+		color: transparent;
+		text-shadow: 0 0 0em transparent;
+		background-position: 50% -100%, center center;
+		transition: all .15s linear, line-height 5s linear;
+		// box-shadow: 0 0.5em 3em 0.25em rgba(0, 0, 0, 0.33), 0 0 0 1px #000 inset;
+		// transform: scale(1.0025);
+		line-height: 0vmin;
+	}
+}
