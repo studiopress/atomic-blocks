@@ -118,8 +118,8 @@ const withClientIdClassName = wp.compose.createHigherOrderComponent( ( BlockList
     return ( props ) => {
 		const blockName = props.block.name;
 
-		if ( props.attributes.columnVerticalAlignment && 'atomic-blocks/ab-column' === blockName ) {
-            return <BlockListBlock { ...props } className={ 'ab-is-vertically-aligned-' + props.attributes.columnVerticalAlignment } />;
+		if ( 'atomic-blocks/ab-column' === blockName && props.block.attributes.columnVerticalAlignment ) {
+            return <BlockListBlock { ...props } className={ 'ab-is-vertically-aligned-' + props.block.attributes.columnVerticalAlignment } />;
         } else {
             return <BlockListBlock { ...props } />;
         }
