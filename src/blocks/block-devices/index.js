@@ -20,7 +20,7 @@ const { registerBlockType } = wp.blocks;
 const blockAttributes = {
 	...BackgroundAttributes,
 	deviceImage: {
-		type: 'string',
+		type: 'string'
 	},
 	deviceType: {
 		type: 'string',
@@ -34,20 +34,20 @@ const blockAttributes = {
 		default: true
 	},
 	deviceColor: {
-		type: 'string',
+		type: 'string'
 	},
 	deviceWidth: {
-		type: 'number',
+		type: 'number'
 	},
 	deviceBorder: {
-		type: 'number',
+		type: 'number'
 	},
 	deviceBorderRadius: {
-		type: 'number',
+		type: 'number'
 	},
 	deviceAlignment: {
 		type: 'string'
-	},
+	}
 };
 
 /**
@@ -75,5 +75,5 @@ registerBlockType( 'atomic-blocks/ab-devices', {
 	/* Save the block markup. */
 	save: props => {
 		return <Save { ...props } />;
-	},
+	}
 });

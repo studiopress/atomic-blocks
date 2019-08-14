@@ -20,7 +20,7 @@ export default class Device extends Component {
 		const styles = {
 			borderWidth: attributes.deviceBorder ? attributes.deviceBorder + 'em' : null,
 			borderRadius: attributes.deviceBorderRadius ? attributes.deviceBorderRadius : null,
-			...BackgroundImageStyles( attributes ),
+			...BackgroundImageStyles( attributes )
 		};
 
 		return (
@@ -36,8 +36,8 @@ export default class Device extends Component {
 					className={ classnames(
 						attributes.deviceType,
 						attributes.deviceOrientation,
-						attributes.deviceShadow === false ? 'ab-device-no-shadow' : null,
-						attributes.deviceColor === 'ab-device-white' ? attributes.deviceColor : undefined,
+						false === attributes.deviceShadow ? 'ab-device-no-shadow' : null,
+						'ab-device-white' === attributes.deviceColor ? attributes.deviceColor : undefined,
 						...BackgroundImageClasses( attributes )
 					) }
 					style={ Object.assign( styles ) }

@@ -49,7 +49,7 @@ export default class Edit extends Component {
 					buttonProps={ {
 						className: 'change-image'
 					} }
-					onSelect={ ( img ) => this.props.setAttributes( { backgroundImgURL: img.url } ) }
+					onSelect={ ( img ) => this.props.setAttributes({ backgroundImgURL: img.url }) }
 					allowed={ 'image' }
 					type="image"
 					value={ this.props.attributes.backgroundImgURL }
@@ -68,7 +68,7 @@ export default class Edit extends Component {
 									className="ab-remove-image"
 									onClick={ () => {
 										this.props.setAttributes({
-											backgroundImgURL: null,
+											backgroundImgURL: null
 										});
 									} }
 								>
