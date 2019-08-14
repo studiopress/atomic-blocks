@@ -10,32 +10,41 @@ import classnames from 'classnames';
 import BackgroundImageClasses from './../../../utils/components/background-image/classes';
 import BackgroundImageStyles from './../../../utils/components/background-image/styles';
 
-/* Create a profile box wrapper Component */
+/* Create a Device wrapper Component */
 export default class Device extends Component {
 
 	render() {
 
 		const { attributes } = this.props;
 
-		const styles = { ...BackgroundImageStyles( attributes ) };
+		const styles = {
+			borderWidth: attributes.deviceBorder ? attributes.deviceBorder + 'em' : null,
+			borderRadius: attributes.deviceBorderRadius ? attributes.deviceBorderRadius : null,
+			...BackgroundImageStyles( attributes ),
+		};
 
 		return (
 			<div
-			className={ classnames(
-				this.props.className,
-				'ab-device-mockup',
-			) }>
+				className={ classnames(
+					this.props.className,
+					'ab-device-mockup',
+					attributes.deviceAlignment ? 'ab-device-align-' + attributes.deviceAlignment : null
+				) }
+				style={ attributes.deviceWidth ? { maxWidth: attributes.deviceWidth} : null }
+			>
 				<div
 					className={ classnames(
 						attributes.deviceType,
 						attributes.deviceOrientation,
 						attributes.deviceShadow === false ? 'ab-device-no-shadow' : null,
-						...BackgroundImageClasses( attributes ),
-						attributes.deviceAlignment ? 'ab-device-align-' + attributes.deviceAlignment : null
+						attributes.deviceColor === 'ab-device-white' ? attributes.deviceColor : undefined,
+						...BackgroundImageClasses( attributes )
 					) }
 					style={ Object.assign( styles ) }
 					>
 				</div>
+
+				{ this.props.children }
 			</div>
 		);
 	}

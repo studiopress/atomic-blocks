@@ -3,8 +3,12 @@
  * Loads on front end and back end
  */
 
-.ab-phone-mockup,
-.ab-tablet-mockup {
+.ab-device-mockup {
+	position: relative;
+}
+
+.ab-device-phone,
+.ab-device-tablet {
 	display: block;
 	background-color: #000;
 	background-size: auto 200%, cover;
@@ -14,39 +18,36 @@
 	box-shadow: 0 0.5em 2em 0.2em rgba(0, 0, 0, 0.33), 0 0 0 0.5px #000 inset;
 	transition: all .1s linear, line-height 0s linear;
 	background-position: 50% 100%, center;
+	margin-bottom: 1.2em;
 }
 
-.ab-phone-mockup {
+.ab-device-phone {
 	width: 100%;
 	height: 0;
 	padding-bottom: 204%;
-	border-width: 10px;
+	border-width: .7em;
     border-radius: 25px;
-	background-image: url(http://guten.local/wp-content/uploads/2019/07/room-3m9132_mMSQ-unsplash.jpg);
-	z-index: 200;
 }
 
-.ab-phone-mockup.ab-device-horizontal {
-	$unit: 60vmin/2.525;
-	height: $unit;
-	width: 2.15*$unit;
+.ab-device-phone.ab-device-horizontal {
+	padding-bottom: 44.5%;
 }
 
-.ab-tablet-mockup {
-	$unit: 60vmin;
-	height: 1.43*$unit;
-	width: $unit;
-	line-height: 1.43*$unit;
-	border-width: $unit/20;
-	border-radius: $unit/14;
-	background-image: url(http://guten.local/wp-content/uploads/2019/07/room-3m9132_mMSQ-unsplash.jpg);
-	z-index: 100;
+.ab-device-tablet {
+	width: 100%;
+	height: 0;
+	padding-bottom: 127%;
+	border-width: .7em;
+    border-radius: 25px;
 }
 
-.ab-tablet-mockup.ab-device-horizontal {
-	$unit: 60vmin;
-	width: 1.43*$unit;
-	height: $unit;
+.ab-device-tablet.ab-device-horizontal {
+	padding-bottom: 71%;
+}
+
+.ab-device-white {
+	border-color: #fff;
+	box-shadow: 0 0.5em 2em 0.2em rgba(0, 0, 0, 0.33), 0 0 0 .5px #c7c7c7 inset;
 }
 
 .ab-device-no-shadow {

@@ -2,56 +2,30 @@
  * Editor styles for the admin
  */
 
-.ab-block-profile {
-    margin-bottom: 0;
-}
+.ab-device-add-image {
+	position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+	text-align: center;
 
-.editor-block-list__layout [data-type="atomic-blocks/ab-profile-box"] {
-    margin-bottom: 1.2em;
-}
-
-.ab-profile-image-wrap {
-    svg {
-        pointer-events: none;
-        margin: 0 auto;
-    }
-
-    .components-button:not(:disabled):not([aria-disabled=true]):focus {
-        background: none;
-        box-shadow: none;
-    }
-}
-
-.ab-profile-content-wrap {
-    h2.editor-rich-text__tinymce {
-        line-height: 1.2;
-    }
-
-    p.editor-rich-text__tinymce {
-        line-height: 1.6;
-    }
-}
-
-#editor .wp-block-atomic-blocks-ab-profile-box.square .ab-remove-image {
-	top: 5px;
-	right: 5px;
-}
-
-#editor .ab-has-avatar {
-
-	.ab-profile-image-square {
-		button {
-			top: 0;
-			left: 0;
-			height: 100%;
-		}
-
-		.ab-change-image {
-			transition: .2s ease;
-
-			&:hover {
-				opacity: .7;
-			}
-		}
+	&.components-button:focus:enabled {
+		background: none;
+		box-shadow: none;
+		outline: none;
 	}
+
+	svg {
+		fill: #fff;
+		margin: 0 auto;
+		width: 100px;
+		height: 50px;
+		opacity: .7;
+	}
+}
+
+#editor div[class^="wp-block-atomic-blocks-"].ab-device-mockup .ab-remove-image {
+	right: 20px;
+    top: 20px;
 }

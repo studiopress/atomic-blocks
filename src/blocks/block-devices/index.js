@@ -19,9 +19,12 @@ const { registerBlockType } = wp.blocks;
 
 const blockAttributes = {
 	...BackgroundAttributes,
+	deviceImage: {
+		type: 'string',
+	},
 	deviceType: {
 		type: 'string',
-		default: 'ab-phone-mockup'
+		default: 'ab-device-phone'
 	},
 	deviceOrientation: {
 		type: 'string'
@@ -29,6 +32,18 @@ const blockAttributes = {
 	deviceShadow: {
 		type: 'boolean',
 		default: true
+	},
+	deviceColor: {
+		type: 'string',
+	},
+	deviceWidth: {
+		type: 'number',
+	},
+	deviceBorder: {
+		type: 'number',
+	},
+	deviceBorderRadius: {
+		type: 'number',
 	},
 	deviceAlignment: {
 		type: 'string'
