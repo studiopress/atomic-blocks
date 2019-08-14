@@ -7,6 +7,7 @@
  */
 import Edit from './components/edit';
 import Save from './components/save';
+import BackgroundAttributes from './../../utils/components/background-image/attributes';
 
 /**
  * WordPress dependencies.
@@ -28,6 +29,7 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 		__( 'row', 'atomic-blocks' )
 	],
 	attributes: {
+		...BackgroundAttributes,
 		columns: {
 			type: 'number'
 		},
