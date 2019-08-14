@@ -3,7 +3,7 @@
  */
 import Inspector from './inspector';
 import Device from './device';
-import icons from './icons';
+import icons from './../../../utils/components/icons';
 
 /**
  * WordPress dependencies
