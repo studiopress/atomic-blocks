@@ -1,0 +1,68 @@
+/**
+ * Device styles
+ * Loads on front end and back end
+ */
+
+.ab-device-mockup {
+	position: relative;
+}
+
+.ab-device-phone,
+.ab-device-tablet {
+	display: block;
+	background-color: #000;
+	background-size: auto 200%, cover;
+	background-repeat: no-repeat, no-repeat;
+	border: solid #111;
+	position: relative;
+	box-shadow: 0 0.5em 2em 0.2em rgba(0, 0, 0, 0.33), 0 0 0 0.5px #000 inset;
+	transition: all .1s linear, line-height 0s linear;
+	background-position: 50% 100%, center;
+	margin-bottom: 1.2em;
+}
+
+.ab-device-phone {
+	width: 100%;
+	height: 0;
+	padding-bottom: 204%;
+	border-width: .7em;
+    border-radius: 25px;
+}
+
+.ab-device-phone.ab-device-horizontal {
+	padding-bottom: 44.5%;
+}
+
+.ab-device-tablet {
+	width: 100%;
+	height: 0;
+	padding-bottom: 127%;
+	border-width: .7em;
+    border-radius: 25px;
+}
+
+.ab-device-tablet.ab-device-horizontal {
+	padding-bottom: 71%;
+}
+
+.ab-device-white {
+	border-color: #fff;
+	box-shadow: 0 0.5em 2em 0.2em rgba(0, 0, 0, 0.33), 0 0 0 .5px #c7c7c7 inset;
+}
+
+.ab-device-no-shadow {
+	box-shadow: none;
+}
+
+.ab-device-align-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ab-device-align-left {
+	margin-right: auto;
+}
+
+.ab-device-align-right {
+	margin-left: auto;
+}
