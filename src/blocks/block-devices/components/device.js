@@ -13,6 +13,18 @@ import BackgroundImageStyles from './../../../utils/components/background-image/
 /* Create a Device wrapper Component */
 export default class Device extends Component {
 
+	componentDidUpdate( prevProps ) {
+
+		if ( this.props.attributes.deviceType !== prevProps.attributes.deviceType ) {
+			let deviceDefaultMaxWidth = this.props.attributes.deviceDefaultMaxWidth;
+
+			if ( 'ab-device-tablet' === this.props.attributes.deviceType ) {
+				deviceDefaultMaxWidth = 600;
+			}
+			this.props.setAttributes({ deviceMaxWidth: deviceDefaultMaxWidth });
+		}
+	}
+
 	render() {
 
 		const { attributes } = this.props;
@@ -23,14 +35,6 @@ export default class Device extends Component {
 			...BackgroundImageStyles( attributes )
 		};
 
-		let deviceDefaultWidth;
-
-		if ( 'ab-device-phone' === attributes.deviceType ) {
-			deviceDefaultWidth = 350;
-		} else {
-			deviceDefaultWidth = 600;
-		}
-
 		return (
 			<div
 				className={ classnames(
@@ -38,7 +42,8 @@ export default class Device extends Component {
 					'ab-device-mockup',
 					attributes.deviceAlignment ? 'ab-device-align-' + attributes.deviceAlignment : null
 				) }
-				style={ attributes.deviceMaxWidth ? { maxWidth: attributes.deviceMaxWidth } : { maxWidth: deviceDefaultWidth } }
+				style={ attributes.deviceMaxWidth ? { maxWidth: attributes.deviceMaxWidth } : { maxWidth: attributes.deviceDefaultMaxWidth } }
+
 			>
 				<div
 					className={ classnames(

@@ -39,6 +39,10 @@ const blockAttributes = {
 	deviceMaxWidth: {
 		type: 'number'
 	},
+	deviceDefaultMaxWidth: {
+		type: 'number',
+		default: 350
+	},
 	deviceBorder: {
 		type: 'number'
 	},
