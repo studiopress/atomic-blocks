@@ -23,6 +23,14 @@ export default class Device extends Component {
 			...BackgroundImageStyles( attributes )
 		};
 
+		let deviceDefaultWidth;
+
+		if ( 'ab-device-phone' === attributes.deviceType ) {
+			deviceDefaultWidth = 350;
+		} else {
+			deviceDefaultWidth = 600;
+		}
+
 		return (
 			<div
 				className={ classnames(
@@ -30,7 +38,7 @@ export default class Device extends Component {
 					'ab-device-mockup',
 					attributes.deviceAlignment ? 'ab-device-align-' + attributes.deviceAlignment : null
 				) }
-				style={ attributes.deviceMaxWidth ? { maxWidth: attributes.deviceMaxWidth} : null }
+				style={ attributes.deviceMaxWidth ? { maxWidth: attributes.deviceMaxWidth } : { maxWidth: deviceDefaultWidth } }
 			>
 				<div
 					className={ classnames(
