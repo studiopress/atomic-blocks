@@ -9,50 +9,13 @@ import Edit from './components/edit';
 import Save from './components/save';
 import './styles/style.scss';
 import './styles/editor.scss';
-import BackgroundAttributes from './../../utils/components/background-image/attributes';
+import blockAttributes from './components/attributes';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-
-const blockAttributes = {
-	...BackgroundAttributes,
-	deviceImage: {
-		type: 'string'
-	},
-	deviceType: {
-		type: 'string',
-		default: 'ab-device-phone'
-	},
-	deviceOrientation: {
-		type: 'string'
-	},
-	deviceShadow: {
-		type: 'boolean',
-		default: true
-	},
-	deviceColor: {
-		type: 'string'
-	},
-	deviceMaxWidth: {
-		type: 'number'
-	},
-	deviceDefaultMaxWidth: {
-		type: 'number',
-		default: 350
-	},
-	deviceBorder: {
-		type: 'number'
-	},
-	deviceBorderRadius: {
-		type: 'number'
-	},
-	deviceAlignment: {
-		type: 'string'
-	}
-};
 
 /**
  * Register the block

@@ -9,6 +9,7 @@ const { Component } = wp.element;
 import classnames from 'classnames';
 import BackgroundImageClasses from './../../../utils/components/background-image/classes';
 import BackgroundImageStyles from './../../../utils/components/background-image/styles';
+import defaultAttributes from './attributes';
 
 /* Create a Device wrapper Component */
 export default class Device extends Component {
@@ -16,7 +17,7 @@ export default class Device extends Component {
 	componentDidUpdate( prevProps ) {
 
 		if ( this.props.attributes.deviceType !== prevProps.attributes.deviceType ) {
-			let deviceDefaultMaxWidth = this.props.attributes.deviceDefaultMaxWidth;
+			let deviceDefaultMaxWidth = defaultAttributes.deviceMaxWidth.default;
 
 			if ( 'ab-device-tablet' === this.props.attributes.deviceType ) {
 				deviceDefaultMaxWidth = 600;
@@ -42,7 +43,7 @@ export default class Device extends Component {
 					'ab-device-mockup',
 					attributes.deviceAlignment ? 'ab-device-align-' + attributes.deviceAlignment : null
 				) }
-				style={ attributes.deviceMaxWidth ? { maxWidth: attributes.deviceMaxWidth } : { maxWidth: attributes.deviceDefaultMaxWidth } }
+				style={ attributes.deviceMaxWidth ? { maxWidth: attributes.deviceMaxWidth } : { maxWidth: defaultAttributes.deviceMaxWidth.default } }
 
 			>
 				<div
