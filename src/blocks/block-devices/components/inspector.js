@@ -80,8 +80,8 @@ export default class Inspector extends Component {
 
 				<RangeControl
 					label={ __( 'Device Max Width', 'atomic-blocks' ) }
-					value={ attributes.deviceWidth }
-					onChange={ ( value ) => this.props.setAttributes({ deviceWidth: value }) }
+					value={ attributes.deviceMaxWidth }
+					onChange={ ( value ) => this.props.setAttributes({ deviceMaxWidth: value }) }
 					min={ 100 }
 					max={ 2000 }
 					step={ 1 }

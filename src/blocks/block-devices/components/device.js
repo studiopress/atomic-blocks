@@ -30,7 +30,7 @@ export default class Device extends Component {
 					'ab-device-mockup',
 					attributes.deviceAlignment ? 'ab-device-align-' + attributes.deviceAlignment : null
 				) }
-				style={ attributes.deviceWidth ? { maxWidth: attributes.deviceWidth} : null }
+				style={ attributes.deviceMaxWidth ? { maxWidth: attributes.deviceMaxWidth} : null }
 			>
 				<div
 					className={ classnames(

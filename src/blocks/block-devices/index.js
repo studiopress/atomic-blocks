@@ -36,7 +36,7 @@ const blockAttributes = {
 	deviceColor: {
 		type: 'string'
 	},
-	deviceWidth: {
+	deviceMaxWidth: {
 		type: 'number'
 	},
 	deviceBorder: {
