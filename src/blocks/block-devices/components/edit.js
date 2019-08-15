@@ -8,11 +8,15 @@ import icons from './../../../utils/components/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const {
+	Component,
+	Fragment
+} = wp.element;
 
-const { Component, Fragment } = wp.element;
-
-const { Button, Dashicon } = wp.components;
+const {
+	Button,
+	Dashicon
+} = wp.components;
 
 const {
 	AlignmentToolbar,

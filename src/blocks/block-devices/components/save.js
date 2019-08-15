@@ -17,7 +17,7 @@ export default class Save extends Component {
 		return (
 
 			/* Save the block markup for the front end */
-			<Device { ...this.props }></Device>
+			<Device { ...this.props }/>
 		);
 	}
 }
