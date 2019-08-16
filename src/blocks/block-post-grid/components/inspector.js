@@ -272,6 +272,13 @@ export default class Inspector extends Component {
 							onChange={ ( value ) => this.props.setAttributes({ readMoreText: value }) }
 						/>
 					}
+					{ isPost &&
+						<ToggleControl
+							label={ __( 'Display Categories', 'atomic-blocks' ) }
+							checked={ attributes.displayCategories }
+							onChange={ () => this.props.setAttributes({ displayCategories: ! attributes.displayCategories }) }
+						/>
+					}
 				</PanelBody>
 				<PanelBody
 					title={ __( 'Post and Page Grid Markup', 'atomic-blocks' ) }

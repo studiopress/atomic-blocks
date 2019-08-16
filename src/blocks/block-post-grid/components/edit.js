@@ -8,6 +8,7 @@ import moment from 'moment';
 import classnames from 'classnames';
 import Inspector from './inspector';
 import PostGridImage from './image';
+import Categories from './categories'
 
 const { compose } = wp.compose;
 
@@ -185,6 +186,14 @@ class LatestPostsBlock extends Component {
 											<p><a className="ab-block-post-grid-more-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ attributes.readMoreText }</a></p>
 										}
 									</div>
+
+									{ isPost &&
+										<div className="ab-block-post-grid-category">
+											{ attributes.displayCategories && post.categories &&
+												<Categories postId={post.id} />
+											}
+										</div>
+									}
 								</div>
 							</article>
 						) }

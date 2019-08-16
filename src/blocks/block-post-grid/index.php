@@ -332,6 +332,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'displayCategories' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'postTitleTag'        => array(
 					'type'    => 'string',
 					'default' => 'h3',
