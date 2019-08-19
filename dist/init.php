@@ -104,7 +104,7 @@ function atomic_blocks_frontend_assets() {
 	wp_enqueue_script(
 		'atomic-blocks-dismiss-js',
 		plugins_url( '/dist/assets/js/dismiss.js', dirname( __FILE__ ) ),
-		array( 'jquery' ),
+		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . '/assets/js/dismiss.js' ),
 		true
 	);
