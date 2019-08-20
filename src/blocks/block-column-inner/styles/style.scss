@@ -41,7 +41,8 @@
 }
 
 .ab-block-layout-column-inner,
-.ab-layout-column-wrap > .ab-block-layout-column-inner {
+.ab-layout-column-wrap > .ab-block-layout-column-inner,
+.ab-has-background-dim > * {
 	position: relative;
 	z-index: 1;
 }
