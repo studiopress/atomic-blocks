@@ -6,7 +6,7 @@ import Inspector from './inspector';
 import ProfileBox from './profile';
 import SocialIcons from './social';
 import AvatarColumn from './avatar';
-import icons from './icons';
+import icons from './../../../utils/components/icons';
 
 /**
  * WordPress dependencies

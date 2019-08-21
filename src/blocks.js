@@ -41,6 +41,11 @@ import './blocks/block-column-inner/index.js';
 import './blocks/block-layout/index.js';
 
 /**
+ * Device mockup block.
+ */
+import './blocks/block-devices/index.js';
+
+/**
  * Global styles.
  */
 import './blocks/global-styles/index.js';
