@@ -2,9 +2,9 @@
 Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbath
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
-Requires at least: 4.7
+Requires at least: 5.0
 Tested up to: 5.2.2
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -127,6 +127,13 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.0.2 =
+* Remove jQuery dependency when enqueuing dismiss.js.
+* Fix IE styles for blocks that use CSS Grid (pricing table and columns).
+* Fix undefined error for installs under WordPress 5.0.
+* Fix image display CSS property.
+* Fix specificity of CSS Grid for child elements.
+
 = 2.0.1 =
 * Add double opt-in option to Newsletter block.
 * Remove Google+ from Sharing block.
