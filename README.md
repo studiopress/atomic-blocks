@@ -94,6 +94,13 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**2.0.2**
+* Remove jQuery dependency when enqueuing dismiss.js.
+* Fix IE styles for blocks that use CSS Grid (pricing table and columns).
+* Fix undefined error for installs under WordPress 5.0.
+* Fix image display CSS property.
+* Fix specificity of CSS Grid for child elements.
+
 **2.0.1**
 * Add double opt-in option to Newsletter block.
 * Remove Google+ from Sharing block.
