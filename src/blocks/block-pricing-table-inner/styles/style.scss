@@ -9,7 +9,8 @@
 
 .ab-pricing-table-wrap {
 	display: grid;
-    grid-template-rows: 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: "col1";
     grid-gap: 0 2em;
 }
 
@@ -67,25 +68,38 @@
 
 .ab-pricing-columns-2 .ab-pricing-table-wrap {
 	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "col1 col2";
 
 	@media only screen and (max-width: 600px) {
 		grid-template-columns: 1fr;
+		grid-template-areas:
+		"col1"
+		"col2";
 	}
 }
 
 .ab-pricing-columns-3 .ab-pricing-table-wrap {
 	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "col1 col2 col3";
 
 	@media only screen and (max-width: 600px) {
 		grid-template-columns: 1fr;
+		grid-template-areas:
+			"col1"
+			"col2"
+			"col3";
 	}
 }
 
 .ab-pricing-columns-4 .ab-pricing-table-wrap {
 	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-areas: "col1 col2 col3 col4";
 
 	@media only screen and (max-width: 800px) {
 		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"col1 col2"
+			"col3 col4";
 
 		.wp-block-atomic-blocks-ab-pricing-table {
 			margin-bottom: 1.5em;
@@ -94,6 +108,11 @@
 
 	@media only screen and (max-width: 600px) {
 		grid-template-columns: 1fr;
+		grid-template-areas:
+			"col1"
+			"col2"
+			"col3"
+			"col4";
 	}
 }
 
@@ -120,6 +139,32 @@
 		padding: 0;
 		border: none;
 	}
+}
+
+/* IE 11 support - Rows and column location must be explicitly defined. */
+
+.ab-block-pricing-table:nth-child(1) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 1;
+	grid-area: col1;
+}
+
+.ab-block-pricing-table:nth-child(2) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 2;
+	grid-area: col2;
+}
+
+.ab-block-pricing-table:nth-child(3) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 3;
+	grid-area: col3;
+}
+
+.ab-block-pricing-table:nth-child(4) {
+	-ms-grid-row: 1;
+	-ms-grid-column: 4;
+	grid-area: col4;
 }
 
 .editor-styles-wrapper [data-type="atomic-blocks/ab-pricing-table-features"] ul {
