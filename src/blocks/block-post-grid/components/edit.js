@@ -8,7 +8,7 @@ import moment from 'moment';
 import classnames from 'classnames';
 import Inspector from './inspector';
 import PostGridImage from './image';
-import Categories from './categories'
+import Categories from './categories';
 
 const { compose } = wp.compose;
 
