@@ -215,8 +215,8 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 			/* Get the post category */
 			if ( isset( $attributes['displayPostCategories'] ) && $attributes['displayPostCategories'] ) {
-				$categories_list = get_the_category_list(', ');
-				if ($categories_list) {
+				$categories_list = get_the_category_list( ', ' );
+				if ( $categories_list ) {
 					/* Wrap the byline content */
 					$post_grid_markup .= sprintf(
 						'<div class="ab-block-post-grid-byline"><div class="ab-block-post-grid-category">%1$s</div></div>',
@@ -306,41 +306,41 @@ function atomic_blocks_register_block_core_latest_posts() {
 		'atomic-blocks/ab-post-grid',
 		array(
 			'attributes'      => array(
-				'categories'          => array(
+				'categories'            => array(
 					'type' => 'string',
 				),
-				'className'           => array(
+				'className'             => array(
 					'type' => 'string',
 				),
-				'postsToShow'         => array(
+				'postsToShow'           => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'displayPostDate'     => array(
+				'displayPostDate'       => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostExcerpt'  => array(
+				'displayPostExcerpt'    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostAuthor'   => array(
+				'displayPostAuthor'     => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostImage'    => array(
+				'displayPostImage'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostLink'     => array(
+				'displayPostLink'       => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTitle'    => array(
+				'displayPostTitle'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displaySectionTitle' => array(
+				'displaySectionTitle'   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
@@ -348,72 +348,72 @@ function atomic_blocks_register_block_core_latest_posts() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'postTitleTag'        => array(
+				'postTitleTag'          => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'postLayout'          => array(
+				'postLayout'            => array(
 					'type'    => 'string',
 					'default' => 'grid',
 				),
-				'columns'             => array(
+				'columns'               => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'align'               => array(
+				'align'                 => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'width'               => array(
+				'width'                 => array(
 					'type'    => 'string',
 					'default' => 'wide',
 				),
-				'order'               => array(
+				'order'                 => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'             => array(
+				'orderBy'               => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'readMoreText'        => array(
+				'readMoreText'          => array(
 					'type'    => 'string',
 					'default' => 'Continue Reading',
 				),
-				'offset'              => array(
+				'offset'                => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'excerptLength'       => array(
+				'excerptLength'         => array(
 					'type'    => 'number',
 					'default' => 55,
 				),
-				'postType'            => array(
+				'postType'              => array(
 					'type'    => 'string',
 					'default' => 'post',
 				),
-				'sectionTag'          => array(
+				'sectionTag'            => array(
 					'type'    => 'string',
 					'default' => 'section',
 				),
-				'sectionTitle'        => array(
+				'sectionTitle'          => array(
 					'type' => 'string',
 				),
-				'sectionTitleTag'     => array(
+				'sectionTitleTag'       => array(
 					'type'    => 'string',
 					'default' => 'h2',
 				),
-				'imageSize'           => array(
+				'imageSize'             => array(
 					'type'    => 'string',
 					'default' => 'full',
 				),
-				'url'                 => array(
+				'url'                   => array(
 					'type'      => 'string',
 					'source'    => 'attribute',
 					'selector'  => 'img',
 					'attribute' => 'src',
 				),
-				'id'                  => array(
+				'id'                    => array(
 					'type' => 'number',
 				),
 			),
