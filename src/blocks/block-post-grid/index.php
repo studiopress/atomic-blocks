@@ -213,6 +213,18 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				'</div>'
 			);
 
+			/* Get the post category */
+			if ( isset( $attributes['displayPostCategories'] ) && $attributes['displayPostCategories'] ) {
+				$categories_list = get_the_category_list(', ');
+				if ($categories_list) {
+					/* Wrap the byline content */
+					$post_grid_markup .= sprintf(
+						'<div class="ab-block-post-grid-byline"><div class="ab-block-post-grid-category">%1$s</div></div>',
+						$categories_list
+					);
+				}
+			}
+
 			/* Close the text content */
 			$post_grid_markup .= sprintf(
 				'</div>'
@@ -332,7 +344,7 @@ function atomic_blocks_register_block_core_latest_posts() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'displayCategories' => array(
+				'displayPostCategories' => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),

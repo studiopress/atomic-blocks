@@ -37,13 +37,8 @@ export default class Categories extends Component {
 	}
 
 	render() {
-		const Categories = this.state.categoriesList.map( category => {
-			return <a className="ab-block-post-grid-categories" key={category.id} href={category.link}>&nbsp;{category.name}</a>;
-		});
-
 		return (
-			<div className="ab-block-post-grid-categories">
-				<p>
+			<div className="ab-block-post-grid-category">
 					{
 						( 1 === this.state.categoriesList.length ) &&
 						__( 'Category:', 'atomic-blocks' ) ||
@@ -52,10 +47,9 @@ export default class Categories extends Component {
 					{
 						this.state.categoriesList.map( category => {
 							let separator = ( 1 < this.state.categoriesList.length && this.state.categoriesList[this.state.categoriesList.length - 1].id !== category.id ) && ', ' || ' ';
-							return <a className="ab-block-post-grid-categories" key={category.id} href={category.link}>{category.name}{separator}</a>;
+							return <a key={category.id} href={category.link}>{category.name}{separator}</a>;
 						})
 					}
-				</p>
 			</div>
 		);
 	}

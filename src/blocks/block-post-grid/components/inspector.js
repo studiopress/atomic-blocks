@@ -275,8 +275,8 @@ export default class Inspector extends Component {
 					{ isPost &&
 						<ToggleControl
 							label={ __( 'Display Categories', 'atomic-blocks' ) }
-							checked={ attributes.displayCategories }
-							onChange={ () => this.props.setAttributes({ displayCategories: ! attributes.displayCategories }) }
+							checked={ attributes.displayPostCategories }
+							onChange={ () => this.props.setAttributes({ displayPostCategories: ! attributes.displayPostCategories }) }
 						/>
 					}
 				</PanelBody>

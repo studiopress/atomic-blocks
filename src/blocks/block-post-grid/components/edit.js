@@ -188,8 +188,8 @@ class LatestPostsBlock extends Component {
 									</div>
 
 									{ isPost &&
-										<div className="ab-block-post-grid-category">
-											{ attributes.displayCategories && post.categories &&
+										<div className="ab-block-post-grid-byline">
+											{ attributes.displayPostCategories && post.categories &&
 												<Categories postId={post.id} />
 											}
 										</div>

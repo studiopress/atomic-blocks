@@ -111,6 +111,7 @@
 	}
 
 	.ab-block-post-grid-author,
+	.ab-block-post-grid-category,
 	.ab-block-post-grid-date {
 		display: inline-block;
 
@@ -122,6 +123,7 @@
 		}
 	}
 
+	.ab-block-post-grid-category a,
 	.ab-block-post-grid-author a {
 		color: inherit;
 		text-decoration: none;
