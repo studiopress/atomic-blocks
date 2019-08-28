@@ -217,7 +217,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			if ( isset( $attributes['displayPostCategories'] ) && $attributes['displayPostCategories'] ) {
 				$categories = get_the_category();
 				if ( $categories ) {
-					if ( 1 === count($categories) ) {
+					if ( 1 === count( $categories ) ) {
 						$category_label = __( 'Category', 'atomic-blocks' );
 					} else {
 						$category_label = __( 'Categories', 'atomic-blocks' );
