@@ -215,12 +215,19 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 			/* Get the post category */
 			if ( isset( $attributes['displayPostCategories'] ) && $attributes['displayPostCategories'] ) {
-				$categories_list = get_the_category_list( ', ' );
-				if ( $categories_list ) {
+				$categories = get_the_category();
+				if ( $categories ) {
+					if ( 1 === count($categories) ) {
+						$category_label = __( 'Category', 'atomic-blocks' );
+					} else {
+						$category_label = __( 'Categories', 'atomic-blocks' );
+					}
+
 					/* Wrap the byline content */
 					$post_grid_markup .= sprintf(
-						'<div class="ab-block-post-grid-byline"><div class="ab-block-post-grid-category">%1$s</div></div>',
-						$categories_list
+						'<div class="ab-block-post-grid-byline"><div class="ab-block-post-grid-category">%1$s: %2$s</div></div>',
+						$category_label,
+						get_the_category_list( ', ' )
 					);
 				}
 			}
