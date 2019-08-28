@@ -37,12 +37,12 @@ export default class Categories extends Component {
 	}
 
 	render() {
-		let category_label = ''
+		let category_label = '';
 		if ( this.state.categoriesList.length ) {
 			if ( 1 === this.state.categoriesList.length ) {
-				category_label = __( 'Category', 'atomic-blocks' )
+				category_label = __( 'Category', 'atomic-blocks' );
 			} else {
-				category_label = __( 'Categories', 'atomic-blocks' )
+				category_label = __( 'Categories', 'atomic-blocks' );
 			}
 		}
 
