@@ -191,7 +191,7 @@ export default class Inspector extends Component {
 							label={ __( 'Columns', 'atomic-blocks' ) }
 							value={ attributes.columns }
 							onChange={ ( value ) => setAttributes({ columns: value }) }
-							min={ 2 }
+							min={ 1 }
 							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 						/>
 					}
