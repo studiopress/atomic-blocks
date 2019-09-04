@@ -254,7 +254,7 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				$section_title_tag = 'h2';
 			}
 
-			$section_title = '<' . esc_attr( $section_title_tag ) . '>' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
+			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="ab-post-grid-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 		} else {
 			$section_title = null;
 		}
