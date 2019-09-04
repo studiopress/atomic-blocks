@@ -30,6 +30,16 @@
 		}
 	}
 
+	.is-grid.columns-1 {
+		grid-template-columns: 1fr;
+
+		@media all and (-ms-high-contrast:none) {
+			article {
+				width: 100%;
+			}
+		}
+	}
+
 	.is-grid.columns-2 {
 		grid-template-columns: 1fr 1fr;
 
