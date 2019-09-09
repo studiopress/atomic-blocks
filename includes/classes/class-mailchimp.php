@@ -131,7 +131,7 @@ final class Mailchimp implements Provider_Interface {
 		$lists = get_transient( 'atomic_blocks_mailchimp_lists' );
 
 		if ( empty( $lists ) ) {
-			$response = (array) $this->mailchimp->get( 'lists' );
+			$response = (array) $this->mailchimp->get( 'lists', [ 'count' => 200 ] );
 			if ( ! empty( $response['lists'] ) ) {
 				$lists = $response['lists'];
 			}
