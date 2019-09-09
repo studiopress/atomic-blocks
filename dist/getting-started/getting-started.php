@@ -303,56 +303,6 @@ function atomic_blocks_getting_started_page() {
 
 				<div class="panel-right">
 
-					<?php if ( ! function_exists( 'gutenberg_init' ) || ! function_exists( 'atomic_blocks_loader' ) ) { ?>
-					<div class="panel-aside panel-ab-plugin panel-club ab-quick-start">
-						<div class="panel-club-inside">
-							<div class="cell panel-title">
-								<h3><i class="fa fa-check"></i> <?php esc_html_e( 'Quick Start Checklist', 'atomic-blocks' ); ?></h3>
-							</div>
-
-							<ul>
-							<li class="cell 
-							<?php
-							if ( function_exists( 'gutenberg_init' ) ) {
-								echo 'step-complete'; }
-							?>
-							">
-									<strong><?php esc_html_e( '1. Install the Gutenberg plugin.', 'atomic-blocks' ); ?></strong>
-									<p><?php esc_html_e( 'Gutenberg adds the new block-based editor to WordPress. You will need this to work with the Atomic Blocks plugin.', 'atomic-blocks' ); ?></p>
-
-									<?php if ( ! array_key_exists( 'gutenberg/gutenberg.php', get_plugins() ) ) { ?>
-										<a class="button-primary club-button" href="<?php echo esc_url( $gberg_install_url ); ?>"><?php esc_html_e( 'Install Gutenberg now', 'atomic-blocks' ); ?> &rarr;</a>
-									<?php } elseif ( array_key_exists( 'gutenberg/gutenberg.php', get_plugins() ) && ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) { ?>
-										<?php activate_plugin( 'gutenberg/gutenberg.php' ); ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
-									<?php } else { ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
-									<?php } ?>
-								</li>
-
-								<li class="cell 
-								<?php
-								if ( function_exists( 'atomic_blocks_loader' ) ) {
-									echo 'step-complete'; }
-								?>
-								">
-									<strong><?php esc_html_e( '2. Install the Atomic Blocks plugin.', 'atomic-blocks' ); ?></strong>
-									<p><?php esc_html_e( 'Atomic Blocks adds several handy content blocks to the Gutenberg block editor.', 'atomic-blocks' ); ?></p>
-
-									<?php if ( ! array_key_exists( 'atomic-blocks/atomicblocks.php', get_plugins() ) ) { ?>
-										<a class="button-primary club-button" href="<?php echo esc_url( $ab_install_url ); ?>"><?php esc_html_e( 'Install Atomic Blocks now', 'atomic-blocks' ); ?> &rarr;</a>
-									<?php } elseif ( array_key_exists( 'atomic-blocks/atomicblocks.php', get_plugins() ) && ! is_plugin_active( 'atomic-blocks/atomicblocks.php' ) ) { ?>
-										<?php activate_plugin( 'atomic-blocks/atomicblocks.php' ); ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
-									<?php } else { ?>
-										<strong><i class="fa fa-check"></i> <?php esc_html_e( 'Plugin activated!', 'atomic-blocks' ); ?></strong>
-									<?php } ?>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<?php } ?>
-
 					<?php if ( ! function_exists( 'atomic_blocks_setup' ) ) { ?>
 					<div class="panel-aside panel-ab-plugin panel-club">
 						<div class="panel-club-inside">
