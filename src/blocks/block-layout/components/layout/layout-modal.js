@@ -24,11 +24,13 @@ class LayoutModal extends Component {
 		super( ...arguments );
 
 		this.state = {
-			modalOpen: true,
 			currentTab: 'ab-layout-tab-sections'
 		};
 	}
 
+	componentDidMount() {
+		this.setState({ modalOpen: true });
+	}
 	render() {
 		return (
 			<Fragment key={ 'layout-modal-fragment-' + this.props.clientId }>
