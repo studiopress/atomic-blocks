@@ -7,10 +7,16 @@
 	margin-bottom: 1.5em;
 }
 
+.wp-block-atomic-blocks-ab-columns {
+	position: relative;
+}
+
 .ab-layout-column-wrap {
 	display: grid;
     grid-template-rows: 1fr;
-    grid-gap: 0 2em;
+	grid-gap: 0 2em;
+	position: relative;
+	z-index: 1;
 }
 
 [data-type="atomic-blocks/ab-column"],
@@ -32,6 +38,13 @@
 	&.ab-is-vertically-aligned-bottom {
 		align-self: flex-end;
 	}
+}
+
+.ab-block-layout-column-inner,
+.ab-layout-column-wrap > .ab-block-layout-column-inner,
+.ab-has-background-dim > * {
+	position: relative;
+	z-index: 1;
 }
 
 .wp-block-atomic-blocks-ab-layout.alignfull {

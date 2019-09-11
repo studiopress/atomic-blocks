@@ -70,6 +70,12 @@ export default class SocialIcons extends Component {
 					</li>
 				) }
 
+				{ this.props.attributes.wordpress && !! this.props.attributes.wordpress.length && (
+					<li>
+						<a href={ this.props.attributes.wordpress } target="_blank" rel="noopener noreferrer">{ __( 'WordPress', 'atomic-blocks' ) } <i style={ { backgroundColor: this.props.attributes.profileLinkColor } } className="fab fa-wordpress-simple"></i></a>
+					</li>
+				) }
+
 				{ this.props.attributes.email && !! this.props.attributes.email.length && (
 					<li>
 						<a href={ this.props.attributes.email } target="_blank" rel="noopener noreferrer">{ __( 'Email', 'atomic-blocks' ) } <i style={ { backgroundColor: this.props.attributes.profileLinkColor } } className="far fa-envelope"></i></a>

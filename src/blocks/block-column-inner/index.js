@@ -10,6 +10,7 @@ import Save from './components/save';
 import deprecated from './deprecated/deprecated';
 import './styles/style.scss';
 import './styles/editor.scss';
+import BackgroundAttributes from './../../utils/components/background-image/attributes';
 
 /**
  * WordPress dependencies.
@@ -32,6 +33,7 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		__( 'row', 'atomic-blocks' )
 	],
 	attributes: {
+		...BackgroundAttributes,
 		backgroundColor: {
 			type: 'string'
 		},
