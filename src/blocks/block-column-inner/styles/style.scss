@@ -12,6 +12,7 @@
 }
 
 .ab-layout-column-wrap {
+	display: -ms-grid;
 	display: grid;
     grid-template-rows: 1fr;
 	grid-gap: 0 2em;
