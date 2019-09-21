@@ -198,6 +198,12 @@ registerBlockType( 'atomic-blocks/ab-container', {
 		}
 	},
 
+	/* Add block supports */
+	supports: {
+		// Add EditorsKit block navigator toolbar
+		editorsKitBlockNavigator: true,
+	},
+
 	// Render the block components
 	edit: ABContainerBlock,
 

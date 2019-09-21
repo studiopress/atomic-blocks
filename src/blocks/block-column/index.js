@@ -116,6 +116,12 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 		}
 	},
 
+	/* Add block supports */
+	supports:{
+		// Add EditorsKit block navigator toolbar
+		editorsKitBlockNavigator : true,
+	},
+
 	/* Add alignment to block wrapper. */
 	getEditWrapperProps({ align }) {
 		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {
