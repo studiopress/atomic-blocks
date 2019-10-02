@@ -289,6 +289,8 @@ div.ab-background-repeat-y {
 /* Remove stylization of H2 in 2019 theme */
 div[class*='ab-section'],
 div[class*='ab-layout'] {
+	margin-bottom: 0;
+
 	h2:before {
 		display: none;
 	}
