@@ -285,3 +285,11 @@ div.ab-background-repeat-y {
 	background-repeat: repeat-y;
 	background-position: center center;
 }
+
+/* Remove stylization of H2 in 2019 theme */
+div[class*='ab-section'],
+div[class*='ab-layout'] {
+	h2:before {
+		display: none;
+	}
+}
