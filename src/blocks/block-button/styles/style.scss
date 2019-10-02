@@ -7,6 +7,10 @@
 	margin: 0 0 1.2em 0;
 	position: relative;
 
+	.entry .entry-content & a {
+		text-decoration: none;
+	}
+
 	.blocks-rich-text {
 		display: inline-flex;
 	}
