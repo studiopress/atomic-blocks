@@ -45,8 +45,8 @@ class LayoutLibraryItem extends Component {
 								className="ab-layout-insert-button"
 								isSmall
 								onClick={ () => {
- this.props.import( this.props.content );
-} }
+									this.props.import( this.props.content );
+								} }
 							>
 								<LazyLoad>
 									<img
