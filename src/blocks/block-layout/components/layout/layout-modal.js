@@ -52,7 +52,7 @@ class LayoutModal extends Component {
 		if ( this.props.context.reusableBlocks.length ) {
 			tabs.push({
 				name: 'ab-layout-tab-reusable-blocks',
-				title: __( 'My Layouts', 'atomic-blocks' ),
+				title: __( 'Reusable Blocks', 'atomic-blocks' ),
 				className: 'ab-layout-tab-reusable-blocks'
 			});
 		}
