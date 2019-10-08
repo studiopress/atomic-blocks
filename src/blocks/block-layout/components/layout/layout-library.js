@@ -84,79 +84,78 @@ export default class LayoutLibrary extends Component {
 				value: item, label: item.charAt( 0 ).toUpperCase() + item.slice( 1 ) };
 		});
 
-		/* Expand each layout full width. */
-		const onZoom = () => {
-			const imageZoom = document.querySelector( '.ab-layout-zoom-button' );
-			imageZoom.parentNode.classList.toggle( 'ab-layout-zoom-layout' );
-		};
-
 		return (
 			<Fragment key={ 'layout-library-fragment-' + this.props.clientId }>
 				{ /* Category filter and search header. */ }
-				<div className="ab-layout-modal-header">
-					<SelectControl
-						key={ 'layout-library-select-categories-' + this.props.clientId }
-						label={ __( 'Layout Categories', 'atomic-blocks' ) }
-						value={ this.state.category }
-						options={ catOptions }
-						onChange={ value => this.setState({ category: value }) }
-					/>
-					<TextControl
-						key={ 'layout-library-search-layouts-' + this.props.clientId }
-						type="text"
-						value={ this.state.search }
-						placeholder={ __( 'Search Layouts', 'atomic-blocks' ) }
-						onChange={ value => this.setState({ search: value }) }
-					/>
-				</div>
 
-				<div className={ 'ab-layout-view' }>
-					{ <div className={ 'ab-layout-view-left' }><p>{ __( 'Showing: ', 'atomic-blocks' ) + this.props.data.length }</p></div> }
+				{ this.props.currentTab != ( 'ab-layout-tab-reusable-blocks' ) && (
+					<Fragment>
+						<div className="ab-layout-modal-header">
+							<SelectControl
+								key={ 'layout-library-select-categories-' + this.props.clientId }
+								label={ __( 'Layout Categories', 'atomic-blocks' ) }
+								value={ this.state.category }
+								options={ catOptions }
+								onChange={ value => this.setState({ category: value }) }
+							/>
+							<TextControl
+								key={ 'layout-library-search-layouts-' + this.props.clientId }
+								type="text"
+								value={ this.state.search }
+								placeholder={ __( 'Search Layouts', 'atomic-blocks' ) }
+								onChange={ value => this.setState({ search: value }) }
+							/>
+						</div>
 
-					{ /* Grid width view. */ }
-					<div className={ 'ab-layout-view-right' }>
-						<Tooltip key={ 'layout-library-grid-view-tooltip-' + this.props.clientId } text={ __( 'Grid View', 'atomic-blocks' ) }>
-							<Button
-								key={ 'layout-library-grid-view-button-' + this.props.clientId }
-								className={ classnames(
-									'grid' === this.state.activeView ? 'is-primary' : null,
-									'ab-layout-grid-view-button'
-								) }
-								isSmall
-								onClick={ () => this.setState({
-									activeView: 'grid'
-								}) }
-							>
-								<Dashicon
-									key={ 'layout-library-grid-view-dashicon-' + this.props.clientId }
-									icon={ 'screenoptions' }
-									className={ 'ab-layout-icon-grid' }
-								/>
-							</Button>
-						</Tooltip>
+						<div className={ 'ab-layout-view' }>
+							{ <div className={ 'ab-layout-view-left' }><p>{ __( 'Showing: ', 'atomic-blocks' ) + this.props.data.length }</p></div> }
 
-						{ /* Full width layout view. */ }
-						<Tooltip key={ 'layout-library-full-view-tooltip-' + this.props.clientId } text={ __( 'Full Width View', 'atomic-blocks' ) }>
-							<Button
-								key={ 'layout-library-full-view-button-' + this.props.clientId }
-								className={ classnames(
-									'full' === this.state.activeView ? 'is-primary' : null,
-									'ab-layout-full-view-button'
-								) }
-								isSmall
-								onClick={ () => this.setState({
-									activeView: 'full'
-								}) }
-							>
-								<Dashicon
-									key={ 'layout-library-full-view-dashicon-' + this.props.clientId }
-									icon={ 'tablet' }
-									className={ 'ab-layout-icon-tablet' }
-								/>
-							</Button>
-						</Tooltip>
-					</div>
-				</div>
+							{ /* Grid width view. */ }
+							<div className={ 'ab-layout-view-right' }>
+								<Tooltip key={ 'layout-library-grid-view-tooltip-' + this.props.clientId } text={ __( 'Grid View', 'atomic-blocks' ) }>
+									<Button
+										key={ 'layout-library-grid-view-button-' + this.props.clientId }
+										className={ classnames(
+											'grid' === this.state.activeView ? 'is-primary' : null,
+											'ab-layout-grid-view-button'
+										) }
+										isSmall
+										onClick={ () => this.setState({
+											activeView: 'grid'
+										}) }
+									>
+										<Dashicon
+											key={ 'layout-library-grid-view-dashicon-' + this.props.clientId }
+											icon={ 'screenoptions' }
+											className={ 'ab-layout-icon-grid' }
+										/>
+									</Button>
+								</Tooltip>
+
+								{ /* Full width layout view. */ }
+								<Tooltip key={ 'layout-library-full-view-tooltip-' + this.props.clientId } text={ __( 'Full Width View', 'atomic-blocks' ) }>
+									<Button
+										key={ 'layout-library-full-view-button-' + this.props.clientId }
+										className={ classnames(
+											'full' === this.state.activeView ? 'is-primary' : null,
+											'ab-layout-full-view-button'
+										) }
+										isSmall
+										onClick={ () => this.setState({
+											activeView: 'full'
+										}) }
+									>
+										<Dashicon
+											key={ 'layout-library-full-view-dashicon-' + this.props.clientId }
+											icon={ 'tablet' }
+											className={ 'ab-layout-icon-tablet' }
+										/>
+									</Button>
+								</Tooltip>
+							</div>
+						</div>
+					</Fragment>
+				) }
 
 				<LayoutsContext.Consumer>
 					{ ( context ) => (
