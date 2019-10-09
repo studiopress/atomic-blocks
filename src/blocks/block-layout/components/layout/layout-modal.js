@@ -76,7 +76,10 @@ class LayoutModal extends Component {
 						key={ 'layout-modal-modal-component-' + this.props.clientId }
 						className="ab-layout-modal"
 						title={ __( 'Layout Selector', 'atomic-blocks' ) }
-						onRequestClose={ () => this.setState({ modalOpen: false }) }
+						onRequestClose={ () => this.setState({
+							modalOpen: false,
+							currentTab: null
+						}) }
 					>
 						<TabPanel
 							key={ 'layout-modal-tabpanel-' + this.props.clientId }

@@ -16,6 +16,7 @@ import { LayoutsContext } from '../layouts-provider';
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
+const { addQueryArgs } = wp.url;
 const {
 	Component,
 	Fragment
@@ -86,9 +87,9 @@ export default class LayoutLibrary extends Component {
 
 		return (
 			<Fragment key={ 'layout-library-fragment-' + this.props.clientId }>
-				{ /* Category filter and search header. */ }
 
-				{ this.props.currentTab != ( 'ab-layout-tab-reusable-blocks' ) && (
+				{ /* Category filter and search header. */ }
+				{ this.props.currentTab != ( 'ab-layout-tab-reusable-blocks' ) ?
 					<Fragment>
 						<div className="ab-layout-modal-header">
 							<SelectControl
@@ -155,7 +156,23 @@ export default class LayoutLibrary extends Component {
 							</div>
 						</div>
 					</Fragment>
-				) }
+					:
+					<Fragment>
+						{ /* Header for reusable blocks. */ }
+						<div className="ab-layout-modal-header ab-layout-modal-header-reusable">
+							<div>{ __( 'Reusable Blocks', 'atomic-blocks' ) }</div>
+							<div class="ab-layout-modal-header-reusable-actions">
+								<a
+									className="editor-inserter__manage-reusable-blocks block-editor-inserter__manage-reusable-blocks"
+									href={ addQueryArgs( 'edit.php', { post_type: 'wp_block' } ) }
+									target="_blank"
+								>
+									{ __( 'Manage All Reusable Blocks', 'atomic-blocks' ) }
+								</a>
+							</div>
+						</div>
+					</Fragment>
+				}
 
 				<LayoutsContext.Consumer>
 					{ ( context ) => (
@@ -163,6 +180,7 @@ export default class LayoutLibrary extends Component {
 							key={ 'layout-library-context-button-group-' + this.props.clientId }
 							className={ classnames(
 								'ab-layout-choices',
+								'current-tab-' + this.props.currentTab,
 								'full' === this.state.activeView ? 'ab-layout-view-full' : null,
 							) }
 							aria-label={ __( 'Layout Options', 'atomic-blocks' ) }
@@ -171,7 +189,6 @@ export default class LayoutLibrary extends Component {
 
 								if ( ( 'all' === this.state.category || category.includes( this.state.category ) ) && ( ! this.state.search || ( keywords && keywords.some( x => x.toLowerCase().includes( this.state.search.toLowerCase() ) ) ) ) ) {
 									return (
-
 										/* Section and layout items. */
 										<LayoutLibraryItem
 											key={ 'layout-library-item-' + key }
@@ -181,6 +198,7 @@ export default class LayoutLibrary extends Component {
 											content={ content }
 											context={ context }
 											clientId={ this.props.clientId }
+											currentTab={ this.props.currentTab }
 										/>
 									);
 								}
