@@ -89,7 +89,7 @@ export default class LayoutLibrary extends Component {
 			<Fragment key={ 'layout-library-fragment-' + this.props.clientId }>
 
 				{ /* Category filter and search header. */ }
-				{ this.props.currentTab != ( 'ab-layout-tab-reusable-blocks' ) ?
+				{ ( 'ab-layout-tab-reusable-blocks' ) != this.props.currentTab ?
 					<Fragment>
 						<div className="ab-layout-modal-header">
 							<SelectControl
@@ -155,8 +155,7 @@ export default class LayoutLibrary extends Component {
 								</Tooltip>
 							</div>
 						</div>
-					</Fragment>
-					:
+					</Fragment>					:
 					<Fragment>
 						{ /* Header for reusable blocks. */ }
 						<div className="ab-layout-modal-header ab-layout-modal-header-reusable">
@@ -164,7 +163,7 @@ export default class LayoutLibrary extends Component {
 							<div class="ab-layout-modal-header-reusable-actions">
 								<a
 									className="editor-inserter__manage-reusable-blocks block-editor-inserter__manage-reusable-blocks"
-									href={ addQueryArgs( 'edit.php', { post_type: 'wp_block' } ) }
+									href={ addQueryArgs( 'edit.php', { post_type: 'wp_block' }) }
 									target="_blank"
 								>
 									{ __( 'Manage All Reusable Blocks', 'atomic-blocks' ) }
@@ -189,6 +188,7 @@ export default class LayoutLibrary extends Component {
 
 								if ( ( 'all' === this.state.category || category.includes( this.state.category ) ) && ( ! this.state.search || ( keywords && keywords.some( x => x.toLowerCase().includes( this.state.search.toLowerCase() ) ) ) ) ) {
 									return (
+
 										/* Section and layout items. */
 										<LayoutLibraryItem
 											key={ 'layout-library-item-' + key }

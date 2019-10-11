@@ -33,9 +33,9 @@ class LayoutLibraryItem extends Component {
 		return (
 			<Fragment>
 				{ /* Insert the selected layout. */ }
-				{ this.props.currentTab != ( 'ab-layout-tab-reusable-blocks' )
-					? <LayoutLibraryItemCard { ...this.props }/>
-					: <LayoutLibraryItemList { ...this.props }/>
+				{ ( 'ab-layout-tab-reusable-blocks' ) != this.props.currentTab ?
+					<LayoutLibraryItemCard { ...this.props }/> :
+					<LayoutLibraryItemList { ...this.props }/>
 				}
 			</Fragment>
 		);

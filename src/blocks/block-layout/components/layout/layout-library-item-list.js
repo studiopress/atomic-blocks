@@ -22,7 +22,7 @@ export default class LayoutLibraryItemList extends Component {
 	}
 
 	render() {
-		const postIdString = this.props.itemKey.match(/\d+/g);
+		const postIdString = this.props.itemKey.match( /\d+/g );
 		const postID = postIdString[0];
 
 		return (
@@ -46,7 +46,7 @@ export default class LayoutLibraryItemList extends Component {
 									post: postID,
 									post_type: 'wp_block',
 									action: 'edit'
-								} ) }
+								}) }
 								target="_blank"
 							>
 								{ __( 'Edit', 'atomic-blocks' ) }
