@@ -6,6 +6,7 @@
  * Import dependencies.
  */
 import LayoutModal from './layout/layout-modal';
+import { LayoutsContext } from './layouts-provider';
 
 /**
  * WordPress dependencies.
@@ -49,7 +50,13 @@ export default class Edit extends Component {
 					className={ 'ab-layout-selector-placeholder' }
 					icon="layout"
 				>
-					<LayoutModal clientId={ clientId } />
+					<LayoutsContext.Consumer
+						key={ 'layouts-context-provider-' + this.props.clientId }
+					>
+						{ ( context ) => (
+							<LayoutModal clientId={ clientId } context={ context } />
+						) }
+					</LayoutsContext.Consumer>
 				</Placeholder>
 			</Fragment>
 		];

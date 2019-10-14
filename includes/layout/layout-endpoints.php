@@ -53,9 +53,10 @@ function register_layout_endpoints() {
 		[
 			'methods'             => WP_REST_Server::READABLE,
 			'callback'            => function () {
-				$layouts  = atomic_blocks_get_layouts();
-				$sections = atomic_blocks_get_sections();
-				return new WP_REST_Response( array_merge( $layouts, $sections ) );
+				$layouts            = atomic_blocks_get_layouts();
+				$sections           = atomic_blocks_get_sections();
+				$additional_layouts = apply_filters( 'atomic_blocks_additional_layout_components', [] );
+				return new WP_REST_Response( array_merge( $layouts, $sections, $additional_layouts ) );
 			},
 			'permission_callback' => function () {
 				return current_user_can( 'edit_posts' );

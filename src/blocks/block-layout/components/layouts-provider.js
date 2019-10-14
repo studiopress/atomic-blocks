@@ -14,7 +14,8 @@ export const LayoutsContext = createContext({
 	favoriteKeys: '',
 	layouts: '',
 	sections: '',
-	all: ''
+	all: '',
+	reusableBlocks: ''
 });
 
 export default class LayoutsProvider extends Component {
@@ -23,7 +24,8 @@ export default class LayoutsProvider extends Component {
 		favoriteKeys: '',
 		layouts: '',
 		sections: '',
-		all: ''
+		all: '',
+		reusableBlocks: ''
 	}
 
 	/**
@@ -86,8 +88,8 @@ export default class LayoutsProvider extends Component {
 			}
 		).then(
 			( favorites ) => {
- return favorites;
-}
+				return favorites;
+			}
 		).catch(
 			error => console.error( error )
 		);
@@ -109,8 +111,8 @@ export default class LayoutsProvider extends Component {
 			}
 		).then(
 			( favorites ) => {
- return favorites;
-}
+				return favorites;
+			}
 		).catch(
 			error => console.error( error )
 		);
@@ -130,15 +132,22 @@ export default class LayoutsProvider extends Component {
 				'path': '/atomicblocks/v1/layouts/all'
 			}
 		).then( async components => {
-			let layouts   = [];
-			let sections  = [];
+			let layouts = [];
+			let sections = [];
+			let reusableBlocks = [];
 			let favorites = [];
 
 			Object.values( components ).forEach( function( item ) {
 				if ( 'layout' === item.type ) {
 					layouts.push( item );
-				} else {
+				}
+
+				if ( 'section' === item.type ) {
 					sections.push( item );
+				}
+
+				if ( 'wp_block' === item.type ) {
+					reusableBlocks.push( item );
 				}
 
 				if ( favoriteKeys.includes( item.key ) ) {
@@ -151,7 +160,8 @@ export default class LayoutsProvider extends Component {
 				layouts: layouts,
 				sections: sections,
 				favorites: favorites,
-				favoriteKeys: favoriteKeys
+				favoriteKeys: favoriteKeys,
+				reusableBlocks: reusableBlocks
 			});
 		});
 	}
@@ -164,6 +174,7 @@ export default class LayoutsProvider extends Component {
 					layouts: this.state.layouts,
 					sections: this.state.sections,
 					all: this.state.all,
+					reusableBlocks: this.state.reusableBlocks,
 					toggleFavorite: async( key ) => {
 
 						let favoriteKeys = await this.getFavoriteKeys();
