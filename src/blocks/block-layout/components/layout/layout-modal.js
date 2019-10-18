@@ -14,6 +14,7 @@ const {
 } = wp.element;
 const {
 	Button,
+	Dashicon,
 	Modal,
 	TabPanel
 } = wp.components;
@@ -81,6 +82,18 @@ class LayoutModal extends Component {
 							currentTab: null
 						}) }
 					>
+						<div className="ab-layout-modal-footer">
+							<Dashicon icon={ 'editor-help' } />
+							<a
+								href={ 'https://github.com/studiopress/atomic-blocks/wiki/Layouts-Block#adding-custom-sections-and-layouts-to-the-library' }
+								target="_blank"
+							>{ __( 'Add Custom Layouts', 'atomic-blocks' ) }</a>
+							<span>&middot;</span>
+							<a
+								href={ 'https://github.com/studiopress/atomic-blocks/wiki/Reusable-Blocks' }
+								target="_blank"
+							>{ __( 'Reusable Blocks', 'atomic-blocks' ) }</a>
+						</div>
 						<TabPanel
 							key={ 'layout-modal-tabpanel-' + this.props.clientId }
 							className="ab-layout-modal-panel"
