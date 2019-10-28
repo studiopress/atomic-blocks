@@ -360,6 +360,10 @@
 		&:hover {
 			text-decoration: underline;
 		}
+		&:focus {
+			color: #fff;
+			text-decoration: underline;
+		}
 	}
 
 	span {
