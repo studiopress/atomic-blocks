@@ -28,6 +28,17 @@ function atomic_blocks_register_layout_component( array $data ) {
 }
 
 /**
+ * Unregisters the specified layout component from the Component Registry
+ * for use in the Layouts block.
+ *
+ * @param string $key The unique layout key to be removed.
+ */
+function atomic_blocks_unregister_layout_component( $key ) {
+	$registry = Component_Registry::instance();
+	$registry::remove( $key );
+}
+
+/**
  * Retrieves the specified layout component.
  *
  * @param string $type The layout component type.

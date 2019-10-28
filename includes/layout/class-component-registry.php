@@ -113,6 +113,25 @@ final class Component_Registry {
 	}
 
 	/**
+	 * Removes an existing component from the registry.
+	 *
+	 * @param string $key The unique layout key to be removed.
+	 */
+	public static function remove( $key ) {
+		if ( empty( $key ) ) {
+			return;
+		}
+
+		$key = sanitize_key( $key );
+
+		if ( ! isset( self::$layouts[ $key ] ) ) {
+			return;
+		}
+
+		unset( self::$layouts[ $key ] );
+	}
+
+	/**
 	 * Gets a component from the registry.
 	 *
 	 * @param string $type The component type.
