@@ -107,3 +107,9 @@
 		}
 	}
  }
+
+div[class*="ab-section-"].alignfull,
+div[class*="ab-layout-"].alignfull {
+	margin-top: auto;
+	margin-bottom: auto;
+}
