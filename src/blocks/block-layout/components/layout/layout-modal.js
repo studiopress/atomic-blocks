@@ -82,7 +82,7 @@ class LayoutModal extends Component {
 							currentTab: null
 						}) }
 					>
-						<div class="ab-layout-modal-footer">
+						<div className="ab-layout-modal-footer">
 							<Dashicon icon={ 'editor-help' } />
 							<a
 								href={ 'https://github.com/studiopress/atomic-blocks/wiki/Layouts-Block#adding-custom-sections-and-layouts-to-the-library' }
