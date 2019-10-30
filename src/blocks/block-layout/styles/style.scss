@@ -108,8 +108,17 @@
 	}
  }
 
+/**
+ * Twenty Twenty theme styles
+ * Let's look at loading these conditionally if the theme is active
+ */
+
 div[class*="ab-section-"].alignfull,
 div[class*="ab-layout-"].alignfull {
 	margin-top: auto;
 	margin-bottom: auto;
+}
+
+.page .section-inner.thin {
+	padding-top: 0;
 }
