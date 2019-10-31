@@ -113,6 +113,49 @@ final class Component_Registry {
 	}
 
 	/**
+	 * Removes an existing component from the registry.
+	 *
+	 * @param string $type The component type to unregister.
+	 * @param string $key The unique layout key to be removed.
+	 *
+	 * @throws Exception If the required data is not provided or the specified component is not registered.
+	 * @throws InvalidArgumentException If an unsupported component type is provided.
+	 */
+	public static function remove( $type, $key ) {
+
+		if ( empty( $type ) || ! in_array( $type, self::$supported_component_types, true ) ) {
+			/* translators: %s: This functions name. Will always be AtomicBlocks\Layouts\Component_Registry::remove(). */
+			throw new InvalidArgumentException( sprintf( esc_html__( 'You must supply a valid component type in %s.', 'atomic-blocks' ), __METHOD__ ) );
+		}
+
+		if ( empty( $key ) ) {
+			/* translators: %s: This functions name. Will always be AtomicBlocks\Layouts\Component_Registry::remove(). */
+			throw new InvalidArgumentException( sprintf( esc_html__( 'You must supply a valid component key in %s.', 'atomic-blocks' ), __METHOD__ ) );
+		}
+
+		$key = sanitize_key( $key );
+
+		switch ( $type ) {
+			case 'layout':
+				if ( empty( self::$layouts[ $key ] ) ) {
+					/* translators: The requested components unique key. */
+					throw new Exception( sprintf( esc_html__( 'The %s layout is not registered.', 'atomic-blocks' ), $key ) );
+				}
+				unset( self::$layouts[ $key ] );
+				break;
+
+			case 'section':
+				if ( empty( self::$sections[ $key ] ) ) {
+					/* translators: The requested components unique key. */
+					throw new Exception( sprintf( esc_html__( 'The %s section is not registered.', 'atomic-blocks' ), $key ) );
+				}
+				unset( self::$sections[ $key ] );
+				break;
+		}
+
+	}
+
+	/**
 	 * Gets a component from the registry.
 	 *
 	 * @param string $type The component type.

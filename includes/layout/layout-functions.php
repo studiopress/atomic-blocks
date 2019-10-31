@@ -28,6 +28,24 @@ function atomic_blocks_register_layout_component( array $data ) {
 }
 
 /**
+ * Unregisters the specified layout component from the Component Registry
+ * for use in the Layouts block.
+ *
+ * @return mixed Boolean true if component unregistered. WP_Error object if an error occurs.
+ * @param string $type The component type to be unregistered.
+ * @param string $key The unique layout key to be unregistered.
+ */
+function atomic_blocks_unregister_layout_component( $type, $key ) {
+	$registry = Component_Registry::instance();
+	try {
+		$registry::remove( $type, $key );
+		return true;
+	} catch ( Exception $exception ) {
+		return new WP_Error( esc_html( $exception->getMessage() ) );
+	}
+}
+
+/**
  * Retrieves the specified layout component.
  *
  * @param string $type The layout component type.
