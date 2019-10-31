@@ -2,10 +2,10 @@
 Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbath
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
-Requires at least: 5.0
-Tested up to: 5.2.2
-Stable tag: 2.1.0
-Requires PHP: 5.2.4
+Requires at least: 5.2
+Tested up to: 5.2
+Stable tag: 2.2.0
+Requires PHP: 5.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,10 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.2.0 =
+* Fixed font size issues in Business layout.
+* Added support for Atomic Blocks Pro.
+
 = 2.1.0 =
 * Add background image support to Advanced Columns block.
 * Add 1-column support to Post Grid block.

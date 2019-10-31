@@ -94,6 +94,10 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 
 ## Changelog
 
+**2.2.0**
+* Fixed font size issues in Business layout.
+* Added support for Atomic Blocks Pro.
+
 **2.1.0**
 * Add background image support to Advanced Columns block.
 * Add 1-column support to Post Grid block.
