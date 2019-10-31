@@ -124,10 +124,12 @@ final class Component_Registry {
 	public static function remove( $type, $key ) {
 
 		if ( empty( $type ) || ! in_array( $type, self::$supported_component_types, true ) ) {
+			/* translators: %s: This functions name. Will always be AtomicBlocks\Layouts\Component_Registry::remove(). */
 			throw new InvalidArgumentException( sprintf( esc_html__( 'You must supply a valid component type in %s.', 'atomic-blocks' ), __METHOD__ ) );
 		}
 
 		if ( empty( $key ) ) {
+			/* translators: %s: This functions name. Will always be AtomicBlocks\Layouts\Component_Registry::remove(). */
 			throw new InvalidArgumentException( sprintf( esc_html__( 'You must supply a valid component key in %s.', 'atomic-blocks' ), __METHOD__ ) );
 		}
 
