@@ -369,4 +369,14 @@
 	span {
 		margin: 0 5px;
 	}
+
+	.ab-pro-feedback {
+		float: right;
+		font-weight: bold;
+		position: relative;
+
+		svg {
+			left: -22px;
+		}
+	}
 }

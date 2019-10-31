@@ -93,6 +93,11 @@ class LayoutModal extends Component {
 								href={ 'https://github.com/studiopress/atomic-blocks/wiki/Reusable-Blocks' }
 								target="_blank"
 							>{ __( 'Reusable Blocks', 'atomic-blocks' ) }</a>
+							<a
+								href={ 'https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17' }
+								target="_blank"
+								className="ab-pro-feedback"
+							><Dashicon icon={ 'admin-comments' } /> { __( 'Send Feedback', 'atomic-blocks' ) }</a>
 						</div> }
 						<TabPanel
 							key={ 'layout-modal-tabpanel-' + this.props.clientId }
