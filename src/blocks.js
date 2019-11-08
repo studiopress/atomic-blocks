@@ -44,3 +44,8 @@ import './blocks/block-layout/index.js';
  * Global styles.
  */
 import './blocks/global-styles/index.js';
+
+/**
+ * Render setting control component.
+ */
+import './utils/components/settings/renderSettingControl';

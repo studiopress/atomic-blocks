@@ -29,6 +29,7 @@ const { PanelBody,
 import Padding from './../../../utils/components/padding';
 import Margin from './../../../utils/components/margin';
 import ButtonSettings from './../../../utils/inspector/button';
+import RenderSettingControl from '../../../utils/components/settings/renderSettingControl';
 
 /* Apply fallback styles. */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
@@ -94,57 +95,64 @@ class Inspector extends Component {
 					title={ __( 'Newsletter', 'atomic-blocks' ) }
 					initialOpen={ attributes.mailingList ? false : true }
 				>
-					<SelectControl
-						label={ __( 'Mailing List', 'atomic-blocks' ) }
-						help={ __( 'The list people will be subscribed to.', 'atomic-blocks' ) }
-						options={ mailingListProviders.mailchimp.lists }
-						value={ attributes.mailingList }
-						onChange={ ( value ) => setAttributes({ mailingList: value }) }
-					/>
-
-					<TextControl
-						type="string"
-						label={ __( 'Success Message', 'atomic-blocks' ) }
-						help={ __( 'The message shown when people successfully subscribe.', 'atomic-blocks' ) }
-						value={ attributes.successMessage }
-						onChange={ ( value ) => setAttributes({ successMessage: value }) }
-					/>
-
-					<div className="ab-newsletter-double-opt-in-setting-wrapper">
-						<FormToggle
-							id={ 'double-opt-in-toggle-' + this.props.instanceId }
-							className="ab-newsletter-double-opt-in-toggle"
-							checked={ attributes.doubleOptIn }
-							onChange={ ( event ) => setAttributes({ doubleOptIn: event.target.checked }) }
+					<RenderSettingControl id="newsletter_mailing_list">
+						<SelectControl
+							label={ __( 'Mailing List', 'atomic-blocks' ) }
+							help={ __( 'The list people will be subscribed to.', 'atomic-blocks' ) }
+							options={ mailingListProviders.mailchimp.lists }
+							value={ attributes.mailingList }
+							onChange={ ( value ) => setAttributes({ mailingList: value }) }
 						/>
-						<label
-							className="ab-newsletter-double-opt-in-setting-label"
-							htmlFor={ 'double-opt-in-toggle-' + this.props.instanceId }
-						>
-							{ __( 'Enable Double Opt-In', 'atomic-blocks' ) }
-						</label>
-						<p className="description">
-							{ __( 'Send contacts an opt-in confirmation email when they subscribe to your list.', 'atomic-blocks' ) }
-						</p>
-					</div>
+					</RenderSettingControl>
 
+					<RenderSettingControl id="newsletter_success_message">
+						<TextControl
+							type="string"
+							label={ __( 'Success Message', 'atomic-blocks' ) }
+							help={ __( 'The message shown when people successfully subscribe.', 'atomic-blocks' ) }
+							value={ attributes.successMessage }
+							onChange={ ( value ) => setAttributes({ successMessage: value }) }
+						/>
+					</RenderSettingControl>
+
+					<RenderSettingControl id="newsletter_double_opt_in_toggle">
+						<div className="ab-newsletter-double-opt-in-setting-wrapper">
+							<FormToggle
+								id={ 'double-opt-in-toggle-' + this.props.instanceId }
+								className="ab-newsletter-double-opt-in-toggle"
+								checked={ attributes.doubleOptIn }
+								onChange={ ( event ) => setAttributes({ doubleOptIn: event.target.checked }) }
+							/>
+							<label
+								className="ab-newsletter-double-opt-in-setting-label"
+								htmlFor={ 'double-opt-in-toggle-' + this.props.instanceId }
+							>
+								{ __( 'Enable Double Opt-In', 'atomic-blocks' ) }
+							</label>
+							<p className="description">
+								{ __( 'Send contacts an opt-in confirmation email when they subscribe to your list.', 'atomic-blocks' ) }
+							</p>
+						</div>
+					</RenderSettingControl>
 				</PanelBody>
 
 				<PanelBody
 					title={ __( 'General', 'atomic-blocks' ) }
 					initialOpen={ attributes.mailingList ? true : false }
 				>
-					<Padding
+					<RenderSettingControl id="newsletter_padding">
+						<Padding
 
-						// Enable padding on all sides
-						paddingEnable={ true }
-						paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
-						paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
-						padding={ attributes.containerPadding }
-						paddingMin="0"
-						paddingMax="100"
-						onChangePadding={ containerPadding => setAttributes({ containerPadding }) }
-					/>
+							// Enable padding on all sides
+							paddingEnable={ true }
+							paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
+							paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
+							padding={ attributes.containerPadding }
+							paddingMin="0"
+							paddingMax="100"
+							onChangePadding={ containerPadding => setAttributes({ containerPadding }) }
+						/>
+					</RenderSettingControl>
 
 					<Margin
 

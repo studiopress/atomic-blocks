@@ -77,12 +77,16 @@ function atomic_blocks_editor_assets() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
 
+	$user_data = wp_get_current_user();
+	unset( $user_data->user_pass, $user_data->user_email );
+
 	// Pass in REST URL.
 	wp_localize_script(
 		'atomic-blocks-block-js',
 		'atomic_globals',
 		array(
-			'rest_url' => esc_url( rest_url() ),
+			'rest_url'  => esc_url( rest_url() ),
+			'user_data' => $user_data,
 		)
 	);
 }

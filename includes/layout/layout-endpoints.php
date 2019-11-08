@@ -10,7 +10,7 @@ namespace AtomicBlocks\Layouts;
 use \WP_REST_Response;
 use \WP_REST_Server;
 
-const LAYOUT_NAMESPACE = 'atomicblocks/v1';
+const AB_API_NAMESPACE = 'atomicblocks/v1';
 
 const LAYOUTS_ROUTE       = 'layouts';
 const SINGLE_LAYOUT_ROUTE = 'layouts/([A-Za-z])\w+/';
@@ -34,7 +34,7 @@ function register_layout_endpoints() {
 	 * otherwise they may override this one.
 	 */
 	register_rest_route(
-		LAYOUT_NAMESPACE,
+		AB_API_NAMESPACE,
 		FAVORITE_LAYOUTS_ROUTE,
 		[
 			'methods'             => WP_REST_Server::READABLE,
@@ -48,7 +48,7 @@ function register_layout_endpoints() {
 	);
 
 	register_rest_route(
-		LAYOUT_NAMESPACE,
+		AB_API_NAMESPACE,
 		ALL_LAYOUTS_ROUTE,
 		[
 			'methods'             => WP_REST_Server::READABLE,
@@ -69,7 +69,7 @@ function register_layout_endpoints() {
 	 * Returns all registered layouts.
 	 */
 	register_rest_route(
-		LAYOUT_NAMESPACE,
+		AB_API_NAMESPACE,
 		LAYOUTS_ROUTE,
 		[
 			'methods'             => WP_REST_Server::READABLE,
@@ -87,7 +87,7 @@ function register_layout_endpoints() {
 	 * Returns a single requested layout.
 	 */
 	register_rest_route(
-		LAYOUT_NAMESPACE,
+		AB_API_NAMESPACE,
 		SINGLE_LAYOUT_ROUTE,
 		[
 			'methods'             => WP_REST_Server::READABLE,
@@ -111,7 +111,7 @@ function register_layout_endpoints() {
 	 * Register the favorites update endpoint.
 	 */
 	register_rest_route(
-		LAYOUT_NAMESPACE,
+		AB_API_NAMESPACE,
 		FAVORITE_LAYOUTS_ROUTE,
 		[
 			'methods'             => 'PATCH',
@@ -145,7 +145,7 @@ function register_layout_endpoints() {
 	 * Register the favorites delete endpoint.
 	 */
 	register_rest_route(
-		LAYOUT_NAMESPACE,
+		AB_API_NAMESPACE,
 		FAVORITE_LAYOUTS_ROUTE,
 		[
 			'methods'             => 'DELETE',
@@ -178,7 +178,7 @@ function register_layout_endpoints() {
 	 * Returns all registered sections.
 	 */
 	register_rest_route(
-		LAYOUT_NAMESPACE,
+		AB_API_NAMESPACE,
 		SECTIONS_ROUTE,
 		[
 			'methods'             => WP_REST_Server::READABLE,

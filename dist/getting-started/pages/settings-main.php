@@ -19,6 +19,7 @@
 	<form method="post" action="options.php" class="atomic-blocks-options-form">
 			<?php
 			require $pages_dir . 'settings-general.php';
+			do_action( 'atomic_blocks_settings_page_bottom' );
 			submit_button( esc_html__( 'Save Settings', 'atomic-blocks' ) );
 			wp_nonce_field( 'atomic-blocks-settings-save-nonce', 'atomic-blocks-settings-save-nonce' );
 			?>
