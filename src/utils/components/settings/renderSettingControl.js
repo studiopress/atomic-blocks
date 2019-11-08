@@ -12,6 +12,7 @@ export default class RenderSettingControl extends Component {
 	}
 
 	render() {
+
 		/**
 		 * A filter for determing whether or not a setting should be rendered.
 		 *
