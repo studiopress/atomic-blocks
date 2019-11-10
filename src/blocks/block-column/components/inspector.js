@@ -75,7 +75,7 @@ export default class Inspector extends Component {
 						initialOpen={ true }
 						className="ab-column-select-panel"
 					>
-						<RenderSettingControl id="ab_columns_columns">
+						<RenderSettingControl id="ab_column_columns">
 							<RangeControl
 								label={ __( 'Column Count', 'atomic-blocks' ) }
 								help={ __( 'Note: Changing the column count after you\'ve added content to the column can cause loss of content.', 'atomic-blocks' ) }
@@ -94,7 +94,7 @@ export default class Inspector extends Component {
 
 						{ ( 2 == attributes.columns || 3 == attributes.columns || 4 == attributes.columns ) &&
 							<Fragment>
-								<RenderSettingControl id="ab_columns_columnLayouts">
+								<RenderSettingControl id="ab_column_columnLayouts">
 									<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
 									<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
 										{ map( columnLayouts[ selectedRows ], ({ name, key, icon, col }) => (
@@ -121,7 +121,7 @@ export default class Inspector extends Component {
 							</Fragment>
 						}
 
-						<RenderSettingControl id="ab_columns_columnsGap">
+						<RenderSettingControl id="ab_column_columnsGap">
 							<RangeControl
 								label={ __( 'Column Gap', 'atomic-blocks' ) }
 								help={ __( 'Adjust the spacing between columns.', 'atomic-blocks' ) }
@@ -135,7 +135,7 @@ export default class Inspector extends Component {
 
 						<hr />
 
-						<RenderSettingControl id="ab_columns_columnMaxWidth">
+						<RenderSettingControl id="ab_column_columnMaxWidth">
 							<RangeControl
 								label={ __( 'Column Inner Max Width (px)' ) }
 								help={ __( 'Adjust the width of the content inside the container wrapper.', 'atomic-blocks' ) }
@@ -148,7 +148,7 @@ export default class Inspector extends Component {
 						</RenderSettingControl>
 
 						{ 0 < attributes.columnMaxWidth &&
-							<RenderSettingControl id="ab_columns_centerColumns">
+							<RenderSettingControl id="ab_column_centerColumns">
 								<ToggleControl
 									label={ __( 'Center Columns In Container', 'atomic-blocks' ) }
 									help={ __( 'Center the columns in the container when max-width is used.', 'atomic-blocks' ) }
@@ -160,7 +160,7 @@ export default class Inspector extends Component {
 
 						<hr />
 
-						<RenderSettingControl id="ab_columns_responsiveToggle">
+						<RenderSettingControl id="ab_column_responsiveToggle">
 							<ToggleControl
 								label={ __( 'Responsive Columns', 'atomic-blocks' ) }
 								help={ __( 'Columns will be adjusted to fit on tablets and mobile devices.', 'atomic-blocks' ) }
@@ -174,19 +174,23 @@ export default class Inspector extends Component {
 					title={ __( 'Margin and Padding', 'atomic-blocks' ) }
 					initialOpen={ false }
 				>
-					<SelectControl
-						label={ __( 'Margin Unit', 'atomic-blocks' ) }
-						help={ __( 'Choose between pixel, percent, or em units.', 'atomic-blocks' ) }
-						options={ cssUnits }
-						value={ attributes.marginUnit }
-						onChange={ ( value ) => this.props.setAttributes({ marginUnit: value }) }
-					/>
-					<ToggleControl
-						label={ __( 'Sync Margin', 'atomic-blocks' ) }
-						help={ __( 'Top and bottom margins will have the same value.', 'atomic-blocks' ) }
-						checked={ attributes.marginSync }
-						onChange={ () => this.props.setAttributes({ marginSync: ! attributes.marginSync }) }
-					/>
+					<RenderSettingControl id="ab_column_marginUnit">
+						<SelectControl
+							label={ __( 'Margin Unit', 'atomic-blocks' ) }
+							help={ __( 'Choose between pixel, percent, or em units.', 'atomic-blocks' ) }
+							options={ cssUnits }
+							value={ attributes.marginUnit }
+							onChange={ ( value ) => this.props.setAttributes({ marginUnit: value }) }
+						/>
+					</RenderSettingControl>
+					<RenderSettingControl id="ab_column_marginSync">
+						<ToggleControl
+							label={ __( 'Sync Margin', 'atomic-blocks' ) }
+							help={ __( 'Top and bottom margins will have the same value.', 'atomic-blocks' ) }
+							checked={ attributes.marginSync }
+							onChange={ () => this.props.setAttributes({ marginSync: ! attributes.marginSync }) }
+						/>
+					</RenderSettingControl>
 					{ ! attributes.marginSync ?
 						<Margin
 
@@ -218,20 +222,24 @@ export default class Inspector extends Component {
 
 					<hr />
 
-					<SelectControl
-						label={ __( 'Padding Unit', 'atomic-blocks' ) }
-						help={ __( 'Choose between pixel, percent, or em units.', 'atomic-blocks' ) }
-						options={ cssUnits }
-						value={ attributes.paddingUnit }
-						onChange={ ( value ) => this.props.setAttributes({ paddingUnit: value }) }
-					/>
+					<RenderSettingControl id="ab_column_cssUnits">
+						<SelectControl
+							label={ __( 'Padding Unit', 'atomic-blocks' ) }
+							help={ __( 'Choose between pixel, percent, or em units.', 'atomic-blocks' ) }
+							options={ cssUnits }
+							value={ attributes.paddingUnit }
+							onChange={ ( value ) => this.props.setAttributes({ paddingUnit: value }) }
+						/>
+					</RenderSettingControl>
 
-					<ToggleControl
-						label={ __( 'Sync Padding', 'atomic-blocks' ) }
-						help={ __( 'Padding on all sides will have the same value.', 'atomic-blocks' ) }
-						checked={ attributes.paddingSync }
-						onChange={ () => this.props.setAttributes({ paddingSync: ! attributes.paddingSync }) }
-					/>
+					<RenderSettingControl id="ab_column_paddingSync">
+						<ToggleControl
+							label={ __( 'Sync Padding', 'atomic-blocks' ) }
+							help={ __( 'Padding on all sides will have the same value.', 'atomic-blocks' ) }
+							checked={ attributes.paddingSync }
+							onChange={ () => this.props.setAttributes({ paddingSync: ! attributes.paddingSync }) }
+						/>
+					</RenderSettingControl>
 
 					{ ! attributes.paddingSync ?
 						<Padding
@@ -276,32 +284,36 @@ export default class Inspector extends Component {
 					}
 				</PanelBody>
 
-				<PanelColorSettings
-					title={ __( 'Color', 'atomic-blocks' ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: backgroundColor.color,
-							onChange: setBackgroundColor,
-							label: __( 'Background Color', 'atomic-blocks' )
-						},
-						{
-							value: textColor.color,
-							onChange: setTextColor,
-							label: __( 'Text Color', 'atomic-blocks' )
-						}
-					] }
-				>
-					<ContrastChecker
-						{ ...{
-							textColor: textColor.color,
-							backgroundColor: backgroundColor.color
-						} }
-					/>
-				</PanelColorSettings>
+				<RenderSettingControl id="ab_column_colorSettings">
+					<PanelColorSettings
+						title={ __( 'Color', 'atomic-blocks' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color', 'atomic-blocks' )
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color', 'atomic-blocks' )
+							}
+						] }
+					>
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color
+							} }
+						/>
+					</PanelColorSettings>
+				</RenderSettingControl>
 
-				<BackgroundImagePanel { ...this.props }>
-				</BackgroundImagePanel>
+				<RenderSettingControl id="ab_column_backgroundImagePanel">
+					<BackgroundImagePanel { ...this.props }>
+					</BackgroundImagePanel>
+				</RenderSettingControl>
 			</InspectorControls>
 		);
 	}
