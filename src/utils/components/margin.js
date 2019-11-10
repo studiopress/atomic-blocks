@@ -1,3 +1,8 @@
+/**
+ * External dependencies.
+ */
+import RenderSettingControl from '../../utils/components/settings/renderSettingControl';
+
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { RangeControl } = wp.components;
@@ -57,58 +62,70 @@ export default function Margin( props ) {
 	return (
 		<Fragment>
 			{ marginEnableTop && (
-				<RangeControl
-					label={ marginTopLabel ? marginTopLabel : __( 'Margin Top', 'atomic-blocks' ) }
-					value={ marginTop }
-					min={ marginTopMin }
-					max={ marginTopMax }
-					onChange={ onChangeMarginTop }
-				/>
+				<RenderSettingControl id="ab_marginTop">
+					<RangeControl
+						label={ marginTopLabel ? marginTopLabel : __( 'Margin Top', 'atomic-blocks' ) }
+						value={ marginTop }
+						min={ marginTopMin }
+						max={ marginTopMax }
+						onChange={ onChangeMarginTop }
+					/>
+				</RenderSettingControl>
 			) }
 			{ marginEnableRight && (
-				<RangeControl
-					label={ marginRightLabel ? marginRightLabel : __( 'Margin Right', 'atomic-blocks' ) }
-					value={ marginRight }
-					min={ marginRightMin }
-					max={ marginRightMax }
-					onChange={ onChangeMarginRight }
-				/>
+				<RenderSettingControl id="ab_marginRight">
+					<RangeControl
+						label={ marginRightLabel ? marginRightLabel : __( 'Margin Right', 'atomic-blocks' ) }
+						value={ marginRight }
+						min={ marginRightMin }
+						max={ marginRightMax }
+						onChange={ onChangeMarginRight }
+					/>
+				</RenderSettingControl>
 			) }
 			{ marginEnableBottom && (
-				<RangeControl
-					label={ marginBottomLabel ? marginBottomLabel : __( 'Margin Bottom', 'atomic-blocks' ) }
-					value={ marginBottom }
-					min={ marginBottomMin }
-					max={ marginBottomMax }
-					onChange={ onChangeMarginBottom }
-				/>
+				<RenderSettingControl id="ab_marginBottom">
+					<RangeControl
+						label={ marginBottomLabel ? marginBottomLabel : __( 'Margin Bottom', 'atomic-blocks' ) }
+						value={ marginBottom }
+						min={ marginBottomMin }
+						max={ marginBottomMax }
+						onChange={ onChangeMarginBottom }
+					/>
+				</RenderSettingControl>
 			) }
 			{ marginEnableLeft && (
-				<RangeControl
-					label={ marginLeftLabel ? marginLeftLabel : __( 'Margin Left', 'atomic-blocks' ) }
-					value={ marginLeft }
-					min={ marginLeftMin }
-					max={ marginLeftMax }
-					onChange={ onChangeMarginLeft }
-				/>
+				<RenderSettingControl id="ab_marginLeft">
+					<RangeControl
+						label={ marginLeftLabel ? marginLeftLabel : __( 'Margin Left', 'atomic-blocks' ) }
+						value={ marginLeft }
+						min={ marginLeftMin }
+						max={ marginLeftMax }
+						onChange={ onChangeMarginLeft }
+					/>
+				</RenderSettingControl>
 			) }
 			{ marginEnableVertical && (
-				<RangeControl
-					label={ marginVerticalLabel ? marginVerticalLabel : __( 'Margin Vertical', 'atomic-blocks' ) }
-					value={ marginVertical }
-					min={ marginVerticalMin }
-					max={ marginVerticalMax }
-					onChange={ onChangeMarginVertical }
-				/>
+				<RenderSettingControl id="ab_marginVertical">
+					<RangeControl
+						label={ marginVerticalLabel ? marginVerticalLabel : __( 'Margin Vertical', 'atomic-blocks' ) }
+						value={ marginVertical }
+						min={ marginVerticalMin }
+						max={ marginVerticalMax }
+						onChange={ onChangeMarginVertical }
+					/>
+				</RenderSettingControl>
 			) }
 			{ marginEnableHorizontal && (
-				<RangeControl
-					label={ marginHorizontalLabel ? marginHorizontalLabel : __( 'Margin Horizontal', 'atomic-blocks' ) }
-					value={ marginHorizontal }
-					min={ marginHorizontalMin }
-					max={ marginHorizontalMax }
-					onChange={ onChangeMarginHorizontal }
-				/>
+				<RenderSettingControl id="ab_marginHorizontal">
+					<RangeControl
+						label={ marginHorizontalLabel ? marginHorizontalLabel : __( 'Margin Horizontal', 'atomic-blocks' ) }
+						value={ marginHorizontal }
+						min={ marginHorizontalMin }
+						max={ marginHorizontalMax }
+						onChange={ onChangeMarginHorizontal }
+					/>
+				</RenderSettingControl>
 			) }
 		</Fragment>
 	);
