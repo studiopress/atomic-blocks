@@ -10,6 +10,7 @@ import columnLayouts from './column-layouts';
 import Margin from './../../../utils/components/margin';
 import Padding from './../../../utils/components/padding';
 import BackgroundImagePanel from './../../../utils/components/background-image/inspector';
+import RenderSettingControl from '../../../utils/components/settings/renderSettingControl';
 
 /**
  * WordPress dependencies.
@@ -74,87 +75,99 @@ export default class Inspector extends Component {
 						initialOpen={ true }
 						className="ab-column-select-panel"
 					>
-						<RangeControl
-							label={ __( 'Column Count', 'atomic-blocks' ) }
-							help={ __( 'Note: Changing the column count after you\'ve added content to the column can cause loss of content.', 'atomic-blocks' ) }
-							value={ attributes.columns }
-							onChange={ ( value ) => this.props.setAttributes({
-								columns: value,
-								layout: 'ab-' + value + '-col-equal'
-							}) }
-							min={ 1 }
-							max={ 6 }
-							step={ 1 }
-						/>
+						<RenderSettingControl id="ab_columns_columns">
+							<RangeControl
+								label={ __( 'Column Count', 'atomic-blocks' ) }
+								help={ __( 'Note: Changing the column count after you\'ve added content to the column can cause loss of content.', 'atomic-blocks' ) }
+								value={ attributes.columns }
+								onChange={ ( value ) => this.props.setAttributes({
+									columns: value,
+									layout: 'ab-' + value + '-col-equal'
+								}) }
+								min={ 1 }
+								max={ 6 }
+								step={ 1 }
+							/>
+						</RenderSettingControl>
 
 						<hr />
 
 						{ ( 2 == attributes.columns || 3 == attributes.columns || 4 == attributes.columns ) &&
 							<Fragment>
-								<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
-								<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
-									{ map( columnLayouts[ selectedRows ], ({ name, key, icon, col }) => (
-										<Tooltip text={ name } key={ key }>
-											<Button
-												key={ key }
-												className="ab-column-selector-button"
-												isSmall
-												onClick={ () => {
-													setAttributes({
-														layout: key
-													});
-													this.setState({ 'selectLayout': false });
-												} }
-											>
-												{ icon }
-											</Button>
-										</Tooltip>
-									) ) }
-								</ButtonGroup>
-								<p><i>{ __( 'Change the layout of your columns.', 'atomic-blocks' ) }</i></p>
-								<hr />
+								<RenderSettingControl id="ab_columns_columnLayouts">
+									<p>{ __( 'Column Layout', 'atomic-blocks' ) }</p>
+									<ButtonGroup aria-label={ __( 'Column Layout', 'atomic-blocks' ) }>
+										{ map( columnLayouts[ selectedRows ], ({ name, key, icon, col }) => (
+											<Tooltip text={ name } key={ key }>
+												<Button
+													key={ key }
+													className="ab-column-selector-button"
+													isSmall
+													onClick={ () => {
+														setAttributes({
+															layout: key
+														});
+														this.setState({ 'selectLayout': false });
+													} }
+												>
+													{ icon }
+												</Button>
+											</Tooltip>
+										) ) }
+									</ButtonGroup>
+									<p><i>{ __( 'Change the layout of your columns.', 'atomic-blocks' ) }</i></p>
+									<hr />
+								</RenderSettingControl>
 							</Fragment>
 						}
 
-						<RangeControl
-							label={ __( 'Column Gap', 'atomic-blocks' ) }
-							help={ __( 'Adjust the spacing between columns.', 'atomic-blocks' ) }
-							value={ attributes.columnsGap }
-							onChange={ ( value ) => this.props.setAttributes({ columnsGap: value }) }
-							min={ 0 }
-							max={ 10 }
-							step={ 1 }
-						/>
+						<RenderSettingControl id="ab_columns_columnsGap">
+							<RangeControl
+								label={ __( 'Column Gap', 'atomic-blocks' ) }
+								help={ __( 'Adjust the spacing between columns.', 'atomic-blocks' ) }
+								value={ attributes.columnsGap }
+								onChange={ ( value ) => this.props.setAttributes({ columnsGap: value }) }
+								min={ 0 }
+								max={ 10 }
+								step={ 1 }
+							/>
+						</RenderSettingControl>
 
 						<hr />
 
-						<RangeControl
-							label={ __( 'Column Inner Max Width (px)' ) }
-							help={ __( 'Adjust the width of the content inside the container wrapper.', 'atomic-blocks' ) }
-							value={ attributes.columnMaxWidth }
-							onChange={ ( value ) => this.props.setAttributes({ columnMaxWidth: value }) }
-							min={ 0 }
-							max={ 2000 }
-							step={ 1 }
-						/>
+						<RenderSettingControl id="ab_columns_columnMaxWidth">
+							<RangeControl
+								label={ __( 'Column Inner Max Width (px)' ) }
+								help={ __( 'Adjust the width of the content inside the container wrapper.', 'atomic-blocks' ) }
+								value={ attributes.columnMaxWidth }
+								onChange={ ( value ) => this.props.setAttributes({ columnMaxWidth: value }) }
+								min={ 0 }
+								max={ 2000 }
+								step={ 1 }
+							/>
+						</RenderSettingControl>
 
 						{ 0 < attributes.columnMaxWidth &&
-							<ToggleControl
-								label={ __( 'Center Columns In Container', 'atomic-blocks' ) }
-								help={ __( 'Center the columns in the container when max-width is used.', 'atomic-blocks' ) }
-								checked={ attributes.centerColumns }
-								onChange={ () => this.props.setAttributes({ centerColumns: ! attributes.centerColumns }) }
-							/>
+							<RenderSettingControl id="ab_columns_centerColumns">
+								<ToggleControl
+									label={ __( 'Center Columns In Container', 'atomic-blocks' ) }
+									help={ __( 'Center the columns in the container when max-width is used.', 'atomic-blocks' ) }
+									checked={ attributes.centerColumns }
+									onChange={ () => this.props.setAttributes({ centerColumns: ! attributes.centerColumns }) }
+								/>
+							</RenderSettingControl>
 						}
 
 						<hr />
 
-						<ToggleControl
-							label={ __( 'Responsive Columns', 'atomic-blocks' ) }
-							help={ __( 'Columns will be adjusted to fit on tablets and mobile devices.', 'atomic-blocks' ) }
-							checked={ attributes.responsiveToggle }
-							onChange={ () => this.props.setAttributes({ responsiveToggle: ! attributes.responsiveToggle }) }
-						/>
+						<RenderSettingControl id="ab_columns_responsiveToggle">
+							<ToggleControl
+								label={ __( 'Responsive Columns', 'atomic-blocks' ) }
+								help={ __( 'Columns will be adjusted to fit on tablets and mobile devices.', 'atomic-blocks' ) }
+								checked={ attributes.responsiveToggle }
+								onChange={ () => this.props.setAttributes({ responsiveToggle: ! attributes.responsiveToggle }) }
+							/>
+						</RenderSettingControl>
 					</PanelBody>
 				}
 				<PanelBody
