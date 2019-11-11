@@ -95,7 +95,7 @@ class Inspector extends Component {
 					title={ __( 'Newsletter', 'atomic-blocks' ) }
 					initialOpen={ attributes.mailingList ? false : true }
 				>
-					<RenderSettingControl id="newsletter_mailing_list">
+					<RenderSettingControl id="ab_newsletter_mailingList">
 						<SelectControl
 							label={ __( 'Mailing List', 'atomic-blocks' ) }
 							help={ __( 'The list people will be subscribed to.', 'atomic-blocks' ) }
@@ -105,7 +105,7 @@ class Inspector extends Component {
 						/>
 					</RenderSettingControl>
 
-					<RenderSettingControl id="newsletter_success_message">
+					<RenderSettingControl id="ab_newsletter_successMessage">
 						<TextControl
 							type="string"
 							label={ __( 'Success Message', 'atomic-blocks' ) }
@@ -115,7 +115,7 @@ class Inspector extends Component {
 						/>
 					</RenderSettingControl>
 
-					<RenderSettingControl id="newsletter_double_opt_in_toggle">
+					<RenderSettingControl id="ab_newsletter_doubleOptIn">
 						<div className="ab-newsletter-double-opt-in-setting-wrapper">
 							<FormToggle
 								id={ 'double-opt-in-toggle-' + this.props.instanceId }
@@ -140,7 +140,7 @@ class Inspector extends Component {
 					title={ __( 'General', 'atomic-blocks' ) }
 					initialOpen={ attributes.mailingList ? true : false }
 				>
-					<RenderSettingControl id="newsletter_padding">
+					<RenderSettingControl id="ab_newsletter_containerPadding">
 						<Padding
 
 							// Enable padding on all sides
@@ -154,24 +154,26 @@ class Inspector extends Component {
 						/>
 					</RenderSettingControl>
 
-					<Margin
+					<RenderSettingControl id="ab_newsletter_containerMargin">
+						<Margin
 
-						// Enable margin top setting
-						marginEnableTop={ true }
-						marginTopLabel={ __( 'Block Margin Top', 'atomic-blocks' ) }
-						marginTop={ attributes.containerMarginTop }
-						marginTopMin="0"
-						marginTopMax="200"
-						onChangeMarginTop={ containerMarginTop => setAttributes({ containerMarginTop }) }
+							// Enable margin top setting
+							marginEnableTop={ true }
+							marginTopLabel={ __( 'Block Margin Top', 'atomic-blocks' ) }
+							marginTop={ attributes.containerMarginTop }
+							marginTopMin="0"
+							marginTopMax="200"
+							onChangeMarginTop={ containerMarginTop => setAttributes({ containerMarginTop }) }
 
-						// Enable margin bottom setting
-						marginEnableBottom={ true }
-						marginBottomLabel={ __( 'Block Margin Bottom', 'atomic-blocks' ) }
-						marginBottom={ attributes.containerMarginBottom }
-						marginBottomMin="0"
-						marginBottomMax="200"
-						onChangeMarginBottom={ containerMarginBottom => setAttributes({ containerMarginBottom }) }
-					/>
+							// Enable margin bottom setting
+							marginEnableBottom={ true }
+							marginBottomLabel={ __( 'Block Margin Bottom', 'atomic-blocks' ) }
+							marginBottom={ attributes.containerMarginBottom }
+							marginBottomMin="0"
+							marginBottomMax="200"
+							onChangeMarginBottom={ containerMarginBottom => setAttributes({ containerMarginBottom }) }
+						/>
+					</RenderSettingControl>
 
 					<ButtonSettings
 						enableButtonTarget={ false }
