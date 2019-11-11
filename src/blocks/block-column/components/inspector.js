@@ -191,34 +191,36 @@ export default class Inspector extends Component {
 							onChange={ () => this.props.setAttributes({ marginSync: ! attributes.marginSync }) }
 						/>
 					</RenderSettingControl>
-					{ ! attributes.marginSync ?
-						<Margin
+					<RenderSettingControl id="ab_column_margin">
+						{ ! attributes.marginSync ?
+							<Margin
 
-							/* Margin top. */
-							marginEnableTop={ true }
-							marginTop={ attributes.marginTop }
-							marginTopMin="0"
-							marginTopMax="200"
-							onChangeMarginTop={ marginTop => setAttributes({ marginTop }) }
+								/* Margin top. */
+								marginEnableTop={ true }
+								marginTop={ attributes.marginTop }
+								marginTopMin="0"
+								marginTopMax="200"
+								onChangeMarginTop={ marginTop => setAttributes({ marginTop }) }
 
-							/* Margin bottom. */
-							marginEnableBottom={ true }
-							marginBottom={ attributes.marginBottom }
-							marginBottomMin="0"
-							marginBottomMax="200"
-							onChangeMarginBottom={ marginBottom => setAttributes({ marginBottom }) }
-						/>					:
-						<Margin
+								/* Margin bottom. */
+								marginEnableBottom={ true }
+								marginBottom={ attributes.marginBottom }
+								marginBottomMin="0"
+								marginBottomMax="200"
+								onChangeMarginBottom={ marginBottom => setAttributes({ marginBottom }) }
+							/>					:
+							<Margin
 
-							/* Margin top/bottom. */
-							marginEnableVertical={ true }
-							marginVerticalLabel={ __( 'Margin Top/Bottom', 'atomic-blocks' ) }
-							marginVertical={ attributes.margin }
-							marginVerticalMin="0"
-							marginVerticalMax="200"
-							onChangeMarginVertical={ margin => setAttributes({ margin }) }
-						/>
-					}
+								/* Margin top/bottom. */
+								marginEnableVertical={ true }
+								marginVerticalLabel={ __( 'Margin Top/Bottom', 'atomic-blocks' ) }
+								marginVertical={ attributes.margin }
+								marginVerticalMin="0"
+								marginVerticalMax="200"
+								onChangeMarginVertical={ margin => setAttributes({ margin }) }
+							/>
+						}
+					</RenderSettingControl>
 
 					<hr />
 
@@ -240,48 +242,49 @@ export default class Inspector extends Component {
 							onChange={ () => this.props.setAttributes({ paddingSync: ! attributes.paddingSync }) }
 						/>
 					</RenderSettingControl>
+					<RenderSettingControl id="ab_column_padding">
+						{ ! attributes.paddingSync ?
+							<Padding
 
-					{ ! attributes.paddingSync ?
-						<Padding
+								/* Padding top. */
+								paddingEnableTop={ true }
+								paddingTop={ attributes.paddingTop }
+								paddingTopMin="0"
+								paddingTopMax="200"
+								onChangePaddingTop={ paddingTop => setAttributes({ paddingTop }) }
 
-							/* Padding top. */
-							paddingEnableTop={ true }
-							paddingTop={ attributes.paddingTop }
-							paddingTopMin="0"
-							paddingTopMax="200"
-							onChangePaddingTop={ paddingTop => setAttributes({ paddingTop }) }
+								/* Padding right. */
+								paddingEnableRight={ true }
+								paddingRight={ attributes.paddingRight }
+								paddingRightMin="0"
+								paddingRightMax="200"
+								onChangePaddingRight={ paddingRight => setAttributes({ paddingRight }) }
 
-							/* Padding right. */
-							paddingEnableRight={ true }
-							paddingRight={ attributes.paddingRight }
-							paddingRightMin="0"
-							paddingRightMax="200"
-							onChangePaddingRight={ paddingRight => setAttributes({ paddingRight }) }
+								/* Padding bottom. */
+								paddingEnableBottom={ true }
+								paddingBottom={ attributes.paddingBottom }
+								paddingBottomMin="0"
+								paddingBottomMax="200"
+								onChangePaddingBottom={ paddingBottom => setAttributes({ paddingBottom }) }
 
-							/* Padding bottom. */
-							paddingEnableBottom={ true }
-							paddingBottom={ attributes.paddingBottom }
-							paddingBottomMin="0"
-							paddingBottomMax="200"
-							onChangePaddingBottom={ paddingBottom => setAttributes({ paddingBottom }) }
+								/* Padding left. */
+								paddingEnableLeft={ true }
+								paddingLeft={ attributes.paddingLeft }
+								paddingLeftMin="0"
+								paddingLeftMax="200"
+								onChangePaddingLeft={ paddingLeft => setAttributes({ paddingLeft }) }
+							/>					:
+							<Padding
 
-							/* Padding left. */
-							paddingEnableLeft={ true }
-							paddingLeft={ attributes.paddingLeft }
-							paddingLeftMin="0"
-							paddingLeftMax="200"
-							onChangePaddingLeft={ paddingLeft => setAttributes({ paddingLeft }) }
-						/>					:
-						<Padding
-
-							/* Padding. */
-							paddingEnable={ true }
-							padding={ attributes.padding }
-							paddingMin="0"
-							paddingMax="200"
-							onChangePadding={ padding => setAttributes({ padding }) }
-						/>
-					}
+								/* Padding. */
+								paddingEnable={ true }
+								padding={ attributes.padding }
+								paddingMin="0"
+								paddingMax="200"
+								onChangePadding={ padding => setAttributes({ padding }) }
+							/>
+						}
+					</RenderSettingControl>
 				</PanelBody>
 
 				<RenderSettingControl id="ab_column_colorSettings">
