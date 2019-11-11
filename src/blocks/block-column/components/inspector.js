@@ -170,11 +170,11 @@ export default class Inspector extends Component {
 						</RenderSettingControl>
 					</PanelBody>
 				}
-				<PanelBody
-					title={ __( 'Margin and Padding', 'atomic-blocks' ) }
-					initialOpen={ false }
-				>
-					<RenderSettingControl id="ab_column_marginUnit">
+				<RenderSettingControl id="ab_column_marginPadding">
+					<PanelBody
+						title={ __( 'Margin and Padding', 'atomic-blocks' ) }
+						initialOpen={ false }
+					>
 						<SelectControl
 							label={ __( 'Margin Unit', 'atomic-blocks' ) }
 							help={ __( 'Choose between pixel, percent, or em units.', 'atomic-blocks' ) }
@@ -182,16 +182,13 @@ export default class Inspector extends Component {
 							value={ attributes.marginUnit }
 							onChange={ ( value ) => this.props.setAttributes({ marginUnit: value }) }
 						/>
-					</RenderSettingControl>
-					<RenderSettingControl id="ab_column_marginSync">
 						<ToggleControl
 							label={ __( 'Sync Margin', 'atomic-blocks' ) }
 							help={ __( 'Top and bottom margins will have the same value.', 'atomic-blocks' ) }
 							checked={ attributes.marginSync }
 							onChange={ () => this.props.setAttributes({ marginSync: ! attributes.marginSync }) }
 						/>
-					</RenderSettingControl>
-					<RenderSettingControl id="ab_column_margin">
+
 						{ ! attributes.marginSync ?
 							<Margin
 
@@ -220,11 +217,7 @@ export default class Inspector extends Component {
 								onChangeMarginVertical={ margin => setAttributes({ margin }) }
 							/>
 						}
-					</RenderSettingControl>
-
-					<hr />
-
-					<RenderSettingControl id="ab_column_cssUnits">
+						<hr />
 						<SelectControl
 							label={ __( 'Padding Unit', 'atomic-blocks' ) }
 							help={ __( 'Choose between pixel, percent, or em units.', 'atomic-blocks' ) }
@@ -232,17 +225,12 @@ export default class Inspector extends Component {
 							value={ attributes.paddingUnit }
 							onChange={ ( value ) => this.props.setAttributes({ paddingUnit: value }) }
 						/>
-					</RenderSettingControl>
-
-					<RenderSettingControl id="ab_column_paddingSync">
 						<ToggleControl
 							label={ __( 'Sync Padding', 'atomic-blocks' ) }
 							help={ __( 'Padding on all sides will have the same value.', 'atomic-blocks' ) }
 							checked={ attributes.paddingSync }
 							onChange={ () => this.props.setAttributes({ paddingSync: ! attributes.paddingSync }) }
 						/>
-					</RenderSettingControl>
-					<RenderSettingControl id="ab_column_padding">
 						{ ! attributes.paddingSync ?
 							<Padding
 
@@ -284,8 +272,8 @@ export default class Inspector extends Component {
 								onChangePadding={ padding => setAttributes({ padding }) }
 							/>
 						}
-					</RenderSettingControl>
-				</PanelBody>
+					</PanelBody>
+				</RenderSettingControl>
 
 				<RenderSettingControl id="ab_column_colorSettings">
 					<PanelColorSettings
