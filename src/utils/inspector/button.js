@@ -49,17 +49,15 @@ export default function ButtonSettings( props ) {
 
 	return (
 		<Fragment>
-			{ false != enableButtonTarget && (
-				<RenderSettingControl id="ab_button_buttonTarget">
+			<RenderSettingControl id="ab_button_buttonOptions">
+				{ false != enableButtonTarget && (
 					<ToggleControl
 						label={ __( 'Open link in new window', 'atomic-blocks' ) }
 						checked={ buttonTarget }
 						onChange={ onChangeButtonTarget }
 					/>
-				</RenderSettingControl>
-			) }
-			{ false != enableButtonSize && (
-				<RenderSettingControl id="ab_button_buttonSize">
+				) }
+				{ false != enableButtonSize && (
 					<SelectControl
 						selected={ buttonSize }
 						label={ __( 'Button Size', 'atomic-blocks' ) }
@@ -70,10 +68,8 @@ export default function ButtonSettings( props ) {
 						}) ) }
 						onChange={ onChangeButtonSize }
 					/>
-				</RenderSettingControl>
-			) }
-			{ false != enableButtonShape && (
-				<RenderSettingControl id="ab_button_buttonShape">
+				) }
+				{ false != enableButtonShape && (
 					<SelectControl
 						label={ __( 'Button Shape', 'atomic-blocks' ) }
 						value={ buttonShape }
@@ -83,10 +79,8 @@ export default function ButtonSettings( props ) {
 						}) ) }
 						onChange={ onChangeButtonShape }
 					/>
-				</RenderSettingControl>
-			) }
-			{ false != enableButtonBackgroundColor && (
-				<RenderSettingControl id="ab_button_buttonBackgroundColor">
+				) }
+				{ false != enableButtonBackgroundColor && (
 					<PanelColorSettings
 						title={ __( 'Button Color', 'atomic-blocks' ) }
 						initialOpen={ false }
@@ -97,10 +91,8 @@ export default function ButtonSettings( props ) {
 						} ] }
 					>
 					</PanelColorSettings>
-				</RenderSettingControl>
-			) }
-			{ false != enableButtonTextColor && (
-				<RenderSettingControl id="ab_button_buttonTextColor">
+				) }
+				{ false != enableButtonTextColor && (
 					<PanelColorSettings
 						title={ __( 'Button Text Color', 'atomic-blocks' ) }
 						initialOpen={ false }
@@ -111,8 +103,8 @@ export default function ButtonSettings( props ) {
 						} ] }
 					>
 					</PanelColorSettings>
-				</RenderSettingControl>
-			) }
+				) }
+			</RenderSettingControl>
 		</Fragment>
 	);
 }
