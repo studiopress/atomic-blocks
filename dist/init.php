@@ -134,3 +134,24 @@ function atomic_blocks_add_custom_block_category( $categories ) {
 		)
 	);
 }
+
+
+/**
+ * Enqueue assets for settings page
+ *
+ * @since 1.0.0
+ */
+function atomic_blocks_settings_enqueue() {
+	$current_screen = get_current_screen();
+
+	if ( strpos( $current_screen->base, 'atomic-blocks-plugin-settings' ) === false) {
+		return;
+	} else {
+		wp_register_style( 'atomic-blocks-getting-started', plugins_url( 'dist/getting-started/getting-started.css', dirname( __FILE__ ) ), false, '1.0.0' );
+		wp_enqueue_style( 'atomic-blocks-getting-started' );
+
+		// Getting Started javascript.
+	wp_enqueue_script( 'atomic-blocks-getting-started', plugins_url( 'dist/getting-started/getting-started.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0.0', true );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'atomic_blocks_settings_enqueue' );
