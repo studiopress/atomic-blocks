@@ -29,17 +29,13 @@ const {
 	URLInput,
 	BlockControls,
 	BlockAlignmentToolbar,
-	MediaUpload,
 	RichText
 } = wp.editor;
 
 // Register components
 const {
-	Button,
-	withFallbackStyles,
 	IconButton,
-	Dashicon,
-	Toolbar
+	Dashicon
 } = wp.components;
 
 const blockAttributes = {
@@ -144,24 +140,17 @@ class ABCTABlock extends Component {
 				buttonTextColor,
 				buttonSize,
 				buttonShape,
-				buttonTarget,
 				ctaTitle,
 				ctaText,
-				ctaTitleFontSize,
 				titleFontSize,
 				ctaTextFontSize,
 				ctaWidth,
-				ctaBackgroundColor,
 				ctaTextColor,
 				imgURL,
-				imgID,
 				imgAlt,
 				dimRatio
 			},
-			attributes,
 			isSelected,
-			editable,
-			className,
 			setAttributes
 		} = this.props;
 
@@ -319,7 +308,6 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 		const {
 			buttonText,
 			buttonUrl,
-			buttonAlignment,
 			buttonBackgroundColor,
 			buttonTextColor,
 			buttonSize,
@@ -329,12 +317,8 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 			ctaText,
 			ctaTitleFontSize,
 			titleFontSize,
-			ctaTextFontSize,
-			ctaWidth,
-			ctaBackgroundColor,
 			ctaTextColor,
 			imgURL,
-			imgID,
 			imgAlt,
 			dimRatio
 		} = props.attributes;
