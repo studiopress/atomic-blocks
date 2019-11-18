@@ -41,6 +41,63 @@ registerBlockType( 'atomic-blocks/ab-post-grid', {
 
 	edit,
 
+	ab_settings_data: {
+        ab_postgrid_postType: {
+            title: __( 'Content Type', 'atomic-blocks' )
+        },
+        ab_postgrid_queryControls: {
+            title: __( 'Query Controls', 'atomic-blocks' )
+		},
+		ab_postgrid_offset: {
+            title: __( 'Post Offset', 'atomic-blocks' )
+		},
+		ab_postgrid_columns: {
+            title: __( 'Columns', 'atomic-blocks' )
+		},
+		ab_postgrid_displaySectionTitle: {
+            title: __( 'Display Section Title', 'atomic-blocks' )
+		},
+		ab_postgrid_sectionTitle: {
+            title: __( 'Section Title', 'atomic-blocks' )
+		},
+		ab_postgrid_displayPostImage: {
+            title: __( 'Display Featured Image', 'atomic-blocks' )
+		},
+		ab_postgrid_imageSizeValue: {
+            title: __( 'Image Size', 'atomic-blocks' )
+		},
+		ab_postgrid_displayPostTitle: {
+            title: __( 'Display Post Title', 'atomic-blocks' )
+		},
+		ab_postgrid_displayPostAuthor: {
+            title: __( 'Display Post Author', 'atomic-blocks' )
+		},
+		ab_postgrid_displayPostDate: {
+            title: __( 'Display Post Date', 'atomic-blocks' )
+		},
+		ab_postgrid_displayPostExcerpt: {
+            title: __( 'Display Post Excerpt', 'atomic-blocks' )
+		},
+		ab_postgrid_excerptLength: {
+            title: __( 'Excerpt Length', 'atomic-blocks' )
+		},
+		ab_postgrid_displayPostLink: {
+            title: __( 'Display Continue Reading Link', 'atomic-blocks' )
+		},
+		ab_postgrid_readMoreText: {
+            title: __( 'Read More Text', 'atomic-blocks' )
+		},
+		ab_postgrid_sectionTag: {
+            title: __( 'Post Grid Section Tag', 'atomic-blocks' )
+		},
+		ab_postgrid_sectionTitleTag: {
+            title: __( 'Section Title Heading Tag', 'atomic-blocks' )
+		},
+		ab_postgrid_postTitleTag: {
+            title: __( 'Post Title Heading Tag', 'atomic-blocks' )
+		}
+    },
+
 	// Render via PHP
 	save() {
 		return null;
