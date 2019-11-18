@@ -103,6 +103,24 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 		}
 	},
 
+	ab_settings_data: {
+        ab_spacer_spacerHeight: {
+            title: __( 'Spacer Height', 'atomic-blocks' )
+        },
+        ab_spacer_spacerDivider: {
+            title: __( 'Add Divider', 'atomic-blocks' )
+		},
+		ab_spacer_spacerDividerStyle: {
+            title: __( 'Divider Style', 'atomic-blocks' )
+		},
+		ab_spacer_spacerDividerHeight: {
+            title: __( 'Divider Height', 'atomic-blocks' )
+		},
+		ab_spacer_dividerColor: {
+            title: __( 'Divider Color', 'atomic-blocks' )
+		}
+    },
+
 	// Render the block components
 	edit: ABSpacerBlock,
 
