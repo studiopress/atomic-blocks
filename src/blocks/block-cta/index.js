@@ -292,6 +292,18 @@ registerBlockType( 'atomic-blocks/ab-cta', {
 
 	attributes: blockAttributes,
 
+	ab_settings_data: {
+        ab_cta_textOptions: {
+            title: __( 'Text Options', 'atomic-blocks' )
+        },
+        ab_cta_backgroundOptions: {
+            title: __( 'Background Options', 'atomic-blocks' )
+		},
+		ab_cta_buttonOptions: {
+            title: __( 'Button Options', 'atomic-blocks' )
+		}
+    },
+
 	getEditWrapperProps({ ctaWidth }) {
 		if ( 'left' === ctaWidth || 'right' === ctaWidth || 'full' === ctaWidth ) {
 			return { 'data-align': ctaWidth };
