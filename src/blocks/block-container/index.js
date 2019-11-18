@@ -167,6 +167,15 @@ registerBlockType( 'atomic-blocks/ab-container', {
 
 	attributes: blockAttributes,
 
+	ab_settings_data: {
+        ab_container_containerOptions: {
+            title: __( 'Container Options', 'atomic-blocks' )
+        },
+        ab_container_backgroundOptions: {
+            title: __( 'Background Options', 'atomic-blocks' )
+		}
+    },
+
 	getEditWrapperProps({ containerWidth }) {
 		if ( 'left' === containerWidth || 'right' === containerWidth || 'full' === containerWidth ) {
 			return { 'data-align': containerWidth };
