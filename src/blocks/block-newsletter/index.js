@@ -24,6 +24,26 @@ registerBlockType(
 			__( 'Newsletter', 'atomic-blocks' )
 		],
 		edit: Edit,
+		ab_settings_data: {
+			ab_newsletter_mailingList: {
+				title: __( 'Mailing List', 'atomic-blocks' )
+			},
+			ab_newsletter_successMessage: {
+				title: __( 'Success Message', 'atomic-blocks' )
+			},
+			ab_newsletter_doubleOptIn: {
+				title: __( 'Enable Double Opt-In', 'atomic-blocks' )
+			},
+			ab_newsletter_containerPadding: {
+				title: __( 'Form Padding', 'atomic-blocks' )
+			},
+			ab_newsletter_containerMargin: {
+				title: __( 'Form Margin', 'atomic-blocks' )
+			},
+			ab_newsletter_colorOptions: {
+				title: __( 'Color Options', 'atomic-blocks' )
+			}
+		},
 		save: () => {
 			return null;
 		}

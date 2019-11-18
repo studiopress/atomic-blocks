@@ -186,60 +186,62 @@ class Inspector extends Component {
 					/>
 				</PanelBody>
 
-				<PanelColorSettings
-					title={ __( 'Color', 'atomic-blocks' ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: backgroundColor.color,
-							onChange: setBackgroundColor,
-							label: __( 'Block Background Color', 'atomic-blocks' )
-						},
-						{
-							value: textColor.color,
-							onChange: setTextColor,
-							label: __( 'Block Text Color', 'atomic-blocks' )
-						},
-						{
-							value: buttonBackgroundColor.color,
-							onChange: setButtonBackgroundColor,
-							label: __( 'Button Background Color', 'atomic-blocks' )
-						},
-						{
-							value: buttonTextColor.color,
-							onChange: setButtonTextColor,
-							label: __( 'Button Text Color', 'atomic-blocks' )
-						}
-					] }
-				>
-					{ /* Compare block background and block text color */ }
-					<ContrastChecker
-						{ ...{
-							textColor: textColor.color,
-							backgroundColor: backgroundColor.color,
-							fallbackTextColor,
-							fallbackBackgroundColor
-						} }
-					/>
-					{ /* Compare button background and button text color */ }
-					<ContrastChecker
-						{ ...{
-							textColor: buttonTextColor.color,
-							backgroundColor: buttonBackgroundColor.color,
-							fallbackButtonTextColor,
-							fallbackButtonBackgroundColor
-						} }
-					/>
-					{ /* Compare block background button background color */ }
-					<ContrastChecker
-						{ ...{
-							textColor: buttonBackgroundColor.color,
-							backgroundColor: backgroundColor.color,
-							fallbackButtonBackgroundColor,
-							fallbackBackgroundColor
-						} }
-					/>
-				</PanelColorSettings>
+				<RenderSettingControl id="ab_newsletter_colorOptions">
+					<PanelColorSettings
+						title={ __( 'Color', 'atomic-blocks' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Block Background Color', 'atomic-blocks' )
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Block Text Color', 'atomic-blocks' )
+							},
+							{
+								value: buttonBackgroundColor.color,
+								onChange: setButtonBackgroundColor,
+								label: __( 'Button Background Color', 'atomic-blocks' )
+							},
+							{
+								value: buttonTextColor.color,
+								onChange: setButtonTextColor,
+								label: __( 'Button Text Color', 'atomic-blocks' )
+							}
+						] }
+					>
+						{ /* Compare block background and block text color */ }
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor
+							} }
+						/>
+						{ /* Compare button background and button text color */ }
+						<ContrastChecker
+							{ ...{
+								textColor: buttonTextColor.color,
+								backgroundColor: buttonBackgroundColor.color,
+								fallbackButtonTextColor,
+								fallbackButtonBackgroundColor
+							} }
+						/>
+						{ /* Compare block background button background color */ }
+						<ContrastChecker
+							{ ...{
+								textColor: buttonBackgroundColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackButtonBackgroundColor,
+								fallbackBackgroundColor
+							} }
+						/>
+					</PanelColorSettings>
+				</RenderSettingControl>
 			</InspectorControls>
 		);
 	}
