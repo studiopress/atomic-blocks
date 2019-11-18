@@ -6,7 +6,6 @@
 import classnames from 'classnames';
 import Inspector from './components/inspector';
 import Spacer from './components/spacer';
-import icons from './components/icons';
 import Resizable from 're-resizable';
 
 // Import CSS
@@ -22,29 +21,12 @@ const { Component } = wp.element;
 // Register block
 const { registerBlockType } = wp.blocks;
 
-// Register editor components
-const {
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	UrlInput
-} = wp.editor;
-
-// Register components
-const {
-	Button,
-	withFallbackStyles,
-	IconButton,
-	Dashicon
-} = wp.components;
-
 class ABSpacerBlock extends Component {
 
 	render() {
 
 		// Setup the attributes
-		const { attributes: { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor }, isSelected, className, setAttributes, toggleSelection, spacerDividerHeight } = this.props;
+		const { attributes: { spacerHeight, spacerDividerColor }, className, setAttributes, toggleSelection } = this.props;
 
 		return [
 
@@ -128,7 +110,7 @@ registerBlockType( 'atomic-blocks/ab-spacer', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { spacerHeight, spacerDivider, spacerDividerStyle, spacerDividerColor, spacerDividerHeight } = props.attributes;
+		const { spacerHeight } = props.attributes;
 
 		// Save the block markup for the front end
 		return (
