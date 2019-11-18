@@ -148,6 +148,18 @@ registerBlockType( 'atomic-blocks/ab-notice', {
         }
 	},
 
+	ab_settings_data: {
+        ab_notice_noticeFontSize: {
+            title: __( 'Font Size', 'atomic-blocks' )
+        },
+        ab_notice_noticeDismiss: {
+            title: __( 'Notice Display', 'atomic-blocks' )
+		},
+		ab_notice_colorSettings: {
+            title: __( 'Notice Color', 'atomic-blocks' )
+		}
+    },
+
 	// Render the block components
 	edit: ABNoticeBlock,
 
