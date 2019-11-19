@@ -115,7 +115,7 @@ export default class LayoutLibrary extends Component {
 							<div className={ 'ab-layout-view-left' }>
 								<p>{ __( 'Get more sections & layouts with ', 'atomic-blocks' ) }
 									<a
-										href={ 'https://wpengine.com' }
+										href={ 'https://wpengine.com/blog/introducing-atomic-blocks-pro-a-premium-collection-of-wordpress-content-blocks/' }
 										target="_blank"
 									>{ __( 'Atomic Blocks Pro', 'atomic-blocks' ) } &rarr;</a>
 								</p>
