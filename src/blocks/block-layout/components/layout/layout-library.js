@@ -109,14 +109,18 @@ export default class LayoutLibrary extends Component {
 						</div>
 
 						<div className={ 'ab-layout-view' }>
-							{ <div className={ 'ab-layout-view-left' }>
+
+							{ atomic_globals.pro_activated ?
+							<div className={ 'ab-layout-view-left' }><p>{ __( 'Showing: ', 'atomic-blocks' ) + this.props.data.length }</p></div> :
+							<div className={ 'ab-layout-view-left' }>
 								<p>{ __( 'Get more sections & layouts with ', 'atomic-blocks' ) }
 									<a
 										href={ 'https://wpengine.com' }
 										target="_blank"
 									>{ __( 'Atomic Blocks Pro', 'atomic-blocks' ) } &rarr;</a>
 								</p>
-							</div> }
+							</div>
+							}
 
 							{ /* Grid width view. */ }
 							<div className={ 'ab-layout-view-right' }>
