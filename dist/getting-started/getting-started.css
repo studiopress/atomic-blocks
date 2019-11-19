@@ -1003,3 +1003,24 @@
 		margin-left: 0;
 	}
 }
+
+.ab-block-pro-notice {
+	background: #e4e4fd;
+    border: solid 2px #5b3fd6;
+    border-radius: 5px;
+    padding: 15px;
+	color: #4d36b7;
+	margin-bottom: 60px;
+}
+
+.ab-block-pro-notice p {
+	margin: 0;
+}
+
+.ab-block-pro-notice a {
+	font-weight: bold;
+}
+
+.ab-block-pro-notice a:hover {
+	text-decoration: underline;
+}

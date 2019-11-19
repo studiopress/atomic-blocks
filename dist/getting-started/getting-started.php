@@ -145,6 +145,11 @@ function atomic_blocks_getting_started_page() {
 			<div id="panel" class="panel">
 				<div id="atomic-blocks-panel" class="panel-left visible">
 					<div class="ab-block-split clearfix">
+						<div class="ab-block-pro-notice">
+							<p>
+								<?php echo sprintf( esc_html__( 'Atomic Blocks Pro expands the library of blocks and increases functionality and control to meet all your page building needs. %1$s', 'atomic-blocks' ), '<a href=" ' . esc_url( 'https://wpengine.com/' ) . ' ">Explore Atomic Blocks Pro &rarr;</a>' ); ?>
+							</p>
+						</div>
 						<div class="ab-block-split-left">
 							<div class="ab-titles">
 								<h2><?php esc_html_e( 'Welcome to the future of site building with Gutenberg and Atomic Blocks!', 'atomic-blocks' ); ?></h2>
