@@ -31,8 +31,10 @@
 	<!-- WordPress minimum version compatibility -->
 	<config name="minimum_supported_wp_version" value="5.0"/>
 
+	<rule ref="WordPress-Extra">
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+	</rule><!-- Includes WordPress-Core -->
 
-	<rule ref="WordPress-Extra"/><!-- Includes WordPress-Core -->
 	<rule ref="WordPress-Docs"/>
 
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
