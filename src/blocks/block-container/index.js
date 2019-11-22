@@ -25,23 +25,10 @@ const { registerBlockType } = wp.blocks;
 
 // Register editor components
 const {
-	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-	MediaUpload,
-	RichText,
 	InnerBlocks
 } = wp.editor;
-
-// Register components
-const {
-	Button,
-	withFallbackStyles,
-	IconButton,
-	Dashicon,
-	withState,
-	Toolbar
-} = wp.components;
 
 const blockAttributes = {
 	containerPaddingTop: {
@@ -100,24 +87,12 @@ class ABContainerBlock extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-				containerPaddingTop,
-				containerPaddingRight,
-				containerPaddingBottom,
-				containerPaddingLeft,
-				containerMarginTop,
-				containerMarginBottom,
 				containerWidth,
 				containerMaxWidth,
-				containerBackgroundColor,
 				containerImgURL,
-				containerImgID,
 				containerImgAlt,
 				containerDimRatio
 			},
-			attributes,
-			isSelected,
-			editable,
-			className,
 			setAttributes
 		} = this.props;
 
@@ -192,6 +167,15 @@ registerBlockType( 'atomic-blocks/ab-container', {
 
 	attributes: blockAttributes,
 
+	ab_settings_data: {
+        ab_container_containerOptions: {
+            title: __( 'Container Options', 'atomic-blocks' )
+        },
+        ab_container_backgroundOptions: {
+            title: __( 'Background Options', 'atomic-blocks' )
+		}
+    },
+
 	getEditWrapperProps({ containerWidth }) {
 		if ( 'left' === containerWidth || 'right' === containerWidth || 'full' === containerWidth ) {
 			return { 'data-align': containerWidth };
@@ -206,17 +190,8 @@ registerBlockType( 'atomic-blocks/ab-container', {
 
 		// Setup the attributes
 		const {
-			containerPaddingTop,
-			containerPaddingRight,
-			containerPaddingBottom,
-			containerPaddingLeft,
-			containerMarginTop,
-			containerMarginBottom,
-			containerWidth,
 			containerMaxWidth,
-			containerBackgroundColor,
 			containerImgURL,
-			containerImgID,
 			containerImgAlt,
 			containerDimRatio
 		} = props.attributes;

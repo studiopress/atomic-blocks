@@ -124,6 +124,27 @@ registerBlockType( 'atomic-blocks/ab-profile-box', {
 	/* Setup the block attributes */
 	attributes: blockAttributes,
 
+	ab_settings_data: {
+        ab_author_profile_profileFontSize: {
+            title: __( 'Font Size', 'atomic-blocks' )
+        },
+        ab_author_profile_profileAvatarShape: {
+            title: __( 'Avatar Shape', 'atomic-blocks' )
+		},
+		ab_author_profile_profileBackgroundColor: {
+            title: __( 'Background Color', 'atomic-blocks' )
+		},
+		ab_author_profile_profileTextColor: {
+            title: __( 'Text Color', 'atomic-blocks' )
+		},
+		ab_author_profile_profileLinkColor: {
+            title: __( 'Social Link Color', 'atomic-blocks' )
+		},
+		ab_author_profile_socialLinks: {
+            title: __( 'Social Links', 'atomic-blocks' )
+        }
+    },
+
 	/* Render the block in the editor. */
 	edit: props => {
 		return <Edit { ...props } />;
