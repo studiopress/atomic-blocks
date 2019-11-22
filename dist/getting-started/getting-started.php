@@ -443,6 +443,11 @@ function atomic_blocks_save_settings() {
 		delete_option( 'atomic_blocks_mailchimp_api_key' );
 	}
 
+	/**
+	 * Trigger an event to let integrations save their settings.
+	 */
+	do_action( 'atomic_blocks_save_settings', $_POST );
+
 	$redirect = remove_query_arg( 'atomic-blocks-settings-saved', wp_get_referer() );
 	wp_safe_redirect( $redirect . '&atomic-blocks-settings-saved=true' );
 	exit;
