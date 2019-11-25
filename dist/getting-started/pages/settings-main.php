@@ -17,9 +17,6 @@
 		<ul class="inline-list">
 			<li class="current"><a id="atomic-blocks-settings" href="#"><i class="fa fa-cog"></i> <?php esc_html_e( 'General Settings', 'atomic-blocks' ); ?></a></li>
 			<li><a id="permission-settings" href="#"><i class="fa fa-lock"></i> <?php esc_html_e( 'Block Permission Settings', 'atomic-blocks' ); ?></a></li>
-			<?php if ( function_exists( 'atomic_blocks_setup' ) ) { ?>
-				<li><a id="theme-help" href="#"><i class="fa fa-desktop"></i> <?php esc_html_e( 'Theme Help File', 'atomic-blocks' ); ?></a></li>
-			<?php } ?>
 		</ul>
 	</div>
 
@@ -43,11 +40,6 @@
 				</form>
 			</div><!-- .panel-left -->
 
-			<!-- Plugin help file panel -->
-			<div id="permission-settings" class="panel-left">
-				Put the block permissions here.
-			</div>
-
 			<div class="panel-right">
 				<div class="panel-aside panel-ab-plugin panel-club">
 					<div class="panel-club-inside">
@@ -57,8 +49,7 @@
 
 						<ul>
 							<li class="cell">
-								<p><?php esc_html_e( 'Check out the plugin documentation for feature expliations and advanced usage with code examples.', 'atomic-blocks' ); ?></p>
-
+								<p><?php esc_html_e( 'Check out the Atomic Blocks documentation for feature and setting explanations, advanced usage, and code examples.', 'atomic-blocks' ); ?></p>
 								<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://github.com/studiopress/atomic-blocks/wiki' ); ?>"><?php esc_html_e( 'View Documentation', 'atomic-blocks' ); ?> &rarr;</a>
 							</li>
 						</ul>
