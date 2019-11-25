@@ -108,13 +108,13 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 	},
 
 	ab_settings_data: {
-        ab_pricing_columns: {
-            title: __( 'Pricing Columns', 'atomic-blocks' )
-        },
-        ab_pricing_columnsGap: {
-            title: __( 'Pricing Columns Gap', 'atomic-blocks' )
+		ab_pricing_columns: {
+			title: __( 'Pricing Columns', 'atomic-blocks' )
 		},
-    },
+		ab_pricing_columnsGap: {
+			title: __( 'Pricing Columns Gap', 'atomic-blocks' )
+		}
+	},
 
 	// Add alignment to block wrapper
 	getEditWrapperProps({ align }) {

@@ -13,7 +13,7 @@ export default class RenderSettingControl extends Component {
 
 	render() {
 
-		if ( typeof this.props.children === 'undefined' ) {
+		if ( 'undefined' === typeof this.props.children ) {
 			return null;
 		}
 
@@ -23,11 +23,11 @@ export default class RenderSettingControl extends Component {
 		 */
 		let fallback = false;
 
-		if ( typeof this.props.children.props === 'undefined' || typeof this.props.children.props.name === 'undefined' ) {
+		if ( 'undefined' === typeof this.props.children.props || 'undefined' === typeof this.props.children.props.name ) {
 			fallback = true;
 		}
 
-		if ( fallback && ( typeof this.props.children._owner === 'undefined' || typeof this.props.children._owner.memoizedProps === 'undefined' || typeof this.props.children._owner.memoizedProps.name === undefined ) ) {
+		if ( fallback && ( 'undefined' === typeof this.props.children._owner || 'undefined' === typeof this.props.children._owner.memoizedProps || 'undefined' === typeof this.props.children._owner.memoizedProps.name ) ) {
 			return this.props.children;
 		}
 
