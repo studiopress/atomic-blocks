@@ -13,7 +13,8 @@
 	box-sizing: border-box;
 }
 
-.toplevel_page_atomic-blocks #wpcontent {
+.toplevel_page_atomic-blocks #wpcontent,
+.atomic-blocks_page_atomic-blocks-plugin-settings #wpcontent {
 	padding-left: 0;
 }
 
@@ -267,6 +268,7 @@
 	margin-bottom: 4.5%;
 }
 
+.ab-getting-started .intro h1,
 .ab-getting-started .intro h3 {
 	font-size: 40px;
 	line-height: 1.2;
@@ -1002,4 +1004,27 @@
 	.panel .ab-gutenberg-notice .button-primary {
 		margin-left: 0;
 	}
+}
+
+#atomic-blocks-settings input[type=text] {
+	padding: 12px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#atomic-blocks-settings .form-table th {
+	font-size: 18px;
+}
+
+#atomic-blocks-settings .button-primary {
+	height: auto;
+    line-height: unset;
+    padding: 5px 15px;
+    font-size: 16px;
+}
+
+#atomic-blocks-settings .submit {
+	background: #f5f4f6;
+	padding: 15px;
+	margin-top: 40px;
 }
