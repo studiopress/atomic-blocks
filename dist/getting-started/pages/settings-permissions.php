@@ -1,6 +1,6 @@
 <?php
 /**
- * Wrapper for main settings page.
+ * Wrapper for block permission settings page.
  *
  * @package AtomicBlocks\Settings
  */
@@ -15,8 +15,8 @@
 		</div>
 
 		<ul class="inline-list">
-			<li class="current"><a id="atomic-blocks-settings" href="<?php esc_url( menu_page_url( 'atomic-blocks-plugin-settings' ) ); ?>"><i class="fa fa-cog"></i> <?php esc_html_e( 'General Settings', 'atomic-blocks' ); ?></a></li>
-			<li><a id="permission-settings" href="<?php esc_url( menu_page_url( 'atomic-blocks-plugin-permission-settings' ) ); ?>"><i class="fa fa-lock"></i> <?php esc_html_e( 'Block Permission Settings', 'atomic-blocks' ); ?></a></li>
+			<li><a id="atomic-blocks-settings" href="<?php esc_url( menu_page_url( 'atomic-blocks-plugin-settings' ) ); ?>"><i class="fa fa-cog"></i> <?php esc_html_e( 'General Settings', 'atomic-blocks' ); ?></a></li>
+			<li class="current"><a id="permission-settings" href="<?php esc_url( menu_page_url( 'atomic-blocks-plugin-permission-settings' ) ); ?>"><i class="fa fa-lock"></i> <?php esc_html_e( 'Block Permission Settings', 'atomic-blocks' ); ?></a></li>
 		</ul>
 	</div>
 
@@ -31,12 +31,11 @@
 				?>
 
 				<form method="post" action="options.php" class="atomic-blocks-options-form">
-						<?php
-						require $pages_dir . 'settings-general.php';
-						do_action( 'atomic_blocks_settings_page_bottom' );
-						submit_button( esc_html__( 'Save Settings', 'atomic-blocks' ) );
-						wp_nonce_field( 'atomic-blocks-settings-save-nonce', 'atomic-blocks-settings-save-nonce' );
-						?>
+					<?php
+					do_action( 'atomic_blocks_settings_page_bottom' );
+					submit_button( esc_html__( 'Save Settings', 'atomic-blocks' ) );
+					wp_nonce_field( 'atomic-blocks-settings-save-nonce', 'atomic-blocks-settings-save-nonce' );
+					?>
 				</form>
 			</div><!-- .panel-left -->
 
@@ -44,12 +43,12 @@
 				<div class="panel-aside panel-ab-plugin panel-club">
 					<div class="panel-club-inside">
 						<div class="cell panel-title">
-							<h3><i class="fa fa-plug"></i> <?php esc_html_e( 'Plugin Documentation', 'atomic-blocks' ); ?></h3>
+							<h3><i class="fa fa-plug"></i> <?php esc_html_e( 'Block Permissions', 'atomic-blocks' ); ?></h3>
 						</div>
 
 						<ul>
 							<li class="cell">
-								<p><?php esc_html_e( 'Check out the Atomic Blocks documentation for feature and setting explanations, advanced usage, and code examples.', 'atomic-blocks' ); ?></p>
+								<p><?php esc_html_e( 'Block permissions allow you to control which Atomic Blocks settings can be controlled by different user roles.', 'atomic-blocks' ); ?></p>
 								<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://github.com/studiopress/atomic-blocks/wiki' ); ?>"><?php esc_html_e( 'View Documentation', 'atomic-blocks' ); ?> &rarr;</a>
 							</li>
 						</ul>
