@@ -13,14 +13,22 @@ export default class RenderSettingControl extends Component {
 
 	render() {
 
+		if ( typeof this.props.children === 'undefined' ) {
+			return null;
+		}
+
 		/**
 		 * Let the temporary hacks begin.
 		 * Get the block name this setting is associated with.
 		 */
 		let fallback = false;
 
-		if ( typeof this.props.children === 'undefined' || typeof this.props.children.props === 'undefined' || typeof this.props.children.props.name === 'undefined' ) {
+		if ( typeof this.props.children.props === 'undefined' || typeof this.props.children.props.name === 'undefined' ) {
 			fallback = true;
+		}
+
+		if ( fallback && ( typeof this.props.children._owner === 'undefined' || typeof this.props.children._owner.memoizedProps === 'undefined' || typeof this.props.children._owner.memoizedProps.name === undefined ) ) {
+			return this.props.children;
 		}
 
 		let blockName = fallback ? this.props.children._owner.memoizedProps.name : this.props.children.props.name;
