@@ -81,7 +81,7 @@ function atomic_blocks_getting_started_menu() {
 			esc_html__( 'Permission Settings', 'atomic-blocks' ),
 			'manage_options',
 			'atomic-blocks-plugin-permission-settings',
-			'atomic_blocks_render_permission_settings_page'
+			'atomic_blocks_render_settings_page'
 		);
 	}
 
@@ -419,16 +419,6 @@ function atomic_blocks_render_settings_page() {
 	$pages_dir = trailingslashit( dirname( __FILE__ ) ) . 'pages/';
 
 	include $pages_dir . 'settings-main.php';
-}
-
-/**
- * Renders the plugin permission settings page.
- */
-function atomic_blocks_render_permission_settings_page() {
-
-	$pages_dir = trailingslashit( dirname( __FILE__ ) ) . 'pages/';
-
-	include $pages_dir . 'settings-permissions.php';
 }
 
 add_action( 'admin_init', 'atomic_blocks_save_settings' );
