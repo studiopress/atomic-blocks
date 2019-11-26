@@ -5,20 +5,29 @@
  * @package AtomicBlocks\Settings
  */
 
-$settings_main = 'atomic-blocks_page_atomic-blocks-plugin-settings';
-$settings_perm = 'atomic-blocks_page_atomic-blocks-plugin-permission-settings';
+$atomic_blocks_settings_main       = 'atomic-blocks_page_atomic-blocks-plugin-settings';
+$atomic_blocks_settings_perm       = 'atomic-blocks_page_atomic-blocks-plugin-permission-settings';
+$atomic_blocks_settings_active_tab = get_current_screen()->base;
 ?>
 
 <div class="wrap ab-getting-started">
 	<div class="intro-wrap">
 		<div class="intro">
-			<a href="<?php echo esc_url( 'https://atomicblocks.com' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '/logo.png', dirname(__FILE__) ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
+			<a href="https://atomicblocks.com"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '/logo.png', __DIR__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 		</div>
 
 		<ul class="inline-list">
-			<li <?php if ( $settings_main === get_current_screen()->base ) { echo 'class="current"'; } ?>><a id="atomic-blocks-settings" href="<?php esc_url( menu_page_url( 'atomic-blocks-plugin-settings' ) ); ?>"><i class="fa fa-cog"></i> <?php esc_html_e( 'General Settings', 'atomic-blocks' ); ?></a></li>
-			<li <?php if ( $settings_perm === get_current_screen()->base ) { echo 'class="current"'; } ?>><a id="atomic-blocks-permission-settings" href="<?php esc_url( menu_page_url( 'atomic-blocks-plugin-permission-settings' ) ); ?>"><i class="fa fa-lock"></i> <?php esc_html_e( 'Block Permission Settings', 'atomic-blocks' ); ?></a></li>
+			<li class="<?php echo $atomic_blocks_settings_main === $atomic_blocks_settings_active_tab ? 'current' : ''; ?>">
+				<a id="atomic-blocks-settings" href="<?php esc_url( menu_page_url( 'atomic-blocks-plugin-settings' ) ); ?>">
+					<i class="fa fa-cog"></i> <?php esc_html_e( 'General Settings', 'atomic-blocks' ); ?>
+				</a>
+			</li>
+			<li class="<?php echo $atomic_blocks_settings_perm === $atomic_blocks_settings_active_tab ? 'current' : ''; ?>">
+				<a id="atomic-blocks-permission-settings" href="<?php esc_url( menu_page_url( 'atomic-blocks-plugin-permission-settings' ) ); ?>">
+					<i class="fa fa-lock"></i> <?php esc_html_e( 'Block Permission Settings', 'atomic-blocks' ); ?>
+				</a>
+			</li>
 		</ul>
 	</div>
 
@@ -34,9 +43,9 @@ $settings_perm = 'atomic-blocks_page_atomic-blocks-plugin-permission-settings';
 
 				<form method="post" action="options.php" class="atomic-blocks-options-form">
 						<?php
-						if ( $settings_main === get_current_screen()->base ) {
+						if ( $atomic_blocks_settings_main === get_current_screen()->base ) {
 							require $pages_dir . 'settings-general.php';
-						} elseif ( $settings_perm === get_current_screen()->base ) {
+						} elseif ( $atomic_blocks_settings_perm === get_current_screen()->base ) {
 							do_action( 'atomic_blocks_settings_page_permissions' );
 						}
 						do_action( 'atomic_blocks_settings_page_bottom' );
@@ -48,7 +57,8 @@ $settings_perm = 'atomic-blocks_page_atomic-blocks-plugin-permission-settings';
 
 			<div class="panel-right">
 				<?php
-				if ( $settings_main === get_current_screen()->base ) { ?>
+				if ( $atomic_blocks_settings_main === get_current_screen()->base ) {
+					?>
 					<div class="panel-aside panel-ab-plugin panel-club">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
@@ -63,7 +73,7 @@ $settings_perm = 'atomic-blocks_page_atomic-blocks-plugin-permission-settings';
 							</ul>
 						</div>
 					</div>
-				<?php } elseif ( $settings_perm === get_current_screen()->base ) { ?>
+				<?php } elseif ( $atomic_blocks_settings_perm === get_current_screen()->base ) { ?>
 					<div class="panel-aside panel-ab-plugin panel-club">
 						<div class="panel-club-inside">
 							<div class="cell panel-title">
