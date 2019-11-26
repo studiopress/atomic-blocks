@@ -111,7 +111,7 @@ export default class LayoutLibrary extends Component {
 						<div className={ 'ab-layout-view' }>
 
 
-							{ atomic_globals.is_wpe && !atomic_globals.pro_activated ?
+							{ atomic_globals.is_wpe && ! atomic_globals.pro_activated ?
 								<div className={ 'ab-layout-view-left' }>
 									<p>{ __( 'Get more sections & layouts with ', 'atomic-blocks' ) }
 										<a
@@ -119,9 +119,7 @@ export default class LayoutLibrary extends Component {
 											target="_blank"
 										>{ __( 'Atomic Blocks Pro', 'atomic-blocks' ) } &rarr;</a>
 									</p>
-								</div>
-								:
-								<div className={ 'ab-layout-view-left' }><p>{ __( 'Showing: ', 'atomic-blocks' ) + this.props.data.length }</p></div>
+								</div> : <div className={ 'ab-layout-view-left' }><p>{ __( 'Showing: ', 'atomic-blocks' ) + this.props.data.length }</p></div>
 							}
 
 							{ /* Grid width view. */ }
