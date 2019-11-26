@@ -85,8 +85,9 @@ function atomic_blocks_editor_assets() {
 		'atomic-blocks-block-js',
 		'atomic_globals',
 		array(
-			'rest_url'  => esc_url( rest_url() ),
-			'user_data' => $user_data,
+			'rest_url'      => esc_url( rest_url() ),
+			'user_data'     => $user_data,
+			'pro_activated' => function_exists( '\AtomicBlocksPro\plugin_loader' ),
 		)
 	);
 }

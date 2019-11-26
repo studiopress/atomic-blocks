@@ -5,6 +5,8 @@
 .ab-layout-modal {
 	width: 860px;
 	min-height: 90%;
+	height: 100%;
+	overflow-y: hidden;
 
 	.components-modal__content {
 		background: #f2f2f2;
@@ -331,4 +333,56 @@
 
 .ab-layout-modal-header-reusable-actions {
 	text-align: right;
+}
+
+.ab-layout-modal-footer {
+	position: absolute;
+    bottom: -1px;
+    width: 100%;
+	background: #3c3b3b;
+	border-top: solid 1px #e0e0e0;
+	z-index: 50;
+	padding: 10px 10px 10px 32px;
+    height: auto;
+	font-size: 11px;
+	color: #fff;
+
+	svg {
+		position: absolute;
+		left: 10px;
+		width: 18px;
+		color: #fff;
+	}
+
+	a {
+		text-decoration: none;
+		color: #fff;
+		&:hover {
+			text-decoration: underline;
+		}
+		&:focus {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
+
+	span {
+		margin: 0 5px;
+	}
+
+	.ab-pro-feedback {
+		float: right;
+		font-weight: bold;
+		position: relative;
+
+		svg {
+			left: -22px;
+		}
+	}
+}
+
+div[data-type*="atomic-blocks/ab-columns"][data-align="full"],
+div[data-type*="atomic-blocks/ab-container"][data-align="full"] {
+	margin-top: auto;
+	margin-bottom: auto;
 }
