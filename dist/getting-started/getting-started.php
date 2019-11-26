@@ -146,11 +146,14 @@ function atomic_blocks_getting_started_page() {
 				<div id="atomic-blocks-panel" class="panel-left visible">
 					<div class="ab-block-split clearfix">
 						<div class="ab-block-split-left">
-							<?php if( function_exists( 'is_wpe' ) && is_wpe() ) { ?>
+							<?php if ( function_exists( 'is_wpe' ) && is_wpe() ) { ?>
 								<div class="ab-block-pro-notice">
 									<i class="fa fa-bullhorn"></i>
 									<p>
-										<?php echo sprintf( esc_html__( 'Atomic Blocks Pro expands the library of blocks and increases functionality and control to meet all your page building needs. %1$s', 'atomic-blocks' ), '<a target="_blank" href=" ' . esc_url( 'https://wpengine.com/blog/introducing-atomic-blocks-pro-a-premium-collection-of-wordpress-content-blocks/' ) . ' ">Explore Atomic Blocks Pro &rarr;</a>' ); ?>
+										<?php
+										/* translators: %1$s URL to site about Atomic Blocks Pro */
+										printf( esc_html__( 'Atomic Blocks Pro expands the library of blocks and increases functionality and control to meet all your page building needs. %1$s', 'atomic-blocks' ), '<a target="_blank" rel="noopener noreferrer" href="https://wpengine.com/blog/introducing-atomic-blocks-pro-a-premium-collection-of-wordpress-content-blocks/">' . esc_html__( 'Explore Atomic Blocks Pro &rarr;', 'atomic-blocks' ) . '</a>' );
+										?>
 									</p>
 								</div>
 							<?php } ?>
