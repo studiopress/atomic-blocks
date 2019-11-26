@@ -62,7 +62,7 @@ function atomic_blocks_getting_started_menu() {
 		esc_html__( 'Getting Started', 'atomic-blocks' ),
 		'manage_options',
 		'atomic-blocks',
-		'atomic_blocks_render_permission_settings_page'
+		'atomic_blocks_getting_started_page'
 	);
 
 	if ( PHP_VERSION_ID >= 50600 ) {
