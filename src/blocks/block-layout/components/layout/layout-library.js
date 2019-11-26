@@ -111,7 +111,7 @@ export default class LayoutLibrary extends Component {
 						<div className={ 'ab-layout-view' }>
 
 
-							{ atomic_globals.is_wpe && atomic_globals.pro_activated ?
+							{ atomic_globals.is_wpe && !atomic_globals.pro_activated ?
 								<div className={ 'ab-layout-view-left' }>
 									<p>{ __( 'Get more sections & layouts with ', 'atomic-blocks' ) }
 										<a
