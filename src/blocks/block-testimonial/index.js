@@ -78,6 +78,12 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
 		},
 		ab_testimonial_testimonialCiteAlign: {
 			title: __( 'Cite Alignment', 'atomic-blocks' )
+		},
+		ab_testimonial_testimonialBackgroundColor: {
+			title: __( 'Background Color', 'atomic-blocks' )
+		},
+		ab_testimonial_testimonialTextColor: {
+			title: __( 'Text Color', 'atomic-blocks' )
 		}
 	},
 
