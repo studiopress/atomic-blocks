@@ -72,6 +72,14 @@ registerBlockType( 'atomic-blocks/ab-testimonial', {
             default: 'left-aligned'
         }
 	},
+	ab_settings_data: {
+		ab_testimonial_testimonialFontSize: {
+			title: __( 'Font Size', 'atomic-blocks' )
+		},
+		ab_testimonial_testimonialCiteAlign: {
+			title: __( 'Cite Alignment', 'atomic-blocks' )
+		}
+	},
 
 	/* Render the block in the editor. */
 	edit: props => {
