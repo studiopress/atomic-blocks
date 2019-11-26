@@ -1008,9 +1008,11 @@
 	background: #e4e4fd;
     border: solid 2px #5b3fd6;
     border-radius: 5px;
-    padding: 15px;
+    padding: 15px 15px 15px 80px;
 	color: #4d36b7;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
+	min-height: 78px;
+	position: relative;
 }
 
 .ab-block-pro-notice p {
@@ -1023,4 +1025,14 @@
 
 .ab-block-pro-notice a:hover {
 	text-decoration: underline;
+}
+
+.ab-block-pro-notice .fa-bullhorn {
+	background: #5c45c9;
+    padding: 15px;
+    border-radius: 100px;
+    color: #fff;
+	position: absolute;
+	left: 15px;
+	top: 22px;
 }
