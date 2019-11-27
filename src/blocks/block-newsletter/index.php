@@ -37,7 +37,7 @@ function atomic_blocks_render_newsletter_block( $attributes ) {
 
 	$amp_endpoint = function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
 
-	$hubspot_installed = is_plugin_active( 'leadin/leadin.php' );
+	$hubspot_installed = defined( 'LEADIN_PLUGIN_VERSION' );
 
 	if ( ! $amp_endpoint && ! $hubspot_installed ) {
 		wp_enqueue_script( 'atomic-blocks-newsletter-functions' );
