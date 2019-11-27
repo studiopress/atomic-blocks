@@ -146,7 +146,7 @@ function atomic_blocks_getting_started_page() {
 				<div id="atomic-blocks-panel" class="panel-left visible">
 					<div class="ab-block-split clearfix">
 						<div class="ab-block-split-left">
-							<?php if ( function_exists( 'is_wpe' ) && is_wpe() && !function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' ) ) { ?>
+							<?php if ( function_exists( 'is_wpe' ) && is_wpe() && ! function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' ) ) { ?>
 								<div class="ab-block-pro-notice">
 									<i class="fa fa-bullhorn"></i>
 									<p>
