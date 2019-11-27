@@ -10,6 +10,7 @@
 	hr {
 		border: none;
 		margin: 0;
+		background: none;
 	}
 
 	&.ab-spacer-divider:after {
@@ -52,5 +53,17 @@
 
 	&.ab-divider-size-5.ab-spacer-divider:after {
 		border-top-width: 5px;
+	}
+}
+
+.entry-content .ab-block-spacer {
+	hr {
+		border: none;
+		margin: 0;
+		background: none;
+		&:before,
+		&:after {
+			display: none;
+		}
 	}
 }
