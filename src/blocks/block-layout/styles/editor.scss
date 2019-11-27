@@ -113,6 +113,10 @@
 			margin: 0;
 			line-height: 2.2em;
 		}
+		a {
+			font-weight: bold;
+			color: #027bba;
+		}
 	}
 
 	.ab-layout-view-right {
@@ -379,4 +383,10 @@
 			left: -22px;
 		}
 	}
+}
+
+div[data-type*="atomic-blocks/ab-columns"][data-align="full"],
+div[data-type*="atomic-blocks/ab-container"][data-align="full"] {
+	margin-top: auto;
+	margin-bottom: auto;
 }

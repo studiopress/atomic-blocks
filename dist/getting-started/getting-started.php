@@ -146,6 +146,17 @@ function atomic_blocks_getting_started_page() {
 				<div id="atomic-blocks-panel" class="panel-left visible">
 					<div class="ab-block-split clearfix">
 						<div class="ab-block-split-left">
+							<?php if ( function_exists( 'is_wpe' ) && is_wpe() && ! function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' ) ) { ?>
+								<div class="ab-block-pro-notice">
+									<i class="fa fa-bullhorn"></i>
+									<p>
+										<?php
+										/* translators: %1$s URL to site about Atomic Blocks Pro */
+										printf( esc_html__( 'Atomic Blocks Pro expands the library of blocks and increases functionality and control to meet all your page building needs. %1$s', 'atomic-blocks' ), '<a target="_blank" rel="noopener noreferrer" href="https://wpengine.com/blog/introducing-atomic-blocks-pro-a-premium-collection-of-wordpress-content-blocks/">' . esc_html__( 'Explore Atomic Blocks Pro &rarr;', 'atomic-blocks' ) . '</a>' );
+										?>
+									</p>
+								</div>
+							<?php } ?>
 							<div class="ab-titles">
 								<h2><?php esc_html_e( 'Welcome to the future of site building with Gutenberg and Atomic Blocks!', 'atomic-blocks' ); ?></h2>
 								<p><?php esc_html_e( 'The Atomic Blocks collection is now ready to use in your posts and pages. Simply search for "atomic" or "ab" in the block inserter to display the Atomic Blocks collection. Check out the help file link above for detailed instructions!', 'atomic-blocks' ); ?></p>
