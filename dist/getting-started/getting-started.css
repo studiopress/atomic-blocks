@@ -14,8 +14,7 @@
 }
 
 .toplevel_page_atomic-blocks #wpcontent,
-.atomic-blocks_page_atomic-blocks-plugin-settings #wpcontent,
-.atomic-blocks_page_atomic-blocks-plugin-permission-settings #wpcontent {
+.atomic-blocks_page_atomic-blocks-plugin-settings #wpcontent {
 	padding-left: 0;
 }
 

@@ -144,7 +144,7 @@ function atomic_blocks_add_custom_block_category( $categories ) {
  */
 function atomic_blocks_settings_enqueue() {
 
-	if ( 'atomic-blocks_page_atomic-blocks-plugin-settings' || 'atomic-blocks_page_atomic-blocks-plugin-permission-settings' === get_current_screen()->base ) {
+	if ( 'atomic-blocks_page_atomic-blocks-plugin-settings' === get_current_screen()->base ) {
 		wp_register_style( 'atomic-blocks-getting-started', plugins_url( 'dist/getting-started/getting-started.css', __DIR__ ), false, '1.0.0' );
 		wp_enqueue_style( 'atomic-blocks-getting-started' );
 

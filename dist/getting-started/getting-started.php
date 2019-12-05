@@ -65,25 +65,14 @@ function atomic_blocks_getting_started_menu() {
 		'atomic_blocks_getting_started_page'
 	);
 
-	if ( PHP_VERSION_ID >= 50600 ) {
-		add_submenu_page(
-			'atomic-blocks',
-			esc_html__( 'Atomic Blocks Settings', 'atomic-blocks' ),
-			esc_html__( 'General Settings', 'atomic-blocks' ),
-			'manage_options',
-			'atomic-blocks-plugin-settings',
-			'atomic_blocks_render_settings_page'
-		);
-
-		add_submenu_page(
-			'atomic-blocks',
-			esc_html__( 'Atomic Blocks Settings', 'atomic-blocks' ),
-			esc_html__( 'Permission Settings', 'atomic-blocks' ),
-			'manage_options',
-			'atomic-blocks-plugin-permission-settings',
-			'atomic_blocks_render_settings_page'
-		);
-	}
+	add_submenu_page(
+		'atomic-blocks',
+		esc_html__( 'Atomic Blocks Settings', 'atomic-blocks' ),
+		esc_html__( 'Settings', 'atomic-blocks' ),
+		'manage_options',
+		'atomic-blocks-plugin-settings',
+		'atomic_blocks_render_settings_page'
+	);
 
 }
 add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
@@ -472,3 +461,17 @@ function atomic_blocks_save_settings() {
 	wp_safe_redirect( $redirect . '&atomic-blocks-settings-saved=true' );
 	exit;
 }
+
+/**
+ * Loads the settings page scripts.
+ *
+ * @param string $hook The current admin page.
+ */
+function atomic_blocks_load_settings_page_scripts( $hook ) {
+	if ( 'atomic-blocks_page_atomic-blocks-plugin-settings' !== $hook ) {
+		return;
+	}
+
+	wp_enqueue_script( 'atomic-blocks-settings-page-scripts', plugins_url( 'getting-started/settings.js', __DIR__ ), array( 'jquery' ), '1.0.0', true );
+}
+add_action( 'admin_enqueue_scripts', 'atomic_blocks_load_settings_page_scripts' );
