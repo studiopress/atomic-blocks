@@ -150,6 +150,12 @@ registerBlockType( 'atomic-blocks/ab-button', {
 		}
 	},
 
+	ab_settings_data: {
+        ab_button_buttonOptions: {
+            title: __( 'Button Options', 'atomic-blocks' )
+        }
+    },
+
 	// Render the block components
 	edit: ABButtonBlock,
 

@@ -25,6 +25,24 @@ registerBlockType( 'atomic-blocks/ab-sharing', {
 		__( 'atomic', 'atomic-blocks' )
 	],
 
+	ab_settings_data: {
+        ab_sharing_links: {
+            title: __( 'Sharing Links', 'atomic-blocks' )
+        },
+        ab_sharing_shareButtonStyle: {
+            title: __( 'Button Style', 'atomic-blocks' )
+		},
+		ab_sharing_shareButtonShape: {
+            title: __( 'Button Shape', 'atomic-blocks' )
+		},
+		ab_sharing_shareButtonSize: {
+            title: __( 'Button Size', 'atomic-blocks' )
+		},
+		ab_sharing_shareButtonColor: {
+            title: __( 'Button Color', 'atomic-blocks' )
+		}
+    },
+
 	// Render the block components
 	edit: props => {
 		return <Edit { ...props } />;

@@ -77,12 +77,16 @@ function atomic_blocks_editor_assets() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
 
+	$user_data = wp_get_current_user();
+	unset( $user_data->user_pass, $user_data->user_email );
+
 	// Pass in REST URL.
 	wp_localize_script(
 		'atomic-blocks-block-js',
 		'atomic_globals',
 		array(
 			'rest_url'      => esc_url( rest_url() ),
+			'user_data'     => $user_data,
 			'pro_activated' => function_exists( '\AtomicBlocksPro\plugin_loader' ),
 			'is_wpe'        => function_exists( 'is_wpe' ),
 		)
@@ -132,3 +136,18 @@ function atomic_blocks_add_custom_block_category( $categories ) {
 		)
 	);
 }
+
+/**
+ * Enqueue assets for settings page.
+ *
+ * @since 2.1.0
+ */
+function atomic_blocks_settings_enqueue() {
+
+	if ( 'atomic-blocks_page_atomic-blocks-plugin-settings' === get_current_screen()->base ) {
+		wp_register_style( 'atomic-blocks-getting-started', plugins_url( 'dist/getting-started/getting-started.css', __DIR__ ), false, '1.0.0' );
+		wp_enqueue_style( 'atomic-blocks-getting-started' );
+
+	}
+}
+add_action( 'admin_enqueue_scripts', 'atomic_blocks_settings_enqueue' );

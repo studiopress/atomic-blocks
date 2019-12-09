@@ -2,6 +2,8 @@
  * Inspector Controls
  */
 
+import RenderSettingControl from '../../../utils/components/settings/renderSettingControl';
+
 // Setup the block
 const { __ } = wp.i18n;
 const {
@@ -12,17 +14,12 @@ const {
 // Import block components
 const {
   InspectorControls,
-  BlockDescription,
-  ColorPalette,
   PanelColorSettings
 } = wp.editor;
 
 // Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
 	RangeControl,
 	ToggleControl,
 	SelectControl
@@ -75,54 +72,62 @@ export default class Inspector extends Component {
 		return (
 		<InspectorControls key="inspector">
 			<PanelBody>
-				<RangeControl
-					label={ __( 'Spacer Height', 'atomic-blocks' ) }
-					value={ spacerHeight || '' }
-					onChange={ ( value ) => this.props.setAttributes({ spacerHeight: value }) }
-					min={ 50 }
-					max={ 600 }
-				/>
-
-				<ToggleControl
-					label={ __( 'Add Divider', 'atomic-blocks' ) }
-					checked={ spacerDivider }
-					onChange={ () => this.props.setAttributes({ spacerDivider: ! spacerDivider }) }
-				/>
+				<RenderSettingControl id="ab_spacer_spacerHeight">
+					<RangeControl
+						label={ __( 'Spacer Height', 'atomic-blocks' ) }
+						value={ spacerHeight || '' }
+						onChange={ ( value ) => this.props.setAttributes({ spacerHeight: value }) }
+						min={ 50 }
+						max={ 600 }
+					/>
+				</RenderSettingControl>
+				<RenderSettingControl id="ab_spacer_spacerDivider">
+					<ToggleControl
+						label={ __( 'Add Divider', 'atomic-blocks' ) }
+						checked={ spacerDivider }
+						onChange={ () => this.props.setAttributes({ spacerDivider: ! spacerDivider }) }
+					/>
+				</RenderSettingControl>
 			</PanelBody>
 			{ spacerDivider ?
 				<Fragment>
 					<PanelBody>
-						<SelectControl
-							label={ __( 'Divider Style', 'atomic-blocks' ) }
-							value={ spacerDividerStyle }
-							options={ spacerStyleOptions.map( ({ value, label }) => ({
-								value: value,
-								label: label
-							}) ) }
-							onChange={ ( value ) => {
- this.props.setAttributes({ spacerDividerStyle: value });
-} }
-						/>
-
-						<RangeControl
-							label={ __( 'Divider Height', 'atomic-blocks' ) }
-							value={ spacerDividerHeight || '' }
-							onChange={ ( value ) => this.props.setAttributes({ spacerDividerHeight: value }) }
-							min={ 1 }
-							max={ 5 }
-						/>
+						<RenderSettingControl id="ab_spacer_spacerDividerStyle">
+							<SelectControl
+								label={ __( 'Divider Style', 'atomic-blocks' ) }
+								value={ spacerDividerStyle }
+								options={ spacerStyleOptions.map( ({ value, label }) => ({
+									value: value,
+									label: label
+								}) ) }
+								onChange={ ( value ) => {
+									this.props.setAttributes({ spacerDividerStyle: value });
+								} }
+							/>
+						</RenderSettingControl>
+						<RenderSettingControl id="ab_spacer_spacerDividerHeight">
+							<RangeControl
+								label={ __( 'Divider Height', 'atomic-blocks' ) }
+								value={ spacerDividerHeight || '' }
+								onChange={ ( value ) => this.props.setAttributes({ spacerDividerHeight: value }) }
+								min={ 1 }
+								max={ 5 }
+							/>
+						</RenderSettingControl>
 					</PanelBody>
-					<PanelColorSettings
-						title={ __( 'Divider Color', 'atomic-blocks' ) }
-						initialOpen={ false }
-						colorSettings={ [ {
-							colors: dividerColor,
-							value: spacerDividerColor,
-							onChange: onChangeDividerColor,
-							label: __( 'Divider Color', 'atomic-blocks' )
-						} ] }
-					>
-					</PanelColorSettings>
+					<RenderSettingControl id="ab_spacer_dividerColor">
+						<PanelColorSettings
+							title={ __( 'Divider Color', 'atomic-blocks' ) }
+							initialOpen={ false }
+							colorSettings={ [ {
+								colors: dividerColor,
+								value: spacerDividerColor,
+								onChange: onChangeDividerColor,
+								label: __( 'Divider Color', 'atomic-blocks' )
+							} ] }
+						>
+						</PanelColorSettings>
+					</RenderSettingControl>
 				</Fragment> :
 				null }
 		</InspectorControls>
