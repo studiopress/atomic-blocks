@@ -23,7 +23,6 @@ export default class Pricing extends Component {
 		const {
 			attributes: {
 				columns,
-				columnsGap,
 				align
 			}
 		} = this.props;

@@ -13,10 +13,7 @@ const {
 
 // Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
 	RangeControl
 } = wp.components;
 
@@ -36,10 +33,7 @@ export default class Inspector extends Component {
 			attributes: {
 				columns,
 				columnsGap
-			},
-			isSelected,
-			className,
-			setAttributes
+			}
 		} = this.props;
 
 		return (
