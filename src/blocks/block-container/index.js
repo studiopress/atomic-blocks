@@ -85,7 +85,7 @@ class ABContainerBlock extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-				containerWidth,
+				containerWidth
 			},
 			setAttributes
 		} = this.props;

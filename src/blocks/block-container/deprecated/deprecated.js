@@ -184,7 +184,8 @@ const deprecated = [
 	{
 		attributes: Container_2_3_0_attr,
         save: Container_2_3_0_save
-    },
+	},
+
     // Version 1_4_23
 	{
 		attributes: Container_1_4_23_attr,
