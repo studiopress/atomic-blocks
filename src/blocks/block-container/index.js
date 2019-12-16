@@ -53,8 +53,7 @@ const blockAttributes = {
 		type: 'string'
 	},
 	containerMaxWidth: {
-		type: 'number',
-		default: 1600
+		type: 'number'
 	},
 	containerBackgroundColor: {
 		type: 'string'
@@ -134,7 +133,7 @@ class ABContainerBlock extends Component {
 					<div
 						className="ab-container-content"
 						style={ {
-							maxWidth: `${containerMaxWidth}px`
+							maxWidth: containerMaxWidth ? `${containerMaxWidth}px` : undefined
 						} }
 					>
 						<InnerBlocks />
@@ -202,7 +201,7 @@ registerBlockType( 'atomic-blocks/ab-container', {
 					<div
 						className="ab-container-content"
 						style={ {
-							maxWidth: `${containerMaxWidth}px`
+							maxWidth: containerMaxWidth ? `${containerMaxWidth}px` : undefined
 						} }
 					>
 						<InnerBlocks.Content />
