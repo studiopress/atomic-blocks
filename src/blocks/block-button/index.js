@@ -129,10 +129,10 @@ registerBlockType( 'atomic-blocks/ab-button', {
 			type: 'string'
 		},
 		buttonBackgroundColor: {
-			type: 'string',
+			type: 'string'
 		},
 		buttonTextColor: {
-			type: 'string',
+			type: 'string'
 		},
 		buttonSize: {
 			type: 'string',
