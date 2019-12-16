@@ -39,7 +39,7 @@ class ABButtonBlock extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape }, isSelected, setAttributes } = this.props;
 
 		return [
 
@@ -72,8 +72,8 @@ class ABButtonBlock extends Component {
 						buttonSize,
 					) }
 					style={ {
-						color: buttonTextColor,
-						backgroundColor: buttonBackgroundColor
+						color: buttonTextColor ? buttonTextColor : '#ffffff',
+						backgroundColor: buttonBackgroundColor ? buttonBackgroundColor : '#3373dc'
 					} }
 					onChange={ ( value ) => setAttributes({ buttonText: value }) }
 				/>
@@ -129,12 +129,10 @@ registerBlockType( 'atomic-blocks/ab-button', {
 			type: 'string'
 		},
 		buttonBackgroundColor: {
-			type: 'string',
-			default: '#3373dc'
+			type: 'string'
 		},
 		buttonTextColor: {
-			type: 'string',
-			default: '#ffffff'
+			type: 'string'
 		},
 		buttonSize: {
 			type: 'string',
@@ -157,7 +155,7 @@ registerBlockType( 'atomic-blocks/ab-button', {
 	save: function( props ) {
 
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
+		const { buttonText, buttonUrl, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
 
 		// Save the block markup for the front end
 		return (
@@ -174,8 +172,8 @@ registerBlockType( 'atomic-blocks/ab-button', {
 							buttonSize,
 						) }
 						style={ {
-							color: buttonTextColor,
-							backgroundColor: buttonBackgroundColor
+							color: buttonTextColor ? buttonTextColor : '#ffffff',
+							backgroundColor: buttonBackgroundColor ? buttonBackgroundColor : '#3373dc'
 						} }
 					>
 						<RichText.Content
