@@ -8,6 +8,7 @@
 }
 
 .ab-pricing-table-wrap-admin > .editor-inner-blocks > .editor-block-list__layout {
+	display: -ms-grid;
 	display: grid;
     grid-template-rows: 1fr;
     grid-gap: 0 2em;
@@ -43,41 +44,51 @@
 /* Grid column classes */
 
 .ab-pricing-columns-2 .editor-block-list__layout {
-    grid-template-columns: 1fr 1fr;
+	-ms-grid-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
 
     @media only screen and (max-width: 600px) {
-        grid-template-columns: 1fr;
+		-ms-grid-columns: 1fr;
+		grid-template-columns: 1fr;
     }
 }
 
 .ab-pricing-columns-3 .editor-block-list__layout {
+	-ms-grid-columns: 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
 
 	@media only screen and (max-width: 600px) {
+		-ms-grid-columns: 1fr;
 		grid-template-columns: 1fr;
 	}
 }
 
 .ab-pricing-columns-4 .editor-block-list__layout {
+	-ms-grid-columns: 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 
 	@media only screen and (max-width: 800px) {
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 	}
 
 	@media only screen and (max-width: 600px) {
+		-ms-grid-columns: 1fr;
 		grid-template-columns: 1fr;
 	}
 }
 
 .ab-pricing-columns-5 .editor-block-list__layout {
+	-ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
 	@media only screen and (max-width: 800px) {
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 	}
 
 	@media only screen and (max-width: 600px) {
+		-ms-grid-columns: 1fr;
 		grid-template-columns: 1fr;
 	}
 }
