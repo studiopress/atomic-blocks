@@ -3,7 +3,6 @@
  */
 
 // Import block dependencies and components
-import classnames from 'classnames';
 import Inspector from './components/inspector';
 import Container from './components/container';
 
@@ -87,10 +86,6 @@ class ABContainerBlock extends Component {
 		const {
 			attributes: {
 				containerWidth,
-				containerMaxWidth,
-				containerImgURL,
-				containerImgAlt,
-				containerDimRatio
 			},
 			setAttributes
 		} = this.props;
@@ -113,32 +108,7 @@ class ABContainerBlock extends Component {
 
 			// Show the container markup in the editor
 			<Container { ...this.props }>
-				<div className="ab-container-inside">
-					{ containerImgURL && !! containerImgURL.length && (
-						<div className="ab-container-image-wrap">
-							<img
-								className={ classnames(
-									'ab-container-image',
-									dimRatioToClass( containerDimRatio ),
-									{
-										'has-background-dim': 0 !== containerDimRatio
-									}
-								) }
-								src={ containerImgURL }
-								alt={ containerImgAlt }
-							/>
-						</div>
-					) }
-
-					<div
-						className="ab-container-content"
-						style={ {
-							maxWidth: containerMaxWidth ? `${containerMaxWidth}px` : undefined
-						} }
-					>
-						<InnerBlocks />
-					</div>
-				</div>
+				<InnerBlocks />
 			</Container>
 		];
 	}
@@ -170,43 +140,10 @@ registerBlockType( 'atomic-blocks/ab-container', {
 	// Save the attributes and markup
 	save: function( props ) {
 
-		// Setup the attributes
-		const {
-			containerMaxWidth,
-			containerImgURL,
-			containerImgAlt,
-			containerDimRatio
-		} = props.attributes;
-
 		// Save the block markup for the front end
 		return (
 			<Container { ...props }>
-				<div className="ab-container-inside">
-					{ containerImgURL && !! containerImgURL.length && (
-						<div className="ab-container-image-wrap">
-							<img
-								className={ classnames(
-									'ab-container-image',
-									dimRatioToClass( containerDimRatio ),
-									{
-										'has-background-dim': 0 !== containerDimRatio
-									}
-								) }
-								src={ containerImgURL }
-								alt={ containerImgAlt }
-							/>
-						</div>
-					) }
-
-					<div
-						className="ab-container-content"
-						style={ {
-							maxWidth: containerMaxWidth ? `${containerMaxWidth}px` : undefined
-						} }
-					>
-						<InnerBlocks.Content />
-					</div>
-				</div>
+				<InnerBlocks.Content />
 			</Container>
 		);
 	},
@@ -214,15 +151,3 @@ registerBlockType( 'atomic-blocks/ab-container', {
 	deprecated: deprecated
 
 });
-
-function dimRatioToClass( ratio ) {
-	return ( 0 === ratio || 50 === ratio ) ?
-		null :
-		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
-}
-
-function backgroundImageStyles( url ) {
-	return url ?
-		{ backgroundImage: `url(${ url })` } :
-		undefined;
-}
