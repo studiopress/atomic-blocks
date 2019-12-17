@@ -2,6 +2,11 @@
  * Inspector Controls
  */
 
+/**
+ * Internal dependencies.
+ */
+import RenderSettingControl from '../../../utils/components/settings/renderSettingControl';
+
 // Setup the block
 const { __ } = wp.i18n;
 const { Component } = wp.element;
@@ -9,22 +14,14 @@ const { Component } = wp.element;
 // Import block components
 const {
   InspectorControls,
-  BlockDescription,
-  ColorPalette,
   PanelColorSettings,
   MediaUpload
 } = wp.editor;
 
 // Import Inspector components
 const {
-	Toolbar,
-	Button,
 	PanelBody,
-	PanelRow,
-	FormToggle,
 	RangeControl,
-	SelectControl,
-	ToggleControl,
 	IconButton
 } = wp.components;
 
@@ -40,7 +37,7 @@ export default class Inspector extends Component {
 	render() {
 
 		// Setup the attributes
-		const { containerPaddingTop, containerPaddingRight, containerPaddingBottom, containerPaddingLeft, containerMarginTop, containerMarginBottom, containerMaxWidth, containerBackgroundColor, containerDimRatio, containerImgURL, containerImgID, containerImgAlt } = this.props.attributes;
+		const { containerPaddingTop, containerPaddingRight, containerPaddingBottom, containerPaddingLeft, containerMarginTop, containerMarginBottom, containerMaxWidth, containerBackgroundColor, containerDimRatio, containerImgURL, containerImgID } = this.props.attributes;
 		const { setAttributes } = this.props;
 
 		const onSelectImage = img => {
@@ -64,125 +61,129 @@ export default class Inspector extends Component {
 
 		return (
 		<InspectorControls key="inspector">
-			<PanelBody title={ __( 'Container Options' ) } initialOpen={ true }>
-				<RangeControl
-					label={ __( 'Padding Top (%)' ) }
-					value={ containerPaddingTop }
-					onChange={ ( value ) => this.props.setAttributes({ containerPaddingTop: value }) }
-					min={ 0 }
-					max={ 30 }
-					step={ .5 }
-				/>
+			<RenderSettingControl id="ab_container_containerOptions">
+				<PanelBody title={ __( 'Container Options', 'atomic-blocks' ) } initialOpen={ true }>
+					<RangeControl
+						label={ __( 'Padding Top (%)', 'atomic-blocks' ) }
+						value={ containerPaddingTop }
+						onChange={ ( value ) => this.props.setAttributes({ containerPaddingTop: value }) }
+						min={ 0 }
+						max={ 30 }
+						step={ .5 }
+					/>
 
-				<RangeControl
-					label={ __( 'Padding Bottom (%)' ) }
-					value={ containerPaddingBottom }
-					onChange={ ( value ) => this.props.setAttributes({ containerPaddingBottom: value }) }
-					min={ 0 }
-					max={ 30 }
-					step={ .5 }
-				/>
+					<RangeControl
+						label={ __( 'Padding Bottom (%)', 'atomic-blocks' ) }
+						value={ containerPaddingBottom }
+						onChange={ ( value ) => this.props.setAttributes({ containerPaddingBottom: value }) }
+						min={ 0 }
+						max={ 30 }
+						step={ .5 }
+					/>
 
-				<RangeControl
-					label={ __( 'Padding Left (%)' ) }
-					value={ containerPaddingLeft }
-					onChange={ ( value ) => this.props.setAttributes({ containerPaddingLeft: value }) }
-					min={ 0 }
-					max={ 30 }
-					step={ .5 }
-				/>
+					<RangeControl
+						label={ __( 'Padding Left (%)', 'atomic-blocks' ) }
+						value={ containerPaddingLeft }
+						onChange={ ( value ) => this.props.setAttributes({ containerPaddingLeft: value }) }
+						min={ 0 }
+						max={ 30 }
+						step={ .5 }
+					/>
 
-				<RangeControl
-					label={ __( 'Padding Right (%)' ) }
-					value={ containerPaddingRight }
-					onChange={ ( value ) => this.props.setAttributes({ containerPaddingRight: value }) }
-					min={ 0 }
-					max={ 30 }
-					step={ .5 }
-				/>
+					<RangeControl
+						label={ __( 'Padding Right (%)', 'atomic-blocks' ) }
+						value={ containerPaddingRight }
+						onChange={ ( value ) => this.props.setAttributes({ containerPaddingRight: value }) }
+						min={ 0 }
+						max={ 30 }
+						step={ .5 }
+					/>
 
-				<RangeControl
-					label={ __( 'Margin Top (%)' ) }
-					value={ containerMarginTop }
-					onChange={ ( value ) => this.props.setAttributes({ containerMarginTop: value }) }
-					min={ 0 }
-					max={ 30 }
-					step={ 1 }
-				/>
+					<RangeControl
+						label={ __( 'Margin Top (%)', 'atomic-blocks' ) }
+						value={ containerMarginTop }
+						onChange={ ( value ) => this.props.setAttributes({ containerMarginTop: value }) }
+						min={ 0 }
+						max={ 30 }
+						step={ 1 }
+					/>
 
-				<RangeControl
-					label={ __( 'Margin Bottom (%)' ) }
-					value={ containerMarginBottom }
-					onChange={ ( value ) => this.props.setAttributes({ containerMarginBottom: value }) }
-					min={ 0 }
-					max={ 30 }
-					step={ .5 }
-				/>
+					<RangeControl
+						label={ __( 'Margin Bottom (%)', 'atomic-blocks' ) }
+						value={ containerMarginBottom }
+						onChange={ ( value ) => this.props.setAttributes({ containerMarginBottom: value }) }
+						min={ 0 }
+						max={ 30 }
+						step={ .5 }
+					/>
 
-				<RangeControl
-					label={ __( 'Inside Container Max Width (px)' ) }
-					value={ containerMaxWidth }
-					onChange={ ( value ) => this.props.setAttributes({ containerMaxWidth: value }) }
-					min={ 500 }
-					max={ 1600 }
-					step={ 1 }
-				/>
-			</PanelBody>
+					<RangeControl
+						label={ __( 'Inside Container Max Width (px)', 'atomic-blocks' ) }
+						value={ containerMaxWidth }
+						onChange={ ( value ) => this.props.setAttributes({ containerMaxWidth: value }) }
+						min={ 500 }
+						max={ 1600 }
+						step={ 1 }
+					/>
+				</PanelBody>
+			</RenderSettingControl>
 
-			<PanelBody title={ __( 'Background Options' ) } initialOpen={ false }>
-				<p>{ __( 'Select a background image:' ) }</p>
-				<MediaUpload
-					onSelect={ onSelectImage }
-					type="image"
-					value={ containerImgID }
-					render={ ({ open }) => (
-						<div>
-							<IconButton
-								className="ab-container-inspector-media"
-								label={ __( 'Edit image' ) }
-								icon="format-image"
-								onClick={ open }
-							>
-								{ __( 'Select Image' ) }
-							</IconButton>
-
-							{ containerImgURL && !! containerImgURL.length && (
+			<RenderSettingControl id="ab_container_backgroundOptions">
+				<PanelBody title={ __( 'Background Options', 'atomic-blocks' ) } initialOpen={ false }>
+					<p>{ __( 'Select a background image:', 'atomic-blocks' ) }</p>
+					<MediaUpload
+						onSelect={ onSelectImage }
+						type="image"
+						value={ containerImgID }
+						render={ ({ open }) => (
+							<div>
 								<IconButton
 									className="ab-container-inspector-media"
-									label={ __( 'Remove Image' ) }
-									icon="dismiss"
-									onClick={ onRemoveImage }
+									label={ __( 'Edit image', 'atomic-blocks' ) }
+									icon="format-image"
+									onClick={ open }
 								>
-									{ __( 'Remove' ) }
+									{ __( 'Select Image', 'atomic-blocks' ) }
 								</IconButton>
-							) }
-						</div>
+
+								{ containerImgURL && !! containerImgURL.length && (
+									<IconButton
+										className="ab-container-inspector-media"
+										label={ __( 'Remove Image', 'atomic-blocks' ) }
+										icon="dismiss"
+										onClick={ onRemoveImage }
+									>
+										{ __( 'Remove', 'atomic-blocks' ) }
+									</IconButton>
+								) }
+							</div>
+						) }
+					>
+					</MediaUpload>
+
+					{ containerImgURL && !! containerImgURL.length && (
+						<RangeControl
+							label={ __( 'Image Opacity', 'atomic-blocks' ) }
+							value={ containerDimRatio }
+							onChange={ ( value ) => this.props.setAttributes({ containerDimRatio: value }) }
+							min={ 0 }
+							max={ 100 }
+							step={ 10 }
+						/>
 					) }
-				>
-				</MediaUpload>
 
-				{ containerImgURL && !! containerImgURL.length && (
-					<RangeControl
-						label={ __( 'Image Opacity' ) }
-						value={ containerDimRatio }
-						onChange={ ( value ) => this.props.setAttributes({ containerDimRatio: value }) }
-						min={ 0 }
-						max={ 100 }
-						step={ 10 }
-					/>
-				) }
-
-				<PanelColorSettings
-					title={ __( 'Background Color' ) }
-					initialOpen={ false }
-					colorSettings={ [ {
-						value: containerBackgroundColor,
-						label: __( 'Background Color' ),
-						onChange: onChangeBackgroundColor
-					} ] }
-				>
-				</PanelColorSettings>
-			</PanelBody>
+					<PanelColorSettings
+						title={ __( 'Background Color', 'atomic-blocks' ) }
+						initialOpen={ false }
+						colorSettings={ [ {
+							value: containerBackgroundColor,
+							label: __( 'Background Color', 'atomic-blocks' ),
+							onChange: onChangeBackgroundColor
+						} ] }
+					>
+					</PanelColorSettings>
+				</PanelBody>
+			</RenderSettingControl>
 		</InspectorControls>
 		);
 	}

@@ -1,6 +1,6 @@
 {
   "name": "atomic-blocks",
-  "version": "2.0.1",
+  "version": "2.4.0",
   "description": "A beautiful collection of handy Gutenberg blocks to help you get started with the new WordPress editor.",
   "author": "Atomic Blocks",
   "license": "GPL-2.0-or-later",
@@ -16,7 +16,6 @@
   "bugs": "https://github.com/studiopress/atomic-blocks/issues",
   "private": true,
   "dependencies": {
-    "@wordpress/data": "^1.2.1",
     "@wordpress/html-entities": "^1.0.3",
     "@wordpress/i18n": "^1.2.3",
     "autoprefixer": "^9.6.0",
@@ -57,7 +56,8 @@
     "randomatic": "^3.1.1",
     "raw-loader": "^0.5.1",
     "re-resizable": "^4.11.0",
-    "react": "16.3.2",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
     "react-lazy-load": "^3.0.13",
     "resolve-pkg": "^1.0.0",
     "sass-loader": "^6.0.7",

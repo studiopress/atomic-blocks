@@ -116,6 +116,36 @@ registerBlockType( 'atomic-blocks/ab-columns', {
 		}
 	},
 
+	ab_settings_data: {
+        ab_column_columns: {
+            title: __( 'Column Count', 'atomic-blocks' )
+        },
+        ab_column_columnLayouts: {
+            title: __( 'Column Layout', 'atomic-blocks' )
+		},
+		ab_column_columnsGap: {
+            title: __( 'Column Gap', 'atomic-blocks' )
+		},
+		ab_column_columnMaxWidth: {
+            title: __( 'Column Inner Max Width', 'atomic-blocks' )
+		},
+		ab_column_centerColumns: {
+            title: __( 'Center Columns In Container', 'atomic-blocks' )
+		},
+		ab_column_responsiveToggle: {
+            title: __( 'Responsive Columns', 'atomic-blocks' )
+		},
+		ab_column_marginPadding: {
+            title: __( 'Margin / Padding', 'atomic-blocks' )
+		},
+		ab_column_colorSettings: {
+            title: __( 'Color Settings', 'atomic-blocks' )
+		},
+		ab_column_backgroundImagePanel: {
+            title: __( 'Background Settings', 'atomic-blocks' )
+        }
+    },
+
 	/* Add alignment to block wrapper. */
 	getEditWrapperProps({ align }) {
 		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {

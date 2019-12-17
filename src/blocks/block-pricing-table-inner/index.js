@@ -186,6 +186,24 @@ registerBlockType( 'atomic-blocks/ab-pricing-table', {
 		}
 	},
 
+	ab_settings_data: {
+        ab_pricing_inner_padding: {
+            title: __( 'Pricing Column Padding', 'atomic-blocks' )
+        },
+        ab_pricing_inner_borderWidth: {
+            title: __( 'Pricing Column Border', 'atomic-blocks' )
+		},
+		ab_pricing_inner_borderRadius: {
+            title: __( 'Pricing Column Border Radius', 'atomic-blocks' )
+		},
+		ab_pricing_inner_borderColor: {
+            title: __( 'Pricing Column Border Color', 'atomic-blocks' )
+		},
+		ab_pricing_inner_colorSettings: {
+            title: __( 'Pricing Column Background Color', 'atomic-blocks' )
+		}
+    },
+
 	// Render the block components
 	edit: ABPricingTableBlock,
 

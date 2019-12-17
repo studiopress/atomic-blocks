@@ -2,6 +2,8 @@
  * Inspector Controls
  */
 
+import RenderSettingControl from '../../../utils/components/settings/renderSettingControl';
+
 // Setup the block
 const { __ } = wp.i18n;
 const { Component } = wp.element;
@@ -58,66 +60,71 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls key="inspector">
-				<PanelBody>
-					<p>{ __( 'Enable or disable the sharing links you want to output.' ) }</p>
+				<RenderSettingControl id="ab_sharing_links">
+					<PanelBody>
+						<p>{ __( 'Enable or disable the sharing links you want to output.' ) }</p>
 
-					<ToggleControl
-						label={ __( 'Twitter', 'atomic-blocks' ) }
-						checked={ !! this.props.attributes.twitter }
-						onChange={ () => this.props.setAttributes({ twitter: ! this.props.attributes.twitter }) }
-					/>
-					<ToggleControl
-						label={ __( 'Facebook', 'atomic-blocks' ) }
-						checked={ !! this.props.attributes.facebook }
-						onChange={ () => this.props.setAttributes({ facebook: ! this.props.attributes.facebook }) }
-					/>
-					<ToggleControl
-						label={ __( 'Pinterest', 'atomic-blocks' ) }
-						checked={ !! this.props.attributes.pinterest }
-						onChange={ () => this.props.setAttributes({ pinterest: ! this.props.attributes.pinterest }) }
-					/>
-					<ToggleControl
-						label={ __( 'LinkedIn', 'atomic-blocks' ) }
-						checked={ !! this.props.attributes.linkedin }
-						onChange={ () => this.props.setAttributes({ linkedin: ! this.props.attributes.linkedin }) }
-					/>
-					<ToggleControl
-						label={ __( 'Reddit', 'atomic-blocks' ) }
-						checked={ !! this.props.attributes.reddit }
-						onChange={ () => this.props.setAttributes({ reddit: ! this.props.attributes.reddit }) }
-					/>
-					<ToggleControl
-						label={ __( 'Email', 'atomic-blocks' ) }
-						checked={ !! this.props.attributes.email }
-						onChange={ () => this.props.setAttributes({ email: ! this.props.attributes.email }) }
-					/>
-				</PanelBody>
+						<ToggleControl
+							label={ __( 'Twitter', 'atomic-blocks' ) }
+							checked={ !! this.props.attributes.twitter }
+							onChange={ () => this.props.setAttributes({ twitter: ! this.props.attributes.twitter }) }
+						/>
+						<ToggleControl
+							label={ __( 'Facebook', 'atomic-blocks' ) }
+							checked={ !! this.props.attributes.facebook }
+							onChange={ () => this.props.setAttributes({ facebook: ! this.props.attributes.facebook }) }
+						/>
+						<ToggleControl
+							label={ __( 'Pinterest', 'atomic-blocks' ) }
+							checked={ !! this.props.attributes.pinterest }
+							onChange={ () => this.props.setAttributes({ pinterest: ! this.props.attributes.pinterest }) }
+						/>
+						<ToggleControl
+							label={ __( 'LinkedIn', 'atomic-blocks' ) }
+							checked={ !! this.props.attributes.linkedin }
+							onChange={ () => this.props.setAttributes({ linkedin: ! this.props.attributes.linkedin }) }
+						/>
+						<ToggleControl
+							label={ __( 'Reddit', 'atomic-blocks' ) }
+							checked={ !! this.props.attributes.reddit }
+							onChange={ () => this.props.setAttributes({ reddit: ! this.props.attributes.reddit }) }
+						/>
+						<ToggleControl
+							label={ __( 'Email', 'atomic-blocks' ) }
+							checked={ !! this.props.attributes.email }
+							onChange={ () => this.props.setAttributes({ email: ! this.props.attributes.email }) }
+						/>
+					</PanelBody>
+				</RenderSettingControl>
 
 				<PanelBody title={ __( 'Sharing Button Options', 'atomic-blocks' ) } initialOpen={ false }>
-					<SelectControl
-						label={ __( 'Button Style', 'atomic-blocks' ) }
-						value={ this.props.attributes.shareButtonStyle }
-						options={ buttonStyleOptions.map( ({ value, label }) => ({
-							value: value,
-							label: label
-						}) ) }
-						onChange={ ( value ) => {
-							this.props.setAttributes({ shareButtonStyle: value });
-						} }
-					/>
-
-					<SelectControl
-						label={ __( 'Button Shape', 'atomic-blocks' ) }
-						value={ this.props.attributes.shareButtonShape }
-						options={ buttonShapeOptions.map( ({ value, label }) => ({
-							value: value,
-							label: label
-						}) ) }
-						onChange={ ( value ) => {
-							this.props.setAttributes({ shareButtonShape: value });
-						} }
-					/>
-
+					<RenderSettingControl id="ab_sharing_shareButtonStyle">
+						<SelectControl
+							label={ __( 'Button Style', 'atomic-blocks' ) }
+							value={ this.props.attributes.shareButtonStyle }
+							options={ buttonStyleOptions.map( ({ value, label }) => ({
+								value: value,
+								label: label
+							}) ) }
+							onChange={ ( value ) => {
+								this.props.setAttributes({ shareButtonStyle: value });
+							} }
+						/>
+					</RenderSettingControl>
+					<RenderSettingControl id="ab_sharing_shareButtonShape">
+						<SelectControl
+							label={ __( 'Button Shape', 'atomic-blocks' ) }
+							value={ this.props.attributes.shareButtonShape }
+							options={ buttonShapeOptions.map( ({ value, label }) => ({
+								value: value,
+								label: label
+							}) ) }
+							onChange={ ( value ) => {
+								this.props.setAttributes({ shareButtonShape: value });
+							} }
+						/>
+					</RenderSettingControl>
+					<RenderSettingControl id="ab_sharing_shareButtonSize">
 					<SelectControl
 						label={ __( 'Button Size', 'atomic-blocks' ) }
 						value={ this.props.attributes.shareButtonSize }
@@ -129,18 +136,20 @@ export default class Inspector extends Component {
 							this.props.setAttributes({ shareButtonSize: value });
 						} }
 					/>
-
-					<SelectControl
-						label={ __( 'Button Color', 'atomic-blocks' ) }
-						value={ this.props.attributes.shareButtonColor }
-						options={ shareButtonColorOptions.map( ({ value, label }) => ({
-							value: value,
-							label: label
-						}) ) }
-						onChange={ ( value ) => {
-							this.props.setAttributes({ shareButtonColor: value });
-						} }
-					/>
+					</RenderSettingControl>
+					<RenderSettingControl id="ab_sharing_shareButtonColor">
+						<SelectControl
+							label={ __( 'Button Color', 'atomic-blocks' ) }
+							value={ this.props.attributes.shareButtonColor }
+							options={ shareButtonColorOptions.map( ({ value, label }) => ({
+								value: value,
+								label: label
+							}) ) }
+							onChange={ ( value ) => {
+								this.props.setAttributes({ shareButtonColor: value });
+							} }
+						/>
+					</RenderSettingControl>
 				</PanelBody>
 			</InspectorControls>
 		);

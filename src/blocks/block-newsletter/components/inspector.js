@@ -29,6 +29,7 @@ const { PanelBody,
 import Padding from './../../../utils/components/padding';
 import Margin from './../../../utils/components/margin';
 import ButtonSettings from './../../../utils/inspector/button';
+import RenderSettingControl from '../../../utils/components/settings/renderSettingControl';
 
 /* Apply fallback styles. */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
@@ -94,76 +95,85 @@ class Inspector extends Component {
 					title={ __( 'Newsletter', 'atomic-blocks' ) }
 					initialOpen={ attributes.mailingList ? false : true }
 				>
-					<SelectControl
-						label={ __( 'Mailing List', 'atomic-blocks' ) }
-						help={ __( 'The list people will be subscribed to.', 'atomic-blocks' ) }
-						options={ mailingListProviders.mailchimp.lists }
-						value={ attributes.mailingList }
-						onChange={ ( value ) => setAttributes({ mailingList: value }) }
-					/>
-
-					<TextControl
-						type="string"
-						label={ __( 'Success Message', 'atomic-blocks' ) }
-						help={ __( 'The message shown when people successfully subscribe.', 'atomic-blocks' ) }
-						value={ attributes.successMessage }
-						onChange={ ( value ) => setAttributes({ successMessage: value }) }
-					/>
-
-					<div className="ab-newsletter-double-opt-in-setting-wrapper">
-						<FormToggle
-							id={ 'double-opt-in-toggle-' + this.props.instanceId }
-							className="ab-newsletter-double-opt-in-toggle"
-							checked={ attributes.doubleOptIn }
-							onChange={ ( event ) => setAttributes({ doubleOptIn: event.target.checked }) }
+					<RenderSettingControl id="ab_newsletter_mailingList">
+						<SelectControl
+							label={ __( 'Mailing List', 'atomic-blocks' ) }
+							help={ __( 'The list people will be subscribed to.', 'atomic-blocks' ) }
+							options={ mailingListProviders.mailchimp.lists }
+							value={ attributes.mailingList }
+							onChange={ ( value ) => setAttributes({ mailingList: value }) }
 						/>
-						<label
-							className="ab-newsletter-double-opt-in-setting-label"
-							htmlFor={ 'double-opt-in-toggle-' + this.props.instanceId }
-						>
-							{ __( 'Enable Double Opt-In', 'atomic-blocks' ) }
-						</label>
-						<p className="description">
-							{ __( 'Send contacts an opt-in confirmation email when they subscribe to your list.', 'atomic-blocks' ) }
-						</p>
-					</div>
+					</RenderSettingControl>
 
+					<RenderSettingControl id="ab_newsletter_successMessage">
+						<TextControl
+							type="string"
+							label={ __( 'Success Message', 'atomic-blocks' ) }
+							help={ __( 'The message shown when people successfully subscribe.', 'atomic-blocks' ) }
+							value={ attributes.successMessage }
+							onChange={ ( value ) => setAttributes({ successMessage: value }) }
+						/>
+					</RenderSettingControl>
+
+					<RenderSettingControl id="ab_newsletter_doubleOptIn">
+						<div className="ab-newsletter-double-opt-in-setting-wrapper">
+							<FormToggle
+								id={ 'double-opt-in-toggle-' + this.props.instanceId }
+								className="ab-newsletter-double-opt-in-toggle"
+								checked={ attributes.doubleOptIn }
+								onChange={ ( event ) => setAttributes({ doubleOptIn: event.target.checked }) }
+							/>
+							<label
+								className="ab-newsletter-double-opt-in-setting-label"
+								htmlFor={ 'double-opt-in-toggle-' + this.props.instanceId }
+							>
+								{ __( 'Enable Double Opt-In', 'atomic-blocks' ) }
+							</label>
+							<p className="description">
+								{ __( 'Send contacts an opt-in confirmation email when they subscribe to your list.', 'atomic-blocks' ) }
+							</p>
+						</div>
+					</RenderSettingControl>
 				</PanelBody>
 
 				<PanelBody
 					title={ __( 'General', 'atomic-blocks' ) }
 					initialOpen={ attributes.mailingList ? true : false }
 				>
-					<Padding
+					<RenderSettingControl id="ab_newsletter_containerPadding">
+						<Padding
 
-						// Enable padding on all sides
-						paddingEnable={ true }
-						paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
-						paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
-						padding={ attributes.containerPadding }
-						paddingMin="0"
-						paddingMax="100"
-						onChangePadding={ containerPadding => setAttributes({ containerPadding }) }
-					/>
+							// Enable padding on all sides
+							paddingEnable={ true }
+							paddingTitle={ __( 'Block Padding', 'atomic-blocks' ) }
+							paddingHelp={ __( 'Adjust the padding applied to the inside of the block.', 'atomic-blocks' ) }
+							padding={ attributes.containerPadding }
+							paddingMin="0"
+							paddingMax="100"
+							onChangePadding={ containerPadding => setAttributes({ containerPadding }) }
+						/>
+					</RenderSettingControl>
 
-					<Margin
+					<RenderSettingControl id="ab_newsletter_containerMargin">
+						<Margin
 
-						// Enable margin top setting
-						marginEnableTop={ true }
-						marginTopLabel={ __( 'Block Margin Top', 'atomic-blocks' ) }
-						marginTop={ attributes.containerMarginTop }
-						marginTopMin="0"
-						marginTopMax="200"
-						onChangeMarginTop={ containerMarginTop => setAttributes({ containerMarginTop }) }
+							// Enable margin top setting
+							marginEnableTop={ true }
+							marginTopLabel={ __( 'Block Margin Top', 'atomic-blocks' ) }
+							marginTop={ attributes.containerMarginTop }
+							marginTopMin="0"
+							marginTopMax="200"
+							onChangeMarginTop={ containerMarginTop => setAttributes({ containerMarginTop }) }
 
-						// Enable margin bottom setting
-						marginEnableBottom={ true }
-						marginBottomLabel={ __( 'Block Margin Bottom', 'atomic-blocks' ) }
-						marginBottom={ attributes.containerMarginBottom }
-						marginBottomMin="0"
-						marginBottomMax="200"
-						onChangeMarginBottom={ containerMarginBottom => setAttributes({ containerMarginBottom }) }
-					/>
+							// Enable margin bottom setting
+							marginEnableBottom={ true }
+							marginBottomLabel={ __( 'Block Margin Bottom', 'atomic-blocks' ) }
+							marginBottom={ attributes.containerMarginBottom }
+							marginBottomMin="0"
+							marginBottomMax="200"
+							onChangeMarginBottom={ containerMarginBottom => setAttributes({ containerMarginBottom }) }
+						/>
+					</RenderSettingControl>
 
 					<ButtonSettings
 						enableButtonTarget={ false }
@@ -176,60 +186,62 @@ class Inspector extends Component {
 					/>
 				</PanelBody>
 
-				<PanelColorSettings
-					title={ __( 'Color', 'atomic-blocks' ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: backgroundColor.color,
-							onChange: setBackgroundColor,
-							label: __( 'Block Background Color', 'atomic-blocks' )
-						},
-						{
-							value: textColor.color,
-							onChange: setTextColor,
-							label: __( 'Block Text Color', 'atomic-blocks' )
-						},
-						{
-							value: buttonBackgroundColor.color,
-							onChange: setButtonBackgroundColor,
-							label: __( 'Button Background Color', 'atomic-blocks' )
-						},
-						{
-							value: buttonTextColor.color,
-							onChange: setButtonTextColor,
-							label: __( 'Button Text Color', 'atomic-blocks' )
-						}
-					] }
-				>
-					{ /* Compare block background and block text color */ }
-					<ContrastChecker
-						{ ...{
-							textColor: textColor.color,
-							backgroundColor: backgroundColor.color,
-							fallbackTextColor,
-							fallbackBackgroundColor
-						} }
-					/>
-					{ /* Compare button background and button text color */ }
-					<ContrastChecker
-						{ ...{
-							textColor: buttonTextColor.color,
-							backgroundColor: buttonBackgroundColor.color,
-							fallbackButtonTextColor,
-							fallbackButtonBackgroundColor
-						} }
-					/>
-					{ /* Compare block background button background color */ }
-					<ContrastChecker
-						{ ...{
-							textColor: buttonBackgroundColor.color,
-							backgroundColor: backgroundColor.color,
-							fallbackButtonBackgroundColor,
-							fallbackBackgroundColor
-						} }
-					/>
-				</PanelColorSettings>
+				<RenderSettingControl id="ab_newsletter_colorOptions">
+					<PanelColorSettings
+						title={ __( 'Color', 'atomic-blocks' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Block Background Color', 'atomic-blocks' )
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Block Text Color', 'atomic-blocks' )
+							},
+							{
+								value: buttonBackgroundColor.color,
+								onChange: setButtonBackgroundColor,
+								label: __( 'Button Background Color', 'atomic-blocks' )
+							},
+							{
+								value: buttonTextColor.color,
+								onChange: setButtonTextColor,
+								label: __( 'Button Text Color', 'atomic-blocks' )
+							}
+						] }
+					>
+						{ /* Compare block background and block text color */ }
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor
+							} }
+						/>
+						{ /* Compare button background and button text color */ }
+						<ContrastChecker
+							{ ...{
+								textColor: buttonTextColor.color,
+								backgroundColor: buttonBackgroundColor.color,
+								fallbackButtonTextColor,
+								fallbackButtonBackgroundColor
+							} }
+						/>
+						{ /* Compare block background button background color */ }
+						<ContrastChecker
+							{ ...{
+								textColor: buttonBackgroundColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackButtonBackgroundColor,
+								fallbackBackgroundColor
+							} }
+						/>
+					</PanelColorSettings>
+				</RenderSettingControl>
 			</InspectorControls>
 		);
 	}

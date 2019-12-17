@@ -4,8 +4,8 @@ Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 5.2
 Tested up to: 5.3
-Stable tag: 2.3.0
-Requires PHP: 5.3
+Stable tag: 2.4.0
+Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,13 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.4.0 =
+* Fixed issue with Container block that happened when clearing the "Inside Container Max Width" setting.
+* Fixed warning message related to Accordion block font size.
+* Whitelisted the HTML block in the Pricing Table block, allowing you to add custom buttons, etc.
+* Fixed default color issue on Button block.
+* Added support for controlling block settings permissions in Atomic Blocks Pro.
+
 = 2.3.0 =
 * Improve compatibility with HubSpot plugin form capturing feature.
 * Improve styles when used with Twenty Twenty theme.

@@ -6,7 +6,6 @@
 import classnames from 'classnames';
 import Inspector from './components/inspector';
 import DropCap from './components/dropcap';
-import icons from './components/icons';
 
 // Import CSS
 import './styles/style.scss';
@@ -25,23 +24,15 @@ const { registerBlockType } = wp.blocks;
 const {
 	RichText,
 	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	MediaUpload
+	BlockControls
 } = wp.editor;
-
-// Register components
-const {
-	Button,
-	SelectControl
-} = wp.components;
 
 class ABDropCapBlock extends Component {
 
 	render() {
 
 		// Setup the attributes
-		const { attributes: { dropCapContent, dropCapAlignment, dropCapBackgroundColor, dropCapTextColor, dropCapFontSize, dropCapStyle }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { dropCapContent, dropCapAlignment, dropCapFontSize }  } = this.props;
 
 		return [
 
@@ -116,13 +107,22 @@ registerBlockType( 'atomic-blocks/ab-drop-cap', {
         }
 	},
 
+	ab_settings_data: {
+        ab_dropcap_dropCapFontSize: {
+            title: __( 'Drop Cap Size', 'atomic-blocks' )
+        },
+        ab_dropcap_dropCapStyle: {
+            title: __( 'Drop Cap Style', 'atomic-blocks' )
+		}
+    },
+
 	// Render the block components
 	edit: ABDropCapBlock,
 
 	// Save the attributes and markup
 	save: function( props ) {
 
-		const { dropCapContent, dropCapAlignment, dropCapBackgroundColor, dropCapTextColor, dropCapFontSize, dropCapStyle } = props.attributes;
+		const { dropCapContent } = props.attributes;
 
 		// Save the block markup for the front end
 		return (

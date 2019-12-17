@@ -1,6 +1,6 @@
 .clearfix:before, .clearfix:after {
-    content: "";
-    display: table;
+	content: "";
+	display: table;
 }
 
 .clearfix:after { clear: both }
@@ -13,7 +13,8 @@
 	box-sizing: border-box;
 }
 
-.toplevel_page_atomic-blocks #wpcontent {
+.toplevel_page_atomic-blocks #wpcontent,
+.atomic-blocks_page_atomic-blocks-plugin-settings #wpcontent {
 	padding-left: 0;
 }
 
@@ -41,44 +42,44 @@
 	background: #fff;
 	font-size: 16px;
 	animation: smoothFade .3s;
-    -moz-animation: smoothFade .3s;
-    -webkit-animation: smoothFade .3s;
-    -o-animation: smoothFade .3s;
+	-moz-animation: smoothFade .3s;
+	-webkit-animation: smoothFade .3s;
+	-o-animation: smoothFade .3s;
 }
 
 @keyframes smoothFade {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
 }
 
 @-moz-keyframes smoothFade {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
 }
 
 @-webkit-keyframes smoothFade {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
 }
 
 .ab-getting-started .panel-left.visible {
 	display: inline-block;
 	animation: smoothFade .3s;
-    -moz-animation: smoothFade .3s;
-    -webkit-animation: smoothFade .3s;
-    -o-animation: smoothFade .3s;
+	-moz-animation: smoothFade .3s;
+	-webkit-animation: smoothFade .3s;
+	-o-animation: smoothFade .3s;
 }
 
 .ab-getting-started .panel p {
@@ -97,10 +98,10 @@
 
 .ab-getting-started .panel hr {
 	height: 1px;
-    margin: 2em 0;
+	margin: 2em 0;
 
-    border: 0;
-    border-top: solid 2px #E6EAED;
+	border: 0;
+	border-top: solid 2px #E6EAED;
 }
 
 .ab-getting-started .panel-left ul, .ab-getting-started .panel-left ol {
@@ -123,13 +124,13 @@
 }
 
 .ab-getting-started .panel-left .toc li ul {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    padding-top: 3%;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	padding-top: 3%;
 }
 
 .ab-getting-started .panel-left .toc li ul li {
-    list-style: square;
+	list-style: square;
 }
 
 .ab-getting-started .panel-left {
@@ -223,9 +224,9 @@
 	width: 100%;
 	text-align: center;
 	line-height: 46px;
-    height: 48px;
-    margin-top: 10px;
-    font-size: 15px;
+	height: 48px;
+	margin-top: 10px;
+	font-size: 15px;
 }
 
 .ab-getting-started .panel-aside h4 {
@@ -256,7 +257,7 @@
 .ab-getting-started .intro-wrap {
 	padding:  4% 0 0 0;
 	background: #5a3fd6 url("geo.png");
-  	background-size: 1400px;
+	background-size: 1400px;
 }
 
 .ab-getting-started .intro {
@@ -267,6 +268,7 @@
 	margin-bottom: 4.5%;
 }
 
+.ab-getting-started .intro h1,
 .ab-getting-started .intro h3 {
 	font-size: 40px;
 	line-height: 1.2;
@@ -406,15 +408,15 @@
 
 .ab-getting-started .theme-intro {
 	margin-bottom: 4.5%;
-    background: #f5f4f6;
-    padding: 2%;
+	background: #f5f4f6;
+	padding: 2%;
 }
 
 @media only screen and (max-width:800px) {
-    .ab-getting-started .theme-intro {
-        padding: 5%;
-        margin-bottom: 5%;
-    }
+	.ab-getting-started .theme-intro {
+		padding: 5%;
+		margin-bottom: 5%;
+	}
 }
 
 .ab-getting-started .theme-intro-left {
@@ -443,7 +445,7 @@
 .ab-getting-started .theme-intro-left p {
 	font-size: 20px;
 	margin-top: 0;
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .ab-getting-started .theme-intro-right {
@@ -453,23 +455,23 @@
 }
 
 @media only screen and (max-width:800px) {
-    .ab-getting-started .theme-intro-right {
-        margin-bottom: 0;
-    }
+	.ab-getting-started .theme-intro-right {
+		margin-bottom: 0;
+	}
 }
 
 .ab-getting-started .theme-intro-right .button-primary {
 	line-height: 56px;
-    height: auto;
-    font-size: 20px;
-    padding: 10px 20px;
+	height: auto;
+	font-size: 20px;
+	padding: 10px 20px;
 }
 
 @media only screen and (max-width:800px) {
-    .ab-getting-started .theme-intro-right .button-primary {
-        width: 100%;
-        text-align: center;
-    }
+	.ab-getting-started .theme-intro-right .button-primary {
+		width: 100%;
+		text-align: center;
+	}
 }
 
 .ab-getting-started .array-theme {
@@ -532,7 +534,7 @@
 	font-size: 14px;
 	padding: 3px 6px;
 	vertical-align: middle;
-    margin-top: -5px !important;
+	margin-top: -5px !important;
 }
 
 @media only screen and (max-width:768px) {
@@ -661,7 +663,7 @@
 
 .ab-getting-started .panel-title h3 {
 	margin: 0;
-    color: #fff;
+	color: #fff;
 	padding: 0;
 }
 
@@ -677,8 +679,8 @@
 
 .ab-getting-started p.wp-caption-text {
 	font-size: 16px;
-    margin-top: .5em;
-    text-align: center;
+	margin-top: .5em;
+	text-align: center;
 }
 
 .ab-getting-started div[id^='attachment'] {
@@ -710,8 +712,8 @@
 
 .ab-block-footer-column {
 	width: 32.8%;
-    display: inline-block;
-    text-align: center;
+	display: inline-block;
+	text-align: center;
 	border-right: solid 3px #eceaee;
 	padding: 0 3%;
 }
@@ -737,9 +739,9 @@
 
 .ab-getting-started .ab-block-footer-column h3 {
 	padding-right: 0;
-    margin-bottom: 0;
-    font-weight: bold;
-    font-size: 22px;
+	margin-bottom: 0;
+	font-weight: bold;
+	font-size: 22px;
 }
 
 .ab-getting-started .ab-block-footer-column p {
@@ -751,8 +753,8 @@
 	font-size: 18px;
 	border-radius: 100px;
 	padding: 10px 15px;
-    height: auto;
-    font-size: 16px;
+	height: auto;
+	font-size: 16px;
 }
 
 .ab-block-footer .button-primary:active {
@@ -818,7 +820,7 @@
 
 .ab-block-feature-wrap p {
 	margin-top: 1%;
-    margin-bottom: 5%;
+	margin-bottom: 5%;
 }
 
 @media (max-width: 875px) {
@@ -978,8 +980,8 @@
 
 .panel .ab-gutenberg-notice p {
 	margin-top: 0;
-    font-size: 17px;
-    color: #493c8c;
+	font-size: 17px;
+	color: #493c8c;
 	line-height: 1.4;
 	display: inline;
 }
@@ -1004,11 +1006,34 @@
 	}
 }
 
+#atomic-blocks-settings input[type=text] {
+	padding: 12px;
+	font-size: 18px;
+	border-radius: 5px;
+}
+
+#atomic-blocks-settings .form-table th {
+	font-size: 18px;
+}
+
+#atomic-blocks-settings .button-primary {
+	height: auto;
+	line-height: unset;
+	padding: 5px 15px;
+	font-size: 16px;
+}
+
+#atomic-blocks-settings .submit {
+	background: #f5f4f6;
+	padding: 15px;
+	margin-top: 40px;
+}
+
 .ab-block-pro-notice {
 	background: #e4e4fd;
-    border: solid 2px #5b3fd6;
-    border-radius: 5px;
-    padding: 15px 15px 15px 80px;
+	border: solid 2px #5b3fd6;
+	border-radius: 5px;
+	padding: 15px 15px 15px 80px;
 	color: #4d36b7;
 	margin-bottom: 30px;
 	min-height: 78px;
@@ -1029,9 +1054,9 @@
 
 .ab-block-pro-notice .fa-bullhorn {
 	background: #5c45c9;
-    padding: 15px;
-    border-radius: 100px;
-    color: #fff;
+	padding: 15px;
+	border-radius: 100px;
+	color: #fff;
 	position: absolute;
 	left: 15px;
 	top: 22px;

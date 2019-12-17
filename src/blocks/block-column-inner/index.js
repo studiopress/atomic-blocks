@@ -102,6 +102,18 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		}
 	},
 
+	ab_settings_data: {
+		ab_column_inner_marginPadding: {
+			title: __( 'Margin and Padding', 'atomic-blocks' )
+		},
+		ab_column_inner_colorSettings: {
+			title: __( 'Color', 'atomic-blocks' )
+		},
+		ab_column_inner_backgroundImagePanel: {
+			title: __( 'Background Image', 'atomic-blocks' )
+		}
+	},
+
 	/* Render the block in the editor. */
 	edit: props => {
 		return <Edit { ...props } />;
