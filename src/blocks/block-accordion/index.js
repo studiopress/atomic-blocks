@@ -38,7 +38,7 @@ const blockAttributes = {
 	},
 	accordionFontSize: {
 		type: 'number',
-		default: null
+		default: undefined
 	},
 	accordionOpen: {
 		type: 'boolean',
