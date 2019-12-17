@@ -20,19 +20,10 @@ const { registerBlockType } = wp.blocks;
 
 // Register editor components
 const {
-	RichText,
-	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
-	MediaUpload,
 	InnerBlocks
 } = wp.editor;
-
-// Register components
-const {
-	Button,
-	SelectControl
-} = wp.components;
 
 // Set allowed blocks and media
 const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];
@@ -53,10 +44,6 @@ class ABPricingBlock extends Component {
 				columnsGap,
 				align
 			},
-			attributes,
-			isSelected,
-			editable,
-			className,
 			setAttributes
 		} = this.props;
 
@@ -135,9 +122,7 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 
 		// Setup the attributes
 		const {
-			columns,
-			columnsGap,
-			align
+			columnsGap
 		} = props.attributes;
 
 		// Setup the classes
