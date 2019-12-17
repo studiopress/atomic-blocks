@@ -37,7 +37,8 @@ const ALLOWED_BLOCKS = [
 	'atomic-blocks/ab-pricing-table-title',
 	'atomic-blocks/ab-pricing-table-button',
 	'core/paragraph',
-	'core/image'
+	'core/image',
+	'core/html'
 ];
 
 class ABPricingTableBlock extends Component {
