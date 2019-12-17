@@ -11,7 +11,7 @@ import classnames from 'classnames';
 /**
  * Create a Button wrapper Component
  */
-export default class Container extends Component {
+export default class Container_2_3_0 extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -81,7 +81,7 @@ export default class Container extends Component {
 					<div
 						className="ab-container-content"
 						style={ {
-							maxWidth: containerMaxWidth ? `${containerMaxWidth}px` : undefined
+							maxWidth: `${containerMaxWidth}px`
 						} }
 					>
 						{ this.props.children }
