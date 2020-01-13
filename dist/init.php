@@ -39,7 +39,7 @@ function atomic_blocks_block_assets() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
 }
-add_action( 'init', 'atomic_blocks_block_assets' );
+add_action( 'wp_enqueue_scripts', 'atomic_blocks_block_assets', 9 );
 
 
 /**
