@@ -16,7 +16,7 @@ const {
 	withColors,
 	InnerBlocks,
 	URLInput
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	IconButton,

@@ -30,7 +30,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	RichText
-} = wp.editor;
+} = wp.blockEditor;
 
 // Register components
 const {

@@ -10,7 +10,7 @@ const {
 	RichText,
 	getFontSizeClass,
 	getColorClassName
-} = wp.editor;
+} = wp.blockEditor;
 
 export const Price_1_7_0_attributes = {
 	price: {

@@ -19,7 +19,7 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	MediaUpload
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Button,
 	Dashicon

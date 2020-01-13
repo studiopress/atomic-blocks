@@ -25,7 +25,7 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls
-} = wp.editor;
+} = wp.blockEditor;
 
 class ABDropCapBlock extends Component {
 

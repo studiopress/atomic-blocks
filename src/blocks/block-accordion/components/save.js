@@ -8,7 +8,7 @@ const { Component } = wp.element;
 const {
 	RichText,
 	InnerBlocks
-} = wp.editor;
+} = wp.blockEditor;
 
 export default class Save extends Component {
 	constructor() {

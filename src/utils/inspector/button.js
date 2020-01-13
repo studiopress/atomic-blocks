@@ -11,7 +11,7 @@ const {
 } = wp.components;
 const {
 	PanelColorSettings
-} = wp.editor;
+} = wp.blockEditor;
 
 export default function ButtonSettings( props ) {
 	const {

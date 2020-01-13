@@ -24,7 +24,7 @@ const {
 	InnerBlocks,
 	AlignmentToolbar,
 	BlockControls
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	Fragment

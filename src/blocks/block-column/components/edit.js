@@ -21,7 +21,7 @@ const {
 	BlockAlignmentToolbar,
 	InnerBlocks,
 	withColors
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Placeholder,
 	ButtonGroup,

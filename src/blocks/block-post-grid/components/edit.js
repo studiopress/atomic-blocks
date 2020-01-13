@@ -30,7 +30,7 @@ const {
 const {
 	BlockAlignmentToolbar,
 	BlockControls
-} = wp.editor;
+} = wp.blockEditor;
 
 class LatestPostsBlock extends Component {
 
