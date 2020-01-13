@@ -17,14 +17,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Enqueue assets for frontend and backend
  *
  * @since 1.0.0
+ *
+ * @param WP_Styles $wp_styles Styles.
  */
-function atomic_blocks_block_assets() {
+function atomic_blocks_block_assets( WP_Styles $wp_styles ) {
 
 	// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison -- Could be true or 'true'.
 	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
 
 	// Load the compiled styles.
-	wp_register_style(
+	$wp_styles->add(
 		'atomic-blocks-style-css',
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
 		array(),
@@ -32,14 +34,14 @@ function atomic_blocks_block_assets() {
 	);
 
 	// Register the FontAwesome icon library.
-	wp_register_style(
+	$wp_styles->add(
 		'atomic-blocks-fontawesome',
 		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
 		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
 }
-add_action( 'init', 'atomic_blocks_block_assets' );
+add_action( 'wp_default_styles', 'atomic_blocks_block_assets' );
 
 /**
  * Conditionally print Font Awesome stylesheet the first time it is needed by a block.
@@ -92,12 +94,7 @@ function atomic_blocks_editor_assets() {
 	);
 
 	// Load the FontAwesome icon library.
-	wp_enqueue_style(
-		'atomic-blocks-fontawesome',
-		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
-		array(),
-		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
-	);
+	wp_enqueue_style( 'atomic-blocks-fontawesome' );
 
 	$user_data = wp_get_current_user();
 	unset( $user_data->user_pass, $user_data->user_email );
