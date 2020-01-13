@@ -31,8 +31,8 @@ function atomic_blocks_block_assets() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.style.build.css' )
 	);
 
-	// Load the FontAwesome icon library.
-	wp_enqueue_style(
+	// Register the FontAwesome icon library.
+	wp_register_style(
 		'atomic-blocks-fontawesome',
 		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
 		array(),
@@ -41,6 +41,28 @@ function atomic_blocks_block_assets() {
 }
 add_action( 'init', 'atomic_blocks_block_assets' );
 
+/**
+ * Conditionally print Font Awesome stylesheet the first time it is needed by a block.
+ *
+ * @param string $block_content Block content.
+ * @return string Block content with Font Awesome stylesheet prepended if needed.
+ */
+function atomic_blocks_prepend_block_content_with_fontawesome( $block_content ) {
+	$handle = 'atomic-blocks-fontawesome';
+	if (
+		! wp_style_is( $handle, 'done' )
+		&&
+		// Check if the content includes a class attribute that contains a Font Awesome prefix class names.
+		// For a list of the prefixes, see <https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use>.
+		preg_match( '/\sclass="[^"]*?(?<="|\s)(fa|fas|far|fal|fad|fab)(?=\s|")[^"]*?"/', $block_content )
+	) {
+		ob_start();
+		wp_styles()->do_items( array( $handle ) );
+		$block_content = ob_get_clean() . $block_content;
+	}
+	return $block_content;
+}
+add_filter( 'render_block', 'atomic_blocks_prepend_block_content_with_fontawesome' );
 
 /**
  * Enqueue assets for backend editor
