@@ -12,7 +12,7 @@ const { Component } = wp.element;
 // Import block components
 const {
   InspectorControls
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

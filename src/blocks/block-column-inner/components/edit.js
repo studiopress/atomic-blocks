@@ -17,7 +17,7 @@ const {
 	BlockControls,
 	InnerBlocks,
 	withColors
-} = wp.editor;
+} = wp.blockEditor;
 
 class Edit extends Component {
 

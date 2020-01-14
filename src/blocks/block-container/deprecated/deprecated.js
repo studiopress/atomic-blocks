@@ -4,7 +4,7 @@ import Container_2_3_0 from './2.3.0/components/container';
 
 const {
 	InnerBlocks
-} = wp.editor;
+} = wp.blockEditor;
 
 // Version 2_3_0 attributes
 

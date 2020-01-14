@@ -27,7 +27,7 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls
-} = wp.editor;
+} = wp.blockEditor;
 
 class ABNoticeBlock extends Component {
 

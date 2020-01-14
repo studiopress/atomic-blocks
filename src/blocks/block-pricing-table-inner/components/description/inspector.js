@@ -18,7 +18,7 @@ const {
 	ContrastChecker,
 	PanelColorSettings,
 	ColorPalette
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	withFallbackStyles,

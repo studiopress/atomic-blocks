@@ -21,7 +21,7 @@ const {
 	FontSizePicker,
 	withFontSizes,
 	getColorClassName
-} = wp.editor;
+} = wp.blockEditor;
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-pricing-table-price', {

@@ -7,7 +7,7 @@ import Column_1_7_1 from './column';
  * WordPress dependencies.
  */
 const { Component } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 export default class Save_1_7_1 extends Component {
 

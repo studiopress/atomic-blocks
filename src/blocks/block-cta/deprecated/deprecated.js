@@ -6,7 +6,7 @@ import CallToAction_1_4_21 from './1.4.21/components/cta';
 
 const {
 	RichText
-} = wp.editor;
+} = wp.blockEditor;
 
 export const callToAction_1_5_2_attr = {
 	buttonText: {

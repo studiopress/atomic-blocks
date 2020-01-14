@@ -12,7 +12,7 @@ const { Component } = wp.element;
 const {
 	AlignmentToolbar,
 	BlockControls
-} = wp.editor;
+} = wp.blockEditor;
 
 export default class Edit extends Component {
 	constructor() {

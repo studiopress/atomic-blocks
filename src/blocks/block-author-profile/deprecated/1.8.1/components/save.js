@@ -12,7 +12,7 @@ import AvatarColumn from '../../../components/avatar';
 const { Component } = wp.element;
 const {
 	RichText
-} = wp.editor;
+} = wp.blockEditor;
 
 export default class Save_1_8_1 extends Component {
 	constructor() {

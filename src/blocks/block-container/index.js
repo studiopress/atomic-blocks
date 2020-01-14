@@ -27,7 +27,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InnerBlocks
-} = wp.editor;
+} = wp.blockEditor;
 
 const blockAttributes = {
 	containerPaddingTop: {
