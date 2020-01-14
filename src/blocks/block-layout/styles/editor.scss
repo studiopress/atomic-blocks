@@ -67,7 +67,9 @@
 		background: #f2f2f2;
 		padding: 20px;
 		margin-bottom: 20px;
+		display: -ms-grid;
 		display: grid;
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
 		grid-gap: 0 5em;
@@ -90,18 +92,23 @@
 	}
 
 	.ab-layout-choices {
+		display: -ms-grid;
 		display: grid;
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
 		grid-gap: 0 2em;
 	}
 
 	.ab-layout-view-full {
+		-ms-grid-columns: 1fr;
 		grid-template-columns: 1fr;
 	}
 
 	.ab-layout-view {
+		display: -ms-grid;
 		display: grid;
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
 		grid-gap: 0 2em;

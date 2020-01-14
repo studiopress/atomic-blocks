@@ -8,6 +8,7 @@
 }
 
 .ab-pricing-table-wrap {
+	display: -ms-grid;
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-areas: "col1";
@@ -67,10 +68,12 @@
 /* Grid column classes */
 
 .ab-pricing-columns-2 .ab-pricing-table-wrap {
+	-ms-grid-columns: 1fr 1fr;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas: "col1 col2";
 
 	@media only screen and (max-width: 600px) {
+		-ms-grid-columns: 1fr;
 		grid-template-columns: 1fr;
 		grid-template-areas:
 		"col1"
@@ -79,10 +82,12 @@
 }
 
 .ab-pricing-columns-3 .ab-pricing-table-wrap {
+	-ms-grid-columns: 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-areas: "col1 col2 col3";
 
 	@media only screen and (max-width: 600px) {
+		-ms-grid-columns: 1fr;
 		grid-template-columns: 1fr;
 		grid-template-areas:
 			"col1"
@@ -92,10 +97,12 @@
 }
 
 .ab-pricing-columns-4 .ab-pricing-table-wrap {
+	-ms-grid-columns: 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-areas: "col1 col2 col3 col4";
 
 	@media only screen and (max-width: 800px) {
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 		grid-template-areas:
 			"col1 col2"
@@ -107,6 +114,7 @@
 	}
 
 	@media only screen and (max-width: 600px) {
+		-ms-grid-columns: 1fr;
 		grid-template-columns: 1fr;
 		grid-template-areas:
 			"col1"

@@ -160,6 +160,7 @@
 /* One column grid. */
 
 .ab-layout-columns-1 > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr;
 	grid-template-columns: 1fr;
 	grid-template-areas: "col1";
 }
@@ -167,11 +168,13 @@
 /* Two column grid. */
 
 .ab-layout-columns-2 > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 1fr;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas: "col1 col2";
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 600px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 			grid-template-areas:
 			"col1"
@@ -181,21 +184,25 @@
 }
 
 .ab-2-col-wideleft > .ab-layout-column-wrap {
+	-ms-grid-columns: 2fr 1fr;
 	grid-template-columns: 2fr 1fr;
 }
 
 .ab-2-col-wideright > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 2fr;
 	grid-template-columns: 1fr 2fr;
 }
 
 /* Three column grid. */
 
 .ab-layout-columns-3 > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-areas: "col1 col2 col3";
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 600px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 			grid-template-areas:
 			"col1"
@@ -206,30 +213,36 @@
 }
 
 .ab-3-col-widecenter > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 2fr 1fr;
 	grid-template-columns: 1fr 2fr 1fr;
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 600px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 		}
 	}
 }
 
 .ab-3-col-wideleft > .ab-layout-column-wrap {
+	-ms-grid-columns: 2fr 1fr 1fr;
 	grid-template-columns: 2fr 1fr 1fr;
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 600px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 		}
 	}
 }
 
 .ab-3-col-wideright > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 1fr 2fr;
 	grid-template-columns: 1fr 1fr 2fr;
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 600px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 		}
 	}
@@ -238,12 +251,14 @@
 /* Four column grid. */
 
 .ab-layout-columns-4 > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-areas: "col1 col2 col3 col4";
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 800px) {
 			grid-template-rows: auto;
+			-ms-grid-columns: 1fr 1fr;
 			grid-template-columns: 1fr 1fr;
 			grid-template-areas:
 			"col1 col2"
@@ -251,6 +266,7 @@
 		}
 
 		@media only screen and (max-width: 600px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 			grid-template-areas:
 			"col1"
@@ -262,21 +278,25 @@
 }
 
 .ab-4-col-wideleft > .ab-layout-column-wrap {
+	-ms-grid-columns: 2fr 1fr 1fr 1fr;
 	grid-template-columns: 2fr 1fr 1fr 1fr;
 }
 
 .ab-4-col-wideright > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 1fr 1fr 2fr;
 	grid-template-columns: 1fr 1fr 1fr 2fr;
 }
 
 /* Five column grid. */
 
 .ab-layout-columns-5 > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-template-areas: "col1 col2 col3 col4 col5";
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 800px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 			grid-template-areas:
 			"col1"
@@ -289,11 +309,13 @@
 }
 
 .ab-layout-columns-6 > .ab-layout-column-wrap {
+	-ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-areas: "col1 col2 col3 col4 col5 col6";
 
 	&.ab-is-responsive-column {
 		@media only screen and (max-width: 800px) {
+			-ms-grid-columns: 1fr 1fr;
 			grid-template-columns: 1fr 1fr;
 			grid-template-areas:
 			"col1 col2"
@@ -302,6 +324,7 @@
 		}
 
 		@media only screen and (max-width: 600px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 			grid-template-areas:
 			"col1"
