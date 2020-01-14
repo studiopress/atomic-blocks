@@ -21,7 +21,7 @@ const {
 	InspectorControls,
 	PanelColorSettings,
 	ContrastChecker
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	PanelBody,
 	RangeControl,

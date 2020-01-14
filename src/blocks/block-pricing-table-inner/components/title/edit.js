@@ -11,7 +11,7 @@ const {
 	RichText,
 	withFontSizes,
 	withColors
-} = wp.editor;
+} = wp.blockEditor;
 
 class Edit extends Component {
 

@@ -6,7 +6,7 @@
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * External dependencies

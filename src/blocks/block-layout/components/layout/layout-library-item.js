@@ -50,7 +50,9 @@ export default compose(
 	 */
 	withSelect( ( select, { clientId }) => {
 		const {
-			getBlock,
+			getBlock
+		} = select( 'core/block-editor' );
+		const {
 			canUserUseUnfilteredHTML
 		} = select( 'core/editor' );
 		const block = getBlock( clientId );
@@ -60,7 +62,7 @@ export default compose(
 		};
 	}),
 	withDispatch( ( dispatch, { block, canUserUseUnfilteredHTML }) => ({
-		import: ( blockLayout ) => dispatch( 'core/editor' ).replaceBlocks(
+		import: ( blockLayout ) => dispatch( 'core/block-editor' ).replaceBlocks(
 			block.clientId,
 			rawHandler({
 				HTML: blockLayout,

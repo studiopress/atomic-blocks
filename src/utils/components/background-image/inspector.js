@@ -19,7 +19,7 @@ const {
 const {
 	MediaUpload,
 	MediaUploadCheck
-} = wp.editor;
+} = wp.blockEditor;
 
 class BackgroundImagePanel extends Component {
 	constructor() {

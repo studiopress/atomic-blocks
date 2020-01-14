@@ -17,7 +17,7 @@ const {
 	PanelColorSettings,
 	withColors,
 	ContrastChecker
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	PanelBody,
 	ToggleControl,

@@ -15,7 +15,7 @@ const { Component } = wp.element;
 const {
   PanelColorSettings,
   InspectorControls
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

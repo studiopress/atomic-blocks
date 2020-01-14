@@ -22,7 +22,7 @@ const {
 	getColorClassName,
 	RichText,
 	withColors
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Fragment,
 	Component

@@ -23,7 +23,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InnerBlocks
-} = wp.editor;
+} = wp.blockEditor;
 
 // Set allowed blocks and media
 const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];

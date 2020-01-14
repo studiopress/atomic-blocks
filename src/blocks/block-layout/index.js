@@ -68,5 +68,5 @@ function appendImportButton() {
  */
 function abInsertLayout() {
 	let block = wp.blocks.createBlock( 'atomic-blocks/ab-layouts' );
-	wp.data.dispatch( 'core/editor' ).insertBlocks( block );
+	wp.data.dispatch( 'core/block-editor' ).insertBlocks( block );
 }
