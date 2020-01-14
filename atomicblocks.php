@@ -39,6 +39,11 @@ function atomic_blocks_loader() {
 	require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
 
 	/**
+	 * Load Container Block PHP
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-container/index.php';
+
+	/**
 	 * Load Social Block PHP
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-sharing/index.php';
