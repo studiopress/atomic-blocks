@@ -8,7 +8,9 @@
 	position: relative;
 
 	.is-grid {
+		display: -ms-grid;
 		display: grid;
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
 		grid-gap: 0 2em;
@@ -31,6 +33,7 @@
 	}
 
 	.is-grid.columns-1 {
+		-ms-grid-columns: 1fr;
 		grid-template-columns: 1fr;
 
 		@media all and (-ms-high-contrast:none) {
@@ -41,6 +44,7 @@
 	}
 
 	.is-grid.columns-2 {
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
 
 		@media all and (-ms-high-contrast:none) {
@@ -51,6 +55,7 @@
 	}
 
 	.is-grid.columns-3 {
+		-ms-grid-columns: 1fr 1fr 1fr;
 		grid-template-columns: 1fr 1fr 1fr;
 
 		@media all and (-ms-high-contrast:none) {
@@ -61,6 +66,7 @@
 	}
 
 	.is-grid.columns-4 {
+		-ms-grid-columns: 1fr 1fr 1fr 1fr;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 
 		@media all and (-ms-high-contrast:none) {
@@ -72,6 +78,7 @@
 
 	div[class*="columns"].is-grid {
 		@media only screen and (max-width: 600px) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 		}
 	}
@@ -170,7 +177,9 @@
 
 	.is-list {
 		article {
+			display: -ms-grid;
 			display: grid;
+			-ms-grid-columns: 30% 1fr;
 			grid-template-columns: 30% 1fr;
 			grid-template-rows: 1fr;
 			grid-gap: 0 2em;
@@ -195,11 +204,13 @@
 			}
 
 			@media only screen and (max-width: 600px) {
+				-ms-grid-columns: 1fr;
 				grid-template-columns: 1fr;
 			}
 		}
 
 		article:not(.has-post-thumbnail) {
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr;
 		}
 
