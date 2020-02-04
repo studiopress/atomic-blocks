@@ -461,7 +461,9 @@ function atomic_blocks_get_image_src_landscape( $object, $field_name, $request )
 		'ab-block-post-grid-landscape',
 		false
 	);
-	return $feat_img_array[0];
+	if ( is_array( $feat_img_array ) ) {
+		return $feat_img_array[0];
+	}
 }
 
 /**
@@ -477,7 +479,9 @@ function atomic_blocks_get_image_src_square( $object, $field_name, $request ) {
 		'ab-block-post-grid-square',
 		false
 	);
-	return $feat_img_array[0];
+	if ( is_array( $feat_img_array ) ) {
+		return $feat_img_array[0];
+	}
 }
 
 /**
