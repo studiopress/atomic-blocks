@@ -70,7 +70,7 @@ function register_layout_endpoints() {
 					return new WP_REST_Response( $all_layouts );
 				}
 
-				$allowed_layouts = apply_filters( 'atomic_blocks_allowed_layout_components', [] );
+				$allowed_layouts = (array) apply_filters( 'atomic_blocks_allowed_layout_components', [] );
 
 				if ( empty( $allowed_layouts ) ) {
 					return new WP_REST_Response( $all_layouts );
