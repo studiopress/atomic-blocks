@@ -7,6 +7,8 @@
 
 namespace AtomicBlocks\Tests;
 
+use function \atomic_blocks_register_layout_component;
+
 /**
  * Class Layout_Endpoints
  *
@@ -219,7 +221,7 @@ class Layout_Endpoints extends \WP_UnitTestCase {
 			]
 		);
 
-		$this->assertSame( $new_layout, true );
+		$this->assertTrue( $new_layout );
 
 		// Fetch registered layouts from API and check all the values for the one we just registered.
 		$layouts = atomic_blocks_get_layouts();
@@ -244,7 +246,7 @@ class Layout_Endpoints extends \WP_UnitTestCase {
 	 * Tests that registering an invalid component type fails
 	 * and returns a WP_Error object.
 	 *
-	 * @covers atomic_blocks_register_layout_component()
+	 * @covers ::atomic_blocks_register_layout_component()
 	 */
 	public function test_register_invalid_layout_component_fails() {
 		$new_layout = atomic_blocks_register_layout_component(
@@ -259,15 +261,20 @@ class Layout_Endpoints extends \WP_UnitTestCase {
 	/**
 	 * Tests that unregistering an existing layout component succeeds.
 	 *
-	 * @covers atomic_blocks_unregister_layout_component()
+	 * @covers ::atomic_blocks_unregister_layout_component()
 	 */
 	public function test_unregister_existing_layout_component_succeeds() {
 		$success = atomic_blocks_unregister_layout_component( 'layout', 'ab_layout_business_1' );
-		$this->assertSame( $success, true );
+		$this->assertTrue( $success );
 		$layouts = atomic_blocks_get_layouts();
 		$this->assertArrayNotHasKey( 'ab_layout_business_1', $layouts );
 	}
 
+	/**
+	 * Tests layout fetching functionality.
+	 *
+	 * @covers ::atomic_blocks_get_layouts()
+	 */
 	public function test_get_layouts() {
 		$layouts = atomic_blocks_get_layouts();
 		$this->assertArrayHasKey( 'ab_integration_test_layout_1', $layouts );
