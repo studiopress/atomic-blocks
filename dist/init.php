@@ -50,6 +50,10 @@ add_action( 'wp_default_styles', 'atomic_blocks_block_assets' );
  * @return string Block content with Font Awesome stylesheet prepended if needed.
  */
 function atomic_blocks_prepend_block_content_with_fontawesome( $block_content ) {
+	if ( is_admin() ) {
+		return $block_content;
+	}
+
 	$handle = 'atomic-blocks-fontawesome';
 	if (
 		! wp_style_is( $handle, 'done' )
