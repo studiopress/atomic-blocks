@@ -174,35 +174,38 @@ class Layout_Endpoints extends \WP_UnitTestCase {
 	 */
 	public function test_layout_count() {
 		wp_set_current_user( 1 );
-		$request = new \WP_REST_Request( 'GET', '/atomicblocks/v1/layouts/all' );
+		$request  = new \WP_REST_Request( 'GET', '/atomicblocks/v1/layouts/all' );
 		$response = $this->server->dispatch( $request );
-		$this->assertCount( 12, json_decode( json_encode( $response->get_data() ), true ) );
+		$this->assertCount( 12, json_decode( wp_json_encode( $response->get_data() ), true ) );
 	}
 
 	/**
 	 * Tests that filtering the All Layouts endpoint
 	 * returns the expected number of layouts.
 	 */
-	function test_filtered_layout_count() {
+	public function test_filtered_layout_count() {
 		wp_set_current_user( 1 );
 
 		// Filter the allowed layouts list.
-		add_filter( 'atomic_blocks_allowed_layout_components', [ __CLASS__, 'filter_layouts'] );
+		add_filter( 'atomic_blocks_allowed_layout_components', [ __CLASS__, 'filter_layouts' ] );
 
 		// Fetch the allowed layouts from the API endpoint.
 		$request = new \WP_REST_Request( 'GET', '/atomicblocks/v1/layouts/all' );
 		$request->set_param( 'filter', 'allowed' );
 		$response = $this->server->dispatch( $request );
 
-		$this->assertCount( 1, json_decode( json_encode( $response->get_data() ), true ) );
+		$this->assertCount( 1, json_decode( wp_json_encode( $response->get_data() ), true ) );
 
 		// Remove the allowed layouts filter.
-		remove_filter( 'atomic_blocks_allowed_layout_components', [ __CLASS__, 'filter_layouts'] );
+		remove_filter( 'atomic_blocks_allowed_layout_components', [ __CLASS__, 'filter_layouts' ] );
 	}
 
 	/**
 	 * Filters the allowed layouts, for testing purposes.
+	 *
 	 * @see `atomic_blocks_allowed_layout_components` filter.
+	 * @param array $layouts Array of allowed layouts.
+	 * @return array
 	 */
 	public static function filter_layouts( array $layouts ) {
 		return [ 'ab_layout_business_1' ];
