@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 5.2
 Tested up to: 5.3
-Stable tag: 2.4.0
+Stable tag: 2.5.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -127,6 +127,13 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.5.0 =
+* Add styles for users who are experimenting with the latest Gutenberg plugin.
+* Change wp.editor reference to wp.blockEditor to fix deprecation notices.
+* Fix PHP notice that shows when image for post grid is not available.
+* Fix issue where FontAwesome icons show intermittently in the editor.
+* Improve CSS Grid styles for IE.
+
 = 2.4.0 =
 * Fixed issue with Container block that happened when clearing the "Inside Container Max Width" setting.
 * Fixed warning message related to Accordion block font size.
