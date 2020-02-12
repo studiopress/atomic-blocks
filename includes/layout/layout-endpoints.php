@@ -70,6 +70,13 @@ function register_layout_endpoints() {
 					return new WP_REST_Response( $all_layouts );
 				}
 
+				/**
+				 * Filters the list of sections and layouts allowed to show in the layouts library.
+				 *
+				 * @since 2.5.0
+				 *
+				 * @param array $all_layouts Array of unique layout keys allowed. Defaults to all layouts.
+				 */
 				$allowed_layouts = (array) apply_filters( 'atomic_blocks_allowed_layout_components', array_keys( $all_layouts ) );
 
 				if ( empty( $allowed_layouts ) ) {
