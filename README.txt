@@ -127,6 +127,13 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.5.0 =
+* Add styles for users who are experimenting with the latest Gutenberg plugin.
+* Change wp.editor reference to wp.blockEditor to fix deprecation notices.
+* Fix PHP notice that shows when image for post grid is not available.
+* Fix issue where FontAwesome icons show intermittently in the editor.
+* Improve CSS Grid styles for IE.
+
 = 2.4.0 =
 * Fixed issue with Container block that happened when clearing the "Inside Container Max Width" setting.
 * Fixed warning message related to Accordion block font size.
