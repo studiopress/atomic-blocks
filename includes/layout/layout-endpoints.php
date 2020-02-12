@@ -47,16 +47,51 @@ function register_layout_endpoints() {
 		]
 	);
 
+	/**
+	 * Register the layouts GET endpoint
+	 * that combines all sections, layouts,
+	 * and additional layouts.
+	 */
 	register_rest_route(
 		AB_API_NAMESPACE,
 		ALL_LAYOUTS_ROUTE,
 		[
 			'methods'             => WP_REST_Server::READABLE,
-			'callback'            => function () {
+			'callback'            => function ( \WP_REST_Request $request ) {
+
 				$layouts            = atomic_blocks_get_layouts();
 				$sections           = atomic_blocks_get_sections();
 				$additional_layouts = apply_filters( 'atomic_blocks_additional_layout_components', [] );
-				return new WP_REST_Response( array_merge( $layouts, $sections, $additional_layouts ) );
+				$all_layouts        = array_merge( $layouts, $sections, $additional_layouts );
+				$request_params     = $request->get_params();
+
+				// Return all layouts if filtering was not requested. "allowed" is the only filter currently supported.
+				if ( empty( $request_params['filter'] ) || 'allowed' !== $request_params['filter'] ) {
+					return new WP_REST_Response( $all_layouts );
+				}
+
+				/**
+				 * Filters the list of sections and layouts allowed to show in the layouts library.
+				 *
+				 * @since 2.5.0
+				 *
+				 * @param array $all_layouts Array of unique layout keys allowed. Defaults to all layouts.
+				 */
+				$allowed_layouts = (array) apply_filters( 'atomic_blocks_allowed_layout_components', array_keys( $all_layouts ) );
+
+				if ( empty( $allowed_layouts ) ) {
+					return new WP_REST_Response( [] );
+				}
+
+				$filtered_layouts = [];
+
+				foreach ( $all_layouts as $key => $layout ) {
+					if ( in_array( $key, $allowed_layouts, true ) ) {
+						$filtered_layouts[ $key ] = $layout;
+					}
+				}
+
+				return new WP_REST_Response( $filtered_layouts );
 			},
 			'permission_callback' => function () {
 				return current_user_can( 'edit_posts' );

@@ -1,4 +1,5 @@
 {
+	"name": "atomic-blocks/atomic-blocks",
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
 		"phpcompatibility/phpcompatibility-wp": "^2.0",
@@ -8,7 +9,7 @@
 		"phpunit/phpunit": "^5"
 	},
 	"scripts": {
-		"phpcs": "phpcs *.php dist src -sp --runtime-set testVersion 5.6-",
+		"phpcs": "phpcs . --ignore=includes/libraries/*,includes/layout/register-layout-components.php,*vendor/* -sp --runtime-set testVersion 5.6-",
 		"phpcs-changed": "./bin/phpcs-changed.sh",
 		"phpunit": "phpunit"
 	}

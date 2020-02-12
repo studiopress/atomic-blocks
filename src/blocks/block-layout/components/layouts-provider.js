@@ -129,7 +129,7 @@ export default class LayoutsProvider extends Component {
 		wp.apiFetch(
 			{
 				'method': 'GET',
-				'path': '/atomicblocks/v1/layouts/all'
+				'path': '/atomicblocks/v1/layouts/all?filter=allowed'
 			}
 		).then( async components => {
 			let layouts = [];
