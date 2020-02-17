@@ -17,58 +17,29 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Enqueue assets for frontend and backend
  *
  * @since 1.0.0
- *
- * @param WP_Styles $wp_styles Styles.
  */
-function atomic_blocks_block_assets( WP_Styles $wp_styles ) {
+function atomic_blocks_block_assets() {
 
 	// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison -- Could be true or 'true'.
 	$postfix = ( SCRIPT_DEBUG == true ) ? '' : '.min';
 
 	// Load the compiled styles.
-	$wp_styles->add(
+	wp_register_style(
 		'atomic-blocks-style-css',
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
 		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . 'blocks.style.build.css' )
 	);
 
-	// Register the FontAwesome icon library.
-	$wp_styles->add(
+	// Load the FontAwesome icon library.
+	wp_enqueue_style(
 		'atomic-blocks-fontawesome',
 		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
 		array(),
 		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
 	);
 }
-add_action( 'wp_default_styles', 'atomic_blocks_block_assets' );
-
-/**
- * Conditionally print Font Awesome stylesheet the first time it is needed by a block.
- *
- * @param string $block_content Block content.
- * @return string Block content with Font Awesome stylesheet prepended if needed.
- */
-function atomic_blocks_prepend_block_content_with_fontawesome( $block_content ) {
-	if ( is_admin() ) {
-		return $block_content;
-	}
-
-	$handle = 'atomic-blocks-fontawesome';
-	if (
-		! wp_style_is( $handle, 'done' )
-		&&
-		// Check if the content includes a class attribute that contains a Font Awesome prefix class names.
-		// For a list of the prefixes, see <https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use>.
-		preg_match( '/\sclass="[^"]*?(?<="|\s)(fa|fas|far|fal|fad|fab)(?=\s|")[^"]*?"/', $block_content )
-	) {
-		ob_start();
-		wp_styles()->do_items( array( $handle ) );
-		$block_content = ob_get_clean() . $block_content;
-	}
-	return $block_content;
-}
-add_filter( 'render_block', 'atomic_blocks_prepend_block_content_with_fontawesome' );
+add_action( 'init', 'atomic_blocks_block_assets' );
 
 /**
  * Enqueue assets for backend editor
@@ -98,7 +69,12 @@ function atomic_blocks_editor_assets() {
 	);
 
 	// Load the FontAwesome icon library.
-	wp_enqueue_style( 'atomic-blocks-fontawesome' );
+	wp_enqueue_style(
+		'atomic-blocks-fontawesome',
+		plugins_url( 'dist/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'assets/fontawesome/css/all.css' )
+	);
 
 	$user_data = wp_get_current_user();
 	unset( $user_data->user_pass, $user_data->user_email );
