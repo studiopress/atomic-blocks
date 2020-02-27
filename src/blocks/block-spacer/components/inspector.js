@@ -77,7 +77,7 @@ export default class Inspector extends Component {
 						label={ __( 'Spacer Height', 'atomic-blocks' ) }
 						value={ spacerHeight || '' }
 						onChange={ ( value ) => this.props.setAttributes({ spacerHeight: value }) }
-						min={ 50 }
+						min={ 30 }
 						max={ 600 }
 					/>
 				</RenderSettingControl>
