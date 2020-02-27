@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 5.2
 Tested up to: 5.3
-Stable tag: 2.5.2
+Stable tag: 2.6.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -127,6 +127,13 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.6.0 =
+* Added support for Shortcode block in the Pricing Table block.
+* Improved MailChimp list caching in the Newsletter block.
+* Fixed minimum Spacer Height allowed in Spacer block.
+* Fixed Notice block compatibility issue with IE 11.
+* Fixed issue with 4 column layout in Post Grid block.
+
 = 2.5.2 =
 * Fixes an issue where front-end styles weren't loading due to conflicts with other plugins.
 * Fixes a conflict with other Font Awesome plugins.
