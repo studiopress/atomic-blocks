@@ -86,7 +86,7 @@ class Edit extends Component {
 					<Fragment>
 						<div className="ab-newsletter-notice">
 							{ __( 'You must define your newsletter provider API keys to use this block.', 'atomic-blocks' ) }
-							<p><a href={ atomic_blocks_newsletter_block_vars.plugin_settings_page_url }>{ __( 'Configure your settings', 'atomic-blocks' ) }</a></p>
+							<p><a href={ atomic_blocks_newsletter_block_vars.plugin_settings_page_url } target="_blank" rel="noopener">{ __( 'Configure your settings', 'atomic-blocks' ) }</a></p>
 						</div>
 					</Fragment>
 				) }
