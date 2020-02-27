@@ -453,6 +453,11 @@ function atomic_blocks_save_settings() {
 	}
 
 	/**
+	 * Clear the MailChimp list cache.
+	 */
+	delete_transient( 'atomic_blocks_mailchimp_lists' );
+
+	/**
 	 * Trigger an event to let integrations save their settings.
 	 */
 	do_action( 'atomic_blocks_save_settings', $_POST );
