@@ -22,10 +22,11 @@ window.addEventListener( 'DOMContentLoaded', function() {
 				window.location.hash = tab;
 			}
 
+			jQuery( "div[class^='atomic-blocks-settings-']" ).hide();
 			jQuery( '#atomic-blocks-settings .tab-content' ).hide();
 			jQuery( '.inline-list' ).find( 'li' ).removeClass( 'current' );
-			jQuery( '#atomic-blocks-settings-tab-' + tab ).addClass( 'current' ).blur();
-			jQuery( '#atomic-blocks-settings' ).find( '#atomic-blocks-settings-' + tab ).show();
+			jQuery( '.atomic-blocks-settings-tab-' + tab ).addClass( 'current' ).blur();
+			jQuery( '#atomic-blocks-settings' ).find( '.atomic-blocks-settings-' + tab ).show();
 		},
 
 		// Adds event listeners.
@@ -43,8 +44,9 @@ window.addEventListener( 'DOMContentLoaded', function() {
 			window.location.hash = hash;
 			target.parent().siblings().removeClass( 'current' );
 			target.parent().addClass( 'current' ).blur();
+			jQuery( "div[class^='atomic-blocks-settings-']" ).hide();
 			jQuery( '#atomic-blocks-settings .tab-content' ).hide();
-			jQuery( '#atomic-blocks-settings' ).find( '#atomic-blocks-settings-' + tab ).show();
+			jQuery( '#atomic-blocks-settings' ).find( '.atomic-blocks-settings-' + tab ).show();
 		},
 
 		// Returns the active tab stored in session storage.

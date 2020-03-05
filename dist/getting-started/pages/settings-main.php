@@ -16,7 +16,7 @@
 
 		<ul class="inline-list">
 
-			<li id="atomic-blocks-settings-tab-general" class="current">
+			<li class="atomic-blocks-settings-tab-general" class="current">
 				<a data-tab="general" href="#general">
 					<i class="fa fa-cog"></i> <?php esc_html_e( 'General Settings', 'atomic-blocks' ); ?>
 				</a>
