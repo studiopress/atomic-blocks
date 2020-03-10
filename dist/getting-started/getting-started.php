@@ -123,7 +123,7 @@ function atomic_blocks_getting_started_page() {
 		'install-theme_atomic-blocks'
 	);
 	?>
-	<div class="wrap ab-getting-started">
+	<div class="wrap ab-getting-started <?php if( atomic_blocks_is_pro() ) { echo "ab-pro-getting-started"; } ?>">
 		<div class="intro-wrap">
 			<div class="intro">
 				<a href="<?php echo esc_url( 'https://goo.gl/NfXcof' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( 'logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
@@ -156,110 +156,178 @@ function atomic_blocks_getting_started_page() {
 								</div>
 							<?php } ?>
 							<div class="ab-titles">
-								<h2><?php esc_html_e( 'Welcome to the future of site building with Gutenberg and Atomic Blocks!', 'atomic-blocks' ); ?></h2>
-								<p><?php esc_html_e( 'The Atomic Blocks collection is now ready to use in your posts and pages. Simply search for "atomic" or "ab" in the block inserter to display the Atomic Blocks collection. Check out the help file link above for detailed instructions!', 'atomic-blocks' ); ?></p>
+								<?php if( atomic_blocks_is_pro() ) { ?>
+									<h2><?php esc_html_e( 'Build and launch beautiful, effortless websites with Atomic Blocks Pro (beta).', 'atomic-blocks' ); ?></h2>
+									<p><?php esc_html_e( 'Atomic Blocks Pro provides you with a complete collection of page building section and layout blocks. Mix and match pre-designed sections to create full pages or get a huge headstart with full-page layouts. Join the future of site building today!', 'atomic-blocks' ); ?></p>
+									<ul>
+										<li><?php esc_html_e( 'Page Building Layouts', 'atomic-blocks' ); ?></li>
+										<li><?php esc_html_e( 'Customizable Portfolios', 'atomic-blocks' ); ?></li>
+										<li><?php esc_html_e( 'Block Setting Permissions', 'atomic-blocks' ); ?></li>
+										<li><?php esc_html_e( 'Custom Layout Integration', 'atomic-blocks' ); ?></li>
+									</ul>
+								<?php } else { ?>
+									<h2><?php esc_html_e( 'Welcome to the future of site building with Gutenberg and Atomic Blocks!', 'atomic-blocks' ); ?></h2>
+									<p><?php esc_html_e( 'The Atomic Blocks collection is now ready to use in your posts and pages. Simply search for "atomic" or "ab" in the block inserter to display the Atomic Blocks collection. Check out the help file link above for detailed instructions!', 'atomic-blocks' ); ?></p>
+								<?php } ?>
 							</div>
 						</div>
 						<div class="ab-block-split-right">
-							<div class="ab-block-theme">
-								<img src="<?php echo esc_url( plugins_url( 'images/build-content.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Atomic Blocks Theme', 'atomic-blocks' ); ?>" />
-							</div>
+							<?php if( atomic_blocks_is_pro() ) { ?>
+								<div class="ab-gs-feedback">
+									<h3><?php esc_html_e( 'Help us improve Atomic Blocks Pro (beta)!', 'atomic-blocks' ); ?></h3>
+									<p><?php esc_html_e( 'Please consider opting into anonymous usage tracking to help us make Atomic Blocks Pro better! We’ll uase this anonymous data to improve usability, build better blocks, and add new features.', 'atomic-blocks' ); ?></p>
+									<form>
+										<input type="radio" name="atomic-blocks-settings[analytics-opt-in]" value="1" "="">
+										<label for="atomic-blocks-settings[analytics-opt-in]"><?php esc_html_e( 'Enabled', 'atomic-blocks' ); ?></label>
+										<br>
+										<input type="radio" name="atomic-blocks-settings[analytics-opt-in]" value="0" checked="checked" "="">
+										<label for="atomic-blocks-settings[analytics-opt-in]"><?php esc_html_e( 'Disabled', 'atomic-blocks' ); ?></label>
+										<p class="atomic-blocks-settings-description">
+											<?php echo sprintf( esc_html__( 'Read our %1$s for more details.', 'atomic-blocks' ), '<a href=" ' . esc_url( 'https://wpengine.com/legal/privacy/' ) . ' ">privacy policy</a>' ); ?>
+										</p>
+									</form>
+								</div>
+							<?php } else { ?>
+								<div class="ab-block-theme">
+									<img src="<?php echo esc_url( plugins_url( 'images/build-content.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Atomic Blocks Theme', 'atomic-blocks' ); ?>" />
+								</div>
+							<?php } ?>
 						</div>
 					</div>
 
 					<div class="ab-block-feature-wrap clear">
 						<i class="fas fa-cube"></i>
-						<h2><?php esc_html_e( 'Available Atomic Blocks', 'atomic-blocks' ); ?></h2>
-						<p><?php esc_html_e( 'The following blocks are available in Atomic Blocks. More blocks are on the way so stay tuned!', 'atomic-blocks' ); ?></p>
+						<?php if( atomic_blocks_is_pro() ) { ?>
+							<h2><?php esc_html_e( 'Get a jump start with Genesis.', 'atomic-blocks' ); ?></h2>
+							<p><?php esc_html_e( 'Our collection of block-powered themes integrate seamlessly with Atomic Blocks Pro features. Genesis themes are free for WP Engine customers.', 'atomic-blocks' ); ?></p>
+						<?php } else { ?>
+							<h2><?php esc_html_e( 'Available Atomic Blocks', 'atomic-blocks' ); ?></h2>
+							<p><?php esc_html_e( 'The following blocks are available in Atomic Blocks. More blocks are on the way so stay tuned!', 'atomic-blocks' ); ?></p>
+						<?php } ?>
 
 						<div class="ab-block-features">
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc26.svg', __FILE__ ) ); ?>" alt="Post Grid Block" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Post Grid Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.', 'atomic-blocks' ); ?></p>
+							<?php if( atomic_blocks_is_pro() ) { ?>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/genesis-sample.jpg', __FILE__ ) ); ?>" alt="Post Grid Block" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Genesis Sample', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'A minimal and powerful starter theme that gives you a blank canvas to build and launch beautiful websites.', 'atomic-blocks' ); ?></p>
+										<?php if( atomic_blocks_is_pro() ) { ?>
+											<?php echo sprintf( esc_html__( '%1$s', 'atomic-blocks' ), '<a class="button-primary club-button" target="_blank" href=" ' . esc_url( 'https://my.wpengine.com/themes' ) . ' ">Download at WP Engine</a>' ); ?>
+										<?php } ?>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc430.svg', __FILE__ ) ); ?>" alt="Container Block" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Container Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Wrap several blocks into a section and add padding, margins, background colors and images.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/revolution.jpg', __FILE__ ) ); ?>" alt="Container Block" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Revolution Pro', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'A minimal design for agencies, lifestyle blogs, personal branding, photographers, and small businesses.', 'atomic-blocks' ); ?></p>
+										<?php if( atomic_blocks_is_pro() ) { ?>
+											<?php echo sprintf( esc_html__( '%1$s', 'atomic-blocks' ), '<a class="button-primary club-button" target="_blank" href=" ' . esc_url( 'https://my.wpengine.com/themes' ) . ' ">Download at WP Engine</a>' ); ?>
+										<?php } ?>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc41.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Call To Action Block', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Call-To-Action Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/monochrome.jpg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Call To Action Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Monochrome Pro', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'A substantial but simple design that integrates beautifully with the new block editor and custom blocks.', 'atomic-blocks' ); ?></p>
+										<?php if( atomic_blocks_is_pro() ) { ?>
+											<?php echo sprintf( esc_html__( '%1$s', 'atomic-blocks' ), '<a class="button-primary club-button" target="_blank" href=" ' . esc_url( 'https://my.wpengine.com/themes' ) . ' ">Download at WP Engine</a>' ); ?>
+										<?php } ?>
+									</div>
 								</div>
-							</div>
+							<?php } else { ?>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc26.svg', __FILE__ ) ); ?>" alt="Post Grid Block" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Post Grid Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.', 'atomic-blocks' ); ?></p>
+									</div>
+								</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc4.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Testimonials Block', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Testimonial Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a customer or client testimonial to your site with an avatar, text, citation and more.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc430.svg', __FILE__ ) ); ?>" alt="Container Block" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Container Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Wrap several blocks into a section and add padding, margins, background colors and images.', 'atomic-blocks' ); ?></p>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc184.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Inline Notices Block', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Inline Notice Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a colorful notice or message to your site with text, a title and a dismiss icon.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc41.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Call To Action Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Call-To-Action Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.', 'atomic-blocks' ); ?></p>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc50.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Sharing Icons Block', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Sharing Icons Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add social sharing icons to your page with size, shape, color and style options.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc4.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Testimonials Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Testimonial Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add a customer or client testimonial to your site with an avatar, text, citation and more.', 'atomic-blocks' ); ?></p>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc94-f.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Author Profile Block', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Author Profile Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a user profile box to your site with a title, bio info, an avatar and social media links.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc184.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Inline Notices Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Inline Notice Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add a colorful notice or message to your site with text, a title and a dismiss icon.', 'atomic-blocks' ); ?></p>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc115.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Accordion Toggle', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Accordion Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add an accordion text toggle with a title and descriptive text. Includes font size and toggle options.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc50.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Sharing Icons Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Sharing Icons Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add social sharing icons to your page with size, shape, color and style options.', 'atomic-blocks' ); ?></p>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc45.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Customizable Button Block', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Customizable Button', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a fancy stylized button to your post or page with size, shape, target, and color options.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc94-f.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Author Profile Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Author Profile Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add a user profile box to your site with a title, bio info, an avatar and social media links.', 'atomic-blocks' ); ?></p>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc38.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Drop Cap Block', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Drop Cap Block', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add a stylized drop cap to the beginning of your paragraph. Choose from three different styles.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc115.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Accordion Toggle', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Accordion Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add an accordion text toggle with a title and descriptive text. Includes font size and toggle options.', 'atomic-blocks' ); ?></p>
+									</div>
 								</div>
-							</div>
 
-							<div class="ab-block-feature">
-								<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc402.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Spacer and Divider Block', 'atomic-blocks' ); ?>" /></div>
-								<div class="ab-block-feature-text">
-									<h3><?php esc_html_e( 'Spacer & Divider', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Add an adjustable spacer between your blocks with an optional divider with styling options.', 'atomic-blocks' ); ?></p>
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc45.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Customizable Button Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Customizable Button', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add a fancy stylized button to your post or page with size, shape, target, and color options.', 'atomic-blocks' ); ?></p>
+									</div>
 								</div>
-							</div>
+
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc38.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Drop Cap Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Drop Cap Block', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add a stylized drop cap to the beginning of your paragraph. Choose from three different styles.', 'atomic-blocks' ); ?></p>
+									</div>
+								</div>
+
+								<div class="ab-block-feature">
+									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/cc402.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Spacer and Divider Block', 'atomic-blocks' ); ?>" /></div>
+									<div class="ab-block-feature-text">
+										<h3><?php esc_html_e( 'Spacer & Divider', 'atomic-blocks' ); ?></h3>
+										<p><?php esc_html_e( 'Add an adjustable spacer between your blocks with an optional divider with styling options.', 'atomic-blocks' ); ?></p>
+									</div>
+								</div>
+							<?php } ?>
 						</div><!-- .ab-block-features -->
 					</div><!-- .ab-block-feature-wrap -->
 				</div><!-- .panel-left -->

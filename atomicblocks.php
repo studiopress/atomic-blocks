@@ -145,3 +145,12 @@ add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
 function atomic_blocks_main_plugin_file() {
 	return __FILE__;
 }
+
+/**
+ * Check for Pro version.
+ */
+function atomic_blocks_is_pro() {
+	if ( function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' ) ) {
+		return true;
+	}
+}
