@@ -150,7 +150,5 @@ function atomic_blocks_main_plugin_file() {
  * Check for Pro version.
  */
 function atomic_blocks_is_pro() {
-	if ( function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' ) ) {
-		return true;
-	}
+	return function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' );
 }
