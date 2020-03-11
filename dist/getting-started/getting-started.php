@@ -163,8 +163,8 @@ function atomic_blocks_getting_started_page() {
 							<?php } ?>
 							<div class="ab-titles">
 								<?php if ( atomic_blocks_is_pro() ) { ?>
-									<h2><?php esc_html_e( 'Build and launch beautiful, effortless websites with Atomic Blocks Pro (beta).', 'atomic-blocks' ); ?></h2>
-									<p><?php esc_html_e( 'Atomic Blocks Pro provides you with a complete collection of page building section and layout blocks. Mix and match pre-designed sections to create full pages or get a huge headstart with full-page layouts. Join the future of site building today!', 'atomic-blocks' ); ?></p>
+									<h2><?php esc_html_e( 'Build and launch beautiful websites effortlessly with Atomic Blocks Pro (beta).', 'atomic-blocks' ); ?></h2>
+									<p><?php esc_html_e( 'Atomic Blocks Pro provides you with a complete collection of page building section and layout blocks. Mix and match pre-designed sections to create full pages or get a huge head start with full-page layouts. Join the future of site building today!', 'atomic-blocks' ); ?></p>
 									<ul>
 										<li><?php esc_html_e( 'Page Building Layouts', 'atomic-blocks' ); ?></li>
 										<li><?php esc_html_e( 'Customizable Portfolios', 'atomic-blocks' ); ?></li>
@@ -181,7 +181,7 @@ function atomic_blocks_getting_started_page() {
 							<?php if ( atomic_blocks_is_pro() ) { ?>
 								<div class="ab-gs-feedback">
 									<h3><?php esc_html_e( 'Help us improve Atomic Blocks Pro (beta)!', 'atomic-blocks' ); ?></h3>
-									<p><?php esc_html_e( 'Please consider opting into anonymous usage tracking to help us make Atomic Blocks Pro better! We’ll uase this anonymous data to improve usability, build better blocks, and add new features.', 'atomic-blocks' ); ?></p>
+									<p><?php esc_html_e( 'Please consider opting into anonymous usage tracking to help us make Atomic Blocks Pro better! We’ll use this anonymous data to improve usability, build better blocks, and add new features.', 'atomic-blocks' ); ?></p>
 									<form>
 										<input type="radio" name="atomic-blocks-settings[analytics-opt-in]" value="1" "="">
 										<label for="atomic-blocks-settings[analytics-opt-in]"><?php esc_html_e( 'Enabled', 'atomic-blocks' ); ?></label>
