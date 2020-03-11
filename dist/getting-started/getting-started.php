@@ -433,28 +433,28 @@ function atomic_blocks_getting_started_page() {
 				</div><!-- .panel-right -->
 
 				<div class="footer-wrap">
-					<h2 class="visit-title"><?php esc_html_e( 'Free Blocks and Resources', 'atomic-blocks' ); ?></h2>
+					<h2 class="visit-title"><?php esc_html_e( 'Atomic Blocks Resources', 'atomic-blocks' ); ?></h2>
 
 					<div class="ab-block-footer">
 						<div class="ab-block-footer-column">
-							<i class="far fa-envelope"></i>
-							<h3><?php esc_html_e( 'Blocks In Your Inbox', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="https://atomicblocks.com/subscribe?utm_source=AB%20Theme%20GS%20Page%20Footer%20Subscribe"><?php esc_html_e( 'Subscribe Today', 'atomic-blocks' ); ?></a>
+							<i class="far fa-question-circle"></i>
+							<h3><?php esc_html_e( 'Documentation and Help', 'atomic-blocks' ); ?></h3>
+							<p><?php esc_html_e( 'The Atomic Blocks wiki has helpful documentation, tips and tricks, code snippets, and more to help you get started.', 'atomic-blocks' ); ?></p>
+							<a class="button-primary" href="<?php echo esc_url( 'https://github.com/studiopress/atomic-blocks/wiki' ); ?>"><?php esc_html_e( 'Browse the Wiki', 'atomic-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
-							<i class="far fa-edit"></i>
-							<h3><?php esc_html_e( 'Articles & Tutorials', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="https://atomicblocks.com/blog?utm_source=AB%20Theme%20GS%20Page%20Footer%20Blog"><?php esc_html_e( 'Visit the Blog', 'atomic-blocks' ); ?></a>
+							<i class="fas fa-bullhorn"></i>
+							<h3><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></h3>
+							<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Atomic Blocks and making it better with every release. ', 'atomic-blocks' ); ?></p>
+							<a class="button-primary" href="<?php echo esc_url( 'https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17' ); ?>"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
-							<i class="far fa-newspaper"></i>
-							<h3><?php esc_html_e( 'Gutenberg News', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'Stay up to date with the new WordPress editor. Gutenberg News curates Gutenberg articles, tutorials, videos and more free resources.', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="http://gutenberg.news/?utm_source=AB%20Theme%20GS%20Page%20Footer%20Gnews"><?php esc_html_e( 'Visit Gutenberg News', 'atomic-blocks' ); ?></a>
+							<i class="fas fa-layer-group"></i>
+							<h3><?php esc_html_e( 'Browse Genesis Themes', 'atomic-blocks' ); ?></h3>
+							<p><?php esc_html_e( 'The Genesis theme collection has beautiful block-powered themes that help you quickly get started with the new block editor.', 'atomic-blocks' ); ?></p>
+							<a class="button-primary" href="<?php echo esc_url( 'https://studiopress.com/themes' ); ?>"><?php esc_html_e( 'Browse Themes', 'atomic-blocks' ); ?></a>
 						</div>
 					</div>
 
@@ -465,12 +465,6 @@ function atomic_blocks_getting_started_page() {
 							echo sprintf( esc_html__( 'Made by the fine folks at %1$s and %2$s.', 'atomic-blocks' ), '<a href=" ' . esc_url( 'https://studiopress.com/' ) . ' ">StudioPress</a>', '<a href=" ' . esc_url( 'https://wpengine.com/' ) . ' ">WP Engine</a>' );
 							?>
 						</p>
-						<div class="ab-footer-links">
-							<a href="https:/atomicblocks.com/"><?php esc_html_e( 'AtomicBlocks.com', 'atomic-blocks' ); ?></a>
-							<a href="https://atomicblocks.com/blog/"><?php esc_html_e( 'Blog', 'atomic-blocks' ); ?></a>
-							<a href="https://atomicblocks.com/atomic-blocks-docs/"><?php esc_html_e( 'Docs', 'atomic-blocks' ); ?></a>
-							<a href="https:/twitter.com/atomicblocks"><?php esc_html_e( 'Twitter', 'atomic-blocks' ); ?></a>
-						</div>
 					</div>
 				</div><!-- .footer-wrap -->
 			</div><!-- .panel -->
