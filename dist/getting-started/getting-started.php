@@ -123,7 +123,14 @@ function atomic_blocks_getting_started_page() {
 		'install-theme_atomic-blocks'
 	);
 	?>
-	<div class="wrap ab-getting-started <?php if ( atomic_blocks_is_pro() ) { echo 'ab-pro-getting-started'; } ?>">
+	<?php
+		if ( atomic_blocks_is_pro() ) {
+			$wrap_class = 'wrap ab-getting-started ab-pro-getting-started';
+		} else {
+			$wrap_class = 'wrap ab-getting-started';
+		}
+	?>
+	<div class="<?php echo $wrap_class; ?>">
 		<div class="intro-wrap">
 			<div class="intro">
 				<a href="<?php echo esc_url( 'https://goo.gl/NfXcof' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( 'logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
