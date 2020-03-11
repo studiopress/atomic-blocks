@@ -124,10 +124,9 @@ function atomic_blocks_getting_started_page() {
 	);
 	?>
 	<?php
+	$wrap_class = 'wrap ab-getting-started';
 	if ( atomic_blocks_is_pro() ) {
-		$wrap_class = 'wrap ab-getting-started ab-pro-getting-started';
-	} else {
-		$wrap_class = 'wrap ab-getting-started';
+		$wrap_class .= ' ab-pro-getting-started';
 	}
 	?>
 	<div class="<?php echo esc_attr( $wrap_class ); ?>">
