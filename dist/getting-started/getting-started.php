@@ -123,7 +123,7 @@ function atomic_blocks_getting_started_page() {
 		'install-theme_atomic-blocks'
 	);
 	?>
-	<div class="wrap ab-getting-started <?php if( atomic_blocks_is_pro() ) { echo "ab-pro-getting-started"; } ?>">
+	<div class="wrap ab-getting-started <?php if ( atomic_blocks_is_pro() ) { echo 'ab-pro-getting-started'; } ?>">
 		<div class="intro-wrap">
 			<div class="intro">
 				<a href="<?php echo esc_url( 'https://goo.gl/NfXcof' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( 'logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
@@ -156,7 +156,7 @@ function atomic_blocks_getting_started_page() {
 								</div>
 							<?php } ?>
 							<div class="ab-titles">
-								<?php if( atomic_blocks_is_pro() ) { ?>
+								<?php if ( atomic_blocks_is_pro() ) { ?>
 									<h2><?php esc_html_e( 'Build and launch beautiful, effortless websites with Atomic Blocks Pro (beta).', 'atomic-blocks' ); ?></h2>
 									<p><?php esc_html_e( 'Atomic Blocks Pro provides you with a complete collection of page building section and layout blocks. Mix and match pre-designed sections to create full pages or get a huge headstart with full-page layouts. Join the future of site building today!', 'atomic-blocks' ); ?></p>
 									<ul>
@@ -172,7 +172,7 @@ function atomic_blocks_getting_started_page() {
 							</div>
 						</div>
 						<div class="ab-block-split-right">
-							<?php if( atomic_blocks_is_pro() ) { ?>
+							<?php if ( atomic_blocks_is_pro() ) { ?>
 								<div class="ab-gs-feedback">
 									<h3><?php esc_html_e( 'Help us improve Atomic Blocks Pro (beta)!', 'atomic-blocks' ); ?></h3>
 									<p><?php esc_html_e( 'Please consider opting into anonymous usage tracking to help us make Atomic Blocks Pro better! We’ll uase this anonymous data to improve usability, build better blocks, and add new features.', 'atomic-blocks' ); ?></p>
@@ -183,7 +183,10 @@ function atomic_blocks_getting_started_page() {
 										<input type="radio" name="atomic-blocks-settings[analytics-opt-in]" value="0" checked="checked" "="">
 										<label for="atomic-blocks-settings[analytics-opt-in]"><?php esc_html_e( 'Disabled', 'atomic-blocks' ); ?></label>
 										<p class="atomic-blocks-settings-description">
-											<?php echo sprintf( esc_html__( 'Read our %1$s for more details.', 'atomic-blocks' ), '<a href=" ' . esc_url( 'https://wpengine.com/legal/privacy/' ) . ' ">privacy policy</a>' ); ?>
+											<?php
+												/* translators: %1$s WP Engine privacy policy link. */
+												echo sprintf( esc_html__( 'Read our %1$s for more details.', 'atomic-blocks' ), '<a href=" ' . esc_url( 'https://wpengine.com/legal/privacy/' ) . ' ">privacy policy</a>' );
+											?>
 										</p>
 									</form>
 								</div>
@@ -197,7 +200,7 @@ function atomic_blocks_getting_started_page() {
 
 					<div class="ab-block-feature-wrap clear">
 						<i class="fas fa-cube"></i>
-						<?php if( atomic_blocks_is_pro() ) { ?>
+						<?php if ( atomic_blocks_is_pro() ) { ?>
 							<h2><?php esc_html_e( 'Get a jump start with Genesis.', 'atomic-blocks' ); ?></h2>
 							<p><?php esc_html_e( 'Our collection of block-powered themes integrate seamlessly with Atomic Blocks Pro features. Genesis themes are free for WP Engine customers.', 'atomic-blocks' ); ?></p>
 						<?php } else { ?>
@@ -206,15 +209,13 @@ function atomic_blocks_getting_started_page() {
 						<?php } ?>
 
 						<div class="ab-block-features">
-							<?php if( atomic_blocks_is_pro() ) { ?>
+							<?php if ( atomic_blocks_is_pro() ) { ?>
 								<div class="ab-block-feature">
 									<div class="ab-block-feature-icon"><img src="<?php echo esc_url( plugins_url( 'images/genesis-sample.jpg', __FILE__ ) ); ?>" alt="Post Grid Block" /></div>
 									<div class="ab-block-feature-text">
 										<h3><?php esc_html_e( 'Genesis Sample', 'atomic-blocks' ); ?></h3>
 										<p><?php esc_html_e( 'A minimal and powerful starter theme that gives you a blank canvas to build and launch beautiful websites.', 'atomic-blocks' ); ?></p>
-										<?php if( atomic_blocks_is_pro() ) { ?>
-											<?php echo sprintf( esc_html__( '%1$s', 'atomic-blocks' ), '<a class="button-primary club-button" target="_blank" href=" ' . esc_url( 'https://my.wpengine.com/themes' ) . ' ">Download at WP Engine</a>' ); ?>
-										<?php } ?>
+										<a class="button-primary club-button" href="<?php echo esc_url( 'https://my.wpengine.com/themes' ); ?>"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
 									</div>
 								</div>
 
@@ -223,9 +224,7 @@ function atomic_blocks_getting_started_page() {
 									<div class="ab-block-feature-text">
 										<h3><?php esc_html_e( 'Revolution Pro', 'atomic-blocks' ); ?></h3>
 										<p><?php esc_html_e( 'A minimal design for agencies, lifestyle blogs, personal branding, photographers, and small businesses.', 'atomic-blocks' ); ?></p>
-										<?php if( atomic_blocks_is_pro() ) { ?>
-											<?php echo sprintf( esc_html__( '%1$s', 'atomic-blocks' ), '<a class="button-primary club-button" target="_blank" href=" ' . esc_url( 'https://my.wpengine.com/themes' ) . ' ">Download at WP Engine</a>' ); ?>
-										<?php } ?>
+										<a class="button-primary club-button" href="<?php echo esc_url( 'https://my.wpengine.com/themes' ); ?>"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
 									</div>
 								</div>
 
@@ -234,9 +233,7 @@ function atomic_blocks_getting_started_page() {
 									<div class="ab-block-feature-text">
 										<h3><?php esc_html_e( 'Monochrome Pro', 'atomic-blocks' ); ?></h3>
 										<p><?php esc_html_e( 'A substantial but simple design that integrates beautifully with the new block editor and custom blocks.', 'atomic-blocks' ); ?></p>
-										<?php if( atomic_blocks_is_pro() ) { ?>
-											<?php echo sprintf( esc_html__( '%1$s', 'atomic-blocks' ), '<a class="button-primary club-button" target="_blank" href=" ' . esc_url( 'https://my.wpengine.com/themes' ) . ' ">Download at WP Engine</a>' ); ?>
-										<?php } ?>
+										<a class="button-primary club-button" href="<?php echo esc_url( 'https://my.wpengine.com/themes' ); ?>"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
 									</div>
 								</div>
 							<?php } else { ?>
