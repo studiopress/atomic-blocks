@@ -191,7 +191,7 @@ function atomic_blocks_getting_started_page() {
 										<p class="atomic-blocks-settings-description">
 											<?php
 												/* translators: %1$s WP Engine privacy policy link. */
-												echo sprintf( esc_html__( 'Read our %1$s for more details.', 'atomic-blocks' ), '<a href=" ' . esc_url( 'https://wpengine.com/legal/privacy/' ) . ' ">privacy policy</a>' );
+												printf( esc_html__( 'Read our %1$s for more details.', 'atomic-blocks' ), '<a href="https://wpengine.com/legal/privacy/">' . esc_html__( 'privacy policy', 'atomic-blocks' ) . '</a>' );
 											?>
 										</p>
 									</form>
