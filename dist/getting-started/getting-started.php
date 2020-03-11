@@ -221,7 +221,7 @@ function atomic_blocks_getting_started_page() {
 									<div class="ab-block-feature-text">
 										<h3><?php esc_html_e( 'Genesis Sample', 'atomic-blocks' ); ?></h3>
 										<p><?php esc_html_e( 'A minimal and powerful starter theme that gives you a blank canvas to build and launch beautiful websites.', 'atomic-blocks' ); ?></p>
-										<a class="button-primary club-button" href="<?php echo esc_url( 'https://my.wpengine.com/themes' ); ?>"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
+										<a class="button-primary club-button" href="https://my.wpengine.com/themes"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
 									</div>
 								</div>
 
@@ -230,7 +230,7 @@ function atomic_blocks_getting_started_page() {
 									<div class="ab-block-feature-text">
 										<h3><?php esc_html_e( 'Revolution Pro', 'atomic-blocks' ); ?></h3>
 										<p><?php esc_html_e( 'A minimal design for agencies, lifestyle blogs, personal branding, photographers, and small businesses.', 'atomic-blocks' ); ?></p>
-										<a class="button-primary club-button" href="<?php echo esc_url( 'https://my.wpengine.com/themes' ); ?>"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
+										<a class="button-primary club-button" href="https://my.wpengine.com/themes"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
 									</div>
 								</div>
 
@@ -239,7 +239,7 @@ function atomic_blocks_getting_started_page() {
 									<div class="ab-block-feature-text">
 										<h3><?php esc_html_e( 'Monochrome Pro', 'atomic-blocks' ); ?></h3>
 										<p><?php esc_html_e( 'A substantial but simple design that integrates beautifully with the new block editor and custom blocks.', 'atomic-blocks' ); ?></p>
-										<a class="button-primary club-button" href="<?php echo esc_url( 'https://my.wpengine.com/themes' ); ?>"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
+										<a class="button-primary club-button" href="https://my.wpengine.com/themes"><?php esc_html_e( 'Download at WP Engine', 'atomic-blocks' ); ?></a>
 									</div>
 								</div>
 							<?php } else { ?>
@@ -413,7 +413,7 @@ function atomic_blocks_getting_started_page() {
 								<li class="cell">
 								<p><?php esc_html_e( 'Join the newsletter to receive emails when we add new blocks, release plugin and theme updates, send out free resources, and more!', 'atomic-blocks' ); ?></p>
 
-									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/3pC6LE' ); ?>"><?php esc_html_e( 'Subscribe Now', 'atomic-blocks' ); ?> &rarr;</a>
+									<a class="button-primary club-button" target="_blank" href="https://goo.gl/3pC6LE"><?php esc_html_e( 'Subscribe Now', 'atomic-blocks' ); ?> &rarr;</a>
 								</li>
 							</ul>
 						</div>
@@ -428,7 +428,7 @@ function atomic_blocks_getting_started_page() {
 							<ul>
 								<li class="cell">
 									<p><?php esc_html_e( 'Check out the Atomic Blocks site to find block editor tutorials, free blocks and updates about the Atomic Blocks plugin and theme!', 'atomic-blocks' ); ?></p>
-									<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://goo.gl/xpujKp' ); ?>"><?php esc_html_e( 'Visit AtomicBlocks.com', 'atomic-blocks' ); ?> &rarr;</a>
+									<a class="button-primary club-button" target="_blank" href="https://goo.gl/xpujKp"><?php esc_html_e( 'Visit AtomicBlocks.com', 'atomic-blocks' ); ?> &rarr;</a>
 								</li>
 							</ul>
 						</div>
@@ -443,21 +443,21 @@ function atomic_blocks_getting_started_page() {
 							<i class="far fa-question-circle"></i>
 							<h3><?php esc_html_e( 'Documentation and Help', 'atomic-blocks' ); ?></h3>
 							<p><?php esc_html_e( 'The Atomic Blocks wiki has helpful documentation, tips and tricks, code snippets, and more to help you get started.', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="<?php echo esc_url( 'https://github.com/studiopress/atomic-blocks/wiki' ); ?>"><?php esc_html_e( 'Browse the Wiki', 'atomic-blocks' ); ?></a>
+							<a class="button-primary" href="https://github.com/studiopress/atomic-blocks/wiki"><?php esc_html_e( 'Browse the Wiki', 'atomic-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
 							<i class="fas fa-bullhorn"></i>
 							<h3><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></h3>
 							<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Atomic Blocks and making it better with every release. ', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="<?php echo esc_url( 'https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17' ); ?>"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
+							<a class="button-primary" href="https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
 							<i class="fas fa-layer-group"></i>
 							<h3><?php esc_html_e( 'Browse Genesis Themes', 'atomic-blocks' ); ?></h3>
 							<p><?php esc_html_e( 'The Genesis theme collection has beautiful block-powered themes that help you quickly get started with the new block editor.', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="<?php echo esc_url( 'https://studiopress.com/themes' ); ?>"><?php esc_html_e( 'Browse Themes', 'atomic-blocks' ); ?></a>
+							<a class="button-primary" href="https://studiopress.com/themes"><?php esc_html_e( 'Browse Themes', 'atomic-blocks' ); ?></a>
 						</div>
 					</div>
 
@@ -465,7 +465,7 @@ function atomic_blocks_getting_started_page() {
 						<p>
 							<?php
 							/* translators: %1$s StudioPress website URL. %2$s WP Engine website URL. */
-							echo sprintf( esc_html__( 'Made by the fine folks at %1$s and %2$s.', 'atomic-blocks' ), '<a href=" ' . esc_url( 'https://studiopress.com/' ) . ' ">StudioPress</a>', '<a href=" ' . esc_url( 'https://wpengine.com/' ) . ' ">WP Engine</a>' );
+							echo sprintf( esc_html__( 'Made by the fine folks at %1$s and %2$s.', 'atomic-blocks' ), '<a href="https://studiopress.com/">StudioPress</a>', '<a href="https://wpengine.com/">WP Engine</a>' );
 							?>
 						</p>
 					</div>
