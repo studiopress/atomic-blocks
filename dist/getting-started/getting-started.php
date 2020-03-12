@@ -183,17 +183,19 @@ function atomic_blocks_getting_started_page() {
 									<h3><?php esc_html_e( 'Help us improve Atomic Blocks Pro (beta)!', 'atomic-blocks' ); ?></h3>
 									<p><?php esc_html_e( 'Please consider opting into anonymous usage tracking to help us make Atomic Blocks Pro better! We’ll use this anonymous data to improve usability, build better blocks, and add new features.', 'atomic-blocks' ); ?></p>
 									<form>
-										<input type="radio" name="atomic-blocks-settings[analytics-opt-in]" value="1" "="">
-										<label for="atomic-blocks-settings[analytics-opt-in]"><?php esc_html_e( 'Enabled', 'atomic-blocks' ); ?></label>
+										<?php $opt_in_value = get_option( 'atomic_blocks_pro_analytics_opt_in', false ); ?>
+										<input type="radio" id="atomic-blocks-pro-analytics-opt-in-enabled" name="atomic-blocks-settings[analytics-opt-in]" value="1" <?php checked( $opt_in_value, true ); ?>>
+										<label for="atomic-blocks-pro-analytics-opt-in-enabled"><?php esc_html_e( 'Enabled', 'atomic-blocks' ); ?></label>
 										<br>
-										<input type="radio" name="atomic-blocks-settings[analytics-opt-in]" value="0" checked="checked" "="">
-										<label for="atomic-blocks-settings[analytics-opt-in]"><?php esc_html_e( 'Disabled', 'atomic-blocks' ); ?></label>
+										<input type="radio" id="atomic-blocks-pro-analytics-opt-in-disabled" name="atomic-blocks-settings[analytics-opt-in]" value="0" <?php checked( $opt_in_value, false ); ?>>
+										<label for="atomic-blocks-pro-analytics-opt-in-disabled"><?php esc_html_e( 'Disabled', 'atomic-blocks' ); ?></label>
 										<p class="atomic-blocks-settings-description">
 											<?php
 												/* translators: %1$s WP Engine privacy policy link. */
 												printf( esc_html__( 'Read our %1$s for more details.', 'atomic-blocks' ), '<a href="https://wpengine.com/legal/privacy/">' . esc_html__( 'privacy policy', 'atomic-blocks' ) . '</a>' );
 											?>
 										</p>
+										<?php wp_nonce_field( 'atomic_blocks_pro_gs_analytics_toggle', 'atomic_blocks_pro_gs_analytics_toggle_nonce', false ); ?>
 									</form>
 								</div>
 							<?php } else { ?>
@@ -545,3 +547,28 @@ function atomic_blocks_load_settings_page_scripts( $hook ) {
 	wp_enqueue_script( 'atomic-blocks-settings-page-scripts', plugins_url( 'getting-started/settings.js', __DIR__ ), array( 'jquery' ), '1.0.0', true );
 }
 add_action( 'admin_enqueue_scripts', 'atomic_blocks_load_settings_page_scripts' );
+
+/**
+ * Handles Ajax requests for the opt-in analytics toggle on the Getting Started page.
+ */
+add_action(
+	'wp_ajax_atomic_blocks_pro_gs_analytics_toggle',
+	function() {
+
+		if ( ! isset( $_POST['atomic_blocks_pro_gs_analytics_toggle_nonce'] ) ) {
+			return;
+		}
+
+		if ( ! current_user_can( 'manage_options' ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['atomic_blocks_pro_gs_analytics_toggle_nonce'] ) ), 'atomic_blocks_pro_gs_analytics_toggle' ) ) {
+			wp_send_json_error( [ 'error' => esc_html__( 'Access denied.', 'atomic-blocks' ) ] );
+		}
+
+		if ( empty( $_POST['ab-pro-analytics-toggle-value'] ) ) {
+			delete_option( 'atomic_blocks_pro_analytics_opt_in' );
+		} else {
+			update_option( 'atomic_blocks_pro_analytics_opt_in', true );
+		}
+
+		wp_send_json_success();
+	}
+);
