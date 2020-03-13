@@ -45,3 +45,10 @@ if ( ! function_exists( 'atomic_blocks_main_plugin_file' ) ) {
 	// Load the rest of the plugin.
 	require_once 'loader.php';
 }
+
+/**
+ * Check for Pro version.
+ */
+function atomic_blocks_is_pro() {
+	return function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' );
+}
