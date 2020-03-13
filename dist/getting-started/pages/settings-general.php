@@ -7,7 +7,7 @@
 
 $atomic_blocks_mailchimp_api_key = get_option( 'atomic_blocks_mailchimp_api_key', '' );
 ?>
-<div id="atomic-blocks-settings-general" class="tab-content">
+<div class="atomic-blocks-settings-general" class="tab-content">
 	<table class="form-table">
 		<tbody>
 			<tr>
