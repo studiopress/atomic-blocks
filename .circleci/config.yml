@@ -109,7 +109,7 @@ commands:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install --no-package-lock
+          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install -g npm && npm install --no-package-lock
 
 workflows:
   version: 2
