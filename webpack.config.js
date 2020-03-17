@@ -1,28 +1,28 @@
-const ExtractText = require('extract-text-webpack-plugin');
+const ExtractText = require( 'extract-text-webpack-plugin' );
 const devMode = process.env.NODE_ENV !== 'production';
 
-const editorStyles = new ExtractText({
-	filename: './blocks.editor.build.css'
-});
+const editorStyles = new ExtractText( {
+	filename: './blocks.editor.build.css',
+} );
 
-const frontendStyles = new ExtractText({
-	filename: './blocks.style.build.css'
-});
+const frontendStyles = new ExtractText( {
+	filename: './blocks.style.build.css',
+} );
 
-const plugins = [editorStyles, frontendStyles];
+const plugins = [ editorStyles, frontendStyles ];
 
 const scssConfig = {
 	use: [
 		{
-			loader: 'css-loader'
+			loader: 'css-loader',
 		},
 		{
 			loader: 'sass-loader',
 			options: {
-				prependData: '@import "./src/common.scss";\n'
-			}
-		}
-	]
+				prependData: '@import "./src/common.scss";\n',
+			},
+		},
+	],
 };
 
 module.exports = {
@@ -34,7 +34,7 @@ module.exports = {
 	},
 	output: {
 		path: __dirname + '/dist/',
-		filename: '[name].build.js'
+		filename: '[name].build.js',
 	},
 	module: {
 		rules: [
@@ -45,22 +45,22 @@ module.exports = {
 					{
 						loader: 'babel-loader',
 						options: {
-							presets: ['@babel/preset-react']
-						}
-					}
-				]
+							presets: [ '@babel/preset-react' ],
+						},
+					},
+				],
 			},
 			{
 				test: /editor\.scss$/,
 				exclude: /(node_modules|build|vendor)/,
-				use: editorStyles.extract(scssConfig)
+				use: editorStyles.extract( scssConfig ),
 			},
 			{
 				test: /style\.scss$/,
 				exclude: /(node_modules|build|vendor)/,
-				use: frontendStyles.extract(scssConfig)
-			}
-		]
+				use: frontendStyles.extract( scssConfig ),
+			},
+		],
 	},
-	plugins: plugins
+	plugins,
 };

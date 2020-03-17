@@ -14,40 +14,40 @@ import CustomButton from './../../block-button/components/button';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const {
-	compose,
-	withInstanceId
-} = wp.compose;
-const {
-	getColorClassName,
-	RichText,
-	withColors
-} = wp.blockEditor;
-const {
-	Fragment,
-	Component
-} = wp.element;
-const {
-	TextControl,
-	withFallbackStyles
-} = wp.components;
+const { compose, withInstanceId } = wp.compose;
+const { getColorClassName, RichText, withColors } = wp.blockEditor;
+const { Fragment, Component } = wp.element;
+const { TextControl, withFallbackStyles } = wp.components;
 
 /* Apply fallback styles. */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, textColor, buttonBackgroundColor } = ownProps.attributes;
+	const {
+		backgroundColor,
+		textColor,
+		buttonBackgroundColor,
+	} = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	const computedStyles = editableNode
+		? getComputedStyle( editableNode )
+		: null;
 	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackButtonBackgroundColor: buttonBackgroundColor || ! computedStyles ? undefined : computedStyles.buttonBackgroundColor
+		fallbackBackgroundColor:
+			backgroundColor || ! computedStyles
+				? undefined
+				: computedStyles.backgroundColor,
+		fallbackTextColor:
+			textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackButtonBackgroundColor:
+			buttonBackgroundColor || ! computedStyles
+				? undefined
+				: computedStyles.buttonBackgroundColor,
 	};
-});
+} );
 
 class Edit extends Component {
 	constructor() {
 		super( ...arguments );
-		this.props.setAttributes({ instanceId: this.props.instanceId });
+		this.props.setAttributes( { instanceId: this.props.instanceId } );
 	}
 
 	render() {
@@ -56,10 +56,12 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			buttonBackgroundColor,
-			buttonTextColor
+			buttonTextColor,
 		} = this.props;
 
-		const apiKeyDefined = atomic_blocks_newsletter_block_vars.mailingListProviders.mailchimp.api_key_defined;
+		const apiKeyDefined =
+			atomic_blocks_newsletter_block_vars.mailingListProviders.mailchimp
+				.api_key_defined;
 
 		/* Setup button background color class */
 		let buttonBackgroundColorClass;
@@ -67,7 +69,11 @@ class Edit extends Component {
 		if ( attributes.customButtonBackgroundColor ) {
 			buttonBackgroundColorClass = 'ab-has-custom-background-color';
 		} else {
-			buttonBackgroundColorClass = attributes.buttonBackgroundColor ? 'has-' + attributes.buttonBackgroundColor + '-background-color' : null;
+			buttonBackgroundColorClass = attributes.buttonBackgroundColor
+				? 'has-' +
+				  attributes.buttonBackgroundColor +
+				  '-background-color'
+				: null;
 		}
 
 		/* Setup button text color class */
@@ -76,17 +82,35 @@ class Edit extends Component {
 		if ( attributes.customButtonTextColor ) {
 			buttonTextColorClass = 'ab-has-custom-text-color';
 		} else {
-			buttonTextColorClass = attributes.buttonTextColor ? 'has-' + attributes.buttonTextColor + '-color' : null;
+			buttonTextColorClass = attributes.buttonTextColor
+				? 'has-' + attributes.buttonTextColor + '-color'
+				: null;
 		}
 
 		return [
-			<Inspector { ...{ setAttributes, ...this.props } }/>,
-			<NewsletterContainer { ...this.props }>
+			<Inspector key={ 'ab-newsletter-inspector-' + this.props.clientId } { ...{ setAttributes, ...this.props } } />,
+			<NewsletterContainer key={ 'ab-newsletter-container-' + this.props.clientId } { ...this.props }>
 				{ ! apiKeyDefined && (
 					<Fragment>
 						<div className="ab-newsletter-notice">
-							{ __( 'You must define your newsletter provider API keys to use this block.', 'atomic-blocks' ) }
-							<p><a href={ atomic_blocks_newsletter_block_vars.plugin_settings_page_url } target="_blank" rel="noopener">{ __( 'Configure your settings', 'atomic-blocks' ) }</a></p>
+							{ __(
+								'You must define your newsletter provider API keys to use this block.',
+								'atomic-blocks'
+							) }
+							<p>
+								<a
+									href={
+										atomic_blocks_newsletter_block_vars.plugin_settings_page_url
+									}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{ __(
+										'Configure your settings',
+										'atomic-blocks'
+									) }
+								</a>
+							</p>
 						</div>
 					</Fragment>
 				) }
@@ -98,22 +122,23 @@ class Edit extends Component {
 							keepPlaceholderOnFocus
 							formattingControls={ [] }
 							value={ attributes.emailInputLabel }
-							onChange={ ( value ) => this.props.setAttributes({ emailInputLabel: value }) }
+							onChange={ ( value ) =>
+								this.props.setAttributes( {
+									emailInputLabel: value,
+								} )
+							}
 						/>
 
-						<TextControl
-							name="ab-newsletter-email-address"
-						/>
+						<TextControl name="ab-newsletter-email-address" />
 
-						<div
-							className={ classnames(
-								'ab-block-button',
-							) }
-						>
+						<div className={ classnames( 'ab-block-button' ) }>
 							<CustomButton { ...this.props }>
 								<RichText
 									tagName="span"
-									placeholder={ __( 'Button text...', 'atomic-blocks' ) }
+									placeholder={ __(
+										'Button text...',
+										'atomic-blocks'
+									) }
 									keepPlaceholderOnFocus
 									value={ attributes.buttonText }
 									formattingControls={ [] }
@@ -125,42 +150,52 @@ class Edit extends Component {
 										buttonBackgroundColorClass,
 										buttonTextColorClass,
 										{
-											'has-background': attributes.buttonBackgroundColor || attributes.customButtonBackgroundColor,
-											'has-text-color': attributes.buttonTextColor || attributes.customButtonTextColor
+											'has-background':
+												attributes.buttonBackgroundColor ||
+												attributes.customButtonBackgroundColor,
+											'has-text-color':
+												attributes.buttonTextColor ||
+												attributes.customButtonTextColor,
 										}
 									) }
 									style={ {
-										backgroundColor: buttonBackgroundColor.color,
-										color: buttonTextColor.color
+										backgroundColor:
+											buttonBackgroundColor.color,
+										color: buttonTextColor.color,
 									} }
-									onChange={ ( value ) => this.props.setAttributes({ buttonText: value }) }
+									onChange={ ( value ) =>
+										this.props.setAttributes( {
+											buttonText: value,
+										} )
+									}
 								/>
 							</CustomButton>
 							{ isSelected && (
 								<form
 									key="form-link"
-									className={ `blocks-button__inline-link ab-button-${attributes.buttonAlignment}`}
-									onSubmit={ event => event.preventDefault() }
+									className={ `blocks-button__inline-link ab-button-${ attributes.buttonAlignment }` }
+									onSubmit={ ( event ) =>
+										event.preventDefault()
+									}
 									style={ {
-										textAlign: attributes.buttonAlignment
+										textAlign: attributes.buttonAlignment,
 									} }
-								>
-								</form>
+								></form>
 							) }
 						</div>
 					</Fragment>
 				) }
-			</NewsletterContainer>
+			</NewsletterContainer>,
 		];
 	}
 }
 
-export default compose([
+export default compose( [
 	applyFallbackStyles,
 	withColors(
 		'backgroundColor',
 		{ textColor: 'color' },
 		{ buttonBackgroundColor: 'background-color' },
-		{ buttonTextColor: 'color' },
-	)
-])( withInstanceId( Edit ) );
+		{ buttonTextColor: 'color' }
+	),
+] )( withInstanceId( Edit ) );

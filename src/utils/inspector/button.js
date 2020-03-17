@@ -5,13 +5,8 @@ import RenderSettingControl from '../../utils/components/settings/renderSettingC
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const {
-	SelectControl,
-	ToggleControl
-} = wp.components;
-const {
-	PanelColorSettings
-} = wp.blockEditor;
+const { SelectControl, ToggleControl } = wp.components;
+const { PanelColorSettings } = wp.blockEditor;
 
 export default function ButtonSettings( props ) {
 	const {
@@ -29,80 +24,113 @@ export default function ButtonSettings( props ) {
 		onChangeButtonShape = () => {},
 		enableButtonTarget,
 		buttonTarget,
-		onChangeButtonTarget = () => {}
+		onChangeButtonTarget = () => {},
 	} = props;
 
 	// Button size values
 	const buttonSizeOptions = [
-		{ value: 'ab-button-size-small', label: __( 'Small', 'atomic-blocks' ) },
-		{ value: 'ab-button-size-medium', label: __( 'Medium', 'atomic-blocks' ) },
-		{ value: 'ab-button-size-large', label: __( 'Large', 'atomic-blocks' ) },
-		{ value: 'ab-button-size-extralarge', label: __( 'Extra Large', 'atomic-blocks' ) }
+		{
+			value: 'ab-button-size-small',
+			label: __( 'Small', 'atomic-blocks' ),
+		},
+		{
+			value: 'ab-button-size-medium',
+			label: __( 'Medium', 'atomic-blocks' ),
+		},
+		{
+			value: 'ab-button-size-large',
+			label: __( 'Large', 'atomic-blocks' ),
+		},
+		{
+			value: 'ab-button-size-extralarge',
+			label: __( 'Extra Large', 'atomic-blocks' ),
+		},
 	];
 
 	// Button shape
 	const buttonShapeOptions = [
-		{ value: 'ab-button-shape-square', label: __( 'Square', 'atomic-blocks' ) },
-		{ value: 'ab-button-shape-rounded', label: __( 'Rounded Square', 'atomic-blocks' ) },
-		{ value: 'ab-button-shape-circular', label: __( 'Circular', 'atomic-blocks' ) }
+		{
+			value: 'ab-button-shape-square',
+			label: __( 'Square', 'atomic-blocks' ),
+		},
+		{
+			value: 'ab-button-shape-rounded',
+			label: __( 'Rounded Square', 'atomic-blocks' ),
+		},
+		{
+			value: 'ab-button-shape-circular',
+			label: __( 'Circular', 'atomic-blocks' ),
+		},
 	];
 
 	return (
 		<Fragment>
 			<RenderSettingControl id="ab_button_buttonOptions">
-				{ false != enableButtonTarget && (
+				{ false !== enableButtonTarget && (
 					<ToggleControl
-						label={ __( 'Open link in new window', 'atomic-blocks' ) }
+						label={ __(
+							'Open link in new window',
+							'atomic-blocks'
+						) }
 						checked={ buttonTarget }
 						onChange={ onChangeButtonTarget }
 					/>
 				) }
-				{ false != enableButtonSize && (
+				{ false !== enableButtonSize && (
 					<SelectControl
 						selected={ buttonSize }
 						label={ __( 'Button Size', 'atomic-blocks' ) }
 						value={ buttonSize }
-						options={ buttonSizeOptions.map( ({ value, label }) => ({
-							value: value,
-							label: label
-						}) ) }
+						options={ buttonSizeOptions.map(
+							( { value, label } ) => ( {
+								value,
+								label,
+							} )
+						) }
 						onChange={ onChangeButtonSize }
 					/>
 				) }
-				{ false != enableButtonShape && (
+				{ false !== enableButtonShape && (
 					<SelectControl
 						label={ __( 'Button Shape', 'atomic-blocks' ) }
 						value={ buttonShape }
-						options={ buttonShapeOptions.map( ({ value, label }) => ({
-							value: value,
-							label: label
-						}) ) }
+						options={ buttonShapeOptions.map(
+							( { value, label } ) => ( {
+								value,
+								label,
+							} )
+						) }
 						onChange={ onChangeButtonShape }
 					/>
 				) }
-				{ false != enableButtonBackgroundColor && (
+				{ false !== enableButtonBackgroundColor && (
 					<PanelColorSettings
 						title={ __( 'Button Color', 'atomic-blocks' ) }
 						initialOpen={ false }
-						colorSettings={ [ {
-							value: buttonBackgroundColor,
-							onChange: onChangeButtonColor,
-							label: __( 'Button Color', 'atomic-blocks' )
-						} ] }
-					>
-					</PanelColorSettings>
+						colorSettings={ [
+							{
+								value: buttonBackgroundColor,
+								onChange: onChangeButtonColor,
+								label: __( 'Button Color', 'atomic-blocks' ),
+							},
+						] }
+					></PanelColorSettings>
 				) }
-				{ false != enableButtonTextColor && (
+				{ false !== enableButtonTextColor && (
 					<PanelColorSettings
 						title={ __( 'Button Text Color', 'atomic-blocks' ) }
 						initialOpen={ false }
-						colorSettings={ [ {
-							value: buttonTextColor,
-							onChange: onChangeButtonTextColor,
-							label: __( 'Button Text Color', 'atomic-blocks' )
-						} ] }
-					>
-					</PanelColorSettings>
+						colorSettings={ [
+							{
+								value: buttonTextColor,
+								onChange: onChangeButtonTextColor,
+								label: __(
+									'Button Text Color',
+									'atomic-blocks'
+								),
+							},
+						] }
+					></PanelColorSettings>
 				) }
 			</RenderSettingControl>
 		</Fragment>

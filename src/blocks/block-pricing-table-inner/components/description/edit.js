@@ -7,20 +7,14 @@ const { registerBlockType } = wp.blocks;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 
-const {
-	RichText,
-	withFontSizes,
-	withColors
-} = wp.blockEditor;
+const { RichText, withFontSizes, withColors } = wp.blockEditor;
 
 class Edit extends Component {
-
 	constructor() {
 		super( ...arguments );
 	}
 
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
@@ -31,7 +25,7 @@ class Edit extends Component {
 				paddingTop,
 				paddingRight,
 				paddingBottom,
-				paddingLeft
+				paddingLeft,
 			},
 			isSelected,
 			className,
@@ -39,11 +33,11 @@ class Edit extends Component {
 			fallbackFontSize,
 			fontSize,
 			backgroundColor,
-			textColor
+			textColor,
 		} = this.props;
 
 		// Setup class names
-		const editClassName = classnames({
+		const editClassName = classnames( {
 			'ab-pricing-table-features': true,
 			[ fontSize.class ]: fontSize.class,
 			'has-text-color': textColor.color,
@@ -51,8 +45,8 @@ class Edit extends Component {
 			[ backgroundColor.class ]: backgroundColor.class,
 			[ textColor.class ]: textColor.class,
 			[ borderStyle ]: borderStyle,
-			[ 'ab-list-border-width-' + borderWidth ]: borderWidth
-		});
+			[ 'ab-list-border-width-' + borderWidth ]: borderWidth,
+		} );
 
 		// Setup styles
 		const editStyles = {
@@ -63,31 +57,34 @@ class Edit extends Component {
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 		};
 
 		return [
-			<Fragment>
-				<Inspector
-					{ ...this.props }
-				/>
+			<Fragment key={ 'ab-pricing-table-inner-component-description-' + this.props.clientId }>
+				<Inspector { ...this.props } />
 				<RichText
 					tagName="ul"
 					multiline="li"
 					itemProp="description"
-					placeholder={ __( 'Add a product feature', 'atomic-blocks' ) }
+					placeholder={ __(
+						'Add a product feature',
+						'atomic-blocks'
+					) }
 					keepPlaceholderOnFocus
 					value={ features }
-					onChange={ ( value ) => setAttributes({ features: value }) }
+					onChange={ ( value ) =>
+						setAttributes( { features: value } )
+					}
 					style={ editStyles }
 					className={ editClassName ? editClassName : undefined }
 				/>
-			</Fragment>
+			</Fragment>,
 		];
 	}
 }
 
-export default compose([
+export default compose( [
 	withFontSizes( 'fontSize' ),
-	withColors( 'backgroundColor', { textColor: 'color' })
-])( Edit );
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+] )( Edit );

@@ -1,54 +1,91 @@
 'use strict';
 
-var $ = jQuery;
+const $ = jQuery;
 
-var AtomicBlocksNewsletterSubmission = {
-
-	init: function() {
+const AtomicBlocksNewsletterSubmission = {
+	init() {
 		$( '.ab-newsletter-submit' ).on( 'click', function( event ) {
+			const button = $( this );
 
-			var button = $( this );
+			const button_text_original = button.val();
 
-			var button_text_original = button.val();
+			const form = $( this ).parents( 'form' );
 
-			var form = $( this ).parents( 'form' );
+			const nonce = button
+				.parent()
+				.find( "[name='ab-newsletter-form-nonce']" )
+				.val();
 
-			var nonce = button.parent().find( '[name=\'ab-newsletter-form-nonce\']' ).val();
+			const email = button
+				.parent()
+				.find( "[name='ab-newsletter-email-address']" )
+				.val();
 
-			var email = button.parent().find( '[name=\'ab-newsletter-email-address\']' ).val();
+			const provider = button
+				.parent()
+				.find( "[name='ab-newsletter-mailing-list-provider']" )
+				.val();
 
-			var provider = button.parent().find( '[name=\'ab-newsletter-mailing-list-provider\']' ).val();
+			const list = button
+				.parent()
+				.find( "[name='ab-newsletter-mailing-list']" )
+				.val();
 
-			var list = button.parent().find( '[name=\'ab-newsletter-mailing-list\']' ).val();
+			const successMessage = button
+				.parent()
+				.find( "[name='ab-newsletter-success-message']" )
+				.val();
 
-			var successMessage = button.parent().find( '[name=\'ab-newsletter-success-message\']' ).val();
+			const errorMessageContainer = button
+				.parents( '.ab-block-newsletter' )
+				.find( '.ab-block-newsletter-errors' );
 
-			var errorMessageContainer = button.parents( '.ab-block-newsletter' ).find( '.ab-block-newsletter-errors' );
+			const ampEndpoint = button
+				.parent()
+				.find( "[name='ab-newsletter-amp-endpoint-request']" )
+				.val();
 
-			var ampEndpoint = button.parent().find( '[name=\'ab-newsletter-amp-endpoint-request\']' ).val();
-
-			var doubleOptIn = button.parent().find( '[name=\'ab-newsletter-double-opt-in\']' ).val();
+			const doubleOptIn = button
+				.parent()
+				.find( "[name='ab-newsletter-double-opt-in']" )
+				.val();
 
 			event.preventDefault();
 
-			wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_processing );
+			wp.a11y.speak(
+				atomic_blocks_newsletter_vars.l10n.a11y.submission_processing
+			);
 
-			button.val( atomic_blocks_newsletter_vars.l10n.button_text_processing ).prop( 'disabled', true );
+			button
+				.val(
+					atomic_blocks_newsletter_vars.l10n.button_text_processing
+				)
+				.prop( 'disabled', true );
 
 			if ( ! email ) {
 				setTimeout( function() {
-					button.val( button_text_original ).prop( 'disabled', false );
-					wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_failed );
+					button
+						.val( button_text_original )
+						.prop( 'disabled', false );
+					wp.a11y.speak(
+						atomic_blocks_newsletter_vars.l10n.a11y
+							.submission_failed
+					);
 				}, 400 );
 				return;
 			}
 
 			if ( ! provider || ! list ) {
-				form.html( '<p class="ab-newsletter-submission-message">' + atomic_blocks_newsletter_vars.l10n.invalid_configuration + '</p>' );
+				form.html(
+					'<p class="ab-newsletter-submission-message">' +
+						atomic_blocks_newsletter_vars.l10n
+							.invalid_configuration +
+						'</p>'
+				);
 				return;
 			}
 
-			$.ajax({
+			$.ajax( {
 				data: {
 					action: 'atomic_blocks_newsletter_submission',
 					'ab-newsletter-email-address': email,
@@ -57,36 +94,54 @@ var AtomicBlocksNewsletterSubmission = {
 					'ab-newsletter-form-nonce': nonce,
 					'ab-newsletter-success-message': successMessage,
 					'ab-newsletter-amp-endpoint-request': ampEndpoint,
-					'ab-newsletter-double-opt-in': doubleOptIn
+					'ab-newsletter-double-opt-in': doubleOptIn,
 				},
 				type: 'post',
 				url: atomic_blocks_newsletter_vars.ajaxurl,
-				success: function( response ) {
+				success( response ) {
 					if ( response.success ) {
-						form.html( '<p class="ab-newsletter-submission-message">' + response.data.message + '</p>' );
-						wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_succeeded );
+						form.html(
+							'<p class="ab-newsletter-submission-message">' +
+								response.data.message +
+								'</p>'
+						);
+						wp.a11y.speak(
+							atomic_blocks_newsletter_vars.l10n.a11y
+								.submission_succeeded
+						);
 					}
 
 					if ( ! response.success ) {
-						errorMessageContainer.html( '<p>' + response.data.message + '</p>' ).fadeIn();
-						button.val( button_text_original ).prop( 'disabled', false );
-						wp.a11y.speak( atomic_blocks_newsletter_vars.l10n.a11y.submission_failed );
+						errorMessageContainer
+							.html( '<p>' + response.data.message + '</p>' )
+							.fadeIn();
+						button
+							.val( button_text_original )
+							.prop( 'disabled', false );
+						wp.a11y.speak(
+							atomic_blocks_newsletter_vars.l10n.a11y
+								.submission_failed
+						);
 					}
-
 				},
-				failure: function( response ) {
-					errorMessageContainer.html( '<p>' + response.data.message + '</p>' ).fadeIn();
-				}
+				failure( response ) {
+					errorMessageContainer
+						.html( '<p>' + response.data.message + '</p>' )
+						.fadeIn();
+				},
+			} );
+		} );
 
-			});
-		});
-
-		$( '.ab-newsletter-email-address-input' ).on( 'keyup', function( event ) {
-			$( '.ab-block-newsletter-errors' ).html( '' ).fadeOut();
-		});
-	}
+		$( '.ab-newsletter-email-address-input' ).on( 'keyup', function(
+			event
+		) {
+			$( '.ab-block-newsletter-errors' )
+				.html( '' )
+				.fadeOut();
+		} );
+	},
 };
 
 $( document ).ready( function() {
 	AtomicBlocksNewsletterSubmission.init();
-});
+} );

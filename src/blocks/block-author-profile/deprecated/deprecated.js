@@ -11,95 +11,92 @@ export const Author_Profile_1_8_1_attributes = {
 	profileName: {
 		type: 'array',
 		source: 'children',
-		selector: '.ab-profile-name'
+		selector: '.ab-profile-name',
 	},
 	profileTitle: {
 		type: 'array',
 		source: 'children',
-		selector: '.ab-profile-title'
+		selector: '.ab-profile-title',
 	},
 	profileContent: {
 		type: 'array',
 		selector: '.ab-profile-text',
-		source: 'children'
+		source: 'children',
 	},
 	profileAlignment: {
-		type: 'string'
+		type: 'string',
 	},
 	profileImgURL: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'src',
-		selector: 'img'
+		selector: 'img',
 	},
 	profileImgID: {
-		type: 'number'
+		type: 'number',
 	},
 	profileBackgroundColor: {
 		type: 'string',
-		default: '#f2f2f2'
+		default: '#f2f2f2',
 	},
 	profileTextColor: {
 		type: 'string',
-		default: '#32373c'
+		default: '#32373c',
 	},
 	profileLinkColor: {
 		type: 'string',
-		default: '#392f43'
+		default: '#392f43',
 	},
 	profileFontSize: {
 		type: 'number',
-		default: 18
+		default: 18,
 	},
 	profileAvatarShape: {
 		type: 'string',
-		default: 'square'
+		default: 'square',
 	},
 	twitter: {
-		type: 'url'
+		type: 'url',
 	},
 	facebook: {
-		type: 'url'
+		type: 'url',
 	},
 	instagram: {
-		type: 'url'
+		type: 'url',
 	},
 	pinterest: {
-		type: 'url'
+		type: 'url',
 	},
 	google: {
-		type: 'url'
+		type: 'url',
 	},
 	youtube: {
-		type: 'url'
+		type: 'url',
 	},
 	github: {
-		type: 'url'
+		type: 'url',
 	},
 	linkedin: {
-		type: 'url'
+		type: 'url',
 	},
 	email: {
-		type: 'url'
+		type: 'url',
 	},
 	website: {
-		type: 'url'
-	}
+		type: 'url',
+	},
 };
 
-export const Author_Profile_1_8_1_save = props => {
-	return (
-		<Save_1_8_1 { ...props } />
-	);
+export const Author_Profile_1_8_1_save = ( props ) => {
+	return <Save_1_8_1 { ...props } />;
 };
 
 const Deprecated = [
-
 	/* Version 1.8.1. */
 	{
 		attributes: Author_Profile_1_8_1_attributes,
-		save: Author_Profile_1_8_1_save
-	}
+		save: Author_Profile_1_8_1_save,
+	},
 ];
 
 export default Deprecated;

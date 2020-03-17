@@ -12,13 +12,7 @@ import classnames from 'classnames';
  * Create a ShareLinks wrapper Component
  */
 export default class ShareLinks extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		return (
 			<div
 				className={ classnames(
@@ -27,7 +21,9 @@ export default class ShareLinks extends Component {
 					this.props.attributes.shareButtonShape,
 					this.props.attributes.shareButtonSize,
 					this.props.attributes.shareButtonColor,
-					this.props.attributes.shareAlignment ? 'ab-align-' + this.props.attributes.shareAlignment : undefined,
+					this.props.attributes.shareAlignment
+						? 'ab-align-' + this.props.attributes.shareAlignment
+						: undefined,
 					'ab-block-sharing'
 				) }
 			>

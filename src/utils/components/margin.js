@@ -4,7 +4,6 @@ const { RangeControl } = wp.components;
 
 export default function Margin( props ) {
 	const {
-
 		// Margin top props
 		marginTop,
 		marginTopLabel,
@@ -51,14 +50,18 @@ export default function Margin( props ) {
 		marginEnableHorizontal,
 		marginHorizontalMin,
 		marginHorizontalMax,
-		onChangeMarginHorizontal = () => {}
+		onChangeMarginHorizontal = () => {},
 	} = props;
 
 	return (
 		<Fragment>
 			{ marginEnableTop && (
 				<RangeControl
-					label={ marginTopLabel ? marginTopLabel : __( 'Margin Top', 'atomic-blocks' ) }
+					label={
+						marginTopLabel
+							? marginTopLabel
+							: __( 'Margin Top', 'atomic-blocks' )
+					}
 					value={ marginTop }
 					min={ marginTopMin }
 					max={ marginTopMax }
@@ -67,7 +70,11 @@ export default function Margin( props ) {
 			) }
 			{ marginEnableRight && (
 				<RangeControl
-					label={ marginRightLabel ? marginRightLabel : __( 'Margin Right', 'atomic-blocks' ) }
+					label={
+						marginRightLabel
+							? marginRightLabel
+							: __( 'Margin Right', 'atomic-blocks' )
+					}
 					value={ marginRight }
 					min={ marginRightMin }
 					max={ marginRightMax }
@@ -76,7 +83,11 @@ export default function Margin( props ) {
 			) }
 			{ marginEnableBottom && (
 				<RangeControl
-					label={ marginBottomLabel ? marginBottomLabel : __( 'Margin Bottom', 'atomic-blocks' ) }
+					label={
+						marginBottomLabel
+							? marginBottomLabel
+							: __( 'Margin Bottom', 'atomic-blocks' )
+					}
 					value={ marginBottom }
 					min={ marginBottomMin }
 					max={ marginBottomMax }
@@ -85,7 +96,11 @@ export default function Margin( props ) {
 			) }
 			{ marginEnableLeft && (
 				<RangeControl
-					label={ marginLeftLabel ? marginLeftLabel : __( 'Margin Left', 'atomic-blocks' ) }
+					label={
+						marginLeftLabel
+							? marginLeftLabel
+							: __( 'Margin Left', 'atomic-blocks' )
+					}
 					value={ marginLeft }
 					min={ marginLeftMin }
 					max={ marginLeftMax }
@@ -94,7 +109,11 @@ export default function Margin( props ) {
 			) }
 			{ marginEnableVertical && (
 				<RangeControl
-					label={ marginVerticalLabel ? marginVerticalLabel : __( 'Margin Vertical', 'atomic-blocks' ) }
+					label={
+						marginVerticalLabel
+							? marginVerticalLabel
+							: __( 'Margin Vertical', 'atomic-blocks' )
+					}
 					value={ marginVertical }
 					min={ marginVerticalMin }
 					max={ marginVerticalMax }
@@ -103,7 +122,11 @@ export default function Margin( props ) {
 			) }
 			{ marginEnableHorizontal && (
 				<RangeControl
-					label={ marginHorizontalLabel ? marginHorizontalLabel : __( 'Margin Horizontal', 'atomic-blocks' ) }
+					label={
+						marginHorizontalLabel
+							? marginHorizontalLabel
+							: __( 'Margin Horizontal', 'atomic-blocks' )
+					}
 					value={ marginHorizontal }
 					min={ marginHorizontalMin }
 					max={ marginHorizontalMax }

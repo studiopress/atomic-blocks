@@ -16,41 +16,39 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	InnerBlocks,
-	withColors
+	withColors,
 } = wp.blockEditor;
 
 class Edit extends Component {
-
 	constructor() {
 		super( ...arguments );
 	}
 
 	render() {
-
-		const {
-			attributes,
-			setAttributes
-		} = this.props;
+		const { attributes, setAttributes } = this.props;
 
 		const toolbarControls = [
 			{
 				icon: 'arrow-up-alt2',
 				title: __( 'Vertical Align Top', 'atomic-blocks' ),
 				isActive: 'top' === attributes.columnVerticalAlignment,
-				onClick: () => setAttributes({ columnVerticalAlignment: 'top' })
+				onClick: () =>
+					setAttributes( { columnVerticalAlignment: 'top' } ),
 			},
 			{
 				icon: 'minus',
 				title: __( 'Vertical Align Middle', 'atomic-blocks' ),
 				isActive: 'center' === attributes.columnVerticalAlignment,
-				onClick: () => setAttributes({ columnVerticalAlignment: 'center' })
+				onClick: () =>
+					setAttributes( { columnVerticalAlignment: 'center' } ),
 			},
 			{
 				icon: 'arrow-down-alt2',
 				title: __( 'Vertical Align Bottom', 'atomic-blocks' ),
 				isActive: 'bottom' === attributes.columnVerticalAlignment,
-				onClick: () => setAttributes({ columnVerticalAlignment: 'bottom' })
-			}
+				onClick: () =>
+					setAttributes( { columnVerticalAlignment: 'bottom' } ),
+			},
 		];
 
 		return [
@@ -58,14 +56,13 @@ class Edit extends Component {
 				<AlignmentToolbar
 					value={ attributes.textAlign }
 					onChange={ ( value ) => {
-						setAttributes({ textAlign: value });
+						setAttributes( { textAlign: value } );
 					} }
 				/>
 				<Toolbar controls={ toolbarControls } />
 			</BlockControls>,
-			<Inspector { ...this.props } key="inspector"/>,
+			<Inspector { ...this.props } key="inspector" />,
 			<Column
-
 				/* Pass through the live color value to the Column component */
 				backgroundColorValue={ this.props.backgroundColor.color }
 				textColorValue={ this.props.textColor.color }
@@ -76,14 +73,11 @@ class Edit extends Component {
 					templateLock={ false }
 					templateInsertUpdatesSelection={ false }
 				/>
-			</Column>
+			</Column>,
 		];
 	}
 }
 
-export default compose([
-	withColors(
-		'backgroundColor',
-		{ textColor: 'color' },
-	)
-])( Edit );
+export default compose( [
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+] )( Edit );

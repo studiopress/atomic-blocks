@@ -16,7 +16,7 @@ const {
 	getFontSizeClass,
 	FontSizePicker,
 	withFontSizes,
-	getColorClassName
+	getColorClassName,
 } = wp.blockEditor;
 
 // Register the block
@@ -29,84 +29,83 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'subtitle', 'atomic-blocks' ),
-		__( 'shop', 'atomic-blocks' )
+		__( 'shop', 'atomic-blocks' ),
 	],
 
 	attributes: {
 		buttonText: {
-			type: 'string'
+			type: 'string',
 		},
 		buttonUrl: {
 			type: 'string',
-            source: 'attribute',
-            selector: 'a',
-            attribute: 'href'
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
 		},
 		buttonAlignment: {
-			type: 'string'
+			type: 'string',
 		},
 		buttonBackgroundColor: {
 			type: 'string',
-			default: '#3373dc'
+			default: '#3373dc',
 		},
 		buttonTextColor: {
 			type: 'string',
-			default: '#ffffff'
+			default: '#ffffff',
 		},
 		buttonSize: {
 			type: 'string',
-			default: 'ab-button-size-medium'
+			default: 'ab-button-size-medium',
 		},
 		buttonShape: {
 			type: 'string',
-			default: 'ab-button-shape-rounded'
+			default: 'ab-button-shape-rounded',
 		},
 		buttonTarget: {
 			type: 'boolean',
-			default: false
+			default: false,
 		},
 		fontSize: {
-			type: 'string'
+			type: 'string',
 		},
 		customFontSize: {
-			type: 'number'
+			type: 'number',
 		},
 		textColor: {
-			type: 'string'
+			type: 'string',
 		},
 		customTextColor: {
-			type: 'string'
+			type: 'string',
 		},
 		backgroundColor: {
-			type: 'string'
+			type: 'string',
 		},
 		customBackgroundColor: {
-			type: 'string'
+			type: 'string',
 		},
 		paddingTop: {
 			type: 'number',
-			default: 10
+			default: 10,
 		},
 		paddingRight: {
 			type: 'number',
-			default: 20
+			default: 20,
 		},
 		paddingBottom: {
 			type: 'number',
-			default: 10
+			default: 10,
 		},
 		paddingLeft: {
 			type: 'number',
-			default: 20
-		}
+			default: 20,
+		},
 	},
 
 	// Render the block components
 	edit: Edit,
 
 	// Save the attributes and markup
-	save: function( props ) {
-
+	save( props ) {
 		// Setup the attributes
 		const {
 			backgroundColor,
@@ -122,26 +121,31 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 			buttonTextColor,
 			buttonSize,
 			buttonShape,
-			buttonTarget
+			buttonTarget,
 		} = props.attributes;
 
 		// Retreive the getColorClassName
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+		const backgroundClass = getColorClassName(
+			'background-color',
+			backgroundColor
+		);
 
 		// Setup class names
-		const className = classnames({
+		const className = classnames( {
 			'has-background': backgroundColor || customBackgroundColor,
 			'ab-pricing-table-button': true,
-			[ backgroundClass ]: backgroundClass
-		});
+			[ backgroundClass ]: backgroundClass,
+		} );
 
 		// Setup styles
 		const styles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			backgroundColor: backgroundClass
+				? undefined
+				: customBackgroundColor,
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 		};
 
 		// Save the block markup for the front end
@@ -151,8 +155,8 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 				style={ styles }
 			>
 				<CustomButton { ...props }>
-					{	// Check if there is button text and output
-						buttonText && (
+					{ // Check if there is button text and output
+					buttonText && (
 						<a
 							href={ buttonUrl }
 							target={ buttonTarget ? '_blank' : null }
@@ -160,20 +164,18 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-button', {
 							className={ classnames(
 								'ab-button',
 								buttonShape,
-								buttonSize,
+								buttonSize
 							) }
 							style={ {
 								color: buttonTextColor,
-								backgroundColor: buttonBackgroundColor
+								backgroundColor: buttonBackgroundColor,
 							} }
 						>
-							<RichText.Content
-								value={ buttonText }
-							/>
+							<RichText.Content value={ buttonText } />
 						</a>
 					) }
 				</CustomButton>
 			</div>
 		);
-	}
-});
+	},
+} );
