@@ -1,24 +1,6 @@
 version: 2.1
 
 jobs:
-  php-56:
-    docker:
-      - image: wordpress:php5.6-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-          USE_ZEND_ALLOC: 0
-      - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: youremptytestdbnamehere
-          MYSQL_USER: yourusernamehere
-          MYSQL_PASSWORD: yourpasswordhere
-          MYSQL_ROOT_PASSWORD: wordpress
-    steps:
-      - prepare-environment
-      - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpunit
-
   php-71:
     docker:
       - image: wordpress:php7.1-fpm-alpine
@@ -109,14 +91,13 @@ commands:
           path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install -g npm && npm install --no-package-lock
+          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
 
 workflows:
   version: 2
   test:
     jobs:
       - atomic-blocks-cs
-      - php-56
       - php-71
       - php-72
       - php-73
