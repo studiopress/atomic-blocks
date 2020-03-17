@@ -8,9 +8,9 @@ window.addEventListener( 'DOMContentLoaded', function() {
 
 		// Sets up default state for settings tabs and settings visibility.
 		setUpDefaultStates() {
-			let tab = 'general';
+			var tab = 'general';
 
-			const saved_tab = this.getActiveTabState();
+			var saved_tab = this.getActiveTabState();
 
 			if ( saved_tab ) {
 				tab = saved_tab.substring( 1 );
@@ -49,7 +49,7 @@ window.addEventListener( 'DOMContentLoaded', function() {
 
 		// Handles tab switching functionality.
 		switchTab( target, hash ) {
-			const tab = target.data( 'tab' );
+			var tab = target.data( 'tab' );
 			window.location.hash = hash;
 			target
 				.parent()

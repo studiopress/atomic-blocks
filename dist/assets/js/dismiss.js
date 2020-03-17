@@ -12,14 +12,14 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 }
 
 document.addEventListener( 'DOMContentLoaded', function() {
-	const notices = document.querySelectorAll(
+	var notices = document.querySelectorAll(
 		'.ab-block-notice.ab-dismissable[data-id]'
 	);
 
 	notices.forEach( function( element ) {
-		const uid = element.getAttribute( 'data-id' );
+		var uid = element.getAttribute( 'data-id' );
 
-		const dismissible = element.querySelector( '.ab-notice-dismiss' );
+		var dismissible = element.querySelector( '.ab-notice-dismiss' );
 
 		if ( ! localStorage.getItem( 'notice-' + uid ) ) {
 			element.style.display = 'block';

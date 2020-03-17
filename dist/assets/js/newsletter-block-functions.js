@@ -1,51 +1,51 @@
 'use strict';
 
-const $ = jQuery;
+var $ = jQuery;
 
-const AtomicBlocksNewsletterSubmission = {
+var AtomicBlocksNewsletterSubmission = {
 	init() {
 		$( '.ab-newsletter-submit' ).on( 'click', function( event ) {
-			const button = $( this );
+			var button = $( this );
 
-			const button_text_original = button.val();
+			var button_text_original = button.val();
 
-			const form = $( this ).parents( 'form' );
+			var form = $( this ).parents( 'form' );
 
-			const nonce = button
+			var nonce = button
 				.parent()
 				.find( "[name='ab-newsletter-form-nonce']" )
 				.val();
 
-			const email = button
+			var email = button
 				.parent()
 				.find( "[name='ab-newsletter-email-address']" )
 				.val();
 
-			const provider = button
+			var provider = button
 				.parent()
 				.find( "[name='ab-newsletter-mailing-list-provider']" )
 				.val();
 
-			const list = button
+			var list = button
 				.parent()
 				.find( "[name='ab-newsletter-mailing-list']" )
 				.val();
 
-			const successMessage = button
+			var successMessage = button
 				.parent()
 				.find( "[name='ab-newsletter-success-message']" )
 				.val();
 
-			const errorMessageContainer = button
+			var errorMessageContainer = button
 				.parents( '.ab-block-newsletter' )
 				.find( '.ab-block-newsletter-errors' );
 
-			const ampEndpoint = button
+			var ampEndpoint = button
 				.parent()
 				.find( "[name='ab-newsletter-amp-endpoint-request']" )
 				.val();
 
-			const doubleOptIn = button
+			var doubleOptIn = button
 				.parent()
 				.find( "[name='ab-newsletter-double-opt-in']" )
 				.val();
