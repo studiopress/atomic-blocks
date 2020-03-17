@@ -10,10 +10,6 @@ const { Component } = wp.element;
 const { RichText } = wp.blockEditor;
 
 export default class Save extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const {
 			testimonialName,
@@ -21,17 +17,16 @@ export default class Save extends Component {
 			testimonialContent,
 			testimonialAlignment,
 			testimonialImgURL,
-			testimonialTextColor
+			testimonialTextColor,
 		} = this.props.attributes;
 
 		return (
-
 			<Testimonial { ...this.props }>
 				<RichText.Content
 					tagName="div"
 					className="ab-testimonial-text"
 					style={ {
-						textAlign: testimonialAlignment
+						textAlign: testimonialAlignment,
 					} }
 					value={ testimonialContent }
 				/>
@@ -54,7 +49,9 @@ export default class Save extends Component {
 							tagName="h2"
 							className="ab-testimonial-name"
 							style={ {
-								color: testimonialTextColor ? testimonialTextColor : '#32373c'
+								color: testimonialTextColor
+									? testimonialTextColor
+									: '#32373c',
 							} }
 							value={ testimonialName }
 						/>
@@ -65,7 +62,9 @@ export default class Save extends Component {
 							tagName="small"
 							className="ab-testimonial-title"
 							style={ {
-								color: testimonialTextColor ? testimonialTextColor : '#32373c'
+								color: testimonialTextColor
+									? testimonialTextColor
+									: '#32373c',
 							} }
 							value={ testimonialTitle }
 						/>

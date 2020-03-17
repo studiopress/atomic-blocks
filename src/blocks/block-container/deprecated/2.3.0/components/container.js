@@ -12,13 +12,11 @@ import classnames from 'classnames';
  * Create a Button wrapper Component
  */
 export default class Container_2_3_0 extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
 
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
@@ -34,27 +32,41 @@ export default class Container_2_3_0 extends Component {
 				containerMaxWidth,
 				containerImgURL,
 				containerImgAlt,
-				containerDimRatio
-			}
+				containerDimRatio,
+			},
 		} = this.props;
 
 		const styles = {
-			backgroundColor: containerBackgroundColor ? containerBackgroundColor : undefined,
+			backgroundColor: containerBackgroundColor
+				? containerBackgroundColor
+				: undefined,
 			textAlign: containerAlignment ? containerAlignment : undefined,
-			paddingLeft: containerPaddingLeft ? `${containerPaddingLeft}%` : undefined,
-			paddingRight: containerPaddingRight ? `${containerPaddingRight}%` : undefined,
-			paddingBottom: containerPaddingBottom ? `${containerPaddingBottom}%` : undefined,
-			paddingTop: containerPaddingTop ? `${containerPaddingTop}%` : undefined,
-			marginTop: containerMarginTop ? `${containerMarginTop}%` : undefined,
-			marginBottom: containerMarginBottom ? `${containerMarginBottom}%` : undefined
+			paddingLeft: containerPaddingLeft
+				? `${ containerPaddingLeft }%`
+				: undefined,
+			paddingRight: containerPaddingRight
+				? `${ containerPaddingRight }%`
+				: undefined,
+			paddingBottom: containerPaddingBottom
+				? `${ containerPaddingBottom }%`
+				: undefined,
+			paddingTop: containerPaddingTop
+				? `${ containerPaddingTop }%`
+				: undefined,
+			marginTop: containerMarginTop
+				? `${ containerMarginTop }%`
+				: undefined,
+			marginBottom: containerMarginBottom
+				? `${ containerMarginBottom }%`
+				: undefined,
 		};
 
-		const className = classnames([
-			this.props.className,
-			'ab-block-container'
-		], {
-			[ 'align' + containerWidth ]: containerWidth
-		});
+		const className = classnames(
+			[ this.props.className, 'ab-block-container' ],
+			{
+				[ 'align' + containerWidth ]: containerWidth,
+			}
+		);
 
 		return (
 			<div
@@ -69,7 +81,8 @@ export default class Container_2_3_0 extends Component {
 									'ab-container-image',
 									dimRatioToClass( containerDimRatio ),
 									{
-										'has-background-dim': 0 !== containerDimRatio
+										'has-background-dim':
+											0 !== containerDimRatio,
 									}
 								) }
 								src={ containerImgURL }
@@ -81,7 +94,7 @@ export default class Container_2_3_0 extends Component {
 					<div
 						className="ab-container-content"
 						style={ {
-							maxWidth: `${containerMaxWidth}px`
+							maxWidth: `${ containerMaxWidth }px`,
 						} }
 					>
 						{ this.props.children }
@@ -93,7 +106,7 @@ export default class Container_2_3_0 extends Component {
 }
 
 function dimRatioToClass( ratio ) {
-	return ( 0 === ratio || 50 === ratio ) ?
-		null :
-		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
+	return 0 === ratio || 50 === ratio
+		? null
+		: 'has-background-dim-' + 10 * Math.round( ratio / 10 );
 }

@@ -1,13 +1,13 @@
 'use strict';
 window.addEventListener( 'DOMContentLoaded', function() {
 	var AtomicBlocksSettings = {
-		init: function() {
+		init() {
 			this.addListeners();
 			this.setUpDefaultStates();
 		},
 
 		// Sets up default state for settings tabs and settings visibility.
-		setUpDefaultStates: function() {
+		setUpDefaultStates() {
 			var tab = 'general';
 
 			var saved_tab = this.getActiveTabState();
@@ -24,50 +24,68 @@ window.addEventListener( 'DOMContentLoaded', function() {
 
 			jQuery( 'div[class^="atomic-blocks-settings-"]' ).hide();
 			jQuery( '#atomic-blocks-settings .tab-content' ).hide();
-			jQuery( '.inline-list' ).find( 'li' ).removeClass( 'current' );
-			jQuery( '.atomic-blocks-settings-tab-' + tab ).addClass( 'current' ).blur();
-			jQuery( '#atomic-blocks-settings' ).find( '.atomic-blocks-settings-' + tab ).show();
+			jQuery( '.inline-list' )
+				.find( 'li' )
+				.removeClass( 'current' );
+			jQuery( '#atomic-blocks-settings-tab-' + tab )
+				.addClass( 'current' )
+				.blur();
+			jQuery( '#atomic-blocks-settings' )
+				.find( '#atomic-blocks-settings-' + tab )
+				.show();
 		},
 
 		// Adds event listeners.
-		addListeners: function() {
+		addListeners() {
 			jQuery( '.inline-list a' ).on( 'click', function( event ) {
 				event.preventDefault();
-				AtomicBlocksSettings.switchTab( jQuery( this ), event.target.hash );
+				AtomicBlocksSettings.switchTab(
+					jQuery( this ),
+					event.target.hash
+				);
 				AtomicBlocksSettings.saveActiveTabState( event.target.hash );
-			});
+			} );
 		},
 
 		// Handles tab switching functionality.
-		switchTab: function( target, hash ) {
+		switchTab( target, hash ) {
 			var tab = target.data( 'tab' );
 			window.location.hash = hash;
-			target.parent().siblings().removeClass( 'current' );
-			target.parent().addClass( 'current' ).blur();
-			jQuery( 'div[class^="atomic-blocks-settings-"]' ).hide();
+			target
+				.parent()
+				.siblings()
+				.removeClass( 'current' );
+			target
+				.parent()
+				.addClass( 'current' )
+				.blur();
 			jQuery( '#atomic-blocks-settings .tab-content' ).hide();
-			jQuery( '#atomic-blocks-settings' ).find( '.atomic-blocks-settings-' + tab ).show();
+			jQuery( '#atomic-blocks-settings' )
+				.find( '#atomic-blocks-settings-' + tab )
+				.show();
 		},
 
 		// Returns the active tab stored in session storage.
-		getActiveTabState: function() {
+		getActiveTabState() {
 			if ( 'undefined' === typeof sessionStorage ) {
 				return;
 			}
 
-			return sessionStorage.getItem( 'atomic_blocks_settings_active_tab' );
+			return sessionStorage.getItem(
+				'atomic_blocks_settings_active_tab'
+			);
 		},
 
 		// Saves the active tab in session storage.
-		saveActiveTabState: function( tab ) {
+		saveActiveTabState( tab ) {
 			if ( 'undefined' === typeof sessionStorage ) {
 				return;
 			}
 
 			sessionStorage.setItem( 'atomic_blocks_settings_active_tab', tab );
-		}
+		},
 	};
 
 	// Bootstrap the settings page.
 	AtomicBlocksSettings.init();
-});
+} );

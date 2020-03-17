@@ -7,15 +7,14 @@ import icons from './icons';
 const { __ } = wp.i18n;
 
 const columnLayouts = {
-
 	/* 1 column layout. */
 	1: [
 		{
 			name: __( '1 Column', 'atomic-blocks' ),
 			key: 'ab-1-col-equal',
 			col: 1,
-			icon: icons.oneEqual
-		}
+			icon: icons.oneEqual,
+		},
 	],
 
 	/* 2 column layouts. */
@@ -24,20 +23,20 @@ const columnLayouts = {
 			name: __( '2 Columns - 50/50', 'atomic-blocks' ),
 			key: 'ab-2-col-equal',
 			col: 2,
-			icon: icons.twoEqual
+			icon: icons.twoEqual,
 		},
 		{
 			name: __( '2 Columns - 75/25', 'atomic-blocks' ),
 			key: 'ab-2-col-wideleft',
 			col: 2,
-			icon: icons.twoLeftWide
+			icon: icons.twoLeftWide,
 		},
 		{
 			name: __( '2 Columns - 25/75', 'atomic-blocks' ),
 			key: 'ab-2-col-wideright',
 			col: 2,
-			icon: icons.twoRightWide
-		}
+			icon: icons.twoRightWide,
+		},
 	],
 
 	/* 3 column layouts. */
@@ -46,26 +45,26 @@ const columnLayouts = {
 			name: __( '3 Columns - 33/33/33', 'atomic-blocks' ),
 			key: 'ab-3-col-equal',
 			col: 3,
-			icon: icons.threeEqual
+			icon: icons.threeEqual,
 		},
 		{
 			name: __( '3 Columns - 25/50/25', 'atomic-blocks' ),
 			key: 'ab-3-col-widecenter',
 			col: 3,
-			icon: icons.threeWideCenter
+			icon: icons.threeWideCenter,
 		},
 		{
 			name: __( '3 Columns - 50/25/25', 'atomic-blocks' ),
 			key: 'ab-3-col-wideleft',
 			col: 3,
-			icon: icons.threeWideLeft
+			icon: icons.threeWideLeft,
 		},
 		{
 			name: __( '3 Columns - 25/25/50', 'atomic-blocks' ),
 			key: 'ab-3-col-wideright',
 			col: 3,
-			icon: icons.threeWideRight
-		}
+			icon: icons.threeWideRight,
+		},
 	],
 
 	/* 4 column layouts. */
@@ -74,20 +73,20 @@ const columnLayouts = {
 			name: __( '4 Columns - 25/25/25/25', 'atomic-blocks' ),
 			key: 'ab-4-col-equal',
 			col: 4,
-			icon: icons.fourEqual
+			icon: icons.fourEqual,
 		},
 		{
 			name: __( '4 Columns - 40/20/20/20', 'atomic-blocks' ),
 			key: 'ab-4-col-wideleft',
 			col: 4,
-			icon: icons.fourLeft
+			icon: icons.fourLeft,
 		},
 		{
 			name: __( '4 Columns - 20/20/20/40', 'atomic-blocks' ),
 			key: 'ab-4-col-wideright',
 			col: 4,
-			icon: icons.fourRight
-		}
+			icon: icons.fourRight,
+		},
 	],
 
 	/* 5 column layouts. */
@@ -96,8 +95,8 @@ const columnLayouts = {
 			name: __( '5 Columns', 'atomic-blocks' ),
 			key: 'ab-5-col-equal',
 			col: 5,
-			icon: icons.fiveEqual
-		}
+			icon: icons.fiveEqual,
+		},
 	],
 
 	/* 6 column layouts. */
@@ -106,9 +105,9 @@ const columnLayouts = {
 			name: __( '6 Columns', 'atomic-blocks' ),
 			key: 'ab-6-col-equal',
 			col: 6,
-			icon: icons.sixEqual
-		}
-	]
+			icon: icons.sixEqual,
+		},
+	],
 };
 
 export default columnLayouts;

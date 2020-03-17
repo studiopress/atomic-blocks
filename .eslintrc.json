@@ -1,17 +1,21 @@
 {
-	"extends": "wordpress",
-	"env": {
-		"es6": true
-	},
-	"parser": "babel-eslint",
-	"parserOptions": {
-		"sourceType": "module",
-		"ecmaVersion": 6,
-		"ecmaFeatures": {
-			"jsx": true
-		}
-	},
-	"rules": {
-		"camelcase": 0
-	}
+  "extends": [
+	"plugin:@wordpress/eslint-plugin/recommended"
+  ],
+  "rules": {
+	"prettier/prettier": "off",
+	"no-useless-constructor": "off",
+	"camelcase": "off",
+	"@wordpress/no-unused-vars-before-return": "off",
+	"no-unused-vars": "off",
+	"no-undef": "off",
+	"no-shadow": "off",
+	"jsx-a11y/anchor-is-valid": "off",
+	"no-console": "off",
+	"jsx-a11y/click-events-have-key-events": "off",
+	"jsx-a11y/interactive-supports-focus": "off",
+	"no-unused-expressions": "off",
+	"no-var": "off",
+	"no-duplicate-imports": "off"
+  }
 }

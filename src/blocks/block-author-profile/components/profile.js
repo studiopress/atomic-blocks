@@ -10,13 +10,11 @@ import classnames from 'classnames';
 
 /* Create a profile box wrapper Component */
 export default class ProfileBox extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
 
 	render() {
-
 		/* Setup the attributes */
 		const {
 			profileAlignment,
@@ -24,24 +22,25 @@ export default class ProfileBox extends Component {
 			profileFontSize,
 			profileBackgroundColor,
 			profileTextColor,
-			profileAvatarShape
+			profileAvatarShape,
 		} = this.props.attributes;
 
 		return (
 			<div
-			style={ {
-				backgroundColor: profileBackgroundColor,
-				color: profileTextColor
-			} }
-			className={ classnames(
-				this.props.className,
-				profileAlignment,
-				profileAvatarShape,
-				{ 'ab-has-avatar': profileImgURL },
-				'ab-font-size-' + profileFontSize,
-				'ab-block-profile',
-				'ab-profile-columns',
-			) }>
+				style={ {
+					backgroundColor: profileBackgroundColor,
+					color: profileTextColor,
+				} }
+				className={ classnames(
+					this.props.className,
+					profileAlignment,
+					profileAvatarShape,
+					{ 'ab-has-avatar': profileImgURL },
+					'ab-font-size-' + profileFontSize,
+					'ab-block-profile',
+					'ab-profile-columns'
+				) }
+			>
 				{ this.props.children }
 			</div>
 		);

@@ -6,69 +6,64 @@ import classnames from 'classnames';
 
 const { __ } = wp.i18n;
 
-const {
-	RichText,
-	getFontSizeClass,
-	getColorClassName
-} = wp.blockEditor;
+const { RichText, getFontSizeClass, getColorClassName } = wp.blockEditor;
 
 export const Price_1_7_0_attributes = {
 	price: {
-		type: 'string'
+		type: 'string',
 	},
 	currency: {
-		type: 'string'
+		type: 'string',
 	},
 	fontSize: {
-		type: 'string'
+		type: 'string',
 	},
 	customFontSize: {
 		type: 'number',
-	default: 60
+		default: 60,
 	},
 	textColor: {
-		type: 'string'
+		type: 'string',
 	},
 	customTextColor: {
-		type: 'string'
+		type: 'string',
 	},
 	backgroundColor: {
-		type: 'string'
+		type: 'string',
 	},
 	customBackgroundColor: {
-		type: 'string'
+		type: 'string',
 	},
 	term: {
-		type: 'string'
+		type: 'string',
 	},
 	showTerm: {
 		type: 'boolean',
-	default: true
+		default: true,
 	},
 	showCurrency: {
 		type: 'boolean',
-	default: true
+		default: true,
 	},
 	paddingTop: {
 		type: 'number',
-	default: 10
+		default: 10,
 	},
 	paddingRight: {
 		type: 'number',
-	default: 20
+		default: 20,
 	},
 	paddingBottom: {
 		type: 'number',
-	default: 10
+		default: 10,
 	},
 	paddingLeft: {
 		type: 'number',
-	default: 20
-	}
+		default: 20,
+	},
 };
 
-export const Price_1_7_0_save = props => {
-
+export const Price_1_7_0_save = ( props ) => {
 	// Setup the attributes
 	const {
 		price,
@@ -85,7 +80,7 @@ export const Price_1_7_0_save = props => {
 		paddingTop,
 		paddingRight,
 		paddingBottom,
-		paddingLeft
+		paddingLeft,
 	} = props.attributes;
 
 	// Retreive the fontSizeClass
@@ -93,22 +88,25 @@ export const Price_1_7_0_save = props => {
 
 	// Retreive the getColorClassName
 	const textClass = getColorClassName( 'color', textColor );
-	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+	const backgroundClass = getColorClassName(
+		'background-color',
+		backgroundColor
+	);
 
 	// Setup wrapper class names
-	const wrapperClassName = classnames({
+	const wrapperClassName = classnames( {
 		'has-background': backgroundColor || customBackgroundColor,
 		'ab-pricing-table-price-wrap': true,
 		[ textClass ]: textClass,
 		[ backgroundClass ]: backgroundClass,
-		'ab-pricing-has-currency': showCurrency && currency
-	});
+		'ab-pricing-has-currency': showCurrency && currency,
+	} );
 
 	// Setup class names
-	const className = classnames({
+	const className = classnames( {
 		'ab-pricing-table-price': true,
-		[ fontSizeClass ]: fontSizeClass
-	});
+		[ fontSizeClass ]: fontSizeClass,
+	} );
 
 	// Setup styles
 	const wrapperStyles = {
@@ -117,25 +115,25 @@ export const Price_1_7_0_save = props => {
 		paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 		paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 		paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-		paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
+		paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 	};
 
 	// Setup styles
 	const styles = {
-		fontSize: fontSizeClass ? undefined : customFontSize
+		fontSize: fontSizeClass ? undefined : customFontSize,
 	};
 
 	// Setup currency styles
-	var computedFontSize = fontSizeClass ? undefined : customFontSize;
-	var currencySize = Math.floor( computedFontSize / 2.5 );
+	const computedFontSize = fontSizeClass ? undefined : customFontSize;
+	const currencySize = Math.floor( computedFontSize / 2.5 );
 	const currencyStyles = {
-		fontSize: computedFontSize ? currencySize + 'px' : undefined
+		fontSize: computedFontSize ? currencySize + 'px' : undefined,
 	};
 
 	// Setup term styles
-	var termSize = Math.floor( computedFontSize / 2.5 );
+	const termSize = Math.floor( computedFontSize / 2.5 );
 	const termStyles = {
-		fontSize: computedFontSize ? termSize + 'px' : undefined
+		fontSize: computedFontSize ? termSize + 'px' : undefined,
 	};
 
 	// Save the block markup for the front end
@@ -176,12 +174,11 @@ export const Price_1_7_0_save = props => {
 };
 
 const deprecated = [
-
 	// Version 1.7.0
 	{
 		attributes: Price_1_7_0_attributes,
-		save: Price_1_7_0_save
-	}
+		save: Price_1_7_0_save,
+	},
 ];
 
 export default deprecated;
