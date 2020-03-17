@@ -22,6 +22,7 @@ window.addEventListener( 'DOMContentLoaded', function() {
 				window.location.hash = tab;
 			}
 
+			jQuery( 'div[class^="atomic-blocks-settings-"]' ).hide();
 			jQuery( '#atomic-blocks-settings .tab-content' ).hide();
 			jQuery( '.inline-list' )
 				.find( 'li' )

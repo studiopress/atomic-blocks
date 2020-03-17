@@ -22,7 +22,7 @@ jQuery( document ).ready( function( $ ) {
 
 	// Scroll to anchor
 	$( '.anchor-nav a, .toc a' ).click( function( e ) {
-		const href = $( this ).attr( 'href' );
+		var href = $( this ).attr( 'href' );
 		e.preventDefault();
 
 		$( 'html, body' ).animate(
@@ -40,4 +40,16 @@ jQuery( document ).ready( function( $ ) {
 			"<a class='back-to-top' href='#panel'><i class='fa fa-angle-up'></i> Back to top</a>"
 		)
 	);
-} );
+	// Pro opt-in analytics handler
+	$( '.ab-gs-feedback input[name="atomic-blocks-settings[analytics-opt-in]"]' ).on( 'click', function( event ) {
+		$.ajax({
+			data: {
+				action: 'atomic_blocks_pro_gs_analytics_toggle',
+				'ab-pro-analytics-toggle-value': event.target.value,
+				'atomic_blocks_pro_gs_analytics_toggle_nonce': $( '#atomic_blocks_pro_gs_analytics_toggle_nonce' ).val()
+			},
+			type: 'post',
+			url: ajaxurl
+		});
+	});
+});
