@@ -13,6 +13,10 @@
 	box-sizing: border-box;
 }
 
+.toplevel_page_atomic-blocks #update-nag {
+	display: none ;
+}
+
 .toplevel_page_atomic-blocks #wpcontent,
 .atomic-blocks_page_atomic-blocks-plugin-settings #wpcontent {
 	padding-left: 0;
@@ -255,9 +259,14 @@
 }
 
 .ab-getting-started .intro-wrap {
-	padding:  4% 0 0 0;
-	background: #5a3fd6 url("geo.png");
+	padding: 3% 0 0 0;
+	background: #5a3fd6 url("images/geo.png");
 	background-size: 1400px;
+}
+
+.gpb-getting-started .intro-wrap {
+	background: rgb(0,102,204);
+	background: linear-gradient(49deg, rgba(0,102,204,1) 0%, rgba(78,176,211,1) 100%);
 }
 
 .ab-getting-started .intro {
@@ -265,7 +274,7 @@
 	width: 100%;
 	vertical-align: top;
 	padding: 0 50px;
-	margin-bottom: 4.5%;
+	margin-bottom: 3.5%;
 }
 
 .ab-getting-started .intro h1,
@@ -276,6 +285,10 @@
 	margin: 0;
 	color: #fff;
 	display: inline-block;
+}
+
+.gpb-getting-started .intro h1 {
+	font-size: 32px;
 }
 
 .ab-getting-started .atomic-logo {
@@ -613,6 +626,18 @@
 	text-shadow: 0 -1px 1px #4c35b9, 1px 0 1px #4c35b9, 0 1px 1px #4c35b9, -1px 0 1px #4c35b9;
 }
 
+.gpb-getting-started .button-primary,
+.gpb-getting-started .button-primary.focus,
+.gpb-getting-started .button-primary.hover,
+.gpb-getting-started .button-primary:focus,
+.gpb-getting-started .button-primary:hover {
+	background: #0066cc;
+	border-color: #0066cc;
+	box-shadow: none;
+	transition: .3s ease;
+	text-shadow: none;
+}
+
 .ab-getting-started .button-primary:hover {
 	box-shadow: inset 0 0 80px rgba(255,255,255, .15);
 }
@@ -626,6 +651,12 @@
 .ab-getting-started a:active,
 .ab-getting-started a:hover {
 	color: #5d45c9;
+}
+
+.gpb-getting-started a,
+.gpb-getting-started a:active,
+.gpb-getting-started a:hover {
+	color: #0066cc;
 }
 
 .ab-getting-started .panel-ab-plugin .panel-club-inside {
@@ -737,6 +768,12 @@
 	margin-bottom: 10px;
 }
 
+.gpb-getting-started .ab-block-footer-column i {
+	color: #0066cc;
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
 .ab-getting-started .ab-block-footer-column h3 {
 	padding-right: 0;
 	margin-bottom: 0;
@@ -752,7 +789,7 @@
 .ab-block-footer .button-primary {
 	font-size: 18px;
 	border-radius: 100px;
-	padding: 10px 15px;
+	padding: 5px 15px;
 	height: auto;
 	font-size: 16px;
 }
@@ -926,6 +963,11 @@
 	border: none;
 }
 
+.ab-block-feature-text .button-primary {
+	border-radius: 40px;
+	padding: 5px 15px;
+}
+
 .ab-block-split-left,
 .ab-block-split-right {
 	display: inline-block;
@@ -944,6 +986,10 @@
 	padding-right: 4%;
 	padding-top: 4%;
 	padding-bottom: 5%;
+}
+
+.gpb-getting-started .ab-block-split-left {
+	padding-top: 0;
 }
 
 .ab-block-split-right {
@@ -1079,41 +1125,37 @@
 	margin-bottom: 0;
 }
 
-.ab-pro-getting-started .ab-block-split-right {
-	margin-top: 6%;
-}
-
-.ab-pro-getting-started .ab-block-split-left ul {
+.gpb-getting-started .ab-block-split-left ul {
 	background: none;
 	margin: 0;
 	padding: 0;
 }
 
-.ab-pro-getting-started .ab-block-split-left ul li {
+.gpb-getting-started .ab-block-split-left ul li {
 	border-bottom: none;
 	display: inline-block;
 	width: 49%;
 	padding-bottom: 0;
 }
 
-.ab-pro-getting-started .ab-block-split-left ul li:before {
+.gpb-getting-started .ab-block-split-left ul li:before {
 	content: " ";
 	height: 8px;
 	width: 8px;
-	background:#5b3fd6;
+	background:#0066cc;
 	display: inline-block;
 	border-radius: 50px;
 	margin-right: 10px;
 	vertical-align: middle;
 }
 
-.ab-pro-getting-started .ab-block-feature {
+.gpb-getting-started .ab-block-feature {
 	background: none;
 	padding: 0;
 	box-shadow: none;
 }
 
-.ab-pro-getting-started .ab-block-feature .ab-block-feature-icon img {
+.gpb-getting-started .ab-block-feature .ab-block-feature-icon img {
 	max-height: none;
 	border: solid 1px #ddd;
 	border-radius: 3px;
