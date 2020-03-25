@@ -358,6 +358,14 @@
 	box-shadow: none;
 }
 
+.ab-getting-started .inline-list svg {
+	position: absolute;
+}
+
+.ab-getting-started .inline-list svg + span {
+	padding-left: 24px;
+}
+
 .ab-getting-started ul.toc {
 	padding-left: 5%;
 }
@@ -747,6 +755,7 @@
 	text-align: center;
 	border-right: solid 3px #eceaee;
 	padding: 0 3%;
+	vertical-align: top;
 }
 
 @media (max-width: 600px) {
@@ -853,6 +862,7 @@
 .ab-block-feature-wrap h2 {
 	text-align: center;
 	margin-bottom: 0 !important;
+	margin-top: 0;
 }
 
 .ab-block-feature-wrap p {

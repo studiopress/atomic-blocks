@@ -46,7 +46,6 @@
 					</div>
 
 					<div class="ab-block-feature-wrap clear">
-						<i class="fas fa-cube"></i>
 						<h2><?php esc_html_e( 'Get a jump start with Genesis.', 'genesis-page-builder' ); ?></h2>
 						<p><?php esc_html_e( 'Our collection of block-powered themes integrate seamlessly with Genesis Page Builder features. Genesis themes are free for WP Engine customers.', 'genesis-page-builder' ); ?></p>
 
@@ -86,21 +85,21 @@
 
 					<div class="ab-block-footer">
 						<div class="ab-block-footer-column">
-							<i class="far fa-question-circle"></i>
+							<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/question-circle.svg', __FILE__ ) ) ); ?>
 							<h3><?php esc_html_e( 'Documentation and Help', 'genesis-page-builder' ); ?></h3>
 							<p><?php esc_html_e( 'The Genesis Page Builder wiki has helpful documentation, tips and tricks, code snippets, and more to help you get started.', 'genesis-page-builder' ); ?></p>
 							<a class="button-primary" href="https://github.com/studiopress/genesis-page-builder/wiki"><?php esc_html_e( 'Browse the Wiki', 'genesis-page-builder' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
-							<i class="fas fa-bullhorn"></i>
+							<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/bullhorn.svg', __FILE__ ) ) ); ?>
 							<h3><?php esc_html_e( 'Provide Feedback', 'genesis-page-builder' ); ?></h3>
 							<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Genesis Page Builder and making it better with every release. ', 'genesis-page-builder' ); ?></p>
 							<a class="button-primary" href="https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17"><?php esc_html_e( 'Provide Feedback', 'genesis-page-builder' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
-							<i class="fas fa-layer-group"></i>
+							<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/layer-group.svg', __FILE__ ) ) ); ?>
 							<h3><?php esc_html_e( 'Browse Genesis Themes', 'genesis-page-builder' ); ?></h3>
 							<p><?php esc_html_e( 'The Genesis theme collection has beautiful block-powered themes that help you quickly get started with the new block editor.', 'genesis-page-builder' ); ?></p>
 							<a class="button-primary" href="https://studiopress.com/themes"><?php esc_html_e( 'Browse Themes', 'genesis-page-builder' ); ?></a>

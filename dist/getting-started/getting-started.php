@@ -32,10 +32,6 @@ function atomic_blocks_start_load_admin_scripts( $hook ) {
 	// Getting Started styles.
 	wp_register_style( 'atomic-blocks-getting-started', plugins_url( 'getting-started/getting-started.css', dirname( __FILE__ ) ), false, '1.0.0' );
 	wp_enqueue_style( 'atomic-blocks-getting-started' );
-
-	// FontAwesome.
-	wp_register_style( 'atomic-blocks-fontawesome', plugins_url( '/assets/fontawesome/css/all' . $postfix . '.css', dirname( __FILE__ ) ), false, '1.0.0' );
-	wp_enqueue_style( 'atomic-blocks-fontawesome' );
 }
 add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
 

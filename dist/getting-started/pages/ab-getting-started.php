@@ -6,10 +6,20 @@
 		</div>
 
 		<ul class="inline-list">
-			<li class="current"><a id="atomic-blocks-panel" href="#"><i class="fa fa-check"></i> <?php esc_html_e( 'Getting Started', 'atomic-blocks' ); ?></a></li>
-			<li><a id="plugin-help" href="#"><i class="fa fa-plug"></i> <?php esc_html_e( 'Plugin Help File', 'atomic-blocks' ); ?></a></li>
+			<li class="current">
+				<a id="atomic-blocks-panel" href="#">
+					<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/check-circle.svg', __FILE__ ) ) ); ?>
+					<span><?php esc_html_e( 'Getting Started', 'atomic-blocks' ); ?></span>
+				</a>
+			</li>
+			<li>
+				<a id="plugin-help" href="#">
+					<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/plug.svg', __FILE__ ) ) ); ?>
+					<span><?php esc_html_e( 'Plugin Help File', 'atomic-blocks' ); ?></span>
+				</a>
+			</li>
 			<?php if ( function_exists( 'atomic_blocks_setup' ) ) { ?>
-				<li><a id="theme-help" href="#"><i class="fa fa-desktop"></i> <?php esc_html_e( 'Theme Help File', 'atomic-blocks' ); ?></a></li>
+				<li><a id="theme-help" href="#"><?php esc_html_e( 'Theme Help File', 'atomic-blocks' ); ?></a></li>
 			<?php } ?>
 		</ul>
 	</div>
@@ -32,7 +42,6 @@
 				</div>
 
 				<div class="ab-block-feature-wrap clear">
-					<i class="fas fa-cube"></i>
 					<h2><?php esc_html_e( 'Available Atomic Blocks', 'atomic-blocks' ); ?></h2>
 					<p><?php esc_html_e( 'The following blocks are available in Atomic Blocks. More blocks are on the way so stay tuned!', 'atomic-blocks' ); ?></p>
 
@@ -180,7 +189,7 @@
 				<div class="panel-aside panel-ab-plugin panel-club">
 					<div class="panel-club-inside">
 						<div class="cell panel-title">
-							<h3><i class="fa fa-download"></i> <?php esc_html_e( 'Free Theme Download', 'atomic-blocks' ); ?></h3>
+							<h3><?php esc_html_e( 'Free Theme Download', 'atomic-blocks' ); ?></h3>
 						</div>
 
 						<ul>
@@ -199,7 +208,7 @@
 				<div class="panel-aside panel-ab-plugin panel-club">
 					<div class="panel-club-inside">
 						<div class="cell panel-title">
-							<h3><i class="fa fa-envelope"></i> <?php esc_html_e( 'Stay Updated', 'atomic-blocks' ); ?></h3>
+							<h3><?php esc_html_e( 'Stay Updated', 'atomic-blocks' ); ?></h3>
 						</div>
 
 						<ul>
@@ -215,7 +224,7 @@
 				<div class="panel-aside panel-ab-plugin panel-club">
 					<div class="panel-club-inside">
 						<div class="cell panel-title">
-							<h3><i class="fa fa-arrow-circle-down"></i> <?php esc_html_e( 'Free Blocks & Tutorials', 'atomic-blocks' ); ?></h3>
+							<h3><?php esc_html_e( 'Free Blocks & Tutorials', 'atomic-blocks' ); ?></h3>
 						</div>
 
 						<ul>
@@ -233,21 +242,21 @@
 
 				<div class="ab-block-footer">
 					<div class="ab-block-footer-column">
-						<i class="far fa-question-circle"></i>
+						<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/question-circle.svg', __FILE__ ) ) ); ?>
 						<h3><?php esc_html_e( 'Documentation and Help', 'atomic-blocks' ); ?></h3>
 						<p><?php esc_html_e( 'The Atomic Blocks wiki has helpful documentation, tips and tricks, code snippets, and more to help you get started.', 'atomic-blocks' ); ?></p>
 						<a class="button-primary" href="https://github.com/studiopress/atomic-blocks/wiki"><?php esc_html_e( 'Browse the Wiki', 'atomic-blocks' ); ?></a>
 					</div>
 
 					<div class="ab-block-footer-column">
-						<i class="fas fa-bullhorn"></i>
+						<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/bullhorn.svg', __FILE__ ) ) ); ?>
 						<h3><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></h3>
 						<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Atomic Blocks and making it better with every release. ', 'atomic-blocks' ); ?></p>
 						<a class="button-primary" href="https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
 					</div>
 
 					<div class="ab-block-footer-column">
-						<i class="fas fa-layer-group"></i>
+						<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/layer-group.svg', __FILE__ ) ) ); ?>
 						<h3><?php esc_html_e( 'Browse Genesis Themes', 'atomic-blocks' ); ?></h3>
 						<p><?php esc_html_e( 'The Genesis theme collection has beautiful block-powered themes that help you quickly get started with the new block editor.', 'atomic-blocks' ); ?></p>
 						<a class="button-primary" href="https://studiopress.com/themes"><?php esc_html_e( 'Browse Themes', 'atomic-blocks' ); ?></a>
