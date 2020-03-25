@@ -150,21 +150,21 @@
 			<div id="plugin-help" class="panel-left">
 				<!-- Grab feed of help file -->
 				<?php
-					$plugin_help = get_transient( 'atomic-blocks-plugin-help-feed' );
+					$atomic_blocks_plugin_help = get_transient( 'atomic-blocks-plugin-help-feed' );
 
-				if ( false === $plugin_help ) {
-					$plugin_feed = wp_remote_get( 'https://atomicblocks.com/plugin-help-file//?atomicblocks_api=post_content' );
+				if ( false === $atomic_blocks_plugin_help ) {
+					$atomic_blocks_plugin_feed = wp_remote_get( 'https://atomicblocks.com/plugin-help-file//?atomicblocks_api=post_content' );
 
-					if ( ! is_wp_error( $plugin_feed ) && 200 === wp_remote_retrieve_response_code( $plugin_feed ) ) {
-						$plugin_help = json_decode( wp_remote_retrieve_body( $plugin_feed ) );
-						set_transient( 'atomic-blocks-plugin-help-feed', $plugin_help, DAY_IN_SECONDS );
+					if ( ! is_wp_error( $atomic_blocks_plugin_feed ) && 200 === wp_remote_retrieve_response_code( $atomic_blocks_plugin_feed ) ) {
+						$atomic_blocks_plugin_help = json_decode( wp_remote_retrieve_body( $atomic_blocks_plugin_feed ) );
+						set_transient( 'atomic-blocks-plugin-help-feed', $atomic_blocks_plugin_help, DAY_IN_SECONDS );
 					} else {
-						$plugin_help = __( 'This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime.', 'atomic-blocks' );
-						set_transient( 'atomic-blocks-plugin-help-feed', $plugin_help, MINUTE_IN_SECONDS * 5 );
+						$atomic_blocks_plugin_help = __( 'This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime.', 'atomic-blocks' );
+						set_transient( 'atomic-blocks-plugin-help-feed', $atomic_blocks_plugin_help, MINUTE_IN_SECONDS * 5 );
 					}
 				}
 
-					echo wp_kses_post( $plugin_help );
+					echo wp_kses_post( $atomic_blocks_plugin_help );
 				?>
 			</div>
 
@@ -173,21 +173,21 @@
 				<div id="theme-help" class="panel-left">
 					<!-- Grab feed of help file -->
 					<?php
-						$theme_help = get_transient( 'atomic-blocks-theme-help-feed' );
+						$atomic_blocks_theme_help = get_transient( 'atomic-blocks-theme-help-feed' );
 
-					if ( false === $theme_help ) {
-						$theme_feed = wp_remote_get( 'https://atomicblocks.com/theme-help-file//?atomicblocks_api=post_content' );
+					if ( false === $atomic_blocks_theme_help ) {
+						$atomic_blocks_theme_feed = wp_remote_get( 'https://atomicblocks.com/theme-help-file//?atomicblocks_api=post_content' );
 
-						if ( ! is_wp_error( $theme_feed ) && 200 === wp_remote_retrieve_response_code( $theme_feed ) ) {
-							$theme_help = json_decode( wp_remote_retrieve_body( $theme_feed ) );
-							set_transient( 'atomic-blocks-theme-help-feed', $theme_help, DAY_IN_SECONDS );
+						if ( ! is_wp_error( $atomic_blocks_theme_feed ) && 200 === wp_remote_retrieve_response_code( $atomic_blocks_theme_feed ) ) {
+							$atomic_blocks_theme_help = json_decode( wp_remote_retrieve_body( $atomic_blocks_theme_feed ) );
+							set_transient( 'atomic-blocks-theme-help-feed', $atomic_blocks_theme_help, DAY_IN_SECONDS );
 						} else {
-							$theme_help = __( 'This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime.', 'atomic-blocks' );
-							set_transient( 'atomic-blocks-theme-help-feed', $theme_help, MINUTE_IN_SECONDS * 5 );
+							$atomic_blocks_theme_help = __( 'This help file feed seems to be temporarily down. You can always view the help file on the Atomic Blocks site in the meantime.', 'atomic-blocks' );
+							set_transient( 'atomic-blocks-theme-help-feed', $atomic_blocks_theme_help, MINUTE_IN_SECONDS * 5 );
 						}
 					}
 
-						echo wp_kses_post( $theme_help );
+						echo wp_kses_post( $atomic_blocks_theme_help );
 					?>
 				</div><!-- #theme-help -->
 			<?php } ?>
