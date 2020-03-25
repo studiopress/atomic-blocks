@@ -39,7 +39,6 @@ function atomic_blocks_start_load_admin_scripts( $hook ) {
 }
 add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
 
-
 /**
  * Adds a menu item for the Getting Started page.
  *
@@ -77,7 +76,6 @@ function atomic_blocks_getting_started_menu() {
 }
 add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
 
-
 /**
  * Outputs the markup used on the Getting Started
  *
@@ -85,49 +83,6 @@ add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
  */
 function atomic_blocks_getting_started_page() {
 
-	/**
-	 * Create recommended plugin install URLs
-	 *
-	 * @since 1.0.0
-	 */
-	$gberg_install_url = wp_nonce_url(
-		add_query_arg(
-			array(
-				'action' => 'install-plugin',
-				'plugin' => 'gutenberg',
-			),
-			admin_url( 'update.php' )
-		),
-		'install-plugin_gutenberg'
-	);
-
-	$ab_install_url = wp_nonce_url(
-		add_query_arg(
-			array(
-				'action' => 'install-plugin',
-				'plugin' => 'atomic-blocks',
-			),
-			admin_url( 'update.php' )
-		),
-		'install-plugin_atomic-blocks'
-	);
-
-	$ab_theme_install_url = wp_nonce_url(
-		add_query_arg(
-			array(
-				'action' => 'install-theme',
-				'theme'  => 'atomic-blocks',
-			),
-			admin_url( 'update.php' )
-		),
-		'install-theme_atomic-blocks'
-	);
-	?>
-
-	<?php
-	/**
-	 * Grab the relevant Getting Started page.
-	 */
 	$pages_dir = trailingslashit( dirname( __FILE__ ) ) . 'pages/';
 
 	if ( atomic_blocks_is_pro() ) {
@@ -148,6 +103,7 @@ function atomic_blocks_render_settings_page() {
 }
 
 add_action( 'admin_init', 'atomic_blocks_save_settings' );
+
 /**
  * Saves the plugin settings.
  */
