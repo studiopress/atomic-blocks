@@ -360,6 +360,7 @@
 
 .ab-getting-started .inline-list svg {
 	position: absolute;
+	fill: currentColor;
 }
 
 .ab-getting-started .inline-list svg + span {

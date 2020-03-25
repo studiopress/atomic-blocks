@@ -70,6 +70,14 @@ function atomic_blocks_loader() {
 	}
 
 	/**
+	 * SVG Icon class and helper functions.
+	 */
+	if ( PHP_VERSION_ID >= 50600 ) {
+		require_once $atomic_blocks_includes_dir . 'classes/class-atomicblocks-svg-icons.php';
+		require_once $atomic_blocks_includes_dir . 'helpers/svg-icons.php';
+	}
+
+	/**
 	 * Compatibility functionality.
 	 */
 	require_once $atomic_blocks_includes_dir . 'compat.php';

@@ -1,3 +1,12 @@
+<?php
+/**
+ * Getting Started content for Atomic Blocks
+ *
+ * @package Atomic Blocks
+ */
+
+?>
+
 <div class="wrap ab-getting-started">
 	<div class="intro-wrap">
 		<div class="intro">
@@ -8,13 +17,13 @@
 		<ul class="inline-list">
 			<li class="current">
 				<a id="atomic-blocks-panel" href="#">
-					<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/check-circle.svg', __FILE__ ) ) ); ?>
+					<?php atomic_blocks_svg( 'check-circle' ); ?>
 					<span><?php esc_html_e( 'Getting Started', 'atomic-blocks' ); ?></span>
 				</a>
 			</li>
 			<li>
 				<a id="plugin-help" href="#">
-					<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/plug.svg', __FILE__ ) ) ); ?>
+					<?php atomic_blocks_svg( 'plug' ); ?>
 					<span><?php esc_html_e( 'Plugin Help File', 'atomic-blocks' ); ?></span>
 				</a>
 			</li>
@@ -198,7 +207,7 @@
 
 								<p><?php esc_html_e( 'Download our FREE Atomic Blocks theme to help you get started with the Atomic Blocks plugin and the new WordPress block editor.', 'atomic-blocks' ); ?></p>
 
-								<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( $ab_theme_install_url ); ?>"><?php esc_html_e( 'Install Now', 'atomic-blocks' ); ?> &rarr;</a>
+								<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://wordpress.org/themes/atomic-blocks/' ); ?>"><?php esc_html_e( 'Install Now', 'atomic-blocks' ); ?> &rarr;</a>
 							</li>
 						</ul>
 					</div>
@@ -242,21 +251,21 @@
 
 				<div class="ab-block-footer">
 					<div class="ab-block-footer-column">
-						<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/question-circle.svg', __FILE__ ) ) ); ?>
+						<?php atomic_blocks_svg( 'question-circle' ); ?>
 						<h3><?php esc_html_e( 'Documentation and Help', 'atomic-blocks' ); ?></h3>
 						<p><?php esc_html_e( 'The Atomic Blocks wiki has helpful documentation, tips and tricks, code snippets, and more to help you get started.', 'atomic-blocks' ); ?></p>
 						<a class="button-primary" href="https://github.com/studiopress/atomic-blocks/wiki"><?php esc_html_e( 'Browse the Wiki', 'atomic-blocks' ); ?></a>
 					</div>
 
 					<div class="ab-block-footer-column">
-						<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/bullhorn.svg', __FILE__ ) ) ); ?>
+						<?php atomic_blocks_svg( 'bullhorn' ); ?>
 						<h3><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></h3>
 						<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Atomic Blocks and making it better with every release. ', 'atomic-blocks' ); ?></p>
 						<a class="button-primary" href="https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
 					</div>
 
 					<div class="ab-block-footer-column">
-						<?php echo file_get_contents( esc_url( plugins_url( '../images/icons/layer-group.svg', __FILE__ ) ) ); ?>
+						<?php atomic_blocks_svg( 'layer-group' ); ?>
 						<h3><?php esc_html_e( 'Browse Genesis Themes', 'atomic-blocks' ); ?></h3>
 						<p><?php esc_html_e( 'The Genesis theme collection has beautiful block-powered themes that help you quickly get started with the new block editor.', 'atomic-blocks' ); ?></p>
 						<a class="button-primary" href="https://studiopress.com/themes"><?php esc_html_e( 'Browse Themes', 'atomic-blocks' ); ?></a>
