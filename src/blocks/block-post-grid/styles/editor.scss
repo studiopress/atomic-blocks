@@ -8,10 +8,6 @@
 	}
  }
 
- .atomic-blocks-hide-query .components-base-control:nth-of-type(3) {
-	 display: none;
- }
-
  .ab-block-post-grid-markup-settings {
 	 .components-base-control__help {
 		 margin-top: 8px;
@@ -73,5 +69,20 @@
 		&:hover {
 			color: #00a0d2;
 		}
+	}
+}
+
+.select2-page {
+	.css-yk16xz-control,
+	.css-yk16xz-control:hover {
+		border-color: #7e8993;
+	}
+	.css-6q0nyr-Svg {
+		color: #555555;
+	}
+	.css-1pahdxg-control,
+	.css-1pahdxg-control:hover {
+		border-color: #007cba;
+		box-shadow: 0 0 0 1px #007cba;
 	}
 }

@@ -376,6 +376,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 					'type'    => 'string',
 					'default' => 'post',
 				),
+				'selectedPages'            => array(
+					'type'    => 'string',
+					'default' => null,
+				),
 				'sectionTag'          => array(
 					'type'    => 'string',
 					'default' => 'section',
