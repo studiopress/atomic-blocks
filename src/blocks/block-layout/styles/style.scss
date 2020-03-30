@@ -60,7 +60,7 @@
  }
 
  .ab-white-text,
- .wp-block-heading .ab-white-text {
+ [data-type="core/heading"] .ab-white-text {
 	 color: #fff;
  }
 
