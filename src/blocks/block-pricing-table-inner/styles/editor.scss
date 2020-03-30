@@ -2,12 +2,17 @@
  * Editor styles for the admin
  */
 
-.edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-pricing-table"] {
+.edit-post-visual-editor .editor-block-list__block [data-type="atomic-blocks/ab-pricing-table"],
+.edit-post-visual-editor .block-editor-block-list__block [data-type="atomic-blocks/ab-pricing-table"] {
     margin-left: 0;
-    margin-right: 0;
+	margin-right: 0;
+	/* Prevent grid resize */
+	overflow: hidden;
+	min-width: 0;
 }
 
-.ab-pricing-table-wrap-admin > .editor-inner-blocks > .editor-block-list__layout {
+.ab-pricing-table-wrap-admin > .editor-inner-blocks > .editor-block-list__layout,
+.ab-pricing-table-wrap-admin > .block-editor-inner-blocks > .block-editor-block-list__layout {
 	display: -ms-grid;
 	display: grid;
     grid-template-rows: 1fr;
@@ -17,33 +22,40 @@
 
 /* Grid gap classes */
 
-.ab-block-pricing-table-gap-0 > .editor-inner-blocks > .editor-block-list__layout {
+.ab-block-pricing-table-gap-0 > .editor-inner-blocks > .editor-block-list__layout,
+.ab-block-pricing-table-gap-0 > .block-editor-inner-blocks > .block-editor-block-list__layout {
 	grid-gap: 0 0;
 }
 
-.ab-block-pricing-table-gap-1 > .editor-inner-blocks > .editor-block-list__layout {
+.ab-block-pricing-table-gap-1 > .editor-inner-blocks > .editor-block-list__layout,
+.ab-block-pricing-table-gap-1 > .block-editor-inner-blocks > .block-editor-block-list__layout {
 	grid-gap: 0 1em;
 }
 
-.ab-block-pricing-table-gap-2 > .editor-inner-blocks > .editor-block-list__layout {
+.ab-block-pricing-table-gap-2 > .editor-inner-blocks > .editor-block-list__layout,
+.ab-block-pricing-table-gap-2 > .block-editor-inner-blocks > .block-editor-block-list__layout {
 	grid-gap: 0 2em;
 }
 
-.ab-block-pricing-table-gap-3 > .editor-inner-blocks > .editor-block-list__layout {
+.ab-block-pricing-table-gap-3 > .editor-inner-blocks > .editor-block-list__layout,
+.ab-block-pricing-table-gap-3 > .block-editor-inner-blocks > .block-editor-block-list__layout {
 	grid-gap: 0 3em;
 }
 
-.ab-block-pricing-table-gap-4 > .editor-inner-blocks > .editor-block-list__layout {
+.ab-block-pricing-table-gap-4 > .editor-inner-blocks > .editor-block-list__layout,
+.ab-block-pricing-table-gap-4 > .block-editor-inner-blocks > .block-editor-block-list__layout {
 	grid-gap: 0 4em;
 }
 
-.ab-block-pricing-table-gap-5 > .editor-inner-blocks > .editor-block-list__layout {
+.ab-block-pricing-table-gap-5 > .editor-inner-blocks > .editor-block-list__layout,
+.ab-block-pricing-table-gap-5 > .block-editor-inner-blocks > .block-editor-block-list__layout {
 	grid-gap: 0 5em;
 }
 
 /* Grid column classes */
 
-.ab-pricing-columns-2 .editor-block-list__layout {
+.ab-pricing-columns-2 .editor-block-list__layout,
+.ab-pricing-columns-2 .block-editor-block-list__layout {
 	-ms-grid-columns: 1fr 1fr;
 	grid-template-columns: 1fr 1fr;
 
@@ -53,7 +65,8 @@
     }
 }
 
-.ab-pricing-columns-3 .editor-block-list__layout {
+.ab-pricing-columns-3 .editor-block-list__layout,
+.ab-pricing-columns-3 .block-editor-block-list__layout {
 	-ms-grid-columns: 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
 
@@ -63,7 +76,8 @@
 	}
 }
 
-.ab-pricing-columns-4 .editor-block-list__layout {
+.ab-pricing-columns-4 .editor-block-list__layout,
+.ab-pricing-columns-4 .block-editor-block-list__layout {
 	-ms-grid-columns: 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 
@@ -78,7 +92,8 @@
 	}
 }
 
-.ab-pricing-columns-5 .editor-block-list__layout {
+.ab-pricing-columns-5 .editor-block-list__layout,
+.ab-pricing-columns-5 .block-editor-block-list__layout {
 	-ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
@@ -96,21 +111,19 @@
 /* Alignment styles */
 
 .ab-block-pricing-table-inside .editor-block-list__block[data-align=full],
-.ab-block-pricing-table-inside .editor-block-list__block[data-align=wide] {
+.ab-block-pricing-table-inside .editor-block-list__block[data-align=wide],
+.ab-block-pricing-table-inside .block-editor-block-list__block[data-align=full],
+.ab-block-pricing-table-inside .block-editor-block-list__block[data-align=wide] {
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.ab-block-pricing-table-inside .editor-block-list__block .editor-url-input input[type=text],
-.ab-block-pricing-table-inside .editor-url-input input[type=text] {
-	width: 185px;
+.ab-block-pricing-table-inside .editor-url-input input[type=text],
+.ab-block-pricing-table-inside .block-editor-block-list__block .block-editor-url-input input[type="text"] {
+	width: 100%;
 }
 
-div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-rich-text__tinymce {
-	line-height: 1;
-}
-
-.ab-pricing-has-currency div .editor-rich-text:first-child {
+.ab-pricing-has-currency div .block-editor-rich-text:first-child {
 	vertical-align: top;
 	margin-top: .7em;
 	margin-right: 3px;
@@ -124,10 +137,10 @@ div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-rich-text__tinymce
 
 /* Pricing table components */
 
-div[data-type="atomic-blocks/ab-pricing-table-price"] .editor-block-list__block-edit div .editor-rich-text {
+div[data-type="atomic-blocks/ab-pricing-table-price"] .block-editor-block-list__block-edit div .editor-rich-text {
 	display: inline-block;
 }
 
-.ab-block-pricing-table .editor-block-list__layout div:first-child .editor-block-list__block-edit {
+.ab-block-pricing-table .block-editor-block-list__layout div:first-child .block-editor-block-list__block-edit {
 	margin-top: 0;
 }
