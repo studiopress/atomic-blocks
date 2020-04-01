@@ -23,6 +23,10 @@
 			font-weight: bold;
 			font-size: 1rem;
 		}
+
+		.components-button {
+			left: 0;
+		}
 	}
 
 	.components-tab-panel__tab-content {
@@ -40,6 +44,7 @@
 			background: none;
 			border: none;
 			font-size: 16px;
+			height: auto;
 
 			&:hover {
 				background: #fff;
