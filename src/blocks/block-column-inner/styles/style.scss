@@ -347,11 +347,20 @@
 
 .ab-column-selector-group {
 	margin-top: 10px;
+	display: flex;
+
+	@media only screen and (max-width: 1175px) {
+		flex-wrap: wrap;
+	}
 }
 
 .ab-column-selector {
 	display: inline-block;
 	margin: 0 5px;
+
+	@media only screen and (max-width: 1175px) {
+		margin-top: 10px;
+	}
 
 	button.ab-column-selector-button {
 		padding: 15px;

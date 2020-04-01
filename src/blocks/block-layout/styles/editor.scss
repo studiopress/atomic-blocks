@@ -23,6 +23,10 @@
 			font-weight: bold;
 			font-size: 1rem;
 		}
+
+		.components-button {
+			left: 0;
+		}
 	}
 
 	.components-tab-panel__tab-content {
@@ -40,6 +44,7 @@
 			background: none;
 			border: none;
 			font-size: 16px;
+			height: auto;
 
 			&:hover {
 				background: #fff;
@@ -396,4 +401,13 @@ div[data-type*="atomic-blocks/ab-columns"][data-align="full"],
 div[data-type*="atomic-blocks/ab-container"][data-align="full"] {
 	margin-top: auto;
 	margin-bottom: auto;
+}
+
+.components-placeholder.ab-layout-selector-placeholder,
+.components-placeholder.ab-column-selector-placeholder  {
+	align-items: center;
+
+	.components-placeholder__fieldset {
+		width: auto;
+	}
 }
