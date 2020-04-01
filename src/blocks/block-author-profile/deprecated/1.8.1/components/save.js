@@ -10,9 +10,7 @@ import AvatarColumn from '../../../components/avatar';
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const {
-	RichText
-} = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 export default class Save_1_8_1 extends Component {
 	constructor() {
@@ -25,14 +23,12 @@ export default class Save_1_8_1 extends Component {
 			profileTitle,
 			profileContent,
 			profileImgURL,
-			profileTextColor
+			profileTextColor,
 		} = this.props.attributes;
 
 		return (
-
 			/* Save the block markup for the front end */
 			<ProfileBox { ...this.props }>
-
 				{ profileImgURL && (
 					<AvatarColumn { ...this.props }>
 						<div className="ab-profile-image-square">
@@ -55,7 +51,7 @@ export default class Save_1_8_1 extends Component {
 							tagName="h2"
 							className="ab-profile-name"
 							style={ {
-								color: profileTextColor
+								color: profileTextColor,
 							} }
 							value={ profileName }
 						/>
@@ -66,7 +62,7 @@ export default class Save_1_8_1 extends Component {
 							tagName="p"
 							className="ab-profile-title"
 							style={ {
-								color: profileTextColor
+								color: profileTextColor,
 							} }
 							value={ profileTitle }
 						/>

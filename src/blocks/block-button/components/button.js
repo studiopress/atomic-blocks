@@ -12,17 +12,15 @@ import classnames from 'classnames';
  * Create a Button wrapper Component
  */
 export default class customButton extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
 
 	render() {
-
 		return (
 			<div
 				style={ {
-					textAlign: this.props.attributes.buttonAlignment
+					textAlign: this.props.attributes.buttonAlignment,
 				} }
 				className={ classnames(
 					this.props.className,

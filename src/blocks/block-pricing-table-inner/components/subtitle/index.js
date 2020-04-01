@@ -15,68 +15,70 @@ const {
 	getFontSizeClass,
 	FontSizePicker,
 	withFontSizes,
-	getColorClassName
+	getColorClassName,
 } = wp.blockEditor;
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 	title: __( 'Product Subtitle', 'atomic-blocks' ),
-	description: __( 'Adds a product subtitle component with schema markup.', 'atomic-blocks' ),
+	description: __(
+		'Adds a product subtitle component with schema markup.',
+		'atomic-blocks'
+	),
 	icon: 'cart',
 	category: 'atomic-blocks',
 	parent: [ 'atomic-blocks/ab-pricing-table' ],
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'subtitle', 'atomic-blocks' ),
-		__( 'shop', 'atomic-blocks' )
+		__( 'shop', 'atomic-blocks' ),
 	],
 
 	attributes: {
 		subtitle: {
-			type: 'string'
+			type: 'string',
 		},
 		fontSize: {
-			type: 'string'
+			type: 'string',
 		},
 		customFontSize: {
-			type: 'number'
+			type: 'number',
 		},
 		textColor: {
-			type: 'string'
+			type: 'string',
 		},
 		customTextColor: {
-			type: 'string'
+			type: 'string',
 		},
 		backgroundColor: {
-			type: 'string'
+			type: 'string',
 		},
 		customBackgroundColor: {
-			type: 'string'
+			type: 'string',
 		},
 		paddingTop: {
 			type: 'number',
-			default: 10
+			default: 10,
 		},
 		paddingRight: {
 			type: 'number',
-			default: 20
+			default: 20,
 		},
 		paddingBottom: {
 			type: 'number',
-			default: 10
+			default: 10,
 		},
 		paddingLeft: {
 			type: 'number',
-			default: 20
-		}
+			default: 20,
+		},
 	},
 
 	// Render the block components
 	edit: Edit,
 
 	// Save the attributes and markup
-	save: function( props ) {
-
+	save( props ) {
 		// Setup the attributes
 		const {
 			subtitle,
@@ -89,7 +91,7 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 			paddingTop,
 			paddingRight,
 			paddingBottom,
-			paddingLeft
+			paddingLeft,
 		} = props.attributes;
 
 		// Retreive the fontSizeClass
@@ -97,26 +99,31 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 
 		// Retreive the getColorClassName
 		const textClass = getColorClassName( 'color', textColor );
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+		const backgroundClass = getColorClassName(
+			'background-color',
+			backgroundColor
+		);
 
 		// Setup class names
-		const className = classnames({
+		const className = classnames( {
 			'has-background': backgroundColor || customBackgroundColor,
 			'ab-pricing-table-subtitle': true,
 			[ fontSizeClass ]: fontSizeClass,
 			[ textClass ]: textClass,
-			[ backgroundClass ]: backgroundClass
-		});
+			[ backgroundClass ]: backgroundClass,
+		} );
 
 		// Setup styles
 		const styles = {
 			fontSize: fontSizeClass ? undefined : customFontSize,
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			backgroundColor: backgroundClass
+				? undefined
+				: customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 		};
 
 		// Save the block markup for the front end
@@ -128,5 +135,5 @@ registerBlockType( 'atomic-blocks/ab-pricing-table-subtitle', {
 				style={ styles }
 			/>
 		);
-	}
-});
+	},
+} );

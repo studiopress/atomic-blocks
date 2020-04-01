@@ -30,115 +30,128 @@ registerBlockType( 'atomic-blocks/ab-column', {
 	keywords: [
 		__( 'column', 'atomic-blocks' ),
 		__( 'layout', 'atomic-blocks' ),
-		__( 'row', 'atomic-blocks' )
+		__( 'row', 'atomic-blocks' ),
 	],
 	attributes: {
 		...BackgroundAttributes,
 		backgroundColor: {
-			type: 'string'
+			type: 'string',
 		},
 		customBackgroundColor: {
-			type: 'string'
+			type: 'string',
 		},
 		textColor: {
-			type: 'string'
+			type: 'string',
 		},
 		customTextColor: {
-			type: 'string'
+			type: 'string',
 		},
 		textAlign: {
-			type: 'string'
+			type: 'string',
 		},
 		marginSync: {
 			type: 'boolean',
-			default: false
+			default: false,
 		},
 		marginUnit: {
 			type: 'string',
-			default: 'px'
+			default: 'px',
 		},
 		margin: {
 			type: 'number',
-			default: 0
+			default: 0,
 		},
 		marginTop: {
 			type: 'number',
-			default: 0
+			default: 0,
 		},
 		marginBottom: {
 			type: 'number',
-			default: 0
+			default: 0,
 		},
 		paddingSync: {
 			type: 'boolean',
-			default: false
+			default: false,
 		},
 		paddingUnit: {
 			type: 'string',
-			default: 'px'
+			default: 'px',
 		},
 		padding: {
 			type: 'number',
-			default: 0
+			default: 0,
 		},
 		paddingTop: {
 			type: 'number',
-			default: 0
+			default: 0,
 		},
 		paddingRight: {
 			type: 'number',
-			default: 0
+			default: 0,
 		},
 		paddingBottom: {
 			type: 'number',
-			default: 0
+			default: 0,
 		},
 		paddingLeft: {
 			type: 'number',
-			default: 0
+			default: 0,
 		},
 		columnVerticalAlignment: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
 	ab_settings_data: {
 		ab_column_inner_marginPadding: {
-			title: __( 'Margin and Padding', 'atomic-blocks' )
+			title: __( 'Margin and Padding', 'atomic-blocks' ),
 		},
 		ab_column_inner_colorSettings: {
-			title: __( 'Color', 'atomic-blocks' )
+			title: __( 'Color', 'atomic-blocks' ),
 		},
 		ab_column_inner_backgroundImagePanel: {
-			title: __( 'Background Image', 'atomic-blocks' )
-		}
+			title: __( 'Background Image', 'atomic-blocks' ),
+		},
 	},
 
 	/* Render the block in the editor. */
-	edit: props => {
+	edit: ( props ) => {
 		return <Edit { ...props } />;
 	},
 
 	/* Save the block markup. */
-	save: props => {
+	save: ( props ) => {
 		return <Save { ...props } />;
 	},
 
-	deprecated: deprecated
-});
+	deprecated,
+} );
 
 /* Add the vertical column alignment class to the block wrapper. */
-const withClientIdClassName = wp.compose.createHigherOrderComponent( ( BlockListBlock ) => {
-	return ( props ) => {
-		const blockName = props.block.name;
+const withClientIdClassName = wp.compose.createHigherOrderComponent(
+	( BlockListBlock ) => {
+		return ( props ) => {
+			const blockName = props.block.name;
 
-		if ( 'atomic-blocks/ab-column' === blockName && props.block.attributes.columnVerticalAlignment ) {
-			return <BlockListBlock { ...props } className={ 'ab-is-vertically-aligned-' + props.block.attributes.columnVerticalAlignment } />;
-		} else {
+			if (
+				'atomic-blocks/ab-column' === blockName &&
+				props.block.attributes.columnVerticalAlignment
+			) {
+				return (
+					<BlockListBlock
+						{ ...props }
+						className={
+							'ab-is-vertically-aligned-' +
+							props.block.attributes.columnVerticalAlignment
+						}
+					/>
+				);
+			}
 			return <BlockListBlock { ...props } />;
-		}
-	};
-}, 'withClientIdClassName' );
+		};
+	},
+	'withClientIdClassName'
+);
 
 wp.hooks.addFilter(
 	'editor.BlockListBlock',

@@ -19,52 +19,39 @@ const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
 
 // Register editor components
-const {
-	BlockControls,
-	BlockAlignmentToolbar,
-	InnerBlocks
-} = wp.blockEditor;
+const { BlockControls, BlockAlignmentToolbar, InnerBlocks } = wp.blockEditor;
 
 // Set allowed blocks and media
 const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];
 
 // Get the pricing template
 const getPricingTemplate = memoize( ( columns ) => {
-	return _times( columns, () => [ 'atomic-blocks/ab-pricing-table' ]);
-});
+	return _times( columns, () => [ 'atomic-blocks/ab-pricing-table' ] );
+} );
 
 class ABPricingBlock extends Component {
-
 	render() {
-
 		// Setup the attributes
 		const {
-			attributes: {
-				columns,
-				columnsGap,
-				align
-			},
-			setAttributes
+			attributes: { columns, columnsGap, align },
+			setAttributes,
 		} = this.props;
 
 		return [
-
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<BlockAlignmentToolbar
 					value={ align }
-					onChange={ align => setAttributes({ align }) }
+					onChange={ ( align ) => setAttributes( { align } ) }
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
 
 			// Show the block controls on focus
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
+			<Inspector key={ 'ab-pricing-table-inspector-' + this.props.clientId } { ...{ setAttributes, ...this.props } } />,
 
 			// Show the block markup in the editor
-			<PricingTable { ...this.props }>
+			<PricingTable key={ 'ab-pricing-table-' + this.props.clientId } { ...this.props }>
 				<div
 					className={ classnames(
 						'ab-pricing-table-wrap-admin',
@@ -77,7 +64,7 @@ class ABPricingBlock extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 					/>
 				</div>
-			</PricingTable>
+			</PricingTable>,
 		];
 	}
 }
@@ -91,34 +78,39 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 	keywords: [
 		__( 'pricing table', 'atomic-blocks' ),
 		__( 'shop', 'atomic-blocks' ),
-		__( 'purchase', 'atomic-blocks' )
+		__( 'purchase', 'atomic-blocks' ),
 	],
 	attributes: {
 		columns: {
 			type: 'number',
-			default: 2
+			default: 2,
 		},
 		columnsGap: {
 			type: 'number',
-			default: 2
+			default: 2,
 		},
 		align: {
-			type: 'string'
-		}
+			type: 'string',
+		},
 	},
 
 	ab_settings_data: {
 		ab_pricing_columns: {
-			title: __( 'Pricing Columns', 'atomic-blocks' )
+			title: __( 'Pricing Columns', 'atomic-blocks' ),
 		},
 		ab_pricing_columnsGap: {
-			title: __( 'Pricing Columns Gap', 'atomic-blocks' )
-		}
+			title: __( 'Pricing Columns Gap', 'atomic-blocks' ),
+		},
 	},
 
 	// Add alignment to block wrapper
-	getEditWrapperProps({ align }) {
-		if ( 'left' === align || 'right' === align || 'full' === align || 'wide' === align ) {
+	getEditWrapperProps( { align } ) {
+		if (
+			'left' === align ||
+			'right' === align ||
+			'full' === align ||
+			'wide' === align
+		) {
 			return { 'data-align': align };
 		}
 	},
@@ -127,28 +119,23 @@ registerBlockType( 'atomic-blocks/ab-pricing', {
 	edit: ABPricingBlock,
 
 	// Save the attributes and markup
-	save: function( props ) {
-
+	save( props ) {
 		// Setup the attributes
-		const {
-			columnsGap
-		} = props.attributes;
+		const { columnsGap } = props.attributes;
 
 		// Setup the classes
-		const className = classnames([
+		const className = classnames( [
 			'ab-pricing-table-wrap',
-			'ab-block-pricing-table-gap-' + columnsGap
-		]);
+			'ab-block-pricing-table-gap-' + columnsGap,
+		] );
 
 		// Save the block markup for the front end
 		return (
 			<PricingTable { ...props }>
-				<div
-					className={ className ? className : undefined }
-				>
+				<div className={ className ? className : undefined }>
 					<InnerBlocks.Content />
 				</div>
 			</PricingTable>
 		);
-	}
-});
+	},
+} );

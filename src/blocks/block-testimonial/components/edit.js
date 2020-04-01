@@ -10,30 +10,19 @@ import icons from './../../../utils/components/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const {
-	Component,
-	Fragment
-} = wp.element;
+const { Component, Fragment } = wp.element;
 const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
-	MediaUpload
+	MediaUpload,
 } = wp.blockEditor;
-const {
-	Button,
-	Dashicon
-} = wp.components;
+const { Button, Dashicon } = wp.components;
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
 export default class Edit extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
@@ -43,49 +32,56 @@ export default class Edit extends Component {
 				testimonialAlignment,
 				testimonialImgURL,
 				testimonialImgID,
-				testimonialTextColor
+				testimonialTextColor,
 			},
-			setAttributes
+			setAttributes,
 		} = this.props;
 
 		const onRemoveImage = () => {
-			setAttributes({
+			setAttributes( {
 				testimonialImgURL: null,
-				testimonialImgID: null
-			});
+				testimonialImgID: null,
+			} );
 		};
 
 		return [
-
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ testimonialAlignment }
-					onChange={ ( value ) => setAttributes({ testimonialAlignment: value }) }
+					onChange={ ( value ) =>
+						setAttributes( { testimonialAlignment: value } )
+					}
 				/>
 			</BlockControls>,
 
 			// Show the block controls on focus
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
+			<Inspector key={ 'ab-testimonial-inspector-' + this.props.clientId } { ...{ setAttributes, ...this.props } } />,
 
 			// Show the block markup in the editor
-			<Testimonial { ...this.props }>
+			<Testimonial key={ 'ab-testimonial-editor-' + this.props.clientId } { ...this.props }>
 				<RichText
 					tagName="div"
 					multiline="p"
-					placeholder={ __( 'Add testimonial text...', 'atomic-blocks' ) }
+					placeholder={ __(
+						'Add testimonial text...',
+						'atomic-blocks'
+					) }
 					keepPlaceholderOnFocus
 					value={ testimonialContent }
-					formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-					className={ classnames(
-						'ab-testimonial-text'
-					) }
+					formattingControls={ [
+						'bold',
+						'italic',
+						'strikethrough',
+						'link',
+					] }
+					className={ classnames( 'ab-testimonial-text' ) }
 					style={ {
-						textAlign: testimonialAlignment
+						textAlign: testimonialAlignment,
 					} }
-					onChange={ ( value ) => setAttributes({ testimonialContent: value }) }
+					onChange={ ( value ) =>
+						setAttributes( { testimonialContent: value } )
+					}
 				/>
 
 				<div className="ab-testimonial-info">
@@ -93,41 +89,48 @@ export default class Edit extends Component {
 						<div className="ab-testimonial-image-wrap">
 							<MediaUpload
 								buttonProps={ {
-									className: 'change-image'
+									className: 'change-image',
 								} }
-								onSelect={ ( img ) => setAttributes(
-									{
+								onSelect={ ( img ) =>
+									setAttributes( {
 										testimonialImgID: img.id,
-										testimonialImgURL: img.url
-									}
-								) }
+										testimonialImgURL: img.url,
+									} )
+								}
 								allowed={ ALLOWED_MEDIA_TYPES }
 								type="image"
 								value={ testimonialImgID }
-								render={ ({ open }) => (
+								render={ ( { open } ) => (
 									<Fragment>
 										<Button
-											className={ testimonialImgID ? 'ab-change-image' : 'ab-add-image' }
+											className={
+												testimonialImgID
+													? 'ab-change-image'
+													: 'ab-add-image'
+											}
 											onClick={ open }
 										>
-											{ ! testimonialImgID ? icons.upload : <img
-												className="ab-testimonial-avatar"
-												src={ testimonialImgURL }
-												alt="avatar"
-											/>  }
+											{ ! testimonialImgID ? (
+												icons.upload
+											) : (
+												<img
+													className="ab-testimonial-avatar"
+													src={ testimonialImgURL }
+													alt="avatar"
+												/>
+											) }
 										</Button>
 										{ testimonialImgID && (
 											<Button
 												className="ab-remove-image"
 												onClick={ onRemoveImage }
-												>
+											>
 												<Dashicon icon={ 'dismiss' } />
 											</Button>
 										) }
 									</Fragment>
 								) }
-							>
-							</MediaUpload>
+							></MediaUpload>
 						</div>
 					</div>
 
@@ -136,11 +139,15 @@ export default class Edit extends Component {
 						placeholder={ __( 'Add name', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ testimonialName }
-						className='ab-testimonial-name'
+						className="ab-testimonial-name"
 						style={ {
-							color: testimonialTextColor
+							color: testimonialTextColor,
 						} }
-						onChange={ ( value ) => this.props.setAttributes({ testimonialName: value }) }
+						onChange={ ( value ) =>
+							this.props.setAttributes( {
+								testimonialName: value,
+							} )
+						}
 					/>
 
 					<RichText
@@ -148,14 +155,18 @@ export default class Edit extends Component {
 						placeholder={ __( 'Add title', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ testimonialTitle }
-						className='ab-testimonial-title'
+						className="ab-testimonial-title"
 						style={ {
-							color: testimonialTextColor
+							color: testimonialTextColor,
 						} }
-						onChange={ ( value ) => this.props.setAttributes({ testimonialTitle: value }) }
+						onChange={ ( value ) =>
+							this.props.setAttributes( {
+								testimonialTitle: value,
+							} )
+						}
 					/>
 				</div>
-			</Testimonial>
+			</Testimonial>,
 		];
 	}
 }
