@@ -163,16 +163,16 @@ class Edit extends Component {
 								) ) }
 							</ButtonGroup>
 							<Button
-									className="ab-column-selector-button-back"
-									onClick={ () => {
-										setAttributes({
-											columns: null
-										});
-										this.setState({ 'selectLayout': true });
-									} }
-								>
-									{ __( 'Return to Column Selection', 'atomic-blocks' ) }
-								</Button>
+								className="ab-column-selector-button-back"
+								onClick={ () => {
+									setAttributes({
+										columns: null
+									});
+									this.setState({ 'selectLayout': true });
+								} }
+							>
+								{ __( 'Return to Column Selection', 'atomic-blocks' ) }
+							</Button>
 						</Fragment>
 					}
 				</Placeholder>
