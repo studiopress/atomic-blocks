@@ -348,14 +348,13 @@
 .ab-column-selector-group {
 	margin-top: 10px;
 	display: flex;
-
-	@media only screen and (max-width: 1175px) {
-		flex-wrap: wrap;
-	}
+	flex-wrap: wrap;
+	width: 100%;
+	text-align: center;
+    justify-content: center;
 }
 
 .ab-column-selector {
-	display: inline-block;
 	margin: 0 5px;
 
 	@media only screen and (max-width: 1175px) {
@@ -365,11 +364,13 @@
 	button.ab-column-selector-button {
 		padding: 15px;
 		height: auto;
-		border-radius: 5px;
+		border-radius: 5px !important;
 		background: #fff;
+		margin: 0;
 
 		&:hover {
 			background: #fff;
+			margin: 0;
 		}
 	}
 

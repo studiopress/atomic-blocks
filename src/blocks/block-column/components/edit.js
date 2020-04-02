@@ -161,7 +161,8 @@ class Edit extends Component {
 										</div>
 									</Tooltip>
 								) ) }
-								<Button
+							</ButtonGroup>
+							<Button
 									className="ab-column-selector-button-back"
 									onClick={ () => {
 										setAttributes({
@@ -172,7 +173,6 @@ class Edit extends Component {
 								>
 									{ __( 'Return to Column Selection', 'atomic-blocks' ) }
 								</Button>
-							</ButtonGroup>
 						</Fragment>
 					}
 				</Placeholder>
