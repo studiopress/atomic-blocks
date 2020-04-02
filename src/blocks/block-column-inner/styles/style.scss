@@ -348,10 +348,13 @@
 .ab-column-selector-group {
 	margin-top: 10px;
 	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
 	text-align: center;
-    justify-content: center;
+	justify-content: center;
+
+	@media only screen and (max-width: 1175px) {
+		flex-wrap: wrap;
+	}
 }
 
 .ab-column-selector {
