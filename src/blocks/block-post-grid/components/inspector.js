@@ -11,9 +11,7 @@ import map from 'lodash/map';
 import RenderSettingControl from '../../../utils/components/settings/renderSettingControl';
 
 // Import block components
-const {
-  InspectorControls
-} = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 // Import Inspector components
 const {
@@ -22,7 +20,7 @@ const {
 	RangeControl,
 	SelectControl,
 	TextControl,
-	ToggleControl
+	ToggleControl,
 } = wp.components;
 
 const { addQueryArgs } = wp.url;
@@ -35,7 +33,6 @@ const MAX_POSTS_COLUMNS = 4;
  * Create an Inspector Controls wrapper Component
  */
 export default class Inspector extends Component {
-
 	constructor() {
 		super( ...arguments );
 		this.state = { categoriesList: [] };
@@ -43,21 +40,19 @@ export default class Inspector extends Component {
 
 	componentDidMount() {
 		this.stillMounted = true;
-		this.fetchRequest = apiFetch({
-			path: addQueryArgs( '/wp/v2/categories', { per_page: -1 })
-		}).then(
-			( categoriesList ) => {
+		this.fetchRequest = apiFetch( {
+			path: addQueryArgs( '/wp/v2/categories', { per_page: -1 } ),
+		} )
+			.then( ( categoriesList ) => {
 				if ( this.stillMounted ) {
-					this.setState({ categoriesList });
+					this.setState( { categoriesList } );
 				}
-			}
-		).catch(
-			() => {
+			} )
+			.catch( () => {
 				if ( this.stillMounted ) {
-					this.setState({ categoriesList: [] });
+					this.setState( { categoriesList: [] } );
 				}
-			}
-		);
+			} );
 	}
 
 	componentWillUnmount() {
@@ -68,34 +63,28 @@ export default class Inspector extends Component {
 	imageSizeSelect() {
 		const getSettings = wp.data.select( 'core/editor' ).getEditorSettings();
 
-		return compact( map( getSettings.imageSizes, ({ name, slug }) => {
-			return {
-				value: slug,
-				label: name
-			};
-		}) );
+		return compact(
+			map( getSettings.imageSizes, ( { name, slug } ) => {
+				return {
+					value: slug,
+					label: name,
+				};
+			} )
+		);
 	}
 
 	render() {
-
 		// Setup the attributes
-		const {
-			attributes,
-			setAttributes,
-			latestPosts
-		} = this.props;
+		const { attributes, setAttributes, latestPosts } = this.props;
 
-		const {
-			order,
-			orderBy
-		} = attributes;
+		const { order, orderBy } = attributes;
 
 		const { categoriesList } = this.state;
 
 		// Post type options
 		const postTypeOptions = [
 			{ value: 'post', label: __( 'Post', 'atomic-blocks' ) },
-			{ value: 'page', label: __( 'Page', 'atomic-blocks' ) }
+			{ value: 'page', label: __( 'Page', 'atomic-blocks' ) },
 		];
 
 		// Section title tags
@@ -106,7 +95,7 @@ export default class Inspector extends Component {
 			{ value: 'article', label: __( 'article', 'atomic-blocks' ) },
 			{ value: 'main', label: __( 'main', 'atomic-blocks' ) },
 			{ value: 'aside', label: __( 'aside', 'atomic-blocks' ) },
-			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) }
+			{ value: 'footer', label: __( 'footer', 'atomic-blocks' ) },
 		];
 
 		// Section title tags
@@ -115,7 +104,7 @@ export default class Inspector extends Component {
 			{ value: 'h3', label: __( 'H3', 'atomic-blocks' ) },
 			{ value: 'h4', label: __( 'H4', 'atomic-blocks' ) },
 			{ value: 'h5', label: __( 'H5', 'atomic-blocks' ) },
-			{ value: 'h6', label: __( 'H6', 'atomic-blocks' ) }
+			{ value: 'h6', label: __( 'H6', 'atomic-blocks' ) },
 		];
 
 		// Check for posts
@@ -127,19 +116,19 @@ export default class Inspector extends Component {
 		// Add instruction text to the select
 		const abImageSizeSelect = {
 			value: 'selectimage',
-			label: __( 'Select image size' )
+			label: __( 'Select image size' ),
 		};
 
 		// Add the landscape image size to the select
 		const abImageSizeLandscape = {
 			value: 'ab-block-post-grid-landscape',
-			label: __( 'AB Grid Landscape' )
+			label: __( 'AB Grid Landscape' ),
 		};
 
 		// Add the square image size to the select
 		const abImageSizeSquare = {
 			value: 'ab-block-post-grid-square',
-			label: __( 'AB Grid Square' )
+			label: __( 'AB Grid Square' ),
 		};
 
 		// Get the image size options
@@ -151,7 +140,7 @@ export default class Inspector extends Component {
 
 		const imageSizeValue = () => {
 			for ( let i = 0; i < imageSizeOptions.length; i++ ) {
-				if ( imageSizeOptions[i].value === attributes.imageSize ) {
+				if ( imageSizeOptions[ i ].value === attributes.imageSize ) {
 					return attributes.imageSize;
 				}
 			}
@@ -161,7 +150,10 @@ export default class Inspector extends Component {
 		return (
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Post and Page Grid Settings', 'atomic-blocks' ) }
+					title={ __(
+						'Post and Page Grid Settings',
+						'atomic-blocks'
+					) }
 					className={ isPost ? null : 'atomic-blocks-hide-query' }
 				>
 					<RenderSettingControl id="ab_postgrid_postType">
@@ -169,7 +161,9 @@ export default class Inspector extends Component {
 							label={ __( 'Content Type', 'atomic-blocks' ) }
 							options={ postTypeOptions }
 							value={ attributes.postType }
-							onChange={ ( value ) => this.props.setAttributes({ postType: value }) }
+							onChange={ ( value ) =>
+								this.props.setAttributes( { postType: value } )
+							}
 						/>
 					</RenderSettingControl>
 					<RenderSettingControl id="ab_postgrid_queryControls">
@@ -178,131 +172,219 @@ export default class Inspector extends Component {
 							numberOfItems={ attributes.postsToShow }
 							categoriesList={ categoriesList }
 							selectedCategoryId={ attributes.categories }
-							onOrderChange={ ( value ) => setAttributes({ order: value }) }
-							onOrderByChange={ ( value ) => setAttributes({ orderBy: value }) }
-							onCategoryChange={ ( value ) => setAttributes({ categories: '' !== value ? value : undefined }) }
-							onNumberOfItemsChange={ ( value ) => setAttributes({ postsToShow: value }) }
+							onOrderChange={ ( value ) =>
+								setAttributes( { order: value } )
+							}
+							onOrderByChange={ ( value ) =>
+								setAttributes( { orderBy: value } )
+							}
+							onCategoryChange={ ( value ) =>
+								setAttributes( {
+									categories:
+										'' !== value ? value : undefined,
+								} )
+							}
+							onNumberOfItemsChange={ ( value ) =>
+								setAttributes( { postsToShow: value } )
+							}
 						/>
 					</RenderSettingControl>
 					<RenderSettingControl id="ab_postgrid_offset">
 						<RangeControl
-							label={ __( 'Number of items to offset', 'atomic-blocks' ) }
+							label={ __(
+								'Number of items to offset',
+								'atomic-blocks'
+							) }
 							value={ attributes.offset }
-							onChange={ ( value ) => setAttributes({ offset: value }) }
+							onChange={ ( value ) =>
+								setAttributes( { offset: value } )
+							}
 							min={ 0 }
 							max={ 20 }
 						/>
 					</RenderSettingControl>
-					{ 'grid' === attributes.postLayout &&
+					{ 'grid' === attributes.postLayout && (
 						<RenderSettingControl id="ab_postgrid_columns">
 							<RangeControl
 								label={ __( 'Columns', 'atomic-blocks' ) }
 								value={ attributes.columns }
-								onChange={ ( value ) => setAttributes({ columns: value }) }
+								onChange={ ( value ) =>
+									setAttributes( { columns: value } )
+								}
 								min={ 1 }
-								max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+								max={
+									! hasPosts
+										? MAX_POSTS_COLUMNS
+										: Math.min(
+												MAX_POSTS_COLUMNS,
+												latestPosts.length
+										  )
+								}
 							/>
 						</RenderSettingControl>
-					}
+					) }
 				</PanelBody>
 				<PanelBody
-					title={ __( 'Post and Page Grid Content', 'atomic-blocks' ) }
+					title={ __(
+						'Post and Page Grid Content',
+						'atomic-blocks'
+					) }
 					initialOpen={ false }
 				>
 					<RenderSettingControl id="ab_postgrid_displaySectionTitle">
 						<ToggleControl
-							label={ __( 'Display Section Title', 'atomic-blocks' ) }
+							label={ __(
+								'Display Section Title',
+								'atomic-blocks'
+							) }
 							checked={ attributes.displaySectionTitle }
-							onChange={ () => this.props.setAttributes({ displaySectionTitle: ! attributes.displaySectionTitle }) }
+							onChange={ () =>
+								this.props.setAttributes( {
+									displaySectionTitle: ! attributes.displaySectionTitle,
+								} )
+							}
 						/>
 					</RenderSettingControl>
-					{ attributes.displaySectionTitle &&
+					{ attributes.displaySectionTitle && (
 						<RenderSettingControl id="ab_postgrid_sectionTitle">
 							<TextControl
 								label={ __( 'Section Title', 'atomic-blocks' ) }
 								type="text"
 								value={ attributes.sectionTitle }
-								onChange={ ( value ) => this.props.setAttributes({ sectionTitle: value }) }
+								onChange={ ( value ) =>
+									this.props.setAttributes( {
+										sectionTitle: value,
+									} )
+								}
 							/>
 						</RenderSettingControl>
-					}
+					) }
 					<RenderSettingControl id="ab_postgrid_displayPostImage">
 						<ToggleControl
-							label={ __( 'Display Featured Image', 'atomic-blocks' ) }
+							label={ __(
+								'Display Featured Image',
+								'atomic-blocks'
+							) }
 							checked={ attributes.displayPostImage }
-							onChange={ () => this.props.setAttributes({ displayPostImage: ! attributes.displayPostImage }) }
+							onChange={ () =>
+								this.props.setAttributes( {
+									displayPostImage: ! attributes.displayPostImage,
+								} )
+							}
 						/>
 					</RenderSettingControl>
-					{ attributes.displayPostImage &&
+					{ attributes.displayPostImage && (
 						<RenderSettingControl id="ab_postgrid_imageSizeValue">
 							<SelectControl
 								label={ __( 'Image Size', 'atomic-blocks' ) }
 								value={ imageSizeValue() }
 								options={ imageSizeOptions }
-								onChange={ ( value ) => this.props.setAttributes({ imageSize: value }) }
+								onChange={ ( value ) =>
+									this.props.setAttributes( {
+										imageSize: value,
+									} )
+								}
 							/>
 						</RenderSettingControl>
-					}
+					) }
 					<RenderSettingControl id="ab_postgrid_displayPostTitle">
 						<ToggleControl
 							label={ __( 'Display Title', 'atomic-blocks' ) }
 							checked={ attributes.displayPostTitle }
-							onChange={ () => this.props.setAttributes({ displayPostTitle: ! attributes.displayPostTitle }) }
+							onChange={ () =>
+								this.props.setAttributes( {
+									displayPostTitle: ! attributes.displayPostTitle,
+								} )
+							}
 						/>
 					</RenderSettingControl>
-					{ isPost &&
+					{ isPost && (
 						<RenderSettingControl id="ab_postgrid_displayPostAuthor">
 							<ToggleControl
-								label={ __( 'Display Author', 'atomic-blocks' ) }
+								label={ __(
+									'Display Author',
+									'atomic-blocks'
+								) }
 								checked={ attributes.displayPostAuthor }
-								onChange={ () => this.props.setAttributes({ displayPostAuthor: ! attributes.displayPostAuthor }) }
+								onChange={ () =>
+									this.props.setAttributes( {
+										displayPostAuthor: ! attributes.displayPostAuthor,
+									} )
+								}
 							/>
 						</RenderSettingControl>
-					}
-					{ isPost &&
+					) }
+					{ isPost && (
 						<RenderSettingControl id="ab_postgrid_displayPostDate">
 							<ToggleControl
 								label={ __( 'Display Date', 'atomic-blocks' ) }
 								checked={ attributes.displayPostDate }
-								onChange={ () => this.props.setAttributes({ displayPostDate: ! attributes.displayPostDate }) }
+								onChange={ () =>
+									this.props.setAttributes( {
+										displayPostDate: ! attributes.displayPostDate,
+									} )
+								}
 							/>
 						</RenderSettingControl>
-					}
+					) }
 					<RenderSettingControl id="ab_postgrid_displayPostExcerpt">
 						<ToggleControl
 							label={ __( 'Display Excerpt', 'atomic-blocks' ) }
 							checked={ attributes.displayPostExcerpt }
-							onChange={ () => this.props.setAttributes({ displayPostExcerpt: ! attributes.displayPostExcerpt }) }
+							onChange={ () =>
+								this.props.setAttributes( {
+									displayPostExcerpt: ! attributes.displayPostExcerpt,
+								} )
+							}
 						/>
 					</RenderSettingControl>
-					{ attributes.displayPostExcerpt &&
+					{ attributes.displayPostExcerpt && (
 						<RenderSettingControl id="ab_postgrid_excerptLength">
 							<RangeControl
-								label={ __( 'Excerpt Length', 'atomic-blocks' ) }
+								label={ __(
+									'Excerpt Length',
+									'atomic-blocks'
+								) }
 								value={ attributes.excerptLength }
-								onChange={ ( value ) => setAttributes({ excerptLength: value }) }
+								onChange={ ( value ) =>
+									setAttributes( { excerptLength: value } )
+								}
 								min={ 0 }
 								max={ 150 }
 							/>
 						</RenderSettingControl>
-					}
+					) }
 					<RenderSettingControl id="ab_postgrid_displayPostLink">
 						<ToggleControl
-							label={ __( 'Display Continue Reading Link', 'atomic-blocks' ) }
+							label={ __(
+								'Display Continue Reading Link',
+								'atomic-blocks'
+							) }
 							checked={ attributes.displayPostLink }
-							onChange={ () => this.props.setAttributes({ displayPostLink: ! attributes.displayPostLink }) }
+							onChange={ () =>
+								this.props.setAttributes( {
+									displayPostLink: ! attributes.displayPostLink,
+								} )
+							}
 						/>
 					</RenderSettingControl>
-					{ attributes.displayPostLink &&
+					{ attributes.displayPostLink && (
 						<RenderSettingControl id="ab_postgrid_readMoreText">
 							<TextControl
-								label={ __( 'Customize Continue Reading Text', 'atomic-blocks' ) }
+								label={ __(
+									'Customize Continue Reading Text',
+									'atomic-blocks'
+								) }
 								type="text"
 								value={ attributes.readMoreText }
-								onChange={ ( value ) => this.props.setAttributes({ readMoreText: value }) }
+								onChange={ ( value ) =>
+									this.props.setAttributes( {
+										readMoreText: value,
+									} )
+								}
 							/>
 						</RenderSettingControl>
-					}
+					) }
 				</PanelBody>
 				<PanelBody
 					title={ __( 'Post and Page Grid Markup', 'atomic-blocks' ) }
@@ -311,35 +393,65 @@ export default class Inspector extends Component {
 				>
 					<RenderSettingControl id="ab_postgrid_sectionTag">
 						<SelectControl
-							label={ __( 'Post Grid Section Tag', 'atomic-blocks' ) }
+							label={ __(
+								'Post Grid Section Tag',
+								'atomic-blocks'
+							) }
 							options={ sectionTags }
 							value={ attributes.sectionTag }
-							onChange={ ( value ) => this.props.setAttributes({ sectionTag: value }) }
-							help={ __( 'Change the post grid section tag to match your content hierarchy.', 'atomic-blocks' ) }
+							onChange={ ( value ) =>
+								this.props.setAttributes( {
+									sectionTag: value,
+								} )
+							}
+							help={ __(
+								'Change the post grid section tag to match your content hierarchy.',
+								'atomic-blocks'
+							) }
 						/>
 					</RenderSettingControl>
-					{ attributes.sectionTitle &&
+					{ attributes.sectionTitle && (
 						<RenderSettingControl id="ab_postgrid_sectionTitleTag">
 							<SelectControl
-								label={ __( 'Section Title Heading Tag', 'atomic-blocks' ) }
+								label={ __(
+									'Section Title Heading Tag',
+									'atomic-blocks'
+								) }
 								options={ sectionTitleTags }
 								value={ attributes.sectionTitleTag }
-								onChange={ ( value ) => this.props.setAttributes({ sectionTitleTag: value }) }
-								help={ __( 'Change the post/page section title tag to match your content hierarchy.', 'atomic-blocks' ) }
+								onChange={ ( value ) =>
+									this.props.setAttributes( {
+										sectionTitleTag: value,
+									} )
+								}
+								help={ __(
+									'Change the post/page section title tag to match your content hierarchy.',
+									'atomic-blocks'
+								) }
 							/>
 						</RenderSettingControl>
-					}
-					{ attributes.displayPostTitle &&
+					) }
+					{ attributes.displayPostTitle && (
 						<RenderSettingControl id="ab_postgrid_postTitleTag">
 							<SelectControl
-								label={ __( 'Post Title Heading Tag', 'atomic-blocks' ) }
+								label={ __(
+									'Post Title Heading Tag',
+									'atomic-blocks'
+								) }
 								options={ sectionTitleTags }
 								value={ attributes.postTitleTag }
-								onChange={ ( value ) => this.props.setAttributes({ postTitleTag: value }) }
-								help={ __( 'Change the post/page title tag to match your content hierarchy.', 'atomic-blocks' ) }
+								onChange={ ( value ) =>
+									this.props.setAttributes( {
+										postTitleTag: value,
+									} )
+								}
+								help={ __(
+									'Change the post/page title tag to match your content hierarchy.',
+									'atomic-blocks'
+								) }
 							/>
 						</RenderSettingControl>
-					}
+					) }
 				</PanelBody>
 			</InspectorControls>
 		);

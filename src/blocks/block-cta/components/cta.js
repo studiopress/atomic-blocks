@@ -12,13 +12,11 @@ import classnames from 'classnames';
  * Create a CallToAction wrapper Component
  */
 export default class CallToAction extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
 
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
@@ -36,28 +34,32 @@ export default class CallToAction extends Component {
 				ctaTextFontSize,
 				ctaWidth,
 				ctaBackgroundColor,
-				ctaTextColor
-			}
+				ctaTextColor,
+			},
 		} = this.props;
 
-		const className = classnames([
-			this.props.className,
-			'ab-block-cta'
-		], {
-			[ 'ab-font-size-' + ctaTextFontSize ]: ctaTextFontSize,
-			[ 'align' + ctaWidth ]: ctaWidth
-		});
+		const className = classnames(
+			[ this.props.className, 'ab-block-cta' ],
+			{
+				[ 'ab-font-size-' + ctaTextFontSize ]: ctaTextFontSize,
+				[ 'align' + ctaWidth ]: ctaWidth,
+			}
+		);
 
 		const styles = {
-			backgroundColor: ctaBackgroundColor ? ctaBackgroundColor : undefined,
-			textAlign: buttonAlignment ? buttonAlignment : undefined
+			backgroundColor: ctaBackgroundColor
+				? ctaBackgroundColor
+				: undefined,
+			textAlign: buttonAlignment ? buttonAlignment : undefined,
 		};
 
 		return (
 			<div
 				style={ styles }
 				className={ className ? className : undefined }
-			>{ this.props.children }</div>
+			>
+				{ this.props.children }
+			</div>
 		);
 	}
 }

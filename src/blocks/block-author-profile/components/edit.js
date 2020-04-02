@@ -13,16 +13,13 @@ import icons from './../../../utils/components/icons';
  */
 const { __ } = wp.i18n;
 
-const {
-	Component,
-	Fragment
-} = wp.element;
+const { Component, Fragment } = wp.element;
 
 const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
-	MediaUpload
+	MediaUpload,
 } = wp.blockEditor;
 
 const { Button, Dashicon } = wp.components;
@@ -44,69 +41,69 @@ export default class Edit extends Component {
 				profileImgURL,
 				profileImgID,
 				profileImgAlt,
-				profileTextColor
+				profileTextColor,
 			},
-			setAttributes
+			setAttributes,
 		} = this.props;
 
 		return [
-
 			/* Show the block alignment controls on focus */
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ profileAlignment }
-					onChange={ ( value ) => setAttributes({ profileAlignment: value }) }
+					onChange={ ( value ) =>
+						setAttributes( { profileAlignment: value } )
+					}
 				/>
 			</BlockControls>,
 
 			/* Show the block controls on focus */
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
+			<Inspector key={ 'ab-author-profile-inspector-' + this.props.clientId } { ...{ setAttributes, ...this.props } } />,
 
 			/* Show the block markup in the editor */
-			<ProfileBox { ...this.props }>
+			<ProfileBox key={ 'ab-author-profile-' + this.props.clientId } { ...this.props }>
 				<AvatarColumn { ...this.props }>
 					<figure className="ab-profile-image-square">
 						<MediaUpload
 							buttonProps={ {
-								className: 'change-image'
+								className: 'change-image',
 							} }
-							onSelect={ ( img ) => setAttributes(
-								{
+							onSelect={ ( img ) =>
+								setAttributes( {
 									profileImgID: img.id,
 									profileImgURL: img.url,
-									profileImgAlt: img.alt
-								}
-							) }
+									profileImgAlt: img.alt,
+								} )
+							}
 							allowed={ ALLOWED_MEDIA_TYPES }
 							type="image"
 							value={ profileImgID }
-							render={ ({ open }) => (
+							render={ ( { open } ) => (
 								<Fragment>
-									<Button
-										onClick={ open }
-									>
-										{ ! profileImgID ? icons.upload : <img
-											className={ classnames(
-												'ab-profile-avatar',
-												'ab-change-image',
-												'wp-image-' + profileImgID
-											) }
-											src={ profileImgURL }
-											alt={ profileImgAlt }
+									<Button onClick={ open }>
+										{ ! profileImgID ? (
+											icons.upload
+										) : (
+											<img
+												className={ classnames(
+													'ab-profile-avatar',
+													'ab-change-image',
+													'wp-image-' + profileImgID
+												) }
+												src={ profileImgURL }
+												alt={ profileImgAlt }
 											/>
-										}
+										) }
 									</Button>
 									{ profileImgID && (
 										<Button
 											className="ab-remove-image"
 											onClick={ () => {
-												setAttributes({
+												setAttributes( {
 													profileImgID: null,
 													profileImgURL: null,
-													profileImgAlt: null
-												});
+													profileImgAlt: null,
+												} );
 											} }
 										>
 											<Dashicon icon={ 'dismiss' } />
@@ -114,8 +111,7 @@ export default class Edit extends Component {
 									) }
 								</Fragment>
 							) }
-						>
-						</MediaUpload>
+						></MediaUpload>
 					</figure>
 				</AvatarColumn>
 
@@ -129,11 +125,13 @@ export default class Edit extends Component {
 						placeholder={ __( 'Add name', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileName }
-						className='ab-profile-name'
+						className="ab-profile-name"
 						style={ {
-							color: profileTextColor
+							color: profileTextColor,
 						} }
-						onChange={ ( value ) => setAttributes({ profileName: value }) }
+						onChange={ ( value ) =>
+							setAttributes( { profileName: value } )
+						}
 					/>
 
 					<RichText
@@ -141,27 +139,39 @@ export default class Edit extends Component {
 						placeholder={ __( 'Add title', 'atomic-blocks' ) }
 						keepPlaceholderOnFocus
 						value={ profileTitle }
-						className='ab-profile-title'
+						className="ab-profile-title"
 						style={ {
-							color: profileTextColor
+							color: profileTextColor,
 						} }
-						onChange={ ( value ) => setAttributes({ profileTitle: value }) }
+						onChange={ ( value ) =>
+							setAttributes( { profileTitle: value } )
+						}
 					/>
 
 					<RichText
 						tagName="div"
-						className='ab-profile-text'
+						className="ab-profile-text"
 						multiline="p"
-						placeholder={ __( 'Add profile text...', 'atomic-blocks' ) }
+						placeholder={ __(
+							'Add profile text...',
+							'atomic-blocks'
+						) }
 						keepPlaceholderOnFocus
 						value={ profileContent }
-						formattingControls={ [ 'bold', 'italic', 'strikethrough', 'link' ] }
-						onChange={ ( value ) => setAttributes({ profileContent: value }) }
+						formattingControls={ [
+							'bold',
+							'italic',
+							'strikethrough',
+							'link',
+						] }
+						onChange={ ( value ) =>
+							setAttributes( { profileContent: value } )
+						}
 					/>
 
 					<SocialIcons { ...this.props } />
 				</div>
-			</ProfileBox>
+			</ProfileBox>,
 		];
 	}
 }

@@ -16,40 +16,43 @@ const { registerBlockType } = wp.blocks;
 // Register the block
 registerBlockType( 'atomic-blocks/ab-sharing', {
 	title: __( 'AB Sharing', 'atomic-blocks' ),
-	description: __( 'Add sharing buttons to your posts and pages.', 'atomic-blocks' ),
+	description: __(
+		'Add sharing buttons to your posts and pages.',
+		'atomic-blocks'
+	),
 	icon: 'admin-links',
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'sharing', 'atomic-blocks' ),
 		__( 'social', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' )
+		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	ab_settings_data: {
-        ab_sharing_links: {
-            title: __( 'Sharing Links', 'atomic-blocks' )
-        },
-        ab_sharing_shareButtonStyle: {
-            title: __( 'Button Style', 'atomic-blocks' )
+		ab_sharing_links: {
+			title: __( 'Sharing Links', 'atomic-blocks' ),
+		},
+		ab_sharing_shareButtonStyle: {
+			title: __( 'Button Style', 'atomic-blocks' ),
 		},
 		ab_sharing_shareButtonShape: {
-            title: __( 'Button Shape', 'atomic-blocks' )
+			title: __( 'Button Shape', 'atomic-blocks' ),
 		},
 		ab_sharing_shareButtonSize: {
-            title: __( 'Button Size', 'atomic-blocks' )
+			title: __( 'Button Size', 'atomic-blocks' ),
 		},
 		ab_sharing_shareButtonColor: {
-            title: __( 'Button Color', 'atomic-blocks' )
-		}
-    },
+			title: __( 'Button Color', 'atomic-blocks' ),
+		},
+	},
 
 	// Render the block components
-	edit: props => {
+	edit: ( props ) => {
 		return <Edit { ...props } />;
 	},
 
 	// Render via PHP
 	save() {
 		return null;
-	}
-});
+	},
+} );

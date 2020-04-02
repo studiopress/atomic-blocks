@@ -266,11 +266,12 @@
 }
 
 .ab-column-selector-button-back {
-	margin-top: 23px;
 	line-height: 1.4;
-	display: inherit;
+	display: block;
 	vertical-align: middle;
 	width: 100%;
+	border-radius: 3px;
+	margin: 25px auto 0 auto;
 
 	&:hover {
 		color: #007cba;

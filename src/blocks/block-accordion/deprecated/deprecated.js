@@ -7,43 +7,40 @@
  */
 import Save_2_0 from './2.0/components/save';
 
-export const Accordion_2_0_save = props => {
-	return (
-		<Save_2_0 { ...props } />
-	);
+export const Accordion_2_0_save = ( props ) => {
+	return <Save_2_0 { ...props } />;
 };
 
 export const Accordion_2_0_attributes = {
 	accordionTitle: {
 		type: 'array',
 		selector: '.ab-accordion-title',
-		source: 'children'
+		source: 'children',
 	},
 	accordionText: {
 		type: 'array',
 		selector: '.ab-accordion-text',
-		source: 'children'
+		source: 'children',
 	},
 	accordionAlignment: {
-		type: 'string'
+		type: 'string',
 	},
 	accordionFontSize: {
 		type: 'number',
-		default: 18
+		default: 18,
 	},
 	accordionOpen: {
 		type: 'boolean',
-		default: false
-	}
+		default: false,
+	},
 };
 
 const Deprecated = [
-
 	/* Version 2.0. */
 	{
 		attributes: Accordion_2_0_attributes,
-		save: Accordion_2_0_save
-	}
+		save: Accordion_2_0_save,
+	},
 ];
 
 export default Deprecated;

@@ -5,10 +5,7 @@ import Accordion_2_0 from './accordion';
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const {
-	RichText,
-	InnerBlocks
-} = wp.blockEditor;
+const { RichText, InnerBlocks } = wp.blockEditor;
 
 export default class Save_2_0 extends Component {
 	constructor() {
@@ -16,9 +13,7 @@ export default class Save_2_0 extends Component {
 	}
 
 	render() {
-
 		return (
-
 			<Accordion_2_0 { ...this.props }>
 				<details open={ this.props.attributes.accordionOpen }>
 					<summary className="ab-accordion-title">

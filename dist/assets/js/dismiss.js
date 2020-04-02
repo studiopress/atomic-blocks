@@ -12,11 +12,11 @@ if ( window.NodeList && ! NodeList.prototype.forEach ) {
 }
 
 document.addEventListener( 'DOMContentLoaded', function() {
-
-	var notices = document.querySelectorAll( '.ab-block-notice.ab-dismissable[data-id]' );
+	var notices = document.querySelectorAll(
+		'.ab-block-notice.ab-dismissable[data-id]'
+	);
 
 	notices.forEach( function( element ) {
-
 		var uid = element.getAttribute( 'data-id' );
 
 		var dismissible = element.querySelector( '.ab-notice-dismiss' );
@@ -30,7 +30,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 				event.preventDefault();
 				localStorage.setItem( 'notice-' + uid, '1' );
 				element.style.display = '';
-			});
+			} );
 		}
-	});
-});
+	} );
+} );
