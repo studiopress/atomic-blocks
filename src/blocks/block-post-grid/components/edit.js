@@ -287,12 +287,27 @@ export default compose( [
 			( value ) => ! isUndefined( value )
 		);
 
+		// Grab the array string from the inspector
+		const pageSelection = JSON.parse( props.attributes.selectedPages );
+
+		// Grab the page IDs from the array
+		const pageIDs = pageSelection && pageSelection.length > 0 ? pageSelection.map(obj => obj.value) : null;
+
+		// Query for pages
+		const pageQuery = pickBy({
+			include: pageIDs && pageIDs.length > 0 ? pageIDs : null,
+			orderby: pageIDs && pageIDs.length > 0 ? 'include' : null,
+		}, ( value ) => ! isUndefined( value ) );
+
+		// Return the post or page query
 		return {
 			latestPosts: getEntityRecords(
 				'postType',
 				props.attributes.postType,
-				latestPostsQuery
-			),
+				'page' === props.attributes.postType && pageIDs && pageIDs.length > 0
+				? pageQuery
+				: latestPostsQuery
+			)
 		};
 	} ),
 ] )( LatestPostsBlock );
