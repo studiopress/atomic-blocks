@@ -24,15 +24,25 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 	$categories = isset( $attributes['categories'] ) ? $attributes['categories'] : '';
 
+	/* Get the selected pages array */
+	$page_selection = isset( $attributes['selectedPages'] ) ? array_column( json_decode( $attributes['selectedPages'], true ), 'value' ) : null;
+
+	/* Set the order based on the post type */
+	$order_by = isset( $attributes['postType'] ) && $attributes['postType'] === 'post' ? $attributes['orderBy'] : 'post__in';
+
+	/* Show selected pages if using the page post type */
+	$post_in = isset( $attributes['postType'] ) && $attributes['postType'] === 'page' ? $page_selection : null;
+
 	/* Setup the query */
 	$grid_query = new WP_Query(
 		array(
 			'posts_per_page'      => $attributes['postsToShow'],
 			'post_status'         => 'publish',
 			'order'               => $attributes['order'],
-			'orderby'             => $attributes['orderBy'],
+			'orderby'             => $order_by,
 			'cat'                 => $categories,
 			'offset'              => $attributes['offset'],
+			'post__in'            => $post_in,
 			'post_type'           => $attributes['postType'],
 			'ignore_sticky_posts' => 1,
 			'post__not_in'        => array( $post->ID ), // Exclude the current post from the grid.
