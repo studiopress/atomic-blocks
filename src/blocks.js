@@ -1,3 +1,4 @@
+import * as Polyfills from './utils/polyfills';
 /**
  * Import blocks.
  */
