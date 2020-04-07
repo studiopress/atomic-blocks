@@ -15,22 +15,17 @@ const {
 	withFontSizes,
 	withColors,
 	InnerBlocks,
-	URLInput
+	URLInput,
 } = wp.blockEditor;
 
-const {
-	IconButton,
-	Dashicon
-} = wp.components;
+const { IconButton, Dashicon } = wp.components;
 
 class Edit extends Component {
-
 	constructor() {
 		super( ...arguments );
 	}
 
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
@@ -46,18 +41,18 @@ class Edit extends Component {
 				buttonTextColor,
 				buttonSize,
 				buttonShape,
-				buttonTarget
+				buttonTarget,
 			},
 			isSelected,
 			className,
 			setAttributes,
-			backgroundColor
+			backgroundColor,
 		} = this.props;
 
 		// Setup class names
-		const editClassName = classnames({
-			'ab-pricing-table-button': true
-		});
+		const editClassName = classnames( {
+			'ab-pricing-table-button': true,
+		} );
 
 		// Setup styles
 		const editStyles = {
@@ -65,14 +60,12 @@ class Edit extends Component {
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 		};
 
 		return [
-			<Fragment>
-				<Inspector
-					{ ...this.props }
-				/>
+			<Fragment key={ 'ab-pricing-table-inner-component-button-' + this.props.clientId }>
+				<Inspector { ...this.props } />
 				<div
 					className={ editClassName ? editClassName : undefined }
 					style={ editStyles }
@@ -80,36 +73,43 @@ class Edit extends Component {
 					<CustomButton { ...this.props }>
 						<RichText
 							tagName="span"
-							placeholder={ __( 'Button text...', 'atomic-blocks' ) }
+							placeholder={ __(
+								'Button text...',
+								'atomic-blocks'
+							) }
 							keepPlaceholderOnFocus
 							value={ buttonText }
 							formattingControls={ [] }
 							className={ classnames(
 								'ab-button',
 								buttonShape,
-								buttonSize,
+								buttonSize
 							) }
 							style={ {
 								color: buttonTextColor,
-								backgroundColor: buttonBackgroundColor
+								backgroundColor: buttonBackgroundColor,
 							} }
-							onChange={ ( value ) => setAttributes({ buttonText: value }) }
+							onChange={ ( value ) =>
+								setAttributes( { buttonText: value } )
+							}
 						/>
 					</CustomButton>
 					{ isSelected && (
 						<form
 							key="form-link"
-							className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
-							onSubmit={ event => event.preventDefault() }
+							className={ `blocks-button__inline-link ab-button-${ buttonAlignment }` }
+							onSubmit={ ( event ) => event.preventDefault() }
 							style={ {
-								textAlign: buttonAlignment
+								textAlign: buttonAlignment,
 							} }
 						>
 							<Dashicon icon={ 'admin-links' } />
 							<URLInput
 								className="button-url"
 								value={ buttonUrl }
-								onChange={ ( value ) => setAttributes({ buttonUrl: value }) }
+								onChange={ ( value ) =>
+									setAttributes( { buttonUrl: value } )
+								}
 							/>
 							<IconButton
 								icon="editor-break"
@@ -119,12 +119,12 @@ class Edit extends Component {
 						</form>
 					) }
 				</div>
-			</Fragment>
+			</Fragment>,
 		];
 	}
 }
 
-export default compose([
+export default compose( [
 	withFontSizes( 'fontSize' ),
-	withColors( 'backgroundColor', { textColor: 'color' })
-])( Edit );
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+] )( Edit );

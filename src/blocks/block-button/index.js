@@ -21,45 +21,44 @@ const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
 
 // Register editor components
-const {
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	URLInput
-} = wp.blockEditor;
+const { RichText, AlignmentToolbar, BlockControls, URLInput } = wp.blockEditor;
 
 // Register components
-const {
-	IconButton,
-	Dashicon
-} = wp.components;
+const { IconButton, Dashicon } = wp.components;
 
 class ABButtonBlock extends Component {
-
 	render() {
-
 		// Setup the attributes
-		const { attributes: { buttonText, buttonUrl, buttonAlignment, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape }, isSelected, setAttributes } = this.props;
+		const {
+			attributes: {
+				buttonText,
+				buttonUrl,
+				buttonAlignment,
+				buttonBackgroundColor,
+				buttonTextColor,
+				buttonSize,
+				buttonShape,
+			},
+			isSelected,
+			setAttributes,
+		} = this.props;
 
 		return [
-
 			// Show the alignment toolbar on focus
 			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ buttonAlignment }
 					onChange={ ( value ) => {
-						setAttributes({ buttonAlignment: value });
+						setAttributes( { buttonAlignment: value } );
 					} }
 				/>
 			</BlockControls>,
 
 			// Show the block controls on focus
-			<Inspector
-				{ ...this.props }
-			/>,
+			<Inspector key={ 'ab-button-inspector-' + this.props.clientId } { ...this.props } />,
 
 			// Show the button markup in the editor
-			<CustomButton { ...this.props }>
+			<CustomButton key={ 'ab-button-custombutton-' + this.props.clientId } { ...this.props }>
 				<RichText
 					tagName="span"
 					placeholder={ __( 'Button text...', 'atomic-blocks' ) }
@@ -69,29 +68,35 @@ class ABButtonBlock extends Component {
 					className={ classnames(
 						'ab-button',
 						buttonShape,
-						buttonSize,
+						buttonSize
 					) }
 					style={ {
 						color: buttonTextColor ? buttonTextColor : '#ffffff',
-						backgroundColor: buttonBackgroundColor ? buttonBackgroundColor : '#3373dc'
+						backgroundColor: buttonBackgroundColor
+							? buttonBackgroundColor
+							: '#3373dc',
 					} }
-					onChange={ ( value ) => setAttributes({ buttonText: value }) }
+					onChange={ ( value ) =>
+						setAttributes( { buttonText: value } )
+					}
 				/>
 			</CustomButton>,
 			isSelected && (
 				<form
 					key="form-link"
-					className={ `blocks-button__inline-link ab-button-${buttonAlignment}`}
-					onSubmit={ event => event.preventDefault() }
+					className={ `blocks-button__inline-link ab-button-${ buttonAlignment }` }
+					onSubmit={ ( event ) => event.preventDefault() }
 					style={ {
-						textAlign: buttonAlignment
+						textAlign: buttonAlignment,
 					} }
 				>
 					<Dashicon icon={ 'admin-links' } />
 					<URLInput
 						className="button-url"
 						value={ buttonUrl }
-						onChange={ ( value ) => setAttributes({ buttonUrl: value }) }
+						onChange={ ( value ) =>
+							setAttributes( { buttonUrl: value } )
+						}
 					/>
 					<IconButton
 						icon="editor-break"
@@ -99,7 +104,7 @@ class ABButtonBlock extends Component {
 						type="submit"
 					/>
 				</form>
-			)
+			),
 		];
 	}
 }
@@ -113,61 +118,68 @@ registerBlockType( 'atomic-blocks/ab-button', {
 	keywords: [
 		__( 'button', 'atomic-blocks' ),
 		__( 'link', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' )
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	attributes: {
 		buttonText: {
-			type: 'string'
+			type: 'string',
 		},
 		buttonUrl: {
 			type: 'string',
-            source: 'attribute',
-            selector: 'a',
-            attribute: 'href'
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
 		},
 		buttonAlignment: {
-			type: 'string'
+			type: 'string',
 		},
 		buttonBackgroundColor: {
-			type: 'string'
+			type: 'string',
 		},
 		buttonTextColor: {
-			type: 'string'
+			type: 'string',
 		},
 		buttonSize: {
 			type: 'string',
-			default: 'ab-button-size-medium'
+			default: 'ab-button-size-medium',
 		},
 		buttonShape: {
 			type: 'string',
-			default: 'ab-button-shape-rounded'
+			default: 'ab-button-shape-rounded',
 		},
 		buttonTarget: {
 			type: 'boolean',
-			default: false
-		}
+			default: false,
+		},
 	},
 
 	ab_settings_data: {
-        ab_button_buttonOptions: {
-            title: __( 'Button Options', 'atomic-blocks' )
-        }
-    },
+		ab_button_buttonOptions: {
+			title: __( 'Button Options', 'atomic-blocks' ),
+		},
+	},
 
 	// Render the block components
 	edit: ABButtonBlock,
 
 	// Save the attributes and markup
-	save: function( props ) {
-
+	save( props ) {
 		// Setup the attributes
-		const { buttonText, buttonUrl, buttonBackgroundColor, buttonTextColor, buttonSize, buttonShape, buttonTarget } = props.attributes;
+		const {
+			buttonText,
+			buttonUrl,
+			buttonBackgroundColor,
+			buttonTextColor,
+			buttonSize,
+			buttonShape,
+			buttonTarget,
+		} = props.attributes;
 
 		// Save the block markup for the front end
 		return (
 			<CustomButton { ...props }>
-				{	// Check if there is button text and output
-					buttonText && (
+				{ // Check if there is button text and output
+				buttonText && (
 					<a
 						href={ buttonUrl }
 						target={ buttonTarget ? '_blank' : null }
@@ -175,19 +187,21 @@ registerBlockType( 'atomic-blocks/ab-button', {
 						className={ classnames(
 							'ab-button',
 							buttonShape,
-							buttonSize,
+							buttonSize
 						) }
 						style={ {
-							color: buttonTextColor ? buttonTextColor : '#ffffff',
-							backgroundColor: buttonBackgroundColor ? buttonBackgroundColor : '#3373dc'
+							color: buttonTextColor
+								? buttonTextColor
+								: '#ffffff',
+							backgroundColor: buttonBackgroundColor
+								? buttonBackgroundColor
+								: '#3373dc',
 						} }
 					>
-						<RichText.Content
-							value={ buttonText }
-						/>
+						<RichText.Content value={ buttonText } />
 					</a>
 				) }
 			</CustomButton>
 		);
-	}
-});
+	},
+} );

@@ -4,27 +4,27 @@
 
 const BackgroundAttributes = {
 	backgroundImgURL: {
-		type: 'string'
+		type: 'string',
 	},
 	backgroundDimRatio: {
 		type: 'number',
-		default: 100
+		default: 100,
 	},
 	backgroundRepeat: {
 		type: 'string',
-		default: 'no-repeat'
+		default: 'no-repeat',
 	},
 	backgroundSize: {
 		type: 'string',
-		default: 'cover'
+		default: 'cover',
 	},
 	hasParallax: {
 		type: 'boolean',
-		default: false
+		default: false,
 	},
 	focalPoint: {
-		type: 'object'
-	}
+		type: 'object',
+	},
 };
 
 export default BackgroundAttributes;

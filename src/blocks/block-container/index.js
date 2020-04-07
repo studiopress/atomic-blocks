@@ -23,93 +23,84 @@ const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
 
 // Register editor components
-const {
-	BlockControls,
-	BlockAlignmentToolbar,
-	InnerBlocks
-} = wp.blockEditor;
+const { BlockControls, BlockAlignmentToolbar, InnerBlocks } = wp.blockEditor;
 
 const blockAttributes = {
 	containerPaddingTop: {
-		type: 'number'
+		type: 'number',
 	},
 	containerPaddingRight: {
-		type: 'number'
+		type: 'number',
 	},
 	containerPaddingBottom: {
-		type: 'number'
+		type: 'number',
 	},
 	containerPaddingLeft: {
-		type: 'number'
+		type: 'number',
 	},
 	containerMarginTop: {
-		type: 'number'
+		type: 'number',
 	},
 	containerMarginBottom: {
-		type: 'number'
+		type: 'number',
 	},
 	containerWidth: {
-		type: 'string'
+		type: 'string',
 	},
 	containerMaxWidth: {
-		type: 'number'
+		type: 'number',
 	},
 	containerBackgroundColor: {
-		type: 'string'
+		type: 'string',
 	},
 	containerImgURL: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'src',
-		selector: 'img'
+		selector: 'img',
 	},
 	containerImgID: {
-		type: 'number'
+		type: 'number',
 	},
 	containerImgAlt: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'alt',
-		selector: 'img'
+		selector: 'img',
 	},
 	containerDimRatio: {
 		type: 'number',
-		default: 50
-	}
+		default: 50,
+	},
 };
 
 class ABContainerBlock extends Component {
-
 	render() {
-
 		// Setup the attributes
 		const {
-			attributes: {
-				containerWidth
-			},
-			setAttributes
+			attributes: { containerWidth },
+			setAttributes,
 		} = this.props;
 
 		return [
-
 			// Show the alignment toolbar on focus
-			<BlockControls>
+			<BlockControls key={ 'ab-container-block-controls-' + this.props.clientId } >
 				<BlockAlignmentToolbar
 					value={ containerWidth }
-					onChange={ containerWidth => setAttributes({ containerWidth }) }
+					onChange={ ( containerWidth ) =>
+						setAttributes( { containerWidth } )
+					}
 					controls={ [ 'center', 'full' ] }
 				/>
 			</BlockControls>,
 
 			// Show the block controls on focus
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
+			<Inspector key={ 'ab-container-inspector-' + this.props.clientId } { ...{ setAttributes, ...this.props } } />,
 
 			// Show the container markup in the editor
-			<Container { ...this.props }>
+			<Container key={ 'ab-container-' + this.props.clientId } { ...this.props }>
 				<InnerBlocks />
-			</Container>
+			</Container>,
 		];
 	}
 }
@@ -117,28 +108,35 @@ class ABContainerBlock extends Component {
 // Register the block
 registerBlockType( 'atomic-blocks/ab-container', {
 	title: __( 'AB Container', 'atomic-blocks' ),
-	description: __( 'Add a container block to wrap several blocks in a parent container.', 'atomic-blocks' ),
+	description: __(
+		'Add a container block to wrap several blocks in a parent container.',
+		'atomic-blocks'
+	),
 	icon: 'editor-table',
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'container', 'atomic-blocks' ),
 		__( 'section', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' )
+		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	attributes: blockAttributes,
 
 	ab_settings_data: {
-        ab_container_containerOptions: {
-            title: __( 'Container Options', 'atomic-blocks' )
-        },
-        ab_container_backgroundOptions: {
-            title: __( 'Background Options', 'atomic-blocks' )
-		}
-    },
+		ab_container_containerOptions: {
+			title: __( 'Container Options', 'atomic-blocks' ),
+		},
+		ab_container_backgroundOptions: {
+			title: __( 'Background Options', 'atomic-blocks' ),
+		},
+	},
 
-	getEditWrapperProps({ containerWidth }) {
-		if ( 'left' === containerWidth || 'right' === containerWidth || 'full' === containerWidth ) {
+	getEditWrapperProps( { containerWidth } ) {
+		if (
+			'left' === containerWidth ||
+			'right' === containerWidth ||
+			'full' === containerWidth
+		) {
 			return { 'data-align': containerWidth };
 		}
 	},
@@ -147,8 +145,7 @@ registerBlockType( 'atomic-blocks/ab-container', {
 	edit: ABContainerBlock,
 
 	// Save the attributes and markup
-	save: function( props ) {
-
+	save( props ) {
 		// Save the block markup for the front end
 		return (
 			<Container { ...props }>
@@ -157,6 +154,5 @@ registerBlockType( 'atomic-blocks/ab-container', {
 		);
 	},
 
-	deprecated: deprecated
-
-});
+	deprecated,
+} );

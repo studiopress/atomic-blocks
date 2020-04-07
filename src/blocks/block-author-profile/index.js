@@ -21,90 +21,90 @@ const blockAttributes = {
 	profileName: {
 		type: 'array',
 		source: 'children',
-		selector: '.ab-profile-name'
+		selector: '.ab-profile-name',
 	},
 	profileTitle: {
 		type: 'array',
 		source: 'children',
-		selector: '.ab-profile-title'
+		selector: '.ab-profile-title',
 	},
 	profileContent: {
 		type: 'array',
 		selector: '.ab-profile-text',
-		source: 'children'
+		source: 'children',
 	},
 	profileAlignment: {
-		type: 'string'
+		type: 'string',
 	},
 	profileImgURL: {
 		type: 'string',
 		source: 'attribute',
 		attribute: 'src',
-		selector: 'img'
+		selector: 'img',
 	},
 	profileImgAlt: {
 		type: 'string',
 		source: 'attribute',
 		selector: 'figure img',
 		attribute: 'alt',
-		default: ''
+		default: '',
 	},
 	profileImgID: {
-		type: 'number'
+		type: 'number',
 	},
 	profileBackgroundColor: {
 		type: 'string',
-		default: '#f2f2f2'
+		default: '#f2f2f2',
 	},
 	profileTextColor: {
 		type: 'string',
-		default: '#32373c'
+		default: '#32373c',
 	},
 	profileLinkColor: {
 		type: 'string',
-		default: '#392f43'
+		default: '#392f43',
 	},
 	profileFontSize: {
 		type: 'number',
-		default: 18
+		default: 18,
 	},
 	profileAvatarShape: {
 		type: 'string',
-		default: 'square'
+		default: 'square',
 	},
 	twitter: {
-		type: 'url'
+		type: 'url',
 	},
 	facebook: {
-		type: 'url'
+		type: 'url',
 	},
 	instagram: {
-		type: 'url'
+		type: 'url',
 	},
 	pinterest: {
-		type: 'url'
+		type: 'url',
 	},
 	google: {
-		type: 'url'
+		type: 'url',
 	},
 	youtube: {
-		type: 'url'
+		type: 'url',
 	},
 	github: {
-		type: 'url'
+		type: 'url',
 	},
 	linkedin: {
-		type: 'url'
+		type: 'url',
 	},
 	email: {
-		type: 'url'
+		type: 'url',
 	},
 	wordpress: {
-		type: 'url'
+		type: 'url',
 	},
 	website: {
-		type: 'url'
-	}
+		type: 'url',
+	},
 };
 
 /**
@@ -112,48 +112,51 @@ const blockAttributes = {
  */
 registerBlockType( 'atomic-blocks/ab-profile-box', {
 	title: __( 'AB Profile Box', 'atomic-blocks' ),
-	description: __( 'Add a profile box with bio info and social media links.', 'atomic-blocks' ),
+	description: __(
+		'Add a profile box with bio info and social media links.',
+		'atomic-blocks'
+	),
 	icon: 'admin-users',
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'author', 'atomic-blocks' ),
 		__( 'profile', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' )
+		__( 'atomic', 'atomic-blocks' ),
 	],
 
 	/* Setup the block attributes */
 	attributes: blockAttributes,
 
 	ab_settings_data: {
-        ab_author_profile_profileFontSize: {
-            title: __( 'Font Size', 'atomic-blocks' )
-        },
-        ab_author_profile_profileAvatarShape: {
-            title: __( 'Avatar Shape', 'atomic-blocks' )
+		ab_author_profile_profileFontSize: {
+			title: __( 'Font Size', 'atomic-blocks' ),
+		},
+		ab_author_profile_profileAvatarShape: {
+			title: __( 'Avatar Shape', 'atomic-blocks' ),
 		},
 		ab_author_profile_profileBackgroundColor: {
-            title: __( 'Background Color', 'atomic-blocks' )
+			title: __( 'Background Color', 'atomic-blocks' ),
 		},
 		ab_author_profile_profileTextColor: {
-            title: __( 'Text Color', 'atomic-blocks' )
+			title: __( 'Text Color', 'atomic-blocks' ),
 		},
 		ab_author_profile_profileLinkColor: {
-            title: __( 'Social Link Color', 'atomic-blocks' )
+			title: __( 'Social Link Color', 'atomic-blocks' ),
 		},
 		ab_author_profile_socialLinks: {
-            title: __( 'Social Links', 'atomic-blocks' )
-        }
-    },
+			title: __( 'Social Links', 'atomic-blocks' ),
+		},
+	},
 
 	/* Render the block in the editor. */
-	edit: props => {
+	edit: ( props ) => {
 		return <Edit { ...props } />;
 	},
 
 	/* Save the block markup. */
-	save: props => {
+	save: ( props ) => {
 		return <Save { ...props } />;
 	},
 
-	deprecated: Deprecated
-});
+	deprecated: Deprecated,
+} );

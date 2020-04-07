@@ -17,7 +17,7 @@ const {
 	withColors,
 	ContrastChecker,
 	PanelColorSettings,
-	ColorPalette
+	ColorPalette,
 } = wp.blockEditor;
 
 const {
@@ -26,32 +26,44 @@ const {
 	PanelRow,
 	SelectControl,
 	BaseControl,
-	RangeControl
+	RangeControl,
 } = wp.components;
 
 // Apply fallback styles
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
+	const {
+		textColor,
+		backgroundColor,
+		fontSize,
+		customFontSize,
+	} = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	const computedStyles = editableNode
+		? getComputedStyle( editableNode )
+		: null;
 	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined
+		fallbackBackgroundColor:
+			backgroundColor || ! computedStyles
+				? undefined
+				: computedStyles.backgroundColor,
+		fallbackTextColor:
+			textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackFontSize:
+			fontSize || customFontSize || ! computedStyles
+				? undefined
+				: parseInt( computedStyles.fontSize ) || undefined,
 	};
-});
+} );
 
 /**
  * Create an Inspector Controls wrapper Component
  */
 class Inspector extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
 
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
@@ -61,7 +73,7 @@ class Inspector extends Component {
 				paddingTop,
 				paddingRight,
 				paddingBottom,
-				paddingLeft
+				paddingLeft,
 			},
 			isSelected,
 			setAttributes,
@@ -73,7 +85,7 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			fallbackBackgroundColor,
-			fallbackTextColor
+			fallbackTextColor,
 		} = this.props;
 
 		// Border styles
@@ -81,123 +93,135 @@ class Inspector extends Component {
 			{ value: 'ab-list-border-none', label: __( 'None' ) },
 			{ value: 'ab-list-border-solid', label: __( 'Solid' ) },
 			{ value: 'ab-list-border-dotted', label: __( 'Dotted' ) },
-			{ value: 'ab-list-border-dashed', label: __( 'Dashed' ) }
+			{ value: 'ab-list-border-dashed', label: __( 'Dashed' ) },
 		];
 
-		const onChangeBorderColor = value => setAttributes({ borderColor: value });
+		const onChangeBorderColor = ( value ) =>
+			setAttributes( { borderColor: value } );
 
 		return (
-		<InspectorControls key="inspector">
-			<PanelBody title={ __( 'Text Settings', 'atomic-blocks' ) }>
-				<FontSizePicker
-					fallbackFontSize={ fallbackFontSize }
-					value={ fontSize.size }
-					onChange={ setFontSize }
-				/>
-				<SelectControl
-					label={ __( 'List Border Style', 'atomic-blocks' ) }
-					value={ borderStyle }
-					options={ borderStyles.map( ({ value, label }) => ({
-						value: value,
-						label: label
-					}) ) }
-					onChange={ ( value ) => {
- this.props.setAttributes({ borderStyle: value });
-} }
-				/>
-				{ ( 'ab-list-border-none' != borderStyle ) && (
-					<RangeControl
-						label={ __( 'List Border Width', 'atomic-blocks' ) }
-						value={ borderWidth }
-						onChange={ ( value ) => this.props.setAttributes({ borderWidth: value }) }
-						min={ 1 }
-						max={ 5 }
-						step={ 1 }
+			<InspectorControls key="inspector">
+				<PanelBody title={ __( 'Text Settings', 'atomic-blocks' ) }>
+					<FontSizePicker
+						fallbackFontSize={ fallbackFontSize }
+						value={ fontSize.size }
+						onChange={ setFontSize }
 					/>
-				) }
-				{ ( 'ab-list-border-none' != borderStyle ) && (
-					<PanelRow>
-						<BaseControl
-							label={ __( 'List Border Color', 'atomic-blocks' ) }
-						>
-							<ColorPalette
-								initialOpen={ false }
-								value={ borderColor }
-								onChange={ onChangeBorderColor }
+					<SelectControl
+						label={ __( 'List Border Style', 'atomic-blocks' ) }
+						value={ borderStyle }
+						options={ borderStyles.map( ( { value, label } ) => ( {
+							value,
+							label,
+						} ) ) }
+						onChange={ ( value ) => {
+							this.props.setAttributes( { borderStyle: value } );
+						} }
+					/>
+					{ 'ab-list-border-none' !== borderStyle && (
+						<RangeControl
+							label={ __( 'List Border Width', 'atomic-blocks' ) }
+							value={ borderWidth }
+							onChange={ ( value ) =>
+								this.props.setAttributes( {
+									borderWidth: value,
+								} )
+							}
+							min={ 1 }
+							max={ 5 }
+							step={ 1 }
+						/>
+					) }
+					{ 'ab-list-border-none' !== borderStyle && (
+						<PanelRow>
+							<BaseControl
+								label={ __(
+									'List Border Color',
+									'atomic-blocks'
+								) }
+								id={ 'ab-list-border-color-' + this.props.clientId }
 							>
-							</ColorPalette>
-						</BaseControl>
-					</PanelRow>
-				) }
-			</PanelBody>
-			<PanelBody
-				title={ __( 'Padding Settings', 'atomic-blocks' ) }
-				initialOpen={ false }
-			>
-				<Padding
-
-					// Top padding
-					paddingEnableTop={ true }
-					paddingTop={ paddingTop }
-					paddingTopMin="0"
-					paddingTopMax="100"
-					onChangePaddingTop={ paddingTop => setAttributes({ paddingTop }) }
-
-					// Right padding
-					paddingEnableRight={ true }
-					paddingRight={ paddingRight }
-					paddingRightMin="0"
-					paddingRightMax="100"
-					onChangePaddingRight={ paddingRight => setAttributes({ paddingRight }) }
-
-					// Bottom padding
-					paddingEnableBottom={ true }
-					paddingBottom={ paddingBottom }
-					paddingBottomMin="0"
-					paddingBottomMax="100"
-					onChangePaddingBottom={ paddingBottom => setAttributes({ paddingBottom }) }
-
-					// Left padding
-					paddingEnableLeft={ true }
-					paddingLeft={ paddingLeft }
-					paddingLeftMin="0"
-					paddingLeftMax="100"
-					onChangePaddingLeft={ paddingLeft => setAttributes({ paddingLeft }) }
-				/>
-			</PanelBody>
-			<PanelColorSettings
-				title={ __( 'Color Settings', 'atomic-blocks' ) }
-				initialOpen={ false }
-				colorSettings={ [
-					{
-						value: backgroundColor.color,
-						onChange: setBackgroundColor,
-						label: __( 'Background Color', 'atomic-blocks' )
-					},
-					{
-						value: textColor.color,
-						onChange: setTextColor,
-						label: __( 'Text Color', 'atomic-blocks' )
-					}
-				] }
-			>
-				<ContrastChecker
-					{ ...{
-						textColor: textColor.color,
-						backgroundColor: backgroundColor.color,
-						fallbackTextColor,
-						fallbackBackgroundColor
-					} }
-					fontSize={ fontSize.size }
-				/>
-			</PanelColorSettings>
-		</InspectorControls>
+								<ColorPalette
+									initialOpen={ false }
+									value={ borderColor }
+									onChange={ onChangeBorderColor }
+								></ColorPalette>
+							</BaseControl>
+						</PanelRow>
+					) }
+				</PanelBody>
+				<PanelBody
+					title={ __( 'Padding Settings', 'atomic-blocks' ) }
+					initialOpen={ false }
+				>
+					<Padding
+						// Top padding
+						paddingEnableTop={ true }
+						paddingTop={ paddingTop }
+						paddingTopMin="0"
+						paddingTopMax="100"
+						onChangePaddingTop={ ( paddingTop ) =>
+							setAttributes( { paddingTop } )
+						}
+						// Right padding
+						paddingEnableRight={ true }
+						paddingRight={ paddingRight }
+						paddingRightMin="0"
+						paddingRightMax="100"
+						onChangePaddingRight={ ( paddingRight ) =>
+							setAttributes( { paddingRight } )
+						}
+						// Bottom padding
+						paddingEnableBottom={ true }
+						paddingBottom={ paddingBottom }
+						paddingBottomMin="0"
+						paddingBottomMax="100"
+						onChangePaddingBottom={ ( paddingBottom ) =>
+							setAttributes( { paddingBottom } )
+						}
+						// Left padding
+						paddingEnableLeft={ true }
+						paddingLeft={ paddingLeft }
+						paddingLeftMin="0"
+						paddingLeftMax="100"
+						onChangePaddingLeft={ ( paddingLeft ) =>
+							setAttributes( { paddingLeft } )
+						}
+					/>
+				</PanelBody>
+				<PanelColorSettings
+					title={ __( 'Color Settings', 'atomic-blocks' ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: backgroundColor.color,
+							onChange: setBackgroundColor,
+							label: __( 'Background Color', 'atomic-blocks' ),
+						},
+						{
+							value: textColor.color,
+							onChange: setTextColor,
+							label: __( 'Text Color', 'atomic-blocks' ),
+						},
+					] }
+				>
+					<ContrastChecker
+						{ ...{
+							textColor: textColor.color,
+							backgroundColor: backgroundColor.color,
+							fallbackTextColor,
+							fallbackBackgroundColor,
+						} }
+						fontSize={ fontSize.size }
+					/>
+				</PanelColorSettings>
+			</InspectorControls>
 		);
 	}
 }
 
-export default compose([
+export default compose( [
 	applyFallbackStyles,
 	withFontSizes( 'fontSize' ),
-	withColors( 'backgroundColor', { textColor: 'color' })
-])( Inspector );
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+] )( Inspector );

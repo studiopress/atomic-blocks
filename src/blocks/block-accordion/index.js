@@ -18,65 +18,66 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 
 // Register block
-const {
-	registerBlockType
-} = wp.blocks;
+const { registerBlockType } = wp.blocks;
 
 const blockAttributes = {
 	accordionTitle: {
 		type: 'array',
 		selector: '.ab-accordion-title',
-		source: 'children'
+		source: 'children',
 	},
 	accordionText: {
 		type: 'array',
 		selector: '.ab-accordion-text',
-		source: 'children'
+		source: 'children',
 	},
 	accordionAlignment: {
-		type: 'string'
+		type: 'string',
 	},
 	accordionFontSize: {
 		type: 'number',
-		default: undefined
+		default: undefined,
 	},
 	accordionOpen: {
 		type: 'boolean',
-		default: false
-	}
+		default: false,
+	},
 };
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-accordion', {
 	title: __( 'AB Accordion', 'atomic-blocks' ),
-	description: __( 'Add accordion block with a title and text.', 'atomic-blocks' ),
+	description: __(
+		'Add accordion block with a title and text.',
+		'atomic-blocks'
+	),
 	icon: 'editor-ul',
 	category: 'atomic-blocks',
 	keywords: [
 		__( 'accordion', 'atomic-blocks' ),
 		__( 'list', 'atomic-blocks' ),
-		__( 'atomic', 'atomic-blocks' )
+		__( 'atomic', 'atomic-blocks' ),
 	],
 	attributes: blockAttributes,
 
 	ab_settings_data: {
-        ab_accordion_accordionFontSize: {
-            title: __( 'Title Font Size', 'atomic-blocks' )
-        },
-        ab_accordion_accordionOpen: {
-            title: __( 'Open by default', 'atomic-blocks' )
-        }
-    },
+		ab_accordion_accordionFontSize: {
+			title: __( 'Title Font Size', 'atomic-blocks' ),
+		},
+		ab_accordion_accordionOpen: {
+			title: __( 'Open by default', 'atomic-blocks' ),
+		},
+	},
 
 	// Render the block components
-	edit: props => {
+	edit: ( props ) => {
 		return <Edit { ...props } />;
 	},
 
 	// Save the attributes and markup
-	save: props => {
+	save: ( props ) => {
 		return <Save { ...props } />;
 	},
 
-	deprecated: Deprecated
-});
+	deprecated: Deprecated,
+} );

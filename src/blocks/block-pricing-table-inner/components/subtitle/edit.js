@@ -7,20 +7,14 @@ const { registerBlockType } = wp.blocks;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 
-const {
-	RichText,
-	withFontSizes,
-	withColors
-} = wp.blockEditor;
+const { RichText, withFontSizes, withColors } = wp.blockEditor;
 
 class Edit extends Component {
-
 	constructor() {
 		super( ...arguments );
 	}
 
 	render() {
-
 		// Setup the attributes
 		const {
 			attributes: {
@@ -28,7 +22,7 @@ class Edit extends Component {
 				paddingTop,
 				paddingRight,
 				paddingBottom,
-				paddingLeft
+				paddingLeft,
 			},
 			isSelected,
 			className,
@@ -36,18 +30,18 @@ class Edit extends Component {
 			fallbackFontSize,
 			fontSize,
 			backgroundColor,
-			textColor
+			textColor,
 		} = this.props;
 
 		// Setup class names
-		const editClassName = classnames({
+		const editClassName = classnames( {
 			'ab-pricing-table-subtitle': true,
 			[ fontSize.class ]: fontSize.class,
 			'has-text-color': textColor.color,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
-			[ textColor.class ]: textColor.class
-		});
+			[ textColor.class ]: textColor.class,
+		} );
 
 		// Setup styles
 		const editStyles = {
@@ -57,29 +51,29 @@ class Edit extends Component {
 			paddingTop: paddingTop ? paddingTop + 'px' : undefined,
 			paddingRight: paddingRight ? paddingRight + 'px' : undefined,
 			paddingBottom: paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined
+			paddingLeft: paddingLeft ? paddingLeft + 'px' : undefined,
 		};
 
 		return [
-			<Fragment>
-				<Inspector
-					{ ...this.props }
-				/>
+			<Fragment key={ 'ab-pricing-table-inner-component-subtitle-' + this.props.clientId }>
+				<Inspector { ...this.props } />
 				<RichText
 					tagName="div"
 					placeholder={ __( 'Price Subtitle', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ subtitle }
-					onChange={ ( value ) => setAttributes({ subtitle: value }) }
+					onChange={ ( value ) =>
+						setAttributes( { subtitle: value } )
+					}
 					style={ editStyles }
 					className={ editClassName ? editClassName : undefined }
 				/>
-			</Fragment>
+			</Fragment>,
 		];
 	}
 }
 
-export default compose([
+export default compose( [
 	withFontSizes( 'fontSize' ),
-	withColors( 'backgroundColor', { textColor: 'color' })
-])( Edit );
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+] )( Edit );

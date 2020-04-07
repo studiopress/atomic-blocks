@@ -2,7 +2,7 @@
  * Editor styles for the admin
  */
 
-.editor-block-list__layout [data-type="atomic-blocks/ab-spacer"] {
+.block-editor-block-list__layout [data-type="atomic-blocks/ab-spacer"] {
     margin-bottom: 1.2em;
 }
 
@@ -18,16 +18,16 @@
 		outline: none;
 	}
 
-	.editor-block-list__block-edit {
+	.block-editor-block-list__block-edit {
 		outline: 1px dashed #ddd;
 	}
 
-	&.is-selected .editor-block-list__block-edit,
-	&.is-hovered .editor-block-list__block-edit {
+	&.is-selected .block-editor-block-list__block-edit,
+	&.is-hovered .block-editor-block-list__block-edit {
 		outline: 1px dotted #ddd;
 	}
 
-	&.is-selected .editor-block-list__block-edit {
+	&.is-selected .block-editor-block-list__block-edit {
 		outline: 1px solid #ddd;
 	}
 }
@@ -44,8 +44,8 @@
 	width: 100% !important;
 	z-index: 999;
 
-	.editor-block-list__block[data-type="atomic-blocks/ab-spacer"].is-selected &,
-	.editor-block-list__block[data-type="atomic-blocks/ab-spacer"].is-hovered & {
+	.block-editor-block-list__block[data-type="atomic-blocks/ab-spacer"].is-selected &,
+	.block-editor-block-list__block[data-type="atomic-blocks/ab-spacer"].is-hovered & {
 		display: block;
 	}
 

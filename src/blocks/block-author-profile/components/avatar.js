@@ -7,7 +7,6 @@ const { Component } = wp.element;
 
 /* Create an SocialIcons wrapper Component */
 export default class AvatarColumn extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
