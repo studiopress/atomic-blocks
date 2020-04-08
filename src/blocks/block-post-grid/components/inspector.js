@@ -188,9 +188,13 @@ export default class Inspector extends Component {
 							<div className="components-base-control__field">
 								<label className="components-base-control__label" htmlFor="inspector-select-control">{ __( 'Pages To Show', 'atomic-blocks') }</label>
 								<Select
-									value={ JSON.parse( attributes.selectedPages ) }
-									onChange={ ( selectedOption ) => setAttributes( { selectedPages: JSON.stringify( selectedOption ) } ) }
 									options={ pageOptions }
+									value={ attributes.selectedPages }
+									onChange={ ( value ) =>
+										this.props.setAttributes( {
+											selectedPages: value,
+										} )
+									}
 									isMulti={ true }
 									closeMenuOnSelect={ false }
 								/>

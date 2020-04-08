@@ -287,16 +287,13 @@ export default compose( [
 			( value ) => ! isUndefined( value )
 		);
 
-		// Grab the array string from the inspector
-		const pageSelection = JSON.parse( props.attributes.selectedPages );
-
 		// Grab the page IDs from the array
-		const pageIDs = pageSelection && pageSelection.length > 0 ? pageSelection.map(obj => obj.value) : null;
+		const pageIDs = props.attributes.selectedPages && props.attributes.selectedPages.length > 0 ? props.attributes.selectedPages.map(obj => obj.value) : null;
 
 		// Query for pages
 		const pageQuery = pickBy({
-			include: pageIDs && pageIDs.length > 0 ? pageIDs : null,
-			orderby: pageIDs && pageIDs.length > 0 ? 'include' : null,
+			include: pageIDs ? pageIDs : null,
+			orderby: pageIDs ? 'include' : null,
 		}, ( value ) => ! isUndefined( value ) );
 
 		// Return the post or page query
@@ -304,7 +301,7 @@ export default compose( [
 			latestPosts: getEntityRecords(
 				'postType',
 				props.attributes.postType,
-				'page' === props.attributes.postType && pageIDs && pageIDs.length > 0
+				'page' === props.attributes.postType && pageIDs
 				? pageQuery
 				: latestPostsQuery
 			)
