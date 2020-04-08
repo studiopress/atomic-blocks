@@ -22,34 +22,37 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	 */
 	global $post;
 
+	/* Get the post categories */
 	$categories = isset( $attributes['categories'] ) ? $attributes['categories'] : '';
 
-	// /* Get the selected pages array */
-	// $page_selection = isset( $attributes['selectedPages'] ) ? array_column( $attributes['selectedPages'], 'value' ) : null;
+	/* Get the selected pages */
+	$page_selection = isset( $attributes['selectedPages'] ) ? array_column( $attributes['selectedPages'], 'value' ) : null;
 
-	// /* Set the order based on the post type */
-	// $order_by = isset( $attributes['postType'] ) && $attributes['postType'] === 'post' ? $attributes['orderBy'] : 'post__in';
-
-	// /* Show selected pages if using the page post type */
-	// $post_in = isset( $attributes['postType'] ) && $attributes['postType'] === 'page' ? $page_selection : null;
-
-	//var_dump($attributes['selectedPages']);
-
-	/* Setup the query */
-	$grid_query = new WP_Query(
-		array(
+	if ( isset( $attributes['postType'] ) && 'page' === $attributes['postType'] ) {
+		/* Page query args */
+		$args = array(
+			'post_status'    => 'publish',
+			'orderby'        => 'post__in',
+			'post__in'       => $page_selection,
+			'post_type'      => 'page',
+		);
+	} else {
+		/* Post query args */
+		$args = array(
 			'posts_per_page'      => $attributes['postsToShow'],
 			'post_status'         => 'publish',
 			'order'               => $attributes['order'],
-			//'orderby'             => $order_by,
+			'orderby'             => $attributes['orderBy'],
 			'cat'                 => $categories,
 			'offset'              => $attributes['offset'],
-			//'post__in'            => $post_in,
 			'post_type'           => $attributes['postType'],
 			'ignore_sticky_posts' => 1,
-			'post__not_in'        => array( $post->ID ), // Exclude the current post from the grid.
-		)
-	);
+			'post__not_in'        => array( $post->ID ),
+		);
+	}
+
+	/* Setup the query */
+	$grid_query = new WP_Query( $args );
 
 	$post_grid_markup = '';
 
@@ -390,9 +393,9 @@ function atomic_blocks_register_block_core_latest_posts() {
 				),
 				'selectedPages'       => array(
 					'type' => 'array',
-					'default' => [],
+					'default' => array(),
 					'items' => [
-						'type' => 'string'
+						'type' => 'object'
 					],
 				),
 				'sectionTag'          => array(

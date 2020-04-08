@@ -291,10 +291,13 @@ export default compose( [
 		const pageIDs = props.attributes.selectedPages && props.attributes.selectedPages.length > 0 ? props.attributes.selectedPages.map(obj => obj.value) : null;
 
 		// Query for pages
-		const pageQuery = pickBy({
-			include: pageIDs ? pageIDs : null,
-			orderby: pageIDs ? 'include' : null,
-		}, ( value ) => ! isUndefined( value ) );
+		const pageQuery = pickBy(
+			{
+				include: pageIDs ? pageIDs : null,
+				orderby: pageIDs ? 'include' : null,
+			},
+			( value ) => ! isUndefined( value )
+		);
 
 		// Return the post or page query
 		return {
