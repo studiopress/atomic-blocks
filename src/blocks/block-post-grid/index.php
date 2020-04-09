@@ -31,10 +31,10 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	if ( isset( $attributes['postType'] ) && 'page' === $attributes['postType'] ) {
 		/* Page query args */
 		$args = array(
-			'post_status'    => 'publish',
-			'orderby'        => 'post__in',
-			'post__in'       => $page_selection,
-			'post_type'      => 'page',
+			'post_status' => 'publish',
+			'orderby'     => 'post__in',
+			'post__in'    => $page_selection,
+			'post_type'   => 'page',
 		);
 	} else {
 		/* Post query args */
@@ -392,10 +392,10 @@ function atomic_blocks_register_block_core_latest_posts() {
 					'default' => 'post',
 				),
 				'selectedPages'       => array(
-					'type' => 'array',
+					'type'    => 'array',
 					'default' => array(),
-					'items' => [
-						'type' => 'object'
+					'items'   => [
+						'type' => 'object',
 					],
 				),
 				'sectionTag'          => array(
