@@ -75,3 +75,11 @@
 		}
 	}
 }
+
+[data-type="atomic-blocks/ab-post-grid"] .components-placeholder {
+	align-items: center;
+
+	.components-placeholder__fieldset {
+		width: auto;
+	}
+}
