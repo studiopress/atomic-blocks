@@ -1,103 +1,168 @@
 version: 2.1
 
-jobs:
-  php-71:
-    docker:
-      - image: wordpress:php7.1-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-      - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: youremptytestdbnamehere
-          MYSQL_USER: yourusernamehere
-          MYSQL_PASSWORD: yourpasswordhere
-          MYSQL_ROOT_PASSWORD: wordpress
-    steps:
-      - prepare-environment
-      - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpunit
-
-  php-72:
-    docker:
-      - image: wordpress:php7.2-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-      - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: youremptytestdbnamehere
-          MYSQL_USER: yourusernamehere
-          MYSQL_PASSWORD: yourpasswordhere
-          MYSQL_ROOT_PASSWORD: wordpress
-    steps:
-      - prepare-environment
-      - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpunit
-
-  php-73:
-    docker:
-      - image: wordpress:php7.3-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-      - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: youremptytestdbnamehere
-          MYSQL_USER: yourusernamehere
-          MYSQL_PASSWORD: yourpasswordhere
-          MYSQL_ROOT_PASSWORD: wordpress
-    steps:
-      - prepare-environment
-      - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpunit
-
-  atomic-blocks-cs:
-    docker:
-      - image: wordpress:php7.3-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-    steps:
-      - prepare-environment:
-          clone-wordpress-develop: false
-      - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpcs && npm run lint:js
-
 commands:
-  prepare-environment:
-    description: "Preparing the environment..."
-    parameters:
-      clone-wordpress-develop:
-        type: boolean
-        default: true
+  install_dependencies:
+    description: "Install development dependencies."
     steps:
-      - run: apk add --no-cache git nodejs npm
+      - run: composer install
+
+  mkdir_artifacts:
+    description: "Make Artifacts directory"
+    steps:
       - run:
           command: |
-            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-            EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
-            ACTUAL_SIGNATURE=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
-            [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/bin --filename=composer || exit 1
-            composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
-      - when:
-          condition: << parameters.clone-wordpress-develop >>
-          steps:
-            - run: git clone git://develop.git.wordpress.org/ wordpress-develop
-            - run: cp wordpress-develop/wp-tests-config-sample.php wordpress-develop/wp-tests-config.php
-            - run: sed -i 's/localhost/127.0.0.1/g' wordpress-develop/wp-tests-config.php
-      - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
-      - checkout:
-          path: wordpress-develop/src/wp-content/plugins/atomic-blocks
+            [ ! -d "/tmp/artifacts" ] && mkdir /tmp/artifacts &>/dev/null
+
+  set_version_variable:
+    description: "Set the VERSION environment variable"
+    steps:
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
+          command: |
+            echo "export VERSION=$(git -C /tmp/src describe --tags --abbrev=0)" >> ${BASH_ENV}
+
+  svn_setup:
+    description: "Set up SVN"
+    steps:
+      - run: svn co https://plugins.svn.wordpress.org/atomic-blocks --depth=empty .
+      - run: svn up trunk
+      - run: svn up tags --depth=empty
+      - run: find ./trunk -not -path "./trunk" -delete
+      - run: cp -r /tmp/src/. ./trunk
+      - run: svn propset svn:ignore -F ./trunk/.svnignore ./trunk
+
+  svn_add_changes:
+    description: "Add changes to SVN"
+    steps:
+      - run:
+          command: if [[ ! -z $(svn st | grep ^\!) ]]; then svn st | grep ^! | awk '{print " --force "$2}' | xargs -0r svn rm; fi
+      - run: svn add --force .
+
+  svn_create_tag:
+    description: "Create a SVN tag"
+    steps:
+      - set_version_variable
+      - run: svn cp trunk tags/${VERSION}
+
+  svn_commit:
+    description: "Commit changes to SVN"
+    steps:
+      - set_version_variable
+      - run: svn ci -m "Tagging ${VERSION} from GitHub" --no-auth-cache --non-interactive --username "${SVN_USERNAME}" --password "${SVN_PASSWORD}"
+
+executors:
+  base:
+    docker:
+      - image: circleci/buildpack-deps:latest
+    working_directory: /tmp
+  php_node:
+    docker:
+      - image: circleci/php:7.3.3-stretch-node-browsers
+    working_directory: /tmp/src
+
+jobs:
+  checkout:
+    executor: base
+    steps:
+      - mkdir_artifacts
+      - checkout:
+          path: src
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - src
+
+  checks:
+    executor: php_node
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - install_dependencies
+      - run: composer phpcs
+
+  deploy_svn_branch:
+    executor: base
+    working_directory: /tmp/artifacts
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - svn_setup
+      - svn_create_tag
+      - svn_add_changes
+      - svn_commit
+
+  deploy_svn_tag:
+    executor: base
+    working_directory: /tmp/artifacts
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - svn_setup
+      - svn_create_tag
+      - svn_add_changes
+      - svn_commit
 
 workflows:
   version: 2
-  test:
+  checks:
     jobs:
-      - atomic-blocks-cs
-      - php-71
-      - php-72
-      - php-73
+      - checkout:
+          filters:
+            branches:
+              ignore:
+                - master
+      - checks:
+          requires:
+            - checkout
+          filters:
+            branches:
+              ignore:
+                - master
+
+  branch_deploy:
+    jobs:
+      - checkout:
+          filters:
+            branches:
+              only:
+                - master
+      - checks:
+          requires:
+            - checkout
+          filters:
+            branches:
+              only:
+                - master
+      - deploy_svn_branch:
+          context: genesis-svn
+          requires:
+            - checks
+          filters:
+            branches:
+              only:
+                - master
+
+  tag_deploy:
+    jobs:
+      - checkout:
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
+      - checks:
+          requires:
+            - checkout
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
+      - deploy_svn_tag:
+          context: genesis-svn
+          requires:
+            - checks
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
