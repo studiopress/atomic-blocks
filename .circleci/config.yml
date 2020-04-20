@@ -1,10 +1,25 @@
 version: 2.1
 
+executors:
+  base:
+    docker:
+      - image: circleci/buildpack-deps:latest
+    working_directory: /tmp
+  php_node:
+    docker:
+      - image: circleci/php:7.3.3-stretch-node-browsers
+    working_directory: /tmp/src
+
 commands:
-  install_dependencies:
+  install_composer_dependencies:
     description: "Install development dependencies."
     steps:
       - run: composer install
+
+  install_npm_dependencies:
+    description: "Install npm dependencies."
+    steps:
+      - run: npm install
 
   mkdir_artifacts:
     description: "Make Artifacts directory"
@@ -49,16 +64,6 @@ commands:
       - set_version_variable
       - run: svn ci -m "Tagging ${VERSION} from GitHub" --no-auth-cache --non-interactive --username "${SVN_USERNAME}" --password "${SVN_PASSWORD}"
 
-executors:
-  base:
-    docker:
-      - image: circleci/buildpack-deps:latest
-    working_directory: /tmp
-  php_node:
-    docker:
-      - image: circleci/php:7.3.3-stretch-node-browsers
-    working_directory: /tmp/src
-
 jobs:
   checkout:
     executor: base
@@ -76,8 +81,9 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp
-      - install_dependencies
-      - run: composer phpcs
+      - install_composer_dependencies
+      - install_npm_dependencies
+      - run: composer phpcs && npm run lint:js
 
   deploy_svn_branch:
     executor: base
