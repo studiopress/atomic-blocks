@@ -7,7 +7,7 @@ executors:
     working_directory: /tmp
   php_node:
     docker:
-      - image: circleci/php:7.3.3-stretch-node-browsers
+      - image: circleci/php:7.4.4-node-browsers-legacy
     working_directory: /tmp/src
 
 commands:
