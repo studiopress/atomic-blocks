@@ -8,7 +8,7 @@ executors:
   php_node:
     docker:
       - image: circleci/php:7.3.3-stretch-node-browsers
-    working_directory: /tmp/src
+    working_directory: /tmp
 
 commands:
   install_composer_dependencies:
