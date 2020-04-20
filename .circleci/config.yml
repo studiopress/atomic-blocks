@@ -14,12 +14,14 @@ commands:
   install_composer_dependencies:
     description: "Install development dependencies."
     steps:
-      - run: show_pwd_info && composer install
+      - show_pwd_info
+      - run: composer install
 
   install_npm_dependencies:
     description: "Install npm dependencies."
     steps:
-      - run: show_pwd_info && npm install
+      - show_pwd_info
+      - run: npm install
 
   show_pwd_info:
     description: "Show information about the current directory"
