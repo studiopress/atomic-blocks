@@ -8,18 +8,24 @@ executors:
   php_node:
     docker:
       - image: circleci/php:7.3.3-stretch-node-browsers
-    working_directory: /tmp
+    working_directory: /tmp/src
 
 commands:
   install_composer_dependencies:
     description: "Install development dependencies."
     steps:
-      - run: composer install
+      - run: show_pwd_info && composer install
 
   install_npm_dependencies:
     description: "Install npm dependencies."
     steps:
-      - run: npm install
+      - run: show_pwd_info && npm install
+
+  show_pwd_info:
+    description: "Show information about the current directory"
+    steps:
+      - run: pwd
+      - run: ls -lash
 
   mkdir_artifacts:
     description: "Make Artifacts directory"
@@ -68,6 +74,7 @@ jobs:
   checkout:
     executor: base
     steps:
+      - show_pwd_info
       - mkdir_artifacts
       - checkout:
           path: src
