@@ -21,7 +21,7 @@ commands:
     description: "Install npm dependencies."
     steps:
       - show_pwd_info
-      - run: npm install
+      - run: npm install -g npm && npm install
 
   show_pwd_info:
     description: "Show information about the current directory"
