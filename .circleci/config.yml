@@ -14,14 +14,32 @@ commands:
   install_composer_dependencies:
     description: "Install development dependencies."
     steps:
-      - show_pwd_info
       - run: composer install
+
+  lint_php:
+    description: "Lint PHP"
+    steps:
+      - run: composer phpcs
 
   install_npm_dependencies:
     description: "Install npm dependencies."
     steps:
-      - show_pwd_info
-      - run: npm -v && npm install
+      - run: npm install
+
+  lint_js:
+    description: "Lint JS"
+    steps:
+      - run: npm run lint:js
+
+  lint_css:
+    description: "Lint CSS"
+    steps:
+      - run: npm run lint:css:src
+
+  test_e2e:
+    description: "End-to-end tests"
+    steps:
+      - run: npm run test:e2e
 
   show_pwd_info:
     description: "Show information about the current directory"
@@ -72,11 +90,38 @@ commands:
       - set_version_variable
       - run: svn ci -m "Tagging ${VERSION} from GitHub" --no-auth-cache --non-interactive --username "${SVN_USERNAME}" --password "${SVN_PASSWORD}"
 
+  prepare_phpunit_environment:
+    description: "Prepare the phpunit environment."
+    parameters:
+      clone-wordpress-develop:
+        type: boolean
+        default: true
+    steps:
+      - run: apk add --no-cache git nodejs npm
+      - run:
+          command: |
+            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+            EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
+            ACTUAL_SIGNATURE=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
+            [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/bin --filename=composer || exit 1
+            composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
+      - when:
+          condition: << parameters.clone-wordpress-develop >>
+          steps:
+            - run: git clone git://develop.git.wordpress.org/ wordpress-develop
+            - run: cp wordpress-develop/wp-tests-config-sample.php wordpress-develop/wp-tests-config.php
+            - run: sed -i 's/localhost/127.0.0.1/g' wordpress-develop/wp-tests-config.php
+      - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
+      - checkout:
+          path: wordpress-develop/src/wp-content/plugins/atomic-blocks
+      - run:
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
+
 jobs:
   checkout:
     executor: base
     steps:
-      - show_pwd_info
       - mkdir_artifacts
       - checkout:
           path: src
@@ -91,8 +136,28 @@ jobs:
       - attach_workspace:
           at: /tmp
       - install_composer_dependencies
+      - lint_php
       - install_npm_dependencies
-      - run: composer phpcs && npm run lint:js
+      - lint_js
+      - lint_css
+      - test_e2e
+
+  php-71:
+    docker:
+      - image: wordpress:php7.1-fpm-alpine
+        environment:
+          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+      - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: youremptytestdbnamehere
+          MYSQL_USER: yourusernamehere
+          MYSQL_PASSWORD: yourpasswordhere
+          MYSQL_ROOT_PASSWORD: wordpress
+    steps:
+      - prepare_phpunit_environment
+      - run:
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          command: composer phpunit
 
   deploy_svn_branch:
     executor: base
@@ -132,6 +197,7 @@ workflows:
             branches:
               ignore:
                 - master
+      - php-71
 
   branch_deploy:
     jobs:
