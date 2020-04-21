@@ -333,7 +333,7 @@
 /**
  * Stopgap styles to improve usability of controls on full width alignment
  */
- [data-type="atomic-blocks/ab-columns"][data-align="full"] .block-editor-block-list__layout {
-	padding-left: 28px;
-	padding-right: 28px;
+ [data-type="atomic-blocks/ab-columns"][data-align="full"] .ab-layout-column-wrap-admin > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	padding-left: 58px;
+	padding-right: 58px;
 }
