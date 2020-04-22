@@ -64,37 +64,6 @@ commands:
     steps:
       - run: composer install
 
-  lint_php:
-    description: "Lint PHP"
-    steps:
-      - run: composer phpcs
-
-  install_npm_dependencies:
-    description: "Install npm dependencies."
-    steps:
-      - run: npm install
-
-  lint_js:
-    description: "Lint JS"
-    steps:
-      - run: npm run lint:js
-
-  lint_css:
-    description: "Lint CSS"
-    steps:
-      - run: npm run lint:css:src
-
-  test_e2e:
-    description: "End-to-end tests"
-    steps:
-      - run: npm run test:e2e
-
-  show_pwd_info:
-    description: "Show information about the current directory"
-    steps:
-      - run: pwd
-      - run: ls -lash
-
   mkdir_artifacts:
     description: "Make Artifacts directory"
     steps:
@@ -187,7 +156,7 @@ jobs:
           clone-wordpress-develop: false
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpcs && npm run lint:js && npm run lint:css:src && npm run test:e2e
+          command: composer phpcs && npm run lint:js && npm run lint:css:src
 
   php-71:
     executor: php71_node
