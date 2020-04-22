@@ -138,8 +138,8 @@ commands:
       - set_version_variable
       - run: svn ci -m "Tagging ${VERSION} from GitHub" --no-auth-cache --non-interactive --username "${SVN_USERNAME}" --password "${SVN_PASSWORD}"
 
-  prepare_phpunit_environment:
-    description: "Prepare the phpunit environment."
+  prepare_environment:
+    description: "Prepare the environment."
     parameters:
       clone-wordpress-develop:
         type: boolean
@@ -183,7 +183,8 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp
-      - prepare_phpunit_environment
+      - prepare_environment:
+          - clone-wordpress-develop: false
       - install_composer_dependencies
       - lint_php
       - install_npm_dependencies
@@ -194,7 +195,7 @@ jobs:
   php-71:
     executor: php71_node
     steps:
-      - prepare_phpunit_environment
+      - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
@@ -202,7 +203,7 @@ jobs:
   php-72:
     executor: php72_node
     steps:
-      - prepare_phpunit_environment
+      - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
@@ -210,7 +211,7 @@ jobs:
   php-73:
     executor: php73_node
     steps:
-      - prepare_phpunit_environment
+      - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
@@ -218,7 +219,7 @@ jobs:
   php-74:
     executor: php74_node
     steps:
-      - prepare_phpunit_environment
+      - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
