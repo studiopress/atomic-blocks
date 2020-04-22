@@ -151,7 +151,7 @@ commands:
             php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
             EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
             ACTUAL_SIGNATURE=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
-            [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/bin --filename=composer || exit 1
+            [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/usr/local/bin --filename=composer || exit 1
             composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
       - when:
           condition: << parameters.clone-wordpress-develop >>
