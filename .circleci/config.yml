@@ -145,7 +145,7 @@ commands:
         type: boolean
         default: true
     steps:
-      - run: apk add --no-cache git nodejs npm
+      - run: apt-get update; apt-get install git nodejs npm
       - run:
           command: |
             php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
