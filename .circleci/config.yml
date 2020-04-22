@@ -10,7 +10,7 @@ executors:
     docker:
       - image: circleci/php:7.1.33-node-browsers-legacy
         environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+          WP_TESTS_DIR: /tmp/src/wordpress-develop/tests/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: youremptytestdbnamehere
@@ -23,7 +23,7 @@ executors:
     docker:
       - image: circleci/php:7.2.30-node-browsers-legacy
         environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+          WP_TESTS_DIR: /tmp/src/wordpress-develop/tests/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: youremptytestdbnamehere
@@ -36,7 +36,7 @@ executors:
     docker:
       - image: circleci/php:7.3.17-node-browsers-legacy
         environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+          WP_TESTS_DIR: /tmp/src/wordpress-develop/tests/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: youremptytestdbnamehere
@@ -49,7 +49,7 @@ executors:
     docker:
       - image: circleci/php:7.4.4-node-browsers-legacy
         environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+          WP_TESTS_DIR: /tmp/src/wordpress-develop/tests/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: youremptytestdbnamehere
