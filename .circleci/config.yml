@@ -10,7 +10,7 @@ executors:
     docker:
       - image: wordpress:php7.1-fpm-alpine
         environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+          WP_TESTS_DIR: /tmp/src/wordpress-develop/tests/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: youremptytestdbnamehere
@@ -23,7 +23,7 @@ executors:
     docker:
       - image: wordpress:php7.2-fpm-alpine
         environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+          WP_TESTS_DIR: /tmp/src/wordpress-develop/tests/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: youremptytestdbnamehere
@@ -36,7 +36,7 @@ executors:
     docker:
       - image: wordpress:php7.3-fpm-alpine
         environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+          WP_TESTS_DIR: /tmp/src/wordpress-develop/tests/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: youremptytestdbnamehere
@@ -49,7 +49,7 @@ executors:
     docker:
       - image: wordpress:php7.4-fpm-alpine
         environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+          WP_TESTS_DIR: /tmp/src/wordpress-develop/tests/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: youremptytestdbnamehere
