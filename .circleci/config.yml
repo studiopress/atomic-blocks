@@ -183,6 +183,7 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp
+      - prepare_phpunit_environment
       - install_composer_dependencies
       - lint_php
       - install_npm_dependencies
