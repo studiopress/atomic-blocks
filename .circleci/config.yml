@@ -185,14 +185,9 @@ jobs:
           at: /tmp
       - prepare_environment:
           clone-wordpress-develop: false
-      - install_composer_dependencies
-      - install_npm_dependencies
-      - lint_js
-      - lint_css
-      - test_e2e
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpcs
+          command: composer phpcs && npm run lint:js && npm run lint:css:src && npm run test:e2e
 
   php-71:
     executor: php71_node
