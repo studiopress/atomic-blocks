@@ -5,9 +5,57 @@ executors:
     docker:
       - image: circleci/buildpack-deps:latest
     working_directory: /tmp
-  php_node:
+
+  php71_node:
+    docker:
+      - image: circleci/php:7.1.33-node-browsers-legacy
+        environment:
+          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+      - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: youremptytestdbnamehere
+          MYSQL_USER: yourusernamehere
+          MYSQL_PASSWORD: yourpasswordhere
+          MYSQL_ROOT_PASSWORD: wordpress
+    working_directory: /tmp/src
+
+  php72_node:
+    docker:
+      - image: circleci/php:7.2.30-node-browsers-legacy
+        environment:
+          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+      - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: youremptytestdbnamehere
+          MYSQL_USER: yourusernamehere
+          MYSQL_PASSWORD: yourpasswordhere
+          MYSQL_ROOT_PASSWORD: wordpress
+    working_directory: /tmp/src
+
+  php73_node:
+    docker:
+      - image: circleci/php:7.3.17-node-browsers-legacy
+        environment:
+          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+      - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: youremptytestdbnamehere
+          MYSQL_USER: yourusernamehere
+          MYSQL_PASSWORD: yourpasswordhere
+          MYSQL_ROOT_PASSWORD: wordpress
+    working_directory: /tmp/src
+
+  php74_node:
     docker:
       - image: circleci/php:7.4.4-node-browsers-legacy
+        environment:
+          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+      - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: youremptytestdbnamehere
+          MYSQL_USER: yourusernamehere
+          MYSQL_PASSWORD: yourpasswordhere
+          MYSQL_ROOT_PASSWORD: wordpress
     working_directory: /tmp/src
 
 commands:
@@ -131,7 +179,7 @@ jobs:
             - src
 
   checks:
-    executor: php_node
+    executor: php74_node
     steps:
       - attach_workspace:
           at: /tmp
@@ -143,16 +191,31 @@ jobs:
       - test_e2e
 
   php-71:
-    docker:
-      - image: wordpress:php7.1-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-      - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: youremptytestdbnamehere
-          MYSQL_USER: yourusernamehere
-          MYSQL_PASSWORD: yourpasswordhere
-          MYSQL_ROOT_PASSWORD: wordpress
+    executor: php71_node
+    steps:
+      - prepare_phpunit_environment
+      - run:
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          command: composer phpunit
+
+  php-72:
+    executor: php72_node
+    steps:
+      - prepare_phpunit_environment
+      - run:
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          command: composer phpunit
+
+  php-73:
+    executor: php73_node
+    steps:
+      - prepare_phpunit_environment
+      - run:
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          command: composer phpunit
+
+  php-74:
+    executor: php74_node
     steps:
       - prepare_phpunit_environment
       - run:
@@ -198,6 +261,9 @@ workflows:
               ignore:
                 - master
       - php-71
+      - php-72
+      - php-73
+      - php-74
 
   branch_deploy:
     jobs:
