@@ -184,7 +184,7 @@ jobs:
       - attach_workspace:
           at: /tmp
       - prepare_environment:
-          - clone-wordpress-develop: false
+          clone-wordpress-develop: false
       - install_composer_dependencies
       - lint_php
       - install_npm_dependencies
