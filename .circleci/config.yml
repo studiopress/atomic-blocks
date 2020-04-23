@@ -59,6 +59,14 @@ executors:
     working_directory: /tmp/src
 
 commands:
+  dir_stats:
+    description: "Show details about the current working directory"
+    steps:
+      - run:
+          command: |
+            pwd
+            ls -lashR
+
   mkdir_artifacts:
     description: "Make Artifacts directory"
     steps:
@@ -154,6 +162,7 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/src
+      - dir_stats
       - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
