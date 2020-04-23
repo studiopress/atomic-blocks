@@ -153,7 +153,9 @@ jobs:
           clone-wordpress-develop: true
           clone-plugin: true
       - persist_to_workspace:
-          root: /tmp
+          root: .
+          paths:
+            - src
 
   checks:
     executor: php74_node
