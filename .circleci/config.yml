@@ -112,7 +112,10 @@ commands:
     parameters:
       clone-wordpress-develop:
         type: boolean
-        default: true
+        default: false
+      clone-plugin:
+        type: boolean
+        default: false
     steps:
       - run: apk add --no-cache git nodejs npm
       - run:
@@ -129,8 +132,11 @@ commands:
             - run: cp wordpress-develop/wp-tests-config-sample.php wordpress-develop/wp-tests-config.php
             - run: sed -i 's/localhost/127.0.0.1/g' wordpress-develop/wp-tests-config.php
       - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
-      - checkout:
-          path: wordpress-develop/src/wp-content/plugins/atomic-blocks
+      - when:
+          condition: << parameters.clone-plugin >>
+          steps:
+            - checkout:
+                path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
@@ -140,8 +146,9 @@ jobs:
     executor: base
     steps:
       - mkdir_artifacts
-      - checkout:
-          path: src
+      - prepare_environment:
+          clone-wordpress-develop: true
+          clone-plugin: true
       - persist_to_workspace:
           root: /tmp
           paths:
@@ -151,9 +158,8 @@ jobs:
     executor: php74_node
     steps:
       - attach_workspace:
-          at: /tmp
-      - prepare_environment:
-          clone-wordpress-develop: false
+          at: /tmp/src
+      - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpcs && npm run lint:js && npm run lint:css:src
@@ -161,6 +167,8 @@ jobs:
   php-71:
     executor: php71_node
     steps:
+      - attach_workspace:
+          at: /tmp/src
       - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
@@ -169,6 +177,8 @@ jobs:
   php-72:
     executor: php72_node
     steps:
+      - attach_workspace:
+          at: /tmp/src
       - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
@@ -177,6 +187,8 @@ jobs:
   php-73:
     executor: php73_node
     steps:
+      - attach_workspace:
+          at: /tmp/src
       - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
@@ -185,10 +197,28 @@ jobs:
   php-74:
     executor: php74_node
     steps:
+      - attach_workspace:
+          at: /tmp/src
       - prepare_environment
       - run:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
+
+  bundle:
+    executor: base
+    steps:
+      - attach_workspace:
+          at: /tmp/src
+      - mkdir_artifacts
+      - run:
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          name: "Bundle plugin files into a zip"
+          command: |
+            BUILD_VERSION=`grep 'Version' atomic-blocks/atomicblocks.php | cut -f4 -d' '`
+            FILENAME_ZIP=atomic-blocks.$BUILD_VERSION.zip
+            zip -x@atomic-blocks/.zipignore -r "/tmp/artifacts/$FILENAME_ZIP" atomic-blocks/
+      - store_artifacts:
+          path: /tmp/artifacts/
 
   deploy_svn_branch:
     executor: base
@@ -228,10 +258,18 @@ workflows:
             branches:
               ignore:
                 - master
-      - php-71
-      - php-72
-      - php-73
-      - php-74
+      - php-71:
+          requires:
+            - checkout
+      - php-72:
+          requires:
+            - checkout
+      - php-73:
+          requires:
+            - checkout
+      - php-74:
+          requires:
+            - checkout
 
   branch_deploy:
     jobs:
