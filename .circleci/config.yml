@@ -145,8 +145,8 @@ commands:
           condition: << parameters.run-npm-install >>
           steps:
             - run:
-              working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-              command: npm install
+                working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+                command: npm install
 
 jobs:
   checkout:
