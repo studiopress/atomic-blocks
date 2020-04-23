@@ -115,7 +115,7 @@ commands:
     parameters:
       clone-wordpress-develop:
         type: boolean
-        default: false
+        default: true
       run-npm-install:
         type: boolean
         default: false
