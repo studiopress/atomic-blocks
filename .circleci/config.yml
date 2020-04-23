@@ -138,7 +138,7 @@ commands:
 
 jobs:
   checkout:
-    executor: base
+    executor: php74_node
     steps:
       - mkdir_artifacts
       - prepare_environment:
