@@ -154,8 +154,6 @@ jobs:
           clone-plugin: true
       - persist_to_workspace:
           root: /tmp
-          paths:
-            - src
 
   checks:
     executor: php74_node
