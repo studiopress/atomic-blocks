@@ -141,7 +141,7 @@ commands:
             - checkout:
                 path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
 
 jobs:
