@@ -153,7 +153,7 @@ jobs:
           clone-wordpress-develop: true
           clone-plugin: true
       - persist_to_workspace:
-          root: .
+          root: /tmp
           paths:
             - src
 
@@ -165,7 +165,7 @@ jobs:
       - dir_stats
       - prepare_environment
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpcs && npm run lint:js && npm run lint:css:src
 
   php-71:
@@ -175,7 +175,7 @@ jobs:
           at: /tmp/src
       - prepare_environment
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
 
   php-72:
@@ -185,7 +185,7 @@ jobs:
           at: /tmp/src
       - prepare_environment
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
 
   php-73:
@@ -195,7 +195,7 @@ jobs:
           at: /tmp/src
       - prepare_environment
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
 
   php-74:
@@ -205,7 +205,7 @@ jobs:
           at: /tmp/src
       - prepare_environment
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
 
   bundle:
