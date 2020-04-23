@@ -59,11 +59,6 @@ executors:
     working_directory: /tmp/src
 
 commands:
-  install_composer_dependencies:
-    description: "Install development dependencies."
-    steps:
-      - run: composer install
-
   mkdir_artifacts:
     description: "Make Artifacts directory"
     steps:
