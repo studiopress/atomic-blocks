@@ -116,10 +116,11 @@ commands:
       clone-wordpress-develop:
         type: boolean
         default: false
-      clone-plugin:
+      run-npm-install:
         type: boolean
         default: false
     steps:
+      - dir_stats
       - run: apk add --no-cache git nodejs npm
       - run:
           command: |
@@ -135,23 +136,23 @@ commands:
             - run: cp wordpress-develop/wp-tests-config-sample.php wordpress-develop/wp-tests-config.php
             - run: sed -i 's/localhost/127.0.0.1/g' wordpress-develop/wp-tests-config.php
       - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
-      - when:
-          condition: << parameters.clone-plugin >>
-          steps:
-            - checkout:
-                path: wordpress-develop/src/wp-content/plugins/atomic-blocks
+      - checkout:
+          path: wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
-          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          command: composer install --prefer-dist --no-suggest --optimize-autoloader
+      - when:
+          condition: << parameters.run-npm-install >>
+          steps:
+            - run: npm install
 
 jobs:
   checkout:
-    executor: php74_node
+    executor: base
     steps:
       - mkdir_artifacts
-      - prepare_environment:
-          clone-wordpress-develop: true
-          clone-plugin: true
+      - checkout:
+          path: src
       - persist_to_workspace:
           root: /tmp
           paths:
@@ -160,52 +161,46 @@ jobs:
   checks:
     executor: php74_node
     steps:
-      - attach_workspace:
-          at: /tmp/src
       - dir_stats
-      - prepare_environment
+      - attach_workspace:
+          at: /tmp
+      - prepare_environment:
+          clone-wordpress-develop: false
+          run-npm-install: true
       - run:
-          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpcs && npm run lint:js && npm run lint:css:src
 
   php-71:
     executor: php71_node
     steps:
-      - attach_workspace:
-          at: /tmp/src
       - prepare_environment
       - run:
-          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
 
   php-72:
     executor: php72_node
     steps:
-      - attach_workspace:
-          at: /tmp/src
       - prepare_environment
       - run:
-          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
 
   php-73:
     executor: php73_node
     steps:
-      - attach_workspace:
-          at: /tmp/src
       - prepare_environment
       - run:
-          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
 
   php-74:
     executor: php74_node
     steps:
-      - attach_workspace:
-          at: /tmp/src
       - prepare_environment
       - run:
-          working_directory: src/wordpress-develop/src/wp-content/plugins/atomic-blocks/
+          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpunit
 
   bundle:
@@ -262,18 +257,10 @@ workflows:
             branches:
               ignore:
                 - master
-      - php-71:
-          requires:
-            - checkout
-      - php-72:
-          requires:
-            - checkout
-      - php-73:
-          requires:
-            - checkout
-      - php-74:
-          requires:
-            - checkout
+      - php-71
+      - php-72
+      - php-73
+      - php-74
 
   branch_deploy:
     jobs:
