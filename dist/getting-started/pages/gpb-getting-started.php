@@ -10,7 +10,7 @@
 	<div class="wrap ab-getting-started gpb-getting-started">
 		<div class="intro-wrap">
 			<div class="intro">
-				<a href="<?php echo esc_url( 'https://goo.gl/NfXcof' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Genesis', 'atomic-blocks' ); ?>" /></a>
+				<a href="<?php echo esc_url( 'https://studiopress.com' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit StudioPress', 'atomic-blocks' ); ?>" /></a>
 				<h1><?php printf( esc_html__( 'Getting started with', 'atomic-blocks' ) ); ?><br/><strong><?php printf( esc_html__( 'Genesis Page Builder', 'atomic-blocks' ) ); ?></strong></h1>
 			</div>
 		</div>
