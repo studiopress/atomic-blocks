@@ -135,5 +135,5 @@ add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
  * Check for Pro version.
  */
 function atomic_blocks_is_pro() {
-	return function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' );
+	return function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' ) || function_exists( 'Genesis\PageBuilder\main_plugin_file' );
 }
