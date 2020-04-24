@@ -130,3 +130,10 @@ function atomic_blocks_image_sizes() {
 	add_image_size( 'ab-block-post-grid-square', 600, 600, true );
 }
 add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
+
+/**
+ * Check for Pro version.
+ */
+function atomic_blocks_is_pro() {
+	return function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' );
+}

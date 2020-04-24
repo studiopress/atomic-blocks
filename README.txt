@@ -2,9 +2,9 @@
 Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbath
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
-Requires at least: 5.2
-Tested up to: 5.3
-Stable tag: 2.6.0
+Requires at least: 5.3
+Tested up to: 5.4
+Stable tag: 2.8.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -127,6 +127,22 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.8.1 =
+* Improve editor padding on nested blocks.
+
+= 2.8.0 =
+* Added support for selecting specific pages in the Post and Page Grid block.
+* Improve display of inline toolbars on Container, Columns, and Pricing Table.
+* Improve display of focus/select styles on blocks.
+
+= 2.7.1 =
+* Added file that was missing in 2.7.0. Sorry, folks!
+
+= 2.7.0 =
+* Improved compatibility with WordPress 5.4 changes.
+* Improved performance by reducing JavaScript file sizes.
+* Updated the Getting Started page with improved help and documentation info.
+
 = 2.6.0 =
 * Added support for Shortcode block in the Pricing Table block.
 * Improved MailChimp list caching in the Newsletter block.

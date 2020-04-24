@@ -22,11 +22,23 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	 */
 	global $post;
 
+	/* Get the post categories */
 	$categories = isset( $attributes['categories'] ) ? $attributes['categories'] : '';
 
-	/* Setup the query */
-	$grid_query = new WP_Query(
-		array(
+	/* Get the selected pages */
+	$page_selection = isset( $attributes['selectedPages'] ) ? array_column( $attributes['selectedPages'], 'value' ) : null;
+
+	if ( isset( $attributes['postType'] ) && 'page' === $attributes['postType'] ) {
+		/* Page query args */
+		$args = array(
+			'post_status' => 'publish',
+			'orderby'     => 'post__in',
+			'post__in'    => $page_selection,
+			'post_type'   => 'page',
+		);
+	} else {
+		/* Post query args */
+		$args = array(
 			'posts_per_page'      => $attributes['postsToShow'],
 			'post_status'         => 'publish',
 			'order'               => $attributes['order'],
@@ -35,9 +47,12 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			'offset'              => $attributes['offset'],
 			'post_type'           => $attributes['postType'],
 			'ignore_sticky_posts' => 1,
-			'post__not_in'        => array( $post->ID ), // Exclude the current post from the grid.
-		)
-	);
+			'post__not_in'        => array( $post->ID ),
+		);
+	}
+
+	/* Setup the query */
+	$grid_query = new WP_Query( $args );
 
 	$post_grid_markup = '';
 
@@ -375,6 +390,13 @@ function atomic_blocks_register_block_core_latest_posts() {
 				'postType'            => array(
 					'type'    => 'string',
 					'default' => 'post',
+				),
+				'selectedPages'       => array(
+					'type'    => 'array',
+					'default' => array(),
+					'items'   => [
+						'type' => 'object',
+					],
 				),
 				'sectionTag'          => array(
 					'type'    => 'string',

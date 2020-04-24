@@ -18,7 +18,7 @@
 	 }
  }
 
- .block-editor__container .editor-block-list__block .ab-block-post-grid a {
+ .block-editor__container .block-editor-block-list__block .ab-block-post-grid a {
 	 color: inherit;
  }
 
@@ -73,5 +73,13 @@
 		&:hover {
 			color: #00a0d2;
 		}
+	}
+}
+
+[data-type="atomic-blocks/ab-post-grid"] .components-placeholder {
+	align-items: center;
+
+	.components-placeholder__fieldset {
+		width: auto;
 	}
 }

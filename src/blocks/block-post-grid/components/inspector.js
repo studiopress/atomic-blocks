@@ -9,6 +9,7 @@ const { Component, Fragment } = wp.element;
 import compact from 'lodash/compact';
 import map from 'lodash/map';
 import RenderSettingControl from '../../../utils/components/settings/renderSettingControl';
+import Select from 'react-select';
 
 // Import block components
 const { InspectorControls } = wp.blockEditor;
@@ -71,6 +72,18 @@ export default class Inspector extends Component {
 				};
 			} )
 		);
+	}
+
+	/* Get the page list */
+	pageSelect() {
+		const getPages = wp.data.select( 'core' ).getEntityRecords( 'postType', 'page', { per_page: -1 } )
+
+		return compact( map( getPages, ({ id, title }) => {
+			return {
+				value: id,
+				label: title.raw
+			};
+		}) );
 	}
 
 	render() {
@@ -147,6 +160,9 @@ export default class Inspector extends Component {
 			return 'full';
 		};
 
+		// Setup the page select options
+		const pageOptions = this.pageSelect();
+
 		return (
 			<InspectorControls>
 				<PanelBody
@@ -166,43 +182,51 @@ export default class Inspector extends Component {
 							}
 						/>
 					</RenderSettingControl>
-					<RenderSettingControl id="ab_postgrid_queryControls">
-						<QueryControls
-							{ ...{ order, orderBy } }
-							numberOfItems={ attributes.postsToShow }
-							categoriesList={ categoriesList }
-							selectedCategoryId={ attributes.categories }
-							onOrderChange={ ( value ) =>
-								setAttributes( { order: value } )
-							}
-							onOrderByChange={ ( value ) =>
-								setAttributes( { orderBy: value } )
-							}
-							onCategoryChange={ ( value ) =>
-								setAttributes( {
-									categories:
-										'' !== value ? value : undefined,
-								} )
-							}
-							onNumberOfItemsChange={ ( value ) =>
-								setAttributes( { postsToShow: value } )
-							}
-						/>
+					{ 'page' === attributes.postType &&
+					<RenderSettingControl id="ab_postgrid_selectedPages">
+						<div className="components-base-control select2-page">
+							<div className="components-base-control__field">
+								<label className="components-base-control__label" htmlFor="inspector-select-control">{ __( 'Pages To Show', 'atomic-blocks') }</label>
+								<Select
+									options={ pageOptions }
+									value={ attributes.selectedPages }
+									onChange={ ( value ) =>
+										this.props.setAttributes( {
+											selectedPages: value,
+										} )
+									}
+									isMulti={ true }
+									closeMenuOnSelect={ false }
+								/>
+							</div>
+						</div>
 					</RenderSettingControl>
-					<RenderSettingControl id="ab_postgrid_offset">
-						<RangeControl
-							label={ __(
-								'Number of items to offset',
-								'atomic-blocks'
-							) }
-							value={ attributes.offset }
-							onChange={ ( value ) =>
-								setAttributes( { offset: value } )
-							}
-							min={ 0 }
-							max={ 20 }
-						/>
-					</RenderSettingControl>
+					}
+					{ 'post' === attributes.postType &&
+					<Fragment>
+						<RenderSettingControl id="ab_postgrid_queryControls">
+							<QueryControls
+								{ ...{ order, orderBy } }
+								numberOfItems={ attributes.postsToShow }
+								categoriesList={ categoriesList }
+								selectedCategoryId={ attributes.categories }
+								onOrderChange={ ( value ) => setAttributes({ order: value }) }
+								onOrderByChange={ ( value ) => setAttributes({ orderBy: value }) }
+								onCategoryChange={ ( value ) => setAttributes({ categories: '' !== value ? value : undefined }) }
+								onNumberOfItemsChange={ ( value ) => setAttributes({ postsToShow: value }) }
+							/>
+						</RenderSettingControl>
+						<RenderSettingControl id="ab_postgrid_offset">
+							<RangeControl
+								label={ __( 'Number of items to offset', 'atomic-blocks' ) }
+								value={ attributes.offset }
+								onChange={ ( value ) => setAttributes({ offset: value }) }
+								min={ 0 }
+								max={ 20 }
+							/>
+						</RenderSettingControl>
+					</Fragment>
+					}
 					{ 'grid' === attributes.postLayout && (
 						<RenderSettingControl id="ab_postgrid_columns">
 							<RangeControl

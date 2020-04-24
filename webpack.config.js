@@ -1,4 +1,6 @@
 const ExtractText = require( 'extract-text-webpack-plugin' );
+const path = require('path');
+
 const devMode = process.env.NODE_ENV !== 'production';
 
 const editorStyles = new ExtractText( {
@@ -40,7 +42,11 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: /(node_modules|build|vendor)/,
+				exclude: [
+					path.resolve( __dirname, 'node_modules' ),
+					path.resolve( __dirname, 'build' ),
+					path.resolve( __dirname, 'vendor' ),
+				],
 				use: [
 					{
 						loader: 'babel-loader',
@@ -52,12 +58,20 @@ module.exports = {
 			},
 			{
 				test: /editor\.scss$/,
-				exclude: /(node_modules|build|vendor)/,
+				exclude: [
+					path.resolve( __dirname, 'node_modules' ),
+					path.resolve( __dirname, 'build' ),
+					path.resolve( __dirname, 'vendor' ),
+				],
 				use: editorStyles.extract( scssConfig ),
 			},
 			{
 				test: /style\.scss$/,
-				exclude: /(node_modules|build|vendor)/,
+				exclude: [
+					path.resolve( __dirname, 'node_modules' ),
+					path.resolve( __dirname, 'build' ),
+					path.resolve( __dirname, 'vendor' ),
+				],
 				use: frontendStyles.extract( scssConfig ),
 			},
 		],

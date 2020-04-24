@@ -25,14 +25,6 @@
 	}
 }
 
-.wp-block-atomic-blocks-ab-pricing.alignfull {
-	padding: 0 2em;
-
-	@media only screen and (max-width: 600px) {
-		padding: 0 15px;
-	}
-}
-
 .ab-block-pricing-table-inside {
 	display: inline-block;
 	width: 100%;
@@ -179,6 +171,8 @@
 	list-style-type: none;
 	display: block;
 	white-space: initial;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 .ab-list-border-solid {

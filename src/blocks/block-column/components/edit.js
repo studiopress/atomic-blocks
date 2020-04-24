@@ -20,36 +20,44 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InnerBlocks,
-	withColors,
+	withColors
 } = wp.blockEditor;
-const { Placeholder, ButtonGroup, Tooltip, Button } = wp.components;
+const {
+	Placeholder,
+	ButtonGroup,
+	Tooltip,
+	Button
+} = wp.components;
 
 /* Set allowed blocks and media. */
 const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-column' ];
 
 /* Get the column template. */
 const getLayoutTemplate = memoize( ( columns ) => {
-	return _times( columns, () => [ 'atomic-blocks/ab-column' ] );
-} );
+	return _times( columns, () => [ 'atomic-blocks/ab-column' ]);
+});
 
 class Edit extends Component {
+
 	constructor( props ) {
 		super( ...arguments );
 
 		this.state = {
-			selectLayout: true,
+			selectLayout: true
 		};
 	}
 
 	render() {
-		const { attributes, setAttributes } = this.props;
+
+		const {
+			attributes,
+			setAttributes
+		} = this.props;
 
 		let selectedRows = 1;
 
 		if ( attributes.columns ) {
-			selectedRows = parseInt(
-				attributes.columns.toString().split( '-' )
-			);
+			selectedRows = parseInt( attributes.columns.toString().split( '-' ) );
 		}
 
 		const columnOptions = [
@@ -57,38 +65,38 @@ class Edit extends Component {
 				name: __( '1 Column', 'atomic-blocks' ),
 				key: 'one-column',
 				columns: 1,
-				icon: icons.oneEqual,
+				icon: icons.oneEqual
 			},
 			{
 				name: __( '2 Columns', 'atomic-blocks' ),
 				key: 'two-column',
 				columns: 2,
-				icon: icons.twoEqual,
+				icon: icons.twoEqual
 			},
 			{
 				name: __( '3 Columns', 'atomic-blocks' ),
 				key: 'three-column',
 				columns: 3,
-				icon: icons.threeEqual,
+				icon: icons.threeEqual
 			},
 			{
 				name: __( '4 Columns', 'atomic-blocks' ),
 				key: 'four-column',
 				columns: 4,
-				icon: icons.fourEqual,
+				icon: icons.fourEqual
 			},
 			{
 				name: __( '5 Columns', 'atomic-blocks' ),
 				key: 'five-column',
 				columns: 5,
-				icon: icons.fiveEqual,
+				icon: icons.fiveEqual
 			},
 			{
 				name: __( '6 Columns', 'atomic-blocks' ),
 				key: 'six-column',
 				columns: 6,
-				icon: icons.sixEqual,
-			},
+				icon: icons.sixEqual
+			}
 		];
 
 		/* Show the layout placeholder. */
@@ -97,118 +105,77 @@ class Edit extends Component {
 				<Placeholder
 					key="placeholder"
 					icon="editor-table"
-					label={
-						attributes.columns
-							? __( 'Column Layout', 'atomic-blocks' )
-							: __( 'Column Number', 'atomic-blocks' )
-					}
-					instructions={
-						attributes.columns
-							?
-								__(
-									'Select a layout for this column.',
-									'atomic-blocks'
-								)
-							: __(
-									'Select the number of columns for this layout.',
-									'atomic-blocks'
-							  )
-					}
+					label={ attributes.columns ? __( 'Column Layout', 'atomic-blocks' ) : __( 'Column Number', 'atomic-blocks' ) }
+					instructions={ attributes.columns ? __( 'Select a layout for this column.', 'atomic-blocks' ) : __( 'Select the number of columns for this layout.', 'atomic-blocks' ) }
 					className={ 'ab-column-selector-placeholder' }
 				>
-					{ ! attributes.columns ? (
+					{ ! attributes.columns ?
 						<ButtonGroup
-							aria-label={ __(
-								'Select Row Columns',
-								'atomic-blocks'
-							) }
+							aria-label={ __( 'Select Row Columns', 'atomic-blocks' ) }
 							className="ab-column-selector-group"
 						>
-							{ map(
-								columnOptions,
-								( { name, key, icon, columns } ) => (
+							{ map( columnOptions, ({ name, key, icon, columns }) => (
+								<Tooltip text={ name } key={ key }>
+									<div className="ab-column-selector">
+										<Button
+											className="ab-column-selector-button"
+											isSmall
+											onClick={ () => {
+												setAttributes({
+													columns,
+													layout: 1 === columns || 5 === columns || 6 === columns ? key : null
+												});
+
+												{ 1 === columns &&
+													this.setState({ 'selectLayout': false });
+												}
+											} }
+										>
+											{ icon }
+										</Button>
+									</div>
+								</Tooltip>
+							) ) }
+						</ButtonGroup>					:
+						<Fragment>
+							<ButtonGroup
+								aria-label={ __( 'Select Column Layout', 'atomic-blocks' ) }
+								className="ab-column-selector-group"
+							>
+								{ map( columnLayouts[ selectedRows ], ({ name, key, icon }) => (
 									<Tooltip text={ name } key={ key }>
 										<div className="ab-column-selector">
 											<Button
+												key={ key }
 												className="ab-column-selector-button"
 												isSmall
 												onClick={ () => {
-													setAttributes( {
-														columns,
-														layout:
-															1 === columns ||
-															5 === columns ||
-															6 === columns
-																? key
-																: null,
-													} );
-
-													{
-														1 === columns &&
-															this.setState( {
-																selectLayout: false,
-															} );
-													}
+													setAttributes({
+														layout: key
+													});
+													this.setState({ 'selectLayout': false });
 												} }
 											>
 												{ icon }
 											</Button>
 										</div>
 									</Tooltip>
-								)
-							) }
-						</ButtonGroup>
-					) : (
-						<Fragment>
-							<ButtonGroup
-								aria-label={ __(
-									'Select Column Layout',
-									'atomic-blocks'
-								) }
-								className="ab-column-selector-group"
-							>
-								{ map(
-									columnLayouts[ selectedRows ],
-									( { name, key, icon } ) => (
-										<Tooltip text={ name } key={ key }>
-											<div className="ab-column-selector">
-												<Button
-													key={ key }
-													className="ab-column-selector-button"
-													isSmall
-													onClick={ () => {
-														setAttributes( {
-															layout: key,
-														} );
-														this.setState( {
-															selectLayout: false,
-														} );
-													} }
-												>
-													{ icon }
-												</Button>
-											</div>
-										</Tooltip>
-									)
-								) }
-								<Button
-									className="ab-column-selector-button-back"
-									onClick={ () => {
-										setAttributes( {
-											columns: null,
-										} );
-										this.setState( { selectLayout: true } );
-									} }
-								>
-									{ __(
-										'Return to Column Selection',
-										'atomic-blocks'
-									) }
-								</Button>
+								) ) }
 							</ButtonGroup>
+							<Button
+								className="ab-column-selector-button-back"
+								onClick={ () => {
+									setAttributes({
+										columns: null
+									});
+									this.setState({ 'selectLayout': true });
+								} }
+							>
+								{ __( 'Return to Column Selection', 'atomic-blocks' ) }
+							</Button>
 						</Fragment>
-					) }
-				</Placeholder>,
+					}
+				</Placeholder>
 			];
 		}
 
@@ -216,13 +183,14 @@ class Edit extends Component {
 			<BlockControls key="controls">
 				<BlockAlignmentToolbar
 					value={ attributes.align }
-					onChange={ ( align ) => setAttributes( { align } ) }
+					onChange={ align => setAttributes({ align }) }
 					controls={ [ 'center', 'wide', 'full' ] }
 				/>
 			</BlockControls>,
-			<Inspector { ...this.props } key="inspector" />,
+			<Inspector { ...this.props } key="inspector"/>,
 			<Columns
 				{ ...this.props }
+
 				/* Pass through the live color value to the Columns component */
 				backgroundColorValue={ this.props.backgroundColor.color }
 				textColorValue={ this.props.textColor.color }
@@ -232,15 +200,9 @@ class Edit extends Component {
 					className={ classnames(
 						'ab-layout-column-wrap-admin',
 						'ab-block-layout-column-gap-' + attributes.columnsGap,
-						attributes.responsiveToggle
-							? 'ab-is-responsive-column'
-							: null
+						attributes.responsiveToggle ? 'ab-is-responsive-column' : null,
 					) }
-					style={ {
-						maxWidth: attributes.columnMaxWidth
-							? attributes.columnMaxWidth
-							: null,
-					} }
+					style={ { maxWidth: attributes.columnMaxWidth ? attributes.columnMaxWidth : null } }
 				>
 					<InnerBlocks
 						template={ getLayoutTemplate( attributes.columns ) }
@@ -248,11 +210,14 @@ class Edit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 					/>
 				</div>
-			</Columns>,
+			</Columns>
 		];
 	}
 }
 
-export default compose( [
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-] )( Edit );
+export default compose([
+	withColors(
+		'backgroundColor',
+		{ textColor: 'color' },
+	)
+])( Edit );
