@@ -13,8 +13,9 @@
 	box-sizing: border-box;
 }
 
-.toplevel_page_atomic-blocks #update-nag {
-	display: none ;
+.toplevel_page_atomic-blocks #update-nag,
+.atomic-blocks_page_atomic-blocks-plugin-settings #update-nag {
+	display: none !important;
 }
 
 .toplevel_page_atomic-blocks #wpcontent,
@@ -265,6 +266,10 @@
 }
 
 .gpb-getting-started .intro-wrap {
+	padding-top: 2%;
+}
+
+.gpb-getting-started .intro-wrap {
 	background: rgb(0,102,204);
 	background: linear-gradient(49deg, rgba(0,102,204,1) 0%, rgba(78,176,211,1) 100%);
 }
@@ -277,9 +282,17 @@
 	margin-bottom: 3.5%;
 }
 
+.gpb-getting-started .intro {
+	margin-bottom: 2.5%;
+}
+
+.atomic-blocks_page_atomic-blocks-plugin-settings .gpb-getting-started .intro {
+	margin-bottom: 1.5%;
+}
+
 .ab-getting-started .intro h1,
 .ab-getting-started .intro h3 {
-	font-size: 40px;
+	font-size: 32px;
 	line-height: 1.2;
 	font-weight: 300;
 	margin: 0;
@@ -1170,4 +1183,12 @@
 	max-height: none;
 	border: solid 1px #ddd;
 	border-radius: 3px;
+}
+
+.gpb-getting-started .inline-list {
+	background: none;
+}
+
+.gpb-getting-started .inline-list li.current a {
+	color: #0066cc;
 }

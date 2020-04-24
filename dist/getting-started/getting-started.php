@@ -42,6 +42,12 @@ add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
  */
 function atomic_blocks_getting_started_menu() {
 
+	if ( atomic_blocks_is_pro() ) {
+		$plugin_name = esc_html__( 'Genesis Page Builder Settings', 'atomic-blocks' );
+	} else {
+		$plugin_name = esc_html__( 'Atomic Blocks Settings', 'atomic-blocks' );
+	}
+
 	add_menu_page(
 		__( 'Atomic Blocks', 'atomic-blocks' ),
 		__( 'Atomic Blocks', 'atomic-blocks' ),
@@ -62,7 +68,7 @@ function atomic_blocks_getting_started_menu() {
 
 	add_submenu_page(
 		'atomic-blocks',
-		esc_html__( 'Atomic Blocks Settings', 'atomic-blocks' ),
+		$plugin_name,
 		esc_html__( 'Settings', 'atomic-blocks' ),
 		'manage_options',
 		'atomic-blocks-plugin-settings',
