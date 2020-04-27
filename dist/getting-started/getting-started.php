@@ -83,6 +83,43 @@ function atomic_blocks_getting_started_menu() {
 add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
 
 /**
+ * Add inline style for menu icon.
+ *
+ * @since 1.0.0
+ */
+add_action( 'admin_enqueue_scripts', function() {
+    ?>
+    <style>
+		@font-face {
+			font-family: "genesis-icon";
+			font-weight: normal;
+			font-style: normal;
+			src: url("../assets/genesis-font/genesis-icon.eot");
+			src:
+				url("../assets/genesis-font/genesis-icon.eot?#iefix") format("embedded-opentype"),
+				url("../assets/genesis-font/genesis-icon.woff") format("woff"),
+				url("../assets/genesis-font/genesis-icon.ttf") format("truetype"),
+				url("../assets/genesis-font/genesis-icon.svg#genesis-icon") format("svg");
+		}
+
+		#adminmenu .toplevel_page_atomic-blocks .wp-menu-image img {
+			width: 16px;
+			height: 16px;
+		}
+
+		#adminmenu .toplevel_page_atomic-blocks .wp-menu-image img {
+			display: none;
+		}
+
+		#adminmenu .toplevel_page_atomic-blocks .wp-menu-image::before {
+			font-family: "genesis-icon" !important;
+			content: "\e600";
+		}
+	</style>
+    <?php
+} );
+
+/**
  * Outputs the markup used on the Getting Started
  *
  * @since 1.0.0
