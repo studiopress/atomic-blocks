@@ -42,19 +42,23 @@ add_action( 'admin_enqueue_scripts', 'atomic_blocks_start_load_admin_scripts' );
  */
 function atomic_blocks_getting_started_menu() {
 
+	$page_title = esc_html__( 'Atomic Blocks Settings', 'atomic-blocks' );
+	$menu_title = esc_html__( 'Atomic Blocks', 'atomic-blocks' );
+	$icon_url   = 'dashicons-screenoptions';
+
 	if ( atomic_blocks_is_pro() ) {
-		$plugin_name = esc_html__( 'Genesis Page Builder Settings', 'atomic-blocks' );
-	} else {
-		$plugin_name = esc_html__( 'Atomic Blocks Settings', 'atomic-blocks' );
+		$page_title = esc_html__( 'Genesis Page Builder Settings', 'atomic-blocks' );
+		$menu_title = esc_html__( 'Page Builder', 'atomic-blocks' );
+		$icon_url   = esc_url( plugins_url( '/dist/getting-started/images/genesis-menu.png', atomic_blocks_main_plugin_file() ) );
 	}
 
 	add_menu_page(
-		__( 'Atomic Blocks', 'atomic-blocks' ),
-		__( 'Atomic Blocks', 'atomic-blocks' ),
+		$page_title,
+		$menu_title,
 		'manage_options',
 		'atomic-blocks',
 		'atomic_blocks_getting_started_page',
-		'dashicons-screenoptions'
+		$icon_url
 	);
 
 	add_submenu_page(
@@ -68,7 +72,7 @@ function atomic_blocks_getting_started_menu() {
 
 	add_submenu_page(
 		'atomic-blocks',
-		$plugin_name,
+		$page_title,
 		esc_html__( 'Settings', 'atomic-blocks' ),
 		'manage_options',
 		'atomic-blocks-plugin-settings',
