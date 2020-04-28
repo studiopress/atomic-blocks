@@ -19,6 +19,7 @@
 }
 
 .toplevel_page_atomic-blocks #wpcontent,
+.page-builder_page_atomic-blocks-plugin-settings #wpcontent,
 .atomic-blocks_page_atomic-blocks-plugin-settings #wpcontent {
 	padding-left: 0;
 }

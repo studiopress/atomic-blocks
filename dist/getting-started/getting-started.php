@@ -13,7 +13,7 @@
  */
 function atomic_blocks_start_load_admin_scripts( $hook ) {
 
-	if ( ! ( $hook === 'toplevel_page_atomic-blocks' ) ) {
+	if ( ! in_array( $hook, [ 'page-builder_page_atomic-blocks-plugin-settings', 'toplevel_page_atomic-blocks' ], true ) ) {
 		return;
 	}
 
