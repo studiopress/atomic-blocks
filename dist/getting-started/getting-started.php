@@ -91,6 +91,13 @@ add_action(
 		if ( ! atomic_blocks_is_pro() ) {
 			return;
 		}
+
+		$font_url = plugins_url( 'assets/genesis-font/', __DIR__ );
+		$eot      = $font_url . 'genesis-icon.eot?#iefix';
+		$woff     = $font_url . 'genesis-icon.woff';
+		$ttf      = $font_url . 'genesis-icon.ttf';
+		$svg      = $font_url . 'genesis-icon.svg#genesis-icon';
+
 		?>
 	<style>
 		@font-face {
@@ -99,10 +106,10 @@ add_action(
 			font-style: normal;
 			src: url("../assets/genesis-font/genesis-icon.eot");
 			src:
-				url("../assets/genesis-font/genesis-icon.eot?#iefix") format("embedded-opentype"),
-				url("../assets/genesis-font/genesis-icon.woff") format("woff"),
-				url("../assets/genesis-font/genesis-icon.ttf") format("truetype"),
-				url("../assets/genesis-font/genesis-icon.svg#genesis-icon") format("svg");
+				url("<?php echo esc_url( $eot ); ?>") format("embedded-opentype"),
+				url("<?php echo esc_url( $woff ); ?>") format("woff"),
+				url("<?php echo esc_url( $ttf ); ?>") format("truetype"),
+				url("<?php echo esc_url( $svg ); ?>") format("svg");
 		}
 
 		#adminmenu .toplevel_page_atomic-blocks .wp-menu-image img {
