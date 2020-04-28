@@ -84,12 +84,12 @@ add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
 
 /**
  * Add inline style for menu icon.
- *
- * @since 1.0.0
  */
-add_action( 'admin_enqueue_scripts', function() {
-    ?>
-    <style>
+add_action(
+	'admin_enqueue_scripts',
+	function() {
+		?>
+	<style>
 		@font-face {
 			font-family: "genesis-icon";
 			font-weight: normal;
@@ -116,8 +116,9 @@ add_action( 'admin_enqueue_scripts', function() {
 			content: "\e600";
 		}
 	</style>
-    <?php
-} );
+		<?php
+	}
+);
 
 /**
  * Outputs the markup used on the Getting Started
