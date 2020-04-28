@@ -20,7 +20,7 @@ const { registerBlockType } = wp.blocks;
  * Register the Layout block
  */
 registerBlockType( 'atomic-blocks/ab-layouts', {
-	title: __( 'AB Layouts', 'atomic-blocks' ),
+	title: __( 'Layouts', 'atomic-blocks' ),
 	description: __(
 		'Add a pre-defined section or layout to posts and pages.',
 		'atomic-blocks'

@@ -18,7 +18,7 @@ const { registerBlockType } = wp.blocks;
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-testimonial', {
-	title: __( 'AB Testimonial', 'atomic-blocks' ),
+	title: __( 'Testimonial', 'atomic-blocks' ),
 	description: __(
 		'Add a user testimonial with a name and title.',
 		'atomic-blocks'
