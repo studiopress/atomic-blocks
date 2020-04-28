@@ -88,6 +88,9 @@ add_action( 'admin_menu', 'atomic_blocks_getting_started_menu' );
 add_action(
 	'admin_enqueue_scripts',
 	function() {
+		if ( ! atomic_blocks_is_pro() ) {
+			return;
+		}
 		?>
 	<style>
 		@font-face {
