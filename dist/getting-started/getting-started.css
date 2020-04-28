@@ -14,6 +14,7 @@
 }
 
 .toplevel_page_atomic-blocks #update-nag,
+.page-builder_page_atomic-blocks-plugin-settings #update-nag,
 .atomic-blocks_page_atomic-blocks-plugin-settings #update-nag {
 	display: none !important;
 }
