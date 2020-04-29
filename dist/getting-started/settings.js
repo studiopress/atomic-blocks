@@ -31,7 +31,7 @@ window.addEventListener( 'DOMContentLoaded', function() {
 				.addClass( 'current' )
 				.blur();
 			jQuery( '#atomic-blocks-settings' )
-				.find( '.atomic-blocks-settings-' + tab + ', .genesis-page-builder-settings-tab-' + tab )
+				.find( '.atomic-blocks-settings-' + tab + ', .genesis-page-builder-settings-' + tab )
 				.show();
 		},
 
