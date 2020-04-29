@@ -209,7 +209,8 @@ function atomic_blocks_save_settings() {
  * @param string $hook The current admin page.
  */
 function atomic_blocks_load_settings_page_scripts( $hook ) {
-	if ( 'atomic-blocks_page_atomic-blocks-plugin-settings' !== $hook ) {
+
+	if ( ! in_array( $hook, [ 'page-builder_page_atomic-blocks-plugin-settings', 'atomic-blocks_page_atomic-blocks-plugin-settings' ], true ) ) {
 		return;
 	}
 
