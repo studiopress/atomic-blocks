@@ -53,8 +53,24 @@ if ( atomic_blocks_is_pro() ) {
 
 				<form method="post" action="options.php" class="atomic-blocks-options-form">
 						<?php
+						/**
+						 * Used to add settings fields to the settings page.
+						 *
+						 * @private For internal use only. This hook will
+						 * go away in the near future. Please do not use it.
+						 */
+						do_action( 'atomic_blocks_settings_page_top' );
+
 						require $pages_dir . 'settings-general.php';
+
+						/**
+						 * Used to add settings fields to the settings page.
+						 *
+						 * @private For internal use only. This hook will
+						 * go away in the near future. Please do not use it.
+						 */
 						do_action( 'atomic_blocks_settings_page_bottom' );
+
 						submit_button( esc_html__( 'Save Settings', 'atomic-blocks' ) );
 						wp_nonce_field( 'atomic-blocks-settings-save-nonce', 'atomic-blocks-settings-save-nonce' );
 						?>
