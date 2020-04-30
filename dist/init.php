@@ -86,7 +86,7 @@ function atomic_blocks_editor_assets() {
 		array(
 			'rest_url'      => esc_url( rest_url() ),
 			'user_data'     => $user_data,
-			'pro_activated' => function_exists( '\AtomicBlocksPro\plugin_loader' ),
+			'pro_activated' => atomic_blocks_is_pro(),
 			'is_wpe'        => function_exists( 'is_wpe' ),
 		)
 	);

@@ -132,13 +132,13 @@ export default class LayoutLibrary extends Component {
 										) }
 										<a
 											href={
-												'https://wpengine.com/blog/introducing-atomic-blocks-pro-a-premium-collection-of-wordpress-content-blocks/'
+												'https://wpengine.com/genesis-pro'
 											}
 											target="_blank"
 											rel="noopener noreferrer"
 										>
 											{ __(
-												'Atomic Blocks Pro',
+												'Genesis Pro',
 												'atomic-blocks'
 											) }{ ' ' }
 											&rarr;
