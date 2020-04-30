@@ -10,7 +10,7 @@
 	<div class="wrap ab-getting-started gpb-getting-started">
 		<div class="intro-wrap">
 			<div class="intro">
-				<a href="<?php echo esc_url( 'https://studiopress.com' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit StudioPress', 'atomic-blocks' ); ?>" /></a>
+				<img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit StudioPress', 'atomic-blocks' ); ?>" />
 				<h1><?php printf( esc_html__( 'Getting started with', 'atomic-blocks' ) ); ?><br/><strong><?php printf( esc_html__( 'Genesis Page Builder', 'atomic-blocks' ) ); ?></strong></h1>
 			</div>
 		</div>
@@ -21,7 +21,7 @@
 					<div class="ab-block-split clearfix">
 						<div class="ab-block-split-left">
 							<div class="ab-titles">
-								<h2><?php esc_html_e( 'Build and launch beautiful websites effortlessly with Genesis Page Builder (beta).', 'atomic-blocks' ); ?></h2>
+								<h2><?php esc_html_e( 'Build and launch beautiful websites effortlessly with Genesis Page Builder.', 'atomic-blocks' ); ?></h2>
 								<p><?php esc_html_e( 'Genesis Page Builder provides you with a complete collection of page building section and layout blocks. Mix and match pre-designed sections to create full pages or get a huge head start with full-page layouts. Join the future of site building today!', 'atomic-blocks' ); ?></p>
 								<ul>
 									<li><?php esc_html_e( 'Page Building Layouts', 'atomic-blocks' ); ?></li>
@@ -33,7 +33,7 @@
 						</div>
 						<div class="ab-block-split-right">
 							<div class="ab-gs-feedback">
-								<h3><?php esc_html_e( 'Help us improve Genesis Page Builder (beta)!', 'atomic-blocks' ); ?></h3>
+								<h3><?php esc_html_e( 'Help us improve Genesis Page Builder!', 'atomic-blocks' ); ?></h3>
 								<p><?php esc_html_e( 'Please consider opting into anonymous usage tracking to help us make Genesis Page Builder better! We’ll use this anonymous data to improve usability, build better blocks, and add new features.', 'atomic-blocks' ); ?></p>
 								<form>
 									<?php $atomic_blocks_opt_in_value = get_option( 'atomic_blocks_pro_analytics_opt_in', false ); ?>
@@ -96,8 +96,8 @@
 						<div class="ab-block-footer-column">
 							<?php atomic_blocks_svg( 'question-circle' ); ?>
 							<h3><?php esc_html_e( 'Documentation and Help', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'The Genesis Page Builder wiki has helpful documentation, tips and tricks, code snippets, and more to help you get started.', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="https://github.com/studiopress/genesis-page-builder/wiki"><?php esc_html_e( 'Browse the Wiki', 'atomic-blocks' ); ?></a>
+							<p><?php esc_html_e( 'Visit the Genesis Page Builder documentation site for helpful tips and tricks, code snippets, and everything you need to get started.', 'atomic-blocks' ); ?></p>
+							<a class="button-primary" href="https://developer.wpengine.com/genesis-pro/genesis-page-builder/"><?php esc_html_e( 'Browse the Wiki', 'atomic-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">

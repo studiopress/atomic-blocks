@@ -8,9 +8,11 @@
 if ( atomic_blocks_is_pro() ) {
 	$atomic_blocks_wrap_class  = 'wrap ab-getting-started gpb-getting-started';
 	$atomic_blocks_plugin_name = 'Genesis Page Builder';
+	$atomic_blocks_docs_link = 'https://developer.wpengine.com/genesis-pro/genesis-page-builder/';
 } else {
 	$atomic_blocks_wrap_class  = 'wrap ab-getting-started';
 	$atomic_blocks_plugin_name = 'Atomic Blocks';
+	$atomic_blocks_docs_link = 'https://github.com/studiopress/atomic-blocks/wiki';
 }
 
 ?>
@@ -74,7 +76,7 @@ if ( atomic_blocks_is_pro() ) {
 									echo sprintf( esc_html__( 'Check out the %1$s documentation for feature and setting explanations, advanced usage, and code examples.', 'atomic-blocks' ), esc_attr( $atomic_blocks_plugin_name ) );
 									?>
 								</p>
-								<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://github.com/studiopress/atomic-blocks/wiki' ); ?>"><?php esc_html_e( 'View Documentation', 'atomic-blocks' ); ?> &rarr;</a>
+								<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( $atomic_blocks_docs_link ); ?>"><?php esc_html_e( 'View Documentation', 'atomic-blocks' ); ?> &rarr;</a>
 							</li>
 						</ul>
 					</div>
