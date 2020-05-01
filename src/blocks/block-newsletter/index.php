@@ -10,6 +10,10 @@ add_action( 'init', 'atomic_blocks_register_newsletter_block' );
  * Registers the newsletter block.
  */
 function atomic_blocks_register_newsletter_block() {
+	/* Check if the register function exists */
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
+	}
 
 	register_block_type(
 		'atomic-blocks/newsletter',
