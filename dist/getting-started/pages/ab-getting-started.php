@@ -10,7 +10,7 @@
 <div class="wrap ab-getting-started">
 	<div class="intro-wrap">
 		<div class="intro">
-			<a href="<?php echo esc_url( 'https://goo.gl/NfXcof' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
+			<a href="<?php echo esc_url( 'https://goo.gl/NfXcof' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" />
 			<h1><?php printf( esc_html__( 'Getting started with', 'atomic-blocks' ) ); ?> <strong><?php printf( esc_html__( 'Atomic Blocks', 'atomic-blocks' ) ); ?></strong></h1>
 		</div>
 
@@ -261,7 +261,7 @@
 						<?php atomic_blocks_svg( 'bullhorn' ); ?>
 						<h3><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></h3>
 						<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Atomic Blocks and making it better with every release. ', 'atomic-blocks' ); ?></p>
-						<a class="button-primary" href="https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
+						<a class="button-primary" href="https://www.research.net/r/genesispro"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
 					</div>
 
 					<div class="ab-block-footer-column">

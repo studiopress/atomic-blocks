@@ -104,7 +104,7 @@
 							<?php atomic_blocks_svg( 'bullhorn' ); ?>
 							<h3><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></h3>
 							<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Genesis Page Builder and making it better with every release. ', 'atomic-blocks' ); ?></p>
-							<a class="button-primary" href="https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
+							<a class="button-primary" href="https://www.research.net/r/genesispro"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
