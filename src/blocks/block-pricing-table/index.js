@@ -71,7 +71,7 @@ class ABPricingBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-pricing', {
-	title: __( 'AB Pricing', 'atomic-blocks' ),
+	title: __( 'Pricing', 'atomic-blocks' ),
 	description: __( 'Add a pricing table.', 'atomic-blocks' ),
 	icon: 'cart',
 	category: 'atomic-blocks',

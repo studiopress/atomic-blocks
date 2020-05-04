@@ -111,7 +111,7 @@ class ABButtonBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-button', {
-	title: __( 'AB Button', 'atomic-blocks' ),
+	title: __( 'Button', 'atomic-blocks' ),
 	description: __( 'Add a customizable button.', 'atomic-blocks' ),
 	icon: 'admin-links',
 	category: 'atomic-blocks',

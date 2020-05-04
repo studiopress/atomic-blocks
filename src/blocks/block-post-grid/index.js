@@ -20,7 +20,7 @@ const validAlignments = [ 'center', 'wide', 'full' ];
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-post-grid', {
-	title: __( 'AB Post and Page Grid', 'atomic-blocks' ),
+	title: __( 'Post and Page Grid', 'atomic-blocks' ),
 	description: __(
 		'Add a grid or list of customizable posts or pages.',
 		'atomic-blocks'

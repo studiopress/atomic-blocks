@@ -19,7 +19,7 @@ const { registerBlockType } = wp.blocks;
  * Register advanced columns block InnerBlocks.
  */
 registerBlockType( 'atomic-blocks/ab-columns', {
-	title: __( 'AB Advanced Columns', 'atomic-blocks' ),
+	title: __( 'Advanced Columns', 'atomic-blocks' ),
 	description: __( 'Add a pre-defined column layout.', 'atomic-blocks' ),
 	icon: 'editor-table',
 	category: 'atomic-blocks',

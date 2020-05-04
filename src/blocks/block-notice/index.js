@@ -97,7 +97,7 @@ class ABNoticeBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-notice', {
-	title: __( 'AB Notice', 'atomic-blocks' ),
+	title: __( 'Notice', 'atomic-blocks' ),
 	description: __( 'Add a stylized text notice.', 'atomic-blocks' ),
 	icon: 'format-aside',
 	category: 'atomic-blocks',
