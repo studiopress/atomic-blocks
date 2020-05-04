@@ -49,17 +49,6 @@
 		border-radius: 5px;
 		background: #fff;
 
-		a {
-			color: inherit;
-			box-shadow: 0 -1px 0 inset;
-			text-decoration: none;
-
-			&:hover {
-				color: inherit;
-				box-shadow: 0 -2px 0 inset;
-			}
-		}
-
 		p:last-child {
 			margin-bottom: 0;
 		}
