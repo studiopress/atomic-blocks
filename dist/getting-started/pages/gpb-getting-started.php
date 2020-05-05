@@ -36,11 +36,11 @@
 								<h3><?php esc_html_e( 'Help us improve Genesis Page Builder!', 'atomic-blocks' ); ?></h3>
 								<p><?php esc_html_e( 'Please consider opting into anonymous usage tracking to help us make Genesis Page Builder better! We’ll use this anonymous data to improve usability, build better blocks, and add new features.', 'atomic-blocks' ); ?></p>
 								<form>
-									<?php $atomic_blocks_opt_in_value = get_option( 'atomic_blocks_pro_analytics_opt_in', false ); ?>
-									<input type="radio" id="atomic-blocks-pro-analytics-opt-in-enabled" name="atomic-blocks-settings[analytics-opt-in]" value="1" <?php checked( $atomic_blocks_opt_in_value, true ); ?>>
+									<?php $genesis_page_builder_opt_in_value = get_option( 'genesis_page_builder_analytics_opt_in', false ); ?>
+									<input type="radio" id="atomic-blocks-pro-analytics-opt-in-enabled" name="atomic-blocks-settings[analytics-opt-in]" value="1" <?php checked( $genesis_page_builder_opt_in_value, true ); ?>>
 									<label for="atomic-blocks-pro-analytics-opt-in-enabled"><?php esc_html_e( 'Enabled', 'atomic-blocks' ); ?></label>
 									<br>
-									<input type="radio" id="atomic-blocks-pro-analytics-opt-in-disabled" name="atomic-blocks-settings[analytics-opt-in]" value="0" <?php checked( $atomic_blocks_opt_in_value, false ); ?>>
+									<input type="radio" id="atomic-blocks-pro-analytics-opt-in-disabled" name="atomic-blocks-settings[analytics-opt-in]" value="0" <?php checked( $genesis_page_builder_opt_in_value, false ); ?>>
 									<label for="atomic-blocks-pro-analytics-opt-in-disabled"><?php esc_html_e( 'Disabled', 'atomic-blocks' ); ?></label>
 									<p class="atomic-blocks-settings-description">
 										<?php
