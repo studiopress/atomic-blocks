@@ -33,6 +33,7 @@
     "@wordpress/i18n": "^1.2.3",
     "autoprefixer": "^9.7.4",
     "classnames": "^2.2.6",
+    "css-loader": "^3.5.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "lodash": "^4.17.15",
     "memize": "^1.0.5",
