@@ -234,9 +234,9 @@ add_action(
 		}
 
 		if ( empty( $_POST['ab-pro-analytics-toggle-value'] ) ) {
-			delete_option( 'atomic_blocks_pro_analytics_opt_in' );
+			delete_option( 'genesis_page_builder_analytics_opt_in' );
 		} else {
-			update_option( 'atomic_blocks_pro_analytics_opt_in', true );
+			update_option( 'genesis_page_builder_analytics_opt_in', true );
 		}
 
 		wp_send_json_success();
