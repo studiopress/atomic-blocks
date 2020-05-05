@@ -142,7 +142,12 @@
 
 .ab-getting-started .panel-left {
 	display: inline-block;
+	display: none;
 	width: 63%;
+}
+
+.gpb-getting-started .panel-left {
+	display: inline-block !important;
 }
 
 .ab-getting-started .panel-left img {
