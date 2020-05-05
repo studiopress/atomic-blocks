@@ -5,12 +5,26 @@
  * @package AtomicBlocks\Settings
  */
 
+if ( atomic_blocks_is_pro() ) {
+	$atomic_blocks_wrap_class  = 'wrap ab-getting-started gpb-getting-started';
+	$atomic_blocks_plugin_name = 'Genesis Page Builder';
+	$atomic_blocks_docs_link   = 'https://developer.wpengine.com/genesis-pro/genesis-page-builder/';
+} else {
+	$atomic_blocks_wrap_class  = 'wrap ab-getting-started';
+	$atomic_blocks_plugin_name = 'Atomic Blocks';
+	$atomic_blocks_docs_link   = 'https://github.com/studiopress/atomic-blocks/wiki';
+}
+
 ?>
 
-<div class="wrap ab-getting-started">
+<div class="<?php echo esc_attr( $atomic_blocks_wrap_class ); ?>">
 	<div class="intro-wrap">
 		<div class="intro">
-			<a href="https://atomicblocks.com"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '/logo.png', __DIR__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
+			<?php if ( atomic_blocks_is_pro() ) { ?>
+				<a href="<?php echo esc_url( 'https://studiopress.com' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit StudioPress', 'atomic-blocks' ); ?>" /></a>
+			<?php } else { ?>
+				<a href="https://atomicblocks.com"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
+			<?php } ?>
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 		</div>
 
@@ -39,8 +53,24 @@
 
 				<form method="post" action="options.php" class="atomic-blocks-options-form">
 						<?php
+						/**
+						 * Used to add settings fields to the settings page.
+						 *
+						 * @private For internal use only. This hook will
+						 * go away in the near future. Please do not use it.
+						 */
+						do_action( 'atomic_blocks_settings_page_top' );
+
 						require $pages_dir . 'settings-general.php';
+
+						/**
+						 * Used to add settings fields to the settings page.
+						 *
+						 * @private For internal use only. This hook will
+						 * go away in the near future. Please do not use it.
+						 */
 						do_action( 'atomic_blocks_settings_page_bottom' );
+
 						submit_button( esc_html__( 'Save Settings', 'atomic-blocks' ) );
 						wp_nonce_field( 'atomic-blocks-settings-save-nonce', 'atomic-blocks-settings-save-nonce' );
 						?>
@@ -56,8 +86,13 @@
 
 						<ul>
 							<li class="cell">
-								<p><?php esc_html_e( 'Check out the Atomic Blocks documentation for feature and setting explanations, advanced usage, and code examples.', 'atomic-blocks' ); ?></p>
-								<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( 'https://github.com/studiopress/atomic-blocks/wiki' ); ?>"><?php esc_html_e( 'View Documentation', 'atomic-blocks' ); ?> &rarr;</a>
+								<p>
+									<?php
+									/* translators: %1$s: conditional name of plugin */
+									echo sprintf( esc_html__( 'Check out the %1$s documentation for feature and setting explanations, advanced usage, and code examples.', 'atomic-blocks' ), esc_attr( $atomic_blocks_plugin_name ) );
+									?>
+								</p>
+								<a class="button-primary club-button" target="_blank" href="<?php echo esc_url( $atomic_blocks_docs_link ); ?>"><?php esc_html_e( 'View Documentation', 'atomic-blocks' ); ?> &rarr;</a>
 							</li>
 						</ul>
 					</div>

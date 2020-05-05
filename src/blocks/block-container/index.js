@@ -95,7 +95,7 @@ class ABContainerBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-container', {
-	title: __( 'AB Container', 'atomic-blocks' ),
+	title: __( 'Container', 'atomic-blocks' ),
 	description: __(
 		'Add a container block to wrap several blocks in a parent container.',
 		'atomic-blocks'

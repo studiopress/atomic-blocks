@@ -22,7 +22,7 @@ const { registerBlockType } = wp.blocks;
  * Register advanced columns block.
  */
 registerBlockType( 'atomic-blocks/ab-column', {
-	title: __( 'AB Advanced Column', 'atomic-blocks' ),
+	title: __( 'Advanced Column', 'atomic-blocks' ),
 	description: __( 'Add a pre-defined column layout.', 'atomic-blocks' ),
 	icon: 'editor-table',
 	category: 'atomic-blocks',

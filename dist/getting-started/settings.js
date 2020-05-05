@@ -22,16 +22,16 @@ window.addEventListener( 'DOMContentLoaded', function() {
 				window.location.hash = tab;
 			}
 
-			jQuery( 'div[class^="atomic-blocks-settings-"]' ).hide();
+			jQuery( 'div[class^="atomic-blocks-settings-"], div[class^="genesis-page-builder-settings-"]' ).hide();
 			jQuery( '#atomic-blocks-settings .tab-content' ).hide();
 			jQuery( '.inline-list' )
 				.find( 'li' )
 				.removeClass( 'current' );
-			jQuery( '.atomic-blocks-settings-tab-' + tab )
+			jQuery( '.atomic-blocks-settings-tab-' + tab + ', .genesis-page-builder-settings-tab-' + tab )
 				.addClass( 'current' )
 				.blur();
 			jQuery( '#atomic-blocks-settings' )
-				.find( '.atomic-blocks-settings-' + tab )
+				.find( '.atomic-blocks-settings-' + tab + ', .genesis-page-builder-settings-' + tab )
 				.show();
 		},
 
@@ -39,7 +39,7 @@ window.addEventListener( 'DOMContentLoaded', function() {
 		addListeners() {
 			jQuery( '.inline-list a' ).on( 'click', function( event ) {
 				event.preventDefault();
-				jQuery( 'div[class^="atomic-blocks-settings-"]' ).hide();
+				jQuery( 'div[class^="atomic-blocks-settings-"], div[class^="genesis-page-builder-settings-"]' ).hide();
 				AtomicBlocksSettings.switchTab(
 					jQuery( this ),
 					event.target.hash
@@ -62,7 +62,7 @@ window.addEventListener( 'DOMContentLoaded', function() {
 				.blur();
 			jQuery( '#atomic-blocks-settings .tab-content' ).hide();
 			jQuery( '#atomic-blocks-settings' )
-				.find( '.atomic-blocks-settings-' + tab )
+				.find( '.atomic-blocks-settings-' + tab +', .genesis-page-builder-settings-' + tab )
 				.show();
 		},
 
