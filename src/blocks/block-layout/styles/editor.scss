@@ -3,7 +3,7 @@
  */
 
 .ab-layout-modal {
-	width: 860px;
+	width: 1200px;
 	min-height: 90%;
 	height: 100%;
 	overflow-y: hidden;
@@ -99,8 +99,8 @@
 	.ab-layout-choices {
 		display: -ms-grid;
 		display: grid;
-		-ms-grid-columns: 1fr 1fr;
-		grid-template-columns: 1fr 1fr;
+		-ms-grid-columns: 1fr 1fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
 		grid-template-rows: 1fr;
 		grid-gap: 0 2em;
 	}
@@ -113,8 +113,8 @@
 	.ab-layout-view {
 		display: -ms-grid;
 		display: grid;
-		-ms-grid-columns: 1fr 1fr;
-		grid-template-columns: 1fr 1fr;
+		-ms-grid-columns: 1fr 1fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
 		grid-template-rows: 1fr;
 		grid-gap: 0 2em;
 		margin-bottom: 20px;
@@ -160,6 +160,7 @@
 			padding: 0;
 			z-index: 5;
 			position: relative;
+			display: block;
 		}
 	}
 
