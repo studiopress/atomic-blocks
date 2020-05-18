@@ -5,7 +5,7 @@ executors:
     docker:
       - image: circleci/buildpack-deps:latest
   php:
-    working_directory: ~/project/abci
+    working_directory: ~/project/atomic-blocks
     parameters:
       php-version:
         type: string
@@ -20,7 +20,7 @@ executors:
           MYSQL_PASSWORD: yourpasswordhere
           MYSQL_ROOT_PASSWORD: wordpress
   node-only:
-    working_directory: ~/project/abci
+    working_directory: ~/project/atomic-blocks
     docker:
       - image: cimg/node:12.16
 commands:
@@ -36,7 +36,7 @@ commands:
     steps:
       - run:
           command: |
-            echo "export VERSION=$(grep 'Version:' ~/project/abci/atomicblocks.php | awk -F: '{print $2}' | sed 's/^\s//')" >> ${BASH_ENV}
+            echo "export VERSION=$(grep 'Version:' ~/project/atomic-blocks/atomicblocks.php | awk -F: '{print $2}' | sed 's/^\s//')" >> ${BASH_ENV}
 
   svn_setup:
     description: "Set up SVN"
@@ -89,7 +89,7 @@ commands:
       - run: cp ~/project/wordpress-develop/wp-tests-config-sample.php ~/project/wordpress-develop/wp-tests-config.php
       - run: sed -i 's/localhost/127.0.0.1/g' ~/project/wordpress-develop/wp-tests-config.php
       - run: mkdir -p ~/project/wordpress-develop/src/wp-content/plugins
-      - run: ln -s ~/project/abci ~/project/wordpress-develop/src/wp-content/plugins/abci
+      - run: ln -s ~/project/atomic-blocks ~/project/wordpress-develop/src/wp-content/plugins/atomic-blocks
       - run:
           command: |
             mkdir -p ~/project/bin
@@ -100,11 +100,11 @@ jobs:
     executor: build
     steps:
       - checkout:
-          path: abci
+          path: atomic-blocks
       - persist_to_workspace:
           root: ~/project
           paths:
-            - abci
+            - atomic-blocks
 
   composer_build:
     executor:
@@ -123,7 +123,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - abci
+            - atomic-blocks
 
   npm_build:
     executor: node-only
@@ -140,7 +140,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - abci
+            - atomic-blocks
 
   npm_lint:
     executor: node-only
@@ -152,7 +152,7 @@ jobs:
           command: |
             echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
             source $BASH_ENV
-            cd ~/project/abci
+            cd ~/project/atomic-blocks
             ls -la
             npm ci
             npm run lint:css:src
@@ -174,9 +174,9 @@ jobs:
             apk add --no-cache zip
             wp i18n make-pot . languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor,dist/blocks.build.js --path=/root/project/wordpress-develop/src --allow-root
             cd ~/project
-            BUILD_VERSION=`grep 'Version' abci/atomicblocks.php | cut -f4 -d' '`
+            BUILD_VERSION=`grep 'Version' atomic-blocks/atomicblocks.php | cut -f4 -d' '`
             FILENAME_ZIP=atomic-blocks.$BUILD_VERSION.zip
-            zip -x@abci/.zipignore -r "/tmp/artifacts/$FILENAME_ZIP" abci/
+            zip -x@atomic-blocks/.zipignore -r "/tmp/artifacts/$FILENAME_ZIP" atomic-blocks/
       - store_artifacts:
           path: /tmp/artifacts/
 
