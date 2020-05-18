@@ -14,7 +14,6 @@ import LayoutLibraryItemList from './layout-library-item-list';
 const { compose } = wp.compose;
 const { rawHandler } = wp.blocks;
 const { withSelect, withDispatch } = wp.data;
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
 class LayoutLibraryItem extends Component {

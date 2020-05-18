@@ -19,12 +19,9 @@ const { __ } = wp.i18n;
 const { addQueryArgs } = wp.url;
 const { Component, Fragment } = wp.element;
 const {
-	Button,
 	ButtonGroup,
 	TextControl,
 	SelectControl,
-	Dashicon,
-	Tooltip,
 } = wp.components;
 
 export default class LayoutLibrary extends Component {
