@@ -6,7 +6,6 @@
  * Dependencies.
  */
 import classnames from 'classnames';
-import LazyLoad from 'react-lazy-load';
 
 /**
  * WordPress dependencies.
@@ -37,12 +36,10 @@ export default class LayoutLibraryItemCard extends Component {
 									this.props.import( this.props.content );
 								} }
 							>
-								<LazyLoad>
-									<img
-										src={ this.props.image }
-										alt={ this.props.name }
-									/>
-								</LazyLoad>
+								<img
+									src={ this.props.image }
+									alt={ this.props.name }
+								/>
 							</Button>
 
 							<div className="ab-layout-design-info">
