@@ -56,7 +56,7 @@
 
 					<div class="ab-block-feature-wrap clear">
 						<h2><?php esc_html_e( 'Get a jump start with Genesis.', 'atomic-blocks' ); ?></h2>
-						<p><?php esc_html_e( 'Our collection of block-powered themes integrate seamlessly with Genesis Page Builder features. Genesis themes are free for WP Engine customers.', 'atomic-blocks' ); ?></p>
+						<p><?php esc_html_e( 'Our collection of block-powered themes integrate seamlessly with Genesis Pro features. Genesis themes are free for WP Engine customers.', 'atomic-blocks' ); ?></p>
 
 						<div class="ab-block-features">
 							<div class="ab-block-feature">
