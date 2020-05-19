@@ -15,7 +15,7 @@ const { registerBlockType } = wp.blocks;
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-sharing', {
-	title: __( 'AB Sharing', 'atomic-blocks' ),
+	title: __( 'Sharing', 'atomic-blocks' ),
 	description: __(
 		'Add sharing buttons to your posts and pages.',
 		'atomic-blocks'

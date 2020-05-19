@@ -46,7 +46,7 @@ const blockAttributes = {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-accordion', {
-	title: __( 'AB Accordion', 'atomic-blocks' ),
+	title: __( 'Accordion', 'atomic-blocks' ),
 	description: __(
 		'Add accordion block with a title and text.',
 		'atomic-blocks'

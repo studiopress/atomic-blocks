@@ -286,7 +286,7 @@ class ABCTABlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-cta', {
-	title: __( 'AB Call To Action', 'atomic-blocks' ),
+	title: __( 'Call To Action', 'atomic-blocks' ),
 	description: __(
 		'Add a call to action section with a title, text, and a button.',
 		'atomic-blocks'

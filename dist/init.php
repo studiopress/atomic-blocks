@@ -86,7 +86,7 @@ function atomic_blocks_editor_assets() {
 		array(
 			'rest_url'      => esc_url( rest_url() ),
 			'user_data'     => $user_data,
-			'pro_activated' => function_exists( '\AtomicBlocksPro\plugin_loader' ),
+			'pro_activated' => atomic_blocks_is_pro(),
 			'is_wpe'        => function_exists( 'is_wpe' ),
 		)
 	);
@@ -125,12 +125,18 @@ add_filter( 'block_categories', 'atomic_blocks_add_custom_block_category' );
  * @return array Updated block categories.
  */
 function atomic_blocks_add_custom_block_category( $categories ) {
+	$category_title = __( 'Atomic Blocks', 'atomic-blocks' );
+
+	if ( atomic_blocks_is_pro() ) {
+		$category_title = __( 'Genesis Page Builder', 'atomic-blocks' );
+	}
+
 	return array_merge(
 		$categories,
 		array(
 			array(
 				'slug'  => 'atomic-blocks',
-				'title' => __( 'Atomic Blocks', 'atomic-blocks' ),
+				'title' => $category_title,
 			),
 		)
 	);

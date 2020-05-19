@@ -111,7 +111,7 @@ const blockAttributes = {
  * Register the block
  */
 registerBlockType( 'atomic-blocks/ab-profile-box', {
-	title: __( 'AB Profile Box', 'atomic-blocks' ),
+	title: __( 'Profile Box', 'atomic-blocks' ),
 	description: __(
 		'Add a profile box with bio info and social media links.',
 		'atomic-blocks'

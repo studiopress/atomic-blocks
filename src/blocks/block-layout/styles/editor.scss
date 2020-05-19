@@ -401,6 +401,9 @@ div[data-type*="atomic-blocks/ab-columns"][data-align="full"],
 div[data-type*="atomic-blocks/ab-container"][data-align="full"] {
 	margin-top: auto;
 	margin-bottom: auto;
+}
+
+div[data-type*="atomic-blocks/ab-container"][data-align="full"] .ab-block-container {
 	overflow: hidden;
 }
 

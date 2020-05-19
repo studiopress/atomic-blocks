@@ -23,7 +23,7 @@ const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
 
 // Register editor components
-const { BlockControls, BlockAlignmentToolbar, InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = wp.blockEditor;
 
 const blockAttributes = {
 	containerPaddingTop: {
@@ -78,22 +78,10 @@ class ABContainerBlock extends Component {
 	render() {
 		// Setup the attributes
 		const {
-			attributes: { containerWidth },
 			setAttributes,
 		} = this.props;
 
 		return [
-			// Show the alignment toolbar on focus
-			<BlockControls key={ 'ab-container-block-controls-' + this.props.clientId } >
-				<BlockAlignmentToolbar
-					value={ containerWidth }
-					onChange={ ( containerWidth ) =>
-						setAttributes( { containerWidth } )
-					}
-					controls={ [ 'center', 'full' ] }
-				/>
-			</BlockControls>,
-
 			// Show the block controls on focus
 			<Inspector key={ 'ab-container-inspector-' + this.props.clientId } { ...{ setAttributes, ...this.props } } />,
 
@@ -107,7 +95,7 @@ class ABContainerBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-container', {
-	title: __( 'AB Container', 'atomic-blocks' ),
+	title: __( 'Container', 'atomic-blocks' ),
 	description: __(
 		'Add a container block to wrap several blocks in a parent container.',
 		'atomic-blocks'
@@ -120,6 +108,10 @@ registerBlockType( 'atomic-blocks/ab-container', {
 		__( 'atomic', 'atomic-blocks' ),
 	],
 
+	supports: {
+		align: [ 'center', 'wide', 'full' ]
+	},
+
 	attributes: blockAttributes,
 
 	ab_settings_data: {
@@ -129,16 +121,6 @@ registerBlockType( 'atomic-blocks/ab-container', {
 		ab_container_backgroundOptions: {
 			title: __( 'Background Options', 'atomic-blocks' ),
 		},
-	},
-
-	getEditWrapperProps( { containerWidth } ) {
-		if (
-			'left' === containerWidth ||
-			'right' === containerWidth ||
-			'full' === containerWidth
-		) {
-			return { 'data-align': containerWidth };
-		}
 	},
 
 	// Render the block components
@@ -152,6 +134,14 @@ registerBlockType( 'atomic-blocks/ab-container', {
 				<InnerBlocks.Content />
 			</Container>
 		);
+	},getEditWrapperProps( { containerWidth } ) {
+		if (
+			'center' === containerWidth ||
+			'wide' === containerWidth ||
+			'full' === containerWidth
+		) {
+			return { 'data-align': containerWidth };
+		}
 	},
 
 	deprecated,

@@ -86,7 +86,7 @@ class LayoutModal extends Component {
 								<Dashicon icon={ 'editor-help' } />
 								<a
 									href={
-										'https://github.com/studiopress/atomic-blocks/wiki/Layouts-Block#adding-custom-sections-and-layouts-to-the-library'
+										'https://developer.wpengine.com/genesis-pro/genesis-page-builder/layouts-block/'
 									}
 									target="_blank"
 									rel="noopener noreferrer"
@@ -99,7 +99,7 @@ class LayoutModal extends Component {
 								<span>&middot;</span>
 								<a
 									href={
-										'https://github.com/studiopress/atomic-blocks/wiki/Reusable-Blocks'
+										'https://developer.wpengine.com/genesis-pro/genesis-page-builder/reusable-blocks/'
 									}
 									target="_blank"
 									rel="noopener noreferrer"
@@ -108,7 +108,7 @@ class LayoutModal extends Component {
 								</a>
 								<a
 									href={
-										'https://wpengine.co1.qualtrics.com/jfe/form/SV_bj6kzZDz1Egcc17'
+										'https://www.research.net/r/genesispro'
 									}
 									target="_blank"
 									rel="noopener noreferrer"

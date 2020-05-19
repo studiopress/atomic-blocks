@@ -82,7 +82,7 @@ class ABSpacerBlock extends Component {
 
 // Register the block
 registerBlockType( 'atomic-blocks/ab-spacer', {
-	title: __( 'AB Spacer', 'atomic-blocks' ),
+	title: __( 'Spacer', 'atomic-blocks' ),
 	description: __(
 		'Add a spacer and divider between your blocks.',
 		'atomic-blocks'

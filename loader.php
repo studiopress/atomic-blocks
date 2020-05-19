@@ -70,6 +70,14 @@ function atomic_blocks_loader() {
 	}
 
 	/**
+	 * SVG Icon class and helper functions.
+	 */
+	if ( PHP_VERSION_ID >= 50600 ) {
+		require_once $atomic_blocks_includes_dir . 'classes/class-atomicblocks-svg-icons.php';
+		require_once $atomic_blocks_includes_dir . 'helpers/svg-icons.php';
+	}
+
+	/**
 	 * Compatibility functionality.
 	 */
 	require_once $atomic_blocks_includes_dir . 'compat.php';
@@ -122,3 +130,10 @@ function atomic_blocks_image_sizes() {
 	add_image_size( 'ab-block-post-grid-square', 600, 600, true );
 }
 add_action( 'after_setup_theme', 'atomic_blocks_image_sizes' );
+
+/**
+ * Check for Pro version.
+ */
+function atomic_blocks_is_pro() {
+	return function_exists( 'AtomicBlocksPro\atomic_blocks_pro_main_plugin_file' ) || function_exists( 'Genesis\PageBuilder\main_plugin_file' );
+}
