@@ -21,11 +21,11 @@ if ( atomic_blocks_is_pro() ) {
 	<div class="intro-wrap">
 		<div class="intro">
 			<?php if ( atomic_blocks_is_pro() ) { ?>
-				<a href="<?php echo esc_url( 'https://studiopress.com' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit StudioPress', 'atomic-blocks' ); ?>" /></a>
+				<a href="<?php echo esc_url( 'https://studiopress.com' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-pro-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit StudioPress', 'atomic-blocks' ); ?>" /></a>
 			<?php } else { ?>
 				<a href="https://atomicblocks.com"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
 			<?php } ?>
-			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+			<h1><?php esc_html_e( 'Genesis Pro Settings', 'atomic-blocks' ); ?></h1>
 		</div>
 
 		<ul class="inline-list">
