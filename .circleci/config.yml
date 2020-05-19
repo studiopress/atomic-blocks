@@ -181,18 +181,21 @@ jobs:
           path: /tmp/artifacts/
 
   svn_deploy_branch:
-    executor: base
-    working_directory: /tmp/artifacts
+    executor:
+      name: php
+      php-version: '7.4'
+    working_directory: ~/project/atomic-blocks
     steps:
       - attach_workspace:
-          at: /tmp
+          at: ~/project
       - svn_setup
-      - svn_create_tag
       - svn_add_changes
       - svn_commit
 
   svn_deploy_tag:
-    executor: base
+    executor:
+      name: php
+      php-version: '7.4'
     working_directory: ~/project/atomic-blocks
     steps:
       - attach_workspace:
@@ -280,12 +283,20 @@ workflows:
               only: /.*/
           requires:
             - npm_build
-      # - svn_deploy_tag:
-      #     context: genesis-svn
-      #     requires:
-      #       - bundle
-      #     filters:
-      #       tags:
-      #         only: /^\d+\.\d+\.\d+$/
-      #       branches:
-      #         ignore: /.*/
+      - svn_deploy_branch:
+          context: genesis-svn
+          requires:
+            - bundle
+          filters:
+            branches:
+              only:
+                - master
+      - svn_deploy_tag:
+          context: genesis-svn
+          requires:
+            - bundle
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
