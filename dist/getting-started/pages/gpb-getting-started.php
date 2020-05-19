@@ -21,8 +21,8 @@
 					<div class="ab-block-split clearfix">
 						<div class="ab-block-split-left">
 							<div class="ab-titles">
-								<h2><?php esc_html_e( 'Build and launch beautiful websites effortlessly with Genesis Page Builder.', 'atomic-blocks' ); ?></h2>
-								<p><?php esc_html_e( 'Genesis Page Builder provides you with a complete collection of page building section and layout blocks. Mix and match pre-designed sections to create full pages or get a huge head start with full-page layouts. Join the future of site building today!', 'atomic-blocks' ); ?></p>
+								<h2><?php esc_html_e( 'Build and launch beautiful websites effortlessly.', 'atomic-blocks' ); ?></h2>
+								<p><?php esc_html_e( 'Genesis Pro provides you with a complete collection of page building section and layout blocks. Mix and match pre-designed sections to create full pages or get a huge head start with full-page layouts. Join the future of site building today!', 'atomic-blocks' ); ?></p>
 								<ul>
 									<li><?php esc_html_e( 'Page Building Layouts', 'atomic-blocks' ); ?></li>
 									<li><?php esc_html_e( 'Customizable Portfolios', 'atomic-blocks' ); ?></li>
