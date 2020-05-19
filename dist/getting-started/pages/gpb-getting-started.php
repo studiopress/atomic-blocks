@@ -96,14 +96,14 @@
 						<div class="ab-block-footer-column">
 							<?php atomic_blocks_svg( 'question-circle' ); ?>
 							<h3><?php esc_html_e( 'Documentation and Help', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'Visit the Genesis Page Builder documentation site for helpful tips and tricks, code snippets, and everything you need to get started.', 'atomic-blocks' ); ?></p>
+							<p><?php esc_html_e( 'Visit the Genesis Pro documentation site for helpful tips and tricks, code snippets, and everything you need to get started.', 'atomic-blocks' ); ?></p>
 							<a class="button-primary" href="https://developer.wpengine.com/genesis-pro/genesis-page-builder/"><?php esc_html_e( 'Browse the Wiki', 'atomic-blocks' ); ?></a>
 						</div>
 
 						<div class="ab-block-footer-column">
 							<?php atomic_blocks_svg( 'bullhorn' ); ?>
 							<h3><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></h3>
-							<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Genesis Page Builder and making it better with every release. ', 'atomic-blocks' ); ?></p>
+							<p><?php esc_html_e( 'We are always looking for quality feedback to continue improving Genesis Pro and making it better with every release. ', 'atomic-blocks' ); ?></p>
 							<a class="button-primary" href="https://www.research.net/r/genesispro"><?php esc_html_e( 'Provide Feedback', 'atomic-blocks' ); ?></a>
 						</div>
 
