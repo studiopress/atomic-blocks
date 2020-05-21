@@ -8,10 +8,12 @@
 if ( atomic_blocks_is_pro() ) {
 	$atomic_blocks_wrap_class  = 'wrap ab-getting-started gpb-getting-started';
 	$atomic_blocks_plugin_name = 'Genesis Pro';
+	$atomic_blocks_settings_name = 'Genesis Pro Settings';
 	$atomic_blocks_docs_link   = 'https://developer.wpengine.com/genesis-pro/genesis-page-builder/';
 } else {
 	$atomic_blocks_wrap_class  = 'wrap ab-getting-started';
 	$atomic_blocks_plugin_name = 'Atomic Blocks';
+	$atomic_blocks_settings_name = 'Atomic Blocks Settings';
 	$atomic_blocks_docs_link   = 'https://github.com/studiopress/atomic-blocks/wiki';
 }
 
@@ -25,7 +27,7 @@ if ( atomic_blocks_is_pro() ) {
 			<?php } else { ?>
 				<a href="https://atomicblocks.com"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
 			<?php } ?>
-			<h1><?php esc_html_e( 'Genesis Pro Settings', 'atomic-blocks' ); ?></h1>
+			<h1><?php echo esc_html( $atomic_blocks_settings_name ); ?></h1>
 		</div>
 
 		<ul class="inline-list">
