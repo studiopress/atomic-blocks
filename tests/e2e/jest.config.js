@@ -4,6 +4,7 @@ module.exports = {
 	setupFilesAfterEnv: [
 		'<rootDir>/config/setup-test-framework.js',
 		'@wordpress/jest-console',
+		'@wordpress/jest-puppeteer-axe',
 		'expect-puppeteer',
 	],
 	testPathIgnorePatterns: [
