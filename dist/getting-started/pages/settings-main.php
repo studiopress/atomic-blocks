@@ -6,15 +6,15 @@
  */
 
 if ( atomic_blocks_is_pro() ) {
-	$atomic_blocks_wrap_class  = 'wrap ab-getting-started gpb-getting-started';
-	$atomic_blocks_plugin_name = 'Genesis Pro';
-	$atomic_blocks_settings_name = 'Genesis Pro Settings';
-	$atomic_blocks_docs_link   = 'https://developer.wpengine.com/genesis-pro/genesis-page-builder/';
+	$atomic_blocks_wrap_class    = 'wrap ab-getting-started gpb-getting-started';
+	$atomic_blocks_plugin_name   = __( 'Genesis Pro', 'atomic-blocks' );
+	$atomic_blocks_settings_name = __( 'Genesis Pro Settings', 'atomic-blocks' );
+	$atomic_blocks_docs_link     = 'https://developer.wpengine.com/genesis-pro/genesis-page-builder/';
 } else {
-	$atomic_blocks_wrap_class  = 'wrap ab-getting-started';
-	$atomic_blocks_plugin_name = 'Atomic Blocks';
-	$atomic_blocks_settings_name = 'Atomic Blocks Settings';
-	$atomic_blocks_docs_link   = 'https://github.com/studiopress/atomic-blocks/wiki';
+	$atomic_blocks_wrap_class    = 'wrap ab-getting-started';
+	$atomic_blocks_plugin_name   = __( 'Atomic Blocks', 'atomic-blocks' );
+	$atomic_blocks_settings_name = __( 'Atomic Blocks Settings', 'atomic-blocks' );
+	$atomic_blocks_docs_link     = 'https://github.com/studiopress/atomic-blocks/wiki';
 }
 
 ?>
