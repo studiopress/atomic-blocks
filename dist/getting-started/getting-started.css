@@ -320,6 +320,11 @@
 	transform: translateZ(0);
 }
 
+.gpb-getting-started .atomic-logo {
+	margin-top: 7px;
+	max-width: 230px;
+}
+
 @media only screen and (max-width:800px) {
 	.ab-getting-started .atomic-logo {
 		float: none;
@@ -1026,6 +1031,10 @@
 	background-size: 1400px;
 	padding: 0 2%;
 	float: right;
+}
+
+.gpb-getting-started .ab-block-split-right {
+	padding: 0;
 }
 
 .ab-block-theme img {
