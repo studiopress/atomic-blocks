@@ -20,7 +20,7 @@ const {
 	RangeControl,
 	SelectControl,
 	ToggleControl,
-	IconButton,
+	Button,
 } = wp.components;
 
 /**
@@ -156,7 +156,7 @@ export default class Inspector extends Component {
 							value={ imgID }
 							render={ ( { open } ) => (
 								<div>
-									<IconButton
+									<Button
 										className="ab-cta-inspector-media"
 										label={ __(
 											'Edit image',
@@ -169,10 +169,10 @@ export default class Inspector extends Component {
 											'Select Image',
 											'atomic-blocks'
 										) }
-									</IconButton>
+									</Button>
 
 									{ imgURL && !! imgURL.length && (
-										<IconButton
+										<Button
 											className="ab-cta-inspector-media"
 											label={ __(
 												'Remove Image',
@@ -182,7 +182,7 @@ export default class Inspector extends Component {
 											onClick={ onRemoveImage }
 										>
 											{ __( 'Remove', 'atomic-blocks' ) }
-										</IconButton>
+										</Button>
 									) }
 								</div>
 							) }

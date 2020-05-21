@@ -15,7 +15,7 @@ const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings, MediaUpload } = wp.blockEditor;
 
 // Import Inspector components
-const { PanelBody, RangeControl, IconButton } = wp.components;
+const { PanelBody, RangeControl, Button } = wp.components;
 
 /**
  * Create an Inspector Controls wrapper Component
@@ -185,7 +185,7 @@ export default class Inspector extends Component {
 							value={ containerImgID }
 							render={ ( { open } ) => (
 								<div>
-									<IconButton
+									<Button
 										className="ab-container-inspector-media"
 										label={ __(
 											'Edit image',
@@ -198,11 +198,11 @@ export default class Inspector extends Component {
 											'Select Image',
 											'atomic-blocks'
 										) }
-									</IconButton>
+									</Button>
 
 									{ containerImgURL &&
 										!! containerImgURL.length && (
-											<IconButton
+											<Button
 												className="ab-container-inspector-media"
 												label={ __(
 													'Remove Image',
@@ -215,7 +215,7 @@ export default class Inspector extends Component {
 													'Remove',
 													'atomic-blocks'
 												) }
-											</IconButton>
+											</Button>
 										) }
 								</div>
 							) }

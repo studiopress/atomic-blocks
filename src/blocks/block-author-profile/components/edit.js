@@ -158,7 +158,7 @@ export default class Edit extends Component {
 						) }
 						keepPlaceholderOnFocus
 						value={ profileContent }
-						formattingControls={ [
+						allowedFormats={ [
 							'bold',
 							'italic',
 							'strikethrough',

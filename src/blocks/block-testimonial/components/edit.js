@@ -69,7 +69,7 @@ export default class Edit extends Component {
 					) }
 					keepPlaceholderOnFocus
 					value={ testimonialContent }
-					formattingControls={ [
+					allowedFormats={ [
 						'bold',
 						'italic',
 						'strikethrough',

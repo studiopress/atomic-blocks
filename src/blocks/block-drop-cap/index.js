@@ -55,7 +55,7 @@ class ABDropCapBlock extends Component {
 					) }
 					keepPlaceholderOnFocus
 					value={ dropCapContent }
-					formattingControls={ [
+					allowedFormats={ [
 						'bold',
 						'italic',
 						'strikethrough',
