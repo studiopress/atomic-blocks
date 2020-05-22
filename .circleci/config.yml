@@ -1,11 +1,8 @@
 version: 2.1
 
 executors:
-  build:
-    docker:
-      - image: circleci/buildpack-deps:latest
   php:
-    working_directory: ~/project/atomic-blocks
+    working_directory: ~/project
     parameters:
       php-version:
         type: string
@@ -20,9 +17,10 @@ executors:
           MYSQL_PASSWORD: yourpasswordhere
           MYSQL_ROOT_PASSWORD: wordpress
   node-only:
-    working_directory: ~/project/atomic-blocks
+    working_directory: ~/project
     docker:
       - image: cimg/node:12.16
+
 commands:
   mkdir_artifacts:
     description: "Make Artifacts directory"
@@ -96,16 +94,6 @@ commands:
             curl -o ~/project/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
             chmod +x ~/project/bin/wp
 jobs:
-  clone:
-    executor: build
-    steps:
-      - checkout:
-          path: atomic-blocks
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - atomic-blocks
-
   composer_build:
     executor:
       name: php
@@ -125,7 +113,7 @@ jobs:
           paths:
             - atomic-blocks
 
-  npm_build:
+  npm_build_lint:
     executor: node-only
     steps:
       - attach_workspace:
@@ -135,28 +123,15 @@ jobs:
           command: |
             echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
             source $BASH_ENV
+            cd ~/project/atomic-blocks
             npm ci
             npm run build-assets
+            npm run lint:css:src
+            npm run lint:js
       - persist_to_workspace:
           root: ~/project
           paths:
             - atomic-blocks
-
-  npm_lint:
-    executor: node-only
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run:
-          name: Lint CSS/JS assets
-          command: |
-            echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
-            source $BASH_ENV
-            cd ~/project/atomic-blocks
-            ls -la
-            npm ci
-            npm run lint:css:src
-            npm run lint:js
 
   bundle:
     executor:
@@ -172,7 +147,6 @@ jobs:
             echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
             source $BASH_ENV
             apk add --no-cache zip
-            wp i18n make-pot . languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor,dist/blocks.build.js --path=/root/project/wordpress-develop/src --allow-root
             cd ~/project
             BUILD_VERSION=`grep 'Version' atomic-blocks/atomicblocks.php | cut -f4 -d' '`
             FILENAME_ZIP=atomic-blocks.$BUILD_VERSION.zip
@@ -184,7 +158,7 @@ jobs:
     executor:
       name: php
       php-version: '7.4'
-    working_directory: ~/project/atomic-blocks
+    working_directory: ~/project
     steps:
       - attach_workspace:
           at: ~/project
@@ -196,7 +170,7 @@ jobs:
     executor:
       name: php
       php-version: '7.4'
-    working_directory: ~/project/atomic-blocks
+    working_directory: ~/project
     steps:
       - attach_workspace:
           at: ~/project
@@ -220,73 +194,67 @@ jobs:
           command: |
             echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
             source $BASH_ENV
+            cd ~/project/atomic-blocks
             composer install
             composer phpcs
             composer phpunit
-
   prepare_environment:
     executor:
       name: php
       php-version: '5.6'
     steps:
+      - checkout:
+          path: atomic-blocks
       - run: apk add --no-cache git
       - install_composer
       - install_wp
+      - run:
+          command: |
+            cd ~/project/atomic-blocks
+            echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
+            source $BASH_ENV
+            composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
+            composer install --prefer-dist --no-suggest --optimize-autoloader --no-dev
+            wp i18n make-pot . languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor,dist/blocks.build.js --path=/root/project/wordpress-develop/src --allow-root
       - persist_to_workspace:
           root: ~/project
           paths:
+            - atomic-blocks
             - bin
             - wordpress-develop
 
 workflows:
   test_build_deploy:
     jobs:
-      - clone:
-          filters:
-            tags:
-              only: /.*/
       - prepare_environment:
           filters:
             tags:
               only: /.*/
-      - composer_build:
-          filters:
-            tags:
-              only: /.*/
-          requires:
-            - clone
-            - prepare_environment
       - php-tests:
           filters:
             tags:
               only: /.*/
           requires:
-            - composer_build
+            - prepare_environment
           matrix:
             parameters:
               php-version: ['7.4', '7.3', '7.2', '5.6']
-      - npm_lint:
+      - npm_build_lint:
           filters:
             tags:
               only: /.*/
           requires:
             - php-tests
-      - npm_build:
-          filters:
-            tags:
-              only: /.*/
-          requires:
-            - npm_lint
       - bundle:
           filters:
             tags:
               only: /.*/
           requires:
-            - npm_build
+            - npm_build_lint
       - svn_deploy_branch:
           context: genesis-svn
           requires:
-            - bundle
+            - npm_build_lint
           filters:
             branches:
               only:
@@ -294,7 +262,7 @@ workflows:
       - svn_deploy_tag:
           context: genesis-svn
           requires:
-            - bundle
+            - npm_build_lint
           filters:
             tags:
               only: /^\d+\.\d+\.\d+$/
