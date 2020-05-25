@@ -64,6 +64,16 @@ jobs:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer phpcs && npm run lint:js
 
+  e2e-tests:
+    machine:
+      image: ubuntu-1604:201903-01
+      docker_layer_caching: true    # default - false
+
+    steps:
+      - checkout
+      - update-node
+      - run: nvm install --lts && npm install && npm run build-assets && docker info && npm run env start && npm run test:e2e
+
 commands:
   prepare-environment:
     description: "Preparing the environment..."
@@ -93,6 +103,14 @@ commands:
           working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
           command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
 
+  update-node:
+    description: "Install node version from .nvmrc in project root"
+    steps:
+      - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+      - run: |
+          echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+          echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+
 workflows:
   version: 2
   test:
@@ -101,3 +119,4 @@ workflows:
       - php-71
       - php-72
       - php-73
+      - e2e-tests
