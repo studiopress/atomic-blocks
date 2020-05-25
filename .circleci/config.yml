@@ -197,7 +197,7 @@ jobs:
             cd ~/project/atomic-blocks
             composer install
             composer phpcs
-            composer phpunit
+            sleep 7 && composer phpunit
   prepare_environment:
     executor:
       name: php
