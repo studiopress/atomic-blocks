@@ -71,7 +71,7 @@ jobs:
     steps:
       - checkout
       - update-node
-      - run: node --version && npm install && npm run build-assets && docker info && npm run env start && npm run test:e2e
+      - run: npm install && npm run build-assets && npm run env start && npm run test:e2e
 
 commands:
   prepare-environment:
@@ -103,15 +103,11 @@ commands:
           command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
 
   update-node:
-    description: "Install node version from .nvmrc in project root"
+    description: "Update the Node version"
     steps:
       - run: |
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-          echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-          echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
           export NVM_DIR="/opt/circleci/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads nvm.
-          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion.
           nvm install --lts
 
 workflows:
