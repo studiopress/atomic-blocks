@@ -31,7 +31,7 @@ const insertBlock = async ( blockName ) => {
 	await page.click( editorSelector )
 };
 
-describe( 'Blocks', () => {
+describe( 'Add Blocks', () => {
 	it( 'inserts blocks with the inserter', async () => {
 		await createNewPost();
 
@@ -55,9 +55,9 @@ describe( 'Blocks', () => {
 	it( 'saves the entered value in the Call To Action block', async () => {
 		await createNewPost();
 
-		const ctaTitle = 'This is an example CTA title';
 		await insertBlock( 'Call To Action' );
 		await page.focus( '.block-editor-block-list__block [role="textbox"]' );
+		const ctaTitle = 'This is an example CTA title';
 		await page.keyboard.type( ctaTitle );
 		await saveDraft();
 		await page.reload();
