@@ -33,6 +33,8 @@ const insertBlock = async ( blockName ) => {
 
 describe( 'Blocks', () => {
 	it( 'inserts blocks with the inserter', async () => {
+		await createNewPost();
+
 		await insertBlock( 'Accordion' );
 		await insertBlock( 'Advanced Columns' );
 		await insertBlock( 'Button' );
