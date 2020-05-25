@@ -3,8 +3,9 @@
  */
 import {
 	createNewPost,
-	pressKeyWithModifier,
 	openGlobalBlockInserter,
+	pressKeyWithModifier,
+	saveDraft,
 } from '@wordpress/e2e-test-utils';
 
 /**
@@ -30,22 +31,36 @@ const insertBlock = async ( blockName ) => {
 	await page.click( editorSelector )
 };
 
-test( 'add blocks', async () => {
-	await createNewPost();
+describe( 'Blocks', () => {
+	it( 'inserts blocks with the inserter', async () => {
+		await insertBlock( 'Accordion' );
+		await insertBlock( 'Advanced Columns' );
+		await insertBlock( 'Button' );
+		await insertBlock( 'Container' );
+		await insertBlock( 'Call To Action' );
+		await insertBlock( 'Drop Cap' );
+		await insertBlock( 'Email newsletter' );
+		await insertBlock( 'Notice' );
+		await insertBlock( 'Post and Page Grid' );
+		await insertBlock( 'Pricing' );
+		await insertBlock( 'Profile Box' );
+		await insertBlock( 'Sharing' );
+		await insertBlock( 'Spacer' );
+		await insertBlock( 'Testimonial' );
+		await insertBlock( 'Layouts' );
+	} );
 
-	await insertBlock( 'Accordion' );
-	await insertBlock( 'Advanced Columns' );
-	await insertBlock( 'Button' );
-	await insertBlock( 'Container' );
-	await insertBlock( 'Call To Action' );
-	await insertBlock( 'Drop Cap' );
-	await insertBlock( 'Email newsletter' );
-	await insertBlock( 'Notice' );
-	await insertBlock( 'Post and Page Grid' );
-	await insertBlock( 'Pricing' );
-	await insertBlock( 'Profile Box' );
-	await insertBlock( 'Sharing' );
-	await insertBlock( 'Spacer' );
-	await insertBlock( 'Testimonial' );
-	await insertBlock( 'Layouts' );
+	it( 'saves the entered value in the Call To Action block', async () => {
+		await createNewPost();
+
+		const ctaTitle = 'This is an example CTA title';
+		await insertBlock( 'Call To Action' );
+		await page.focus( '.block-editor-block-list__block [role="textbox"]' );
+		await page.keyboard.type( ctaTitle );
+		await saveDraft();
+		await page.reload();
+
+		// The CTA title should have been saved, and should still appear after a reload.
+		await expect( page ).toMatch( ctaTitle );
+	} );
 } );
