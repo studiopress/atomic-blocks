@@ -67,7 +67,6 @@ jobs:
   e2e-tests:
     machine:
       image: ubuntu-1604:202004-01
-
     steps:
       - checkout
       - update-node
