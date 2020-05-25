@@ -6,13 +6,15 @@
  */
 
 if ( atomic_blocks_is_pro() ) {
-	$atomic_blocks_wrap_class  = 'wrap ab-getting-started gpb-getting-started';
-	$atomic_blocks_plugin_name = 'Genesis Page Builder';
-	$atomic_blocks_docs_link   = 'https://developer.wpengine.com/genesis-pro/genesis-page-builder/';
+	$atomic_blocks_wrap_class    = 'wrap ab-getting-started gpb-getting-started';
+	$atomic_blocks_plugin_name   = __( 'Genesis Pro', 'atomic-blocks' );
+	$atomic_blocks_settings_name = __( 'Genesis Pro Settings', 'atomic-blocks' );
+	$atomic_blocks_docs_link     = 'https://developer.wpengine.com/genesis-pro/genesis-page-builder/';
 } else {
-	$atomic_blocks_wrap_class  = 'wrap ab-getting-started';
-	$atomic_blocks_plugin_name = 'Atomic Blocks';
-	$atomic_blocks_docs_link   = 'https://github.com/studiopress/atomic-blocks/wiki';
+	$atomic_blocks_wrap_class    = 'wrap ab-getting-started';
+	$atomic_blocks_plugin_name   = __( 'Atomic Blocks', 'atomic-blocks' );
+	$atomic_blocks_settings_name = __( 'Atomic Blocks Settings', 'atomic-blocks' );
+	$atomic_blocks_docs_link     = 'https://github.com/studiopress/atomic-blocks/wiki';
 }
 
 ?>
@@ -21,11 +23,11 @@ if ( atomic_blocks_is_pro() ) {
 	<div class="intro-wrap">
 		<div class="intro">
 			<?php if ( atomic_blocks_is_pro() ) { ?>
-				<a href="<?php echo esc_url( 'https://studiopress.com' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit StudioPress', 'atomic-blocks' ); ?>" /></a>
+				<a href="<?php echo esc_url( 'https://studiopress.com' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/genesis-pro-logo.svg', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit StudioPress', 'atomic-blocks' ); ?>" /></a>
 			<?php } else { ?>
 				<a href="https://atomicblocks.com"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( '../images/logo.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
 			<?php } ?>
-			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+			<h1><?php echo esc_html( $atomic_blocks_settings_name ); ?></h1>
 		</div>
 
 		<ul class="inline-list">
