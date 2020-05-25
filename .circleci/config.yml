@@ -106,6 +106,7 @@ commands:
     description: "Update the Node version"
     steps:
       - run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
           export NVM_DIR="/opt/circleci/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads nvm.
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion.
