@@ -72,7 +72,7 @@ jobs:
     steps:
       - checkout
       - update-node
-      - run: nvm install --lts && npm install && npm run build-assets && docker info && npm run env start && npm run test:e2e
+      - run: node --version && npm install && npm run build-assets && docker info && npm run env start && npm run test:e2e
 
 commands:
   prepare-environment:
