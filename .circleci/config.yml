@@ -66,8 +66,7 @@ jobs:
 
   e2e-tests:
     machine:
-      image: ubuntu-1604:201903-01
-      docker_layer_caching: true    # default - false
+      image: ubuntu-1604:202004-01
 
     steps:
       - checkout
@@ -106,10 +105,11 @@ commands:
   update-node:
     description: "Install node version from .nvmrc in project root"
     steps:
-      - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
       - run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
           echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
           echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+          nvm install --lts
 
 workflows:
   version: 2
