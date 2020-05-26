@@ -1,122 +1,290 @@
 version: 2.1
 
+executors:
+  php:
+    working_directory: ~/project
+    parameters:
+      php-version:
+        type: string
+    docker:
+      - image: wordpress:php<< parameters.php-version >>-fpm-alpine
+        environment:
+          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+      - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: youremptytestdbnamehere
+          MYSQL_USER: yourusernamehere
+          MYSQL_PASSWORD: yourpasswordhere
+          MYSQL_ROOT_PASSWORD: wordpress
+  node-only:
+    working_directory: ~/project
+    docker:
+      - image: cimg/node:12.16
+
+commands:
+  mkdir_artifacts:
+    description: "Make Artifacts directory"
+    steps:
+      - run:
+          command: |
+            [ ! -d "/tmp/artifacts" ] && mkdir /tmp/artifacts &>/dev/null
+
+  set_version_variable:
+    description: "Set the VERSION environment variable"
+    steps:
+      - run:
+          command: |
+            echo "export VERSION=$(grep 'Version:' ~/project/atomic-blocks/atomicblocks.php | awk -F: '{print $2}' | sed 's/^\s//')" >> ${BASH_ENV}
+
+  svn_setup:
+    description: "Set up SVN"
+    steps:
+      - run: svn co https://plugins.svn.wordpress.org/atomic-blocks --depth=empty .
+      - run: svn up trunk
+      - run: svn up tags --depth=empty
+      - run: find ./trunk -not -path "./trunk" -delete
+      - run: cp -r ~/project/atomic-blocks/. ./trunk
+      - run: svn propset svn:ignore -F ./trunk/.svnignore ./trunk
+
+  svn_add_changes:
+    description: "Add changes to SVN"
+    steps:
+      - run:
+          command: if [[ ! -z $(svn st | grep ^\!) ]]; then svn st | grep ^! | awk '{print " --force "$2}' | xargs -0r svn rm; fi
+      - run: svn add --force .
+
+  svn_create_tag:
+    description: "Create a SVN tag"
+    steps:
+      - set_version_variable
+      - run: svn cp trunk tags/${VERSION}
+
+  svn_commit:
+    description: "Commit changes to SVN"
+    steps:
+      - set_version_variable
+      - run: svn ci -m "Tagging ${VERSION} from GitHub" --no-auth-cache --non-interactive --username "${SVN_USERNAME}" --password "${SVN_PASSWORD}"
+
+  install_composer:
+    description: "Install composer"
+    steps:
+      - run: |
+          mkdir -p ~/project/bin
+          cd ~/project/bin
+          echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
+          source $BASH_ENV
+          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+          EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
+          ACTUAL_SIGNATURE=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
+          [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/root/project/bin --filename=composer || exit 1
+          rm composer-setup.php
+          composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
+
+  install_wp:
+    description: "Install WordPress and wp-cli"
+    steps:
+      - run: git clone git://develop.git.wordpress.org/ ~/project/wordpress-develop
+      - run: cp ~/project/wordpress-develop/wp-tests-config-sample.php ~/project/wordpress-develop/wp-tests-config.php
+      - run: sed -i 's/localhost/127.0.0.1/g' ~/project/wordpress-develop/wp-tests-config.php
+      - run: mkdir -p ~/project/wordpress-develop/src/wp-content/plugins
+      - run: ln -s ~/project/atomic-blocks ~/project/wordpress-develop/src/wp-content/plugins/atomic-blocks
+      - run:
+          command: |
+            mkdir -p ~/project/bin
+            curl -o ~/project/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x ~/project/bin/wp
 jobs:
-  php-71:
-    docker:
-      - image: wordpress:php7.1-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-      - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: youremptytestdbnamehere
-          MYSQL_USER: yourusernamehere
-          MYSQL_PASSWORD: yourpasswordhere
-          MYSQL_ROOT_PASSWORD: wordpress
+  composer_build:
+    executor:
+      name: php
+      php-version: '5.6'
     steps:
-      - prepare-environment
+      - attach_workspace:
+          at: ~/project
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpunit
+          name: Composer build
+          command: |
+            echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
+            source $BASH_ENV
+            composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
+            composer install --prefer-dist --no-suggest --optimize-autoloader --no-dev
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - atomic-blocks
 
-  php-72:
-    docker:
-      - image: wordpress:php7.2-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-      - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: youremptytestdbnamehere
-          MYSQL_USER: yourusernamehere
-          MYSQL_PASSWORD: yourpasswordhere
-          MYSQL_ROOT_PASSWORD: wordpress
+  npm_build_lint:
+    executor: node-only
     steps:
-      - prepare-environment
+      - attach_workspace:
+          at: ~/project
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpunit
+          name: Build assets
+          command: |
+            echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
+            source $BASH_ENV
+            cd ~/project/atomic-blocks
+            npm ci
+            npm run build-assets
+            npm run lint:css:src
+            npm run lint:js
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - atomic-blocks
 
-  php-73:
-    docker:
-      - image: wordpress:php7.3-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
-      - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: youremptytestdbnamehere
-          MYSQL_USER: yourusernamehere
-          MYSQL_PASSWORD: yourpasswordhere
-          MYSQL_ROOT_PASSWORD: wordpress
+  bundle:
+    executor:
+      name: php
+      php-version: '7.4'
     steps:
-      - prepare-environment
+      - attach_workspace:
+          at: ~/project
+      - mkdir_artifacts
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpunit
+          name: "Bundle plugin files into a zip"
+          command: |
+            echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
+            source $BASH_ENV
+            apk add --no-cache zip
+            cd ~/project
+            BUILD_VERSION=`grep 'Version' atomic-blocks/atomicblocks.php | cut -f4 -d' '`
+            FILENAME_ZIP=atomic-blocks.$BUILD_VERSION.zip
+            zip -x@atomic-blocks/.zipignore -r "/tmp/artifacts/$FILENAME_ZIP" atomic-blocks/
+      - store_artifacts:
+          path: /tmp/artifacts/
 
-  atomic-blocks-cs:
-    docker:
-      - image: wordpress:php7.3-fpm-alpine
-        environment:
-          WP_TESTS_DIR: /root/project/wordpress-develop/tests/phpunit
+  svn_deploy_branch:
+    executor:
+      name: php
+      php-version: '7.4'
+    working_directory: ~/project
     steps:
-      - prepare-environment:
-          clone-wordpress-develop: false
+      - attach_workspace:
+          at: ~/project
+      - svn_setup
+      - svn_add_changes
+      - svn_commit
+
+  svn_deploy_tag:
+    executor:
+      name: php
+      php-version: '7.4'
+    working_directory: ~/project
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - svn_setup
+      - svn_create_tag
+      - svn_add_changes
+      - svn_commit
+
+  php-tests:
+    parameters:
+      php-version:
+        type: string
+    executor:
+      name: php
+      php-version: << parameters.php-version >>
+    steps:
+      - attach_workspace:
+          at: ~/project
       - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer phpcs && npm run lint:js
+          name: PHP CS and Tests
+          command: |
+            echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
+            source $BASH_ENV
+            cd ~/project/atomic-blocks
+            composer install
+            composer phpcs
+            sleep 7 && composer phpunit
 
   e2e-tests:
     machine:
       image: ubuntu-1604:202004-01
     steps:
       - checkout
-      - update-node
+      - run:
+          name: Update Node version
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+            export NVM_DIR="/opt/circleci/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads nvm.
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion.
+            nvm install --lts
       - run: npm install && npm run build-assets && npm run env start && npm run test:e2e
 
-commands:
-  prepare-environment:
-    description: "Preparing the environment..."
-    parameters:
-      clone-wordpress-develop:
-        type: boolean
-        default: true
+  prepare_environment:
+    executor:
+      name: php
+      php-version: '5.6'
     steps:
-      - run: apk add --no-cache git nodejs npm
+      - checkout:
+          path: atomic-blocks
+      - run: apk add --no-cache git
+      - install_composer
+      - install_wp
       - run:
           command: |
-            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-            EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
-            ACTUAL_SIGNATURE=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
-            [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/bin --filename=composer || exit 1
+            cd ~/project/atomic-blocks
+            echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
+            source $BASH_ENV
             composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
-      - when:
-          condition: << parameters.clone-wordpress-develop >>
-          steps:
-            - run: git clone git://develop.git.wordpress.org/ wordpress-develop
-            - run: cp wordpress-develop/wp-tests-config-sample.php wordpress-develop/wp-tests-config.php
-            - run: sed -i 's/localhost/127.0.0.1/g' wordpress-develop/wp-tests-config.php
-      - run: mkdir -p wordpress-develop/src/wp-content/plugins/atomic-blocks
-      - checkout:
-          path: wordpress-develop/src/wp-content/plugins/atomic-blocks
-      - run:
-          working_directory: wordpress-develop/src/wp-content/plugins/atomic-blocks/
-          command: composer install --prefer-dist --no-suggest --optimize-autoloader && npm install
-
-  update-node:
-    description: "Update the Node version"
-    steps:
-      - run: |
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-          export NVM_DIR="/opt/circleci/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads nvm.
-          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion.
-          nvm install --lts
+            composer install --prefer-dist --no-suggest --optimize-autoloader --no-dev
+            wp i18n make-pot . languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor,dist/blocks.build.js --path=/root/project/wordpress-develop/src --allow-root
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - atomic-blocks
+            - bin
+            - wordpress-develop
 
 workflows:
-  version: 2
-  test:
+  test_build_deploy:
     jobs:
-      - atomic-blocks-cs
-      - php-71
-      - php-72
-      - php-73
-      - e2e-tests
+      - prepare_environment:
+          filters:
+            tags:
+              only: /.*/
+      - php-tests:
+          filters:
+            tags:
+              only: /.*/
+          requires:
+            - prepare_environment
+          matrix:
+            parameters:
+              php-version: ['7.4', '7.3', '7.2', '5.6']
+      - e2e-tests:
+          filters:
+            tags:
+              only: /.*/
+      - npm_build_lint:
+          filters:
+            tags:
+              only: /.*/
+          requires:
+            - php-tests
+      - bundle:
+          filters:
+            tags:
+              only: /.*/
+          requires:
+            - npm_build_lint
+      - svn_deploy_branch:
+          context: genesis-svn
+          requires:
+            - npm_build_lint
+          filters:
+            branches:
+              only:
+                - master
+      - svn_deploy_tag:
+          context: genesis-svn
+          requires:
+            - npm_build_lint
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
