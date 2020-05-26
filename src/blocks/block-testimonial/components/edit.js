@@ -70,10 +70,10 @@ export default class Edit extends Component {
 					keepPlaceholderOnFocus
 					value={ testimonialContent }
 					allowedFormats={ [
-						'bold',
-						'italic',
-						'strikethrough',
-						'link',
+						'core/bold',
+						'core/italic',
+						'core/strikethrough',
+						'core/link',
 					] }
 					className={ classnames( 'ab-testimonial-text' ) }
 					style={ {

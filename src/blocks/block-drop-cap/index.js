@@ -56,10 +56,10 @@ class ABDropCapBlock extends Component {
 					keepPlaceholderOnFocus
 					value={ dropCapContent }
 					allowedFormats={ [
-						'bold',
-						'italic',
-						'strikethrough',
-						'link',
+						'core/bold',
+						'core/italic',
+						'core/strikethrough',
+						'core/link',
 					] }
 					className={ classnames(
 						'ab-drop-cap-text',
