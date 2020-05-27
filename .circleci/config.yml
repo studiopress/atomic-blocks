@@ -39,6 +39,7 @@ commands:
   svn_setup:
     description: "Set up SVN"
     steps:
+      - run: apk add --no-cache subversion
       - run: svn co https://plugins.svn.wordpress.org/atomic-blocks --depth=empty .
       - run: svn up trunk
       - run: svn up tags --depth=empty
