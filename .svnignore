@@ -9,10 +9,17 @@
 .idea
 .stylelintignore
 .svnignore
+.zipignore
+bin
+config
 node_modules
+scripts
 specs
 vendor
+tests
 composer.lock
 package.json
 package-lock.json
+phpcs.xml.dist
+phpunit.xml.dist
 webpack.config.js
