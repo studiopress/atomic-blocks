@@ -52,7 +52,7 @@ commands:
     steps:
       - run:
           command: if [[ ! -z $(svn st | grep ^\!) ]]; then svn st | grep ^! | awk '{print " --force "$2}' | xargs -0r svn rm; fi
-      - run: svn add --force .
+      - run: svn add --force ./trunk
 
   svn_create_tag:
     description: "Create a SVN tag"
