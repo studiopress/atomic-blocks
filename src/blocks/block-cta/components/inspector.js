@@ -16,6 +16,7 @@ const { InspectorControls, PanelColorSettings, MediaUpload } = wp.blockEditor;
 
 // Import Inspector components
 const {
+	Icon,
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -162,9 +163,9 @@ export default class Inspector extends Component {
 											'Edit image',
 											'atomic-blocks'
 										) }
-										icon="format-image"
 										onClick={ open }
 									>
+										<Icon icon="format-image" />
 										{ __(
 											'Select Image',
 											'atomic-blocks'
@@ -178,9 +179,9 @@ export default class Inspector extends Component {
 												'Remove Image',
 												'atomic-blocks'
 											) }
-											icon="dismiss"
 											onClick={ onRemoveImage }
 										>
+											<Icon icon="dismiss" />
 											{ __( 'Remove', 'atomic-blocks' ) }
 										</Button>
 									) }

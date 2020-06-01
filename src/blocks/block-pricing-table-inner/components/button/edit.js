@@ -18,7 +18,7 @@ const {
 	URLInput,
 } = wp.blockEditor;
 
-const { Button, Dashicon } = wp.components;
+const { Button, Dashicon, Icon } = wp.components;
 
 class Edit extends Component {
 	constructor() {
@@ -112,10 +112,11 @@ class Edit extends Component {
 								}
 							/>
 							<Button
-								icon="editor-break"
 								label={ __( 'Apply', 'atomic-blocks' ) }
 								type="submit"
-							/>
+							>
+								<Icon icon="editor-break" />
+							</Button>
 						</form>
 					) }
 				</div>

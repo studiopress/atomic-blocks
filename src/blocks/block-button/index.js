@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 const { RichText, AlignmentToolbar, BlockControls, URLInput } = wp.blockEditor;
 
 // Register components
-const { Button, Dashicon } = wp.components;
+const { Button, Dashicon, Icon } = wp.components;
 
 class ABButtonBlock extends Component {
 	render() {
@@ -99,10 +99,11 @@ class ABButtonBlock extends Component {
 						}
 					/>
 					<Button
-						icon="editor-break"
 						label={ __( 'Apply', 'atomic-blocks' ) }
 						type="submit"
-					/>
+					>
+						<Icon icon="editor-break" />
+					</Button>
 				</form>
 			),
 		];

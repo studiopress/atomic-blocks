@@ -10,6 +10,7 @@ const {
 	Button,
 	ButtonGroup,
 	FocalPointPicker,
+	Icon,
 	ToggleControl,
 	SelectControl,
 } = wp.components;
@@ -83,9 +84,9 @@ class BackgroundImagePanel extends Component {
 												'Edit image',
 												'atomic-blocks'
 											) }
-											icon="format-image"
 											onClick={ open }
 										>
+											<Icon icon="format-image" />
 											{ __(
 												'Select Image',
 												'atomic-blocks'
@@ -99,13 +100,13 @@ class BackgroundImagePanel extends Component {
 													'Remove Image',
 													'atomic-blocks'
 												) }
-												icon="dismiss"
 												onClick={ () =>
 													setAttributes( {
 														backgroundImgURL: null,
 													} )
 												}
 											>
+												<Icon icon="dismiss" />
 												{ __(
 													'Remove',
 													'atomic-blocks'
