@@ -16,12 +16,12 @@ const { InspectorControls, PanelColorSettings, MediaUpload } = wp.blockEditor;
 
 // Import Inspector components
 const {
+	Button,
 	Icon,
 	PanelBody,
 	RangeControl,
 	SelectControl,
 	ToggleControl,
-	Button,
 } = wp.components;
 
 /**

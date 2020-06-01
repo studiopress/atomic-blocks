@@ -15,7 +15,7 @@ const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings, MediaUpload } = wp.blockEditor;
 
 // Import Inspector components
-const { Icon, PanelBody, RangeControl, Button } = wp.components;
+const { Button, Icon, PanelBody, RangeControl } = wp.components;
 
 /**
  * Create an Inspector Controls wrapper Component
