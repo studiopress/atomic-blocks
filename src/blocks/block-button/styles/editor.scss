@@ -3,7 +3,8 @@
  */
 
 .ab-block-button {
-	&+ .blocks-button__inline-link .editor-url-input {
+	&+ .blocks-button__inline-link .editor-url-input,
+	&+ .blocks-button__inline-link .block-editor-url-input {
 		display: inline-block;
 		width: auto;
 	}
