@@ -7,9 +7,10 @@ const { Fragment, Component } = wp.element;
 const {
 	PanelBody,
 	RangeControl,
-	IconButton,
+	Button,
 	ButtonGroup,
 	FocalPointPicker,
+	Icon,
 	ToggleControl,
 	SelectControl,
 } = wp.components;
@@ -77,40 +78,40 @@ class BackgroundImagePanel extends Component {
 							render={ ( { open } ) => (
 								<div>
 									<ButtonGroup className="ab-background-button-group">
-										<IconButton
+										<Button
 											className="ab-inspector-icon-button ab-background-add-button is-button is-default"
 											label={ __(
 												'Edit image',
 												'atomic-blocks'
 											) }
-											icon="format-image"
 											onClick={ open }
 										>
+											<Icon icon="format-image" />
 											{ __(
 												'Select Image',
 												'atomic-blocks'
 											) }
-										</IconButton>
+										</Button>
 
 										{ attributes.backgroundImgURL && (
-											<IconButton
+											<Button
 												className="ab-inspector-icon-button ab-background-remove-button is-button is-default"
 												label={ __(
 													'Remove Image',
 													'atomic-blocks'
 												) }
-												icon="dismiss"
 												onClick={ () =>
 													setAttributes( {
 														backgroundImgURL: null,
 													} )
 												}
 											>
+												<Icon icon="dismiss" />
 												{ __(
 													'Remove',
 													'atomic-blocks'
 												) }
-											</IconButton>
+											</Button>
 										) }
 									</ButtonGroup>
 								</div>

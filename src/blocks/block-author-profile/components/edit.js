@@ -158,11 +158,11 @@ export default class Edit extends Component {
 						) }
 						keepPlaceholderOnFocus
 						value={ profileContent }
-						formattingControls={ [
-							'bold',
-							'italic',
-							'strikethrough',
-							'link',
+						allowedFormats={ [
+							'core/bold',
+							'core/italic',
+							'core/strikethrough',
+							'core/link',
 						] }
 						onChange={ ( value ) =>
 							setAttributes( { profileContent: value } )

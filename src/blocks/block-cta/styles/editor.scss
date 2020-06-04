@@ -18,6 +18,7 @@
 
     .blocks-button__inline-link .components-button {
         display: inline-block;
+        padding: 8px;
     }
 
     .blocks-button__inline-link svg {
@@ -28,4 +29,8 @@
 
 .ab-block-cta h2.editor-rich-text__tinymce.mce-content-body {
     line-height: 1.2;
+}
+
+.ab-cta-inspector-media.components-button {
+	padding: 8px;
 }

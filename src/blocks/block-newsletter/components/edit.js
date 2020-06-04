@@ -120,7 +120,7 @@ class Edit extends Component {
 							tagName="span"
 							className="ab-block-newsletter-label"
 							keepPlaceholderOnFocus
-							formattingControls={ [] }
+							allowedFormats={ [] }
 							value={ attributes.emailInputLabel }
 							onChange={ ( value ) =>
 								this.props.setAttributes( {
@@ -141,7 +141,7 @@ class Edit extends Component {
 									) }
 									keepPlaceholderOnFocus
 									value={ attributes.buttonText }
-									formattingControls={ [] }
+									allowedFormats={ [] }
 									className={ classnames(
 										'ab-button',
 										attributes.buttonClass,

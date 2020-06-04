@@ -16,11 +16,12 @@ const { InspectorControls, PanelColorSettings, MediaUpload } = wp.blockEditor;
 
 // Import Inspector components
 const {
+	Button,
+	Icon,
 	PanelBody,
 	RangeControl,
 	SelectControl,
 	ToggleControl,
-	IconButton,
 } = wp.components;
 
 /**
@@ -156,33 +157,33 @@ export default class Inspector extends Component {
 							value={ imgID }
 							render={ ( { open } ) => (
 								<div>
-									<IconButton
+									<Button
 										className="ab-cta-inspector-media"
 										label={ __(
 											'Edit image',
 											'atomic-blocks'
 										) }
-										icon="format-image"
 										onClick={ open }
 									>
+										<Icon icon="format-image" />
 										{ __(
 											'Select Image',
 											'atomic-blocks'
 										) }
-									</IconButton>
+									</Button>
 
 									{ imgURL && !! imgURL.length && (
-										<IconButton
+										<Button
 											className="ab-cta-inspector-media"
 											label={ __(
 												'Remove Image',
 												'atomic-blocks'
 											) }
-											icon="dismiss"
 											onClick={ onRemoveImage }
 										>
+											<Icon icon="dismiss" />
 											{ __( 'Remove', 'atomic-blocks' ) }
-										</IconButton>
+										</Button>
 									) }
 								</div>
 							) }
