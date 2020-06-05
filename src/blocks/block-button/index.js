@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 const { RichText, AlignmentToolbar, BlockControls, URLInput } = wp.blockEditor;
 
 // Register components
-const { IconButton, Dashicon } = wp.components;
+const { Button, Dashicon, Icon } = wp.components;
 
 class ABButtonBlock extends Component {
 	render() {
@@ -64,7 +64,7 @@ class ABButtonBlock extends Component {
 					placeholder={ __( 'Button text...', 'atomic-blocks' ) }
 					keepPlaceholderOnFocus
 					value={ buttonText }
-					formattingControls={ [] }
+					allowedFormats={ [] }
 					className={ classnames(
 						'ab-button',
 						buttonShape,
@@ -98,11 +98,12 @@ class ABButtonBlock extends Component {
 							setAttributes( { buttonUrl: value } )
 						}
 					/>
-					<IconButton
-						icon="editor-break"
+					<Button
 						label={ __( 'Apply', 'atomic-blocks' ) }
 						type="submit"
-					/>
+					>
+						<Icon icon="editor-break" />
+					</Button>
 				</form>
 			),
 		];

@@ -3,13 +3,15 @@
  */
 
 .ab-block-button {
-	&+ .blocks-button__inline-link .editor-url-input {
+	&+ .blocks-button__inline-link .editor-url-input,
+	&+ .blocks-button__inline-link .block-editor-url-input {
 		display: inline-block;
 		width: auto;
 	}
 
 	&+ .blocks-button__inline-link .components-button {
 		display: inline-block;
+		padding: 8px;
 	}
 
 	&+ .blocks-button__inline-link svg {
