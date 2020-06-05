@@ -76,33 +76,33 @@
 
 @import 'type.scss';
 
-.wp-block *[class*="gp-fluid"],
-.editor-styles-wrapper *[class*="gp-fluid"] {
+.wp-block *[class*="gpb-fluid"],
+.editor-styles-wrapper *[class*="gpb-fluid"] {
 	margin: 0 0 1rem 0;
 	line-height: 1.1;
 	font-weight: normal;
 }
 
-.editor-styles-wrapper .gp-fluid-1 {
+.editor-styles-wrapper .gpb-fluid-1 {
 	@include fluid-font-size(20px, 26px, $vp-small, $vp-large);
 }
 
-.editor-styles-wrapper .gp-fluid-2 {
+.editor-styles-wrapper .gpb-fluid-2 {
 	@include fluid-font-size(22px, 30px, $vp-small, $vp-large);
 }
 
-.editor-styles-wrapper .gp-fluid-3 {
+.editor-styles-wrapper .gpb-fluid-3 {
 	@include fluid-font-size(24px, 38px, $vp-small, $vp-large);
 }
 
-.editor-styles-wrapper .gp-fluid-4 {
+.editor-styles-wrapper .gpb-fluid-4 {
 	@include fluid-font-size(28px, 44px, $vp-small, $vp-large);
 }
 
-.editor-styles-wrapper .gp-fluid-5 {
+.editor-styles-wrapper .gpb-fluid-5 {
 	@include fluid-font-size(32px, 52px, $vp-small, $vp-large);
 }
 
-.editor-styles-wrapper .gp-fluid-6 {
+.editor-styles-wrapper .gpb-fluid-6 {
 	@include fluid-font-size(36px, 60px, $vp-small, $vp-large);
 }

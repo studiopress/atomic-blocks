@@ -122,34 +122,34 @@
 
 /* Fluid Typography */
 
-*[class*="gp-fluid"],
-.entry-content *[class*="gp-fluid"] {
+*[class*="gpb-fluid"],
+.entry-content *[class*="gpb-fluid"] {
 	margin: 0 0 1rem 0;
 	line-height: 1.2;
 	font-weight: normal;
 }
 
-.gp-fluid-1 {
+.gpb-fluid-1 {
 	@include fluid-font-size(20px, 26px, $vp-small, $vp-large);
 }
 
-.gp-fluid-2 {
+.gpb-fluid-2 {
 	@include fluid-font-size(22px, 30px, $vp-small, $vp-large);
 }
 
-.gp-fluid-3 {
+.gpb-fluid-3 {
 	@include fluid-font-size(24px, 38px, $vp-small, $vp-large);
 }
 
-.gp-fluid-4 {
+.gpb-fluid-4 {
 	@include fluid-font-size(28px, 44px, $vp-small, $vp-large);
 }
 
-.gp-fluid-5 {
+.gpb-fluid-5 {
 	@include fluid-font-size(32px, 52px, $vp-small, $vp-large);
 }
 
-.gp-fluid-6 {
+.gpb-fluid-6 {
 	@include fluid-font-size(36px, 60px, $vp-small, $vp-large);
 }
 
@@ -322,25 +322,25 @@ div.ab-background-repeat-y {
 	background-position: center center;
 }
 
-ol.gp-number-list,
-.editor-styles-wrapper ol.gp-number-list {
+ol.gpb-number-list,
+.editor-styles-wrapper ol.gpb-number-list {
 	list-style: none;
-	counter-reset: gp-list-counter;
+	counter-reset: gpb-list-counter;
 	padding: 0;
 	margin-left: 0;
 }
 
-ol.gp-number-list li,
-.editor-styles-wrapper ol.gp-number-list li {
+ol.gpb-number-list li,
+.editor-styles-wrapper ol.gpb-number-list li {
 	list-style-type: none;
-	counter-increment: gp-list-counter;
+	counter-increment: gpb-list-counter;
 	position: relative;
 	padding-left: 65px;
 	margin-bottom: 1.2em;
 }
 
-ol.gp-number-list li::before {
-	content: counter(gp-list-counter) "";
+ol.gpb-number-list li::before {
+	content: counter(gpb-list-counter) "";
 	color: #fff;
 	background: #333;
 	position: absolute;

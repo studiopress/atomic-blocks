@@ -5,52 +5,52 @@
 
 /* Overflow */
 
-.gp-overflow-hidden {
+.gpb-overflow-hidden {
 	overflow: hidden;
 }
 
 /* Grid Enhancements */
 
-.gp-grid-mobile-space .ab-is-responsive-column {
+.gpb-grid-mobile-space .ab-is-responsive-column {
 	grid-row-gap: 1em;
 }
 
  /* Border Radius */
 
- .gp-rounded-grid {
+ .gpb-rounded-grid {
 	 .ab-block-layout-column-inner {
 		 border-radius: 10px;
 	 }
  }
 
-.gp-rounded-sm,
-.gp-rounded-sm img {
+.gpb-rounded-sm,
+.gpb-rounded-sm img {
 	border-radius: 5px;
 }
 
-.gp-rounded-md,
-.gp-rounded-md img {
+.gpb-rounded-md,
+.gpb-rounded-md img {
 	border-radius: 10px;
 }
 
-.gp-rounded-lg,
-.gp-rounded-lg img {
+.gpb-rounded-lg,
+.gpb-rounded-lg img {
 	border-radius: 20px;
 }
 
-.gp-rounded-xl,
-.gp-rounded-xl img {
+.gpb-rounded-xl,
+.gpb-rounded-xl img {
 	border-radius: 30px;
 }
 
-.gp-rounded-full,
-.gp-rounded-full img {
+.gpb-rounded-full,
+.gpb-rounded-full img {
 	border-radius: 500px;
 }
 
 /* Alignment */
 
-.gp-mobile-align-reset {
+.gpb-mobile-align-reset {
 	@media only screen and (max-width: 600px) {
 		float: none;
 		text-align: left;
@@ -61,7 +61,7 @@
 
 /* Grid */
 
-.gp-grid-mobile-reorder .ab-is-responsive-column {
+.gpb-grid-mobile-reorder .ab-is-responsive-column {
 	@media only screen and (max-width: 600px) {
 		.ab-block-layout-column:nth-of-type(1){
 			grid-area: col2;
@@ -75,6 +75,6 @@
 
 /* Margin */
 
-.gp-mb-1 {
+.gpb-mb-1 {
 	margin-bottom: 1rem;
 }
