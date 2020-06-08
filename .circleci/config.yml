@@ -49,8 +49,6 @@ commands:
   svn_add_changes:
     description: "Add changes to SVN"
     steps:
-      - run:
-          command: if [[ ! -z $(svn st | grep ^\!) ]]; then svn st | grep ^! | awk '{print " --force "$2}' | xargs -0r svn rm; fi
       - run: svn add --force .
 
   svn_create_tag:
@@ -154,23 +152,11 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts/
 
-  svn_deploy_branch:
-    executor:
-      name: php
-      php-version: '7.4'
-    working_directory: ~/project
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - svn_setup
-      - svn_add_changes
-      - svn_commit
-
   svn_deploy_tag:
     executor:
       name: php
       php-version: '7.4'
-    working_directory: ~/project
+    working_directory: ~/project/svn_deploy
     steps:
       - attach_workspace:
           at: ~/project
@@ -271,14 +257,6 @@ workflows:
               only: /.*/
           requires:
             - npm_build_lint
-      - svn_deploy_branch:
-          context: genesis-svn
-          requires:
-            - npm_build_lint
-          filters:
-            branches:
-              only:
-                - master
       - svn_deploy_tag:
           context: genesis-svn
           requires:
