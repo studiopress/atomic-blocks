@@ -33,7 +33,7 @@ const {
 } = wp.blockEditor;
 
 // Register components
-const { IconButton, Dashicon } = wp.components;
+const { Button, Dashicon, Icon } = wp.components;
 
 const blockAttributes = {
 	buttonText: {
@@ -240,7 +240,7 @@ class ABCTABlock extends Component {
 						tagName="span"
 						placeholder={ __( 'Button text...', 'atomic-blocks' ) }
 						value={ buttonText }
-						formattingControls={ [] }
+						allowedFormats={ [] }
 						className={ classnames(
 							'ab-button',
 							buttonShape,
@@ -271,11 +271,12 @@ class ABCTABlock extends Component {
 									setAttributes( { buttonUrl: value } )
 								}
 							/>
-							<IconButton
-								icon="editor-break"
+							<Button
 								label={ __( 'Apply', 'atomic-blocks' ) }
 								type="submit"
-							/>
+							>
+								<Icon icon="editor-break" />
+							</Button>
 						</form>
 					) }
 				</div>

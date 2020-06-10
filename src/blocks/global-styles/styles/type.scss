@@ -1,0 +1,26 @@
+/**
+ * Fluid Type
+ * Provide a flexible type override for block typography
+ */
+
+/* Breakpoints */
+$vp-small: 600px;
+$vp-large: 1024px;
+
+/* Fluid type mixin */
+@mixin fluid-font-size($minFontSize: 16px, $maxFontSize: 20px, $minViewport: 600px, $maxViewport: 1200px) {
+	$slope: ($minFontSize - $maxFontSize) / ($minViewport - $maxViewport);
+	$base: $maxFontSize - $slope * $maxViewport;
+
+	font-size: $minFontSize;
+
+	@media (min-width: $minViewport) {
+		font-size: calc(#{$base} + 100vw * #{$slope});
+	}
+
+	@media (min-width: $maxViewport) {
+		font-size: $maxFontSize;
+	}
+}
+
+

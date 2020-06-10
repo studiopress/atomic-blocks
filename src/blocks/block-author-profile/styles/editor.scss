@@ -13,7 +13,7 @@
 .ab-profile-image-wrap {
     svg {
         pointer-events: none;
-        margin: 0 auto;
+        margin: auto;
     }
 
     .components-button:not(:disabled):not([aria-disabled=true]):focus {

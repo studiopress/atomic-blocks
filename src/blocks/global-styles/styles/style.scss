@@ -3,6 +3,9 @@
  * Loads on front end and back end
  */
 
+ @import 'type.scss';
+ @import 'utility.scss';
+
 /* Font size styles */
 @media only screen and (min-width: 600px) {
 
@@ -115,6 +118,39 @@
 			font-size: 24px;
 		}
 	}
+}
+
+/* Fluid Typography */
+
+*[class*="gpb-fluid"],
+.entry-content *[class*="gpb-fluid"] {
+	margin: 0 0 1rem 0;
+	line-height: 1.2;
+	font-weight: normal;
+}
+
+.gpb-fluid-1 {
+	@include fluid-font-size(20px, 26px, $vp-small, $vp-large);
+}
+
+.gpb-fluid-2 {
+	@include fluid-font-size(22px, 30px, $vp-small, $vp-large);
+}
+
+.gpb-fluid-3 {
+	@include fluid-font-size(24px, 38px, $vp-small, $vp-large);
+}
+
+.gpb-fluid-4 {
+	@include fluid-font-size(28px, 44px, $vp-small, $vp-large);
+}
+
+.gpb-fluid-5 {
+	@include fluid-font-size(32px, 52px, $vp-small, $vp-large);
+}
+
+.gpb-fluid-6 {
+	@include fluid-font-size(36px, 60px, $vp-small, $vp-large);
 }
 
 /* Alignment styles */
@@ -284,4 +320,35 @@ div.ab-background-repeat-x {
 div.ab-background-repeat-y {
 	background-repeat: repeat-y;
 	background-position: center center;
+}
+
+ol.gpb-number-list,
+.editor-styles-wrapper ol.gpb-number-list {
+	list-style: none;
+	counter-reset: gpb-list-counter;
+	padding: 0;
+	margin-left: 0;
+}
+
+ol.gpb-number-list li,
+.editor-styles-wrapper ol.gpb-number-list li {
+	list-style-type: none;
+	counter-increment: gpb-list-counter;
+	position: relative;
+	padding-left: 65px;
+	margin-bottom: 1.2em;
+}
+
+ol.gpb-number-list li::before {
+	content: counter(gpb-list-counter) "";
+	color: #fff;
+	background: #333;
+	position: absolute;
+	left: 0;
+	top: 10px;
+	text-align: center;
+    border-radius: 100px;
+    height: 42px;
+    width: 42px;
+    line-height: 41px;
 }

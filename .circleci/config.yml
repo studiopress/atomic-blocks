@@ -50,9 +50,7 @@ commands:
   svn_add_changes:
     description: "Add changes to SVN"
     steps:
-      - run:
-          command: if [[ ! -z $(svn st | grep ^\!) ]]; then svn st | grep ^! | awk '{print " --force "$2}' | xargs -0r svn rm; fi
-      - run: svn add --force ./trunk
+      - run: svn add --force .
 
   svn_create_tag:
     description: "Create a SVN tag"
@@ -155,23 +153,11 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts/
 
-  svn_deploy_branch:
-    executor:
-      name: php
-      php-version: '7.4'
-    working_directory: ~/project
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - svn_setup
-      - svn_add_changes
-      - svn_commit
-
   svn_deploy_tag:
     executor:
       name: php
       php-version: '7.4'
-    working_directory: ~/project
+    working_directory: ~/project/svn_deploy
     steps:
       - attach_workspace:
           at: ~/project
@@ -199,6 +185,22 @@ jobs:
             composer install
             composer phpcs
             sleep 7 && composer phpunit
+
+  e2e-tests:
+    machine:
+      image: ubuntu-1604:202004-01
+    steps:
+      - checkout
+      - run:
+          name: Update Node version
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+            export NVM_DIR="/opt/circleci/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads nvm.
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion.
+            nvm install --lts
+      - run: npm install && npm run build-assets && npm run env start && npm run test:e2e
+
   prepare_environment:
     executor:
       name: php
@@ -240,6 +242,10 @@ workflows:
           matrix:
             parameters:
               php-version: ['7.4', '7.3', '7.2', '5.6']
+      - e2e-tests:
+          filters:
+            tags:
+              only: /.*/
       - npm_build_lint:
           filters:
             tags:
@@ -252,14 +258,6 @@ workflows:
               only: /.*/
           requires:
             - npm_build_lint
-      - svn_deploy_branch:
-          context: genesis-svn
-          requires:
-            - npm_build_lint
-          filters:
-            branches:
-              only:
-                - master
       - svn_deploy_tag:
           context: genesis-svn
           requires:

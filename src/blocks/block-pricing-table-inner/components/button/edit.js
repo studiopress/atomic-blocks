@@ -18,7 +18,7 @@ const {
 	URLInput,
 } = wp.blockEditor;
 
-const { IconButton, Dashicon } = wp.components;
+const { Button, Dashicon, Icon } = wp.components;
 
 class Edit extends Component {
 	constructor() {
@@ -79,7 +79,7 @@ class Edit extends Component {
 							) }
 							keepPlaceholderOnFocus
 							value={ buttonText }
-							formattingControls={ [] }
+							allowedFormats={ [] }
 							className={ classnames(
 								'ab-button',
 								buttonShape,
@@ -111,11 +111,12 @@ class Edit extends Component {
 									setAttributes( { buttonUrl: value } )
 								}
 							/>
-							<IconButton
-								icon="editor-break"
+							<Button
 								label={ __( 'Apply', 'atomic-blocks' ) }
 								type="submit"
-							/>
+							>
+								<Icon icon="editor-break" />
+							</Button>
 						</form>
 					) }
 				</div>
