@@ -206,9 +206,9 @@ jobs:
       name: php
       php-version: '5.6'
     steps:
+      - run: apk add --no-cache git
       - checkout:
           path: atomic-blocks
-      - run: apk add --no-cache git
       - install_composer
       - install_wp
       - run:
