@@ -1,6 +1,10 @@
 version: 2.1
 
 executors:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: circleci/buildpack-deps:latest
   php:
     working_directory: ~/project
     parameters:
@@ -39,6 +43,7 @@ commands:
   svn_setup:
     description: "Set up SVN"
     steps:
+      - run: apk add --no-cache subversion
       - run: svn co https://plugins.svn.wordpress.org/atomic-blocks --depth=empty .
       - run: svn up trunk
       - run: svn up tags --depth=empty
@@ -92,6 +97,15 @@ commands:
             curl -o ~/project/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
             chmod +x ~/project/bin/wp
 jobs:
+  clone:
+    executor: build
+    steps:
+      - checkout:
+          path: atomic-blocks
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - atomic-blocks
   composer_build:
     executor:
       name: php
@@ -205,8 +219,8 @@ jobs:
       name: php
       php-version: '5.6'
     steps:
-      - checkout:
-          path: atomic-blocks
+      - attach_workspace:
+          at: ~/project
       - run: apk add --no-cache git
       - install_composer
       - install_wp
@@ -228,10 +242,16 @@ jobs:
 workflows:
   test_build_deploy:
     jobs:
+      - clone:
+          filters:
+            tags:
+              only: /.*/
       - prepare_environment:
           filters:
             tags:
               only: /.*/
+          requires:
+            - clone
       - php-tests:
           filters:
             tags:
