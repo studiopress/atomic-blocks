@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 5.3
 Tested up to: 5.4
-Stable tag: 2.8.3
+Stable tag: 2.8.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -127,6 +127,10 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.8.4 =
+* Improves styles for improved editor preview.
+* Introduce fluid typography styles for use in future releases.
+
 = 2.8.3 =
 * Improves the Layouts block usability by making the library window wider.
 * Improves the Layouts library window performance by optimizing the preview images.
