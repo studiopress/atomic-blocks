@@ -43,5 +43,5 @@ if ( ! function_exists( 'atomic_blocks_main_plugin_file' ) ) {
 	}
 
 	// Load the rest of the plugin.
-	require_once 'loader.php';
+	require_once plugin_dir_path( __FILE__ ) . 'loader.php';
 }
