@@ -56,7 +56,7 @@ class LatestPostsBlock extends Component {
 
 		// Removing posts from display should be instant.
 		const displayPosts =
-			( latestPosts.length > attributes.postsToShow ) && attributes.postType === 'posts'
+			( latestPosts.length > attributes.postsToShow ) && attributes.postType === 'post'
 				? latestPosts.slice( 0, attributes.postsToShow )
 				: latestPosts;
 
