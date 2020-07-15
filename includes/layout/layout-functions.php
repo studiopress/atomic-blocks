@@ -6,6 +6,7 @@
  */
 
 use AtomicBlocks\Layouts\Component_Registry;
+use function Genesis\PageBuilder\Cloud\API\get_components;
 
 /**
  * Registers layout components with the Component Registry
@@ -82,8 +83,18 @@ function atomic_blocks_get_layout_component( $type, $key ) {
  * @return array Array of registered layouts.
  */
 function atomic_blocks_get_layouts() {
-	$registry = Component_Registry::instance();
-	return $registry::layouts();
+	$components = get_components();
+	$layouts    = [];
+
+	foreach ( $components as $component ) {
+		if ( 'layout' === $component['type'] ) {
+			$layouts[ $component['key'] ] = $component;
+		}
+	}
+
+	return $layouts;
+	// $registry = Component_Registry::instance();
+	// return $registry::layouts();
 }
 
 /**
@@ -92,6 +103,16 @@ function atomic_blocks_get_layouts() {
  * @return array Array of registered sections.
  */
 function atomic_blocks_get_sections() {
-	$registry = Component_Registry::instance();
-	return $registry::sections();
+	$components = get_components();
+	$layouts    = [];
+
+	foreach ( $components as $component ) {
+		if ( 'section' === $component['type'] ) {
+			$layouts[ $component['key'] ] = $component;
+		}
+	}
+
+	return $layouts;
+	// $registry = Component_Registry::instance();
+	// return $registry::sections();
 }
