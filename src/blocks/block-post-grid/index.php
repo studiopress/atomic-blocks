@@ -26,16 +26,18 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 	$categories = isset( $attributes['categories'] ) ? $attributes['categories'] : '';
 
 	/* Get the selected pages */
-	$page_selection = isset( $attributes['selectedPages'] ) ? array_column( $attributes['selectedPages'], 'value' ) : null;
+	$page_selection = isset( $attributes['selectedPages'] ) ? array_column( $attributes['selectedPages'], 'value' ) : [];
 
 	if ( isset( $attributes['postType'] ) && 'page' === $attributes['postType'] ) {
 		/* Page query args */
 		$args = array(
-			'post_status' => 'publish',
-			'orderby'     => 'post__in',
-			'post__in'    => $page_selection,
-			'post_type'   => 'page',
+			'post_status'    => 'publish',
+			'orderby'        => 'post__in',
+			'post__in'       => $page_selection,
+			'post_type'      => 'page',
+			'posts_per_page' => count( $page_selection ),
 		);
+
 	} else {
 		/* Post query args */
 		$args = array(
