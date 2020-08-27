@@ -83,8 +83,14 @@ function atomic_blocks_get_layout_component( $type, $key ) {
  * @return array Array of registered layouts.
  */
 function atomic_blocks_get_layouts() {
-	$components = get_components();
+	// $registry = Component_Registry::instance();
+	// return $registry::layouts();
+
 	$layouts    = [];
+	$components = get_components(
+		get_option( 'genesis_pro_subscription_key' )
+	);
+
 
 	foreach ( $components as $component ) {
 		if ( 'layout' === $component['type'] ) {
@@ -93,8 +99,6 @@ function atomic_blocks_get_layouts() {
 	}
 
 	return $layouts;
-	// $registry = Component_Registry::instance();
-	// return $registry::layouts();
 }
 
 /**
@@ -103,8 +107,13 @@ function atomic_blocks_get_layouts() {
  * @return array Array of registered sections.
  */
 function atomic_blocks_get_sections() {
-	$components = get_components();
+	// $registry = Component_Registry::instance();
+	// return $registry::sections();
+
 	$layouts    = [];
+	$components = get_components(
+		get_option( 'genesis_pro_subscription_key' )
+	);
 
 	foreach ( $components as $component ) {
 		if ( 'section' === $component['type'] ) {
@@ -113,6 +122,4 @@ function atomic_blocks_get_sections() {
 	}
 
 	return $layouts;
-	// $registry = Component_Registry::instance();
-	// return $registry::sections();
 }
