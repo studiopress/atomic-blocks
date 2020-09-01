@@ -91,6 +91,9 @@ function atomic_blocks_get_layouts() {
 		get_option( 'genesis_pro_subscription_key' )
 	);
 
+	if ( is_wp_error( $components ) ) {
+		return $layouts;
+	}
 
 	foreach ( $components as $component ) {
 		if ( 'layout' === $component['type'] ) {
@@ -114,6 +117,10 @@ function atomic_blocks_get_sections() {
 	$components = get_components(
 		get_option( 'genesis_pro_subscription_key' )
 	);
+
+	if ( is_wp_error( $components ) ) {
+		return $layouts;
+	}
 
 	foreach ( $components as $component ) {
 		if ( 'section' === $component['type'] ) {
