@@ -14,12 +14,14 @@
 }
 
 .toplevel_page_atomic-blocks #update-nag,
+.genesis-blocks_page_atomic-blocks-plugin-settings #update-nag,
 .page-builder_page_atomic-blocks-plugin-settings #update-nag,
 .atomic-blocks_page_atomic-blocks-plugin-settings #update-nag {
 	display: none !important;
 }
 
 .toplevel_page_atomic-blocks #wpcontent,
+.genesis-blocks_page_atomic-blocks-plugin-settings #wpcontent,
 .page-builder_page_atomic-blocks-plugin-settings #wpcontent,
 .atomic-blocks_page_atomic-blocks-plugin-settings #wpcontent {
 	padding-left: 0;
