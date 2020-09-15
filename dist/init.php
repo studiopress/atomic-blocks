@@ -128,7 +128,7 @@ function atomic_blocks_add_custom_block_category( $categories ) {
 	$category_title = __( 'Atomic Blocks', 'atomic-blocks' );
 
 	if ( atomic_blocks_is_pro() ) {
-		$category_title = __( 'Genesis Page Builder', 'atomic-blocks' );
+		$category_title = __( 'Genesis Blocks', 'atomic-blocks' );
 	}
 
 	return array_merge(
