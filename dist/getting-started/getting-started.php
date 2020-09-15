@@ -13,7 +13,7 @@
  */
 function atomic_blocks_start_load_admin_scripts( $hook ) {
 
-	if ( ! in_array( $hook, [ 'page-builder_page_atomic-blocks-plugin-settings', 'toplevel_page_atomic-blocks' ], true ) ) {
+	if ( ! in_array( $hook, [ 'genesis-blocks_page_atomic-blocks-plugin-settings', 'page-builder_page_atomic-blocks-plugin-settings', 'toplevel_page_atomic-blocks' ], true ) ) {
 		return;
 	}
 
@@ -47,8 +47,8 @@ function atomic_blocks_getting_started_menu() {
 	$icon_url   = 'dashicons-screenoptions';
 
 	if ( atomic_blocks_is_pro() ) {
-		$page_title = esc_html__( 'Genesis Page Builder Settings', 'atomic-blocks' );
-		$menu_title = esc_html__( 'Page Builder', 'atomic-blocks' );
+		$page_title = esc_html__( 'Genesis Blocks Pro Settings', 'atomic-blocks' );
+		$menu_title = esc_html__( 'Genesis Blocks', 'atomic-blocks' );
 		$icon_url   = esc_url( plugins_url( '/dist/getting-started/images/genesis-menu.png', atomic_blocks_main_plugin_file() ) );
 	}
 
@@ -210,7 +210,7 @@ function atomic_blocks_save_settings() {
  */
 function atomic_blocks_load_settings_page_scripts( $hook ) {
 
-	if ( ! in_array( $hook, [ 'page-builder_page_atomic-blocks-plugin-settings', 'atomic-blocks_page_atomic-blocks-plugin-settings' ], true ) ) {
+	if ( ! in_array( $hook, [ 'genesis-blocks_page_atomic-blocks-plugin-settings', 'page-builder_page_atomic-blocks-plugin-settings', 'atomic-blocks_page_atomic-blocks-plugin-settings' ], true ) ) {
 		return;
 	}
 
