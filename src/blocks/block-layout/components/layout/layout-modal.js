@@ -56,7 +56,6 @@ class LayoutModal extends Component {
 				<Button
 					key={ 'layout-modal-library-button-' + this.props.clientId }
 					isPrimary
-					isLarge
 					className="ab-layout-modal-button"
 					onClick={ () =>
 						this.setState( {
