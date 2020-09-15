@@ -112,12 +112,12 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				'<div class="ab-block-post-grid-text">'
 			);
 
-				$post_grid_markup .= sprintf(
-					'<header class="ab-block-post-grid-header">'
-				);
+			$post_grid_markup .= sprintf(
+				'<header class="ab-block-post-grid-header">'
+			);
 
-					/* Get the post title */
-					$title = get_the_title( $post_id );
+			/* Get the post title */
+			$title = get_the_title( $post_id );
 
 			if ( ! $title ) {
 				$title = __( 'Untitled', 'atomic-blocks' );
@@ -156,11 +156,11 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 
 				/* Get the post date */
 				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-						$post_grid_markup .= sprintf(
-							'<time datetime="%1$s" class="ab-block-post-grid-date" itemprop="datePublished">%2$s</time>',
-							esc_attr( get_the_date( 'c', $post_id ) ),
-							esc_html( get_the_date( '', $post_id ) )
-						);
+					$post_grid_markup .= sprintf(
+						'<time datetime="%1$s" class="ab-block-post-grid-date" itemprop="datePublished">%2$s</time>',
+						esc_attr( get_the_date( 'c', $post_id ) ),
+						esc_html( get_the_date( '', $post_id ) )
+					);
 				}
 
 				/* Close the byline content */
@@ -175,44 +175,47 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 			);
 
 			/* Wrap the excerpt content */
-			$post_grid_markup .= sprintf(
-				'<div class="ab-block-post-grid-excerpt">'
-			);
+			$post_grid_markup .= '<div class="ab-block-post-grid-excerpt">';
 
 			/* Get the excerpt */
+			if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
 
-			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound, PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket
-			$excerpt = apply_filters( 'the_excerpt',
-				get_post_field(
+				// Check for a manual excerpt.
+				$excerpt = get_post_field(
 					'post_excerpt',
 					$post_id,
 					'display'
-				)
-			);
-
-			if ( empty( $excerpt ) && isset( $attributes['excerptLength'] ) ) {
-				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound, PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket  -- Running the_excerpt directly, Previous rule doesn't take without the_excerpt being moved up a line
-				$excerpt = apply_filters( 'the_excerpt',
-					wp_trim_words(
-						preg_replace(
-							array(
-								'/\<figcaption>.*\<\/figcaption>/',
-								'/\[caption.*\[\/caption\]/',
-							),
-							'',
-							get_the_content()
-						),
-						$attributes['excerptLength']
-					)
 				);
-			}
 
-			if ( ! $excerpt ) {
-				$excerpt = null;
-			}
+				/**
+				 * Create an automatic excerpt
+				 * if a manual one does not exist.
+				 */
+				if ( empty( $excerpt ) ) {
+					$excerpt = preg_replace(
+						array(
+							'/\<figcaption>.*\<\/figcaption>/',
+							'/\[caption.*\[\/caption\]/',
+						),
+						'',
+						get_the_content()
+					);
+				}
 
-			if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-				$post_grid_markup .= wp_kses_post( $excerpt );
+				// Trim the excerpt if necessary.
+				if ( isset( $attributes['excerptLength'] ) ) {
+					$excerpt = wp_trim_words(
+						$excerpt,
+						$attributes['excerptLength']
+					);
+				}
+
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- This is a WP core filter.
+				$excerpt = apply_filters( 'the_excerpt', $excerpt );
+
+				if ( ! empty( $excerpt ) ) {
+					$post_grid_markup .= wp_kses_post( $excerpt );
+				}
 			}
 
 			/* Get the read more link */
@@ -225,18 +228,8 @@ function atomic_blocks_render_block_core_latest_posts( $attributes ) {
 				);
 			}
 
-			/* Close the excerpt content */
-			$post_grid_markup .= sprintf(
-				'</div>'
-			);
-
-			/* Close the text content */
-			$post_grid_markup .= sprintf(
-				'</div>'
-			);
-
-			/* Close the post */
-			$post_grid_markup .= "</article>\n";
+			/* Close the excerpt content, text, and post wrappers */
+			$post_grid_markup .= "</div></div></article>\n";
 		}
 
 		/* Restore original post data */
