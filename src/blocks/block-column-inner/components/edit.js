@@ -70,6 +70,7 @@ class Edit extends Component {
 				key="column"
 			>
 				<InnerBlocks
+					template={[[ 'core/paragraph' ]]}
 					templateLock={ false }
 					templateInsertUpdatesSelection={ false }
 				/>
