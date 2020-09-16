@@ -2,14 +2,6 @@
  * Editor styles for the admin
  */
 
-/**
- * Stopgap styles to improve usability of controls on full width alignment
- */
- [data-type="atomic-blocks/ab-container"][data-align="full"] .ab-container-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
-	padding-left: 58px;
-	padding-right: 58px;
-}
-
 .ab-container-inspector-media {
 	padding: 8px;
 }
