@@ -16,6 +16,7 @@ import _times from 'lodash/times';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
+const { dispatch } = wp.data;
 const {
 	BlockControls,
 	BlockAlignmentToolbar,
@@ -45,6 +46,12 @@ class Edit extends Component {
 		this.state = {
 			selectLayout: true
 		};
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( this.props.attributes.columns !== prevProps.attributes.columns ) {
+			dispatch( 'core/block-editor' ).synchronizeTemplate();
+		}
 	}
 
 	render() {
