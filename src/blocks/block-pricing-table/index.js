@@ -21,6 +21,8 @@ const { registerBlockType } = wp.blocks;
 // Register editor components
 const { BlockControls, BlockAlignmentToolbar, InnerBlocks } = wp.blockEditor;
 
+const { dispatch } = wp.data;
+
 // Set allowed blocks and media
 const ALLOWED_BLOCKS = [ 'atomic-blocks/ab-pricing-table' ];
 
@@ -30,6 +32,13 @@ const getPricingTemplate = memoize( ( columns ) => {
 } );
 
 class ABPricingBlock extends Component {
+
+	componentDidUpdate( prevProps ) {
+		if ( this.props.attributes.columns !== prevProps.attributes.columns ) {
+			dispatch( 'core/block-editor' ).synchronizeTemplate();
+		}
+	}
+
 	render() {
 		// Setup the attributes
 		const {
