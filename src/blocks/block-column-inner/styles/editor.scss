@@ -331,16 +331,3 @@
 .ab-background-button-group {
 	margin-bottom: 25px;
 }
-
-/**
- * Stopgap styles to improve usability of controls on full width alignment
- */
-[data-type="atomic-blocks/ab-columns"][data-align="full"] .ab-layout-column-wrap-admin > .block-editor-inner-blocks > .block-editor-block-list__layout {
-	padding-left: 58px;
-	padding-right: 58px;
-}
-
-[data-type="atomic-blocks/ab-columns"][data-align="full"] .ab-layout-column-wrap-admin > .block-editor-inner-blocks > .block-editor-block-list__layout .block-editor-block-list__layout {
-	padding-left: 0;
-	padding-right: 0;
-}
