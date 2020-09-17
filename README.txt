@@ -3,8 +3,8 @@ Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbat
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 5.3
-Tested up to: 5.4
-Stable tag: 2.8.5
+Tested up to: 5.5
+Stable tag: 2.8.6
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -127,6 +127,12 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.8.6 =
+* Fixed issue with the Post & Page Grid block where automatic excerpts did not show under certain conditions.
+* Removed unnecessary padding in the editor on full-width Container, Pricing, and Advanced Column blocks.
+* Advanced Columns and Pricing blocks now show new columns when the column count is increased in WordPress 5.5.
+* Placeholder text in the Advanced Columns block is now visible in WordPress 5.5.
+
 = 2.8.5 =
 * Fixes issue where all pages selected in the Post and Page Grid block might not be displayed.
 * Fixes issue where column setting was not visible when working with pages in the Post and Page Grid block.
