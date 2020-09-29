@@ -22,6 +22,9 @@ function atomic_blocks_migrate_load_admin_scripts( $hook ) {
 	 * @since 1.0
 	 */
 
+	// Migrate Page js.
+	wp_enqueue_script( 'atomic-blocks-migrate', plugins_url( '/migrate-page/ab-migrate.js', dirname( __FILE__ ) ), false, true, '1.0.0' );
+
 	// Migrate Page styles.
 	wp_register_style( 'atomic-blocks-migrate', plugins_url( '/migrate-page/ab-migrate.css', dirname( __FILE__ ) ), false, '1.0.0' );
 	wp_enqueue_style( 'atomic-blocks-migrate' );
