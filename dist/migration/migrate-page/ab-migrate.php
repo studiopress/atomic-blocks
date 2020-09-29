@@ -7,7 +7,7 @@
 
 ?>
 
-<div class="wrap ab-getting-started">
+<div class="wrap ab-migrate">
 	<div class="intro-wrap">
 		<div class="intro">
 			<a href="<?php echo esc_url( 'https://goo.gl/NfXcof' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( 'getting-started/images/logo.png', dirname( dirname( __FILE__ ) ) ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
@@ -24,14 +24,14 @@
 							<h2><?php esc_html_e( 'Atomic Blocks has moved!', 'atomic-blocks' ); ?></h2>
 							<p><?php esc_html_e( 'Same powerful blocks, same beautiful designs, same innovative team. Atomic Blocks been renamed to Genesis Blocks. Learn more.', 'atomic-blocks' ); ?></p>
 							<?php
-							if ( version_compare( PHP_VERSION, '7.1' ) >= 0 ) {
+							if ( false ) {
 								?>
 								<p><?php esc_html_e( 'With our migration tool built right into Genesis Blocks, the transition between plugins will be simple and seamless - plus you\'ll be ready to receive the new blocks and features we\'re releasing soon.', 'atomic-blocks' ); ?></p>
 								<button class="button-primary"><?php esc_html_e( 'Install Genesis Blocks', 'atomic-blocks' ); ?></button>
 								<?php
 							} else {
 								?>
-								<div class="error-message">
+								<div class="migrate-error-message">
 									<p><?php esc_html_e( 'Your server does not meet the minimum requirements for Genesis Blocks.', 'atomic-blocks' ); ?></p>
 									<p><?php esc_html_e( 'In order to continue receiving the new blocks and new features we\'re working on, please update the following:', 'atomic-blocks' ); ?></p>
 									<ul>
@@ -51,11 +51,11 @@
 					</div>
 					<div class="ab-block-split-right">
 						<div class="ab-block-theme">
-							<img src="<?php echo esc_url( plugins_url( 'getting-started/images/build-content.svg', dirname( dirname( __FILE__ ) ) ) ); ?>" alt="<?php esc_html_e( 'Atomic Blocks Theme', 'atomic-blocks' ); ?>" />
+							<img src="<?php echo esc_url( plugins_url( 'genesis_blocks_hero_Image.png', __FILE__ ) ); ?>" alt="<?php esc_html_e( 'Atomic Blocks Theme', 'atomic-blocks' ); ?>" />
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!-- .panel -->
 	</div><!-- .panels -->
-</div><!-- .getting-started -->
+</div><!-- .migrate -->

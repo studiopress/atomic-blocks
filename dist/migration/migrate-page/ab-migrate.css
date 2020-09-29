@@ -7,7 +7,7 @@
 
 .clearfix { zoom: 1 }
 
-.ab-getting-started * {
+.ab-migrate * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -21,12 +21,12 @@
 	padding-left: 0;
 }
 
-.ab-getting-started {
+.ab-migrate {
 	overflow: hidden;
 	margin: 0;
 }
 
-.ab-getting-started .panel-right .theme-image {
+.ab-migrate .panel-right .theme-image {
 	background: #64717E;
 	padding: 2% 2% 0 2%;
 	display: inline-block;
@@ -34,11 +34,11 @@
 	width: 23%;
 }
 
-.ab-getting-started .panels {
+.ab-migrate .panels {
 	margin: 0 0 0 0;
 }
 
-.ab-getting-started .panel {
+.ab-migrate .panel {
 	display: inline-block;
 	width: 100%;
 	padding: 4%;
@@ -77,7 +77,7 @@
 	}
 }
 
-.ab-getting-started .panel-left.visible {
+.ab-migrate .panel-left.visible {
 	display: inline-block;
 	animation: smoothFade .3s;
 	-moz-animation: smoothFade .3s;
@@ -85,42 +85,29 @@
 	-o-animation: smoothFade .3s;
 }
 
-.ab-getting-started .panel p {
+.ab-migrate .panel p {
 	font-size: 19px;
 	line-height: 1.7;
 }
 
-.ab-getting-started .panel-left {
+.ab-migrate .panel-left {
 	display: inline-block;
 	display: none;
 	width: 63%;
 }
 
-.gpb-getting-started .panel-left {
-	display: inline-block !important;
-}
-
-.ab-getting-started .panel-left img {
+.ab-migrate .panel-left img {
 	max-width: 100%;
 	height: auto;
 }
 
-.ab-getting-started .intro-wrap {
+.ab-migrate .intro-wrap {
 	padding: 3% 0 0 0;
 	background: #5a3fd6 url("images/geo.png");
 	background-size: 1400px;
 }
 
-.gpb-getting-started .intro-wrap {
-	padding-top: 2%;
-}
-
-.gpb-getting-started .intro-wrap {
-	background: rgb(0,102,204);
-	background: linear-gradient(49deg, rgba(0,102,204,1) 0%, rgba(78,176,211,1) 100%);
-}
-
-.ab-getting-started .intro {
+.ab-migrate .intro {
 	display: inline-block;
 	width: 100%;
 	vertical-align: top;
@@ -128,15 +115,7 @@
 	margin-bottom: 3.5%;
 }
 
-.gpb-getting-started .intro {
-	margin-bottom: 2.5%;
-}
-
-.atomic-blocks_page_atomic-blocks-plugin-settings .gpb-getting-started .intro {
-	margin-bottom: 1.5%;
-}
-
-.ab-getting-started .intro h1{
+.ab-migrate .intro h1{
 	font-size: 32px;
 	line-height: 1.2;
 	font-weight: 300;
@@ -145,11 +124,7 @@
 	display: inline-block;
 }
 
-.gpb-getting-started .intro h1 {
-	font-size: 32px;
-}
-
-.ab-getting-started .atomic-logo {
+.ab-migrate .atomic-logo {
 	max-width: 245px;
 	display: inline-block;
 	float: right;
@@ -159,31 +134,26 @@
 	transform: translateZ(0);
 }
 
-.gpb-getting-started .atomic-logo {
-	margin-top: 7px;
-	max-width: 230px;
-}
-
 @media only screen and (max-width:800px) {
-	.ab-getting-started .atomic-logo {
+	.ab-migrate .atomic-logo {
 		float: none;
 		margin-bottom: 6%;
 	}
 }
 
-.ab-getting-started .atomic-logo:hover {
+.ab-migrate .atomic-logo:hover {
 	transform: scale(1.03);
 }
 
-.ab-getting-started .atomic-logo:active {
+.ab-migrate .atomic-logo:active {
 	transform: scale(1);
 }
 
-.ab-getting-started .button-primary,
-.ab-getting-started .button-primary.focus,
-.ab-getting-started .button-primary.hover,
-.ab-getting-started .button-primary:focus,
-.ab-getting-started .button-primary:hover {
+.ab-migrate .button-primary,
+.ab-migrate .button-primary.focus,
+.ab-migrate .button-primary.hover,
+.ab-migrate .button-primary:focus,
+.ab-migrate .button-primary:hover {
 	background: #5d45c9;
 	border-color: #4c35b9;
 	box-shadow: none;
@@ -197,11 +167,11 @@
 	font-size: 16px;
 }
 
-.ab-getting-started .button-primary:hover {
+.ab-migrate .button-primary:hover {
 	box-shadow: inset 0 0 80px rgba(255,255,255, .15);
 }
 
-.ab-getting-started .button-primary:active {
+.ab-migrate .button-primary:active {
 	border-bottom-color: transparent;
 	border-top-width: 2px;
 	
@@ -211,9 +181,9 @@
 	background: #5d45c9;
 }
 
-.ab-getting-started a,
-.ab-getting-started a:active,
-.ab-getting-started a:hover {
+.ab-migrate a,
+.ab-migrate a:active,
+.ab-migrate a:hover {
 	color: #5d45c9;
 }
 
@@ -240,4 +210,22 @@
 
 #atomic-blocks-panel {
 	width: 100%;
+}
+.ab-migrate .migrate-error-message{
+	background: #fff;
+	padding: 1.2em;
+	border: 1px solid #ccd0d4;
+	border-left: 4px solid #ffb900;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.ab-migrate .panel-left ul, .ab-migrate .panel-left ol {
+	background: #f5f4f6;
+	padding: 5% 5% 5% 8%;
+	list-style-type: square;
+	font-size: 19px;
+	line-height: 1.8;
+}
+.ab-migrate .panel-left ul li, .ab-migrate .panel-left ol li {
+	margin-bottom: 0px;
 }
