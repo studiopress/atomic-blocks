@@ -88,7 +88,6 @@ class Notice {
 		}
 
 		$migration_url   = admin_url( 'admin.php?page=atomic-blocks-migrate-page' );
-		$learn_more_link = 'https://studiopress.com/genesis-blocks/';
 
 		?>
 		<div id="ab-migration-notice" class="notice notice-info ab-notice-migration">
@@ -105,7 +104,7 @@ class Notice {
 						)
 					);
 					?>
-					<a target="_blank" rel="noopener noreferrer" class="ab-notice-migration__learn-more" href="<?php echo esc_url( $learn_more_link ); ?>">
+					<a rel="noopener noreferrer" class="ab-notice-migration__learn-more" href="<?php echo esc_url( $migration_url ); ?>">
 						<?php esc_html_e( 'Learn more', 'block-lab' ); ?>
 					</a>
 				</p>
