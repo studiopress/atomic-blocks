@@ -38,8 +38,8 @@
 										<li>
 											<?php
 												// Translators: The version of PHP that the user has currently installed.
-												$output = sprintf( __( 'Required PHP Version: PHP 7.1 (currently using PHP %s)', 'atomic-blocks' ), PHP_VERSION );
-												echo esc_html( $output );
+												$atomic_blocks_version_error_output = sprintf( __( 'Required PHP Version: PHP 7.1 (currently using PHP %s)', 'atomic-blocks' ), PHP_VERSION );
+												echo esc_html( $atomic_blocks_version_error_output );
 											?>
 										</li>
 									</ul>
