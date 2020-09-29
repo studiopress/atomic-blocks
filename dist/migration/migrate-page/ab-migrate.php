@@ -24,7 +24,7 @@
 							<h2><?php esc_html_e( 'Atomic Blocks has moved!', 'atomic-blocks' ); ?></h2>
 							<p><?php esc_html_e( 'Same powerful blocks, same beautiful designs, same innovative team. Atomic Blocks been renamed to Genesis Blocks. Learn more.', 'atomic-blocks' ); ?></p>
 							<?php
-							if ( false ) {
+							if ( version_compare( PHP_VERSION, '7.1' ) >= 0 ) {
 								?>
 								<p><?php esc_html_e( 'With our migration tool built right into Genesis Blocks, the transition between plugins will be simple and seamless - plus you\'ll be ready to receive the new blocks and features we\'re releasing soon.', 'atomic-blocks' ); ?></p>
 								<button class="button-primary"><?php esc_html_e( 'Install Genesis Blocks', 'atomic-blocks' ); ?></button>
