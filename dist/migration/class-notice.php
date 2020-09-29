@@ -87,8 +87,8 @@ class Notice {
 			return;
 		}
 
-		$migration_url   = admin_url( 'edit.php' );
-		$learn_more_link = 'https://atomicblocks.com/genesis-blocks/';
+		$migration_url   = admin_url( 'admin.php?page=atomic-blocks-migrate-page' );
+		$learn_more_link = 'https://studiopress.com/genesis-blocks/';
 
 		?>
 		<div id="ab-migration-notice" class="notice notice-info ab-notice-migration">
