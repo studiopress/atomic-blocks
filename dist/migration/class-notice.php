@@ -105,7 +105,7 @@ class Notice {
 					);
 					?>
 					<a rel="noopener noreferrer" class="ab-notice-migration__learn-more" href="<?php echo esc_url( $migration_url ); ?>">
-						<?php esc_html_e( 'Learn more', 'block-lab' ); ?>
+						<?php esc_html_e( 'Learn more', 'atomic-blocks' ); ?>
 					</a>
 				</p>
 			</div>
@@ -139,7 +139,7 @@ class Notice {
 			self::NOTICE_STYLE_SLUG,
 			plugins_url( 'dist/migration/admin.migration-notice.css', dirname( dirname( __FILE__ ) ) ),
 			[],
-			filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'migration/admin.migration-notice.css' ),
+			filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'migration/admin.migration-notice.css' )
 		);
 
 		wp_enqueue_script(
