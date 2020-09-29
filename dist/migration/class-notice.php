@@ -87,7 +87,7 @@ class Notice {
 			return;
 		}
 
-		$migration_url   = admin_url( 'admin.php?page=atomic-blocks-migrate-page' );
+		$migration_url = admin_url( 'admin.php?page=atomic-blocks-migrate-page' );
 
 		?>
 		<div id="ab-migration-notice" class="notice notice-info ab-notice-migration">
