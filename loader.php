@@ -25,6 +25,11 @@ function atomic_blocks_loader() {
 	require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
 
 	/**
+	 * Load Migrate page
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/migrate-page/migrate-page.php';
+
+	/**
 	 * Load Container Block PHP
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'src/blocks/block-container/index.php';
