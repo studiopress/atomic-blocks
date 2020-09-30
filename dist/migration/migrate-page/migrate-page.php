@@ -30,7 +30,7 @@ function atomic_blocks_migrate_load_admin_scripts( $hook ) {
 		array(
 			'install_gb_endpoint'  => get_rest_url( null, 'genesisblocks/v1/install-activate-gb/' ),
 			'install_gb_nonce'     => wp_create_nonce( 'wp_rest' ),
-			'success_redirect_url' => admin_url(),
+			'success_redirect_url' => admin_url( 'admin.php?page=genesis-blocks-migrate' ),
 		)
 	);
 
