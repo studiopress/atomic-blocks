@@ -24,10 +24,21 @@ function atomic_blocks_migrate_load_admin_scripts( $hook ) {
 
 	// Migrate Page js.
 	wp_enqueue_script( 'atomic-blocks-migrate', plugins_url( '/migrate-page/ab-migrate.js', dirname( __FILE__ ) ), false, true, '1.0.0' );
+	wp_localize_script(
+		'atomic-blocks-migrate',
+		'atomic_blocks_migration',
+		array(
+			'install_gb_endpoint'  => get_rest_url( null, 'genesisblocks/v1/install-activate-gb/' ),
+			'install_gb_nonce'     => wp_create_nonce( 'wp_rest' ),
+			'success_redirect_url' => admin_url(),
+		)
+	);
 
 	// Migrate Page styles.
 	wp_register_style( 'atomic-blocks-migrate', plugins_url( '/migrate-page/ab-migrate.css', dirname( __FILE__ ) ), false, '1.0.0' );
 	wp_enqueue_style( 'atomic-blocks-migrate' );
+
+	wp_enqueue_style( 'common-css' );
 }
 add_action( 'admin_enqueue_scripts', 'atomic_blocks_migrate_load_admin_scripts' );
 

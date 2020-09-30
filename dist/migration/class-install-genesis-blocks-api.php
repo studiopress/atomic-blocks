@@ -62,7 +62,7 @@ class Install_Genesis_Blocks_Api {
 			return $activation_result;
 		}
 
-		return rest_ensure_response( [ 'message' => __( 'Plugin installed and activated', 'atomic-blocks' ) ] );
+		return rest_ensure_response( [ 'message' => __( 'Successfully installed and activated Genesis Blocks!', 'atomic-blocks' ) ] );
 	}
 
 	/**
