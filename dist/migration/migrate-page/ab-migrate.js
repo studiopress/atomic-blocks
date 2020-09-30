@@ -65,10 +65,12 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		request.send( data );
 		
 		function uponError() {
+			var responseJson = null;
+
 			try {
-				var responseJson = JSON.parse( request.response );
+				responseJson = JSON.parse( request.response );
 			} catch (error) {
-				var responseJson = null;
+				responseJson = null;
 			}
 			
 			// Hide the spinner.
