@@ -21,34 +21,37 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		
 		request.onreadystatechange = function() {
 			if (request.readyState === 4) {
-				var response = JSON.parse(request.responseText);
-				
+
 				// If successfully installed and activated.
 				if (request.status === 200) {
-					var responseJson = JSON.parse( request.response );
-
-					// Hide the spinner.
-					document.getElementById('atomic-blocks-install-genesis-blocks-spinner').style.visibility = 'hidden';
 					
-					var successMessageElement = document.getElementById('atomic-blocks-install-genesis-blocks-success-message');
-					
-					// Set a success message.
-					if ( responseJson.message ) {
-						successMessageElement.innerHTML = responseJson.message;
+					try {
+						var responseJson = JSON.parse( request.response );
+	
+						// Hide the spinner.
+						document.getElementById('atomic-blocks-install-genesis-blocks-spinner').style.visibility = 'hidden';
+						
+						var successMessageElement = document.getElementById('atomic-blocks-install-genesis-blocks-success-message');
+						
+						// Set a success message.
+						if ( responseJson.message ) {
+							successMessageElement.innerHTML = responseJson.message;
+						}
+						
+						// Show the success message.
+						successMessageElement.style.display = 'block';
+						
+						// Wait for 1 second.
+						setTimeout( function() {
+							
+							// Redirect to the migration page.
+							window.location.href = atomic_blocks_migration.success_redirect_url;
+							
+						}, 1000 );
+					} catch (e) {
+						uponError();
 					}
-					
-					// Show the success message.
-					successMessageElement.style.display = 'block';
-					
-					// Wait for 1 second.
-					setTimeout( function() {
-						
-						// Redirect to the migration page.
-						window.location.href = atomic_blocks_migration.success_redirect_url;
-						
-					}, 1000 );
-					
-					// If there was an error.
+					// If there was a non 200 response from the server.
 				} else {
 					uponError();
 				}
@@ -62,7 +65,11 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		request.send( data );
 		
 		function uponError() {
-			var responseJson = JSON.parse( request.response );
+			try {
+				var responseJson = JSON.parse( request.response );
+			} catch (error) {
+				var responseJson = null;
+			}
 			
 			// Hide the spinner.
 			document.getElementById('atomic-blocks-install-genesis-blocks-spinner').style.visibility = 'hidden';
@@ -70,7 +77,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			var errorMessageElement = document.getElementById('atomic-blocks-install-genesis-blocks-error-message');
 
 			// Set the error message text.
-			if ( responseJson.message ) {
+			if ( responseJson && responseJson.message ) {
 				errorMessageElement.innerHTML = responseJson.message;
 			}
 			
