@@ -31,7 +31,7 @@ class Install_Genesis_Blocks_Api {
 	 */
 	public function register_route_install_gb() {
 		register_rest_route(
-			'genesisblocks/v1',
+			'atomicblocks/v1',
 			'install-activate-gb',
 			[
 				'methods'             => 'POST',
