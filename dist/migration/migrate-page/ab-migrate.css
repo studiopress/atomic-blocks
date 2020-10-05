@@ -231,13 +231,10 @@
 	padding-bottom: 5%;
 }
 
-..ab-block-split-left {
-	text-align: center;
-}
-
 #atomic-blocks-panel {
 	width: 100%;
 }
+
 .ab-migrate .migrate-error-message{
 	background: #fff;
 	padding: 1.2em;
