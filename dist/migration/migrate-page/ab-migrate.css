@@ -159,7 +159,7 @@
 	box-shadow: none;
 	transition: .3s ease;
 	text-shadow: 0 -1px 1px #4c35b9, 1px 0 1px #4c35b9, 0 1px 1px #4c35b9, -1px 0 1px #4c35b9;
-	
+
 	font-size: 18px;
 	border-radius: 100px;
 	padding: 5px 15px;
@@ -175,11 +175,16 @@
 .ab-migrate .button-primary:active {
 	border-bottom-color: transparent;
 	border-top-width: 2px;
-	
+
 	vertical-align: initial !important;
 	border-top-width: 1px !important;
 	color: #fff;
 	background: #5d45c9;
+}
+
+.ab-titles h2 {
+	font-size: 36px;
+	line-height: 1.2;
 }
 
 .ab-migrate a,
@@ -188,6 +193,23 @@
 	color: #5d45c9;
 }
 
+.ab-block-split {
+	display: flex;
+	align-items: center;
+}
+
+@media (max-width: 600px) {
+	.ab-block-split {
+		display: block;
+		align-items: center;
+	}
+}
+
+.ab-block-split-right .ab-block-theme img {
+	max-width: 75%;
+	display: block;
+	margin: 0 auto;
+}
 
 .ab-block-split-left,
 .ab-block-split-right {
@@ -207,7 +229,11 @@
 	padding-right: 4%;
 	padding-top: 4%;
 	padding-bottom: 5%;
-}    
+}
+
+..ab-block-split-left {
+	text-align: center;
+}
 
 #atomic-blocks-panel {
 	width: 100%;
