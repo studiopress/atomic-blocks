@@ -105,7 +105,7 @@ class Notice {
 					);
 					?>
 					<a rel="noopener noreferrer" class="ab-notice-migration__learn-more" href="<?php echo esc_url( $migration_url ); ?>">
-						<?php esc_html_e( 'Learn more', 'atomic-blocks' ); ?>
+						<?php esc_html_e( 'Learn more about migrating', 'atomic-blocks' ); ?>
 					</a>
 				</p>
 			</div>
