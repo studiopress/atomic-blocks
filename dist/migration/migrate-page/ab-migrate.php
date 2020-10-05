@@ -22,7 +22,12 @@
 					<div class="ab-block-split-left">
 						<div class="ab-titles">
 							<h2><?php esc_html_e( 'Atomic Blocks has moved!', 'atomic-blocks' ); ?></h2>
-							<p><?php esc_html_e( 'Same powerful blocks, same beautiful designs, same innovative team. Atomic Blocks been renamed to Genesis Blocks. Learn more.', 'atomic-blocks' ); ?></p>
+							<p>
+								<?php
+								/* translators: %1$s Genesis Pro website URL. */
+								echo sprintf( esc_html__( 'Same powerful blocks, same beautiful designs, same innovative team. Atomic Blocks been renamed to Genesis Blocks. %1$s', 'atomic-blocks' ), '<a href="https://studiopress.com/genesis-pro/">Learn more.</a>' );
+								?>
+							</p>
 							<?php
 							if ( version_compare( PHP_VERSION, '7.1' ) >= 0 ) {
 								?>
