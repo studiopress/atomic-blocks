@@ -211,6 +211,12 @@
 	margin: 0 auto;
 }
 
+@media (max-width: 600px) {
+	.ab-block-split-right .ab-block-theme img {
+		max-width: 100%;
+	}
+}
+
 .ab-block-split-left,
 .ab-block-split-right {
 	display: inline-block;
