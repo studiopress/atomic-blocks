@@ -16,12 +16,6 @@ function atomic_blocks_migrate_load_admin_scripts( $hook ) {
 		return;
 	}
 
-	/**
-	 * Load scripts and styles
-	 *
-	 * @since 1.0
-	 */
-
 	// Migrate Page js.
 	wp_enqueue_script( 'atomic-blocks-migrate', plugins_url( '/migrate-page/ab-migrate.js', dirname( __FILE__ ) ), false, true, '1.0.0' );
 	wp_localize_script(
