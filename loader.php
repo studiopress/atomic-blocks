@@ -15,6 +15,12 @@ function atomic_blocks_loader() {
 	$atomic_blocks_dist_dir     = plugin_dir_path( __FILE__ ) . 'dist/';
 
 	/**
+	 * Load the migration notice functionality.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/class-notice.php';
+	new Atomic_Blocks\Admin\Migration\Notice();
+
+	/**
 	 * Load the blocks functionality
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'dist/init.php';
