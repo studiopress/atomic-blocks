@@ -11,7 +11,7 @@
 	<div class="intro-wrap">
 		<div class="intro">
 			<a href="<?php echo esc_url( 'https://goo.gl/NfXcof' ); ?>"><img class="atomic-logo" src="<?php echo esc_url( plugins_url( 'getting-started/images/logo.png', dirname( dirname( __FILE__ ) ) ) ); ?>" alt="<?php esc_html_e( 'Visit Atomic Blocks', 'atomic-blocks' ); ?>" /></a>
-			<h1><?php printf( esc_html__( 'Get ready for', 'atomic-blocks' ) ); ?> <strong><?php printf( esc_html__( 'Genesis Blocks', 'atomic-blocks' ) ); ?></strong></h1>
+			<h1><?php echo esc_html__( 'Get ready for', 'atomic-blocks' ); ?> <strong><?php echo esc_html__( 'Genesis Blocks', 'atomic-blocks' ); ?></strong></h1>
 		</div>
 	</div>
 
