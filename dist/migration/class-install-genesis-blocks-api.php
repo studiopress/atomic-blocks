@@ -62,6 +62,9 @@ class Install_Genesis_Blocks_Api {
 			return $activation_result;
 		}
 
+		// Set an option in the wp_options table to let Genesis Blocks know the user is coming from Atomic Blocks for migration.
+		update_option( 'genesis_blocks_migrate_from_atomic_blocks', true );
+
 		return rest_ensure_response( [ 'message' => __( 'Successfully installed and activated Genesis Blocks!', 'atomic-blocks' ) ] );
 	}
 
