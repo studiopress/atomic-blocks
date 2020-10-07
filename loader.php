@@ -33,7 +33,7 @@ function atomic_blocks_loader() {
 	 * Enable API Endpoint for installing Genesis Blocks.
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/class-install-genesis-blocks-api.php';
-	new Atomic_Blocks\Admin\Migration\Install_Genesis_Blocks_Api();
+	new AtomicBlocks\Admin\Migration\Install_Genesis_Blocks_Api();
 
 	/**
 	 * Load Container Block PHP

@@ -7,7 +7,7 @@
  * @license http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  */
 
-namespace Atomic_Blocks\Admin\Migration;
+namespace AtomicBlocks\Admin\Migration;
 
 use Plugin_Upgrader;
 use WP_Ajax_Upgrader_Skin;
