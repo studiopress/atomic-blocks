@@ -1,0 +1,268 @@
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after { clear: both }
+
+.clearfix { zoom: 1 }
+
+.ab-migrate * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.atomic-blocks_page_atomic-blocks-migrate-page #update-nag {
+	display: none !important;
+}
+
+.atomic-blocks_page_atomic-blocks-migrate-page #wpcontent {
+	padding-left: 0;
+}
+
+.ab-migrate {
+	overflow: hidden;
+	margin: 0;
+}
+
+.ab-migrate .panel-right .theme-image {
+	background: #64717E;
+	padding: 2% 2% 0 2%;
+	display: inline-block;
+	width: 100%;
+	width: 23%;
+}
+
+.ab-migrate .panels {
+	margin: 0 0 0 0;
+}
+
+.ab-migrate .panel {
+	display: inline-block;
+	width: 100%;
+	padding: 4%;
+	background: #fff;
+	font-size: 16px;
+	animation: smoothFade .3s;
+	-moz-animation: smoothFade .3s;
+	-webkit-animation: smoothFade .3s;
+	-o-animation: smoothFade .3s;
+}
+
+@keyframes smoothFade {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+
+@-moz-keyframes smoothFade {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+
+@-webkit-keyframes smoothFade {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+
+.ab-migrate .panel-left.visible {
+	display: inline-block;
+	animation: smoothFade .3s;
+	-moz-animation: smoothFade .3s;
+	-webkit-animation: smoothFade .3s;
+	-o-animation: smoothFade .3s;
+}
+
+.ab-migrate .panel p {
+	font-size: 19px;
+	line-height: 1.7;
+}
+
+.ab-migrate .panel-left {
+	display: inline-block;
+	display: none;
+	width: 63%;
+}
+
+.ab-migrate .panel-left img {
+	max-width: 100%;
+	height: auto;
+}
+
+.ab-migrate .intro-wrap {
+	padding: 3% 0 0 0;
+	background: #5a3fd6 url("../../getting-started/images/geo.png");
+	background-size: 1400px;
+}
+
+.ab-migrate .intro {
+	display: inline-block;
+	width: 100%;
+	vertical-align: top;
+	padding: 0 50px;
+	margin-bottom: 3.5%;
+}
+
+.ab-migrate .intro h1{
+	font-size: 32px;
+	line-height: 1.2;
+	font-weight: 300;
+	margin: 0;
+	color: #fff;
+	display: inline-block;
+}
+
+.ab-migrate .atomic-logo {
+	max-width: 245px;
+	display: inline-block;
+	float: right;
+	margin-top: 2px;
+	transition: .3s ease;
+	-webkit-backface-visibility: hidden;
+	transform: translateZ(0);
+}
+
+@media only screen and (max-width:800px) {
+	.ab-migrate .atomic-logo {
+		float: none;
+		margin-bottom: 6%;
+	}
+}
+
+.ab-migrate .atomic-logo:hover {
+	transform: scale(1.03);
+}
+
+.ab-migrate .atomic-logo:active {
+	transform: scale(1);
+}
+
+.ab-migrate .button-primary,
+.ab-migrate .button-primary.focus,
+.ab-migrate .button-primary.hover,
+.ab-migrate .button-primary:focus,
+.ab-migrate .button-primary:hover {
+	background: #5d45c9;
+	border-color: #4c35b9;
+	box-shadow: none;
+	transition: .3s ease;
+	text-shadow: 0 -1px 1px #4c35b9, 1px 0 1px #4c35b9, 0 1px 1px #4c35b9, -1px 0 1px #4c35b9;
+
+	font-size: 18px;
+	border-radius: 100px;
+	padding: 5px 15px;
+	height: auto;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.ab-migrate .button-primary:hover {
+	box-shadow: inset 0 0 80px rgba(255,255,255, .15);
+}
+
+.ab-migrate .button-primary:active {
+	border-bottom-color: transparent;
+	border-top-width: 2px;
+
+	vertical-align: initial !important;
+	border-top-width: 1px !important;
+	color: #fff;
+	background: #5d45c9;
+}
+
+.ab-titles h2 {
+	font-size: 36px;
+	line-height: 1.2;
+}
+
+.ab-migrate a,
+.ab-migrate a:active,
+.ab-migrate a:hover {
+	color: #5d45c9;
+}
+
+.ab-block-split {
+	display: flex;
+	align-items: center;
+}
+
+@media (max-width: 600px) {
+	.ab-block-split {
+		display: block;
+		align-items: center;
+	}
+}
+
+.ab-block-split-right .ab-block-theme img {
+	max-width: 75%;
+	display: block;
+	margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+	.ab-block-split-right .ab-block-theme img {
+		max-width: 100%;
+	}
+}
+
+.ab-block-split-left,
+.ab-block-split-right {
+	display: inline-block;
+	width: 49%;
+	vertical-align: top;
+}
+
+@media (max-width: 600px) {
+	.ab-block-split-left,
+	.ab-block-split-right {
+		width: 100%;
+	}
+}
+
+.ab-block-split-left {
+	padding-right: 4%;
+	padding-top: 4%;
+	padding-bottom: 5%;
+}
+
+#atomic-blocks-panel {
+	width: 100%;
+}
+
+.ab-migrate .migrate-error-message{
+	background: #fff;
+	padding: 1.2em;
+	border: 1px solid #ccd0d4;
+	border-left: 4px solid #ffb900;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+.ab-migrate .migrate-success-message{
+	background: #fff;
+	padding: 1.2em;
+	border: 1px solid #ccd0d4;
+	border-left: 4px solid #5d45c9;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.ab-migrate .panel-left ul, .ab-migrate .panel-left ol {
+	background: #f5f4f6;
+	padding: 5% 5% 5% 8%;
+	list-style-type: square;
+	font-size: 19px;
+	line-height: 1.8;
+}
+.ab-migrate .panel-left ul li, .ab-migrate .panel-left ol li {
+	margin-bottom: 0px;
+}
