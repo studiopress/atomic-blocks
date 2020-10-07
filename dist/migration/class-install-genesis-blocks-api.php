@@ -15,7 +15,7 @@ use WP_Error;
 use WP_REST_Response;
 
 /**
- * Class Post_Type
+ * Class Install_Genesis_Blocks_Api
  */
 class Install_Genesis_Blocks_Api {
 
