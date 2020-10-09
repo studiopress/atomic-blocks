@@ -1,0 +1,26 @@
+.ab-notice-migration {
+	display: flex;
+}
+
+.ab-notice-migration .ab-migration-copy {
+	margin-right: auto;
+}
+
+.ab-notice-migration__learn-more {
+	display: block;
+}
+
+.ab-notice-migration .ab-notice-option {
+	margin: auto 0.2rem;
+}
+
+.ab-notice-migration.ab-hidden {
+	display: none;
+}
+
+#ab-notice-not-now {
+	margin-left: 16px;
+}
+.ab-notice-migration.notice-info{ 
+	border-left-color: #5d45c9;
+}
