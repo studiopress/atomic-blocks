@@ -36,6 +36,10 @@
 								<div id="atomic-blocks-install-genesis-blocks-spinner" class="spinner" style="float:none"></div>
 								<div id="atomic-blocks-install-genesis-blocks-error-message" class="migrate-error-message" style="display:none;"><?php echo esc_html( __( 'Something went wrong. Try again.', 'atomic-blocks' ) ); ?></div>
 								<div id="atomic-blocks-install-genesis-blocks-success-message" class="migrate-success-message" style="display:none;"><?php echo esc_html( __( 'Successfully installed and activated Genesis Blocks!', 'atomic-blocks' ) ); ?></div>
+								<p>
+									<strong><?php esc_html_e( 'Already using Genesis Blocks?', 'atomic-blocks' ); ?> </strong>
+									<?php esc_html_e( 'Update to 1.1.0+ and visit Genesis Blocks → Migrate to begin your migration.', 'atomic-blocks' ); ?>
+								</p>
 								<?php
 							} else {
 								?>
