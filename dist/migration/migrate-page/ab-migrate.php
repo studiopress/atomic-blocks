@@ -25,7 +25,7 @@
 							<p>
 							<?php
 								/* translators: %1$s Genesis Pro website URL. */
-								echo sprintf( esc_html__( 'Same powerful blocks, same beautiful designs, same innovative team. Atomic Blocks been renamed to Genesis Blocks. %1$s', 'atomic-blocks' ), '<a target="_blank" rel="noopener noreferrer" href="https://studiopress.com/genesis-blocks/">Learn more about Genesis Blocks.</a>' );
+								echo sprintf( esc_html__( 'Same powerful blocks, same beautiful designs, same innovative team. Atomic Blocks has been renamed to Genesis Blocks. %1$s', 'atomic-blocks' ), '<a target="_blank" rel="noopener noreferrer" href="https://studiopress.com/genesis-blocks/">Learn more about Genesis Blocks.</a>' );
 							?>
 							</p>
 							<?php
