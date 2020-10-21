@@ -57,13 +57,6 @@ class Notice {
 	const NOTICE_USER_META_KEY = 'atomic_blocks_show_migration_notice';
 
 	/**
-	 * The user meta value stored if a user has dismissed the migration notice.
-	 *
-	 * @var string
-	 */
-	const NOTICE_DISMISSED_META_VALUE = 'dismissed';
-
-	/**
 	 * The capability required to see the notice.
 	 *
 	 * @var string
@@ -164,8 +157,9 @@ class Notice {
 			return false;
 		}
 
-		// If the user has dismissed the notice, it shouldn't appear again.
-		if ( self::NOTICE_DISMISSED_META_VALUE === get_user_meta( get_current_user_id(), self::NOTICE_USER_META_KEY, true ) ) {
+		// If the user has dismissed the notice, it should reappear in 2 weeks.
+		$time_dismissed = get_user_meta( get_current_user_id(), self::NOTICE_USER_META_KEY, true );
+		if ( ! empty( $time_dismissed ) && ( $time_dismissed + WEEK_IN_SECONDS * 2 > time() ) ) {
 			return false;
 		}
 
@@ -186,7 +180,7 @@ class Notice {
 			wp_send_json_error();
 		}
 
-		update_user_meta( get_current_user_id(), self::NOTICE_USER_META_KEY, self::NOTICE_DISMISSED_META_VALUE );
+		update_user_meta( get_current_user_id(), self::NOTICE_USER_META_KEY, time() );
 
 		wp_send_json_success();
 	}
