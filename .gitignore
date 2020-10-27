@@ -39,6 +39,7 @@ node_modules/
 vendor/
 
 # Build files
+composer.lock
 Gruntfile.js
 dist/blocks.build.js
 dist/blocks.editor.build.css
