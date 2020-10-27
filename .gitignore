@@ -40,8 +40,6 @@ vendor/
 
 # Build files
 Gruntfile.js
-package-lock.json
-composer.lock
 dist/blocks.build.js
 dist/blocks.editor.build.css
 dist/blocks.style.build.css
