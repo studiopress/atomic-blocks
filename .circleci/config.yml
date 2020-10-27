@@ -79,7 +79,7 @@ commands:
           php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
           EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
           ACTUAL_SIGNATURE=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
-          [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/root/project/bin --filename=composer || exit 1
+          [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/root/project/bin --version=1.10.16 --filename=composer || exit 1
           rm composer-setup.php
           composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
 
