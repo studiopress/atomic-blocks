@@ -15,6 +15,12 @@ function atomic_blocks_loader() {
 	$atomic_blocks_dist_dir     = plugin_dir_path( __FILE__ ) . 'dist/';
 
 	/**
+	 * Load the migration notice functionality.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/class-notice.php';
+	new Atomic_Blocks\Admin\Migration\Notice();
+
+	/**
 	 * Load the blocks functionality
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'dist/init.php';
@@ -23,6 +29,17 @@ function atomic_blocks_loader() {
 	 * Load Getting Started page
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'dist/getting-started/getting-started.php';
+
+	/**
+	 * Load Migrate page
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/migrate-page/migrate-page.php';
+
+	/**
+	 * Enable API Endpoint for installing Genesis Blocks.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/class-install-genesis-blocks-api.php';
+	new AtomicBlocks\Admin\Migration\Install_Genesis_Blocks_Api();
 
 	/**
 	 * Load Container Block PHP

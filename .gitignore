@@ -39,9 +39,8 @@ node_modules/
 vendor/
 
 # Build files
-Gruntfile.js
-package-lock.json
 composer.lock
+Gruntfile.js
 dist/blocks.build.js
 dist/blocks.editor.build.css
 dist/blocks.style.build.css
