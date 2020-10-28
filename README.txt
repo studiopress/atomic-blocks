@@ -4,7 +4,7 @@ Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 5.3
 Tested up to: 5.5
-Stable tag: 2.8.6
+Stable tag: 2.9.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -131,6 +131,9 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 17. Spacer and Divider Block
 
 == Changelog ==
+= 2.9.0 =
+* Atomic Blocks has moved! Same powerful blocks, same beautiful designs, same innovative team. Atomic Blocks has been renamed to Genesis Blocks. Update now to learn more!
+
 = 2.8.6 =
 * Fixed issue with the Post & Page Grid block where automatic excerpts did not show under certain conditions.
 * Removed unnecessary padding in the editor on full-width Container, Pricing, and Advanced Column blocks.
