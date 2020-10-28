@@ -32,6 +32,7 @@
 							if ( PHP_VERSION_ID >= 70100 ) {
 								?>
 								<p><?php esc_html_e( 'With our migration tool built right into Genesis Blocks, the transition between plugins will be simple and seamless - plus you\'ll be ready to receive the new blocks and features we\'re releasing soon.', 'atomic-blocks' ); ?></p>
+
 								<button id="atomic-blocks-install-genesis-blocks-button" class="button-primary"><?php esc_html_e( 'Install and Activate Genesis Blocks', 'atomic-blocks' ); ?></button>
 								<div id="atomic-blocks-install-genesis-blocks-spinner" class="spinner" style="float:none"></div>
 								<div id="atomic-blocks-install-genesis-blocks-error-message" class="migrate-error-message" style="display:none;"><?php echo esc_html( __( 'Something went wrong. Try again.', 'atomic-blocks' ) ); ?></div>
@@ -40,6 +41,7 @@
 									<strong><?php esc_html_e( 'Already using Genesis Blocks?', 'atomic-blocks' ); ?> </strong>
 									<?php esc_html_e( 'Update to 1.1.0+ and visit Genesis Blocks → Migrate to begin your migration.', 'atomic-blocks' ); ?>
 								</p>
+
 								<?php
 							} else {
 								?>
