@@ -79,7 +79,7 @@ commands:
           php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
           EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
           ACTUAL_SIGNATURE=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
-          [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/root/project/bin --filename=composer || exit 1
+          [[ "$EXPECTED_SIGNATURE" == "$ACTUAL_SIGNATURE" ]] && php composer-setup.php --install-dir=/root/project/bin --version=1.10.16 --filename=composer || exit 1
           rm composer-setup.php
           composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
 
@@ -119,7 +119,7 @@ jobs:
             echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
             source $BASH_ENV
             composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
-            composer install --prefer-dist --no-suggest --optimize-autoloader --no-dev
+            composer install --prefer-dist --optimize-autoloader --no-dev
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -230,7 +230,7 @@ jobs:
             echo 'export PATH=$HOME/project/bin:$PATH' >> $BASH_ENV
             source $BASH_ENV
             composer config -g github-protocols https && composer config -g repo.packagist composer https://packagist.org
-            composer install --prefer-dist --no-suggest --optimize-autoloader --no-dev
+            composer install --prefer-dist --optimize-autoloader --no-dev
             wp i18n make-pot . languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor,dist/blocks.build.js --path=/root/project/wordpress-develop/src --allow-root
       - persist_to_workspace:
           root: ~/project
