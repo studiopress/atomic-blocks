@@ -139,12 +139,6 @@ class Notice {
 			return false;
 		}
 
-		// If the user has dismissed the notice, it should reappear in 2 weeks.
-		$time_dismissed = get_user_meta( get_current_user_id(), self::NOTICE_USER_META_KEY, true );
-		if ( ! empty( $time_dismissed ) && ( $time_dismissed + WEEK_IN_SECONDS * 2 > time() ) ) {
-			return false;
-		}
-
 		$screen = get_current_screen();
 		return ( isset( $screen->base ) && in_array( $screen->base, array( 'plugins', 'dashboard', 'atomic-blocks', 'atomic-blocks-plugin-settings' ), true ) );
 	}
