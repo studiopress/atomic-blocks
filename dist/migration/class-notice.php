@@ -83,39 +83,21 @@ class Notice {
 		$migration_url = admin_url( 'admin.php?page=atomic-blocks-migrate-page' );
 
 		?>
-		<div id="ab-migration-notice" class="notice notice-info ab-notice-migration">
+		<div id="ab-migration-notice" class="notice notice-warning ab-notice-migration">
 			<?php wp_nonce_field( self::NOTICE_NONCE_ACTION, self::NOTICE_NONCE_NAME, false ); ?>
 			<div class="ab-migration-copy">
 				<p>
 					<?php
-					printf(
-						/* translators: %1$s: the plugin name */
-						esc_html__( 'Atomic Blocks has moved! For future updates and improvements, migrate now to the new home of site building with Gutenberg: %1$s.', 'atomic-blocks' ),
-						sprintf(
-							'<strong>%1$s</strong>',
-							esc_html__( 'Genesis Blocks', 'atomic-blocks' )
-						)
-					);
+						esc_html_e( "Atomic Blocks has been renamed to Genesis Blocks and will no longer be maintained. It's time to migrate to the new plugin, which is free and easy to do! Visit the Migrate page to learn more and begin the migration.", 'atomic-blocks' );
 					?>
 					<a rel="noopener noreferrer" class="ab-notice-migration__learn-more" href="<?php echo esc_url( $migration_url ); ?>">
 						<?php esc_html_e( 'Learn more about migrating', 'atomic-blocks' ); ?>
 					</a>
 				</p>
 			</div>
-			<button id="ab-notice-not-now" href="#" class="ab-notice-option button button-secondary">
-				<?php esc_html_e( 'Not Now', 'atomic-blocks' ); ?>
-			</button>
 			<a href="<?php echo esc_url( $migration_url ); ?>" class="ab-notice-option button button-primary">
 				<?php esc_html_e( 'Migrate', 'atomic-blocks' ); ?>
 			</a>
-		</div>
-		<div id="ab-not-now-notice" class="notice notice-info ab-notice-migration ab-hidden">
-			<div class="ab-migration-copy">
-				<p><?php esc_html_e( "When you're ready, our migration tool is available in the main menu, under Atomic Blocks > Migrate.", 'atomic-blocks' ); ?></p>
-			</div>
-			<button id="ab-notice-ok" class="ab-notice-option button">
-				<?php esc_html_e( 'Okay', 'atomic-blocks' ); ?>
-			</button>
 		</div>
 		<?php
 	}
