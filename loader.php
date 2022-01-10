@@ -20,7 +20,7 @@ function atomic_blocks_loader() {
 	new Atomic_Blocks\Admin\Migration\Notice();
 
 	/**
-	 * Load the migration notice redirect logic.
+	 * Load the migration redirect logic.
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/class-redirect.php';
 	new Atomic_Blocks\Admin\Migration\Redirect();
