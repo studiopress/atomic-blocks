@@ -32,7 +32,7 @@ class Redirect {
 	 */
 	public function redirect_after_upgrade( $upgrader, $extra ) {
 		unset( $upgrader );
-		if ( current_user_can( Notice::NOTICE_CAPABILITY ) && isset( $extra['plugins'] ) && in_array( 'atomic-blocks/atomicblocks.php', $extra['plugins'], true ) ) {
+		if ( current_user_can( Notice::CAPABILITY ) && isset( $extra['plugins'] ) && in_array( 'atomic-blocks/atomicblocks.php', $extra['plugins'], true ) ) {
 			add_option( 'atomic_blocks_do_activation_redirect', true );
 		}
 	}
