@@ -12,13 +12,18 @@ function atomic_blocks_loader() {
 
 	$atomic_blocks_includes_dir = plugin_dir_path( __FILE__ ) . 'includes/';
 	$atomic_blocks_src_dir      = plugin_dir_path( __FILE__ ) . 'src/';
-	$atomic_blocks_dist_dir     = plugin_dir_path( __FILE__ ) . 'dist/';
 
 	/**
 	 * Load the migration notice functionality.
 	 */
 	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/class-notice.php';
 	new Atomic_Blocks\Admin\Migration\Notice();
+
+	/**
+	 * Load the migration notice redirect logic.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'dist/migration/class-redirect.php';
+	new Atomic_Blocks\Admin\Migration\Redirect();
 
 	/**
 	 * Load the blocks functionality
@@ -131,7 +136,7 @@ register_activation_hook( __FILE__, 'atomic_blocks_activate' );
 function atomic_blocks_redirect() {
 	if ( get_option( 'atomic_blocks_do_activation_redirect', false ) ) {
 		delete_option( 'atomic_blocks_do_activation_redirect' );
-		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=atomic-blocks' ) ) );
+		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=atomic-blocks-migrate-page' ) ) );
 		exit;
 	}
 }
