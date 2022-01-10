@@ -22,14 +22,17 @@ class Redirect {
 	}
 
 	/**
-	 * Redirects to the Migrate page after upgrading Atomic Blocks.
+	 * Redirects to the Migrate page on the first page load after upgrading Atomic Blocks.
+	 *
+	 * Upgrading plugins on /wp-admin/plugins.php happens via AJAX.
+	 * So this can't simply do wp_safe_redirect(), as that'll make the AJAX call fail.
 	 *
 	 * @param \WP_Upgrader $upgrader The upgrader class.
 	 * @param array        $extra Extra data from the bulk update.
 	 */
 	public function redirect_after_upgrade( $upgrader, $extra ) {
 		unset( $upgrader );
-		if ( current_user_can( Notice::NOTICE_CAPABILITY ) && isset( $extra['plugins'] ) && in_array( 'atommic-blocks/atomicblocks.php', $extra['plugins'], true ) ) {
+		if ( current_user_can( Notice::NOTICE_CAPABILITY ) && isset( $extra['plugins'] ) && in_array( 'atomic-blocks/atomicblocks.php', $extra['plugins'], true ) ) {
 			add_option( 'atomic_blocks_do_activation_redirect', true );
 		}
 	}
