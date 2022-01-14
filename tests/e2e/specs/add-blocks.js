@@ -36,7 +36,6 @@ describe( 'Add Blocks', () => {
 		const ctaTitle = 'This is an example CTA title';
 		await page.keyboard.type( ctaTitle );
 
-		// The CTA title should have been saved, and should still appear after a reload.
 		await expect( page ).toMatch( ctaTitle );
 	} );
 } );
