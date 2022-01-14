@@ -35,8 +35,6 @@ describe( 'Add Blocks', () => {
 		await page.focus( '.block-editor-block-list__block [role="textbox"]' );
 		const ctaTitle = 'This is an example CTA title';
 		await page.keyboard.type( ctaTitle );
-		await saveDraft();
-		await page.reload();
 
 		// The CTA title should have been saved, and should still appear after a reload.
 		await expect( page ).toMatch( ctaTitle );
