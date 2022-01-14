@@ -127,7 +127,7 @@ function atomic_blocks_activate( $network_wide = false ) {
 		add_option( 'atomic_blocks_do_activation_redirect', true );
 	}
 }
-register_activation_hook( __FILE__, 'atomic_blocks_activate' );
+register_activation_hook( atomic_blocks_main_plugin_file(), 'atomic_blocks_activate' );
 
 
 /**
