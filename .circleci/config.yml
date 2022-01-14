@@ -212,7 +212,7 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads nvm.
             [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion.
             nvm install --lts
-      - run: npm install && npm run build-assets && npm run env start && npm run test:e2e
+      - run: npm install && npm run build-assets && npm run wp-env start && npm run test:e2e
 
   prepare_environment:
     executor:

@@ -56,7 +56,7 @@
     "start": "wp-scripts start",
     "build": "npm-run-all makepot build-assets",
     "build-assets": "wp-scripts build",
-    "env": "wp-env",
+    "wp-env": "wp-env",
     "makepot": "wp i18n make-pot . languages/atomic-blocks.pot --exclude=config,node_modules,scripts,vendor,dist/blocks.build.js",
     "lint:css": "wp-scripts lint-style",
     "lint:css:src": "wp-scripts lint-style 'src/**/*.css'",
