@@ -6,7 +6,8 @@
 		"roave/security-advisories": "dev-master",
 		"squizlabs/php_codesniffer": "^3.4",
 		"wp-coding-standards/wpcs": "^2.0",
-		"phpunit/phpunit": "^5"
+		"phpunit/phpunit": "^5",
+		"yoast/phpunit-polyfills": "^1.0"
 	},
 	"scripts": {
 		"phpcs": "phpcs . --ignore=includes/libraries/*,includes/layout/register-layout-components.php,*vendor/* -sp --runtime-set testVersion 5.6-",
