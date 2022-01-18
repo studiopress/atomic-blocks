@@ -61,7 +61,7 @@ class Notice {
 	 *
 	 * @var string
 	 */
-	const NOTICE_CAPABILITY = 'install_plugins';
+	const CAPABILITY = 'install_plugins';
 
 	/**
 	 * Adds an action for the notice.
@@ -135,7 +135,7 @@ class Notice {
 	 * @return bool Whether the migration notice should display.
 	 */
 	public function should_display_migration_notice() {
-		if ( ! current_user_can( self::NOTICE_CAPABILITY ) ) {
+		if ( ! current_user_can( self::CAPABILITY ) ) {
 			return false;
 		}
 
@@ -152,7 +152,7 @@ class Notice {
 	public function ajax_handler_migration_notice() {
 		check_ajax_referer( self::NOTICE_NONCE_ACTION, self::NOTICE_NONCE_NAME );
 
-		if ( ! current_user_can( self::NOTICE_CAPABILITY ) ) {
+		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_send_json_error();
 		}
 
