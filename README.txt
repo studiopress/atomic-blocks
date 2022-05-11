@@ -3,7 +3,7 @@ Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbat
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 5.3
-Tested up to: 5.5
+Tested up to: 6.0
 Stable tag: 2.9.0
 Requires PHP: 5.6
 License: GPLv2 or later
