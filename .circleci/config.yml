@@ -1,10 +1,13 @@
 version: 2.1
 
+orbs:
+  wp-svn: studiopress/wp-svn@0.1
+
 executors:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/buildpack-deps:latest
+      - image: cimg/base:current
   php:
     working_directory: ~/project
     parameters:
@@ -197,11 +200,11 @@ jobs:
             cd ~/project/atomic-blocks
             composer install
             composer phpcs
-            sleep 7 && composer phpunit
+            composer phpunit
 
   e2e-tests:
     machine:
-      image: ubuntu-1604:202004-01
+      image: ubuntu-2004:202111-02
     steps:
       - checkout
       - run:
@@ -261,6 +264,19 @@ workflows:
           matrix:
             parameters:
               php-version: ['7.4', '7.3', '7.2', '5.6']
+      - approval-for-deploy-tested-up-to-bump:
+          type: approval
+          requires:
+            - php-tests
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: /^bump-tested-up-to.*/
+      - wp-svn/deploy-tested-up-to-bump:
+          context: genesis-svn
+          requires:
+            - approval-for-deploy-tested-up-to-bump
       - e2e-tests:
           filters:
             tags:
