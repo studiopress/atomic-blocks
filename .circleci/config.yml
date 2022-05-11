@@ -209,7 +209,7 @@ jobs:
     steps:
       - checkout
       - node/install:
-          node-version: 14
+          node-version: '14'
       - node/install-packages
       - run: npm run build-assets && npm run wp-env start && npm run test:e2e
 
