@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  node: circleci/node@5.0
   wp-svn: studiopress/wp-svn@0.1
 
 executors:
@@ -207,15 +208,10 @@ jobs:
       image: ubuntu-2004:202111-02
     steps:
       - checkout
-      - run:
-          name: Update Node version
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-            export NVM_DIR="/opt/circleci/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads nvm.
-            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads nvm bash_completion.
-            nvm install --lts
-      - run: npm install && npm run build-assets && npm run wp-env start && npm run test:e2e
+      - node/install:
+          node-version: 14
+      - node/install-packages
+      - run: npm run build-assets && npm run wp-env start && npm run test:e2e
 
   prepare_environment:
     executor:
