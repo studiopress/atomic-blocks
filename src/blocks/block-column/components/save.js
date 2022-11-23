@@ -15,6 +15,7 @@ export default class Save extends Component {
 		const { attributes } = this.props;
 
 		const className = classnames( [
+			this.props.className,
 			'ab-layout-column-wrap',
 			'ab-block-layout-column-gap-' + attributes.columnsGap,
 			attributes.responsiveToggle ? 'ab-is-responsive-column' : null,
