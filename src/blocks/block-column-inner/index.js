@@ -114,6 +114,12 @@ registerBlockType( 'atomic-blocks/ab-column', {
 		},
 	},
 
+	/* Add block supports */
+	supports: {
+		// Add EditorsKit block navigator toolbar
+		editorsKitBlockNavigator: true,
+	},
+
 	/* Render the block in the editor. */
 	edit: ( props ) => {
 		return <Edit { ...props } />;
